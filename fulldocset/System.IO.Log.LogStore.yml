@@ -28,8 +28,8 @@ items:
   nameWithType: LogStore
   fullName: System.IO.Log.LogStore
   type: Class
-  summary: "Represents a log-structured storage."
-  remarks: "The <xref:System.IO.Log.LogRecordSequence> class provides an implementation of the record sequence interface on top of a Common Log File System (CLFS) log. It works with the LogStore class, which provides an interface for directly manipulating and managing a CLFS log file. A log store provides append-only storage across a set of disk extents. The LogStore class represents this storage, and provides methods for adding and removing containers, setting policy, and creating archives. It does not provide methods for reading from and writing to the storage; these methods are provided by the <xref:System.IO.Log.LogRecordSequence> class.       The relationship between the LogStore class and the <xref:System.IO.Log.LogRecordSequence> class is similar to the relationship between a disk file and a <xref:System.IO.FileStream> object. The disk file provides the actual storage and has attributes such as length and last access time, while the <xref:System.IO.FileStream> object provides a view on the file that can be used to read from it and write to it. Similarly, the LogStore class has attributes like a policy and a collection of disk extents, and the <xref:System.IO.Log.LogRecordSequence> class provides a record-oriented mechanism for reading and writing data.       Unlike the file record sequence represented by the <xref:System.IO.Log.FileRecordSequence> class, a LogStore instance stores its data in a collection of disk extents, represented by <xref:System.IO.Log.LogExtent> instances. The extents in a given LogStore instance are all of uniform size, and space is added to and removed from a LogStore instance in extent increments. To add and remove log extents, use the <xref:System.IO.Log.LogExtentCollection.Add%2A> and <xref:System.IO.Log.LogExtentCollection.Remove%2A> methods of the <xref:System.IO.Log.LogExtentCollection> object, which can be returned by the <xref:System.IO.Log.LogStore.Extents%2A> property.       A LogStore instance can have policies associated with it. These are represented by <xref:System.IO.Log.LogPolicy> instances that can be returned by the <xref:System.IO.Log.LogStore.Policy%2A> property. A policy dictates rules that the log will attempt to follow, such as maximum number of extents and minimum size, and instructions on growing or shrinking the LogStore under certain conditions. In addition, you can specify whether a LogStore instance can be archived. Policies are set per log and are volatile, which means that once every handle to the log is closed, the policy no longer exists."
+  summary: "表示日志结构化存储。"
+  remarks: "<xref:System.IO.Log.LogRecordSequence>类提供记录序列接口在公用日志文件系统 (CLFS) 日志之上的实现</xref:System.IO.Log.LogRecordSequence> 它适用于 LogStore 类，该类提供用于直接操作和管理 CLFS 日志文件的接口。 日志存储区提供跨一组磁盘范围的仅追加存储。 LogStore 类表示此存储区，并提供用于添加和移除容器、 设置策略，以及创建存档的方法。 它不用于从读取和写入到存储; 提供的方法这些方法提供的<xref:System.IO.Log.LogRecordSequence>类。</xref:System.IO.Log.LogRecordSequence>       LogStore 类之间的关系和<xref:System.IO.Log.LogRecordSequence>类是类似于磁盘文件之间的关系和<xref:System.IO.FileStream>对象。</xref:System.IO.FileStream> </xref:System.IO.Log.LogRecordSequence> 磁盘文件提供实际存储，具有诸如长度和上次访问时间，同时<xref:System.IO.FileStream>对象提供对可用来读取和写入它。 该文件的视图</xref:System.IO.FileStream>的属性 同样，LogStore 类具有策略和磁盘范围集合等属性和<xref:System.IO.Log.LogRecordSequence>类提供面向记录的机制，用于读取和写入数据。</xref:System.IO.Log.LogRecordSequence>       与所表示的文件记录序列不同<xref:System.IO.Log.FileRecordSequence>类，则 LogStore 实例会将其数据存储在磁盘范围，由表示集合<xref:System.IO.Log.LogExtent>实例。</xref:System.IO.Log.LogExtent> </xref:System.IO.Log.FileRecordSequence> 给定的 LogStore 实例中的范围都具有统一的大小，并添加到和移除中范围增量的形式的 LogStore 实例空间。 若要添加和移除日志范围，使用<xref:System.IO.Log.LogExtentCollection.Add%2A>和<xref:System.IO.Log.LogExtentCollection.Remove%2A>方法<xref:System.IO.Log.LogExtentCollection>对象，可以通过返回<xref:System.IO.Log.LogStore.Extents%2A>属性。</xref:System.IO.Log.LogStore.Extents%2A> </xref:System.IO.Log.LogExtentCollection> </xref:System.IO.Log.LogExtentCollection.Remove%2A> </xref:System.IO.Log.LogExtentCollection.Add%2A>       LogStore 实例可以具有与之关联的策略。 它们都由表示<xref:System.IO.Log.LogPolicy>实例可以返回的<xref:System.IO.Log.LogStore.Policy%2A>属性。</xref:System.IO.Log.LogStore.Policy%2A> </xref:System.IO.Log.LogPolicy> 策略定义日志将尝试按照，如的范围和最小大小，说明的最大数目扩大或缩小在某些情况下的 LogStore 上的规则。 此外，您可以指定是否可以存档 LogStore 实例。 策略每个日志设置和是可变的这意味着一旦日志每个句柄已关闭，策略不再存在。"
   example:
   - "The following example shows how to archive a LogStore to an XML document.  \n  \n [!code-vb[logarchievesnapshot#0](~/add/codesnippet/visualbasic/t-system.io.log.logstore_1.vb)]\n [!code-cs[logarchievesnapshot#0](~/add/codesnippet/csharp/t-system.io.log.logstore_1.cs)]"
   syntax:
@@ -53,30 +53,30 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Initializes a new instance of the <xref href=&quot;System.IO.Log.LogStore&quot;></xref> class for the specified handle."
+  summary: "初始化的新实例<xref href=&quot;System.IO.Log.LogStore&quot;></xref>指定句柄类。"
   syntax:
     content: public LogStore (Microsoft.Win32.SafeHandles.SafeFileHandle handle);
     parameters:
     - id: handle
       type: Microsoft.Win32.SafeHandles.SafeFileHandle
-      description: "A file handle for the log file that the current <xref href=&quot;System.IO.Log.LogStore&quot;></xref> object encapsulates."
+      description: "文件的日志文件句柄当前<xref href=&quot;System.IO.Log.LogStore&quot;></xref>对象所封装。"
   overload: System.IO.Log.LogStore.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>handle</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>handle</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The log handle could not be bound to the thread pool."
+    description: "日志句柄无法绑定到线程池。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Access for the specified log store is denied by the operating system."
+    description: "指定的日志存储区的访问被拒绝由操作系统。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "该方法是序列已释放之后调用的。"
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "There is not enough memory to continue the execution of a program."
+    description: "没有足够的内存来继续执行程序。"
   platform:
   - net462
 - uid: System.IO.Log.LogStore.#ctor(System.String,System.IO.FileMode)
@@ -91,43 +91,43 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Initializes a new instance of the <xref href=&quot;System.IO.Log.LogStore&quot;></xref> class with the specified path and mode."
-  remarks: "Use this constructor to open a log store with the specified path and mode. The store is opened with read/write access, and shares read access.       The `path` parameter should use the following syntax:       `log:<physical log name>[::<log client name>]`       where `<physical log name>` is a valid path to a log file, and `<log client name>` is a unique client identifier. A log store should be either a physical log store or a virtual log store, but not both. Once a log store has been created physically or virtually, it remains so for its lifetime. A physical log store is created by specifying only the physical log name. A virtual log store is created by specifying both the physical log name and the log client name.       Clients that share the same physical log name share the same extents collection and policy."
+  summary: "初始化的新实例<xref href=&quot;System.IO.Log.LogStore&quot;></xref>使用指定的路径和模式的类。"
+  remarks: "使用此构造函数使用指定的路径和模式打开的日志存储区。 存储打开具有读/写访问权限和共享读访问权限。       `path`参数应使用以下语法︰`log:<physical log name>[::<log client name>]`其中`<physical log name>`是日志文件的有效路径和`<log client name>`是唯一的客户端标识符。 物理日志存储区或虚拟日志存储区中，但不是同时，应为日志存储区。 一旦以物理方式或几乎已创建的日志存储区，将保持这样的整个生存期。 创建物理日志存储，则通过指定仅物理日志名称。 通过指定物理日志名称和日志客户端名称创建的虚拟日志存储区。       共享同一个物理日志名称的客户端将共享相同的范围集合与策略。"
   syntax:
     content: public LogStore (string path, System.IO.FileMode mode);
     parameters:
     - id: path
       type: System.String
-      description: "A relative or absolute path for the base file of the log store to open."
+      description: "要打开的日志存储区的基文件相对或绝对路径。"
     - id: mode
       type: System.IO.FileMode
-      description: "One of the <xref href=&quot;System.IO.FileMode&quot;></xref> values that determines how to open or create the store."
+      description: "之一<xref href=&quot;System.IO.FileMode&quot;></xref>确定如何打开或创建存储的值。"
   overload: System.IO.Log.LogStore.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>path</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>path</code> is an empty string (&quot;&quot;).       -or-       <code>path</code> contains only white space.       -or-       <code>path</code> contains one or more invalid characters."
+    description: "<code>path</code>为空字符串 (&quot;&quot;)。       -或-<code>path</code>仅包含空格。       -或-<code>path</code>包含一个或多个无效字符。"
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>mode</code> contains an invalid value."
+    description: "<code>mode</code>包含无效值。"
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "The file cannot be found."
+    description: "找不到该文件。"
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurs when opening the log store."
+    description: "打开日志存储区时发生了 I/O 错误。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Access for the specified log store is denied by the operating system."
+    description: "指定的日志存储区的访问被拒绝由操作系统。"
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "<xref href=&quot;System.IO.Log.LogStore&quot;></xref> cannot be used because the required Common Log File System (CLFS) component is not installed. Install the CLFS component if it is available for your platform or use the <xref href=&quot;System.IO.Log.FileRecordSequence&quot;></xref> class instead."
+    description: "<xref href=&quot;System.IO.Log.LogStore&quot;></xref>无法使用，因为未安装所需的公用日志文件系统 (CLFS) 组件。 安装 CLFS 组件，如果它不用于平台或使用<xref href=&quot;System.IO.Log.FileRecordSequence&quot;></xref>类。"
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "There is not enough memory to continue the execution of a program."
+    description: "没有足够的内存来继续执行程序。"
   platform:
   - net462
 - uid: System.IO.Log.LogStore.#ctor(System.String,System.IO.FileMode,System.IO.FileAccess)
@@ -142,46 +142,46 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Initializes a new instance of the <xref href=&quot;System.IO.Log.LogStore&quot;></xref> class with the specified path, mode, and access."
-  remarks: "Use this constructor to open a new log store with the specified path, mode, and access. The store is opened sharing read access.       The `path` parameter should use the following syntax:       `log:<physical log name>[::<log client name>]`       where `<physical log name>` is a valid path to a log file, and `<log client name>` is a unique client identifier. A log store should be either a physical log store or a virtual log store, but not both. Once a log store has been created physically or virtually, it remains so for its lifetime. A physical log store is created by specifying only the physical log name. A virtual log store is created by specifying both the physical log name and the log client name.       Clients that share the same physical log name share the same extents collection and policy."
+  summary: "初始化的新实例<xref href=&quot;System.IO.Log.LogStore&quot;></xref>与指定的路径、 模式和访问的类。"
+  remarks: "使用此构造函数打开具有指定的路径、 模式和访问新的日志存储区。 共享读访问权限打开的存储。       `path`参数应使用以下语法︰`log:<physical log name>[::<log client name>]`其中`<physical log name>`是日志文件的有效路径和`<log client name>`是唯一的客户端标识符。 物理日志存储区或虚拟日志存储区中，但不是同时，应为日志存储区。 一旦以物理方式或几乎已创建的日志存储区，将保持这样的整个生存期。 创建物理日志存储，则通过指定仅物理日志名称。 通过指定物理日志名称和日志客户端名称创建的虚拟日志存储区。       共享同一个物理日志名称的客户端将共享相同的范围集合与策略。"
   syntax:
     content: public LogStore (string path, System.IO.FileMode mode, System.IO.FileAccess access);
     parameters:
     - id: path
       type: System.String
-      description: "A relative or absolute path for the base file of the log store to open."
+      description: "要打开的日志存储区的基文件相对或绝对路径。"
     - id: mode
       type: System.IO.FileMode
-      description: "One of the <xref href=&quot;System.IO.FileMode&quot;></xref> values that determines how to open or create the store."
+      description: "之一<xref href=&quot;System.IO.FileMode&quot;></xref>确定如何打开或创建存储的值。"
     - id: access
       type: System.IO.FileAccess
-      description: "One of the <xref href=&quot;System.IO.FileAccess&quot;></xref> values that determines how the file can be accessed by the <xref href=&quot;System.IO.Log.LogStore&quot;></xref>."
+      description: "之一<xref href=&quot;System.IO.FileAccess&quot;></xref>确定如何通过访问文件的值<xref href=&quot;System.IO.Log.LogStore&quot;> </xref>。"
   overload: System.IO.Log.LogStore.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>path</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>path</code> is an empty string (&quot;&quot;).       -or-       <code>path</code> contains only white space.       -or-       <code>path</code> contains one or more invalid characters."
+    description: "<code>path</code>为空字符串 (&quot;&quot;)。       -或-<code>path</code>仅包含空格。       -或-<code>path</code>包含一个或多个无效字符。"
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>mode</code> contains an invalid value.       -or       <code>access</code> contains an invalid value."
+    description: "<code>mode</code>包含无效值。       -或<code>access</code>包含无效值。"
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "The file cannot be found."
+    description: "找不到该文件。"
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurs when opening the log store."
+    description: "打开日志存储区时发生了 I/O 错误。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Access for the specified log store is denied by the operating system."
+    description: "指定的日志存储区的访问被拒绝由操作系统。"
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "<xref href=&quot;System.IO.Log.LogStore&quot;></xref> cannot be used because the required Common Log File System (CLFS) component is not installed. Install the CLFS component if it is available for your platform or use the <xref href=&quot;System.IO.Log.FileRecordSequence&quot;></xref> class instead."
+    description: "<xref href=&quot;System.IO.Log.LogStore&quot;></xref>无法使用，因为未安装所需的公用日志文件系统 (CLFS) 组件。 安装 CLFS 组件，如果它不用于平台或使用<xref href=&quot;System.IO.Log.FileRecordSequence&quot;></xref>类。"
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "There is not enough memory to continue the execution of a program."
+    description: "没有足够的内存来继续执行程序。"
   platform:
   - net462
 - uid: System.IO.Log.LogStore.#ctor(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
@@ -196,49 +196,49 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Initializes a new instance of the <xref href=&quot;System.IO.Log.LogStore&quot;></xref> class."
-  remarks: "This constructor initializes a new <xref:System.IO.Log.LogStore> object that it opens with the specified path, mode, and access. The store is opened sharing the specified access.       The `path` parameter should use the following syntax:       `log:<physical log name>[::<log client name>]`       where `<physical log name>` is a valid path to a log file, and `<log client name>` is a unique client identifier. A log store should be either a physical log store or a virtual log store, but not both. Once a log store has been created physically or virtually, it remains so for its lifetime. A physical log store is created by specifying only the physical log name. A virtual log store is created by specifying both the physical log name and the log client name.       Clients that share the same physical log name share the same extents collection and policy."
+  summary: "初始化的新实例<xref href=&quot;System.IO.Log.LogStore&quot;></xref>类。"
+  remarks: "此构造函数初始化新<xref:System.IO.Log.LogStore>它以指定的路径、 模式和访问权限打开的对象。</xref:System.IO.Log.LogStore> 共享指定的访问权限打开的存储。       `path`参数应使用以下语法︰`log:<physical log name>[::<log client name>]`其中`<physical log name>`是日志文件的有效路径和`<log client name>`是唯一的客户端标识符。 物理日志存储区或虚拟日志存储区中，但不是同时，应为日志存储区。 一旦以物理方式或几乎已创建的日志存储区，将保持这样的整个生存期。 创建物理日志存储，则通过指定仅物理日志名称。 通过指定物理日志名称和日志客户端名称创建的虚拟日志存储区。       共享同一个物理日志名称的客户端将共享相同的范围集合与策略。"
   syntax:
     content: public LogStore (string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share);
     parameters:
     - id: path
       type: System.String
-      description: "A relative or absolute path for the base file of the log store to open."
+      description: "要打开的日志存储区的基文件相对或绝对路径。"
     - id: mode
       type: System.IO.FileMode
-      description: "One of the <xref href=&quot;System.IO.FileMode&quot;></xref> values that determines how to open or create the store."
+      description: "之一<xref href=&quot;System.IO.FileMode&quot;></xref>确定如何打开或创建存储的值。"
     - id: access
       type: System.IO.FileAccess
-      description: "One of the <xref href=&quot;System.IO.FileAccess&quot;></xref> values that determines how the file can be accessed by the <xref href=&quot;System.IO.Log.LogStore&quot;></xref>."
+      description: "之一<xref href=&quot;System.IO.FileAccess&quot;></xref>确定如何通过访问文件的值<xref href=&quot;System.IO.Log.LogStore&quot;> </xref>。"
     - id: share
       type: System.IO.FileShare
-      description: "One of the <xref href=&quot;System.IO.FileShare&quot;></xref> values that determines how the log store will be shared among processes."
+      description: "之一<xref href=&quot;System.IO.FileShare&quot;></xref>确定将如何在进程之间共享的日志存储区的值。"
   overload: System.IO.Log.LogStore.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>path</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>path</code> is an empty string (&quot;&quot;).       -or-       <code>path</code> contains only white space.       -or-       <code>path</code> contains one or more invalid characters."
+    description: "<code>path</code>为空字符串 (&quot;&quot;)。       -或-<code>path</code>仅包含空格。       -或-<code>path</code>包含一个或多个无效字符。"
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>mode</code> contains an invalid value.       -or       <code>access</code> contains an invalid value.       -or-       <code>share</code> contains an invalid value."
+    description: "<code>mode</code>包含无效值。       -或<code>access</code>包含无效值。       -或-<code>share</code>包含无效值。"
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "The file cannot be found."
+    description: "找不到该文件。"
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurs when opening the log store."
+    description: "打开日志存储区时发生了 I/O 错误。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Access for the specified log store is denied by the operating system."
+    description: "指定的日志存储区的访问被拒绝由操作系统。"
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "<xref href=&quot;System.IO.Log.LogStore&quot;></xref> cannot be used because the required Common Log File System (CLFS) component is not installed. Install the CLFS component if it is available for your platform or use the <xref href=&quot;System.IO.Log.FileRecordSequence&quot;></xref> class instead."
+    description: "<xref href=&quot;System.IO.Log.LogStore&quot;></xref>无法使用，因为未安装所需的公用日志文件系统 (CLFS) 组件。 安装 CLFS 组件，如果它不用于平台或使用<xref href=&quot;System.IO.Log.FileRecordSequence&quot;></xref>类。"
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "There is not enough memory to continue the execution of a program."
+    description: "没有足够的内存来继续执行程序。"
   platform:
   - net462
 - uid: System.IO.Log.LogStore.#ctor(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,System.Security.AccessControl.FileSecurity)
@@ -253,58 +253,58 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Initializes a new instance of the <xref href=&quot;System.IO.Log.LogStore&quot;></xref> class."
-  remarks: "This constructor initializes a new <xref:System.IO.Log.LogStore> object that it opens with the specified path, mode, and access. The store is opened sharing the specified access. The `path` parameter should follow the following syntax:       `log:<physical log name>[::<log client name>]`       where `<physical log name>` is a valid path to a log file, and `<log client name>` is a unique client identifier. A log store should be either a physical log store or a virtual log store, but not both. Once a log store has been created physically or virtually, it remains so for its lifetime. A physical log store is created by specifying only the physical log name. A virtual log store is created by specifying both the physical log name and the log client name.       Clients that share the same physical log name share the same extents collection and policy."
+  summary: "初始化的新实例<xref href=&quot;System.IO.Log.LogStore&quot;></xref>类。"
+  remarks: "此构造函数初始化新<xref:System.IO.Log.LogStore>它以指定的路径、 模式和访问权限打开的对象。</xref:System.IO.Log.LogStore> 共享指定的访问权限打开的存储。 `path`参数应遵循以下语法︰`log:<physical log name>[::<log client name>]`其中`<physical log name>`是日志文件的有效路径和`<log client name>`是唯一的客户端标识符。 物理日志存储区或虚拟日志存储区中，但不是同时，应为日志存储区。 一旦以物理方式或几乎已创建的日志存储区，将保持这样的整个生存期。 创建物理日志存储，则通过指定仅物理日志名称。 通过指定物理日志名称和日志客户端名称创建的虚拟日志存储区。       共享同一个物理日志名称的客户端将共享相同的范围集合与策略。"
   syntax:
     content: public LogStore (string path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Security.AccessControl.FileSecurity fileSecurity);
     parameters:
     - id: path
       type: System.String
-      description: "A relative or absolute path for the base file of the log store to open."
+      description: "要打开的日志存储区的基文件相对或绝对路径。"
     - id: mode
       type: System.IO.FileMode
-      description: "One of the <xref href=&quot;System.IO.FileMode&quot;></xref> values that determines how to open or create the store."
+      description: "之一<xref href=&quot;System.IO.FileMode&quot;></xref>确定如何打开或创建存储的值。"
     - id: access
       type: System.IO.FileAccess
-      description: "One of the <xref href=&quot;System.IO.FileAccess&quot;></xref> values that determines how the file can be accessed by the <xref href=&quot;System.IO.Log.LogStore&quot;></xref>."
+      description: "之一<xref href=&quot;System.IO.FileAccess&quot;></xref>确定如何通过访问文件的值<xref href=&quot;System.IO.Log.LogStore&quot;> </xref>。"
     - id: share
       type: System.IO.FileShare
-      description: "One of the <xref href=&quot;System.IO.FileShare&quot;></xref> values that determines how the log store will be shared among processes."
+      description: "之一<xref href=&quot;System.IO.FileShare&quot;></xref>确定将如何在进程之间共享的日志存储区的值。"
     - id: fileSecurity
       type: System.Security.AccessControl.FileSecurity
-      description: "One of the <xref href=&quot;System.Security.AccessControl.FileSecurity&quot;></xref> value that specifies the security to set on the newly created store if the store must be created."
+      description: "之一<xref href=&quot;System.Security.AccessControl.FileSecurity&quot;></xref>值，该值指定要设置新创建的存储区中，如果必须创建存储区的安全性。"
   overload: System.IO.Log.LogStore.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>path</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The log store file name specified by <code>path</code> is not valid.       -or-       <code>Mode</code> is <xref uid=&quot;langword_csharp_CreateNew&quot; name=&quot;CreateNew&quot; href=&quot;&quot;></xref>, which cannot be used without write access.       -or-       <code>Mode</code> is <xref uid=&quot;langword_csharp_OpenOrCreate&quot; name=&quot;OpenOrCreate&quot; href=&quot;&quot;></xref>, which cannot be used without write access."
+    description: "通过指定的日志存储区文件名<code> path </code>无效。       - <code> Mode </code>是<xref uid=&quot;langword_csharp_CreateNew&quot; name=&quot;CreateNew&quot; href=&quot;&quot;> </xref>，无法在没有写访问权限使用它。       - <code> Mode </code>是<xref uid=&quot;langword_csharp_OpenOrCreate&quot; name=&quot;OpenOrCreate&quot; href=&quot;&quot;> </xref>，无法在没有写访问权限使用它。"
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>mode</code> contains an invalid value.       -or       <code>access</code> contains an invalid value.       -or-       <code>share</code> contains an invalid value."
+    description: "<code>mode</code>包含无效值。       -或<code>access</code>包含无效值。       -或-<code>share</code>包含无效值。"
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "The file cannot be found."
+    description: "找不到该文件。"
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurs when opening the log store.       The file specified by <code>path</code> cannot be accessed because it is in use by another process.       -or-       The file specified by <code>path</code> cannot be created because the file or directory already exists.       -or-       The log handle could not be bound to the thread pool.       -or-       The specified log file format or version is invalid."
+    description: "打开日志存储区时发生了 I/O 错误。       指定的文件<code> path </code>无法访问，因为它正在使用另一个进程。       -指定的文件<code> path </code>无法创建，因为该文件或目录已存在。       -或者-日志句柄无法绑定到线程池。       -或者-指定的日志文件格式或版本无效。"
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "<xref href=&quot;System.IO.Log.LogStore&quot;></xref> cannot be used because the required Common Log File System (CLFS) component is not installed. Install the CLFS component if it is available for your platform or use the <xref href=&quot;System.IO.Log.FileRecordSequence&quot;></xref> class instead."
+    description: "<xref href=&quot;System.IO.Log.LogStore&quot;></xref>无法使用，因为未安装所需的公用日志文件系统 (CLFS) 组件。 安装 CLFS 组件，如果它不用于平台或使用<xref href=&quot;System.IO.Log.FileRecordSequence&quot;></xref>类。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "该方法是序列已释放之后调用的。"
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "There is not enough memory to continue the execution of a program."
+    description: "没有足够的内存来继续执行程序。"
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence is full."
+    description: "记录序列已满。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Access for the specified log store is denied by the operating system."
+    description: "指定的日志存储区的访问被拒绝由操作系统。"
   platform:
   - net462
 - uid: System.IO.Log.LogStore.Archivable
@@ -319,18 +319,18 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Gets a value indicating whether this <xref href=&quot;System.IO.Log.LogStore&quot;></xref> instance can be archived."
-  remarks: "If a <xref:System.IO.Log.LogStore> is not archivable, calls to the <xref:System.IO.Log.LogStore.CreateLogArchiveSnapshot%2A> and <xref:System.IO.Log.LogStore.SetArchiveTail%2A> methods result in a <xref:System.NotSupportedException> being thrown."
+  summary: "获取一个值，该值指示是否这<xref href=&quot;System.IO.Log.LogStore&quot;></xref>实例可以存档。"
+  remarks: "如果<xref:System.IO.Log.LogStore>不可存档，则调用<xref:System.IO.Log.LogStore.CreateLogArchiveSnapshot%2A>和<xref:System.IO.Log.LogStore.SetArchiveTail%2A>方法都会导致<xref:System.NotSupportedException>引发。</xref:System.NotSupportedException> </xref:System.IO.Log.LogStore.SetArchiveTail%2A> </xref:System.IO.Log.LogStore.CreateLogArchiveSnapshot%2A> </xref:System.IO.Log.LogStore>"
   syntax:
     content: public bool Archivable { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this <xref href=&quot;System.IO.Log.LogStore&quot;></xref> instance can be archived; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果此<xref href=&quot;System.IO.Log.LogStore&quot;></xref>实例可以存档; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.IO.Log.LogStore.Archivable*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The property was accessed after the sequence has been disposed of."
+    description: "在序列已释放的之后，已访问属性。"
   platform:
   - net462
 - uid: System.IO.Log.LogStore.BaseSequenceNumber
@@ -345,18 +345,18 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Gets the lowest sequence number that corresponds to a valid record in this <xref href=&quot;System.IO.Log.LogStore&quot;></xref> instance."
-  remarks: "Valid sequence numbers are greater than or equal to BaseSequenceNumber and less than <xref:System.IO.Log.LogStore.LastSequenceNumber%2A>."
+  summary: "获取有效记录对应的最低序列号，在此<xref href=&quot;System.IO.Log.LogStore&quot;></xref>实例。"
+  remarks: "有效序列号是大于或等于 BaseSequenceNumber，并且小于<xref:System.IO.Log.LogStore.LastSequenceNumber%2A>.</xref:System.IO.Log.LogStore.LastSequenceNumber%2A>"
   syntax:
     content: public System.IO.Log.SequenceNumber BaseSequenceNumber { get; }
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The lowest sequence number that corresponds to a valid record in this <xref href=&quot;System.IO.Log.LogStore&quot;></xref> instance."
+      description: "在此有效记录对应的最低序列号<xref href=&quot;System.IO.Log.LogStore&quot;></xref>实例。"
   overload: System.IO.Log.LogStore.BaseSequenceNumber*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The property was accessed after the sequence has been disposed of."
+    description: "在序列已释放的之后，已访问属性。"
   platform:
   - net462
 - uid: System.IO.Log.LogStore.CreateLogArchiveSnapshot
@@ -371,7 +371,7 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Takes a snapshot of the log store state for making a backup."
+  summary: "采用以制作备份的日志存储区状态的快照。"
   remarks: ''
   example:
   - "The following example shows how to archive a <xref:System.IO.Log.LogStore> to an XML document.  \n  \n [!code-vb[logarchievesnapshot#0](~/add/codesnippet/visualbasic/m-system.io.log.logstore_1_1.vb)]\n [!code-cs[logarchievesnapshot#0](~/add/codesnippet/csharp/m-system.io.log.logstore_1_1.cs)]"
@@ -380,33 +380,33 @@ items:
     parameters: []
     return:
       type: System.IO.Log.LogArchiveSnapshot
-      description: "A <xref href=&quot;System.IO.Log.LogArchiveSnapshot&quot;></xref> object that contains the state necessary to make an archive."
+      description: "A <xref href=&quot;System.IO.Log.LogArchiveSnapshot&quot;> </xref>包含制作存档所需状态的对象。"
   overload: System.IO.Log.LogStore.CreateLogArchiveSnapshot*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The log store is not archivable."
+    description: "日志存储区不可存档。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "该方法是序列已释放之后调用的。"
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurs when creating the archive snapshot."
+    description: "创建存档快照时发生 I/O 错误。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "An argument is not valid."
+    description: "参数不是有效的。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An invalid operation has been executed."
+    description: "已执行了无效的操作。"
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "There is not enough memory to continue the execution of a program."
+    description: "没有足够的内存来继续执行程序。"
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence is full."
+    description: "记录序列已满。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Access for the specified log store is denied by the operating system."
+    description: "指定的日志存储区的访问被拒绝由操作系统。"
   platform:
   - net462
 - uid: System.IO.Log.LogStore.CreateLogArchiveSnapshot(System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber)
@@ -421,49 +421,49 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Takes a snapshot of the log store state between the specified sequence numbers for making a backup."
-  remarks: "The archive snapshot returned from this method encompasses information from either the base sequence number or the archive sequence number, whichever is lower, to the last sequence number. It is not inclusive for the last sequence number, which means that the archive only includes records up to but not including last. In addition, when using this method, the start SequenceNumber must be equal to the BaseSequenceNumber in order for the archive to be consistent."
+  summary: "采用以制作备份指定的序列号之间的日志存储区状态的快照。"
+  remarks: "从此方法返回的存档快照包含来自基序列号或存档序列号的信息，无论是更低时，到最后一个序列号。 不包含有关最后一个序列号，这意味着，存档仅包含截至但不是包括最后一条记录。 此外，使用此方法时，起始 SequenceNumber 必须等于 BaseSequenceNumber，以便保持一致的存档。"
   syntax:
     content: public System.IO.Log.LogArchiveSnapshot CreateLogArchiveSnapshot (System.IO.Log.SequenceNumber first, System.IO.Log.SequenceNumber last);
     parameters:
     - id: first
       type: System.IO.Log.SequenceNumber
-      description: "The starting sequence number in the range to archive."
+      description: "起始范围中要存档序列号。"
     - id: last
       type: System.IO.Log.SequenceNumber
-      description: "The ending sequence number in the range to archive."
+      description: "结束范围中要存档序列号。"
     return:
       type: System.IO.Log.LogArchiveSnapshot
-      description: "A <xref href=&quot;System.IO.Log.LogArchiveSnapshot&quot;></xref> object that contains the state necessary to make an archive."
+      description: "A <xref href=&quot;System.IO.Log.LogArchiveSnapshot&quot;> </xref>包含制作存档所需状态的对象。"
   overload: System.IO.Log.LogStore.CreateLogArchiveSnapshot*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>first</code> or <code>last</code> is not between the base and last sequence numbers of this sequence."
+    description: "<code>first</code>或<code>last</code>不在此序列的基和最后一个序列号之间。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>first</code> is larger than <code>last</code>."
+    description: "<code>first</code>大于<code>last</code>。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An invalid operation has been executed."
+    description: "已执行了无效的操作。"
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurs when creating the archive snapshot."
+    description: "创建存档快照时发生 I/O 错误。"
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The log store is not archivable."
+    description: "日志存储区不可存档。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "该方法是序列已释放之后调用的。"
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "There is not enough memory to continue the execution of a program."
+    description: "没有足够的内存来继续执行程序。"
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence is full."
+    description: "记录序列已满。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Access for the specified log store is denied by the operating system."
+    description: "指定的日志存储区的访问被拒绝由操作系统。"
   platform:
   - net462
 - uid: System.IO.Log.LogStore.Delete(System.String)
@@ -478,30 +478,30 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Removes the log store."
+  summary: "移除日志存储区。"
   syntax:
     content: public static void Delete (string path);
     parameters:
     - id: path
       type: System.String
-      description: "A relative or absolute path for the base file of the log store to remove."
+      description: "要删除的日志存储区的基文件相对或绝对路径。"
   overload: System.IO.Log.LogStore.Delete*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>path</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>path</code> is an empty string (&quot;&quot;).       -or-       <code>path</code> contains only white space.       -or-       <code>path</code> contains one or more invalid characters."
+    description: "<code>path</code>为空字符串 (&quot;&quot;)。       -或-<code>path</code>仅包含空格。       -或-<code>path</code>包含一个或多个无效字符。"
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "The file cannot be found."
+    description: "找不到该文件。"
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurs when opening the log store."
+    description: "打开日志存储区时发生了 I/O 错误。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Access for the specified log store is denied by the operating system."
+    description: "指定的日志存储区的访问被拒绝由操作系统。"
   platform:
   - net462
 - uid: System.IO.Log.LogStore.Dispose
@@ -516,8 +516,8 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Releases all resources used by the <xref href=&quot;System.IO.Log.LogStore&quot;></xref>."
-  remarks: "Call Dispose when you have finished using the <xref:System.IO.Log.LogStore>. The Dispose method leaves the <xref:System.IO.Log.LogStore> in an unusable state. After calling Dispose , you must release all references to the <xref:System.IO.Log.LogStore> so the garbage collector can reclaim the memory that the <xref:System.IO.Log.LogStore> was occupying.      > [!NOTE] >  Always call Dispose before you release your last reference to the <xref:System.IO.Log.LogStore>. Otherwise, the resources it is using will not be freed until the garbage collector calls the <xref:System.IO.Log.LogStore> object&quot;s `Finalize` method."
+  summary: "释放使用的所有资源<xref href=&quot;System.IO.Log.LogStore&quot;> </xref>。"
+  remarks: "使用<xref:System.IO.Log.LogStore>.</xref:System.IO.Log.LogStore>完后，调用 Dispose Dispose 方法离开<xref:System.IO.Log.LogStore>中不可用状态。</xref:System.IO.Log.LogStore> 调用 Dispose 后，必须释放对所有引用<xref:System.IO.Log.LogStore>以便垃圾回收器才能回收的内存，<xref:System.IO.Log.LogStore>占用。</xref:System.IO.Log.LogStore> </xref:System.IO.Log.LogStore>      1> [!NOTE]&1;> 始终调用释放在发布到<xref:System.IO.Log.LogStore>。</xref:System.IO.Log.LogStore>最后一个引用之前 否则，它所使用的资源之前，不会释放垃圾回收器调用<xref:System.IO.Log.LogStore>对象的`Finalize`方法。</xref:System.IO.Log.LogStore>"
   syntax:
     content: public void Dispose ();
     parameters: []
@@ -525,7 +525,7 @@ items:
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "该方法是序列已释放之后调用的。"
   platform:
   - net462
 - uid: System.IO.Log.LogStore.Extents
@@ -540,13 +540,13 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Gets the collection of log extents that contain the data for this log store."
-  remarks: "A <xref:System.IO.Log.LogStore> instance stores its data in a collection of disk extents, represented by <xref:System.IO.Log.LogExtent> instances. The extents in a given <xref:System.IO.Log.LogStore> instance are all of uniform size, and space is added to and removed from a <xref:System.IO.Log.LogStore> instance in extent increments. To add and remove log extents, use the <xref:System.IO.Log.LogExtentCollection.Add%2A>and<xref:System.IO.Log.LogExtentCollection.Remove%2A> methods of the <xref:System.IO.Log.LogExtentCollection> object, which is returned by this property."
+  summary: "获取包含此日志存储区的数据的日志范围的集合。"
+  remarks: "A<xref:System.IO.Log.LogStore>实例将其数据存储在磁盘范围，由表示集合<xref:System.IO.Log.LogExtent>实例。</xref:System.IO.Log.LogExtent> </xref:System.IO.Log.LogStore> 中的范围给定<xref:System.IO.Log.LogStore>实例都具有统一的大小，并添加到和移除空间<xref:System.IO.Log.LogStore>范围增量的形式中的实例。</xref:System.IO.Log.LogStore> </xref:System.IO.Log.LogStore> 若要添加和移除日志范围，使用<xref:System.IO.Log.LogExtentCollection.Add%2A>和<xref:System.IO.Log.LogExtentCollection.Remove%2A>方法<xref:System.IO.Log.LogExtentCollection>对象，此属性返回。</xref:System.IO.Log.LogExtentCollection> </xref:System.IO.Log.LogExtentCollection.Remove%2A> </xref:System.IO.Log.LogExtentCollection.Add%2A>"
   syntax:
     content: public System.IO.Log.LogExtentCollection Extents { get; }
     return:
       type: System.IO.Log.LogExtentCollection
-      description: "A <xref href=&quot;System.IO.Log.LogExtentCollection&quot;></xref> instance containing the collection of log extents that encapsulates data for this log store."
+      description: "A <xref href=&quot;System.IO.Log.LogExtentCollection&quot;> </xref>包含封装此日志存储区的数据的日志范围集合的实例。"
   overload: System.IO.Log.LogStore.Extents*
   exceptions: []
   platform:
@@ -563,17 +563,17 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Gets the number of bytes available in the log store."
+  summary: "获取日志存储区中可用的字节数。"
   syntax:
     content: public long FreeBytes { get; }
     return:
       type: System.Int64
-      description: "The number of bytes available in the log store."
+      description: "日志存储区中可用的字节数。"
   overload: System.IO.Log.LogStore.FreeBytes*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The property was accessed after the sequence has been disposed of."
+    description: "在序列已释放的之后，已访问属性。"
   platform:
   - net462
 - uid: System.IO.Log.LogStore.Handle
@@ -588,12 +588,12 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Gets the operating system file handle for the log file that the current <xref href=&quot;System.IO.Log.LogStore&quot;></xref> instance encapsulates."
+  summary: "获取操作系统文件句柄的日志文件的当前<xref href=&quot;System.IO.Log.LogStore&quot;></xref>实例封装。"
   syntax:
     content: public Microsoft.Win32.SafeHandles.SafeFileHandle Handle { get; }
     return:
       type: Microsoft.Win32.SafeHandles.SafeFileHandle
-      description: "The operating system file handle for the log file that the current <xref href=&quot;System.IO.Log.LogStore&quot;></xref> instance encapsulates."
+      description: "日志的操作系统文件句柄文件当前<xref href=&quot;System.IO.Log.LogStore&quot;></xref>实例封装。"
   overload: System.IO.Log.LogStore.Handle*
   exceptions: []
   platform:
@@ -610,18 +610,18 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, gets the sequence number of the next record to be appended to the log store."
-  remarks: "Valid sequence numbers are greater than or equal to <xref:System.IO.Log.LogStore.BaseSequenceNumber%2A> and less than LastSequenceNumber."
+  summary: "当在派生类中重写，获取要追加到日志存储区的下一个记录的序列号。"
+  remarks: "有效序列号是大于或等于<xref:System.IO.Log.LogStore.BaseSequenceNumber%2A>，并且小于 LastSequenceNumber。</xref:System.IO.Log.LogStore.BaseSequenceNumber%2A>"
   syntax:
     content: public System.IO.Log.SequenceNumber LastSequenceNumber { get; }
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record to be appended to the log store."
+      description: "要追加到日志存储区的下一个记录序列号。"
   overload: System.IO.Log.LogStore.LastSequenceNumber*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The property was accessed after the sequence has been disposed of."
+    description: "在序列已释放的之后，已访问属性。"
   platform:
   - net462
 - uid: System.IO.Log.LogStore.Length
@@ -636,18 +636,18 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Gets the size of the log store, in bytes."
-  remarks: "The size of the log store is the sum of the sizes of the log extents."
+  summary: "获取日志存储区，以字节为单位的大小。"
+  remarks: "日志存储区的大小是日志范围的大小的总和。"
   syntax:
     content: public long Length { get; }
     return:
       type: System.Int64
-      description: "The size of the log store, in bytes."
+      description: "日志存储区，以字节为单位的大小。"
   overload: System.IO.Log.LogStore.Length*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The property was accessed after the sequence has been disposed of."
+    description: "在序列已释放的之后，已访问属性。"
   platform:
   - net462
 - uid: System.IO.Log.LogStore.Policy
@@ -662,13 +662,13 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Gets the policy associated with this log store."
-  remarks: "You can use the <xref:System.IO.Log.LogPolicy> instance returned by this property to examine and manipulate the log policy associated with this <xref:System.IO.Log.LogStore>."
+  summary: "获取与此日志存储区关联的策略。"
+  remarks: "你可以使用<xref:System.IO.Log.LogPolicy>实例检查和操作日志策略此属性返回与此<xref:System.IO.Log.LogStore>。</xref:System.IO.Log.LogStore>关联</xref:System.IO.Log.LogPolicy>"
   syntax:
     content: public System.IO.Log.LogPolicy Policy { get; }
     return:
       type: System.IO.Log.LogPolicy
-      description: "A <xref href=&quot;System.IO.Log.LogPolicy&quot;></xref> instance representing the policy associated with this log store."
+      description: "A <xref href=&quot;System.IO.Log.LogPolicy&quot;> </xref>实例，它表示与此日志存储区关联的策略。"
   overload: System.IO.Log.LogStore.Policy*
   exceptions: []
   platform:
@@ -685,8 +685,8 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Sets the sequence number of the archive tail."
-  remarks: "The smaller of the base sequence number and the archive tail determines the tail of the log."
+  summary: "设置存档尾数据的序列号。"
+  remarks: "较小的基序列号和存档尾数据确定日志尾部。"
   example:
   - "The following example shows how to archive a <xref:System.IO.Log.LogStore> to an XML document.  \n  \n [!code-vb[logarchievesnapshot#0](~/add/codesnippet/visualbasic/m-system.io.log.logstore_0_1.vb)]\n [!code-cs[logarchievesnapshot#0](~/add/codesnippet/csharp/m-system.io.log.logstore_0_1.cs)]"
   syntax:
@@ -694,33 +694,33 @@ items:
     parameters:
     - id: archiveTail
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the archive tail."
+      description: "存档尾数据序列号。"
   overload: System.IO.Log.LogStore.SetArchiveTail*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>archiveTail</code> is not between the base and last sequence numbers of this sequence."
+    description: "<code>archiveTail</code>不是此序列的基和最后一个序列号号之间。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>archiveTail</code> is not valid for this sequence."
+    description: "<code>archiveTail</code>不适合此序列。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An invalid operation has been executed."
+    description: "已执行了无效的操作。"
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurs when creating the archive snapshot."
+    description: "创建存档快照时发生 I/O 错误。"
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The log store is not archivable."
+    description: "日志存储区不可存档。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "该方法是序列已释放之后调用的。"
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "There is not enough memory to continue the execution of a program."
+    description: "没有足够的内存来继续执行程序。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Access for the specified log store is denied by the operating system."
+    description: "指定的日志存储区的访问被拒绝由操作系统。"
   platform:
   - net462
 - uid: System.IO.Log.LogStore.StreamCount
@@ -735,12 +735,12 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Gets the number of log streams in this log store."
+  summary: "获取此日志存储区中日志流的数量。"
   syntax:
     content: public int StreamCount { get; }
     return:
       type: System.Int32
-      description: "The number of log streams in this log store."
+      description: "此日志存储区中日志流的数量。"
   overload: System.IO.Log.LogStore.StreamCount*
   exceptions: []
   platform:

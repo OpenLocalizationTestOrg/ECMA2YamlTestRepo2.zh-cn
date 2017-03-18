@@ -38,8 +38,8 @@ items:
   nameWithType: Formatter
   fullName: System.Runtime.Serialization.Formatter
   type: Class
-  summary: "Provides base functionality for the common language runtime serialization formatters."
-  remarks: "Formatter is the `abstract` base class for all runtime serialization formatters, and provides some helper methods for implementing the <xref:System.Runtime.Serialization.IFormatter> interface. The Formatter also manages queuing objects for serialization and generating IDs on a per-object basis."
+  summary: "提供公共语言运行时序列化格式化程序的基本功能。"
+  remarks: "格式化程序是`abstract`所有运行时序列化格式化程序的基本类并提供一些帮助器方法用于实现<xref:System.Runtime.Serialization.IFormatter>接口。</xref:System.Runtime.Serialization.IFormatter> 格式化程序还管理进行序列化和每个对象基础上的生成 Id 的队列对象。"
   syntax:
     content: >-
       [System.CLSCompliant(false)]
@@ -66,8 +66,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "Initializes a new instance of the <xref href=&quot;System.Runtime.Serialization.Formatter&quot;></xref> class."
-  remarks: "Creates a <xref:System.Collections.Queue> for objects to serialize and a <xref:System.Runtime.Serialization.ObjectIDGenerator> to generate IDs for them."
+  summary: "初始化的新实例<xref href=&quot;System.Runtime.Serialization.Formatter&quot;></xref>类。"
+  remarks: "创建<xref:System.Collections.Queue>对于序列化的对象和一个<xref:System.Runtime.Serialization.ObjectIDGenerator>若要为其生成 IDs。</xref:System.Runtime.Serialization.ObjectIDGenerator> </xref:System.Collections.Queue>"
   syntax:
     content: protected Formatter ();
     parameters: []
@@ -87,13 +87,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, gets or sets the <xref href=&quot;System.Runtime.Serialization.SerializationBinder&quot;></xref> used with the current formatter."
-  remarks: "The <xref:System.Runtime.Serialization.SerializationBinder> performs lookups for types from the type names passed during deserialization. If no <xref:System.Runtime.Serialization.SerializationBinder> is set, a default is used."
+  summary: "当在派生类中重写，获取或设置<xref href=&quot;System.Runtime.Serialization.SerializationBinder&quot;></xref>与当前格式化程序一起使用。"
+  remarks: "<xref:System.Runtime.Serialization.SerializationBinder>执行查找类型的反序列化期间传递的类型名称。</xref:System.Runtime.Serialization.SerializationBinder> 如果没有<xref:System.Runtime.Serialization.SerializationBinder>设置，则使用默认值。</xref:System.Runtime.Serialization.SerializationBinder>"
   syntax:
     content: public abstract System.Runtime.Serialization.SerializationBinder Binder { get; set; }
     return:
       type: System.Runtime.Serialization.SerializationBinder
-      description: "The <xref href=&quot;System.Runtime.Serialization.SerializationBinder&quot;></xref> used with the current formatter."
+      description: "<xref href=&quot;System.Runtime.Serialization.SerializationBinder&quot;> </xref>与当前格式化程序一起使用。"
   overload: System.Runtime.Serialization.Formatter.Binder*
   exceptions: []
   platform:
@@ -110,13 +110,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, gets or sets the <xref:System.Runtime.Serialization.StreamingContext> used for the current serialization."
-  remarks: "The <xref:System.Runtime.Serialization.StreamingContext> is an indication of either the source of the bits being deserialized or the destination of the bits being serialized. It has no impact on default serialization, but is passed as an argument to <xref:System.Runtime.Serialization.ISerializable> and <xref:System.Runtime.Serialization.ISerializationSurrogate>."
+  summary: "当在派生类中重写，获取或设置<xref:System.Runtime.Serialization.StreamingContext>用于当前序列化。</xref:System.Runtime.Serialization.StreamingContext>"
+  remarks: "<xref:System.Runtime.Serialization.StreamingContext>反序列化的位的源或正在序列化的位的目标是下列任一工具的相对值。</xref:System.Runtime.Serialization.StreamingContext> 它不会影响对默认序列化，但作为自变量传递给<xref:System.Runtime.Serialization.ISerializable>和<xref:System.Runtime.Serialization.ISerializationSurrogate>。</xref:System.Runtime.Serialization.ISerializationSurrogate> </xref:System.Runtime.Serialization.ISerializable>"
   syntax:
     content: public abstract System.Runtime.Serialization.StreamingContext Context { get; set; }
     return:
       type: System.Runtime.Serialization.StreamingContext
-      description: "The <xref:System.Runtime.Serialization.StreamingContext> used for the current serialization."
+      description: "<xref:System.Runtime.Serialization.StreamingContext>用于当前序列化。</xref:System.Runtime.Serialization.StreamingContext>"
   overload: System.Runtime.Serialization.Formatter.Context*
   exceptions: []
   platform:
@@ -133,16 +133,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, deserializes the stream attached to the formatter when it was created, creating a graph of objects identical to the graph originally serialized into that stream."
+  summary: "当在派生类中重写，反序列化流时创建，附加到格式化程序创建的对象关系图相同最初序列化到该流的图。"
   syntax:
     content: public abstract object Deserialize (System.IO.Stream serializationStream);
     parameters:
     - id: serializationStream
       type: System.IO.Stream
-      description: "The stream to deserialize."
+      description: "要反序列化的流。"
     return:
       type: System.Object
-      description: "The top object of the deserialized graph of objects."
+      description: "对象的反序列化关系图的顶级对象。"
   overload: System.Runtime.Serialization.Formatter.Deserialize*
   exceptions: []
   platform:
@@ -159,22 +159,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "Returns the next object to serialize, from the formatter&quot;s internal work queue."
-  remarks: "Objects are returned in a first in first out order based on how they were passed to <xref:System.Runtime.Serialization.Formatter.Schedule%2A>. The ID of the object is put into the `objID` parameter and the object is returned from the function."
+  summary: "返回要序列化，格式化程序的内部工作队列中的下一个对象。"
+  remarks: "在以先进先出顺序基于如何它们传递到<xref:System.Runtime.Serialization.Formatter.Schedule%2A>.</xref:System.Runtime.Serialization.Formatter.Schedule%2A>返回对象 对象的 ID 放入`objID`参数，该对象从函数返回。"
   syntax:
     content: protected virtual object GetNext (out long objID);
     parameters:
     - id: objID
       type: System.Int64
-      description: "The ID assigned to the current object during serialization."
+      description: "在序列化过程中分配给当前对象的 ID。"
     return:
       type: System.Object
-      description: "The next object to serialize."
+      description: "下一个要序列化的对象。"
   overload: System.Runtime.Serialization.Formatter.GetNext*
   exceptions:
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
-    description: "The next object retrieved from the work queue did not have an assigned ID."
+    description: "从工作队列检索到的下一步对象没有分配的 id。"
   platform:
   - net462
 - uid: System.Runtime.Serialization.Formatter.m_idGenerator
@@ -189,13 +189,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "Contains the <xref href=&quot;System.Runtime.Serialization.ObjectIDGenerator&quot;></xref> used with the current formatter."
-  remarks: "The <xref:System.Runtime.Serialization.ObjectIDGenerator> maintains a list of the objects that have been identified and the IDs that they were given."
+  summary: "包含<xref href=&quot;System.Runtime.Serialization.ObjectIDGenerator&quot;></xref>与当前格式化程序一起使用。"
+  remarks: "<xref:System.Runtime.Serialization.ObjectIDGenerator>维护的已发现的对象以及它们提供的 Id 列表。</xref:System.Runtime.Serialization.ObjectIDGenerator>"
   syntax:
     content: protected System.Runtime.Serialization.ObjectIDGenerator m_idGenerator;
     return:
       type: System.Runtime.Serialization.ObjectIDGenerator
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -211,13 +211,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "Contains a <xref href=&quot;System.Collections.Queue&quot;></xref> of the objects left to serialize."
-  remarks: "Objects scheduled for serialization with the <xref:System.Runtime.Serialization.Formatter.Schedule%2A> method are pushed on the queue."
+  summary: "包含<xref href=&quot;System.Collections.Queue&quot;></xref>的对象要序列化。"
+  remarks: "计划通过进行序列化的对象<xref:System.Runtime.Serialization.Formatter.Schedule%2A>方法压入队列。</xref:System.Runtime.Serialization.Formatter.Schedule%2A>"
   syntax:
     content: protected System.Collections.Queue m_objectQueue;
     return:
       type: System.Collections.Queue
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -233,17 +233,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "Schedules an object for later serialization."
-  remarks: "Schedule obtains an ID for the object and puts it on the queue for later serialization if this is a new object ID. The schedule is a work queue of objects to serialize, and is held inside the formatter. If the object is already on the work queue, it will not be added a second time, but an exception will not be thrown either."
+  summary: "将计划稍后进行序列化的对象。"
+  remarks: "计划获取对象的 ID，并将其放在队列中为更高版本的序列化中，如果这是一个新的对象 id。 计划是工作队列的对象要序列化，它包含在格式化程序。 如果在工作队列已存在的对象，它将不添加第二次，但之一，不会引发异常。"
   syntax:
     content: protected virtual long Schedule (object obj);
     parameters:
     - id: obj
       type: System.Object
-      description: "The object to schedule for serialization."
+      description: "要计划的序列化的对象。"
     return:
       type: System.Int64
-      description: "The object ID assigned to the object."
+      description: "分配给对象的对象 ID。"
   overload: System.Runtime.Serialization.Formatter.Schedule*
   exceptions: []
   platform:
@@ -260,16 +260,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, serializes the graph of objects with the specified root to the stream already attached to the formatter."
+  summary: "当在派生类中重写，序列化的对象与已连接到格式化程序流的指定根的图。"
   syntax:
     content: public abstract void Serialize (System.IO.Stream serializationStream, object graph);
     parameters:
     - id: serializationStream
       type: System.IO.Stream
-      description: "The stream to which the objects are serialized."
+      description: "对象序列化到流。"
     - id: graph
       type: System.Object
-      description: "The object at the root of the graph to serialize."
+      description: "要序列化的关系图的根处的对象。"
   overload: System.Runtime.Serialization.Formatter.Serialize*
   exceptions: []
   platform:
@@ -286,13 +286,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, gets or sets the <xref href=&quot;System.Runtime.Serialization.ISurrogateSelector&quot;></xref> used with the current formatter."
-  remarks: "Use the <xref:System.Runtime.Serialization.SurrogateSelector> to look up implementations of <xref:System.Runtime.Serialization.ISerializationSurrogate> that control the serialization of a particular type.       If an object type has a matching surrogate, then serialization and deserialization are handed off to the surrogate even if the type implements the <xref:System.Runtime.Serialization.ISerializable> interface."
+  summary: "当在派生类中重写，获取或设置<xref href=&quot;System.Runtime.Serialization.ISurrogateSelector&quot;></xref>与当前格式化程序一起使用。"
+  remarks: "使用<xref:System.Runtime.Serialization.SurrogateSelector>要查找的实现<xref:System.Runtime.Serialization.ISerializationSurrogate>用于控制特定类型的序列化。</xref:System.Runtime.Serialization.ISerializationSurrogate> </xref:System.Runtime.Serialization.SurrogateSelector>       如果一个对象类型有匹配的代理项，则序列化和反序列化会被移交给该代理项即使该类型实现<xref:System.Runtime.Serialization.ISerializable>接口。</xref:System.Runtime.Serialization.ISerializable>"
   syntax:
     content: public abstract System.Runtime.Serialization.ISurrogateSelector SurrogateSelector { get; set; }
     return:
       type: System.Runtime.Serialization.ISurrogateSelector
-      description: "The <xref href=&quot;System.Runtime.Serialization.ISurrogateSelector&quot;></xref> used with the current formatter."
+      description: "<xref href=&quot;System.Runtime.Serialization.ISurrogateSelector&quot;> </xref>与当前格式化程序一起使用。"
   overload: System.Runtime.Serialization.Formatter.SurrogateSelector*
   exceptions: []
   platform:
@@ -309,19 +309,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, writes an array to the stream already attached to the formatter."
+  summary: "当在派生类中重写，将数组写入流已附加到格式化程序。"
   syntax:
     content: protected abstract void WriteArray (object obj, string name, Type memberType);
     parameters:
     - id: obj
       type: System.Object
-      description: "The array to write."
+      description: "要写入的数组。"
     - id: name
       type: System.String
-      description: "The name of the array."
+      description: "数组的名称。"
     - id: memberType
       type: System.Type
-      description: "The type of elements that the array holds."
+      description: "数组中包含的元素的类型。"
   overload: System.Runtime.Serialization.Formatter.WriteArray*
   exceptions: []
   platform:
@@ -338,16 +338,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, writes a Boolean value to the stream already attached to the formatter."
+  summary: "当在派生类中重写，将一个布尔值写入流已附加到格式化程序。"
   syntax:
     content: protected abstract void WriteBoolean (bool val, string name);
     parameters:
     - id: val
       type: System.Boolean
-      description: "The value to write."
+      description: "要写入的值。"
     - id: name
       type: System.String
-      description: "The name of the member."
+      description: "成员的名称。"
   overload: System.Runtime.Serialization.Formatter.WriteBoolean*
   exceptions: []
   platform:
@@ -364,16 +364,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, writes an 8-bit unsigned integer to the stream already attached to the formatter."
+  summary: "当在派生类中重写，将一个 8 位无符号的整数写入流已附加到格式化程序。"
   syntax:
     content: protected abstract void WriteByte (byte val, string name);
     parameters:
     - id: val
       type: System.Byte
-      description: "The value to write."
+      description: "要写入的值。"
     - id: name
       type: System.String
-      description: "The name of the member."
+      description: "成员的名称。"
   overload: System.Runtime.Serialization.Formatter.WriteByte*
   exceptions: []
   platform:
@@ -390,16 +390,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, writes a Unicode character to the stream already attached to the formatter."
+  summary: "当在派生类中重写，将 Unicode 字符写入流已附加到格式化程序。"
   syntax:
     content: protected abstract void WriteChar (char val, string name);
     parameters:
     - id: val
       type: System.Char
-      description: "The value to write."
+      description: "要写入的值。"
     - id: name
       type: System.String
-      description: "The name of the member."
+      description: "成员的名称。"
   overload: System.Runtime.Serialization.Formatter.WriteChar*
   exceptions: []
   platform:
@@ -416,16 +416,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, writes a <xref:System.DateTime> value to the stream already attached to the formatter."
+  summary: "当在派生类中重写时写入<xref:System.DateTime>已连接到格式化程序流的值。</xref:System.DateTime>"
   syntax:
     content: protected abstract void WriteDateTime (DateTime val, string name);
     parameters:
     - id: val
       type: System.DateTime
-      description: "The value to write."
+      description: "要写入的值。"
     - id: name
       type: System.String
-      description: "The name of the member."
+      description: "成员的名称。"
   overload: System.Runtime.Serialization.Formatter.WriteDateTime*
   exceptions: []
   platform:
@@ -442,16 +442,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, writes a <xref:System.Decimal> value to the stream already attached to the formatter."
+  summary: "当在派生类中重写时写入<xref:System.Decimal>已连接到格式化程序流的值。</xref:System.Decimal>"
   syntax:
     content: protected abstract void WriteDecimal (decimal val, string name);
     parameters:
     - id: val
       type: System.Decimal
-      description: "The value to write."
+      description: "要写入的值。"
     - id: name
       type: System.String
-      description: "The name of the member."
+      description: "成员的名称。"
   overload: System.Runtime.Serialization.Formatter.WriteDecimal*
   exceptions: []
   platform:
@@ -468,16 +468,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, writes a double-precision floating-point number to the stream already attached to the formatter."
+  summary: "当在派生类中重写，将写入已附加到格式化程序流的双精度浮点数。"
   syntax:
     content: protected abstract void WriteDouble (double val, string name);
     parameters:
     - id: val
       type: System.Double
-      description: "The value to write."
+      description: "要写入的值。"
     - id: name
       type: System.String
-      description: "The name of the member."
+      description: "成员的名称。"
   overload: System.Runtime.Serialization.Formatter.WriteDouble*
   exceptions: []
   platform:
@@ -494,16 +494,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, writes a 16-bit signed integer to the stream already attached to the formatter."
+  summary: "当在派生类中重写，将一个 16 位带符号的整数写入流已附加到格式化程序。"
   syntax:
     content: protected abstract void WriteInt16 (short val, string name);
     parameters:
     - id: val
       type: System.Int16
-      description: "The value to write."
+      description: "要写入的值。"
     - id: name
       type: System.String
-      description: "The name of the member."
+      description: "成员的名称。"
   overload: System.Runtime.Serialization.Formatter.WriteInt16*
   exceptions: []
   platform:
@@ -520,16 +520,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, writes a 32-bit signed integer to the stream."
+  summary: "当在派生类中重写，将一个 32 位带符号的整数写入流。"
   syntax:
     content: protected abstract void WriteInt32 (int val, string name);
     parameters:
     - id: val
       type: System.Int32
-      description: "The value to write."
+      description: "要写入的值。"
     - id: name
       type: System.String
-      description: "The name of the member."
+      description: "成员的名称。"
   overload: System.Runtime.Serialization.Formatter.WriteInt32*
   exceptions: []
   platform:
@@ -546,16 +546,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, writes a 64-bit signed integer to the stream."
+  summary: "当在派生类中重写，将一个 64 位带符号的整数写入流。"
   syntax:
     content: protected abstract void WriteInt64 (long val, string name);
     parameters:
     - id: val
       type: System.Int64
-      description: "The value to write."
+      description: "要写入的值。"
     - id: name
       type: System.String
-      description: "The name of the member."
+      description: "成员的名称。"
   overload: System.Runtime.Serialization.Formatter.WriteInt64*
   exceptions: []
   platform:
@@ -572,17 +572,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "Inspects the type of data received, and calls the appropriate <xref uid=&quot;langword_csharp_Write&quot; name=&quot;Write&quot; href=&quot;&quot;></xref> method to perform the write to the stream already attached to the formatter."
-  remarks: "To use this method properly, all the `Write` methods (<xref:System.Runtime.Serialization.Formatter.WriteArray%2A> method, <xref:System.Runtime.Serialization.Formatter.WriteBoolean%2A> method, <xref:System.Runtime.Serialization.Formatter.WriteByte%2A> method, and so on) should have the appropriate functionality."
+  summary: "检查接收的数据类型并调用相应<xref uid=&quot;langword_csharp_Write&quot; name=&quot;Write&quot; href=&quot;&quot;></xref>方法来执行对已附加到格式化程序流的写入。"
+  remarks: "若要正确，请使用此方法所有`Write`方法 (<xref:System.Runtime.Serialization.Formatter.WriteArray%2A>方法，<xref:System.Runtime.Serialization.Formatter.WriteBoolean%2A>方法，<xref:System.Runtime.Serialization.Formatter.WriteByte%2A>方法，等等) 应具有适当的功能。</xref:System.Runtime.Serialization.Formatter.WriteByte%2A> </xref:System.Runtime.Serialization.Formatter.WriteBoolean%2A> </xref:System.Runtime.Serialization.Formatter.WriteArray%2A>"
   syntax:
     content: protected virtual void WriteMember (string memberName, object data);
     parameters:
     - id: memberName
       type: System.String
-      description: "The name of the member to serialize."
+      description: "要序列化的成员名称。"
     - id: data
       type: System.Object
-      description: "The object to write to the stream attached to the formatter."
+      description: "要写入到流的格式化程序附加的对象。"
   overload: System.Runtime.Serialization.Formatter.WriteMember*
   exceptions: []
   platform:
@@ -599,20 +599,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, writes an object reference to the stream already attached to the formatter."
-  remarks: "Schedules the object with the graph walker to handle the work."
+  summary: "当在派生类中重写时写入对已附加到格式化程序流的对象引用。"
+  remarks: "使用 graph walker 来处理工作计划对象。"
   syntax:
     content: protected abstract void WriteObjectRef (object obj, string name, Type memberType);
     parameters:
     - id: obj
       type: System.Object
-      description: "The object reference to write."
+      description: "要写入的对象引用。"
     - id: name
       type: System.String
-      description: "The name of the member."
+      description: "成员的名称。"
     - id: memberType
       type: System.Type
-      description: "The type of object the reference points to."
+      description: "引用所指向的对象的类型。"
   overload: System.Runtime.Serialization.Formatter.WriteObjectRef*
   exceptions: []
   platform:
@@ -629,16 +629,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, writes an 8-bit signed integer to the stream already attached to the formatter."
+  summary: "当在派生类中重写，已连接到格式化程序的流中写入的 8 位有符号的整数。"
   syntax:
     content: protected abstract void WriteSByte (sbyte val, string name);
     parameters:
     - id: val
       type: System.SByte
-      description: "The value to write."
+      description: "要写入的值。"
     - id: name
       type: System.String
-      description: "The name of the member."
+      description: "成员的名称。"
   overload: System.Runtime.Serialization.Formatter.WriteSByte*
   exceptions: []
   platform:
@@ -655,16 +655,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, writes a single-precision floating-point number to the stream already attached to the formatter."
+  summary: "当在派生类中重写，写入流已附加到格式化程序的单精度浮点数。"
   syntax:
     content: protected abstract void WriteSingle (float val, string name);
     parameters:
     - id: val
       type: System.Single
-      description: "The value to write."
+      description: "要写入的值。"
     - id: name
       type: System.String
-      description: "The name of the member."
+      description: "成员的名称。"
   overload: System.Runtime.Serialization.Formatter.WriteSingle*
   exceptions: []
   platform:
@@ -681,16 +681,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, writes a <xref:System.TimeSpan> value to the stream already attached to the formatter."
+  summary: "当在派生类中重写时写入<xref:System.TimeSpan>已连接到格式化程序流的值。</xref:System.TimeSpan>"
   syntax:
     content: protected abstract void WriteTimeSpan (TimeSpan val, string name);
     parameters:
     - id: val
       type: System.TimeSpan
-      description: "The value to write."
+      description: "要写入的值。"
     - id: name
       type: System.String
-      description: "The name of the member."
+      description: "成员的名称。"
   overload: System.Runtime.Serialization.Formatter.WriteTimeSpan*
   exceptions: []
   platform:
@@ -707,16 +707,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, writes a 16-bit unsigned integer to the stream already attached to the formatter."
+  summary: "当在派生类中重写，将一个 16 位无符号的整数写入流已附加到格式化程序。"
   syntax:
     content: protected abstract void WriteUInt16 (ushort val, string name);
     parameters:
     - id: val
       type: System.UInt16
-      description: "The value to write."
+      description: "要写入的值。"
     - id: name
       type: System.String
-      description: "The name of the member."
+      description: "成员的名称。"
   overload: System.Runtime.Serialization.Formatter.WriteUInt16*
   exceptions: []
   platform:
@@ -733,16 +733,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, writes a 32-bit unsigned integer to the stream already attached to the formatter."
+  summary: "当在派生类中重写，写入流已附加到格式化程序的 32 位无符号的整数。"
   syntax:
     content: protected abstract void WriteUInt32 (uint val, string name);
     parameters:
     - id: val
       type: System.UInt32
-      description: "The value to write."
+      description: "要写入的值。"
     - id: name
       type: System.String
-      description: "The name of the member."
+      description: "成员的名称。"
   overload: System.Runtime.Serialization.Formatter.WriteUInt32*
   exceptions: []
   platform:
@@ -759,16 +759,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, writes a 64-bit unsigned integer to the stream already attached to the formatter."
+  summary: "当在派生类中重写，将写入已附加到格式化程序流的 64 位无符号的整数。"
   syntax:
     content: protected abstract void WriteUInt64 (ulong val, string name);
     parameters:
     - id: val
       type: System.UInt64
-      description: "The value to write."
+      description: "要写入的值。"
     - id: name
       type: System.String
-      description: "The name of the member."
+      description: "成员的名称。"
   overload: System.Runtime.Serialization.Formatter.WriteUInt64*
   exceptions: []
   platform:
@@ -785,19 +785,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "When overridden in a derived class, writes a value of the given type to the stream already attached to the formatter."
+  summary: "当在派生类中重写，将给定类型的值写入已连接到格式化程序的流。"
   syntax:
     content: protected abstract void WriteValueType (object obj, string name, Type memberType);
     parameters:
     - id: obj
       type: System.Object
-      description: "The object representing the value type."
+      description: "表示值类型的对象。"
     - id: name
       type: System.String
-      description: "The name of the member."
+      description: "成员的名称。"
     - id: memberType
       type: System.Type
-      description: "The <xref:System.Type> of the value type."
+      description: "<xref:System.Type>的值类型。</xref:System.Type>"
   overload: System.Runtime.Serialization.Formatter.WriteValueType*
   exceptions: []
   platform:

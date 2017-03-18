@@ -20,8 +20,8 @@ items:
   nameWithType: AsyncResult
   fullName: System.Runtime.Remoting.Messaging.AsyncResult
   type: Class
-  summary: "Encapsulates the results of an asynchronous operation on a delegate."
-  remarks: "The AsyncResult class is used in conjunction with asynchronous method calls made using delegates. The <xref:System.IAsyncResult> returned from the delegate&quot;s `BeginInvoke` method can be cast to an AsyncResult. The AsyncResult has the <xref:System.Runtime.Remoting.Messaging.AsyncResult.AsyncDelegate%2A> property that holds the delegate object on which the asynchronous call was invoked.       For more information about `BeginInvoke` and asynchronous calls using delegates, see [Asynchronous Programming Using Delegates](~/add/includes/ajax-current-ext-md.md)."
+  summary: "封装对委托的异步操作的结果。"
+  remarks: "使用委托进行异步方法调用与一起使用 AsyncResult 类。 <xref:System.IAsyncResult>从该委托的返回`BeginInvoke`方法可以强制转换为 AsyncResult。</xref:System.IAsyncResult> AsyncResult 具有<xref:System.Runtime.Remoting.Messaging.AsyncResult.AsyncDelegate%2A>属性，保存委托对象上调用异步调用。</xref:System.Runtime.Remoting.Messaging.AsyncResult.AsyncDelegate%2A>       有关详细信息`BeginInvoke`和异步调用使用委托，请参阅[异步编程使用委托](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following example demonstrates how to use the <xref:System.Runtime.Remoting.Messaging.AsyncResult.AsyncWaitHandle%2A> property to get a <xref:System.Threading.WaitHandle>, and how to wait for an asynchronous call on a delegate. The <xref:System.Threading.WaitHandle> is signaled when the asynchronous call completes, and you can wait for it by calling the <xref:System.Threading.WaitHandle.WaitOne%2A> method.  \n  \n The example consists of two classes, the class that contains the method which is called asynchronously, and the class that contains the `Main` method that makes the call.  \n  \n For more information and more examples of calling methods asynchronously by using delegates, see [Calling Synchronous Methods Asynchronously](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[AsyncDelegateExamples#1](~/add/codesnippet/visualbasic/t-system.runtime.remotin_18_1.vb)]\n [!code-cs[AsyncDelegateExamples#1](~/add/codesnippet/csharp/t-system.runtime.remotin_18_1.cs)]\n [!code-cpp[AsyncDelegateExamples#1](~/add/codesnippet/cpp/t-system.runtime.remotin_18_1.cpp)]  \n[!code-vb[AsyncDelegateExamples#3](~/add/codesnippet/visualbasic/t-system.runtime.remotin_18_2.vb)]\n[!code-cpp[AsyncDelegateExamples#3](~/add/codesnippet/cpp/t-system.runtime.remotin_18_2.cpp)]\n[!code-cs[AsyncDelegateExamples#3](~/add/codesnippet/csharp/t-system.runtime.remotin_18_2.cs)]"
   syntax:
@@ -49,15 +49,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: "Gets the delegate object on which the asynchronous call was invoked."
-  remarks: "The AsyncDelegate property can be cast to the actual class of the user-defined delegate.       For example, if the delegate that was used to make the asynchronous call is of type `MyDelegate`, the delegate that is returned by this property must be cast to `MyDelegate`. The callback method can then call the delegate&quot;s `EndInvoke` method with the correct signature, in order to obtain the results of the asynchronous method call."
+  summary: "获取对其调用的异步调用的委托对象。"
+  remarks: "用户定义的委托的实际类，可将转换 AsyncDelegate 属性。       例如，如果用于进行异步调用的委托的类型是`MyDelegate`，此属性返回的委托必须强制转换为`MyDelegate`。 然后，该回调方法可以调用该委托的`EndInvoke`具有正确签名，以便获取结果的异步方法调用的方法。"
   example:
   - "The following code example demonstrates how to use the AsyncDelegate property to get the delegate that was used to make the asynchronous call, in order to call `EndInvoke`. The example casts the <xref:System.IAsyncResult>, which is the only parameter of the callback method, to an <xref:System.Runtime.Remoting.Messaging.AsyncResult> object.  \n  \n The example consists of two classes, the class that contains the method which is called asynchronously, and the class that contains the `Main` method that makes the call.  \n  \n For more information on the way this callback example works, and more examples of calling methods asynchronously by using delegates, see [Calling Synchronous Methods Asynchronously](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[AsyncDelegateExamples#1](~/add/codesnippet/visualbasic/p-system.runtime.remotin_95_1.vb)]\n [!code-cs[AsyncDelegateExamples#1](~/add/codesnippet/csharp/p-system.runtime.remotin_95_1.cs)]\n [!code-cpp[AsyncDelegateExamples#1](~/add/codesnippet/cpp/p-system.runtime.remotin_95_1.cpp)]  \n[!code-cs[AsyncDelegateExamples#5](~/add/codesnippet/csharp/p-system.runtime.remotin_95_2.cs)]\n[!code-cpp[AsyncDelegateExamples#5](~/add/codesnippet/cpp/p-system.runtime.remotin_95_2.cpp)]\n[!code-vb[AsyncDelegateExamples#5](~/add/codesnippet/visualbasic/p-system.runtime.remotin_95_2.vb)]"
   syntax:
     content: public virtual object AsyncDelegate { get; }
     return:
       type: System.Object
-      description: "The delegate object on which the asynchronous call was invoked."
+      description: "在其调用异步调用的委托对象。"
   overload: System.Runtime.Remoting.Messaging.AsyncResult.AsyncDelegate*
   exceptions: []
   platform:
@@ -74,20 +74,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: "Implements the <xref href=&quot;System.Runtime.Remoting.Messaging.IMessageSink&quot;></xref> interface."
-  remarks: "The AsyncProcessMessage method of the <xref:System.Runtime.Remoting.Messaging.IMessageSink> interface is not relevant to the <xref:System.Runtime.Remoting.Messaging.AsyncResult> class. Implementation by <xref:System.Runtime.Remoting.Messaging.AsyncResult> throws a <xref:System.NotSupportedException>. Instead, obtain an <xref:System.Runtime.Remoting.Messaging.AsyncResult> by casting the <xref:System.IAsyncResult> interface returned by an asynchronous call made using a delegate."
+  summary: "实现<xref href=&quot;System.Runtime.Remoting.Messaging.IMessageSink&quot;></xref>接口。"
+  remarks: "该 AsyncProcessMessage 方法的<xref:System.Runtime.Remoting.Messaging.IMessageSink>接口是不相关<xref:System.Runtime.Remoting.Messaging.AsyncResult>类。</xref:System.Runtime.Remoting.Messaging.AsyncResult> </xref:System.Runtime.Remoting.Messaging.IMessageSink> 通过<xref:System.Runtime.Remoting.Messaging.AsyncResult>将引发一种<xref:System.NotSupportedException>。</xref:System.NotSupportedException></xref:System.Runtime.Remoting.Messaging.AsyncResult>实现 相反，获取<xref:System.Runtime.Remoting.Messaging.AsyncResult>通过强制转换为<xref:System.IAsyncResult>使用委托进行异步调用所返回的接口。</xref:System.IAsyncResult> </xref:System.Runtime.Remoting.Messaging.AsyncResult>"
   syntax:
     content: public virtual System.Runtime.Remoting.Messaging.IMessageCtrl AsyncProcessMessage (System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Messaging.IMessageSink replySink);
     parameters:
     - id: msg
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "The request <xref href=&quot;System.Runtime.Remoting.Messaging.IMessage&quot;></xref> interface."
+      description: "请求<xref href=&quot;System.Runtime.Remoting.Messaging.IMessage&quot;></xref>接口。"
     - id: replySink
       type: System.Runtime.Remoting.Messaging.IMessageSink
-      description: "The response <xref href=&quot;System.Runtime.Remoting.Messaging.IMessageSink&quot;></xref> interface."
+      description: "响应<xref href=&quot;System.Runtime.Remoting.Messaging.IMessageSink&quot;></xref>接口。"
     return:
       type: System.Runtime.Remoting.Messaging.IMessageCtrl
-      description: "No value is returned."
+      description: "不返回任何值。"
   overload: System.Runtime.Remoting.Messaging.AsyncResult.AsyncProcessMessage*
   exceptions: []
   platform:
@@ -104,15 +104,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: "Gets the object provided as the last parameter of a <xref uid=&quot;langword_csharp_BeginInvoke&quot; name=&quot;BeginInvoke&quot; href=&quot;&quot;></xref> method call."
-  remarks: "For more information about the `BeginInvoke` method, see [Asynchronous Programming Using Delegates](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取作为最后一个参数提供的对象<xref uid=&quot;langword_csharp_BeginInvoke&quot; name=&quot;BeginInvoke&quot; href=&quot;&quot;></xref>方法调用。"
+  remarks: "有关详细信息`BeginInvoke`方法，请参阅[异步编程使用委托](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example demonstrates how the AsyncState property is used to pass information to a callback method. The last parameter of the `BeginInvoke` method call is a format string, which the callback method uses to format an output message.  \n  \n The example consists of two classes, the class that contains the method which is called asynchronously, and the class that contains the `Main` method that makes the call.  \n  \n For more information on the way this callback example works, and more examples of calling methods asynchronously by using delegates, see [Calling Synchronous Methods Asynchronously](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[AsyncDelegateExamples#1](~/add/codesnippet/visualbasic/p-system.runtime.remotin_83_1.vb)]\n [!code-cs[AsyncDelegateExamples#1](~/add/codesnippet/csharp/p-system.runtime.remotin_83_1.cs)]\n [!code-cpp[AsyncDelegateExamples#1](~/add/codesnippet/cpp/p-system.runtime.remotin_83_1.cpp)]  \n[!code-cs[AsyncDelegateExamples#5](~/add/codesnippet/csharp/p-system.runtime.remotin_83_2.cs)]\n[!code-cpp[AsyncDelegateExamples#5](~/add/codesnippet/cpp/p-system.runtime.remotin_83_2.cpp)]\n[!code-vb[AsyncDelegateExamples#5](~/add/codesnippet/visualbasic/p-system.runtime.remotin_83_2.vb)]"
   syntax:
     content: public virtual object AsyncState { get; }
     return:
       type: System.Object
-      description: "The object provided as the last parameter of a <xref uid=&quot;langword_csharp_BeginInvoke&quot; name=&quot;BeginInvoke&quot; href=&quot;&quot;></xref> method call."
+      description: "作为最后一个参数提供的对象<xref uid=&quot;langword_csharp_BeginInvoke&quot; name=&quot;BeginInvoke&quot; href=&quot;&quot;></xref>方法调用。"
   overload: System.Runtime.Remoting.Messaging.AsyncResult.AsyncState*
   exceptions: []
   platform:
@@ -129,15 +129,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: "Gets a <xref:System.Threading.WaitHandle> that encapsulates Win32 synchronization handles, and allows the implementation of various synchronization schemes."
-  remarks: "The <xref:System.Threading.WaitHandle> returned by this method is automatically signaled when the asynchronous operation has completed.       The wait handle is not closed automatically when you call `EndInvoke` on the delegate that was used to make the asynchronous method call. If you release all references to the wait handle, system resources are freed when garbage collection reclaims the wait handle. To free the system resources as soon as you are finished using the wait handle, call the <xref:System.Threading.WaitHandle.Close%2A?displayProperty=fullName> method. Garbage collection works more efficiently when disposable objects are explicitly closed or disposed.      > [!CAUTION] >  The <xref:System.Threading.WaitHandle> contained in the AsyncWaitHandle property can be used to block the current thread until the asynchronous call is complete. However the <xref:System.Threading.WaitHandle> will ignore the <xref:System.AsyncCallback>, if one was specified during the `BeginInvoke` call. Therefore, a situation can occur where the application shuts down before the <xref:System.AsyncCallback> has finished executing, even if a <xref:System.Threading.WaitHandle> is used to block until the asynchronous call completion. For an example of such a situation, see the example for the <xref:System.Runtime.Remoting.Messaging.AsyncResult> class, and remove the <xref:System.Threading.Thread.Sleep%2A?displayProperty=fullName> statement."
+  summary: "获取<xref:System.Threading.WaitHandle>封装 Win32 同步句柄，并允许各种同步方案的实现。</xref:System.Threading.WaitHandle>"
+  remarks: "<xref:System.Threading.WaitHandle>返回此方法在异步操作完成时自动收到信号。</xref:System.Threading.WaitHandle>       在调用时，不会自动关闭等待句柄`EndInvoke`上用于进行调用的异步方法的委托。 如果在释放对等待句柄的所有引用，则当垃圾回收功能回收此等待句柄时将释放系统资源。 若要在完成使用等待句柄时，就会立即释放系统资源，调用<xref:System.Threading.WaitHandle.Close%2A?displayProperty=fullName>方法。</xref:System.Threading.WaitHandle.Close%2A?displayProperty=fullName> 显式关闭或释放可释放对象时，垃圾回收的工作效率更高。      1> [!CAUTION]&1;> <xref:System.Threading.WaitHandle>AsyncWaitHandle 属性可以用于异步调用完成之前阻止当前线程中包含。</xref:System.Threading.WaitHandle> 但是，<xref:System.Threading.WaitHandle>将忽略<xref:System.AsyncCallback>，如果在已指定一个`BeginInvoke`调用。</xref:System.AsyncCallback> </xref:System.Threading.WaitHandle> 因此，这种情况可以出现在应用程序关闭之前<xref:System.AsyncCallback>执行完毕，即使<xref:System.Threading.WaitHandle>使用到异步调用完成之前的块。</xref:System.Threading.WaitHandle> </xref:System.AsyncCallback> 有关这种情况的示例，请参阅示例<xref:System.Runtime.Remoting.Messaging.AsyncResult>类，并删除<xref:System.Threading.Thread.Sleep%2A?displayProperty=fullName>语句。</xref:System.Threading.Thread.Sleep%2A?displayProperty=fullName> </xref:System.Runtime.Remoting.Messaging.AsyncResult>"
   example:
   - "The following example demonstrates how to use the AsyncWaitHandle property to get a <xref:System.Threading.WaitHandle>, and how to wait for an asynchronous call on a delegate. The <xref:System.Threading.WaitHandle> is signaled when the asynchronous call completes, and you can wait for it by calling the <xref:System.Threading.WaitHandle.WaitOne%2A> method.  \n  \n The example consists of two classes, the class that contains the method which is called asynchronously, and the class that contains the `Main` method that makes the call.  \n  \n For more information and more examples of calling methods asynchronously by using delegates, see [Calling Synchronous Methods Asynchronously](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[AsyncDelegateExamples#1](~/add/codesnippet/visualbasic/p-system.runtime.remotin_47_1.vb)]\n [!code-cs[AsyncDelegateExamples#1](~/add/codesnippet/csharp/p-system.runtime.remotin_47_1.cs)]\n [!code-cpp[AsyncDelegateExamples#1](~/add/codesnippet/cpp/p-system.runtime.remotin_47_1.cpp)]  \n[!code-vb[AsyncDelegateExamples#3](~/add/codesnippet/visualbasic/p-system.runtime.remotin_47_2.vb)]\n[!code-cpp[AsyncDelegateExamples#3](~/add/codesnippet/cpp/p-system.runtime.remotin_47_2.cpp)]\n[!code-cs[AsyncDelegateExamples#3](~/add/codesnippet/csharp/p-system.runtime.remotin_47_2.cs)]"
   syntax:
     content: public virtual System.Threading.WaitHandle AsyncWaitHandle { get; }
     return:
       type: System.Threading.WaitHandle
-      description: "A <xref:System.Threading.WaitHandle> that encapsulates Win32 synchronization handles, and allows the implementation of various synchronization schemes."
+      description: "A<xref:System.Threading.WaitHandle>封装 Win32 同步句柄，并允许各种同步方案的实现。</xref:System.Threading.WaitHandle>"
   overload: System.Runtime.Remoting.Messaging.AsyncResult.AsyncWaitHandle*
   exceptions: []
   platform:
@@ -154,13 +154,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: "Gets a value indicating whether the <xref uid=&quot;langword_csharp_BeginInvoke&quot; name=&quot;BeginInvoke&quot; href=&quot;&quot;></xref> call completed synchronously."
-  remarks: "If it is detected that the `BeginInvoke` call completed synchronously in the <xref:System.AsyncCallback> delegate, it is probable that the thread that called BeginInvoke is the current thread. Most providers of the <xref:System.IAsyncResult> interface will not use the capability and will return a default `false`.       Current implementation of CompletedSynchronously always returns `false`."
+  summary: "获取一个值，该值指示是否<xref uid=&quot;langword_csharp_BeginInvoke&quot; name=&quot;BeginInvoke&quot; href=&quot;&quot;></xref>已同步完成的调用。"
+  remarks: "如果检测到它的`BeginInvoke`同步在完成的调用<xref:System.AsyncCallback>委托，它是可能的线程中调用 BeginInvoke 是当前线程。</xref:System.AsyncCallback> 大多数提供程序<xref:System.IAsyncResult>接口将不使用该功能，并将返回默认`false`。</xref:System.IAsyncResult>       当前实现的 CompletedSynchronously 始终返回`false`。"
   syntax:
     content: public virtual bool CompletedSynchronously { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref uid=&quot;langword_csharp_BeginInvoke&quot; name=&quot;BeginInvoke&quot; href=&quot;&quot;></xref> call completed synchronously; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果<xref uid=&quot;langword_csharp_BeginInvoke&quot; name=&quot;BeginInvoke&quot; href=&quot;&quot;></xref>调用完成同步; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Runtime.Remoting.Messaging.AsyncResult.CompletedSynchronously*
   exceptions: []
   platform:
@@ -177,12 +177,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: "Gets or sets a value indicating whether <xref uid=&quot;langword_csharp_EndInvoke&quot; name=&quot;EndInvoke&quot; href=&quot;&quot;></xref> has been called on the current <xref href=&quot;System.Runtime.Remoting.Messaging.AsyncResult&quot;></xref>."
+  summary: "获取或设置一个值，该值指示是否<xref uid=&quot;langword_csharp_EndInvoke&quot; name=&quot;EndInvoke&quot; href=&quot;&quot;></xref>在当前调用了<xref href=&quot;System.Runtime.Remoting.Messaging.AsyncResult&quot;> </xref>。"
   syntax:
     content: public bool EndInvokeCalled { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <xref uid=&quot;langword_csharp_EndInvoke&quot; name=&quot;EndInvoke&quot; href=&quot;&quot;></xref> has been called on the current <xref href=&quot;System.Runtime.Remoting.Messaging.AsyncResult&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果<xref uid=&quot;langword_csharp_EndInvoke&quot; name=&quot;EndInvoke&quot; href=&quot;&quot;></xref>在当前调用了<xref href=&quot;System.Runtime.Remoting.Messaging.AsyncResult&quot;> </xref>; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Runtime.Remoting.Messaging.AsyncResult.EndInvokeCalled*
   exceptions: []
   platform:
@@ -199,14 +199,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: "Gets the response message for the asynchronous call."
-  remarks: "The GetReplyMessage method can return an object after the <xref:System.Runtime.Remoting.Messaging.AsyncResult.SyncProcessMessage%2A> method is called. The <xref:System.Runtime.Remoting.Messaging.IMessage> return value can be cast to an <xref:System.Runtime.Remoting.Messaging.IMethodReturnMessage>.       However, you do not need to call either of these methods directly. They are intended for use by the remoting infrastructure of the .NET Framework."
+  summary: "获取异步调用的响应消息。"
+  remarks: "GetReplyMessage 方法可以返回的对象后<xref:System.Runtime.Remoting.Messaging.AsyncResult.SyncProcessMessage%2A>调用方法。</xref:System.Runtime.Remoting.Messaging.AsyncResult.SyncProcessMessage%2A> <xref:System.Runtime.Remoting.Messaging.IMessage>返回值可以强制转换为<xref:System.Runtime.Remoting.Messaging.IMethodReturnMessage>.</xref:System.Runtime.Remoting.Messaging.IMethodReturnMessage> </xref:System.Runtime.Remoting.Messaging.IMessage>       但是，不需要直接调用这些方法之一。 它们旨在供使用的.NET framework 远程处理基础结构。"
   syntax:
     content: public virtual System.Runtime.Remoting.Messaging.IMessage GetReplyMessage ();
     parameters: []
     return:
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "A remoting message that should represent a response to a method call on a remote object."
+      description: "远程处理消息，表示对远程对象上的方法调用的响应。"
   overload: System.Runtime.Remoting.Messaging.AsyncResult.GetReplyMessage*
   exceptions: []
   platform:
@@ -223,15 +223,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: "Gets a value indicating whether the server has completed the call."
-  remarks: "The server must not use any client supplied resources outside of the agreed upon sharing semantics after it sets the IsCompleted property to `true`. Thus, it is safe for the client to destroy the resources after the IsCompleted property returns `true`."
+  summary: "获取一个值，该值指示服务器是否具有已完成的调用。"
+  remarks: "服务器必须使用外部议定的任何客户端提供资源后它将 IsCompleted 属性设置为共享语义`true`。 因此，它是安全的客户端后 IsCompleted 属性返回销毁资源`true`。"
   example:
   - "The following example shows how to use the <xref:System.IAsyncResult.IsCompleted%2A> property of the <xref:System.Runtime.Remoting.Messaging.AsyncResult> returned by `BeginInvoke` to discover when an asynchronous call completes. You might do this when making the asynchronous call from a thread that services the user interface. Polling for completion allows the calling thread to continue executing while the asynchronous call executes on a <xref:System.Threading.ThreadPool> thread.  \n  \n The example consists of two classes, the class that contains the method which is called asynchronously, and the class that contains the `Main` method that makes the call.  \n  \n For more information and more examples of calling methods asynchronously by using delegates, see [Calling Synchronous Methods Asynchronously](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[AsyncDelegateExamples#1](~/add/codesnippet/visualbasic/p-system.runtime.remotin_39_1.vb)]\n [!code-cs[AsyncDelegateExamples#1](~/add/codesnippet/csharp/p-system.runtime.remotin_39_1.cs)]\n [!code-cpp[AsyncDelegateExamples#1](~/add/codesnippet/cpp/p-system.runtime.remotin_39_1.cpp)]  \n[!code-cpp[AsyncDelegateExamples#4](~/add/codesnippet/cpp/p-system.runtime.remotin_39_2.cpp)]\n[!code-cs[AsyncDelegateExamples#4](~/add/codesnippet/csharp/p-system.runtime.remotin_39_2.cs)]\n[!code-vb[AsyncDelegateExamples#4](~/add/codesnippet/visualbasic/p-system.runtime.remotin_39_2.vb)]"
   syntax:
     content: public virtual bool IsCompleted { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> after the server has completed the call; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>服务器完成调用; 后否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Runtime.Remoting.Messaging.AsyncResult.IsCompleted*
   exceptions: []
   platform:
@@ -248,13 +248,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: "Gets the next message sink in the sink chain."
-  remarks: "The current implementation of NextSink returns `null`."
+  summary: "获取接收器链中的下一个消息接收器。"
+  remarks: "NextSink 的当前实现返回`null`。"
   syntax:
     content: public System.Runtime.Remoting.Messaging.IMessageSink NextSink { get; }
     return:
       type: System.Runtime.Remoting.Messaging.IMessageSink
-      description: "An <xref href=&quot;System.Runtime.Remoting.Messaging.IMessageSink&quot;></xref> interface that represents the next message sink in the sink chain."
+      description: "<xref href=&quot;System.Runtime.Remoting.Messaging.IMessageSink&quot;> </xref>接收器链中接收器表示下一条消息的接口。"
   overload: System.Runtime.Remoting.Messaging.AsyncResult.NextSink*
   exceptions: []
   platform:
@@ -271,14 +271,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: "Sets an <xref href=&quot;System.Runtime.Remoting.Messaging.IMessageCtrl&quot;></xref> for the current remote method call, which provides a way to control asynchronous messages after they have been dispatched."
-  remarks: "You do not need to call the SetMessageCtrl method."
+  summary: "集<xref href=&quot;System.Runtime.Remoting.Messaging.IMessageCtrl&quot;></xref>对于当前的远程方法调用中，提供了控制异步消息调度后处理的方法。"
+  remarks: "不需要调用 SetMessageCtrl 方法。"
   syntax:
     content: public virtual void SetMessageCtrl (System.Runtime.Remoting.Messaging.IMessageCtrl mc);
     parameters:
     - id: mc
       type: System.Runtime.Remoting.Messaging.IMessageCtrl
-      description: "The <xref href=&quot;System.Runtime.Remoting.Messaging.IMessageCtrl&quot;></xref> for the current remote method call."
+      description: "<xref href=&quot;System.Runtime.Remoting.Messaging.IMessageCtrl&quot;> </xref>对于当前的远程方法调用。"
   overload: System.Runtime.Remoting.Messaging.AsyncResult.SetMessageCtrl*
   exceptions: []
   platform:
@@ -295,14 +295,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Messaging
-  summary: "Synchronously processes a response message returned by a method call on a remote object."
-  remarks: "The SyncProcessMessage method implements the <xref:System.Runtime.Remoting.Messaging.IMessageSink> interface. You do not need to call this method directly. It is intended for use by the remoting infrastructure of the .NET Framework.       SyncProcessMessage invokes the consumer code&quot;s <xref:System.AsyncCallback> delegate. It also sets the <xref:System.Runtime.Remoting.Messaging.IMethodReturnMessage> instance returned by the <xref:System.Runtime.Remoting.Messaging.AsyncResult.GetReplyMessage%2A> method. If the `msg` parameter is of type <xref:System.Runtime.Remoting.Messaging.IMethodReturnMessage>, the same object is returned by <xref:System.Runtime.Remoting.Messaging.AsyncResult.GetReplyMessage%2A>. Otherwise, a reply message that contains a remoting exception is returned.       SyncProcessMessage also modifies the value returned by the <xref:System.Runtime.Remoting.Messaging.AsyncResult.IsCompleted%2A> property."
+  summary: "以同步方式处理远程对象上的方法调用返回的响应消息。"
+  remarks: "SyncProcessMessage 方法实现<xref:System.Runtime.Remoting.Messaging.IMessageSink>接口。</xref:System.Runtime.Remoting.Messaging.IMessageSink> 不需要直接调用此方法。 它被旨在使用由.NET framework 远程处理基础结构。       SyncProcessMessage 调用的使用者代码<xref:System.AsyncCallback>委派。</xref:System.AsyncCallback> 它还将设置<xref:System.Runtime.Remoting.Messaging.IMethodReturnMessage>返回实例<xref:System.Runtime.Remoting.Messaging.AsyncResult.GetReplyMessage%2A>方法。</xref:System.Runtime.Remoting.Messaging.AsyncResult.GetReplyMessage%2A> </xref:System.Runtime.Remoting.Messaging.IMethodReturnMessage> 如果`msg`参数属于类型<xref:System.Runtime.Remoting.Messaging.IMethodReturnMessage>、 <xref:System.Runtime.Remoting.Messaging.AsyncResult.GetReplyMessage%2A>.</xref:System.Runtime.Remoting.Messaging.AsyncResult.GetReplyMessage%2A>返回同一对象</xref:System.Runtime.Remoting.Messaging.IMethodReturnMessage> 否则，返回一条包含远程处理异常的答复消息。       SyncProcessMessage 还会修改返回的值<xref:System.Runtime.Remoting.Messaging.AsyncResult.IsCompleted%2A>属性。</xref:System.Runtime.Remoting.Messaging.AsyncResult.IsCompleted%2A>"
   syntax:
     content: public virtual System.Runtime.Remoting.Messaging.IMessage SyncProcessMessage (System.Runtime.Remoting.Messaging.IMessage msg);
     parameters:
     - id: msg
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "A response message to a method call on a remote object."
+      description: "发送给远程对象上的方法调用的响应消息。"
     return:
       type: System.Runtime.Remoting.Messaging.IMessage
       description: "Returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."

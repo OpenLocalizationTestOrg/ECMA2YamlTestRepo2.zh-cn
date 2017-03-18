@@ -24,8 +24,8 @@ items:
   nameWithType: MessageEnumerator
   fullName: System.Messaging.MessageEnumerator
   type: Class
-  summary: "Provides a forward-only cursor to enumerate through messages in a message queue."
-  remarks: "Use MessageEnumerator for dynamic interaction with messages in a queue. Methods available through the <xref:System.Messaging.MessageQueue> class can return either a MessageEnumerator pointing to a dynamic list of messages in the queue, or an array that contains a copy at a given instant - a snapshot - of the queue at the time the specified method was called.       Unlike a static snapshot, an enumerator allows you to modify the collection. Using a MessageEnumerator, you can remove messages from the queue, and the change is immediately reflected in the queue.       An enumerator does not remove the messages from the queue when it queries the queue. It returns information about the message at the current cursor position, but it leaves the message in the queue.       A MessageEnumerator is a cursor, initialized to the head of a dynamic list. The list order is the same as the order of the messages in the queue, according to message priority. You can move the cursor to the first message in the queue by calling <xref:System.Messaging.MessageEnumerator.MoveNext%2A>. After the enumerator has been initialized, you can use <xref:System.Messaging.MessageEnumerator.MoveNext%2A> to step forward through the remaining messages. You can specify whether to wait for a message to become available by passing a timeout into the <xref:System.Messaging.MessageEnumerator.MoveNext%2A> method.       Because the enumerator is dynamic, a message that is appended beyond the cursor&quot;s current position (for example, due to low priority), can be accessed by the enumerator. A message that is inserted before the cursor&quot;s current position cannot be accessed. It is not possible to step backward with a MessageEnumerator. A cursor allows forward-only movement. The <xref:System.Messaging.MessageEnumerator.Reset%2A> method enables you to place the cursor back at the beginning of the queue.       Instances of MessageEnumerator for a given queue work independently. You can create two MessageEnumerator instances that apply to the same queue. The changes that one MessageEnumerator makes to the messages in the queue will be reflected immediately in a second enumerator if the second enumerator is positioned before the first. However, if two enumerators have the same position and one of them removes the message at that position, an exception is thrown if the other enumerator attempts to get the value of the <xref:System.Messaging.MessageEnumerator.Current%2A> property on the now-deleted message.      > [!NOTE] >  If you create an instance of <xref:System.Messaging.MessageQueue> with <xref:System.Messaging.MessageQueue.DenySharedReceive%2A?displayProperty=fullName> set to `true`, no other application can modify the messages in your enumerator while you have the connection to the queue."
+  summary: "提供一个只进游标，用于枚举消息队列。"
+  remarks: "与队列中的消息进行动态交互使用 MessageEnumerator。 方法可通过<xref:System.Messaging.MessageQueue>该类可以返回指向动态列表中的消息队列或在给定时刻的快照的队列时包含副本的数组的指定的方法调用的任一 MessageEnumerator。</xref:System.Messaging.MessageQueue>       与不同的是静态的快照，枚举数可以修改该集合。 使用 MessageEnumerator，你可以从队列中删除消息，并更改会立即反映在队列中。       一个枚举器不会从队列删除消息，当它查询队列时。 它将返回有关在当前光标位置，消息的信息，但它消息仍会保留在队列中。       MessageEnumerator 是光标，初始化为动态列表的开头。 列表顺序操作在队列中，消息的顺序相同根据消息优先级。 你可以通过调用<xref:System.Messaging.MessageEnumerator.MoveNext%2A>.</xref:System.Messaging.MessageEnumerator.MoveNext%2A>光标移动到队列中的第一个消息 枚举数已初始化后，你可以使用<xref:System.Messaging.MessageEnumerator.MoveNext%2A>转发逐步执行其余的消息。</xref:System.Messaging.MessageEnumerator.MoveNext%2A> 你可以指定是否要等待的消息变得可用，通过将传递到超时<xref:System.Messaging.MessageEnumerator.MoveNext%2A>方法。</xref:System.Messaging.MessageEnumerator.MoveNext%2A>       枚举数是动态的因为可以通过枚举器访问光标的当前位置 （例如，由于低优先级），之后追加一条消息。 无法访问光标的当前位置之前插入一条消息。 不能与 MessageEnumerator 逐步向后。 游标允许仅向前移动。 <xref:System.Messaging.MessageEnumerator.Reset%2A>方法使你能够将光标放回队列的开头。</xref:System.Messaging.MessageEnumerator.Reset%2A>       独立处理的 MessageEnumerator 为给定队列的实例。 你可以创建两个 MessageEnumerator 实例应用于同一个队列。 一个 MessageEnumerator 对队列中消息所做的更改将会立即反映在第二个枚举器中如果第二个枚举数定位早于第一个。 但是，如果两个枚举器具有相同的位置，并且其中之一中删除该位置的消息，将引发异常如果其他枚举器尝试获取的值<xref:System.Messaging.MessageEnumerator.Current%2A>属性，现已删除消息。</xref:System.Messaging.MessageEnumerator.Current%2A>      1> [!NOTE]&1;> 如果创建的实例<xref:System.Messaging.MessageQueue>与<xref:System.Messaging.MessageQueue.DenySharedReceive%2A?displayProperty=fullName>设置为`true`，没有其他应用程序可以修改你的枚举器中的消息，虽然有与队列连接。</xref:System.Messaging.MessageQueue.DenySharedReceive%2A?displayProperty=fullName> </xref:System.Messaging.MessageQueue>"
   example:
   - "The following example gets a dynamic list of messages in a queue and counts all messages with the <xref:System.Messaging.Message.Priority%2A> property set to <xref:System.Messaging.MessagePriority?displayProperty=fullName>.  \n  \n [!code-cs[MessageQueue.GetMessageEnumerator#1](~/add/codesnippet/csharp/t-system.messaging.messa_2_1.cs)]\n [!code-cpp[MessageQueue.GetMessageEnumerator#1](~/add/codesnippet/cpp/t-system.messaging.messa_2_1.cpp)]\n [!code-vb[MessageQueue.GetMessageEnumerator#1](~/add/codesnippet/visualbasic/t-system.messaging.messa_2_1.vb)]"
   syntax:
@@ -55,8 +55,8 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Frees the resources associated with the enumerator."
-  remarks: "The operating system retains an open handle to the queue during the lifetime of the cursor. When you have finished working with the enumerator, call Close to release the resources associated with the handle."
+  summary: "释放与枚举器关联的资源。"
+  remarks: "光标的生命周期内，操作系统会保留到队列的打开句柄。 当你完成有关使用枚举器时，调用接近释放与句柄关联的资源。"
   syntax:
     content: public void Close ();
     parameters: []
@@ -76,21 +76,21 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets the current <xref href=&quot;System.Messaging.Message&quot;></xref> that this enumerator points to."
-  remarks: "When the enumerator is created, it points to the head of the queue, at a location before the first message. In this case, Current is not valid and will throw an exception if it is accessed. You must call <xref:System.Messaging.MessageEnumerator.MoveNext%2A> to position the cursor at the first message in the queue."
+  summary: "获取当前<xref href=&quot;System.Messaging.Message&quot;></xref>该枚举数指向。"
+  remarks: "创建枚举器时，它指向上第一条消息之前的位置的队列的开头。 在这种情况下，当前无效，将引发异常，如果访问它。 必须调用<xref:System.Messaging.MessageEnumerator.MoveNext%2A>将光标定位在队列中的第一个消息。</xref:System.Messaging.MessageEnumerator.MoveNext%2A>"
   syntax:
     content: public System.Messaging.Message Current { get; }
     return:
       type: System.Messaging.Message
-      description: "The current message."
+      description: "当前的消息。"
   overload: System.Messaging.MessageEnumerator.Current*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "You called Current before the first call to <xref:System.Messaging.MessageEnumerator.MoveNext*>. The cursor is located before the first element of the message enumeration.       -or-       You called Current after a call to <xref:System.Messaging.MessageEnumerator.MoveNext*> had returned <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> (indicating the cursor is located after the last element of the message enumeration.)"
+    description: "在首次调用之前调用当前<> *1>。光标位于消息枚举第一个元素之前。      -或-在调用之后调用当前<> *1> 返回<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> （指示光标位于消息枚举的最后一个元素之后。）"
   - type: System.Messaging.MessageQueueException
     commentId: T:System.Messaging.MessageQueueException
-    description: "The message the enumerator is currently pointing to no longer exists. It might have been deleted."
+    description: "存在枚举数当前不再指向消息。 它可能已被删除。"
   platform:
   - net462
 - uid: System.Messaging.MessageEnumerator.CursorHandle
@@ -105,18 +105,18 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets the native Message Queuing cursor handle used to browse messages in the queue."
-  remarks: "This property contains the native handle to the enumeration. When you have finished working with the enumerator, call <xref:System.Messaging.MessageEnumerator.Close%2A> to release this resource."
+  summary: "获取消息队列游标用于本机句柄浏览队列中的消息。"
+  remarks: "此属性包含在枚举的本机句柄。 当你完成有关使用枚举器时，调用<xref:System.Messaging.MessageEnumerator.Close%2A>以释放此资源。</xref:System.Messaging.MessageEnumerator.Close%2A>"
   syntax:
     content: public IntPtr CursorHandle { get; }
     return:
       type: System.IntPtr
-      description: "The native cursor handle."
+      description: "本机光标句柄。"
   overload: System.Messaging.MessageEnumerator.CursorHandle*
   exceptions:
   - type: System.Messaging.MessageQueueException
     commentId: T:System.Messaging.MessageQueueException
-    description: "The handle does not exist."
+    description: "句柄不存在。"
   platform:
   - net462
 - uid: System.Messaging.MessageEnumerator.Dispose
@@ -131,8 +131,8 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Releases all resources used by the <xref href=&quot;System.Messaging.MessageEnumerator&quot;></xref>."
-  remarks: "Calling Dispose allows the resources used by the <xref:System.Messaging.MessageEnumerator> to be reallocated for other purposes. For more information about Dispose, see [Cleaning Up Unmanaged Resources](~/add/includes/ajax-current-ext-md.md)."
+  summary: "释放使用的所有资源<xref href=&quot;System.Messaging.MessageEnumerator&quot;> </xref>。"
+  remarks: "调用 Dispose 允许使用的资源<xref:System.Messaging.MessageEnumerator>可以重新分配用于其他目的。</xref:System.Messaging.MessageEnumerator> 有关释放的详细信息，请参阅[清洗向上非托管资源](~/add/includes/ajax-current-ext-md.md)。"
   syntax:
     content: public void Dispose ();
     parameters: []
@@ -152,14 +152,14 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Releases the unmanaged resources used by the <xref href=&quot;System.Messaging.MessageEnumerator&quot;></xref> and optionally releases the managed resources."
-  remarks: "This method is called by the public <xref:System.Messaging.MessageEnumerator.Dispose%2A> method and the <xref:System.Object.Finalize%2A> method. `Dispose()` invokes the protected `Dispose(Boolean)` method with the `disposing` parameter set to `true`. <xref:System.Object.Finalize%2A> invokes `Dispose` with `disposing` set to `false`.       When the `disposing` parameter is `true`, this method releases all resources held by any managed objects that this <xref:System.Messaging.MessageEnumerator> references. This method invokes the `Dispose()` method of each referenced object."
+  summary: "释放由非托管的资源<xref href=&quot;System.Messaging.MessageEnumerator&quot;> </xref> ，还可以释放托管的资源。"
+  remarks: "此方法称为由公共<xref:System.Messaging.MessageEnumerator.Dispose%2A>方法和<xref:System.Object.Finalize%2A>方法。</xref:System.Object.Finalize%2A> </xref:System.Messaging.MessageEnumerator.Dispose%2A> `Dispose()`调用受保护`Dispose(Boolean)`方法替换`disposing`参数设置为`true`。 <xref:System.Object.Finalize%2A>调用`Dispose`与`disposing`设置为`false`。</xref:System.Object.Finalize%2A>       当`disposing`参数是`true`，此方法释放由任何托管对象持有的全部资源此<xref:System.Messaging.MessageEnumerator>引用。</xref:System.Messaging.MessageEnumerator> 此方法调用`Dispose()`每个引用对象的方法。"
   syntax:
     content: protected virtual void Dispose (bool disposing);
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to release both managed and unmanaged resources; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to release only unmanaged resources."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>若要释放托管和非托管资源;<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>若要仅释放非托管的资源。"
   overload: System.Messaging.MessageEnumerator.Dispose*
   exceptions: []
   platform:
@@ -176,19 +176,19 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Advances the enumerator to the next message in the queue, if one is currently available."
-  remarks: "This overload returns immediately if there is no message in the queue. There is another overload that waits a specified <xref:System.TimeSpan> for a message to arrive.       If a message is not currently available because the queue is empty or because you have moved beyond the last element in the collection, MoveNext returns `false` to the calling method.       Upon creation, an enumerator is conceptually positioned before the first message of the queue, and the first call to MoveNext brings the first message of the queue into view."
+  summary: "将枚举数推进到下一条消息在队列中，如果当前可用。"
+  remarks: "此重载立即返回队列中是否存在任何消息。 没有等待指定的另一个重载<xref:System.TimeSpan>到达的消息。</xref:System.TimeSpan>       如果消息不是当前可用因为队列为空，或者已经移动到集合中的最后一个元素以外，MoveNext 返回`false`到调用方法。       创建后，在队列中，第一条消息之前从概念上讲定位一个枚举器和 MoveNext 首次调用将队列的第一条带入视图。"
   syntax:
     content: public bool MoveNext ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the enumerator was succesfully advanced to the next message; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the enumerator has reached the end of the queue."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果枚举数已成功前进到下一条消息;<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>如果枚举数已达到队列的末尾。"
   overload: System.Messaging.MessageEnumerator.MoveNext*
   exceptions:
   - type: System.Messaging.MessageQueueException
     commentId: T:System.Messaging.MessageQueueException
-    description: "An exception specific to Message Queuing was thrown."
+    description: "引发了异常特定于消息队列。"
   platform:
   - net462
 - uid: System.Messaging.MessageEnumerator.MoveNext(System.TimeSpan)
@@ -203,25 +203,25 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Advances the enumerator to the next message in the queue. If the enumerator is positioned at the end of the queue, <xref:System.Messaging.MessageEnumerator.MoveNext*> waits until a message is available or the given timeout expires."
-  remarks: "This overload waits if there is no message in the queue or if the cursor has reached the end of the queue. If a message is not currently available because the queue is empty or because you have moved beyond the last element in the collection, <xref:System.Messaging.MessageEnumerator.MoveNext%2A> waits the specified timeout.       If the cursor is already at the end of the queue, <xref:System.Messaging.MessageEnumerator.MoveNext%2A> only returns `true` if the new message arrives within the specified time interval, has lower priority than all messages currently in the queue and is placed at the end of the queue. An overload with no parameter returns immediately if no further messages are in the queue.       Upon creation, an enumerator is conceptually positioned before the first message of the enumeration, and the first call to <xref:System.Messaging.MessageEnumerator.MoveNext%2A> brings the first message of the enumeration into view."
+  summary: "将枚举数推进到下一条消息在队列中。 如果枚举数定位在的队列结尾<xref:System.Messaging.MessageEnumerator.MoveNext*>会一直等到有可用消息或在给定的超时到期。</xref:System.Messaging.MessageEnumerator.MoveNext*>"
+  remarks: "此重载等待队列中没有消息时或如果游标到达队列的末尾。 如果因为队列为空，或者已经移动到集合中的最后一个元素以外，一条消息不是当前可用<xref:System.Messaging.MessageEnumerator.MoveNext%2A>等待指定的超时。</xref:System.Messaging.MessageEnumerator.MoveNext%2A>       如果游标已在队列末尾<xref:System.Messaging.MessageEnumerator.MoveNext%2A>仅返回`true`新消息到达时指定的时间间隔内，如果队列中当前的所有消息比优先级较低且位于队列的末尾。</xref:System.Messaging.MessageEnumerator.MoveNext%2A> 在队列中是否有其他消息，不带参数的重载将立即返回。       创建后，枚举数从概念上讲定位枚举，以及首次调用的第一个消息之前<xref:System.Messaging.MessageEnumerator.MoveNext%2A>使到视图枚举第一条消息。</xref:System.Messaging.MessageEnumerator.MoveNext%2A>"
   syntax:
     content: public bool MoveNext (TimeSpan timeout);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> to wait for a message to be available if the enumerator is positioned at the end of the queue."
+      description: "<xref:System.TimeSpan>时要等待的消息变得可用，如果枚举数定位在队列的末尾。</xref:System.TimeSpan>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the enumerator successfully advanced to the next message; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the enumerator has reached the end of the queue and a message does not become available within the time specified by the <code>timeout</code> parameter."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果枚举数成功地推进到下一条消息;，<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>如果枚举数已达到了队列的末尾，并且一条消息不会成为可通过指定的时间内<code> timeout </code>参数。"
   overload: System.Messaging.MessageEnumerator.MoveNext*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The value specified for the timeout parameter is invalid. It might represent a negative number."
+    description: "指定的超时参数的值无效。 它也可以表示为负数。"
   - type: System.Messaging.MessageQueueException
     commentId: T:System.Messaging.MessageQueueException
-    description: "An exception specific to Message Queuing was thrown.       -or-       The timeout has expired."
+    description: "引发了异常特定于消息队列。       -或者-已超时。"
   platform:
   - net462
 - uid: System.Messaging.MessageEnumerator.RemoveCurrent
@@ -236,14 +236,14 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Removes the current message from a transactional or non-transactional queue and returns the message to the calling application. There is no timeout specified for a message to arrive in the queue."
-  remarks: "RemoveCurrent removes and returns the message at the cursor&quot;s current location.       If you are using queue journaling, removing the message causes a copy to be kept in the journal queue, just as the <xref:System.Messaging.MessageQueue> class&quot;s <xref:System.Messaging.MessageQueue.Receive%2A> method does.       When you remove the current message, the cursor is moved to the next message. You do not have to call <xref:System.Messaging.MessageEnumerator.MoveNext%2A> after calling RemoveCurrent.       If you call this overload on a transactional queue, Message Queuing creates a single internal transaction."
+  summary: "从事务性或非事务性队列中删除该当前消息和将消息返回到调用应用程序。 没有为消息到达队列中指定无超时。"
+  remarks: "RemoveCurrent 移除并返回消息在光标的当前位置。       如果你使用的队列日志记录，删除消息会导致副本要保留在日记队列中，就像<xref:System.Messaging.MessageQueue>类的<xref:System.Messaging.MessageQueue.Receive%2A>方法执行。</xref:System.Messaging.MessageQueue.Receive%2A> </xref:System.Messaging.MessageQueue>       当删除当前消息时，光标将移到下一条消息。 无需调用<xref:System.Messaging.MessageEnumerator.MoveNext%2A>调用 RemoveCurrent 后。</xref:System.Messaging.MessageEnumerator.MoveNext%2A>       如果你对事务性队列中调用此重载，消息队列将创建单个内部事务。"
   syntax:
     content: public System.Messaging.Message RemoveCurrent ();
     parameters: []
     return:
       type: System.Messaging.Message
-      description: "A <xref href=&quot;System.Messaging.Message&quot;></xref> that references the first message available in the queue."
+      description: "A <xref href=&quot;System.Messaging.Message&quot;> </xref>引用可用队列中的第一条消息。"
   overload: System.Messaging.MessageEnumerator.RemoveCurrent*
   exceptions: []
   platform:
@@ -260,17 +260,17 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Removes the current message from a transactional queue and returns the message to the calling application. There is no timeout specified for a message to arrive in the queue."
-  remarks: "<xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A> removes and returns the message at the cursor&quot;s current location, using the internal transaction context defined by the `transaction` parameter.       If you are using queue journaling, removing the message causes a copy to be kept in the journal queue, just as the <xref:System.Messaging.MessageQueue> class&quot;s <xref:System.Messaging.MessageQueue.Receive%2A> method does.       When working with transactional queues, a rollback of a transaction causes any messages removed by a call to <xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A> to be returned to the queue. The removal is not irreversible until the transaction is committed.       When you remove the current message, the cursor is moved to the next message. You do not have to call <xref:System.Messaging.MessageEnumerator.MoveNext%2A> after calling <xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>."
+  summary: "从事务性队列中删除该当前消息和将消息返回到调用应用程序。 没有为消息到达队列中指定无超时。"
+  remarks: "<xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>移除并返回位于光标的当前位置，使用由定义的内部事务上下文的消息`transaction`参数。</xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>       如果你使用的队列日志记录，删除消息会导致副本要保留在日记队列中，就像<xref:System.Messaging.MessageQueue>类的<xref:System.Messaging.MessageQueue.Receive%2A>方法执行。</xref:System.Messaging.MessageQueue.Receive%2A> </xref:System.Messaging.MessageQueue>       当使用事务性队列时，事务的回滚会导致通过调用中删除任何消息<xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>要返回到队列。</xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A> 删除不是不可逆的直到提交事务。       当删除当前消息时，光标将移到下一条消息。 无需<xref:System.Messaging.MessageEnumerator.MoveNext%2A>调用<xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>.</xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>后</xref:System.Messaging.MessageEnumerator.MoveNext%2A>调用"
   syntax:
     content: public System.Messaging.Message RemoveCurrent (System.Messaging.MessageQueueTransaction transaction);
     parameters:
     - id: transaction
       type: System.Messaging.MessageQueueTransaction
-      description: "The <xref href=&quot;System.Messaging.MessageQueueTransaction&quot;></xref> object that specifies the transaction in which the message will be removed."
+      description: "<xref href=&quot;System.Messaging.MessageQueueTransaction&quot;> </xref>对象，它指定将在其中删除消息的事务。"
     return:
       type: System.Messaging.Message
-      description: "A <xref href=&quot;System.Messaging.Message&quot;></xref> that references the first message available in the queue."
+      description: "A <xref href=&quot;System.Messaging.Message&quot;> </xref>引用可用队列中的第一条消息。"
   overload: System.Messaging.MessageEnumerator.RemoveCurrent*
   exceptions:
   - type: System.ArgumentNullException
@@ -290,22 +290,22 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Removes the current message from a queue and returns the message to the calling application. There is no timeout specified for a message to arrive in the queue."
-  remarks: "<xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A> removes and returns the message at the cursor&quot;s current location, using a transaction context defined by the `transactionType` parameter.       Specify `Automatic` for the `transactionType` parameter if there is already an external transaction context attached to the thread that you want to use to receive the message. Specify `Single` if you want to receive the message as a single internal transaction. You can specify `None` if you want to receive a message from a transactional queue outside of a transaction context.       If you are using queue journaling, removing the message causes a copy to be kept in the journal queue, just as the <xref:System.Messaging.MessageQueue> class&quot;s <xref:System.Messaging.MessageQueue.Receive%2A> method does.       When working with transactional queues, a rollback of a transaction causes any messages removed by a call to <xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A> to be returned to the queue. The removal is not irreversible until the transaction is committed.       When you remove the current message, the cursor is moved to the next message. You do not have to call <xref:System.Messaging.MessageEnumerator.MoveNext%2A> after calling <xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>."
+  summary: "从队列中删除该当前消息和将消息返回到调用应用程序。 没有为消息到达队列中指定无超时。"
+  remarks: "<xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>移除并返回位于光标的当前位置，使用定义的事务上下文的消息`transactionType`参数。</xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>       指定`Automatic`为`transactionType`参数，如果已存在外部事务上下文附加到你想要用于接收消息的线程。 指定`Single`如果你想要接收的消息作为单个内部事务。 你可以指定`None`如果你想要接收来自外部事务上下文事务性队列的消息。       如果你使用的队列日志记录，删除消息会导致副本要保留在日记队列中，就像<xref:System.Messaging.MessageQueue>类的<xref:System.Messaging.MessageQueue.Receive%2A>方法执行。</xref:System.Messaging.MessageQueue.Receive%2A> </xref:System.Messaging.MessageQueue>       当使用事务性队列时，事务的回滚会导致通过调用中删除任何消息<xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>要返回到队列。</xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A> 删除不是不可逆的直到提交事务。       当删除当前消息时，光标将移到下一条消息。 无需<xref:System.Messaging.MessageEnumerator.MoveNext%2A>调用<xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>.</xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>后</xref:System.Messaging.MessageEnumerator.MoveNext%2A>调用"
   syntax:
     content: public System.Messaging.Message RemoveCurrent (System.Messaging.MessageQueueTransactionType transactionType);
     parameters:
     - id: transactionType
       type: System.Messaging.MessageQueueTransactionType
-      description: "One of the <xref href=&quot;System.Messaging.MessageQueueTransactionType&quot;></xref> values, describing the type of transaction context to associate with the message."
+      description: "之一<xref href=&quot;System.Messaging.MessageQueueTransactionType&quot;></xref>描述事务上下文来与消息关联的类型的值。"
     return:
       type: System.Messaging.Message
-      description: "A <xref href=&quot;System.Messaging.Message&quot;></xref> that references the first message available in the queue."
+      description: "A <xref href=&quot;System.Messaging.Message&quot;> </xref>引用可用队列中的第一条消息。"
   overload: System.Messaging.MessageEnumerator.RemoveCurrent*
   exceptions:
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "The <code>transactionType</code> parameter is not one of the <xref href=&quot;System.Messaging.MessageQueueTransactionType&quot;></xref> members."
+    description: "<code> transactionType </code>参数不是一个<xref href=&quot;System.Messaging.MessageQueueTransactionType&quot;></xref>成员。"
   platform:
   - net462
 - uid: System.Messaging.MessageEnumerator.RemoveCurrent(System.TimeSpan)
@@ -320,25 +320,25 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Removes the current message from the queue and returns the message to the calling application. If there is a message to remove, the method returns it immediately. Otherwise, the method waits the specified timeout for a new message to arrive."
-  remarks: "<xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A> removes and returns the message at the cursor&quot;s current location. If the cursor is at the end of the queue, this overload of the method waits until a message is available or the interval specified by the `timeout` parameter has expired.       If you are using queue journaling, removing the message causes a copy to be kept in the journal queue, just as the <xref:System.Messaging.MessageQueue> class&quot;s <xref:System.Messaging.MessageQueue.Receive%2A> method does.       When you remove the current message, the cursor is moved to the next message. You do not have to call <xref:System.Messaging.MessageEnumerator.MoveNext%2A> after calling <xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>.       If you call this overload on a transactional queue, Message Queuing creates a single internal transaction."
+  summary: "从队列中删除该当前消息和将消息返回到调用应用程序。 如果没有要删除的消息，该方法返回它立即。 否则，该方法将等待新消息到达的指定超时值。"
+  remarks: "<xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>移除并返回消息在光标的当前位置。</xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A> 如果光标位于队列的末尾，该方法的此重载会一直等到有可用消息或指定的间隔`timeout`参数已过期。       如果你使用的队列日志记录，删除消息会导致副本要保留在日记队列中，就像<xref:System.Messaging.MessageQueue>类的<xref:System.Messaging.MessageQueue.Receive%2A>方法执行。</xref:System.Messaging.MessageQueue.Receive%2A> </xref:System.Messaging.MessageQueue>       当删除当前消息时，光标将移到下一条消息。 无需<xref:System.Messaging.MessageEnumerator.MoveNext%2A>调用<xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>.</xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>后</xref:System.Messaging.MessageEnumerator.MoveNext%2A>调用       如果你对事务性队列中调用此重载，消息队列将创建单个内部事务。"
   syntax:
     content: public System.Messaging.Message RemoveCurrent (TimeSpan timeout);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The interval of time to wait for a message to arrive in the queue."
+      description: "要等待消息到达队列中的时间间隔。"
     return:
       type: System.Messaging.Message
-      description: "A <xref href=&quot;System.Messaging.Message&quot;></xref> that references the first message available in the queue."
+      description: "A <xref href=&quot;System.Messaging.Message&quot;> </xref>引用可用队列中的第一条消息。"
   overload: System.Messaging.MessageEnumerator.RemoveCurrent*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The value specified for the <code>timeout</code> parameter is invalid."
+    description: "为指定的值<code> timeout </code>参数无效。"
   - type: System.Messaging.MessageQueueException
     commentId: T:System.Messaging.MessageQueueException
-    description: "The timeout has expired."
+    description: "已超时。"
   platform:
   - net462
 - uid: System.Messaging.MessageEnumerator.RemoveCurrent(System.TimeSpan,System.Messaging.MessageQueueTransaction)
@@ -353,31 +353,31 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Removes the current message from a transactional queue and returns the message to the calling application. If there is a message to remove, the method returns it immediately. Otherwise, the method waits the specified timeout for a new message to arrive."
-  remarks: "<xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A> removes and returns the message at the cursor&quot;s current location. If the cursor is at the end of the queue, this overload of the method waits until a message is available or the interval specified by the `timeout` parameter has expired.       When working with transactional queues, a rollback of a transaction causes any messages removed by a call to <xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A> to be returned to the queue. The removal is not irreversible until the transaction is committed.       If you are using queue journaling, removing the message causes a copy to be kept in the journal queue, just as the <xref:System.Messaging.MessageQueue> class&quot;s <xref:System.Messaging.MessageQueue.Receive%2A> method does.       When you remove the current message, the cursor is moved to the next message. You do not have to call <xref:System.Messaging.MessageEnumerator.MoveNext%2A> after calling <xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>."
+  summary: "从事务性队列中删除该当前消息和将消息返回到调用应用程序。 如果没有要删除的消息，该方法返回它立即。 否则，该方法将等待新消息到达的指定超时值。"
+  remarks: "<xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>移除并返回消息在光标的当前位置。</xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A> 如果光标位于队列的末尾，该方法的此重载会一直等到有可用消息或指定的间隔`timeout`参数已过期。       当使用事务性队列时，事务的回滚会导致通过调用中删除任何消息<xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>要返回到队列。</xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A> 删除不是不可逆的直到提交事务。       如果你使用的队列日志记录，删除消息会导致副本要保留在日记队列中，就像<xref:System.Messaging.MessageQueue>类的<xref:System.Messaging.MessageQueue.Receive%2A>方法执行。</xref:System.Messaging.MessageQueue.Receive%2A> </xref:System.Messaging.MessageQueue>       当删除当前消息时，光标将移到下一条消息。 无需<xref:System.Messaging.MessageEnumerator.MoveNext%2A>调用<xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>.</xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>后</xref:System.Messaging.MessageEnumerator.MoveNext%2A>调用"
   syntax:
     content: public System.Messaging.Message RemoveCurrent (TimeSpan timeout, System.Messaging.MessageQueueTransaction transaction);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The interval of time to wait for the message to be removed."
+      description: "等待要删除的消息的时间间隔。"
     - id: transaction
       type: System.Messaging.MessageQueueTransaction
-      description: "The <xref href=&quot;System.Messaging.MessageQueueTransaction&quot;></xref> object that specifies the transaction context for the message."
+      description: "<xref href=&quot;System.Messaging.MessageQueueTransaction&quot;> </xref>对象，它指定消息的事务上下文。"
     return:
       type: System.Messaging.Message
-      description: "A <xref href=&quot;System.Messaging.Message&quot;></xref> that references the first message available in the queue."
+      description: "A <xref href=&quot;System.Messaging.Message&quot;> </xref>引用可用队列中的第一条消息。"
   overload: System.Messaging.MessageEnumerator.RemoveCurrent*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The value specified for the <code>timeout</code> parameter is invalid."
+    description: "为指定的值<code> timeout </code>参数无效。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The <code>transaction</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Messaging.MessageQueueException
     commentId: T:System.Messaging.MessageQueueException
-    description: "The timeout has expired."
+    description: "已超时。"
   platform:
   - net462
 - uid: System.Messaging.MessageEnumerator.RemoveCurrent(System.TimeSpan,System.Messaging.MessageQueueTransactionType)
@@ -392,31 +392,31 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Removes the current message from a queue and returns the message to the calling application. If there is a message to remove, the method returns it immediately. Otherwise, the method waits the specified timeout for a new message to arrive."
-  remarks: "<xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A> removes and returns the message at the cursor&quot;s current location, using a transaction context defined by the `transactionType` parameter. If the cursor is at the end of the queue, this overload of the method waits until a message is available or the interval specified by the `timeout` parameter has expired.       Specify `Automatic` for the `transactionType` parameter if there is already an external transaction context attached to the thread that you want to use to receive the message. Specify `Single` if you want to receive the message as a single internal transaction. You can specify `None` if you want to receive a message from a transactional queue outside of a transaction context.       If you are using queue journaling, removing the message causes a copy to be kept in the journal queue, just as the <xref:System.Messaging.MessageQueue> class&quot;s <xref:System.Messaging.MessageQueue.Receive%2A> method does.       When working with transactional queues, a rollback of a transaction causes any messages removed by a call to <xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A> to be returned to the queue. The removal is not irreversible until the transaction is committed.       When you remove the current message, the cursor is moved to the next message. You do not have to call <xref:System.Messaging.MessageEnumerator.MoveNext%2A> after calling <xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>."
+  summary: "从队列中删除该当前消息和将消息返回到调用应用程序。 如果没有要删除的消息，该方法返回它立即。 否则，该方法将等待新消息到达的指定超时值。"
+  remarks: "<xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>移除并返回位于光标的当前位置，使用定义的事务上下文的消息`transactionType`参数。</xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A> 如果光标位于队列的末尾，该方法的此重载会一直等到有可用消息或指定的间隔`timeout`参数已过期。       指定`Automatic`为`transactionType`参数，如果已存在外部事务上下文附加到你想要用于接收消息的线程。 指定`Single`如果你想要接收的消息作为单个内部事务。 你可以指定`None`如果你想要接收来自外部事务上下文事务性队列的消息。       如果你使用的队列日志记录，删除消息会导致副本要保留在日记队列中，就像<xref:System.Messaging.MessageQueue>类的<xref:System.Messaging.MessageQueue.Receive%2A>方法执行。</xref:System.Messaging.MessageQueue.Receive%2A> </xref:System.Messaging.MessageQueue>       当使用事务性队列时，事务的回滚会导致通过调用中删除任何消息<xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>要返回到队列。</xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A> 删除不是不可逆的直到提交事务。       当删除当前消息时，光标将移到下一条消息。 无需<xref:System.Messaging.MessageEnumerator.MoveNext%2A>调用<xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>.</xref:System.Messaging.MessageEnumerator.RemoveCurrent%2A>后</xref:System.Messaging.MessageEnumerator.MoveNext%2A>调用"
   syntax:
     content: public System.Messaging.Message RemoveCurrent (TimeSpan timeout, System.Messaging.MessageQueueTransactionType transactionType);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The interval of time to wait for the message to be removed."
+      description: "等待要删除的消息的时间间隔。"
     - id: transactionType
       type: System.Messaging.MessageQueueTransactionType
-      description: "One of the <xref href=&quot;System.Messaging.MessageQueueTransactionType&quot;></xref> values, describing the type of transaction context to associate with the message."
+      description: "之一<xref href=&quot;System.Messaging.MessageQueueTransactionType&quot;></xref>描述事务上下文来与消息关联的类型的值。"
     return:
       type: System.Messaging.Message
-      description: "A <xref href=&quot;System.Messaging.Message&quot;></xref> that references the first message available in the queue."
+      description: "A <xref href=&quot;System.Messaging.Message&quot;> </xref>引用可用队列中的第一条消息。"
   overload: System.Messaging.MessageEnumerator.RemoveCurrent*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The value specified for the <code>timeout</code> parameter is invalid."
+    description: "为指定的值<code> timeout </code>参数无效。"
   - type: System.Messaging.MessageQueueException
     commentId: T:System.Messaging.MessageQueueException
-    description: "The timeout has expired."
+    description: "已超时。"
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "The <code>transactionType</code> parameter is not one of the <xref href=&quot;System.Messaging.MessageQueueTransactionType&quot;></xref> members."
+    description: "<code> transactionType </code>参数不是一个<xref href=&quot;System.Messaging.MessageQueueTransactionType&quot;></xref>成员。"
   platform:
   - net462
 - uid: System.Messaging.MessageEnumerator.Reset
@@ -431,8 +431,8 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Resets the current enumerator so it points to the head of the queue."
-  remarks: "An enumerator can only move in a forward direction. Use this method to start over at the beginning of the queue.       After calling Reset, the cursor points to the first message. You do not need to call <xref:System.Messaging.MessageEnumerator.MoveNext%2A> after calling Reset to move the cursor forward to the first message in the queue."
+  summary: "将当前的枚举器重置使其指向队列的开头。"
+  remarks: "一个枚举器只能在一个向前方向移动。 使用此方法重新开始在队列的开头。       在调用之后重置，游标将指向第一条消息。 不需要调用<xref:System.Messaging.MessageEnumerator.MoveNext%2A>调用重置移动光标后转发到队列中的第一个消息。</xref:System.Messaging.MessageEnumerator.MoveNext%2A>"
   syntax:
     content: public void Reset ();
     parameters: []
@@ -453,12 +453,12 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Returns a <xref href=&quot;System.Messaging.Message&quot;></xref> that references the message at the current cursor position."
+  summary: "返回<xref href=&quot;System.Messaging.Message&quot;></xref>引用当前光标位置处的消息。"
   syntax:
     content: object System.Collections.IEnumerator.Current { get; }
     return:
       type: System.Object
-      description: "A <xref href=&quot;System.Messaging.Message&quot;></xref> that references the message at the current cursor position."
+      description: "A <xref href=&quot;System.Messaging.Message&quot;> </xref>引用当前光标位置处的消息。"
   overload: System.Messaging.MessageEnumerator.System#Collections#IEnumerator#Current*
   exceptions: []
   platform:

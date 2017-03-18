@@ -26,8 +26,8 @@ items:
   nameWithType: RegistrySecurity
   fullName: System.Security.AccessControl.RegistrySecurity
   type: Class
-  summary: "Represents the Windows access control security for a registry key. This class cannot be inherited."
-  remarks: "A RegistrySecurity object specifies access rights for a registry key, and also specifies how access attempts are audited. Access rights to the registry key are expressed as rules, with each access rule represented by a <xref:System.Security.AccessControl.RegistryAccessRule> object. Each auditing rule is represented by a <xref:System.Security.AccessControl.RegistryAuditRule> object.       This mirrors the underlying Windows security system, in which each securable object has at most one discretionary access control list (DACL) that controls access to the secured object, and at most one system access control list (SACL) that specifies which access attempts are audited. The DACL and SACL are ordered lists of access control entries (ACE) that specify access and auditing for users and groups. A <xref:System.Security.AccessControl.RegistryAccessRule> or <xref:System.Security.AccessControl.RegistryAuditRule> object might represent more than one ACE.      > [!NOTE] >  Windows access control security can only be applied to registry keys. It cannot be applied to individual key/value pairs stored in a key.       The RegistrySecurity, <xref:System.Security.AccessControl.RegistryAccessRule>, and <xref:System.Security.AccessControl.RegistryAuditRule> classes hide the implementation details of ACLs and ACEs. They allow you to ignore the seventeen different ACE types and the complexity of correctly maintaining inheritance and propagation of access rights. These objects are also designed to prevent the following common access control errors:      -   Creating a security descriptor with a null DACL. A null reference to a DACL allows any user to add access rules to an object, potentially creating a denial-of-service attack. A new RegistrySecurity object always starts with an empty DACL, which denies all access for all users.      -   Violating the canonical ordering of ACEs. If the ACE list in the DACL is not kept in the canonical order, users might inadvertently be given access to the secured object. For example, denied access rights must always appear before allowed access rights. RegistrySecurity objects maintain the correct order internally.      -   Manipulating security descriptor flags, which should be under resource manager control only.      -   Creating invalid combinations of ACE flags.      -   Manipulating inherited ACEs. Inheritance and propagation are handled by the resource manager, in response to changes you make to access and audit rules.      -   Inserting meaningless ACEs into ACLs.       The only capabilities not supported by the .NET security objects are dangerous activities that should be avoided by the majority of application developers, such as the following:      -   Low-level tasks that are normally performed by the resource manager.      -   Adding or removing access control entries in ways that do not maintain the canonical ordering.       To modify Windows access control security for a registry key, use the <xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A?displayProperty=fullName> method to get the RegistrySecurity object. Modify the security object by adding and removing rules, and then use the <xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName> method to reattach it.      > [!IMPORTANT] >  Changes you make to a RegistrySecurity object do not affect the access levels of the registry key until you call the <xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName> method to assign the altered security object to the registry key.       To copy access control security from one registry key to another, use the <xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A?displayProperty=fullName> method to get a RegistrySecurity object representing the access and audit rules for the first registry key, and then use the <xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName> method to assign those rules to the second registry key. You can also assign the rules to a second registry key with an <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A?displayProperty=fullName> or <xref:Microsoft.Win32.RegistryKey.CreateSubKey%2A?displayProperty=fullName> method that takes a RegistrySecurity object parameter.       Users with an investment in the security descriptor definition language (SDDL) can use the <xref:System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorSddlForm%2A> method to set access rules for a registry key, and the <xref:System.Security.AccessControl.ObjectSecurity.GetSecurityDescriptorSddlForm%2A> method to obtain a string that represents the access rules in SDDL format. This is not recommended for new development."
+  summary: "表示注册表项的 Windows 访问控制安全性。 此类不能被继承。"
+  remarks: "RegistrySecurity 对象指定注册表项的访问权限，并且还指定如何审核访问尝试。 对注册表项的访问权限表示为规则，由表示每个访问规则<xref:System.Security.AccessControl.RegistryAccessRule>对象。</xref:System.Security.AccessControl.RegistryAccessRule> 每个审核规则由<xref:System.Security.AccessControl.RegistryAuditRule>对象。</xref:System.Security.AccessControl.RegistryAuditRule>       这反映了基础的 Windows 安全系统，其中每个安全对象具有最多有一个自定义访问控制列表 (DACL) 控制访问受保护的对象以及最多有一个系统访问控制列表 (SACL) 指定哪些访问尝试进行审核。 DACL 和 SACL 进行排序的指定访问和审核用户和组的访问控制项 (ACE) 的列表。 A<xref:System.Security.AccessControl.RegistryAccessRule>或<xref:System.Security.AccessControl.RegistryAuditRule>对象可以表示多个 ACE。</xref:System.Security.AccessControl.RegistryAuditRule> </xref:System.Security.AccessControl.RegistryAccessRule>      1> [!NOTE]&1;> Windows 访问控制安全性可以仅应用于注册表项。 它不能应用于单个键/值对存储在注册表项。       RegistrySecurity， <xref:System.Security.AccessControl.RegistryAccessRule>，和<xref:System.Security.AccessControl.RegistryAuditRule>类隐藏 Acl 和 Ace 的实现详细信息。</xref:System.Security.AccessControl.RegistryAuditRule> </xref:System.Security.AccessControl.RegistryAccessRule> 这使你忽略十七不同的 ACE 类型和正确维护继承和访问权限的传播的复杂性。 这些对象还旨在防止以下常见的访问控制错误:-使用 null DACL 创建安全描述符。 对 DACL 的 null 引用允许任何用户将访问规则添加到一个对象，该对象可能创建的拒绝服务攻击。 新的 RegistrySecurity 对象开始时始终具有一个空元素，此操作会拒绝所有用户的所有访问权限的 DACL。      -违反 Ace 的规范顺序。 如果 DACL 中的 ACE 列表不保存在规范顺序，用户可能会无意中被赋予访问受保护的对象。 例如，被拒绝的访问权限必须始终出现在允许的访问权限之前。 RegistrySecurity 对象内部维护正确的顺序。      操作安全描述符标志，它应在资源管理器控件。      -创建 ACE 标志的无效的组合。      -操纵继承的 Ace。 继承和传播由资源管理器，以响应对访问和审核规则所做的更改处理。      -将无意义的 Ace 插入到 Acl。       不支持的.NET 安全对象的唯一功能是应当避免由应用程序开发人员，如下所示的大部分的危险活动:-低级通常由资源管理器执行的任务。      -添加或移除访问控制项的不维护规范排序的方式。       若要修改的注册表项的 Windows 访问控制安全性，请使用<xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A?displayProperty=fullName>方法以获取 RegistrySecurity 对象。</xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A?displayProperty=fullName> 通过添加和删除规则，修改安全对象，然后使用该<xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName>方法将重新附加它。</xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName>      1> [!IMPORTANT]&1;> RegistrySecurity 对象所做的更改不影响注册表项的访问级别直到你调用<xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName>方法以将修改过的安全对象分配给注册表项。</xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName>       若要将访问控制安全性复制到另一个注册表项，使用<xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A?displayProperty=fullName>方法获取表示第一个注册表项的访问和审核规则 RegistrySecurity 对象，然后使用<xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName>方法将这些规则分配给第二个注册表项。</xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName> </xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A?displayProperty=fullName> 此外可以将这些规则分配到的第二个注册表项<xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A?displayProperty=fullName>或<xref:Microsoft.Win32.RegistryKey.CreateSubKey%2A?displayProperty=fullName>采用 RegistrySecurity 对象参数的方法。</xref:Microsoft.Win32.RegistryKey.CreateSubKey%2A?displayProperty=fullName> </xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A?displayProperty=fullName>       以安全描述符定义语言 (SDDL) 中的投资的用户可以使用<xref:System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorSddlForm%2A>方法以设置的注册表项，访问规则和<xref:System.Security.AccessControl.ObjectSecurity.GetSecurityDescriptorSddlForm%2A>方法来获取表示访问规则的 SDDL 格式的字符串。</xref:System.Security.AccessControl.ObjectSecurity.GetSecurityDescriptorSddlForm%2A> </xref:System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorSddlForm%2A> 这不是建议新的开发。"
   example:
   - "This section contains two code examples. The first example shows how compatible rules merge when added and removed, and the second shows how inheritance and propagation flags affect the addition and deletion of rules.  \n  \n Example 1  \n  \n The following code example shows how the <xref:System.Security.AccessControl.RegistrySecurity.RemoveAccessRule%2A> method removes rights from a compatible rule, and how the <xref:System.Security.AccessControl.RegistrySecurity.AddAccessRule%2A> method merges rights with compatible rules.  \n  \n The example creates a RegistrySecurity object and adds a rule that allows the current user <xref:System.Security.AccessControl.RegistryRights?displayProperty=fullName> rights. The example then creates a rule that grants the user <xref:System.Security.AccessControl.RegistryRights?displayProperty=fullName>, with the same inheritance and propagation rights as the first rule, and uses the <xref:System.Security.AccessControl.RegistrySecurity.RemoveAccessRule%2A> method to remove this new rule from the RegistrySecurity object. <xref:System.Security.AccessControl.RegistryRights> is a constituent of <xref:System.Security.AccessControl.RegistryRights>, so it is removed from the compatible rule. The rules in the RegistrySecurity object are displayed, showing the remaining constituents of <xref:System.Security.AccessControl.RegistryRights>.  \n  \n The example code then calls the <xref:System.Security.AccessControl.RegistrySecurity.AddAccessRule%2A> method to merge the <xref:System.Security.AccessControl.RegistryRights> right back into the rule in the RegistrySecurity object.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:Microsoft.Win32.RegistryKey> object. The second example in this section attaches a security object, and so do the examples in <xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A?displayProperty=fullName> and <xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-vb[System.Security.AccessControl.RegistrySecurity.RemoveAccessRule#1](~/add/codesnippet/visualbasic/t-system.security.access_15_1.vb)]\n [!code-cs[System.Security.AccessControl.RegistrySecurity.RemoveAccessRule#1](~/add/codesnippet/csharp/t-system.security.access_15_1.cs)]  \n  \n Example 2  \n  \n The following code example demonstrates access rules with inheritance and propagation. The example creates a RegistrySecurity object, then creates and adds two rules that have the <xref:System.Security.AccessControl.InheritanceFlags> flag. The first rule has no propagation flags, while the second has <xref:System.Security.AccessControl.PropagationFlags> and <xref:System.Security.AccessControl.PropagationFlags>.  \n  \n The program displays the rules in the RegistrySecurity object, and then uses the RegistrySecurity object to create a subkey. The program creates a child subkey and a grandchild subkey, then displays the security for each subkey. Finally, the program deletes the test keys.  \n  \n [!code-vb[System.Security.AccessControl.RegistryAccessRule.ctor2#1](~/add/codesnippet/visualbasic/t-system.security.access_15_2.vb)]\n [!code-cs[System.Security.AccessControl.RegistryAccessRule.ctor2#1](~/add/codesnippet/csharp/t-system.security.access_15_2.cs)]"
   syntax:
@@ -104,8 +104,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.AccessControl.RegistrySecurity&quot;></xref> class with default values."
-  remarks: "A new <xref:System.Security.AccessControl.RegistrySecurity> object always starts with an empty discretionary access list (DACL), which denies all access for all users."
+  summary: "初始化的新实例<xref href=&quot;System.Security.AccessControl.RegistrySecurity&quot;></xref>类使用默认值。"
+  remarks: "一个新<xref:System.Security.AccessControl.RegistrySecurity>对象开始时始终具有空的自由访问控制列表 (DACL)，此操作会拒绝所有用户的所有访问权限。</xref:System.Security.AccessControl.RegistrySecurity>"
   syntax:
     content: public RegistrySecurity ();
     parameters: []
@@ -125,13 +125,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Gets the enumeration type that the <xref href=&quot;System.Security.AccessControl.RegistrySecurity&quot;></xref> class uses to represent access rights."
-  remarks: "Classes that derive from the <xref:System.Security.AccessControl.ObjectSecurity> class override the <xref:System.Security.AccessControl.ObjectSecurity.AccessRightType%2A> property and return the type they use to represent access rights. When you work with arrays or collections that contain multiple types of security objects, use this property to determine the correct enumeration type to use with each security object."
+  summary: "获取枚举类型<xref href=&quot;System.Security.AccessControl.RegistrySecurity&quot;></xref>类用于表示的访问权限。"
+  remarks: "派生自的类<xref:System.Security.AccessControl.ObjectSecurity>类替代<xref:System.Security.AccessControl.ObjectSecurity.AccessRightType%2A>属性，并返回它们用于表示的访问权限的类型。</xref:System.Security.AccessControl.ObjectSecurity.AccessRightType%2A> </xref:System.Security.AccessControl.ObjectSecurity> 当使用数组或包含多个类型的安全对象的集合时，使用此属性来确定要用于每个安全对象的正确的枚举类型。"
   syntax:
     content: public override Type AccessRightType { get; }
     return:
       type: System.Type
-      description: "A <xref:System.Type> object representing the <xref href=&quot;System.Security.AccessControl.RegistryRights&quot;></xref> enumeration."
+      description: "A<xref:System.Type>对象，表示<xref href=&quot;System.Security.AccessControl.RegistryRights&quot;></xref>枚举。</xref:System.Type>"
   overload: System.Security.AccessControl.RegistrySecurity.AccessRightType*
   exceptions: []
   platform:
@@ -148,43 +148,43 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Creates a new access control rule for the specified user, with the specified access rights, access control, and flags."
-  remarks: "The recommended way to create access control rules is to use the constructors of the <xref:System.Security.AccessControl.RegistryAccessRule> class.      > [!NOTE] >  Although you can specify the <xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName> flag, there is no point in doing so. For the purposes of access control, the name/value pairs in a subkey are not separate objects. The access rights to name/value pairs are controlled by the rights of the subkey. Furthermore, since all subkeys are containers (that is, they can contain other subkeys), they are not affected by the <xref:System.Security.AccessControl.InheritanceFlags> flag. Finally, specifying the <xref:System.Security.AccessControl.InheritanceFlags> flag needlessly complicates the maintenance of rules, because it interferes with the normal combination of compatible rules."
+  summary: "创建新的访问控制规则指定的用户，使用指定的访问权限、 访问控制和标志。"
+  remarks: "创建访问控制规则的建议的方法是使用<xref:System.Security.AccessControl.RegistryAccessRule>类</xref:System.Security.AccessControl.RegistryAccessRule>的构造函数      1> [!NOTE]&1;> 虽然可以指定的<xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName>标志，没有在此过程中删除点</xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName> 对于访问控制，子项中的名称/值对不是单独的对象。 名称/值对的访问权限由该子项的权限控制。 此外，由于所有子项都是容器 （即，它们可以包含其他子项），它们不受<xref:System.Security.AccessControl.InheritanceFlags>标志。</xref:System.Security.AccessControl.InheritanceFlags> 最后，指定<xref:System.Security.AccessControl.InheritanceFlags>标志不必要地增加复杂性进行维护的规则，因为它干扰兼容的规则的正常组合。</xref:System.Security.AccessControl.InheritanceFlags>"
   syntax:
     content: public override System.Security.AccessControl.AccessRule AccessRuleFactory (System.Security.Principal.IdentityReference identityReference, int accessMask, bool isInherited, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags, System.Security.AccessControl.AccessControlType type);
     parameters:
     - id: identityReference
       type: System.Security.Principal.IdentityReference
-      description: "An <xref href=&quot;System.Security.Principal.IdentityReference&quot;></xref> that identifies the user or group the rule applies to."
+      description: "<xref href=&quot;System.Security.Principal.IdentityReference&quot;> </xref>标识用户或组规则适用于。"
     - id: accessMask
       type: System.Int32
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.RegistryRights&quot;></xref> values specifying the access rights to allow or deny, cast to an integer."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.RegistryRights&quot;></xref>值指定的访问权限以允许或拒绝，强制转换为整数。"
     - id: isInherited
       type: System.Boolean
-      description: "A Boolean value specifying whether the rule is inherited."
+      description: "一个布尔值，指定是否继承规则。"
     - id: inheritanceFlags
       type: System.Security.AccessControl.InheritanceFlags
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.InheritanceFlags&quot;></xref> values specifying how the rule is inherited by subkeys."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.InheritanceFlags&quot;></xref>指定子项如何继承规则的值。"
     - id: propagationFlags
       type: System.Security.AccessControl.PropagationFlags
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.PropagationFlags&quot;></xref> values that modify the way the rule is inherited by subkeys. Meaningless if the value of `inheritanceFlags` is <xref href=&quot;System.Security.AccessControl.InheritanceFlags&quot;></xref>."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.PropagationFlags&quot;></xref>修改规则的子项将继承的方式的值。 如果无意义的值`inheritanceFlags`是<xref href=&quot;System.Security.AccessControl.InheritanceFlags&quot;> </xref>。"
     - id: type
       type: System.Security.AccessControl.AccessControlType
-      description: "One of the <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> values specifying whether the rights are allowed or denied."
+      description: "之一<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref>值指定是否允许或拒绝权限。"
     return:
       type: System.Security.AccessControl.AccessRule
-      description: "A <xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;></xref> object representing the specified rights for the specified user."
+      description: "A <xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;> </xref>对象，表示指定的用户指定的权限。"
   overload: System.Security.AccessControl.RegistrySecurity.AccessRuleFactory*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>accessMask</code>, <code>inheritanceFlags</code>, <code>propagationFlags</code>, or <code>type</code> specifies an invalid value."
+    description: "<code>accessMask</code><code>inheritanceFlags</code>， <code>propagationFlags</code>，或<code>type</code>指定了一个无效值。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>identityReference</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>accessMask</code> is zero."
+    description: "<code>identityReference</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -或-<code>accessMask</code>为零。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>identityReference</code> is neither of type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>, nor of a type such as <xref href=&quot;System.Security.Principal.NTAccount&quot;></xref> that can be converted to type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>."
+    description: "<code>identityReference</code>既不属于类型<xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>，也不的类型，如<xref href=&quot;System.Security.Principal.NTAccount&quot;></xref>可以转换为类型<xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>。"
   platform:
   - net462
 - uid: System.Security.AccessControl.RegistrySecurity.AccessRuleType
@@ -199,13 +199,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Gets the type that the <xref href=&quot;System.Security.AccessControl.RegistrySecurity&quot;></xref> class uses to represent access rules."
-  remarks: "Classes that derive from the <xref:System.Security.AccessControl.ObjectSecurity> class override the <xref:System.Security.AccessControl.ObjectSecurity.AccessRuleType%2A> property and return the type they use to represent access rules. When you work with arrays or collections that contain multiple types of security objects, use this property to determine the correct access rule type to use with each security object."
+  summary: "获取的类型<xref href=&quot;System.Security.AccessControl.RegistrySecurity&quot;></xref>类用于表示访问规则。"
+  remarks: "派生自的类<xref:System.Security.AccessControl.ObjectSecurity>类替代<xref:System.Security.AccessControl.ObjectSecurity.AccessRuleType%2A>属性，并返回它们用于表示访问规则的类型。</xref:System.Security.AccessControl.ObjectSecurity.AccessRuleType%2A> </xref:System.Security.AccessControl.ObjectSecurity> 当使用数组或包含多个类型的安全对象的集合时，使用此属性来确定要使用每个安全对象的正确的访问规则类型。"
   syntax:
     content: public override Type AccessRuleType { get; }
     return:
       type: System.Type
-      description: "A <xref:System.Type> object representing the <xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;></xref> class."
+      description: "A<xref:System.Type>对象，表示<xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;></xref>类</xref:System.Type>"
   overload: System.Security.AccessControl.RegistrySecurity.AccessRuleType*
   exceptions: []
   platform:
@@ -222,8 +222,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for a matching access control with which the new rule can be merged. If none are found, adds the new rule."
-  remarks: "The AddAccessRule method searches for rules with the same user or group and the same <xref:System.Security.AccessControl.AccessControlType> as `rule`. If none are found, `rule` is added. If a matching rule is found, the rights in `rule` are merged with the existing rule.       Rules cannot be merged if they have different inheritance flags. For example, if a user is allowed read access with no inheritance flags, and AddAccessRule is used to add a rule giving the user write access with inheritance for subkeys (<xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName>), the two rules cannot be merged.       Rules with different <xref:System.Security.AccessControl.AccessControlType> values are never merged.       Rules express rights in the most economical way. For example, if a user has <xref:System.Security.AccessControl.RegistryRights>, <xref:System.Security.AccessControl.RegistryRights> and <xref:System.Security.AccessControl.RegistryRights> rights, and you add a rule allowing <xref:System.Security.AccessControl.RegistryRights> rights, the user has all the constituent parts of <xref:System.Security.AccessControl.RegistryRights> rights. If you query the user&quot;s rights, you will see a rule containing <xref:System.Security.AccessControl.RegistryRights> rights. Similarly, if you remove <xref:System.Security.AccessControl.RegistryRights> rights, the other constituents of <xref:System.Security.AccessControl.RegistryRights> rights will reappear."
+  summary: "新的规则可以与之合并的匹配访问控件的搜索。 如果找不到之后，将添加新规则。"
+  remarks: "AddAccessRule 方法搜索与同一用户或组，以及相同的规则<xref:System.Security.AccessControl.AccessControlType>作为`rule`。</xref:System.Security.AccessControl.AccessControlType> 如果找不到之后，`rule`添加。 如果找到匹配规则是中的权限`rule`合并与现有规则。       如果它们具有不同的继承标志，则不能合并规则。 例如，如果用户允许读访问，任何继承标志，并且使用 AddAccessRule 来添加规则提供用户编写使用继承的子项的访问 (<xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName>)，不能合并两个规则。</xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName>       具有不同的规则<xref:System.Security.AccessControl.AccessControlType>值将永远不会合并。</xref:System.Security.AccessControl.AccessControlType>       规则 express 最经济的方法中的权限。 例如，如果用户具有<xref:System.Security.AccessControl.RegistryRights>，<xref:System.Security.AccessControl.RegistryRights>和<xref:System.Security.AccessControl.RegistryRights>权限，而您添加规则允许<xref:System.Security.AccessControl.RegistryRights>权限，用户拥有的所有组成部分<xref:System.Security.AccessControl.RegistryRights>权限。</xref:System.Security.AccessControl.RegistryRights> </xref:System.Security.AccessControl.RegistryRights> </xref:System.Security.AccessControl.RegistryRights> </xref:System.Security.AccessControl.RegistryRights> </xref:System.Security.AccessControl.RegistryRights> 如果你查询用户的权限，你将看到一个规则，其中包含<xref:System.Security.AccessControl.RegistryRights>权限。</xref:System.Security.AccessControl.RegistryRights> 同样，如果你删除<xref:System.Security.AccessControl.RegistryRights>权限外，其他构成<xref:System.Security.AccessControl.RegistryRights>权限将重新出现。</xref:System.Security.AccessControl.RegistryRights> </xref:System.Security.AccessControl.RegistryRights>"
   example:
   - "The following code example creates registry access rules and adds them to a <xref:System.Security.AccessControl.RegistrySecurity> object, showing how rules that allow and deny rights remain separate, while compatible rules of the same kind are merged.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:Microsoft.Win32.RegistryKey> object. Examples that attach security objects can be found in <xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A?displayProperty=fullName> and <xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName>.  \n  \n A code example that demonstrates inheritance and propagation flags can be found in the <xref:System.Security.AccessControl.RegistryAccessRule> class.  \n  \n [!code-cs[System.Security.AccessControl.RegistrySecurity.AddAccessRule#1](~/add/codesnippet/csharp/0595520c-e456-4072-a959-_1.cs)]\n [!code-vb[System.Security.AccessControl.RegistrySecurity.AddAccessRule#1](~/add/codesnippet/visualbasic/0595520c-e456-4072-a959-_1.vb)]"
   syntax:
@@ -231,12 +231,12 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.RegistryAccessRule
-      description: "The access control rule to add."
+      description: "要添加的访问控制规则。"
   overload: System.Security.AccessControl.RegistrySecurity.AddAccessRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.RegistrySecurity.AddAuditRule(System.Security.AccessControl.RegistryAuditRule)
@@ -251,14 +251,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for an audit rule with which the new rule can be merged. If none are found, adds the new rule."
-  remarks: "The AddAuditRule method searches for rules with the same user or group as `rule`. If none are found, `rule` is added. If a matching rule is found, the flags in `rule` are merged into the existing rule.       Rules cannot be merged if they have different inheritance flags. For example, if failed attempts to write to a key are audited for a particular user, with no inheritance flags, and AddAuditRule is used to add a rule specifying that failed attempts to change permissions are to be audited for the same user, but with inheritance for subkeys (<xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName>), the two rules cannot be merged."
+  summary: "可以与之合并新规则的审核规则的搜索。 如果找不到之后，将添加新规则。"
+  remarks: "AddAuditRule 方法搜索规则具有相同的用户或组作为`rule`。 如果找不到之后，`rule`添加。 如果找到匹配规则是中的标志`rule`合并到现有规则。       如果它们具有不同的继承标志，则不能合并规则。 例如，如果写入某个注册表项的尝试失败审核的特定用户，没有任何继承标志，并 AddAuditRule 用于添加一个规则，指定的失败尝试更改权限，则对于相同的用户，但允许子项继承审核 (<xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName>)，不能合并两个规则。</xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName>"
   syntax:
     content: public void AddAuditRule (System.Security.AccessControl.RegistryAuditRule rule);
     parameters:
     - id: rule
       type: System.Security.AccessControl.RegistryAuditRule
-      description: "The audit rule to add. The user specified by this rule determines the search."
+      description: "要添加的审核规则。 此规则指定的用户确定搜索。"
   overload: System.Security.AccessControl.RegistrySecurity.AddAuditRule*
   exceptions: []
   platform:
@@ -275,43 +275,43 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Creates a new audit rule, specifying the user the rule applies to, the access rights to audit, the inheritance and propagation of the rule, and the outcome that triggers the rule."
-  remarks: "The recommended way to create audit rules is to use the constructors of the <xref:System.Security.AccessControl.RegistryAuditRule> class.      > [!NOTE] >  Although you can specify the <xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName> flag, there is no point in doing so. For the purposes of audit control, the name/value pairs in a subkey are not separate objects. The audit rights to name/value pairs are controlled by the rights of the subkey. Furthermore, since all subkeys are containers (that is, they can contain other subkeys), they are not affected by the <xref:System.Security.AccessControl.InheritanceFlags> flag. Finally, specifying the <xref:System.Security.AccessControl.InheritanceFlags> flag needlessly complicates the maintenance of rules, because it interferes with the normal combination of compatible rules."
+  summary: "创建一个新的审核规则，指定该规则适用于审核、 继承和传播的规则，对的访问权限的用户和触发规则的结果。"
+  remarks: "创建审核规则的建议的方法是使用<xref:System.Security.AccessControl.RegistryAuditRule>类</xref:System.Security.AccessControl.RegistryAuditRule>的构造函数      1> [!NOTE]&1;> 虽然可以指定的<xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName>标志，没有在此过程中删除点</xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName> 对于审核控制，子项中的名称/值对不是单独的对象。 名称/值对的审核权限由该子项的权限控制。 此外，由于所有子项都是容器 （即，它们可以包含其他子项），它们不受<xref:System.Security.AccessControl.InheritanceFlags>标志。</xref:System.Security.AccessControl.InheritanceFlags> 最后，指定<xref:System.Security.AccessControl.InheritanceFlags>标志不必要地增加复杂性进行维护的规则，因为它干扰兼容的规则的正常组合。</xref:System.Security.AccessControl.InheritanceFlags>"
   syntax:
     content: public override System.Security.AccessControl.AuditRule AuditRuleFactory (System.Security.Principal.IdentityReference identityReference, int accessMask, bool isInherited, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags, System.Security.AccessControl.AuditFlags flags);
     parameters:
     - id: identityReference
       type: System.Security.Principal.IdentityReference
-      description: "An <xref href=&quot;System.Security.Principal.IdentityReference&quot;></xref> that identifies the user or group the rule applies to."
+      description: "<xref href=&quot;System.Security.Principal.IdentityReference&quot;> </xref>标识用户或组规则适用于。"
     - id: accessMask
       type: System.Int32
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.RegistryRights&quot;></xref> values specifying the access rights to audit, cast to an integer."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.RegistryRights&quot;></xref>值指定的访问权限审核，强制转换为整数。"
     - id: isInherited
       type: System.Boolean
-      description: "A Boolean value specifying whether the rule is inherited."
+      description: "一个布尔值，指定是否继承规则。"
     - id: inheritanceFlags
       type: System.Security.AccessControl.InheritanceFlags
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.InheritanceFlags&quot;></xref> values specifying how the rule is inherited by subkeys."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.InheritanceFlags&quot;></xref>指定子项如何继承规则的值。"
     - id: propagationFlags
       type: System.Security.AccessControl.PropagationFlags
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.PropagationFlags&quot;></xref> values that modify the way the rule is inherited by subkeys. Meaningless if the value of `inheritanceFlags` is <xref href=&quot;System.Security.AccessControl.InheritanceFlags&quot;></xref>."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.PropagationFlags&quot;></xref>修改规则的子项将继承的方式的值。 如果无意义的值`inheritanceFlags`是<xref href=&quot;System.Security.AccessControl.InheritanceFlags&quot;> </xref>。"
     - id: flags
       type: System.Security.AccessControl.AuditFlags
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.AuditFlags&quot;></xref> values specifying whether to audit successful access, failed access, or both."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.AuditFlags&quot;></xref>指定是否要审核的成功访问、 失败的访问，或两者的值。"
     return:
       type: System.Security.AccessControl.AuditRule
-      description: "A <xref href=&quot;System.Security.AccessControl.RegistryAuditRule&quot;></xref> object representing the specified audit rule for the specified user, with the specified flags. The return type of the method is the base class, <xref href=&quot;System.Security.AccessControl.AuditRule&quot;></xref>, but the return value can be cast safely to the derived class."
+      description: "A <xref href=&quot;System.Security.AccessControl.RegistryAuditRule&quot;> </xref>对象，表示指定的用户，使用指定的标志指定的审核规则。 该方法的返回类型是基类， <xref href=&quot;System.Security.AccessControl.AuditRule&quot;> </xref>，但返回的值可以安全地强制转换到派生的类。"
   overload: System.Security.AccessControl.RegistrySecurity.AuditRuleFactory*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>accessMask</code>, <code>inheritanceFlags</code>, <code>propagationFlags</code>, or <code>flags</code> specifies an invalid value."
+    description: "<code>accessMask</code><code>inheritanceFlags</code>， <code>propagationFlags</code>，或<code>flags</code>指定了一个无效值。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>identityReference</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>accessMask</code> is zero."
+    description: "<code>identityReference</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -或-<code>accessMask</code>为零。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>identityReference</code> is neither of type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>, nor of a type such as <xref href=&quot;System.Security.Principal.NTAccount&quot;></xref> that can be converted to type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>."
+    description: "<code>identityReference</code>既不属于类型<xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>，也不的类型，如<xref href=&quot;System.Security.Principal.NTAccount&quot;></xref>可以转换为类型<xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>。"
   platform:
   - net462
 - uid: System.Security.AccessControl.RegistrySecurity.AuditRuleType
@@ -326,13 +326,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Gets the type that the <xref href=&quot;System.Security.AccessControl.RegistrySecurity&quot;></xref> class uses to represent audit rules."
-  remarks: "Classes that derive from the <xref:System.Security.AccessControl.ObjectSecurity> class override the <xref:System.Security.AccessControl.ObjectSecurity.AuditRuleType%2A> property and return the type they use to represent audit rights. When you work with arrays or collections that contain multiple types of security objects, use this property to determine the correct audit rule type to use with each security object."
+  summary: "获取的类型<xref href=&quot;System.Security.AccessControl.RegistrySecurity&quot;></xref>类用于表示审核规则。"
+  remarks: "派生自的类<xref:System.Security.AccessControl.ObjectSecurity>类替代<xref:System.Security.AccessControl.ObjectSecurity.AuditRuleType%2A>属性，并返回它们用于表示审核权限的类型。</xref:System.Security.AccessControl.ObjectSecurity.AuditRuleType%2A> </xref:System.Security.AccessControl.ObjectSecurity> 当使用数组或包含多个类型的安全对象的集合时，使用此属性来确定要用于每个安全对象的正确的审核规则类型。"
   syntax:
     content: public override Type AuditRuleType { get; }
     return:
       type: System.Type
-      description: "A <xref:System.Type> object representing the <xref href=&quot;System.Security.AccessControl.RegistryAuditRule&quot;></xref> class."
+      description: "A<xref:System.Type>对象，表示<xref href=&quot;System.Security.AccessControl.RegistryAuditRule&quot;></xref>类</xref:System.Type>"
   overload: System.Security.AccessControl.RegistrySecurity.AuditRuleType*
   exceptions: []
   platform:
@@ -349,8 +349,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for an access control rule with the same user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> (allow or deny) as the specified access rule, and with compatible inheritance and propagation flags; if such a rule is found, the rights contained in the specified access rule are removed from it."
-  remarks: "The current <xref:System.Security.AccessControl.RegistrySecurity> is searched for a rule that has the same user and the same <xref:System.Security.AccessControl.AccessControlType> value as `rule`. If no such rule is found, no action is taken, and the method returns `false`. If matching rules are found, their inheritance and compatibility flags are checked for compatibility with the flags specified in `rule`. If no compatible rule is found, no action is taken, and the method returns `false`. If a rule with compatible flags is found, the rights specified in `rule` are removed from the compatible rule, and the method returns `true`. If `rule` specifies rights not contained in the compatible rule, no action is taken with respect to those rights. If all rights are removed from the compatible rule, the entire rule is removed from the current <xref:System.Security.AccessControl.RegistrySecurity> object."
+  summary: "搜索与同一用户的访问控制规则和<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref> （允许或拒绝） 与指定的访问权限的规则，并具有兼容的继承和传播标志; 如果找到此类规则，指定的访问规则中包含的权限会从删除它。"
+  remarks: "当前<xref:System.Security.AccessControl.RegistrySecurity>具有相同的用户和相同的规则，将会搜索<xref:System.Security.AccessControl.AccessControlType>值作为`rule`。</xref:System.Security.AccessControl.AccessControlType> </xref:System.Security.AccessControl.RegistrySecurity> 如果找到任何此类规则，不执行任何操作，并且该方法返回`false`。 如果找到匹配的规则，它们继承和兼容性标志将检查与中指定的标志的兼容性`rule`。 如果找到任何兼容的规则，不执行任何操作，并且该方法返回`false`。 如果找到具有兼容的标志的规则，则在指定的权限`rule`会从兼容的规则，并且该方法返回`true`。 如果`rule`指定不兼容的规则中包含的权限，根据这些权限不执行任何操作。 如果从兼容的规则中移除所有权限，将整个规则都删除从当前<xref:System.Security.AccessControl.RegistrySecurity>对象。</xref:System.Security.AccessControl.RegistrySecurity>"
   example:
   - "The following code example shows how the RemoveAccessRule method removes rights from a compatible rule, and how the <xref:System.Security.AccessControl.RegistrySecurity.AddAccessRule%2A> method merges rights with compatible rules.  \n  \n The example creates a <xref:System.Security.AccessControl.RegistrySecurity> object and adds a rule that allows the current user <xref:System.Security.AccessControl.RegistryRights?displayProperty=fullName> rights. The example then creates a rule that grants the user <xref:System.Security.AccessControl.RegistryRights?displayProperty=fullName>, with the same inheritance and propagation rights as the first rule, and uses the RemoveAccessRule method to remove this new rule from the <xref:System.Security.AccessControl.RegistrySecurity> object. <xref:System.Security.AccessControl.RegistryRights> is a constituent of <xref:System.Security.AccessControl.RegistryRights>, so it is removed from the compatible rule. The rules in the <xref:System.Security.AccessControl.RegistrySecurity> object are displayed, showing the remaining constituents of <xref:System.Security.AccessControl.RegistryRights>.  \n  \n The example code then calls the RemoveAccessRule method to merge the <xref:System.Security.AccessControl.RegistryRights> right back into the rule in the <xref:System.Security.AccessControl.RegistrySecurity> object.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:Microsoft.Win32.RegistryKey> object. The second example in this section attaches a security object, and so do the examples in <xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A?displayProperty=fullName><xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-vb[System.Security.AccessControl.RegistrySecurity.RemoveAccessRule#1](~/add/codesnippet/visualbasic/797f5ef0-d4da-43dd-bbe9-_1.vb)]\n [!code-cs[System.Security.AccessControl.RegistrySecurity.RemoveAccessRule#1](~/add/codesnippet/csharp/797f5ef0-d4da-43dd-bbe9-_1.cs)]"
   syntax:
@@ -358,15 +358,15 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.RegistryAccessRule
-      description: "A <xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;></xref> that specifies the user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> to search for, and a set of inheritance and propagation flags that a matching rule, if found, must be compatible with. Specifies the rights to remove from the compatible rule, if found."
+      description: "A <xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;> </xref>指定的用户和<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref>搜索，以及一组继承和传播标志，用于匹配规则，如果找到，则必须是与兼容。 指定的权限删除兼容的规则，如果找到。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a compatible rule is found; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果找到兼容的规则;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Security.AccessControl.RegistrySecurity.RemoveAccessRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.RegistrySecurity.RemoveAccessRuleAll(System.Security.AccessControl.RegistryAccessRule)
@@ -381,8 +381,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for all access control rules with the same user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> (allow or deny) as the specified rule and, if found, removes them."
-  remarks: "The current <xref:System.Security.AccessControl.RegistrySecurity> is searched for rules that have the same user and the same <xref:System.Security.AccessControl.AccessControlType> value as `rule`. Any rights, inheritance flags, or propagation flags specified by `rule` are ignored when performing this search. If no matching rules are found, no action is taken.       For example, if a user has multiple rules that allow various rights with different inheritance and propagation flags, you can remove all those rules by creating a <xref:System.Security.AccessControl.RegistryAccessRule> object that specifies the user and <xref:System.Security.AccessControl.AccessControlType?displayProperty=fullName>, with any arbitrary rights and flags, and passing that rule to the RemoveAccessRuleAll method."
+  summary: "搜索所有访问控制规则具有相同的用户和<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref> （允许或拒绝） 指定规则且，如果找到，则删除它们。"
+  remarks: "当前<xref:System.Security.AccessControl.RegistrySecurity>具有相同的用户和相同的规则，将会搜索<xref:System.Security.AccessControl.AccessControlType>值作为`rule`。</xref:System.Security.AccessControl.AccessControlType> </xref:System.Security.AccessControl.RegistrySecurity> 任何权限、 继承标志或由指定的传播标志`rule`时执行此搜索将忽略。 如果不找到任何匹配的规则，不执行任何操作。       例如，如果用户具有允许具有不同的继承和传播标志的各种权限的多个规则，则可以删除所有这些规则通过创建<xref:System.Security.AccessControl.RegistryAccessRule>对象，它指定用户和<xref:System.Security.AccessControl.AccessControlType?displayProperty=fullName>、 与该规则 RemoveAccessRuleAll 方法到任意权限和标志，以及传递。</xref:System.Security.AccessControl.AccessControlType?displayProperty=fullName> </xref:System.Security.AccessControl.RegistryAccessRule>"
   example:
   - "The following code example shows that the RemoveAccessRuleAll method removes all rules that match user and <xref:System.Security.AccessControl.AccessControlType>, ignoring rights and flags.  \n  \n The example creates a <xref:System.Security.AccessControl.RegistrySecurity> object and adds rules that allow and deny various rights for the current user, with different inheritance and propagation flags. The example then creates a new rule that allows the current user to take ownership, and passes that rule to the RemoveAccessRuleAll method to remove the two rules that allow access.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:Microsoft.Win32.RegistryKey> object. See the <xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A?displayProperty=fullName> method and the <xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName> method.  \n  \n [!code-vb[System.Security.AccessControl.RegistrySecurity.RemoveAccessRuleAll#1](~/add/codesnippet/visualbasic/2ba6e9de-1f41-4d05-af76-_1.vb)]\n [!code-cs[System.Security.AccessControl.RegistrySecurity.RemoveAccessRuleAll#1](~/add/codesnippet/csharp/2ba6e9de-1f41-4d05-af76-_1.cs)]"
   syntax:
@@ -390,12 +390,12 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.RegistryAccessRule
-      description: "A <xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;></xref> that specifies the user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> to search for. Any rights, inheritance flags, or propagation flags specified by this rule are ignored."
+      description: "A <xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;> </xref>指定的用户和<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref>搜索。 忽略任何权限，继承标志或此规则指定的传播标志。"
   overload: System.Security.AccessControl.RegistrySecurity.RemoveAccessRuleAll*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.RegistrySecurity.RemoveAccessRuleSpecific(System.Security.AccessControl.RegistryAccessRule)
@@ -410,8 +410,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for an access control rule that exactly matches the specified rule and, if found, removes it."
-  remarks: "The rule is removed only if it exactly matches `rule` in all details, including flags. Other rules with the same user and <xref:System.Security.AccessControl.AccessControlType> are not affected.      > [!IMPORTANT] >  A rule represents one or more underlying access control entries (ACE), and these entries are split or combined as necessary when you modify the access security rules for a user. Thus, a rule might no longer exist in the specific form it had when it was added, and in that case the RemoveAccessRuleSpecific method cannot remove it."
+  summary: "搜索完全匹配所指定的访问控制规则的规则和，如果找到，则删除它。"
+  remarks: "仅当完全匹配时，才移除规则`rule`中的所有详细信息，包括标志。 具有相同的用户的其他规则和<xref:System.Security.AccessControl.AccessControlType>不会受到影响。</xref:System.Security.AccessControl.AccessControlType>      1> [!IMPORTANT]&1;> 规则表示一个或多个基础访问控制项 (ACE)，和拆分或修改用户的访问安全性规则时，根据需要组合这些条目。 因此，一个规则可能不再存在时它已添加的特定形式，RemoveAccessRuleSpecific 方法不能在这种情况下删除它。"
   example:
   - "The following code example shows that the RemoveAccessRuleSpecific method removes a rule only if it matches exactly.  \n  \n The example creates two rules that allow different rights. The rules have compatible inheritance and propagation flags, so when the second rule is added it merges with the first. The example calls the RemoveAccessRuleSpecific method, specifying the first rule, but because the rules are merged there is no rule that matches. The example then calls the <xref:System.Security.AccessControl.RegistrySecurity.RemoveAccessRule%2A> method to the remove the second rule from the merged rule, and finally calls the RemoveAccessRuleSpecific method to remove the first rule.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:Microsoft.Win32.RegistryKey> object. See the <xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A?displayProperty=fullName> method and the <xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName> method.  \n  \n [!code-vb[System.Security.AccessControl.RegistrySecurity.RemoveAccessRuleSpecific#1](~/add/codesnippet/visualbasic/9819c0cd-2b26-4472-a333-_1.vb)]\n [!code-cs[System.Security.AccessControl.RegistrySecurity.RemoveAccessRuleSpecific#1](~/add/codesnippet/csharp/9819c0cd-2b26-4472-a333-_1.cs)]"
   syntax:
@@ -419,12 +419,12 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.RegistryAccessRule
-      description: "The <xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;></xref> to remove."
+      description: "<xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;> </xref>删除。"
   overload: System.Security.AccessControl.RegistrySecurity.RemoveAccessRuleSpecific*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.RegistrySecurity.RemoveAuditRule(System.Security.AccessControl.RegistryAuditRule)
@@ -439,22 +439,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for an audit control rule with the same user as the specified rule, and with compatible inheritance and propagation flags; if a compatible rule is found, the rights contained in the specified rule are removed from it."
-  remarks: "The current <xref:System.Security.AccessControl.RegistrySecurity> is searched for an audit rule that has the same user as `rule`. If no such rule is found, no action is taken, and the method returns `false`. If matching rules are found, their inheritance and compatibility flags are checked for compatibility with the flags specified in `rule`. If no compatible rule is found, no action is taken, and the method returns `false`. If a rule with compatible flags is found, the rights specified in `rule` are removed from the compatible rule, and the method returns `true`. If `rule` specifies rights not contained in the compatible rule, no action is taken with respect to those rights. If all rights are removed from the compatible rule, the entire rule is removed from the current <xref:System.Security.AccessControl.RegistrySecurity> object."
+  summary: "搜索与同一用户作为指定的规则，并具有兼容的继承和传播标志; 审核控制规则如果找到兼容的规则，则会从其删除指定的规则中包含的权限。"
+  remarks: "当前<xref:System.Security.AccessControl.RegistrySecurity>搜索已为同一用户的审核规则`rule`。</xref:System.Security.AccessControl.RegistrySecurity> 如果找到任何此类规则，不执行任何操作，并且该方法返回`false`。 如果找到匹配的规则，它们继承和兼容性标志将检查与中指定的标志的兼容性`rule`。 如果找到任何兼容的规则，不执行任何操作，并且该方法返回`false`。 如果找到具有兼容的标志的规则，则在指定的权限`rule`会从兼容的规则，并且该方法返回`true`。 如果`rule`指定不兼容的规则中包含的权限，根据这些权限不执行任何操作。 如果从兼容的规则中移除所有权限，将整个规则都删除从当前<xref:System.Security.AccessControl.RegistrySecurity>对象。</xref:System.Security.AccessControl.RegistrySecurity>"
   syntax:
     content: public bool RemoveAuditRule (System.Security.AccessControl.RegistryAuditRule rule);
     parameters:
     - id: rule
       type: System.Security.AccessControl.RegistryAuditRule
-      description: "A <xref href=&quot;System.Security.AccessControl.RegistryAuditRule&quot;></xref> that specifies the user to search for, and a set of inheritance and propagation flags that a matching rule, if found, must be compatible with. Specifies the rights to remove from the compatible rule, if found."
+      description: "A <xref href=&quot;System.Security.AccessControl.RegistryAuditRule&quot;> </xref> ，它指定用户来进行搜索和一组继承和传播标志匹配规则，如果找到，则必须是与兼容。 指定的权限删除兼容的规则，如果找到。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a compatible rule is found; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果找到兼容的规则;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Security.AccessControl.RegistrySecurity.RemoveAuditRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.RegistrySecurity.RemoveAuditRuleAll(System.Security.AccessControl.RegistryAuditRule)
@@ -469,19 +469,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for all audit rules with the same user as the specified rule and, if found, removes them."
-  remarks: "The current <xref:System.Security.AccessControl.RegistrySecurity> is searched for audit rules that have the same user as `rule`. Any rights, inheritance flags, or propagation flags specified by `rule` are ignored when performing this search. If no matching rules are found, no action is taken."
+  summary: "搜索所有审核规则与同一用户与指定的规则，如果找到，将删除它们。"
+  remarks: "当前<xref:System.Security.AccessControl.RegistrySecurity>会为使用相同用户作为的审核规则搜索`rule`。</xref:System.Security.AccessControl.RegistrySecurity> 任何权限、 继承标志或由指定的传播标志`rule`时执行此搜索将忽略。 如果不找到任何匹配的规则，不执行任何操作。"
   syntax:
     content: public void RemoveAuditRuleAll (System.Security.AccessControl.RegistryAuditRule rule);
     parameters:
     - id: rule
       type: System.Security.AccessControl.RegistryAuditRule
-      description: "A <xref href=&quot;System.Security.AccessControl.RegistryAuditRule&quot;></xref> that specifies the user to search for. Any rights, inheritance flags, or propagation flags specified by this rule are ignored."
+      description: "A <xref href=&quot;System.Security.AccessControl.RegistryAuditRule&quot;> </xref> ，指定要搜索的用户。 忽略任何权限，继承标志或此规则指定的传播标志。"
   overload: System.Security.AccessControl.RegistrySecurity.RemoveAuditRuleAll*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.RegistrySecurity.RemoveAuditRuleSpecific(System.Security.AccessControl.RegistryAuditRule)
@@ -496,19 +496,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for an audit rule that exactly matches the specified rule and, if found, removes it."
-  remarks: "The rule is removed only if it exactly matches `rule` in all details, including flags. Other audit rules for the same user are not affected.      > [!IMPORTANT] >  A rule represents one or more underlying access control entries (ACE), and these entries are split or combined as necessary when you modify the audit security rules for a user. Thus, a rule might no longer exist in the specific form it had when it was added, and in that case the RemoveAuditRuleSpecific method cannot remove it."
+  summary: "搜索完全匹配所指定的审核规则的规则和，如果找到，则删除它。"
+  remarks: "仅当完全匹配时，才移除规则`rule`中的所有详细信息，包括标志。 不会影响同一用户其他审核规则。      1> [!IMPORTANT]&1;> 规则表示一个或多个基础访问控制项 (ACE)，和拆分或修改用户的审核安全规则时，根据需要组合这些条目。 因此，一个规则可能不再存在时它已添加的特定形式，RemoveAuditRuleSpecific 方法不能在这种情况下删除它。"
   syntax:
     content: public void RemoveAuditRuleSpecific (System.Security.AccessControl.RegistryAuditRule rule);
     parameters:
     - id: rule
       type: System.Security.AccessControl.RegistryAuditRule
-      description: "The <xref href=&quot;System.Security.AccessControl.RegistryAuditRule&quot;></xref> to be removed."
+      description: "<xref href=&quot;System.Security.AccessControl.RegistryAuditRule&quot;> </xref>要删除。"
   overload: System.Security.AccessControl.RegistrySecurity.RemoveAuditRuleSpecific*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.RegistrySecurity.ResetAccessRule(System.Security.AccessControl.RegistryAccessRule)
@@ -523,8 +523,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Removes all access control rules with the same user as the specified rule, regardless of <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref>, and then adds the specified rule."
-  remarks: "If there are no access rules whose user matches the specified rule, `rule` is added."
+  summary: "移除带有相同用户作为指定的规则，而不考虑的所有访问控制规则<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref>，然后将添加指定的规则。"
+  remarks: "如果没有指定的规则，与匹配的用户的访问规则`rule`添加。"
   example:
   - "The following code example shows how the ResetAccessRule method replaces all rules for the matching user with the rule specified for the match.  \n  \n The example creates a <xref:System.Security.AccessControl.RegistrySecurity> object and adds rules that allow and deny various rights for the current user, with different inheritance and propagation flags. The example then creates a new rule that allows the current user only to read the key, and uses the ResetAccessRule method to remove the all rules for the user and replace them with the new rule.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:Microsoft.Win32.RegistryKey> object. See the <xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A?displayProperty=fullName> method and the <xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName> method.  \n  \n [!code-cs[System.Security.AccessControl.RegistrySecurity.ResetAccessRule#1](~/add/codesnippet/csharp/80c97a6c-33e0-43c8-8894-_1.cs)]\n [!code-vb[System.Security.AccessControl.RegistrySecurity.ResetAccessRule#1](~/add/codesnippet/visualbasic/80c97a6c-33e0-43c8-8894-_1.vb)]"
   syntax:
@@ -532,7 +532,7 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.RegistryAccessRule
-      description: "The <xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;></xref> to add. The user specified by this rule determines the rules to remove before this rule is added."
+      description: "The <xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;></xref> to add. 此规则指定的用户确定要移除之前添加此规则的规则。"
   overload: System.Security.AccessControl.RegistrySecurity.ResetAccessRule*
   exceptions: []
   platform:
@@ -549,8 +549,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Removes all access control rules with the same user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> (allow or deny) as the specified rule, and then adds the specified rule."
-  remarks: "If the specified rule has <xref:System.Security.AccessControl.AccessControlType>, the effect of this method is to remove all <xref:System.Security.AccessControl.AccessControlType> rules for the specified user, replacing them with the specified rule. If the specified rule has <xref:System.Security.AccessControl.AccessControlType>, all <xref:System.Security.AccessControl.AccessControlType> rules for the specified user are replaced with the specified rule.       If there are no rules whose user and <xref:System.Security.AccessControl.AccessControlType> match the specified rule, `rule` is added."
+  summary: "移除带有相同的用户的所有访问控制规则和<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref> （允许或拒绝） 与指定的规则，然后将添加指定的规则。"
+  remarks: "如果指定的规则具有<xref:System.Security.AccessControl.AccessControlType>，此方法的效果是移除所有<xref:System.Security.AccessControl.AccessControlType>对于指定的用户，并将它们替换为指定的规则的规则。</xref:System.Security.AccessControl.AccessControlType> </xref:System.Security.AccessControl.AccessControlType> 如果指定的规则具有<xref:System.Security.AccessControl.AccessControlType>，所有<xref:System.Security.AccessControl.AccessControlType>规则指定的用户替换与指定的规则。</xref:System.Security.AccessControl.AccessControlType> </xref:System.Security.AccessControl.AccessControlType>       如果没有规则的用户和<xref:System.Security.AccessControl.AccessControlType>匹配指定的规则，`rule`添加。</xref:System.Security.AccessControl.AccessControlType>"
   example:
   - "The following code example shows that the SetAccessRule method removes all rules that match both the user and the <xref:System.Security.AccessControl.AccessControlType> of `rule`, ignoring rights and flags, and replaces them with `rule`.  \n  \n The example creates a <xref:System.Security.AccessControl.RegistrySecurity> object and adds rules that allow and deny various rights for the current user, with different inheritance and propagation flags. The example then creates a new rule that allows the current user only to read the key, and uses the SetAccessRule method to remove the two rules that allow access and to replace them with the new rule. The rule that denies access is not affected.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:Microsoft.Win32.RegistryKey> object. See the <xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A?displayProperty=fullName> method and the <xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName> method.  \n  \n [!code-vb[System.Security.AccessControl.RegistrySecurity.SetAccessRule#1](~/add/codesnippet/visualbasic/908f14bb-fbc5-4e71-ac82-_1.vb)]\n [!code-cs[System.Security.AccessControl.RegistrySecurity.SetAccessRule#1](~/add/codesnippet/csharp/908f14bb-fbc5-4e71-ac82-_1.cs)]"
   syntax:
@@ -558,12 +558,12 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.RegistryAccessRule
-      description: "The <xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;></xref> to add. The user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> of this rule determine the rules to remove before this rule is added."
+      description: "The <xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;></xref> to add. 用户和<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref>此规则确定要移除之前添加此规则的规则。"
   overload: System.Security.AccessControl.RegistrySecurity.SetAccessRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.RegistrySecurity.SetAuditRule(System.Security.AccessControl.RegistryAuditRule)
@@ -578,19 +578,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Removes all audit rules with the same user as the specified rule, regardless of the <xref href=&quot;System.Security.AccessControl.AuditFlags&quot;></xref> value, and then adds the specified rule."
-  remarks: "If there are no audit rules whose user matches the specified rule, `rule` is added."
+  summary: "移除所有审核规则与同一用户作为指定的规则，而不考虑<xref href=&quot;System.Security.AccessControl.AuditFlags&quot;></xref>值，并将指定的规则。"
+  remarks: "如果没有指定的规则，与匹配的用户的审核规则`rule`添加。"
   syntax:
     content: public void SetAuditRule (System.Security.AccessControl.RegistryAuditRule rule);
     parameters:
     - id: rule
       type: System.Security.AccessControl.RegistryAuditRule
-      description: "The <xref href=&quot;System.Security.AccessControl.RegistryAuditRule&quot;></xref> to add. The user specified by this rule determines the rules to remove before this rule is added."
+      description: "The <xref href=&quot;System.Security.AccessControl.RegistryAuditRule&quot;></xref> to add. 此规则指定的用户确定要移除之前添加此规则的规则。"
   overload: System.Security.AccessControl.RegistrySecurity.SetAuditRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 references:

@@ -14,8 +14,8 @@ items:
   nameWithType: MessageProcessingHandler
   fullName: System.Net.Http.MessageProcessingHandler
   type: Class
-  summary: "A base type for handlers which only do some small processing of request and/or response messages."
-  remarks: "The actual creation of response messages is delegated to an inner handler. The MessageProcessingHandler is useful if the handler doesn&quot;t require asynchronous operations, because operations on request and response messages are fast.       The most common usage is to derive from this class and override the <xref:System.Net.Http.MessageProcessingHandler.ProcessRequest%2A> and  <xref:System.Net.Http.MessageProcessingHandler.ProcessResponse%2A> methods."
+  summary: "仅对进行一些小型处理的请求和/或响应消息处理的处理程序的基类型。"
+  remarks: "响应消息的实际创建委托给内部处理程序。 MessageProcessingHandler 很有用如果处理程序不要求异步操作，因为对请求和响应消息的操作非常快。       最常见用法是从此类派生，并重写<xref:System.Net.Http.MessageProcessingHandler.ProcessRequest%2A>和<xref:System.Net.Http.MessageProcessingHandler.ProcessResponse%2A>方法。</xref:System.Net.Http.MessageProcessingHandler.ProcessResponse%2A> </xref:System.Net.Http.MessageProcessingHandler.ProcessRequest%2A>"
   syntax:
     content: 'public abstract class MessageProcessingHandler : System.Net.Http.DelegatingHandler'
   inheritance:
@@ -41,7 +41,7 @@ items:
   assemblies:
   - System.Net.Http
   namespace: System.Net.Http
-  summary: "Creates an instance of a <xref href=&quot;System.Net.Http.MessageProcessingHandler&quot;></xref> class."
+  summary: "创建的实例<xref href=&quot;System.Net.Http.MessageProcessingHandler&quot;></xref>类。"
   syntax:
     content: protected MessageProcessingHandler ();
     parameters: []
@@ -61,13 +61,13 @@ items:
   assemblies:
   - System.Net.Http
   namespace: System.Net.Http
-  summary: "Creates an instance of a <xref href=&quot;System.Net.Http.MessageProcessingHandler&quot;></xref> class with a specific inner handler."
+  summary: "创建的实例<xref href=&quot;System.Net.Http.MessageProcessingHandler&quot;></xref>与特定的内部处理程序类。"
   syntax:
     content: protected MessageProcessingHandler (System.Net.Http.HttpMessageHandler innerHandler);
     parameters:
     - id: innerHandler
       type: System.Net.Http.HttpMessageHandler
-      description: "The inner handler which is responsible for processing the HTTP response messages."
+      description: "内部处理程序即负责处理 HTTP 响应消息。"
   overload: System.Net.Http.MessageProcessingHandler.#ctor*
   exceptions: []
   platform:
@@ -84,20 +84,20 @@ items:
   assemblies:
   - System.Net.Http
   namespace: System.Net.Http
-  summary: "Performs processing on each request sent to the server."
-  remarks: "An application would override this method to implement custom processing of the HTTP request message before it is sent to the server."
+  summary: "每个请求发送到服务器上执行处理。"
+  remarks: "应用程序将重写此方法以实现自定义在处理 HTTP 请求消息发送到服务器之前。"
   syntax:
     content: protected abstract System.Net.Http.HttpRequestMessage ProcessRequest (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken);
     parameters:
     - id: request
       type: System.Net.Http.HttpRequestMessage
-      description: "The HTTP request message to process."
+      description: "要处理的 HTTP 请求消息。"
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "A cancellation token that can be used by other objects or threads to receive notice of cancellation."
+      description: "可以使用由其他对象或线程用以接收取消通知取消标记。"
     return:
       type: System.Net.Http.HttpRequestMessage
-      description: "The HTTP request message that was processed."
+      description: "处理 HTTP 请求消息。"
   overload: System.Net.Http.MessageProcessingHandler.ProcessRequest*
   exceptions: []
   platform:
@@ -114,20 +114,20 @@ items:
   assemblies:
   - System.Net.Http
   namespace: System.Net.Http
-  summary: "Perform processing on each response from the server."
-  remarks: "An application would override this method to implement custom processing of the HTTP response message after it is received from the server."
+  summary: "在每个响应从服务器上执行处理。"
+  remarks: "应用程序将重写此方法以从服务器接收后实现的 HTTP 响应消息的自定义处理。"
   syntax:
     content: protected abstract System.Net.Http.HttpResponseMessage ProcessResponse (System.Net.Http.HttpResponseMessage response, System.Threading.CancellationToken cancellationToken);
     parameters:
     - id: response
       type: System.Net.Http.HttpResponseMessage
-      description: "The HTTP response message to process."
+      description: "要处理的 HTTP 响应消息。"
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "A cancellation token that can be used by other objects or threads to receive notice of cancellation."
+      description: "可以使用由其他对象或线程用以接收取消通知取消标记。"
     return:
       type: System.Net.Http.HttpResponseMessage
-      description: "The HTTP response message that was processed."
+      description: "HTTP 响应消息进行处理。"
   overload: System.Net.Http.MessageProcessingHandler.ProcessResponse*
   exceptions: []
   platform:
@@ -144,20 +144,20 @@ items:
   assemblies:
   - System.Net.Http
   namespace: System.Net.Http
-  summary: "Sends an HTTP request to the inner handler to send to the server as an asynchronous operation."
-  remarks: "This operation does not block. This overridable implementation of SendAsync method forwards the HTTP request to the inner handler to send to the server as an asynchronous operation."
+  summary: "将 HTTP 请求发送到要发送到与异步操作的服务器的内部处理程序。"
+  remarks: "此操作不会阻止。 此可重写实现的 SendAsync 方法将转发到内部处理程序的 HTTP 请求将发送到服务器以异步操作。"
   syntax:
     content: protected override sealed System.Threading.Tasks.Task<System.Net.Http.HttpResponseMessage> SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken);
     parameters:
     - id: request
       type: System.Net.Http.HttpRequestMessage
-      description: "The HTTP request message to send to the server."
+      description: "要向服务器发送的 HTTP 请求消息。"
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "A cancellation token that can be used by other objects or threads to receive notice of cancellation."
+      description: "可以使用由其他对象或线程用以接收取消通知取消标记。"
     return:
       type: System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage}
-      description: "The task object representing the asynchronous operation."
+      description: "表示异步操作的任务对象。"
   overload: System.Net.Http.MessageProcessingHandler.SendAsync*
   exceptions:
   - type: System.ArgumentNullException

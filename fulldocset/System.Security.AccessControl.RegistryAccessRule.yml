@@ -14,8 +14,8 @@ items:
   nameWithType: RegistryAccessRule
   fullName: System.Security.AccessControl.RegistryAccessRule
   type: Class
-  summary: "Represents a set of access rights allowed or denied for a user or group. This class cannot be inherited."
-  remarks: "The RegistryAccessRule class is one of a set of classes that the .NET Framework provides for managing Windows access control security on registry keys. For an overview of these classes, and their relationship to the underlying Windows access control structures, see <xref:System.Security.AccessControl.RegistrySecurity>.      > [!NOTE] >  Windows access control security can only be applied to registry keys. It cannot be applied to individual key/value pairs stored in a key.       To get a list of the rules currently applied to a registry key, use the <xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A?displayProperty=fullName> method to get a <xref:System.Security.AccessControl.RegistrySecurity> object, and then use its <xref:System.Security.AccessControl.CommonObjectSecurity.GetAccessRules%2A> method to obtain a collection of RegistryAccessRule objects.       RegistryAccessRule objects do not map one-to-one with access control entries in the underlying discretionary control access list (DACL). When you get the set of all access rules for a registry key, the set contains the minimum number of rules currently required to express all the access control entries.      > [!NOTE] >  The underlying access control entries change as you apply and remove rules. The information in rules is merged if possible, to maintain the smallest number of access control entries. Thus, when you read the current list of rules, it might not look exactly like the list of all the rules you have added.       Use RegistryAccessRule objects to specify access rights to allow or deny to a user or group. A RegistryAccessRule object always represents either allowed access or denied access, never both.       To apply a rule to a registry key, use the <xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A?displayProperty=fullName> method to get the <xref:System.Security.AccessControl.RegistrySecurity> object. Modify the <xref:System.Security.AccessControl.RegistrySecurity> object by using its methods to add the rule, and then use the <xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName> method to reattach the security object.      > [!IMPORTANT] >  Changes you make to a <xref:System.Security.AccessControl.RegistrySecurity> object do not affect the access levels of the registry key until you call the <xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName> method to assign the altered security object to the registry key.       RegistryAccessRule objects are immutable. Security for a registry key is modified using the methods of the <xref:System.Security.AccessControl.RegistrySecurity> class to add or remove rules; as you do this, the underlying access control entries are modified."
+  summary: "表示一组允许或拒绝用户或组的访问权限。 此类不能被继承。"
+  remarks: "RegistryAccessRule 类是一套.NET Framework 提供了用于管理 Windows 注册表项的访问控制安全性的类之一。 这些类和二者关系的基础 Windows 访问控制结构的概述，请参阅<xref:System.Security.AccessControl.RegistrySecurity>。</xref:System.Security.AccessControl.RegistrySecurity>      1> [!NOTE]&1;> Windows 访问控制安全性可以仅应用于注册表项。 它不能应用于单个键/值对存储在注册表项。       若要获取当前应用于注册表项的规则的列表，请使用<xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A?displayProperty=fullName>方法以获取<xref:System.Security.AccessControl.RegistrySecurity>对象，，然后使用其<xref:System.Security.AccessControl.CommonObjectSecurity.GetAccessRules%2A>方法来获取 RegistryAccessRule 对象的集合。</xref:System.Security.AccessControl.CommonObjectSecurity.GetAccessRules%2A> </xref:System.Security.AccessControl.RegistrySecurity> </xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A?displayProperty=fullName>       RegistryAccessRule 对象不映射一对一与基础自由控制访问列表 (DACL) 中的访问控制项。 当你的所有访问规则集的某个注册表项时，该集合将包含当前表示所有访问控制项所需要的规则最小数量。      1> [!NOTE]&1;> 的基础的访问控制项更改，因为将应用并删除规则。 如果可能，合并规则中的信息来维护最少数量的访问控制项。 因此，当读取的规则的当前列表，它可能不完全一样已添加的所有规则的列表。       RegistryAccessRule 对象用于指定允许或拒绝用户或组的访问权限。 对象始终表示 RegistryAccessRule 允许访问，或拒绝访问，永远不会同时。       若要将规则应用于注册表项，使用<xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A?displayProperty=fullName>方法以获取<xref:System.Security.AccessControl.RegistrySecurity>对象。</xref:System.Security.AccessControl.RegistrySecurity> </xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A?displayProperty=fullName> 修改<xref:System.Security.AccessControl.RegistrySecurity>对象通过使用其方法来添加规则，然后使用<xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName>方法重新附加安全对象。</xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName> </xref:System.Security.AccessControl.RegistrySecurity>      1> [!IMPORTANT]&1;> 对所做的更改<xref:System.Security.AccessControl.RegistrySecurity>对象并不会影响注册表项的访问级别，直到你调用<xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName>方法以将修改过的安全对象分配给注册表项。</xref:Microsoft.Win32.RegistryKey.SetAccessControl%2A?displayProperty=fullName> </xref:System.Security.AccessControl.RegistrySecurity>       RegistryAccessRule 对象是不可变。 使用的方法修改注册表项安全性<xref:System.Security.AccessControl.RegistrySecurity>类来添加或删除规则; 执行此操作时，修改的基础的访问控制项。</xref:System.Security.AccessControl.RegistrySecurity>"
   example:
   - "The following code example demonstrates access rules with inheritance and propagation. The example creates a <xref:System.Security.AccessControl.RegistrySecurity> object, then creates and adds two rules that have the <xref:System.Security.AccessControl.InheritanceFlags> flag. The first rule has no propagation flags, while the second has <xref:System.Security.AccessControl.PropagationFlags> and <xref:System.Security.AccessControl.PropagationFlags>.  \n  \n The program displays the rules in the <xref:System.Security.AccessControl.RegistrySecurity> object, and then uses the object to create a subkey. The program creates a child subkey and a grandchild subkey, and then displays the security for each subkey. Finally, the program deletes the test keys.  \n  \n [!code-vb[System.Security.AccessControl.RegistryAccessRule.ctor2#1](~/add/codesnippet/visualbasic/t-system.security.access_11_1.vb)]\n [!code-cs[System.Security.AccessControl.RegistryAccessRule.ctor2#1](~/add/codesnippet/csharp/t-system.security.access_11_1.cs)]"
   syntax:
@@ -46,31 +46,31 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;></xref> class, specifying the user or group the rule applies to, the access rights, and whether the specified access rights are allowed or denied."
-  remarks: "This constructor specifies default propagation and inheritance. That is, <xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName> and <xref:System.Security.AccessControl.PropagationFlags?displayProperty=fullName>."
+  summary: "初始化的新实例<xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;></xref>类，指定的用户或组，该规则适用于的访问权限，以及是否允许或拒绝指定的访问权限。"
+  remarks: "此构造函数指定默认传播和继承。 这就是说，<xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName>和<xref:System.Security.AccessControl.PropagationFlags?displayProperty=fullName>。</xref:System.Security.AccessControl.PropagationFlags?displayProperty=fullName> </xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName>"
   syntax:
     content: public RegistryAccessRule (System.Security.Principal.IdentityReference identity, System.Security.AccessControl.RegistryRights registryRights, System.Security.AccessControl.AccessControlType type);
     parameters:
     - id: identity
       type: System.Security.Principal.IdentityReference
-      description: "The user or group the rule applies to. Must be of type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref> or a type such as <xref href=&quot;System.Security.Principal.NTAccount&quot;></xref> that can be converted to type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>."
+      description: "用户或此规则适用于的组中。 类型必须为<xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>或类型，如<xref href=&quot;System.Security.Principal.NTAccount&quot;></xref>可以转换为类型<xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>。"
     - id: registryRights
       type: System.Security.AccessControl.RegistryRights
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.RegistryRights&quot;></xref> values indicating the rights allowed or denied."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.RegistryRights&quot;></xref>值，该值指示权限允许或拒绝。"
     - id: type
       type: System.Security.AccessControl.AccessControlType
-      description: "One of the <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> values indicating whether the rights are allowed or denied."
+      description: "之一<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref>值，该值指示是否允许或拒绝权限。"
   overload: System.Security.AccessControl.RegistryAccessRule.#ctor*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>registryRights</code> specifies an invalid value.       -or-       <code>type</code> specifies an invalid value."
+    description: "<code>registryRights</code>指定了一个无效值。       -或-<code>type</code>指定了一个无效值。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>identity</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>eventRights</code> is zero."
+    description: "<code>identity</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -或-<code>eventRights</code>为零。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>identity</code> is neither of type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref> nor of a type such as <xref href=&quot;System.Security.Principal.NTAccount&quot;></xref> that can be converted to type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>."
+    description: "<code>identity</code>既不属于类型<xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>也不的类型，如<xref href=&quot;System.Security.Principal.NTAccount&quot;></xref>可以转换为类型<xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>。"
   platform:
   - net462
 - uid: System.Security.AccessControl.RegistryAccessRule.#ctor(System.String,System.Security.AccessControl.RegistryRights,System.Security.AccessControl.AccessControlType)
@@ -85,8 +85,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;></xref> class, specifying the name of the user or group the rule applies to, the access rights, and whether the specified access rights are allowed or denied."
-  remarks: "This constructor specifies default propagation and inheritance. That is, <xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName> and <xref:System.Security.AccessControl.PropagationFlags?displayProperty=fullName>.       This constructor is equivalent to creating an <xref:System.Security.Principal.NTAccount> object, by passing `identity` to the <xref:System.Security.Principal.NTAccount.%23ctor%28System.String%29?displayProperty=fullName> constructor, and passing the newly created <xref:System.Security.Principal.NTAccount> object to the <xref:System.Security.AccessControl.RegistryAccessRule.%23ctor%28System.Security.Principal.IdentityReference%2CSystem.Security.AccessControl.RegistryRights%2CSystem.Security.AccessControl.AccessControlType%29> constructor."
+  summary: "初始化的新实例<xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;></xref>类，指定名称的用户或组，该规则适用于的访问权限，以及是否允许或拒绝指定的访问权限。"
+  remarks: "此构造函数指定默认传播和继承。 这就是说，<xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName>和<xref:System.Security.AccessControl.PropagationFlags?displayProperty=fullName>。</xref:System.Security.AccessControl.PropagationFlags?displayProperty=fullName> </xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName>       此构造函数等效于创建<xref:System.Security.Principal.NTAccount>对象，通过传递`identity`到<xref:System.Security.Principal.NTAccount.%23ctor%28System.String%29?displayProperty=fullName>构造函数，并传递新创建<xref:System.Security.Principal.NTAccount>对象传递给<xref:System.Security.AccessControl.RegistryAccessRule.%23ctor%28System.Security.Principal.IdentityReference%2CSystem.Security.AccessControl.RegistryRights%2CSystem.Security.AccessControl.AccessControlType%29>构造函数。</xref:System.Security.AccessControl.RegistryAccessRule.%23ctor%28System.Security.Principal.IdentityReference%2CSystem.Security.AccessControl.RegistryRights%2CSystem.Security.AccessControl.AccessControlType%29> </xref:System.Security.Principal.NTAccount> </xref:System.Security.Principal.NTAccount.%23ctor%28System.String%29?displayProperty=fullName> </xref:System.Security.Principal.NTAccount>"
   example:
   - "The following code example creates registry access rules and adds them to a <xref:System.Security.AccessControl.RegistrySecurity> object, showing how rules that allow and deny rights remain separate, while compatible rules of the same kind are merged.  \n  \n [!code-cs[System.Security.AccessControl.RegistrySecurity.AddAccessRule#1](~/add/codesnippet/csharp/cf7d2ba9-37b1-4239-a52a-_1.cs)]\n [!code-vb[System.Security.AccessControl.RegistrySecurity.AddAccessRule#1](~/add/codesnippet/visualbasic/cf7d2ba9-37b1-4239-a52a-_1.vb)]"
   syntax:
@@ -94,24 +94,24 @@ items:
     parameters:
     - id: identity
       type: System.String
-      description: "The name of the user or group the rule applies to."
+      description: "该规则适用于用户或组的名称。"
     - id: registryRights
       type: System.Security.AccessControl.RegistryRights
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.RegistryRights&quot;></xref> values indicating the rights allowed or denied."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.RegistryRights&quot;></xref>值，该值指示权限允许或拒绝。"
     - id: type
       type: System.Security.AccessControl.AccessControlType
-      description: "One of the <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> values indicating whether the rights are allowed or denied."
+      description: "之一<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref>值，该值指示是否允许或拒绝权限。"
   overload: System.Security.AccessControl.RegistryAccessRule.#ctor*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>registryRights</code> specifies an invalid value.       -or-       <code>type</code> specifies an invalid value."
+    description: "<code>registryRights</code>指定了一个无效值。       -或-<code>type</code>指定了一个无效值。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>registryRights</code> is zero."
+    description: "<code>registryRights</code>为零。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>identity</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>identity</code> is a zero-length string.       -or-       <code>identity</code> is longer than 512 characters."
+    description: "<code>identity</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -或-<code>identity</code>是零长度字符串。       -或-<code>identity</code>长度超过 512 个字符。"
   platform:
   - net462
 - uid: System.Security.AccessControl.RegistryAccessRule.#ctor(System.Security.Principal.IdentityReference,System.Security.AccessControl.RegistryRights,System.Security.AccessControl.InheritanceFlags,System.Security.AccessControl.PropagationFlags,System.Security.AccessControl.AccessControlType)
@@ -126,37 +126,37 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;></xref> class, specifying the user or group the rule applies to, the access rights, the inheritance flags, the propagation flags, and whether the specified access rights are allowed or denied."
+  summary: "初始化的新实例<xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;></xref>类，请指定用户或组，该规则适用于访问权限，传播标志，并指定的访问权限是否允许或拒绝。"
   remarks: "All registry keys are containers, so the only inheritance flag that is meaningful for registry keys is the <xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName> flag. If this flag is not specified, the propagation flags are ignored, and only the immediate key is affected. If the flag is present, the rule is propagated as shown in the following table. The table assumes there is a subkey S with child subkey CS and grandchild subkey GS. That is, the path for the grandchild subkey is S\\CS\\GS.  \n  \n|Propagation flags|S|CS|GS|  \n|-----------------------|-------|--------|--------|  \n|<xref:System.Security.AccessControl.PropagationFlags>|X|X|X|  \n|<xref:System.Security.AccessControl.PropagationFlags>|X|X||  \n|<xref:System.Security.AccessControl.PropagationFlags>||X|X|  \n|<xref:System.Security.AccessControl.PropagationFlags>, <xref:System.Security.AccessControl.PropagationFlags>||X||  \n  \n The pattern for the grandchild subkey governs all subkeys contained by the grandchild subkey.  \n  \n For example, if the <xref:System.Security.AccessControl.InheritanceFlags> flag is specified for `inheritanceFlags` and the <xref:System.Security.AccessControl.PropagationFlags> propagation flag is specified for `propagationFlags`, this rule does not apply to the immediate subkey, but does apply to all its immediate child subkeys and to all subkeys they contain.  \n  \n> [!NOTE]\n>  Although you can specify the <xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName> flag for `inheritanceFlags`, there is no point in doing so. For the purposes of access control, the name/value pairs in a subkey are not separate objects. The access rights to name/value pairs are controlled by the rights of the subkey. Furthermore, since all subkeys are containers (that is, they can contain other subkeys), they are not affected by the <xref:System.Security.AccessControl.InheritanceFlags> flag. Finally, specifying the <xref:System.Security.AccessControl.InheritanceFlags> flag needlessly complicates the maintenance of rules, because it interferes with the combination of otherwise compatible rules."
   syntax:
     content: public RegistryAccessRule (System.Security.Principal.IdentityReference identity, System.Security.AccessControl.RegistryRights registryRights, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags, System.Security.AccessControl.AccessControlType type);
     parameters:
     - id: identity
       type: System.Security.Principal.IdentityReference
-      description: "The user or group the rule applies to. Must be of type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref> or a type such as <xref href=&quot;System.Security.Principal.NTAccount&quot;></xref> that can be converted to type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>."
+      description: "用户或此规则适用于的组中。 类型必须为<xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>或类型，如<xref href=&quot;System.Security.Principal.NTAccount&quot;></xref>可以转换为类型<xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>。"
     - id: registryRights
       type: System.Security.AccessControl.RegistryRights
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.RegistryRights&quot;></xref> values specifying the rights allowed or denied."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.RegistryRights&quot;></xref>值指定的权限允许或拒绝。"
     - id: inheritanceFlags
       type: System.Security.AccessControl.InheritanceFlags
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.InheritanceFlags&quot;></xref> flags specifying how access rights are inherited from other objects."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.InheritanceFlags&quot;></xref>指定如何从其他对象继承的访问权限的标志。"
     - id: propagationFlags
       type: System.Security.AccessControl.PropagationFlags
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.PropagationFlags&quot;></xref> flags specifying how access rights are propagated to other objects."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.PropagationFlags&quot;></xref>标志指定如何将访问权限传播到其他对象。"
     - id: type
       type: System.Security.AccessControl.AccessControlType
-      description: "One of the <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> values specifying whether the rights are allowed or denied."
+      description: "之一<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref>值指定是否允许或拒绝权限。"
   overload: System.Security.AccessControl.RegistryAccessRule.#ctor*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>registryRights</code> specifies an invalid value.       -or-       <code>type</code> specifies an invalid value.       -or-       <code>inheritanceFlags</code> specifies an invalid value.       -or-       <code>propagationFlags</code> specifies an invalid value."
+    description: "<code>registryRights</code>指定了一个无效值。       -或-<code>type</code>指定了一个无效值。       -或-<code>inheritanceFlags</code>指定了一个无效值。       -或-<code>propagationFlags</code>指定了一个无效值。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>identity</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>registryRights</code> is zero."
+    description: "<code>identity</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -或-<code>registryRights</code>为零。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>identity</code> is neither of type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>, nor of a type such as <xref href=&quot;System.Security.Principal.NTAccount&quot;></xref> that can be converted to type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>."
+    description: "<code>identity</code>既不属于类型<xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>，也不的类型，如<xref href=&quot;System.Security.Principal.NTAccount&quot;></xref>可以转换为类型<xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>。"
   platform:
   - net462
 - uid: System.Security.AccessControl.RegistryAccessRule.#ctor(System.String,System.Security.AccessControl.RegistryRights,System.Security.AccessControl.InheritanceFlags,System.Security.AccessControl.PropagationFlags,System.Security.AccessControl.AccessControlType)
@@ -171,7 +171,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;></xref> class, specifying the name of the user or group the rule applies to, the access rights, the inheritance flags, the propagation flags, and whether the specified access rights are allowed or denied."
+  summary: "初始化的新实例<xref href=&quot;System.Security.AccessControl.RegistryAccessRule&quot;></xref>类，请指定名称的用户或组，该规则适用于访问权限，传播标志，并指定的访问权限是否允许或拒绝。"
   remarks: "All registry keys are containers, so the only inheritance flag that is meaningful for registry keys is the <xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName> flag. If this flag is not specified, the propagation flags are ignored, and only the immediate key is affected. If the flag is present, the rule is propagated as shown in the following table. The table assumes there is a subkey S with child subkey CS and grandchild subkey GS. That is, the path for the grandchild subkey is S\\CS\\GS.  \n  \n|Propagation flags|S|CS|GS|  \n|-----------------------|-------|--------|--------|  \n|<xref:System.Security.AccessControl.PropagationFlags>|X|X|X|  \n|<xref:System.Security.AccessControl.PropagationFlags>|X|X||  \n|<xref:System.Security.AccessControl.PropagationFlags>||X|X|  \n|<xref:System.Security.AccessControl.PropagationFlags>, <xref:System.Security.AccessControl.PropagationFlags>||X||  \n  \n The pattern for the grandchild subkey governs all subkeys contained by the grandchild subkey.  \n  \n For example, if the <xref:System.Security.AccessControl.InheritanceFlags> flag is specified for `inheritanceFlags` and the <xref:System.Security.AccessControl.PropagationFlags> propagation flag is specified for `propagationFlags`, this rule does not apply to the immediate subkey, but does apply to all its immediate child subkeys and to all subkeys they contain.  \n  \n> [!NOTE]\n>  Although you can specify the <xref:System.Security.AccessControl.InheritanceFlags?displayProperty=fullName> flag for `inheritanceFlags`, there is no point in doing so. For the purposes of access control, the name/value pairs in a subkey are not separate objects. The access rights to name/value pairs are controlled by the rights of the subkey. Furthermore, since all subkeys are containers (that is, they can contain other subkeys), they are not affected by the <xref:System.Security.AccessControl.InheritanceFlags> flag. Finally, specifying the <xref:System.Security.AccessControl.InheritanceFlags> flag needlessly complicates the maintenance of rules, because it interferes with the combination of otherwise compatible rules.  \n  \n This constructor is equivalent to creating an <xref:System.Security.Principal.NTAccount> object, by passing `identity` to the <xref:System.Security.Principal.NTAccount.%23ctor%28System.String%29?displayProperty=fullName> constructor, and passing the newly created <xref:System.Security.Principal.NTAccount> object to the <xref:System.Security.AccessControl.RegistryAccessRule.%23ctor%28System.Security.Principal.IdentityReference%2CSystem.Security.AccessControl.RegistryRights%2CSystem.Security.AccessControl.InheritanceFlags%2CSystem.Security.AccessControl.PropagationFlags%2CSystem.Security.AccessControl.AccessControlType%29> constructor."
   example:
   - "The following code example demonstrates access rules with inheritance and propagation. The example creates a <xref:System.Security.AccessControl.RegistrySecurity> object, and then creates and adds two rules that have the <xref:System.Security.AccessControl.InheritanceFlags> flag. The first rule has no propagation flags, while the second has <xref:System.Security.AccessControl.PropagationFlags> and <xref:System.Security.AccessControl.PropagationFlags>.  \n  \n The program displays the rules in the <xref:System.Security.AccessControl.RegistrySecurity> object, and then uses the <xref:System.Security.AccessControl.RegistrySecurity> object to create a subkey. The program creates a child subkey and a grandchild subkey, and then displays the rules for each subkey. Finally, the program deletes the test keys.  \n  \n [!code-vb[System.Security.AccessControl.RegistryAccessRule.ctor2#1](~/add/codesnippet/visualbasic/43217ff3-f8bd-4a0e-bd95-_1.vb)]\n [!code-cs[System.Security.AccessControl.RegistryAccessRule.ctor2#1](~/add/codesnippet/csharp/43217ff3-f8bd-4a0e-bd95-_1.cs)]"
@@ -180,30 +180,30 @@ items:
     parameters:
     - id: identity
       type: System.String
-      description: "The name of the user or group the rule applies to."
+      description: "该规则适用于用户或组的名称。"
     - id: registryRights
       type: System.Security.AccessControl.RegistryRights
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.RegistryRights&quot;></xref> values indicating the rights allowed or denied."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.RegistryRights&quot;></xref>值，该值指示权限允许或拒绝。"
     - id: inheritanceFlags
       type: System.Security.AccessControl.InheritanceFlags
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.InheritanceFlags&quot;></xref> flags specifying how access rights are inherited from other objects."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.InheritanceFlags&quot;></xref>指定如何从其他对象继承的访问权限的标志。"
     - id: propagationFlags
       type: System.Security.AccessControl.PropagationFlags
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.PropagationFlags&quot;></xref> flags specifying how access rights are propagated to other objects."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.PropagationFlags&quot;></xref>标志指定如何将访问权限传播到其他对象。"
     - id: type
       type: System.Security.AccessControl.AccessControlType
-      description: "One of the <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> values specifying whether the rights are allowed or denied."
+      description: "之一<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref>值指定是否允许或拒绝权限。"
   overload: System.Security.AccessControl.RegistryAccessRule.#ctor*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>registryRights</code> specifies an invalid value.       -or-       <code>type</code> specifies an invalid value.       -or-       <code>inheritanceFlags</code> specifies an invalid value.       -or-       <code>propagationFlags</code> specifies an invalid value."
+    description: "<code>registryRights</code>指定了一个无效值。       -或-<code>type</code>指定了一个无效值。       -或-<code>inheritanceFlags</code>指定了一个无效值。       -或-<code>propagationFlags</code>指定了一个无效值。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>eventRights</code> is zero."
+    description: "<code>eventRights</code>为零。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>identity</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>identity</code> is a zero-length string.       -or-       <code>identity</code> is longer than 512 characters."
+    description: "<code>identity</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -或-<code>identity</code>是零长度字符串。       -或-<code>identity</code>长度超过 512 个字符。"
   platform:
   - net462
 - uid: System.Security.AccessControl.RegistryAccessRule.RegistryRights
@@ -218,13 +218,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Gets the rights allowed or denied by the access rule."
-  remarks: "<xref:System.Security.AccessControl.RegistryAccessRule> objects are immutable. You can create a new access rule representing a different user, different rights, or a different <xref:System.Security.AccessControl.AccessControlType>, but you cannot modify an existing access rule."
+  summary: "获取允许或拒绝访问规则的权限。"
+  remarks: "<xref:System.Security.AccessControl.RegistryAccessRule>对象是不可变。</xref:System.Security.AccessControl.RegistryAccessRule> 你可以创建新的访问规则，以表示不同的用户，不同的权限，或不同<xref:System.Security.AccessControl.AccessControlType>，但不是能修改现有的访问规则。</xref:System.Security.AccessControl.AccessControlType>"
   syntax:
     content: public System.Security.AccessControl.RegistryRights RegistryRights { get; }
     return:
       type: System.Security.AccessControl.RegistryRights
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.RegistryRights&quot;></xref> values indicating the rights allowed or denied by the access rule."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.RegistryRights&quot;></xref>值，该值指示权限允许或拒绝访问规则。"
   overload: System.Security.AccessControl.RegistryAccessRule.RegistryRights*
   exceptions: []
   platform:

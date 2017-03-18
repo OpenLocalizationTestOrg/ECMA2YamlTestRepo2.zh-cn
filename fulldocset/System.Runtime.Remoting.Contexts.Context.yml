@@ -27,7 +27,7 @@ items:
   nameWithType: Context
   fullName: System.Runtime.Remoting.Contexts.Context
   type: Class
-  summary: "Defines an environment for the objects that are resident inside it and for which a policy can be enforced."
+  summary: "定义为驻留在对象以及可以实施策略的环境。"
   remarks: "A context is an ordered sequence of properties that define an environment for the objects resident inside it. Contexts get created during the activation process for objects that are configured to require certain automatic services, such as synchronization, transactions, just-in-time activation, security, and so on. Multiple objects can live inside a context.  \n  \n Classes are marked with an instance of the <xref:System.Runtime.Remoting.Contexts.ContextAttribute> class, which provides the usage rules. Whenever a new object is instantiated, the .NET Framework finds a compatible or creates a new instance of the Context class for the object. Once an object is placed in a context, it stays in it for life. Classes that can be bound to a context are called context-bound classes. When accessed from another context, such classes are referenced directly by using a proxy. Any call from an object in one context to an object in another context will go through a context proxy and be affected by the policy that the combined context properties enforce.  \n  \n A new object's context is generally chosen based on meta-data attributes on the class. This mechanism is extensible through custom attributes. These are known as static-context properties, which are compiled into the class meta-data. Dynamic-context properties (also known as configuration properties) can be applied and configured by administrators.  \n  \n For more information on contexts, see [&#91;\\<topic://cpconboundariesprocessesapplicationdomainscontexts>&#93;](http://msdn.microsoft.com/en-us/7574180d-70df-44b8-8b78-55a119f2c96d)."
   syntax:
     content: >-
@@ -52,7 +52,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Initializes a new instance of the <xref href=&quot;System.Runtime.Remoting.Contexts.Context&quot;></xref> class."
+  summary: "初始化的新实例<xref href=&quot;System.Runtime.Remoting.Contexts.Context&quot;></xref>类。"
   syntax:
     content: public Context ();
     parameters: []
@@ -72,14 +72,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Allocates an unnamed data slot."
-  remarks: "The slot is allocated on all the contexts."
+  summary: "分配未命名的数据槽。"
+  remarks: "该数据槽分配所有上下文中。"
   syntax:
     content: public static LocalDataStoreSlot AllocateDataSlot ();
     parameters: []
     return:
       type: System.LocalDataStoreSlot
-      description: "A local data slot."
+      description: "本地数据槽。"
   overload: System.Runtime.Remoting.Contexts.Context.AllocateDataSlot*
   exceptions: []
   platform:
@@ -96,17 +96,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Allocates a named data slot."
-  remarks: "The slot is allocated on all the contexts. Named data slots are public and can be manipulated by anyone."
+  summary: "分配已命名的数据槽。"
+  remarks: "该数据槽分配所有上下文中。 命名的数据槽都是公开的并可操作的任何人。"
   syntax:
     content: public static LocalDataStoreSlot AllocateNamedDataSlot (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The required name for the data slot."
+      description: "必需的数据槽的名称。"
     return:
       type: System.LocalDataStoreSlot
-      description: "A local data slot object."
+      description: "本地数据槽对象。"
   overload: System.Runtime.Remoting.Contexts.Context.AllocateNamedDataSlot*
   exceptions: []
   platform:
@@ -123,12 +123,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Gets the context ID for the current context."
+  summary: "获取当前上下文的上下文 ID。"
   syntax:
     content: public virtual int ContextID { get; }
     return:
       type: System.Int32
-      description: "The context ID for the current context."
+      description: "当前上下文的上下文 ID。"
   overload: System.Runtime.Remoting.Contexts.Context.ContextID*
   exceptions: []
   platform:
@@ -145,12 +145,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Gets the array of the current context properties."
+  summary: "获取当前的上下文属性的数组。"
   syntax:
     content: public virtual System.Runtime.Remoting.Contexts.IContextProperty[] ContextProperties { get; }
     return:
       type: System.Runtime.Remoting.Contexts.IContextProperty[]
-      description: "The current context properties array; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the context does not have any properties attributed to it."
+      description: "当前上下文属性的数组;否则为<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果上下文没有归因于它的任何属性。"
   overload: System.Runtime.Remoting.Contexts.Context.ContextProperties*
   exceptions: []
   platform:
@@ -167,13 +167,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Gets the default context for the current application domain."
-  remarks: "Every thread in an application domain for which a context is not explicitly set is considered to be running in the default context."
+  summary: "获取当前应用程序域的默认上下文。"
+  remarks: "为其上下文未显式设置应用程序域中的每个线程将被视为默认上下文中运行。"
   syntax:
     content: public static System.Runtime.Remoting.Contexts.Context DefaultContext { get; }
     return:
       type: System.Runtime.Remoting.Contexts.Context
-      description: "The default context for the <xref href=&quot;System.AppDomain&quot;></xref> namespace."
+      description: "默认上下文<xref href=&quot;System.AppDomain&quot;></xref>命名空间。"
   overload: System.Runtime.Remoting.Contexts.Context.DefaultContext*
   exceptions: []
   platform:
@@ -190,14 +190,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Executes code in another context."
-  remarks: "A callback can be done by calling the DoCallBack method on it by passing in a delegate. The delegate is used to request a callback. The delegate must be a <xref:System.Runtime.Remoting.Contexts.CrossContextDelegate> class type."
+  summary: "另一个上下文中执行代码。"
+  remarks: "可以通过在其上调用 DoCallBack 方法，通过传入委托回调。 委托用于请求回调。 委派必须是<xref:System.Runtime.Remoting.Contexts.CrossContextDelegate>类类型。</xref:System.Runtime.Remoting.Contexts.CrossContextDelegate>"
   syntax:
     content: public void DoCallBack (System.Runtime.Remoting.Contexts.CrossContextDelegate deleg);
     parameters:
     - id: deleg
       type: System.Runtime.Remoting.Contexts.CrossContextDelegate
-      description: "The delegate used to request the callback."
+      description: "用于请求回调的委托。"
   overload: System.Runtime.Remoting.Contexts.Context.DoCallBack*
   exceptions: []
   platform:
@@ -214,8 +214,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Cleans up the backing objects for the nondefault contexts."
-  remarks: "For default contexts, backing objects are cleaned up during shut down of the <xref:System.AppDomain> class."
+  summary: "清理非默认上下文后备对象。"
+  remarks: "默认上下文后备对象清理在关闭期间按下的<xref:System.AppDomain>类。</xref:System.AppDomain>"
   syntax:
     content: ~Context ();
     parameters: []
@@ -235,14 +235,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Frees a named data slot on all the contexts."
-  remarks: "Named data slots are public and can be manipulated by anyone."
+  summary: "释放所有上下文中的命名的数据槽。"
+  remarks: "命名的数据槽都是公开的并可操作的任何人。"
   syntax:
     content: public static void FreeNamedDataSlot (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the data slot to free."
+      description: "若要释放的数据槽的名称。"
   overload: System.Runtime.Remoting.Contexts.Context.FreeNamedDataSlot*
   exceptions: []
   platform:
@@ -259,8 +259,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Freezes the context, making it impossible to add or remove context properties from the current context."
-  remarks: "Context properties cannot be added after the context has been frozen."
+  summary: "会冻结上下文，使其无法添加或删除从当前上下文的上下文属性。"
+  remarks: "上下文已被冻结后，无法添加上下文属性。"
   syntax:
     content: public virtual void Freeze ();
     parameters: []
@@ -268,7 +268,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The context is already frozen."
+    description: "上下文已冻结。"
   platform:
   - net462
 - uid: System.Runtime.Remoting.Contexts.Context.GetData(System.LocalDataStoreSlot)
@@ -283,16 +283,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Retrieves the value from the specified slot on the current context."
+  summary: "从指定的槽在当前上下文中检索的值。"
   syntax:
     content: public static object GetData (LocalDataStoreSlot slot);
     parameters:
     - id: slot
       type: System.LocalDataStoreSlot
-      description: "The data slot that contains the data."
+      description: "包含数据的数据槽。"
     return:
       type: System.Object
-      description: "Returns the data associated with <code>slot</code>."
+      description: "返回与关联的数据<code> slot </code>。"
   overload: System.Runtime.Remoting.Contexts.Context.GetData*
   exceptions: []
   platform:
@@ -309,17 +309,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Looks up a named data slot."
-  remarks: "If the name has not been used, a new slot is allocated. Named data slots are public and can be manipulated by anyone."
+  summary: "查找命名的数据槽。"
+  remarks: "如果不使用的名称，将分配新的槽。 命名的数据槽都是公开的并可操作的任何人。"
   syntax:
     content: public static LocalDataStoreSlot GetNamedDataSlot (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The data slot name."
+      description: "数据槽的名称。"
     return:
       type: System.LocalDataStoreSlot
-      description: "Returns a local data slot."
+      description: "返回本地数据槽。"
   overload: System.Runtime.Remoting.Contexts.Context.GetNamedDataSlot*
   exceptions: []
   platform:
@@ -336,16 +336,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Returns a specific context property, specified by name."
+  summary: "返回一个特定的上下文属性，按名称指定。"
   syntax:
     content: public virtual System.Runtime.Remoting.Contexts.IContextProperty GetProperty (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the property."
+      description: "属性的名称。"
     return:
       type: System.Runtime.Remoting.Contexts.IContextProperty
-      description: "The specified context property."
+      description: "指定的上下文属性中。"
   overload: System.Runtime.Remoting.Contexts.Context.GetProperty*
   exceptions: []
   platform:
@@ -362,31 +362,31 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Registers a dynamic property implementing the <xref href=&quot;System.Runtime.Remoting.Contexts.IDynamicProperty&quot;></xref> interface with the remoting service."
-  remarks: "Based on `obj` and `ctx`, `prop` is asked to contribute a sink that is placed at some location in the path of remoting calls. If multiple properties are registered, their sinks will be called in an arbitrary order that can change between calls.       If `obj` is not `null`, and then if it is a proxy, all calls made on the proxy are intercepted. Otherwise, if `obj` is a real object, all calls on the object are intercepted. The `ctx` parameter must be `null`.       If `ctx` is not `null`, `obj` must be `null` and all calls entering and leaving the context are intercepted.       If both `ctx` and `obj` are `null`, all calls entering and leaving all contexts are intercepted."
+  summary: "注册动态属性实现<xref href=&quot;System.Runtime.Remoting.Contexts.IDynamicProperty&quot;></xref>使用 remoting service 的接口。"
+  remarks: "基于`obj`和`ctx`，`prop`需要分配接收器放置在路径中的远程处理调用某些位置。 如果注册了多个属性，将可以调用之间进行切换以任意顺序调用它们的接收器。       如果`obj`不`null`，然后是代理，如果在代理上所做的所有调用都会被都截获和。 否则为如果`obj`是真实的对象，该对象上的所有调用都会被都截获。 `ctx`参数必须是`null`。       如果`ctx`不`null`，`obj`必须`null`和进入和离开上下文的所有调用都会被都截获。       如果这两个`ctx`和`obj`是`null`，进入和离开所有上下文中的所有调用都会被都截获。"
   syntax:
     content: public static bool RegisterDynamicProperty (System.Runtime.Remoting.Contexts.IDynamicProperty prop, ContextBoundObject obj, System.Runtime.Remoting.Contexts.Context ctx);
     parameters:
     - id: prop
       type: System.Runtime.Remoting.Contexts.IDynamicProperty
-      description: "The dynamic property to register."
+      description: "要注册的动态属性。"
     - id: obj
       type: System.ContextBoundObject
-      description: "The object/proxy for which the `property` is registered."
+      description: "为其对象/代理`property`注册。"
     - id: ctx
       type: System.Runtime.Remoting.Contexts.Context
-      description: "The context for which the `property` is registered."
+      description: "为其上下文`property`注册。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property was successfully registered; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果成功注册属性;，否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Runtime.Remoting.Contexts.Context.RegisterDynamicProperty*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "Either <code>prop</code> or its name is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, or it is not dynamic (it does not implement <xref href=&quot;System.Runtime.Remoting.Contexts.IDynamicProperty&quot;></xref>)."
+    description: "任一<code> prop </code>或其名称为<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>，或它不是动态 (它未实现<xref href=&quot;System.Runtime.Remoting.Contexts.IDynamicProperty&quot;> </xref>)。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "Both an object as well as a context are specified (both <code>obj</code> and <code>ctx</code> are not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>)."
+    description: "指定对象以及上下文 (同时<code> obj </code>和<code> ctx </code>不<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>)。"
   platform:
   - net462
 - uid: System.Runtime.Remoting.Contexts.Context.SetData(System.LocalDataStoreSlot,System.Object)
@@ -401,16 +401,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Sets the data in the specified slot on the current context."
+  summary: "在当前上下文中指定的槽设置的数据。"
   syntax:
     content: public static void SetData (LocalDataStoreSlot slot, object data);
     parameters:
     - id: slot
       type: System.LocalDataStoreSlot
-      description: "The data slot where the data is to be added."
+      description: "知道数据的要添加的数据槽。"
     - id: data
       type: System.Object
-      description: "The data that is to be added."
+      description: "要添加的数据。"
   overload: System.Runtime.Remoting.Contexts.Context.SetData*
   exceptions: []
   platform:
@@ -427,22 +427,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Sets a specific context property by name."
-  remarks: "Adding properties to the default context is not allowed."
+  summary: "按名称设置特定的上下文属性。"
+  remarks: "不允许将属性添加到默认上下文。"
   syntax:
     content: public virtual void SetProperty (System.Runtime.Remoting.Contexts.IContextProperty prop);
     parameters:
     - id: prop
       type: System.Runtime.Remoting.Contexts.IContextProperty
-      description: "The actual context property."
+      description: "实际的上下文属性中。"
   overload: System.Runtime.Remoting.Contexts.Context.SetProperty*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The context is frozen."
+    description: "上下文被冻结。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The property or the property name is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "属性或属性名称是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   platform:
   - net462
 - uid: System.Runtime.Remoting.Contexts.Context.ToString
@@ -457,13 +457,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Returns a <xref:System.String> class representation of the current context."
+  summary: "返回<xref:System.String>类表示形式的当前上下文。</xref:System.String>"
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "A <xref:System.String> class representation of the current context."
+      description: "A<xref:System.String>类表示形式的当前上下文。</xref:System.String>"
   overload: System.Runtime.Remoting.Contexts.Context.ToString*
   exceptions: []
   platform:
@@ -480,22 +480,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Unregisters a dynamic property implementing the <xref href=&quot;System.Runtime.Remoting.Contexts.IDynamicProperty&quot;></xref> interface."
+  summary: "注销动态属性实现<xref href=&quot;System.Runtime.Remoting.Contexts.IDynamicProperty&quot;></xref>接口。"
   syntax:
     content: public static bool UnregisterDynamicProperty (string name, ContextBoundObject obj, System.Runtime.Remoting.Contexts.Context ctx);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the dynamic property to unregister."
+      description: "要注销的动态属性的名称。"
     - id: obj
       type: System.ContextBoundObject
-      description: "The object/proxy for which the `property` is registered."
+      description: "为其对象/代理`property`注册。"
     - id: ctx
       type: System.Runtime.Remoting.Contexts.Context
-      description: "The context for which the `property` is registered."
+      description: "为其上下文`property`注册。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the object was successfully unregistered; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果对象已成功注销;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Runtime.Remoting.Contexts.Context.UnregisterDynamicProperty*
   exceptions:
   - type: System.ArgumentNullException
@@ -503,7 +503,7 @@ items:
     description: "The <code>name</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "Both an object as well as a context are specified (both <code>obj</code> and <code>ctx</code> are not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>)."
+    description: "指定对象以及上下文 (同时<code> obj </code>和<code> ctx </code>不<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>)。"
   platform:
   - net462
 references:

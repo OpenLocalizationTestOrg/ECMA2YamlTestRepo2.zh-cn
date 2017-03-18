@@ -18,8 +18,8 @@ items:
   nameWithType: ILease
   fullName: System.Runtime.Remoting.Lifetime.ILease
   type: Interface
-  summary: "Defines a lifetime lease object that is used by the remoting lifetime service."
-  remarks: "Distributed garbage collection controls when server applications can be deleted. Traditionally, distributed garbage collection uses reference counts and pinging for control. This works well when there are a few clients per object, but does not work well when there are thousands of clients per each object. The lifetime service can assume the function of a traditional distributed garbage collector, and scales well when the number of clients increases.       The lifetime service associates a lease with each remotely activated object. When the lease expires, the object is removed. A lease can specify that an object has an infinite lifetime.       Each <xref:System.AppDomain> contains a lease manager that administers the leases in the domain. The lease manager periodically examines the leases for time expiration. If a lease has expired, it can either be canceled by removing its reference to the lease, or renewed by invoking one or more of the lease&quot;s sponsors.       A lease contains properties that determine its policies, and methods that renew the lease time. The lease exposes the ILease interface.       For an example showing how to use the ILease interface see [Lifetimes](http://msdn.microsoft.com/en-us/334a30e5-33cb-4f0f-a38a-ed4abc5560fa)."
+  summary: "定义由远程处理生存期服务的生存期租约对象。"
+  remarks: "可以删除服务器应用程序时，分布式垃圾回收控制。 传统上，分布式的垃圾回收使用引用计数和 ping 进行控制。 这适用于有几个客户端每个对象，但也有数千个每个每个对象的客户端时无法正常工作。 当客户端的数量增加时，生存期服务可以假定传统的分布式垃圾回收器中和规模的函数。       生存期服务将与每个远程激活对象关联的租约。 当租约已过期时，将删除该对象。 租约可以指定对象具有无限生存期。       每个<xref:System.AppDomain>包含管理域中的租约的租约管理器。</xref:System.AppDomain> 租用管理器定期检查时间过期的租约。 如果租约已过期，它可以通过删除租约，对其引用取消或通过调用一个或多个该租约的发起人续订。       租约包含确定其策略的属性和续订的租约时间的方法。 租约公开 ILease 接口。       有关演示如何使用 ILease 接口的示例，请参阅[生存期](http://msdn.microsoft.com/en-us/334a30e5-33cb-4f0f-a38a-ed4abc5560fa)。"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -40,17 +40,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Gets the amount of time remaining on the lease."
+  summary: "获取租约的剩余时间量。"
   syntax:
     content: public TimeSpan CurrentLeaseTime { get; }
     return:
       type: System.TimeSpan
-      description: "The amount of time remaining on the lease."
+      description: "租约的剩余时间量。"
   overload: System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller makes the call through a reference to the interface and does not have infrastructure permission."
+    description: "直接调用方发出通过接口的引用调用，而不具有基础结构的权限。"
   platform:
   - net462
 - uid: System.Runtime.Remoting.Lifetime.ILease.CurrentState
@@ -65,17 +65,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Gets the current <xref href=&quot;System.Runtime.Remoting.Lifetime.LeaseState&quot;></xref> of the lease."
+  summary: "获取当前<xref href=&quot;System.Runtime.Remoting.Lifetime.LeaseState&quot;></xref>的租约。"
   syntax:
     content: public System.Runtime.Remoting.Lifetime.LeaseState CurrentState { get; }
     return:
       type: System.Runtime.Remoting.Lifetime.LeaseState
-      description: "The current <xref href=&quot;System.Runtime.Remoting.Lifetime.LeaseState&quot;></xref> of the lease."
+      description: "当前<xref href=&quot;System.Runtime.Remoting.Lifetime.LeaseState&quot;></xref>的租约。"
   overload: System.Runtime.Remoting.Lifetime.ILease.CurrentState*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller makes the call through a reference to the interface and does not have infrastructure permission."
+    description: "直接调用方发出通过接口的引用调用，而不具有基础结构的权限。"
   platform:
   - net462
 - uid: System.Runtime.Remoting.Lifetime.ILease.InitialLeaseTime
@@ -90,18 +90,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Gets or sets the initial time for the lease."
-  remarks: "If the InitialLeaseTime property is set to <xref:System.TimeSpan?displayProperty=fullName>, then the lease will never time out and the object associated with it will have an infinite lifetime."
+  summary: "获取或设置为该租约的初始时间。"
+  remarks: "如果 InitialLeaseTime 属性设置为<xref:System.TimeSpan?displayProperty=fullName>，然后租约将永远不会超时并与之关联的对象将具有无限生存期。</xref:System.TimeSpan?displayProperty=fullName>"
   syntax:
     content: public TimeSpan InitialLeaseTime { get; set; }
     return:
       type: System.TimeSpan
-      description: "The initial time for the lease."
+      description: "初始租约时间。"
   overload: System.Runtime.Remoting.Lifetime.ILease.InitialLeaseTime*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller makes the call through a reference to the interface and does not have infrastructure permission."
+    description: "直接调用方发出通过接口的引用调用，而不具有基础结构的权限。"
   platform:
   - net462
 - uid: System.Runtime.Remoting.Lifetime.ILease.Register(System.Runtime.Remoting.Lifetime.ISponsor)
@@ -116,19 +116,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Registers a sponsor for the lease without renewing the lease."
-  remarks: "If a sponsor is registered with the current method, the lease is not renewed."
+  summary: "而不续订租约不注册为该租约发起人。"
+  remarks: "如果发起人注册到当前的方法，不续订租约。"
   syntax:
     content: public void Register (System.Runtime.Remoting.Lifetime.ISponsor obj);
     parameters:
     - id: obj
       type: System.Runtime.Remoting.Lifetime.ISponsor
-      description: "The callback object of the sponsor."
+      description: "发起人回调对象。"
   overload: System.Runtime.Remoting.Lifetime.ILease.Register*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller makes the call through a reference to the interface and does not have infrastructure permission."
+    description: "直接调用方发出通过接口的引用调用，而不具有基础结构的权限。"
   platform:
   - net462
 - uid: System.Runtime.Remoting.Lifetime.ILease.Register(System.Runtime.Remoting.Lifetime.ISponsor,System.TimeSpan)
@@ -143,21 +143,21 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Registers a sponsor for the lease, and renews it by the specified <xref:System.TimeSpan>."
+  summary: "注册为该租约，发起人，并将其续订指定<xref:System.TimeSpan>.</xref:System.TimeSpan>"
   syntax:
     content: public void Register (System.Runtime.Remoting.Lifetime.ISponsor obj, TimeSpan renewalTime);
     parameters:
     - id: obj
       type: System.Runtime.Remoting.Lifetime.ISponsor
-      description: "The callback object of the sponsor."
+      description: "发起人回调对象。"
     - id: renewalTime
       type: System.TimeSpan
-      description: "The length of time to renew the lease by."
+      description: "要续订的租约的时间长度。"
   overload: System.Runtime.Remoting.Lifetime.ILease.Register*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller makes the call through a reference to the interface and does not have infrastructure permission."
+    description: "直接调用方发出通过接口的引用调用，而不具有基础结构的权限。"
   platform:
   - net462
 - uid: System.Runtime.Remoting.Lifetime.ILease.Renew(System.TimeSpan)
@@ -172,22 +172,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Renews a lease for the specified time."
-  remarks: "The lease time is set to the maximum of the <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A> or the current time plus the renewal time."
+  summary: "指定的时间续订的租约。"
+  remarks: "租约时间设置为最大值<xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A>或当前时间，加上续订时间。</xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A>"
   syntax:
     content: public TimeSpan Renew (TimeSpan renewalTime);
     parameters:
     - id: renewalTime
       type: System.TimeSpan
-      description: "The length of time to renew the lease by."
+      description: "要续订的租约的时间长度。"
     return:
       type: System.TimeSpan
-      description: "The new expiration time of the lease."
+      description: "新的租约的到期时间。"
   overload: System.Runtime.Remoting.Lifetime.ILease.Renew*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller makes the call through a reference to the interface and does not have infrastructure permission."
+    description: "直接调用方发出通过接口的引用调用，而不具有基础结构的权限。"
   platform:
   - net462
 - uid: System.Runtime.Remoting.Lifetime.ILease.RenewOnCallTime
@@ -202,18 +202,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Gets or sets the amount of time by which a call to the remote object renews the <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime*>."
-  remarks: "When you make a call to a remote object, the lifetime service adds the RenewOnCallTime to the <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A> only if the <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A> has dropped below the RenewOnCallTime. Sequential calls therefore do not increase the <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A> without bound. Instead, immediately after any call, the <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A> is guaranteed to be the RenewOnCallTime or longer."
+  summary: "获取或设置依据远程对象调用续订<xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime*>.</xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime*>的时间量"
+  remarks: "当您对远程对象的调用，生存期服务会将添加到 RenewOnCallTime<xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A>才<xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A>已降低至 RenewOnCallTime。</xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A> </xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A> 连续调用因此不增加<xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A>不受约束。</xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A> 相反，任何调用后立即,<xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A>是保证要 RenewOnCallTime 或更长时间。</xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A>"
   syntax:
     content: public TimeSpan RenewOnCallTime { get; set; }
     return:
       type: System.TimeSpan
-      description: "The amount of time by which a call to the remote object renews the <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime*>."
+      description: "依据远程对象调用续订<xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime*>.</xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime*>的时间量"
   overload: System.Runtime.Remoting.Lifetime.ILease.RenewOnCallTime*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller makes the call through a reference to the interface and does not have infrastructure permission."
+    description: "直接调用方发出通过接口的引用调用，而不具有基础结构的权限。"
   platform:
   - net462
 - uid: System.Runtime.Remoting.Lifetime.ILease.SponsorshipTimeout
@@ -228,18 +228,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Gets or sets the amount of time to wait for a sponsor to return with a lease renewal time."
-  remarks: "If the SponsorshipTimeout is <xref:System.TimeSpan?displayProperty=fullName>, then this lease will not take sponsors.       If a sponsor does not respond to a call to renew a lease within the time-out period, it is assumed to be dead and is removed from the list of sponsors for the current lease."
+  summary: "获取或设置等待发起人返回延续租用时间的时间量。"
+  remarks: "如果 SponsorshipTimeout <xref:System.TimeSpan?displayProperty=fullName>，则此租约将不会发起人。</xref:System.TimeSpan?displayProperty=fullName>       如果发起人不响应的调用，以在超时期限之内续订的租约，则它将被假定为死并从当前租约的发起人的列表中删除。"
   syntax:
     content: public TimeSpan SponsorshipTimeout { get; set; }
     return:
       type: System.TimeSpan
-      description: "The amount of time to wait for a sponsor to return with a lease renewal time."
+      description: "等待发起人返回延续租用时间的时间量。"
   overload: System.Runtime.Remoting.Lifetime.ILease.SponsorshipTimeout*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller makes the call through a reference to the interface and does not have infrastructure permission."
+    description: "直接调用方发出通过接口的引用调用，而不具有基础结构的权限。"
   platform:
   - net462
 - uid: System.Runtime.Remoting.Lifetime.ILease.Unregister(System.Runtime.Remoting.Lifetime.ISponsor)
@@ -254,18 +254,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Removes a sponsor from the sponsor list."
+  summary: "从发起人列表中删除发起人。"
   syntax:
     content: public void Unregister (System.Runtime.Remoting.Lifetime.ISponsor obj);
     parameters:
     - id: obj
       type: System.Runtime.Remoting.Lifetime.ISponsor
-      description: "The lease sponsor to unregister."
+      description: "若要注销租约发起人。"
   overload: System.Runtime.Remoting.Lifetime.ILease.Unregister*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller makes the call through a reference to the interface and does not have infrastructure permission."
+    description: "直接调用方发出通过接口的引用调用，而不具有基础结构的权限。"
   platform:
   - net462
 references:

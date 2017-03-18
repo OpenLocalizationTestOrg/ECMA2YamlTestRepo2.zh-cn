@@ -22,8 +22,8 @@ items:
   nameWithType: XsdDataContractExporter
   fullName: System.Runtime.Serialization.XsdDataContractExporter
   type: Class
-  summary: "Allows the transformation of a set of [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] types that are used in data contracts into an XML schema file (.xsd)."
-  remarks: "Use the XsdDataContractExporter class when you have created a Web service that incorporates data represented by common language runtime (CLR) types and when you need to export XML schemas for each type to be consumed by other Web services. That is, XsdDataContractExporter transforms a set of CLR types into XML schemas. (For more information about the types that can be used, see [Types Supported by the Data Contract Serializer](~/add/includes/ajax-current-ext-md.md).) The schemas can then be exposed through a Web Services Description Language (WSDL) document for use by others who need to interoperate with your service.       Conversely, if you are creating a Web service that must interoperate with an existing Web service, use the <xref:System.Runtime.Serialization.XsdDataContractImporter> to transform XML schemas and create the CLR types that represent the data in a selected programming language.       The XsdDataContractExporter generates an <xref:System.Xml.Schema.XmlSchemaSet> object that contains the collection of schemas. Access the set of schemas through the <xref:System.Xml.Schema.XmlSchemaSet.Schemas%2A> property.      > [!NOTE] >  To quickly generate XML schema definition (XSD) files that other Web services can consume, use the XsdDataContractExporter.      ## Exporting Schemas Into an XmlSchemaSet    To create an instance of the <xref:System.Xml.Schema.XmlSchemaSet> class that contains XML schema files, you should be aware of the following.       The set of types you are exporting are recorded as an internal set of data contracts. Thus, you can call the <xref:System.Runtime.Serialization.XsdDataContractExporter.CanExport%2A> method multiple times to add new types to the schema set without degrading performance because only the new types will be added to the set. During the <xref:System.Runtime.Serialization.XsdDataContractExporter.Export%2A> operation, the existing schemas are compared to the new schemas being added. If there are conflicts, an exception will be thrown. A conflict is usually detected if two types with the same data contract name but different contracts (different members) are exported by the same XsdDataContractExporter instance.      ## Using the Exporter    A recommended way of using this class is as follows:      1.  Use one of the <xref:System.Runtime.Serialization.XsdDataContractExporter.CanExport%2A> overloads to determine whether the specified type or set of types can be exported. Use one of the overloads that is appropriate to your requirements.      2.  Call the corresponding <xref:System.Runtime.Serialization.XsdDataContractExporter.Export%2A> method.      3.  Retrieve the schemas from the <xref:System.Runtime.Serialization.XsdDataContractExporter.Schemas%2A>property."
+  summary: "用于将一组[!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)]成 XML 架构文件 (.xsd) 在数据协定中使用的类型。"
+  remarks: "如果你已创建包含表示由公共语言运行时 (CLR) 类型和你需要导出为其他 Web 服务将使用的每个类型的 XML 架构的数据的 Web 服务，请使用 XsdDataContractExporter 类。 也就是说，XsdDataContractExporter 将一组 CLR 类型转换为 XML 架构。 (有关可用的类型的详细信息，请参阅[类型受数据协定序列化程序](~/add/includes/ajax-current-ext-md.md)。)架构然后可以通过使用 Web 服务描述语言 (WSDL) 文档的其他用户需要与你的服务交互操作公开。       相反，如果你要创建必须进行互操作的 Web 服务与现有 Web 服务，则使用<xref:System.Runtime.Serialization.XsdDataContractImporter>来转换 XML 架构，并且创建表示所选的编程语言中的数据的 CLR 类型。</xref:System.Runtime.Serialization.XsdDataContractImporter>       XsdDataContractExporter 生成<xref:System.Xml.Schema.XmlSchemaSet>包含架构集合的对象。</xref:System.Xml.Schema.XmlSchemaSet> 访问通过架构集中<xref:System.Xml.Schema.XmlSchemaSet.Schemas%2A>属性。</xref:System.Xml.Schema.XmlSchemaSet.Schemas%2A>      1> [!NOTE]&1;> 若要快速生成其他 Web 服务可以使用的 XML 架构定义 (XSD) 文件，使用 XsdDataContractExporter。      ## 导出架构到 XmlSchemaSet 到创建的实例<xref:System.Xml.Schema.XmlSchemaSet>类，该类包含 XML 架构文件，你应注意以下事项。</xref:System.Xml.Schema.XmlSchemaSet>       要导出的类型的一套被记录为一组内部数据协定。 因此，你可以调用<xref:System.Runtime.Serialization.XsdDataContractExporter.CanExport%2A>方法多次将新类型添加到架构集而不会降低性能，因为仅将新类型将添加到集。</xref:System.Runtime.Serialization.XsdDataContractExporter.CanExport%2A> 期间<xref:System.Runtime.Serialization.XsdDataContractExporter.Export%2A>操作，现有架构与要添加的新架构进行比较。</xref:System.Runtime.Serialization.XsdDataContractExporter.Export%2A> 如果存在冲突，则将引发异常。 如果两种类型具有相同的数据协定名称，但不同由同一个 XsdDataContractExporter 实例导出协定 （不同的成员） 将通常检测冲突。      ## 使用导出程序建议使用此类的方法是，如下所示︰ 1。  使用之一<xref:System.Runtime.Serialization.XsdDataContractExporter.CanExport%2A>重载来确定是否可以导出指定的类型集。</xref:System.Runtime.Serialization.XsdDataContractExporter.CanExport%2A> 使用适合于你的要求的重载之一。      2.  调用对应<xref:System.Runtime.Serialization.XsdDataContractExporter.Export%2A>方法。</xref:System.Runtime.Serialization.XsdDataContractExporter.Export%2A>      3.  检索从架构<xref:System.Runtime.Serialization.XsdDataContractExporter.Schemas%2A>属性。</xref:System.Runtime.Serialization.XsdDataContractExporter.Schemas%2A>"
   example:
   - "The following example creates an instance of the XsdDataContractExporter and calls the <xref:System.Runtime.Serialization.XsdDataContractExporter.Export%28System.Type%29> method.  \n  \n [!code-vb[XsdDataContractExporter#0](~/add/codesnippet/visualbasic/t-system.runtime.seriali_12_1.vb)]\n [!code-cs[XsdDataContractExporter#0](~/add/codesnippet/csharp/t-system.runtime.seriali_12_1.cs)]"
   syntax:
@@ -46,7 +46,7 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Runtime.Serialization
-  summary: "Initializes a new instance of the <xref href=&quot;System.Runtime.Serialization.XsdDataContractExporter&quot;></xref> class."
+  summary: "初始化的新实例<xref href=&quot;System.Runtime.Serialization.XsdDataContractExporter&quot;></xref>类。"
   syntax:
     content: public XsdDataContractExporter ();
     parameters: []
@@ -66,14 +66,14 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Runtime.Serialization
-  summary: "Initializes a new instance of the <xref href=&quot;System.Runtime.Serialization.XsdDataContractExporter&quot;></xref> class with the specified set of schemas."
-  remarks: "Use this overload when you have an existing <xref:System.Xml.Schema.XmlSchemaSet> to which you want to add new schemas. After you construct a <xref:System.Runtime.Serialization.XsdDataContractExporter> with this overload, call the <xref:System.Runtime.Serialization.XsdDataContractExporter.Export%2A> method to add new types to the existing set."
+  summary: "初始化的新实例<xref href=&quot;System.Runtime.Serialization.XsdDataContractExporter&quot;></xref>与指定的架构集的类。"
+  remarks: "当你拥有现有使用此重载<xref:System.Xml.Schema.XmlSchemaSet>到想要添加新架构。</xref:System.Xml.Schema.XmlSchemaSet> 在构造之后<xref:System.Runtime.Serialization.XsdDataContractExporter>使用此重载调用<xref:System.Runtime.Serialization.XsdDataContractExporter.Export%2A>方法以将新类型添加到现有集。</xref:System.Runtime.Serialization.XsdDataContractExporter.Export%2A> </xref:System.Runtime.Serialization.XsdDataContractExporter>"
   syntax:
     content: public XsdDataContractExporter (System.Xml.Schema.XmlSchemaSet schemas);
     parameters:
     - id: schemas
       type: System.Xml.Schema.XmlSchemaSet
-      description: "An <xref href=&quot;System.Xml.Schema.XmlSchemaSet&quot;></xref> that contains the schemas to be exported."
+      description: "<xref href=&quot;System.Xml.Schema.XmlSchemaSet&quot;> </xref> ，其中包含要导出的架构。"
   overload: System.Runtime.Serialization.XsdDataContractExporter.#ctor*
   exceptions: []
   platform:
@@ -90,16 +90,16 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Runtime.Serialization
-  summary: "Gets a value that indicates whether the set of .common language runtime (CLR) types contained in a set of assemblies can be exported."
+  summary: "获取一个值，该值指示是否可以导出的一组程序集中包含的公共语言运行时 (CLR) 类型集。"
   syntax:
     content: public bool CanExport (System.Collections.Generic.ICollection<System.Reflection.Assembly> assemblies);
     parameters:
     - id: assemblies
       type: System.Collections.Generic.ICollection{System.Reflection.Assembly}
-      description: "A &lt;xref:System.Collections.Generic.ICollection%601&gt; of <xref:System.Reflection.Assembly> that contains the assemblies with the types to export."
+      description: "A &lt;xref:System.Collections.Generic.ICollection%601&gt;的<xref:System.Reflection.Assembly>，其中包含要导出的类型程序集。</xref:System.Reflection.Assembly>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the types can be exported; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果可以导出类型;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Runtime.Serialization.XsdDataContractExporter.CanExport*
   exceptions: []
   platform:
@@ -116,16 +116,16 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Runtime.Serialization
-  summary: "Gets a value that indicates whether the set of .common language runtime (CLR) types contained in a &lt;xref:System.Collections.Generic.ICollection%601&gt; can be exported."
+  summary: "获取一个值，该值指示是否的公共语言运行时 (CLR) 类型集包含在&lt;xref:System.Collections.Generic.ICollection%601&gt;可以导出。"
   syntax:
     content: public bool CanExport (System.Collections.Generic.ICollection<Type> types);
     parameters:
     - id: types
       type: System.Collections.Generic.ICollection{System.Type}
-      description: "A &lt;xref:System.Collections.Generic.ICollection%601&gt; that contains the specified types to export."
+      description: "A &lt;xref:System.Collections.Generic.ICollection%601&gt; ，其中包含要导出的指定的类型。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the types can be exported; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果可以导出类型;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Runtime.Serialization.XsdDataContractExporter.CanExport*
   exceptions: []
   platform:
@@ -142,7 +142,7 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Runtime.Serialization
-  summary: "Gets a value that indicates whether the specified common language runtime (CLR) type can be exported."
+  summary: "获取一个值，该值指示是否可以导出指定的公共语言运行时 (CLR) 类型。"
   remarks: ''
   example:
   - "The following example calls the CanExport method before calling the <xref:System.Runtime.Serialization.XsdDataContractExporter.Export%28System.Type%29> method.  \n  \n [!code-vb[XsdDataContractExporter#1](~/add/codesnippet/visualbasic/m-system.runtime.seriali_1_1.vb)]\n [!code-cs[XsdDataContractExporter#1](~/add/codesnippet/csharp/m-system.runtime.seriali_1_1.cs)]"
@@ -151,10 +151,10 @@ items:
     parameters:
     - id: type
       type: System.Type
-      description: "The <xref:System.Type> to export."
+      description: "<xref:System.Type>导出。</xref:System.Type>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the type can be exported; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果可以导出类型;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Runtime.Serialization.XsdDataContractExporter.CanExport*
   exceptions: []
   platform:
@@ -171,13 +171,13 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Runtime.Serialization
-  summary: "Transforms the types contained in the specified collection of assemblies."
+  summary: "指定的程序集集合中包含的类型进行转换。"
   syntax:
     content: public void Export (System.Collections.Generic.ICollection<System.Reflection.Assembly> assemblies);
     parameters:
     - id: assemblies
       type: System.Collections.Generic.ICollection{System.Reflection.Assembly}
-      description: "A &lt;xref:System.Collections.Generic.ICollection%601&gt; (of <xref:System.Reflection.Assembly>) that contains the types to export."
+      description: "A &lt;xref:System.Collections.Generic.ICollection%601&gt; (的<xref:System.Reflection.Assembly>)，其中包含要导出的类型。</xref:System.Reflection.Assembly>"
   overload: System.Runtime.Serialization.XsdDataContractExporter.Export*
   exceptions:
   - type: System.ArgumentNullException
@@ -185,7 +185,7 @@ items:
     description: "The <code>assemblies</code> argument is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "An <xref:System.Reflection.Assembly> in the collection is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<xref:System.Reflection.Assembly>集合中<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。</xref:System.Reflection.Assembly>"
   platform:
   - net462
 - uid: System.Runtime.Serialization.XsdDataContractExporter.Export(System.Collections.Generic.ICollection{System.Type})
@@ -200,13 +200,13 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Runtime.Serialization
-  summary: "Transforms the types contained in the &lt;xref:System.Collections.Generic.ICollection%601&gt; passed to this method."
+  summary: "中包含的类型进行转换&lt;xref:System.Collections.Generic.ICollection%601&gt;传递给此方法。"
   syntax:
     content: public void Export (System.Collections.Generic.ICollection<Type> types);
     parameters:
     - id: types
       type: System.Collections.Generic.ICollection{System.Type}
-      description: "A  &lt;xref:System.Collections.Generic.ICollection%601&gt; (of <xref:System.Type>) that contains the types to export."
+      description: "A &lt;xref:System.Collections.Generic.ICollection%601&gt; (的<xref:System.Type>)，其中包含要导出的类型。</xref:System.Type>"
   overload: System.Runtime.Serialization.XsdDataContractExporter.Export*
   exceptions:
   - type: System.ArgumentNullException
@@ -214,7 +214,7 @@ items:
     description: "The <code>types</code> argument is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "A type in the collection is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "集合中的类型是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   platform:
   - net462
 - uid: System.Runtime.Serialization.XsdDataContractExporter.Export(System.Type)
@@ -229,14 +229,14 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Runtime.Serialization
-  summary: "Transforms the specified [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] type into an XML schema definition language (XSD) schema."
-  remarks: "Call the <xref:System.Runtime.Serialization.XsdDataContractExporter.CanExport%2A> to determine whether the type can be exported. After calling the Export method, the schema can be retrieved through the <xref:System.Runtime.Serialization.XsdDataContractExporter.Schemas%2A> property."
+  summary: "转换指定[!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)]成 XML 架构定义语言 (XSD) 架构的类型。"
+  remarks: "调用<xref:System.Runtime.Serialization.XsdDataContractExporter.CanExport%2A>来确定是否可以导出类型。</xref:System.Runtime.Serialization.XsdDataContractExporter.CanExport%2A> 调用导出方法后，架构可以检索通过<xref:System.Runtime.Serialization.XsdDataContractExporter.Schemas%2A>属性。</xref:System.Runtime.Serialization.XsdDataContractExporter.Schemas%2A>"
   syntax:
     content: public void Export (Type type);
     parameters:
     - id: type
       type: System.Type
-      description: "The <xref:System.Type> to transform into an XML schema."
+      description: "<xref:System.Type>将转换成 XML 架构。</xref:System.Type>"
   overload: System.Runtime.Serialization.XsdDataContractExporter.Export*
   exceptions:
   - type: System.ArgumentNullException
@@ -256,16 +256,16 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Runtime.Serialization
-  summary: "Returns the top-level name and namespace for the <xref:System.Type>."
+  summary: "返回的顶级名称和命名空间<xref:System.Type>.</xref:System.Type>"
   syntax:
     content: public System.Xml.XmlQualifiedName GetRootElementName (Type type);
     parameters:
     - id: type
       type: System.Type
-      description: "The <xref:System.Type> to query."
+      description: "<xref:System.Type>查询。</xref:System.Type>"
     return:
       type: System.Xml.XmlQualifiedName
-      description: "The <xref:System.Xml.XmlQualifiedName> that represents the top-level name and namespace for this <xref:System.Type>, which is written to the stream when writing this object."
+      description: "<xref:System.Xml.XmlQualifiedName>，它表示的顶级名称和命名空间此<xref:System.Type>，这在写入此对象时写入到流。</xref:System.Type> </xref:System.Xml.XmlQualifiedName>"
   overload: System.Runtime.Serialization.XsdDataContractExporter.GetRootElementName*
   exceptions:
   - type: System.ArgumentNullException
@@ -285,17 +285,17 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Runtime.Serialization
-  summary: "Returns the XML schema type for the specified type."
-  remarks: "The main purpose of this method is to allow anonymous types in XML schema to be represented. Because anonymous types do not have a contract name and namespace, they cannot be looked up using the <xref:System.Runtime.Serialization.XsdDataContractExporter.GetSchemaTypeName%2A>. This method returns the <xref:System.Xml.Schema.XmlSchemaType> definition for such types. The types for which the <xref:System.Runtime.Serialization.XsdDataContractExporter.GetSchemaTypeName%2A> method returns a valid name, this method returns `null`."
+  summary: "返回指定类型的 XML 架构类型。"
+  remarks: "此方法的主要用途是允许在要表示的 XML 架构中使用匿名类型。 匿名类型不具有协定名称和命名空间，因为它们不能查找使用<xref:System.Runtime.Serialization.XsdDataContractExporter.GetSchemaTypeName%2A>.</xref:System.Runtime.Serialization.XsdDataContractExporter.GetSchemaTypeName%2A> 此方法返回<xref:System.Xml.Schema.XmlSchemaType>这种类型的定义。</xref:System.Xml.Schema.XmlSchemaType> 为其类型<xref:System.Runtime.Serialization.XsdDataContractExporter.GetSchemaTypeName%2A>方法返回有效名称，此方法返回`null`。</xref:System.Runtime.Serialization.XsdDataContractExporter.GetSchemaTypeName%2A>"
   syntax:
     content: public System.Xml.Schema.XmlSchemaType GetSchemaType (Type type);
     parameters:
     - id: type
       type: System.Type
-      description: "The type to return a schema for."
+      description: "要返回的架构的类型。"
     return:
       type: System.Xml.Schema.XmlSchemaType
-      description: "An <xref href=&quot;System.Xml.Schema.XmlSchemaType&quot;></xref> that contains the XML schema."
+      description: "<xref href=&quot;System.Xml.Schema.XmlSchemaType&quot;> </xref>是否包含 XML 架构。"
   overload: System.Runtime.Serialization.XsdDataContractExporter.GetSchemaType*
   exceptions:
   - type: System.ArgumentNullException
@@ -315,16 +315,16 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Runtime.Serialization
-  summary: "Returns the contract name and contract namespace for the <xref:System.Type>."
+  summary: "返回<xref:System.Type>.</xref:System.Type>的协定名称和协定命名空间"
   syntax:
     content: public System.Xml.XmlQualifiedName GetSchemaTypeName (Type type);
     parameters:
     - id: type
       type: System.Type
-      description: "The <xref:System.Type> that was exported."
+      description: "<xref:System.Type>导出。</xref:System.Type>"
     return:
       type: System.Xml.XmlQualifiedName
-      description: "An <xref:System.Xml.XmlQualifiedName> that represents the contract name of the type and its namespace."
+      description: "<xref:System.Xml.XmlQualifiedName>表示的类型和其命名空间的协定名称。</xref:System.Xml.XmlQualifiedName>"
   overload: System.Runtime.Serialization.XsdDataContractExporter.GetSchemaTypeName*
   exceptions:
   - type: System.ArgumentNullException
@@ -344,12 +344,12 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Runtime.Serialization
-  summary: "Gets or sets an <xref href=&quot;System.Runtime.Serialization.ExportOptions&quot;></xref> that contains options that can be set for the export operation."
+  summary: "获取或设置<xref href=&quot;System.Runtime.Serialization.ExportOptions&quot;> </xref> ，它包含可为导出操作设置的选项。"
   syntax:
     content: public System.Runtime.Serialization.ExportOptions Options { get; set; }
     return:
       type: System.Runtime.Serialization.ExportOptions
-      description: "An <xref href=&quot;System.Runtime.Serialization.ExportOptions&quot;></xref> that contains options used to customize how types are exported to schemas."
+      description: "<xref href=&quot;System.Runtime.Serialization.ExportOptions&quot;> </xref> ，它包含用于自定义如何将类型导出到架构的选项。"
   overload: System.Runtime.Serialization.XsdDataContractExporter.Options*
   exceptions: []
   platform:
@@ -366,12 +366,12 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Runtime.Serialization
-  summary: "Gets the collection of exported XML schemas."
+  summary: "获取导出的 XML 架构的集合。"
   syntax:
     content: public System.Xml.Schema.XmlSchemaSet Schemas { get; }
     return:
       type: System.Xml.Schema.XmlSchemaSet
-      description: "An <xref href=&quot;System.Xml.Schema.XmlSchemaSet&quot;></xref> that contains the schemas transformed from the set of common language runtime (CLR) types after calling the <xref:System.Runtime.Serialization.XsdDataContractExporter.Export*> method."
+      description: "<xref href=&quot;System.Xml.Schema.XmlSchemaSet&quot;> </xref> ，它包含在调用后从公共语言运行时 (CLR) 类型集转换架构<xref:System.Runtime.Serialization.XsdDataContractExporter.Export*>方法。</xref:System.Runtime.Serialization.XsdDataContractExporter.Export*>"
   overload: System.Runtime.Serialization.XsdDataContractExporter.Schemas*
   exceptions: []
   platform:

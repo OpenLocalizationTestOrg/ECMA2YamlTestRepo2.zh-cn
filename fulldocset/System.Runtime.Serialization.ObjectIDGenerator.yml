@@ -12,8 +12,8 @@ items:
   nameWithType: ObjectIDGenerator
   fullName: System.Runtime.Serialization.ObjectIDGenerator
   type: Class
-  summary: "Generates IDs for objects."
-  remarks: "The ObjectIDGenerator keeps track of previously identified objects. When you ask for the ID of an object, the ObjectIDGenerator knows whether to return the existing ID, or generate and remember a new ID.       The IDs are unique for the life of the ObjectIDGenerator instance. Generally, a ObjectIDGenerator life lasts as long as the <xref:System.Runtime.Serialization.Formatter> that created it. Object IDs have meaning only within a given serialized stream, and are used for tracking which objects have references to others within the serialized object graph.       Using a hash table, the ObjectIDGenerator retains which ID is assigned to which object. The object references, which uniquely identify each object, are addresses in the runtime garbage-collected heap. Object reference values can change during serialization, but the table is updated automatically so the information is correct.       Object IDs are 64-bit numbers. Allocation starts from one, so zero is never a valid object ID. A formatter can choose a zero value to represent an object reference whose value is `null`."
+  summary: "生成的对象 Id。"
+  remarks: "将跟踪 ObjectIDGenerator 的之前标识的对象。 当您请求的对象 ID 时，ObjectIDGenerator 知道是否返回为现有的 ID，或生成并记住一个新的 id。       Id 是唯一 ObjectIDGenerator 实例的整个生命周期。 通常情况下，ObjectIDGenerator 生命持续只要<xref:System.Runtime.Serialization.Formatter>该创建它。</xref:System.Runtime.Serialization.Formatter> 对象 Id 仅在给定的序列化流中的含义，并用于跟踪哪些对象具有对其他序列化的对象图中的引用。       使用哈希表，ObjectIDGenerator 保留哪个 ID 分配给哪些对象。 对象引用，用于唯一标识每个对象时，是在运行时作为垃圾回收堆中的地址。 对象引用值可以更改序列化期间，但表可以自动更新，以便信息正确无误。       对象 Id 是 64 位数字。 分配从一开始，因此零不是有效的对象 id。 一个格式化程序，可以选择零值来表示其值是一个对象引用`null`。"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -37,7 +37,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "Initializes a new instance of the <xref href=&quot;System.Runtime.Serialization.ObjectIDGenerator&quot;></xref> class."
+  summary: "初始化的新实例<xref href=&quot;System.Runtime.Serialization.ObjectIDGenerator&quot;></xref>类。"
   syntax:
     content: public ObjectIDGenerator ();
     parameters: []
@@ -57,19 +57,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "Returns the ID for the specified object, generating a new ID if the specified object has not already been identified by the <xref href=&quot;System.Runtime.Serialization.ObjectIDGenerator&quot;></xref>."
+  summary: "返回指定的对象，如果指定的对象不已标识通过生成一个新的 ID 的 ID <xref href=&quot;System.Runtime.Serialization.ObjectIDGenerator&quot;> </xref>。"
   syntax:
     content: public virtual long GetId (object obj, out bool firstTime);
     parameters:
     - id: obj
       type: System.Object
-      description: "The object you want an ID for."
+      description: "所需的 ID 的对象。"
     - id: firstTime
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if `obj` was not previously known to the <xref href=&quot;System.Runtime.Serialization.ObjectIDGenerator&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果`obj`不以前为知<xref href=&quot;System.Runtime.Serialization.ObjectIDGenerator&quot;> </xref>; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
     return:
       type: System.Int64
-      description: "The object&quot;s ID is used for serialization. <code>firstTime</code> is set to <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this is the first time the object has been identified; otherwise, it is set to <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "对象的 ID 用于序列化。 <code>firstTime</code>设置为<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果这是首次已标识的对象; 否则，设置为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Runtime.Serialization.ObjectIDGenerator.GetId*
   exceptions:
   - type: System.ArgumentNullException
@@ -77,7 +77,7 @@ items:
     description: "The <code>obj</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
-    description: "The <xref href=&quot;System.Runtime.Serialization.ObjectIDGenerator&quot;></xref> has been asked to keep track of too many objects."
+    description: "<xref href=&quot;System.Runtime.Serialization.ObjectIDGenerator&quot;> </xref>已要求跟踪的对象太多。"
   platform:
   - net462
 - uid: System.Runtime.Serialization.ObjectIDGenerator.HasId(System.Object,System.Boolean@)
@@ -92,20 +92,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "Determines whether an object has already been assigned an ID."
-  remarks: "If the object has already been assigned an ID, the ID is returned and `firstTime` is set to `false`; otherwise, zero is returned and `firstTime` is set to `true`. HasId differs from <xref:System.Runtime.Serialization.ObjectIDGenerator.GetId%2A> in that it never creates an ID for an object that has not already been seen by the <xref:System.Runtime.Serialization.ObjectIDGenerator>."
+  summary: "确定是否一个对象已将分配一个 id。"
+  remarks: "如果对象已被分配一个 ID，则返回该 ID 和`firstTime`设置为`false`; 否则为返回零和`firstTime`设置为`true`。 HasId 区别<xref:System.Runtime.Serialization.ObjectIDGenerator.GetId%2A>在于它永远不会创建已不受支持<xref:System.Runtime.Serialization.ObjectIDGenerator>。</xref:System.Runtime.Serialization.ObjectIDGenerator>看到的对象的 ID</xref:System.Runtime.Serialization.ObjectIDGenerator.GetId%2A>"
   syntax:
     content: public virtual long HasId (object obj, out bool firstTime);
     parameters:
     - id: obj
       type: System.Object
-      description: "The object you are asking for."
+      description: "您所请求的对象。"
     - id: firstTime
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if `obj` was not previously known to the <xref href=&quot;System.Runtime.Serialization.ObjectIDGenerator&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果`obj`不以前为知<xref href=&quot;System.Runtime.Serialization.ObjectIDGenerator&quot;> </xref>; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
     return:
       type: System.Int64
-      description: "The object ID of <code>obj</code> if previously known to the <xref href=&quot;System.Runtime.Serialization.ObjectIDGenerator&quot;></xref>; otherwise, zero."
+      description: "对象 ID <code> obj </code>如果以前已知的<xref href=&quot;System.Runtime.Serialization.ObjectIDGenerator&quot;> </xref>; 否则为零。"
   overload: System.Runtime.Serialization.ObjectIDGenerator.HasId*
   exceptions:
   - type: System.ArgumentNullException

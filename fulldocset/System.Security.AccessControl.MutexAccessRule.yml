@@ -12,8 +12,8 @@ items:
   nameWithType: MutexAccessRule
   fullName: System.Security.AccessControl.MutexAccessRule
   type: Class
-  summary: "Represents a set of access rights allowed or denied for a user or group. This class cannot be inherited."
-  remarks: "The MutexAccessRule class is one of a set of classes that the .NET Framework provides for managing Windows access control security on named system mutexes. For an overview of these classes, and their relationship to the underlying Windows access control structures, see <xref:System.Security.AccessControl.MutexSecurity>.      > [!NOTE] >  Windows access control security is meaningful only for named system mutexes. If a <xref:System.Threading.Mutex> object represents a local mutex, access control is irrelevant.       To get a list of the rules currently applied to a named mutex, use the <xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName> method to get a <xref:System.Security.AccessControl.MutexSecurity> object, and then use its <xref:System.Security.AccessControl.CommonObjectSecurity.GetAccessRules%2A> method to obtain a collection of MutexAccessRule objects.       MutexAccessRule objects do not map one-to-one with access control entries in the underlying discretionary access control list (DACL). When you get the set of all access rules for a mutex, the set contains the minimum number of rules currently required to express all the access control entries.      > [!NOTE] >  The underlying access control entries change as you apply and remove rules. The information in rules is merged if possible, to maintain the smallest number of access control entries. Thus, when you read the current list of rules, it might not look exactly like the list of all the rules you have added.       Use MutexAccessRule objects to specify access rights to allow or deny to a user or group. A MutexAccessRule object always represents either allowed access or denied access, never both.       To apply a rule to a named system mutex, use the <xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName> method to get the <xref:System.Security.AccessControl.MutexSecurity> object. Modify the <xref:System.Security.AccessControl.MutexSecurity> object by using its methods to add the rule, and then use the <xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName> method to reattach the security object.      > [!IMPORTANT] >  Changes you make to a <xref:System.Security.AccessControl.MutexSecurity> object do not affect the access levels of the named mutex until you call the <xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName> method to assign the altered security object to the named mutex.       MutexAccessRule objects are immutable. Security for a mutex is modified using the methods of the <xref:System.Security.AccessControl.MutexSecurity> class to add or remove rules; as you do this, the underlying access control entries are modified.      > [!NOTE] >  Security on synchronization objects is not supported for Windows 98 or Windows Millennium Edition."
+  summary: "表示一组允许或拒绝用户或组的访问权限。 此类不能被继承。"
+  remarks: "MutexAccessRule 类是一套.NET Framework 提供了用于管理已命名的系统互斥体上的 Windows 访问控制安全性的类之一。 这些类和二者关系的基础 Windows 访问控制结构的概述，请参阅<xref:System.Security.AccessControl.MutexSecurity>。</xref:System.Security.AccessControl.MutexSecurity>      1> [!NOTE]&1;> Windows 访问控制安全性是仅为有意义命名系统互斥体。 如果<xref:System.Threading.Mutex>对象表示了局部互斥体，则访问控制不起作用。</xref:System.Threading.Mutex>       若要获取当前应用于已命名的互斥体的规则的列表，请使用<xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName>方法以获取<xref:System.Security.AccessControl.MutexSecurity>对象，，然后使用其<xref:System.Security.AccessControl.CommonObjectSecurity.GetAccessRules%2A>方法来获取 MutexAccessRule 对象的集合。</xref:System.Security.AccessControl.CommonObjectSecurity.GetAccessRules%2A> </xref:System.Security.AccessControl.MutexSecurity> </xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName>       MutexAccessRule 对象不映射一对一与基础的自由访问控制列表 (DACL) 中的访问控制项。 时为互斥体获取的所有访问规则集，该集合包含当前表示所有访问控制项所需要的规则的最小数量。      1> [!NOTE]&1;> 的基础的访问控制项更改，因为将应用并删除规则。 如果可能，合并规则中的信息来维护最少数量的访问控制项。 因此，当读取的规则的当前列表，它可能不完全一样已添加的所有规则的列表。       MutexAccessRule 对象用于指定允许或拒绝用户或组的访问权限。 对象始终表示 MutexAccessRule 允许访问，或拒绝访问，永远不会同时。       若要将规则应用于已命名的系统互斥体，使用<xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName>方法以获取<xref:System.Security.AccessControl.MutexSecurity>对象。</xref:System.Security.AccessControl.MutexSecurity> </xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName> 修改<xref:System.Security.AccessControl.MutexSecurity>对象通过使用其方法来添加规则，然后使用<xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName>方法重新附加安全对象。</xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName> </xref:System.Security.AccessControl.MutexSecurity>      1> [!IMPORTANT]&1;> 对所做的更改<xref:System.Security.AccessControl.MutexSecurity>对象并不会影响已命名的互斥体的访问级别，直到你调用<xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName>方法以将修改过的安全对象分配给命名互斥体。</xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName> </xref:System.Security.AccessControl.MutexSecurity>       MutexAccessRule 对象是不可变。 使用的方法修改的互斥体安全性<xref:System.Security.AccessControl.MutexSecurity>类来添加或删除规则; 执行此操作时，修改的基础的访问控制项。</xref:System.Security.AccessControl.MutexSecurity>      1> [!NOTE] 1> Windows 98 或 Windows Millennium Edition 不支持同步对象的安全性。"
   example:
   - "The following code example demonstrates the creation and use of MutexAccessRule objects. The example creates a <xref:System.Security.AccessControl.MutexSecurity> object, adds rules that allow and deny various rights for the current user, and displays the resulting pair of rules. The example then allows new rights for the current user and displays the result, showing that the new rights are merged with the existing <xref:System.Security.AccessControl.AccessControlType> rule.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.Mutex> object. Examples that attach security objects can be found in <xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-vb[System.Security.AccessControl.MutexSecurity.AddAccessRule#1](~/add/codesnippet/visualbasic/t-system.security.access_5_1.vb)]\n [!code-cs[System.Security.AccessControl.MutexSecurity.AddAccessRule#1](~/add/codesnippet/csharp/t-system.security.access_5_1.cs)]"
   syntax:
@@ -44,31 +44,31 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.AccessControl.MutexAccessRule&quot;></xref> class, specifying the user or group the rule applies to, the access rights, and whether the specified access rights are allowed or denied."
-  remarks: "To wait on a <xref:System.Threading.Mutex> (by calling the <xref:System.Threading.WaitHandle.WaitOne%2A>, <xref:System.Threading.WaitHandle.WaitAny%2A> or <xref:System.Threading.WaitHandle.WaitAll%2A> method), a user must have <xref:System.Security.AccessControl.MutexRights?displayProperty=fullName> access. To release the mutex, by calling the <xref:System.Threading.Mutex.ReleaseMutex%2A> method, the user must have <xref:System.Security.AccessControl.MutexRights?displayProperty=fullName> access."
+  summary: "初始化的新实例<xref href=&quot;System.Security.AccessControl.MutexAccessRule&quot;></xref>类，指定的用户或组，该规则适用于的访问权限，以及是否允许或拒绝指定的访问权限。"
+  remarks: "若要等待<xref:System.Threading.Mutex>(通过调用<xref:System.Threading.WaitHandle.WaitOne%2A>，<xref:System.Threading.WaitHandle.WaitAny%2A>或<xref:System.Threading.WaitHandle.WaitAll%2A>方法)，用户必须具有<xref:System.Security.AccessControl.MutexRights?displayProperty=fullName>访问。</xref:System.Security.AccessControl.MutexRights?displayProperty=fullName> </xref:System.Threading.WaitHandle.WaitAll%2A> </xref:System.Threading.WaitHandle.WaitAny%2A> </xref:System.Threading.WaitHandle.WaitOne%2A> </xref:System.Threading.Mutex> 若要释放互斥体，通过调用<xref:System.Threading.Mutex.ReleaseMutex%2A>方法，用户必须具有<xref:System.Security.AccessControl.MutexRights?displayProperty=fullName>访问。</xref:System.Security.AccessControl.MutexRights?displayProperty=fullName> </xref:System.Threading.Mutex.ReleaseMutex%2A>"
   syntax:
     content: public MutexAccessRule (System.Security.Principal.IdentityReference identity, System.Security.AccessControl.MutexRights eventRights, System.Security.AccessControl.AccessControlType type);
     parameters:
     - id: identity
       type: System.Security.Principal.IdentityReference
-      description: "The user or group the rule applies to. Must be of type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref> or a type such as <xref href=&quot;System.Security.Principal.NTAccount&quot;></xref> that can be converted to type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>."
+      description: "用户或此规则适用于的组中。 类型必须为<xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>或类型，如<xref href=&quot;System.Security.Principal.NTAccount&quot;></xref>可以转换为类型<xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>。"
     - id: eventRights
       type: System.Security.AccessControl.MutexRights
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.MutexRights&quot;></xref> values specifying the rights allowed or denied."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.MutexRights&quot;></xref>值指定的权限允许或拒绝。"
     - id: type
       type: System.Security.AccessControl.AccessControlType
-      description: "One of the <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> values specifying whether the rights are allowed or denied."
+      description: "之一<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref>值指定是否允许或拒绝权限。"
   overload: System.Security.AccessControl.MutexAccessRule.#ctor*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>eventRights</code> specifies an invalid value.       -or-       <code>type</code> specifies an invalid value."
+    description: "<code>eventRights</code>指定了一个无效值。       -或-<code>type</code>指定了一个无效值。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>identity</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>eventRights</code> is zero."
+    description: "<code>identity</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -或-<code>eventRights</code>为零。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>identity</code> is neither of type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref> nor of a type such as <xref href=&quot;System.Security.Principal.NTAccount&quot;></xref> that can be converted to type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>."
+    description: "<code>identity</code>既不属于类型<xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>也不的类型，如<xref href=&quot;System.Security.Principal.NTAccount&quot;></xref>可以转换为类型<xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>。"
   platform:
   - net462
 - uid: System.Security.AccessControl.MutexAccessRule.#ctor(System.String,System.Security.AccessControl.MutexRights,System.Security.AccessControl.AccessControlType)
@@ -83,8 +83,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.AccessControl.MutexAccessRule&quot;></xref> class, specifying the name of the user or group the rule applies to, the access rights, and whether the specified access rights are allowed or denied."
-  remarks: "To wait on a <xref:System.Threading.Mutex> (by calling the <xref:System.Threading.WaitHandle.WaitOne%2A>, <xref:System.Threading.WaitHandle.WaitAny%2A> or <xref:System.Threading.WaitHandle.WaitAll%2A> method), a user must have <xref:System.Security.AccessControl.MutexRights?displayProperty=fullName> access. To release the mutex, by calling the <xref:System.Threading.Mutex.ReleaseMutex%2A> methods, the user must have <xref:System.Security.AccessControl.MutexRights?displayProperty=fullName> access.       This constructor is equivalent to creating an <xref:System.Security.Principal.NTAccount> object, by passing `identity` to the <xref:System.Security.Principal.NTAccount.%23ctor%28System.String%29?displayProperty=fullName> constructor, and passing the newly created <xref:System.Security.Principal.NTAccount> object to the <xref:System.Security.AccessControl.MutexAccessRule.%23ctor%28System.Security.Principal.IdentityReference%2CSystem.Security.AccessControl.MutexRights%2CSystem.Security.AccessControl.AccessControlType%29> constructor."
+  summary: "初始化的新实例<xref href=&quot;System.Security.AccessControl.MutexAccessRule&quot;></xref>类，指定名称的用户或组，该规则适用于的访问权限，以及是否允许或拒绝指定的访问权限。"
+  remarks: "若要等待<xref:System.Threading.Mutex>(通过调用<xref:System.Threading.WaitHandle.WaitOne%2A>，<xref:System.Threading.WaitHandle.WaitAny%2A>或<xref:System.Threading.WaitHandle.WaitAll%2A>方法)，用户必须具有<xref:System.Security.AccessControl.MutexRights?displayProperty=fullName>访问。</xref:System.Security.AccessControl.MutexRights?displayProperty=fullName> </xref:System.Threading.WaitHandle.WaitAll%2A> </xref:System.Threading.WaitHandle.WaitAny%2A> </xref:System.Threading.WaitHandle.WaitOne%2A> </xref:System.Threading.Mutex> 若要释放互斥体，通过调用<xref:System.Threading.Mutex.ReleaseMutex%2A>方法，用户必须具有<xref:System.Security.AccessControl.MutexRights?displayProperty=fullName>访问。</xref:System.Security.AccessControl.MutexRights?displayProperty=fullName> </xref:System.Threading.Mutex.ReleaseMutex%2A>       此构造函数等效于创建<xref:System.Security.Principal.NTAccount>对象，通过传递`identity`到<xref:System.Security.Principal.NTAccount.%23ctor%28System.String%29?displayProperty=fullName>构造函数，并传递新创建<xref:System.Security.Principal.NTAccount>对象传递给<xref:System.Security.AccessControl.MutexAccessRule.%23ctor%28System.Security.Principal.IdentityReference%2CSystem.Security.AccessControl.MutexRights%2CSystem.Security.AccessControl.AccessControlType%29>构造函数。</xref:System.Security.AccessControl.MutexAccessRule.%23ctor%28System.Security.Principal.IdentityReference%2CSystem.Security.AccessControl.MutexRights%2CSystem.Security.AccessControl.AccessControlType%29> </xref:System.Security.Principal.NTAccount> </xref:System.Security.Principal.NTAccount.%23ctor%28System.String%29?displayProperty=fullName> </xref:System.Security.Principal.NTAccount>"
   example:
   - "The following code example demonstrates the use of this constructor to create <xref:System.Security.AccessControl.MutexAccessRule> objects. The example creates a <xref:System.Security.AccessControl.MutexSecurity> object, adds rules that allow and deny various rights for the current user, and displays the resulting pair of rules. The example then allows new rights for the current user and displays the result, showing that the new rights are merged with the existing <xref:System.Security.AccessControl.AccessControlType> rule.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.Mutex> object. Examples that attach security objects can be found in <xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-vb[System.Security.AccessControl.MutexSecurity.AddAccessRule#1](~/add/codesnippet/visualbasic/04cf3af8-ee81-48a6-806b-_1.vb)]\n [!code-cs[System.Security.AccessControl.MutexSecurity.AddAccessRule#1](~/add/codesnippet/csharp/04cf3af8-ee81-48a6-806b-_1.cs)]"
   syntax:
@@ -92,24 +92,24 @@ items:
     parameters:
     - id: identity
       type: System.String
-      description: "The name of the user or group the rule applies to."
+      description: "该规则适用于用户或组的名称。"
     - id: eventRights
       type: System.Security.AccessControl.MutexRights
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.MutexRights&quot;></xref> values specifying the rights allowed or denied."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.MutexRights&quot;></xref>值指定的权限允许或拒绝。"
     - id: type
       type: System.Security.AccessControl.AccessControlType
-      description: "One of the <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> values specifying whether the rights are allowed or denied."
+      description: "之一<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref>值指定是否允许或拒绝权限。"
   overload: System.Security.AccessControl.MutexAccessRule.#ctor*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>eventRights</code> specifies an invalid value.       -or-       <code>type</code> specifies an invalid value."
+    description: "<code>eventRights</code>指定了一个无效值。       -或-<code>type</code>指定了一个无效值。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>eventRights</code> is zero."
+    description: "<code>eventRights</code>为零。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>identity</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>identity</code> is a zero-length string.       -or-       <code>identity</code> is longer than 512 characters."
+    description: "<code>identity</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -或-<code>identity</code>是零长度字符串。       -或-<code>identity</code>长度超过 512 个字符。"
   platform:
   - net462
 - uid: System.Security.AccessControl.MutexAccessRule.MutexRights
@@ -124,15 +124,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Gets the rights allowed or denied by the access rule."
-  remarks: "<xref:System.Security.AccessControl.MutexAccessRule> objects are immutable. You can create a new access rule representing a different user, different rights, or a different <xref:System.Security.AccessControl.AccessControlType>, but you cannot modify an existing access rule."
+  summary: "获取允许或拒绝访问规则的权限。"
+  remarks: "<xref:System.Security.AccessControl.MutexAccessRule>对象是不可变。</xref:System.Security.AccessControl.MutexAccessRule> 你可以创建新的访问规则，以表示不同的用户，不同的权限，或不同<xref:System.Security.AccessControl.AccessControlType>，但不是能修改现有的访问规则。</xref:System.Security.AccessControl.AccessControlType>"
   example:
   - "The following code example demonstrates the use of the MutexRights property to display the rights in the set of rules contained in a <xref:System.Security.AccessControl.MutexSecurity> object. The example creates a <xref:System.Security.AccessControl.MutexSecurity> object, adds rules that allow and deny various rights for the current user, and displays the resulting pair of rules. The example then allows new rights for the current user and displays the result, showing that the new rights are merged with the existing <xref:System.Security.AccessControl.AccessControlType> rule.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.Mutex> object. Examples that attach security objects can be found in <xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-vb[System.Security.AccessControl.MutexSecurity.AddAccessRule#1](~/add/codesnippet/visualbasic/p-system.security.access_0_1.vb)]\n [!code-cs[System.Security.AccessControl.MutexSecurity.AddAccessRule#1](~/add/codesnippet/csharp/p-system.security.access_0_1.cs)]"
   syntax:
     content: public System.Security.AccessControl.MutexRights MutexRights { get; }
     return:
       type: System.Security.AccessControl.MutexRights
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.MutexRights&quot;></xref> values indicating the rights allowed or denied by the access rule."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.MutexRights&quot;></xref>值，该值指示权限允许或拒绝访问规则。"
   overload: System.Security.AccessControl.MutexAccessRule.MutexRights*
   exceptions: []
   platform:

@@ -17,8 +17,8 @@ items:
   nameWithType: BinaryMessageFormatter
   fullName: System.Messaging.BinaryMessageFormatter
   type: Class
-  summary: "Serializes or deserializes an object, or an entire graph of connected objects, to or from the body of a Message Queuing message, using a binary format."
-  remarks: "The BinaryMessageFormatter is very efficient and can be used to serialize most objects. The result is very compact and fast to parse, but does not allow for loosely coupled messaging as the <xref:System.Messaging.XmlMessageFormatter> does. Loosely coupled means that the client and the server can independently version the type that is sent and received.       When the application sends a message to the queue using an instance of the <xref:System.Messaging.MessageQueue> class, the formatter serializes the object into a stream and inserts it into the message body. When reading from a queue using a <xref:System.Messaging.MessageQueue>, the formatter deserializes the message data into the <xref:System.Messaging.Message.Body%2A> property of a <xref:System.Messaging.Message>.       BinaryMessageFormatter provides faster throughput than the <xref:System.Messaging.XmlMessageFormatter>. Use the BinaryMessageFormatter when pure speed rather than loosely coupled messaging is desired."
+  summary: "序列化或反序列化的对象或连接到或从使用二进制格式的消息队列消息的正文的对象的整个图。"
+  remarks: "BinaryMessageFormatter 是非常高效，可用于序列化大多数对象。 结果是非常紧凑且快速进行分析、 但不允许的松散耦合的消息传递作为<xref:System.Messaging.XmlMessageFormatter>未。</xref:System.Messaging.XmlMessageFormatter> 松耦合的意味着客户端和服务器独立可以发送和接收的类型版本。       当应用程序发送一条消息到使用的实例的队列<xref:System.Messaging.MessageQueue>类，格式化程序对象序列化为流，并将它插入到消息正文。</xref:System.Messaging.MessageQueue> 当从使用<xref:System.Messaging.MessageQueue>、 格式化程序反序列化消息数据<xref:System.Messaging.Message.Body%2A>的一种<xref:System.Messaging.Message>。</xref:System.Messaging.Message>属性</xref:System.Messaging.Message.Body%2A>插入</xref:System.Messaging.MessageQueue>队列中读取       BinaryMessageFormatter 提供更快吞吐量要高于<xref:System.Messaging.XmlMessageFormatter>.</xref:System.Messaging.XmlMessageFormatter> 当需要纯速度而不是松散耦合的消息传递时，请使用 BinaryMessageFormatter。"
   example:
   - >-
     [!code-cpp[MessagingBinaryFormatter#1](~/add/codesnippet/cpp/t-system.messaging.binar_1.cpp)]
@@ -46,8 +46,8 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Initializes a new instance of the <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;></xref> class without specifying a type style or top object assembly style."
-  remarks: "You must specify values for the <xref:System.Messaging.BinaryMessageFormatter.TopObjectFormat%2A> property (which defines how the root object in a graph is laid out) and the <xref:System.Messaging.BinaryMessageFormatter.TypeFormat%2A> property (which defines how object type descriptions are laid out) before using an instance of the <xref:System.Messaging.BinaryMessageFormatter> class to serialize and send a message."
+  summary: "初始化的新实例<xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;></xref>而无需指定类型样式或顶级对象程序集样式的类。"
+  remarks: "必须指定值<xref:System.Messaging.BinaryMessageFormatter.TopObjectFormat%2A>属性 （用于定义关系图中的根对象的布局方式） 和<xref:System.Messaging.BinaryMessageFormatter.TypeFormat%2A>属性 （用于定义对象类型描述如何布局） 之前使用的实例<xref:System.Messaging.BinaryMessageFormatter>类进行序列化和发送消息。</xref:System.Messaging.BinaryMessageFormatter> </xref:System.Messaging.BinaryMessageFormatter.TypeFormat%2A> </xref:System.Messaging.BinaryMessageFormatter.TopObjectFormat%2A>"
   syntax:
     content: public BinaryMessageFormatter ();
     parameters: []
@@ -67,16 +67,16 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Initializes a new instance of the <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;></xref> class, specifying the formats of the root object and the type descriptions."
+  summary: "初始化的新实例<xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;></xref>类，同时指定根对象和类型说明的格式。"
   syntax:
     content: public BinaryMessageFormatter (System.Runtime.Serialization.Formatters.FormatterAssemblyStyle topObjectFormat, System.Runtime.Serialization.Formatters.FormatterTypeStyle typeFormat);
     parameters:
     - id: topObjectFormat
       type: System.Runtime.Serialization.Formatters.FormatterAssemblyStyle
-      description: "Determines how the top (root) object of a graph is laid out in the serialized stream."
+      description: "确定关系图的顶级 （根） 对象中的序列化流的布局方式。"
     - id: typeFormat
       type: System.Runtime.Serialization.Formatters.FormatterTypeStyle
-      description: "Determines how type descriptions are laid out in the serialized stream."
+      description: "确定类型说明中的序列化流的布局方式。"
   overload: System.Messaging.BinaryMessageFormatter.#ctor*
   exceptions: []
   platform:
@@ -93,17 +93,17 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Determines whether the formatter can deserialize the contents of the message."
-  remarks: "CanRead returns `false` if the message body is not a binary object.       On the receiving computer, CanRead returns `true` if the assembly for the class to be deserialized exists locally. The assembly must be found in the global assembly cache, or be linked to the application (for example, if the object represents a custom class)."
+  summary: "确定格式化程序是否可以反序列化消息的内容。"
+  remarks: "CanRead 返回`false`如果消息正文不是一个二进制对象。       在接收计算机上，CanRead 返回`true`如果本地存在类的程序集，要反序列化。 程序集必须在全局程序集缓存中，找到或链接到应用程序 （例如，如果该对象表示的自定义类）。"
   syntax:
     content: public bool CanRead (System.Messaging.Message message);
     parameters:
     - id: message
       type: System.Messaging.Message
-      description: "The <xref href=&quot;System.Messaging.Message&quot;></xref> to inspect."
+      description: "<xref href=&quot;System.Messaging.Message&quot;> </xref>检查。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the binary message formatter can deserialize the message; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果二进制消息格式化程序可以反序列化消息;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Messaging.BinaryMessageFormatter.CanRead*
   exceptions:
   - type: System.ArgumentNullException
@@ -123,14 +123,14 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Creates an instance of the <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;></xref> class whose read/write properties (the root object and type description formats) are the same as the current <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;></xref>."
-  remarks: "This method creates a copy of the formatter and initializes all its properties to the values of this <xref:System.Messaging.BinaryMessageFormatter>. It is used for scalability, but does not guarantee read or write thread safety."
+  summary: "创建的实例<xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;></xref>类其读/写属性 （的根对象和类型描述格式） 都与当前相同<xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;> </xref>。"
+  remarks: "此方法创建一份格式化程序，并初始化所有其属性设置为此<xref:System.Messaging.BinaryMessageFormatter>。</xref:System.Messaging.BinaryMessageFormatter>的值 用于可伸缩性，但不保证读取或写入线程安全性。"
   syntax:
     content: public object Clone ();
     parameters: []
     return:
       type: System.Object
-      description: "An object whose properties are identical to those of this <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;></xref>, but whose metadata does not specify it to be a formatter class instance."
+      description: "其属性与此相同一个对象<xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;> </xref>，但其元数据并不指定它为格式化程序类实例。"
   overload: System.Messaging.BinaryMessageFormatter.Clone*
   exceptions: []
   platform:
@@ -147,22 +147,22 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Reads the contents from the given message and creates an object that contains the deserialized message."
-  remarks: "> [!IMPORTANT] >  Calling this method with untrusted data is a security risk. Call this method only with trusted data. For more information, see [Untrusted Data Security Risks](http://go.microsoft.com/fwlink/?LinkId=330378).       The body of the message must be in binary format, and the same serializer must be used to deserialize the message as that which initially serialized it. If the body represents a custom class, the assembly for that class must exist locally."
+  summary: "从给定的消息读取内容并创建包含反序列化的消息的对象。"
+  remarks: "> [!IMPORTANT]1> 调用此方法不受信任的数据会带来安全风险。 调用此方法仅受信任的数据。 有关详细信息，请参阅[不受信任的数据安全风险](http://go.microsoft.com/fwlink/?LinkId=330378)。       消息的正文必须采用二进制格式，并且必须使用相同的序列化程序进行反序列化形式，最初序列化的消息。 如果正文表示自定义类，该类的程序集必须位于本地。"
   syntax:
     content: public object Read (System.Messaging.Message message);
     parameters:
     - id: message
       type: System.Messaging.Message
-      description: "The <xref href=&quot;System.Messaging.Message&quot;></xref>, in binary format, to deserialize."
+      description: "<xref href=&quot;System.Messaging.Message&quot;> </xref>，采用二进制格式，以便反序列化。"
     return:
       type: System.Object
-      description: "The deserialized message."
+      description: "反序列化的消息。"
   overload: System.Messaging.BinaryMessageFormatter.Read*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The message&quot;s <xref:System.Messaging.Message.BodyType*> property does not indicate a binary object."
+    description: "消息的<xref:System.Messaging.Message.BodyType*>属性不指示二进制对象。</xref:System.Messaging.Message.BodyType*>"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The <code>message</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
@@ -180,13 +180,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets a value that defines how the top (root) object of a graph is deserialized with regards to finding and loading its assembly."
-  remarks: "Currently, you should accept the default value, `AssemblyStyle`."
+  summary: "获取或设置一个值，定义关系图的顶级 （根） 对象关于查找和加载其程序集中反序列化。"
+  remarks: "目前，你应该接受默认值， `AssemblyStyle`。"
   syntax:
     content: public System.Runtime.Serialization.Formatters.FormatterAssemblyStyle TopObjectFormat { get; set; }
     return:
       type: System.Runtime.Serialization.Formatters.FormatterAssemblyStyle
-      description: "One of the <xref href=&quot;System.Runtime.Serialization.Formatters.FormatterAssemblyStyle&quot;></xref> values that defines the deserialization behavior."
+      description: "之一<xref href=&quot;System.Runtime.Serialization.Formatters.FormatterAssemblyStyle&quot;></xref>定义反序列化行为的值。"
   overload: System.Messaging.BinaryMessageFormatter.TopObjectFormat*
   exceptions: []
   platform:
@@ -203,13 +203,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets a value that defines how type descriptions are laid out in the serialized stream."
-  remarks: "Currently, you should accept the default value, `TypesWhenNeeded`."
+  summary: "获取或设置一个值，定义如何类型说明的布局中的序列化流。"
+  remarks: "目前，你应该接受默认值， `TypesWhenNeeded`。"
   syntax:
     content: public System.Runtime.Serialization.Formatters.FormatterTypeStyle TypeFormat { get; set; }
     return:
       type: System.Runtime.Serialization.Formatters.FormatterTypeStyle
-      description: "A <xref href=&quot;System.Runtime.Serialization.Formatters.FormatterTypeStyle&quot;></xref> that defines the type description format."
+      description: "A <xref href=&quot;System.Runtime.Serialization.Formatters.FormatterTypeStyle&quot;> </xref> ，它定义类型说明格式。"
   overload: System.Messaging.BinaryMessageFormatter.TypeFormat*
   exceptions: []
   platform:
@@ -226,17 +226,17 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Serializes an object into the body of the message."
-  remarks: "The top object format and type format need not be specified to write to the queue as they must be when reading. The <xref:System.Messaging.BinaryMessageFormatter.TopObjectFormat%2A> and <xref:System.Messaging.BinaryMessageFormatter.TypeFormat%2A> properties are used by the formatter only when deserializing a message.       The <xref:System.Messaging.BinaryMessageFormatter> can serialize most objects, but the result is not loosely coupled. However, it is compact, so the formatter is efficient for large objects."
+  summary: "对象序列化为消息的正文。"
+  remarks: "顶级对象格式和类型格式无需指定要写入队列，因为它们必须在读取时。 <xref:System.Messaging.BinaryMessageFormatter.TopObjectFormat%2A>和<xref:System.Messaging.BinaryMessageFormatter.TypeFormat%2A>仅在反序列化消息时，格式化程序使用属性。</xref:System.Messaging.BinaryMessageFormatter.TypeFormat%2A> </xref:System.Messaging.BinaryMessageFormatter.TopObjectFormat%2A>       <xref:System.Messaging.BinaryMessageFormatter>可以序列化大多数对象，但结果不松散耦合。</xref:System.Messaging.BinaryMessageFormatter> 但是，它是 compact，因此格式化程序是有效的大型对象。"
   syntax:
     content: public void Write (System.Messaging.Message message, object obj);
     parameters:
     - id: message
       type: System.Messaging.Message
-      description: "The <xref href=&quot;System.Messaging.Message&quot;></xref> whose <xref:System.Messaging.Message.Body*> property will contain the serialized object."
+      description: "<xref href=&quot;System.Messaging.Message&quot;> </xref>其<xref:System.Messaging.Message.Body*>属性将包含序列化的对象。</xref:System.Messaging.Message.Body*>"
     - id: obj
       type: System.Object
-      description: "The object to be serialized into the message body."
+      description: "要进行序列化到消息正文的对象。"
   overload: System.Messaging.BinaryMessageFormatter.Write*
   exceptions:
   - type: System.ArgumentNullException

@@ -12,8 +12,8 @@ items:
   nameWithType: IServerChannelSinkProvider
   fullName: System.Runtime.Remoting.Channels.IServerChannelSinkProvider
   type: Interface
-  summary: "Creates server channel sinks for the server channel through which remoting messages flow."
-  remarks: "Channel sinks are connected to a server channel through implementations of the IServerChannelSinkProvider interface. All the remoting server channels provide constructors that take a IServerChannelSinkProvider as a parameter.       Channel sink providers are stored in a chain, and the user is responsible for chaining all channel sink providers together before passing the outer one to the channel constructor. IServerChannelSinkProvider provides a property called <xref:System.Runtime.Remoting.Channels.IServerChannelSinkProvider.Next%2A> for this purpose.       When multiple channel sink providers are specified in a configuration file, the remoting infrastructure will chain them together in the order they are found in the configuration file. The channel sink providers are created at the same time as the channel, during a <xref:System.Runtime.Remoting.RemotingConfiguration.Configure%2A?displayProperty=fullName> call.       After the <xref:System.Runtime.Remoting.Messaging.IMethodCallMessage> is generated, .NET Framework searches through the list of registered channels to find one that can process the call. Once an appropriate channel has been found, the channel sink is retrieved from the channel, and the <xref:System.Runtime.Remoting.Messaging.IMethodCallMessage> is forwarded to the sink for processing."
+  summary: "创建服务器的远程处理从消息流过的服务器信道的信道接收器。"
+  remarks: "信道接收器被连接到服务器通道通过 IServerChannelSinkProvider 接口的实现。 远程处理服务器的所有通道都提供采用作为参数 IServerChannelSinkProvider 构造函数。       信道接收器提供程序存储在一个链，并且用户负责将链接所有通道接收器提供程序在一起传递到通道构造函数的外部一个之前。 IServerChannelSinkProvider 提供一个名为属性<xref:System.Runtime.Remoting.Channels.IServerChannelSinkProvider.Next%2A>为此目的。</xref:System.Runtime.Remoting.Channels.IServerChannelSinkProvider.Next%2A>       当在配置文件中指定多个通道接收器提供程序时，远程处理基础结构将这些链接在一起的配置文件中找到它们的顺序。 信道接收器提供程序期间创建作为通道，同时<xref:System.Runtime.Remoting.RemotingConfiguration.Configure%2A?displayProperty=fullName>调用。</xref:System.Runtime.Remoting.RemotingConfiguration.Configure%2A?displayProperty=fullName>       后<xref:System.Runtime.Remoting.Messaging.IMethodCallMessage>生成时，.NET Framework 将已注册的通道找到一个可以处理调用的列表中搜索。</xref:System.Runtime.Remoting.Messaging.IMethodCallMessage> 找到适当的信道后, 从通道，检索通道接收器和<xref:System.Runtime.Remoting.Messaging.IMethodCallMessage>转发到接收器以进行处理。</xref:System.Runtime.Remoting.Messaging.IMethodCallMessage>"
   example:
   - "The following code example illustrates an implementation of this interface.  \n  \n [!code-cs[Remoting_Sinks#70](~/add/codesnippet/csharp/t-system.runtime.remotin_59_1.cs)]\n [!code-cpp[Remoting_Sinks#70](~/add/codesnippet/cpp/t-system.runtime.remotin_59_1.cpp)]  \n  \n See the <xref:System.Runtime.Remoting.Channels.IServerChannelSink> interface documentation for an example of the corresponding server sink implementation."
   syntax:
@@ -36,7 +36,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Creates a sink chain."
+  summary: "创建接收器链。"
   remarks: ''
   example:
   - >-
@@ -48,15 +48,15 @@ items:
     parameters:
     - id: channel
       type: System.Runtime.Remoting.Channels.IChannelReceiver
-      description: "The channel for which to create the channel sink chain."
+      description: "要为其创建信道接收链通道。"
     return:
       type: System.Runtime.Remoting.Channels.IServerChannelSink
-      description: "The first sink of the newly formed channel sink chain, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, which indicates that this provider will not or cannot provide a connection for this endpoint."
+      description: "新构成的通道接收器链的第一个接收器或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>，指示此提供程序将不会或无法提供此终结点的连接。"
   overload: System.Runtime.Remoting.Channels.IServerChannelSinkProvider.CreateSink*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "直接调用方没有基础结构权限。"
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.IServerChannelSinkProvider.GetChannelData(System.Runtime.Remoting.Channels.IChannelDataStore)
@@ -71,7 +71,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Returns the channel data for the channel that the current sink is associated with."
+  summary: "返回当前接收器相关联的通道的通道数据。"
   remarks: ''
   example:
   - >-
@@ -83,12 +83,12 @@ items:
     parameters:
     - id: channelData
       type: System.Runtime.Remoting.Channels.IChannelDataStore
-      description: "A <xref href=&quot;System.Runtime.Remoting.Channels.IChannelDataStore&quot;></xref> object in which the channel data is to be returned."
+      description: "A <xref href=&quot;System.Runtime.Remoting.Channels.IChannelDataStore&quot;> </xref>对象是用要返回的通道数据。"
   overload: System.Runtime.Remoting.Channels.IServerChannelSinkProvider.GetChannelData*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "直接调用方没有基础结构权限。"
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.IServerChannelSinkProvider.Next
@@ -103,7 +103,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Gets or sets the next sink provider in the channel sink provider chain."
+  summary: "获取或设置通道接收器提供程序链中的下一步的接收器提供程序。"
   remarks: ''
   example:
   - >-
@@ -114,12 +114,12 @@ items:
     content: public System.Runtime.Remoting.Channels.IServerChannelSinkProvider Next { get; set; }
     return:
       type: System.Runtime.Remoting.Channels.IServerChannelSinkProvider
-      description: "The next sink provider in the channel sink provider chain."
+      description: "通道接收器提供程序链中的下一步接收器提供程序。"
   overload: System.Runtime.Remoting.Channels.IServerChannelSinkProvider.Next*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "直接调用方没有基础结构权限。"
   platform:
   - net462
 references:
