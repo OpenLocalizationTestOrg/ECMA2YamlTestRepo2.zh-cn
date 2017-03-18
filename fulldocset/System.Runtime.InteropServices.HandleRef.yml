@@ -14,8 +14,8 @@ items:
   nameWithType: HandleRef
   fullName: System.Runtime.InteropServices.HandleRef
   type: Struct
-  summary: "Wraps a managed object holding a handle to a resource that is passed to unmanaged code using platform invoke."
-  remarks: "> [!IMPORTANT] >  Starting with the .NET Framework 2.0, the functionality of the HandleRef class has been replaced by the <xref:System.Runtime.InteropServices.SafeHandle> class and its derived classes, as well as by the <xref:System.Runtime.InteropServices.CriticalHandle> class.       If you use platform invoke to call a managed object, and the object is not referenced elsewhere after the platform invoke call, it is possible for the garbage collector to finalize the managed object. This action releases the resource and invalidates the handle, causing the platform invoke call to fail. Wrapping a handle with HandleRef guarantees that the managed object is not garbage collected until the platform invoke call completes. For a description of platform invoke services, see [Consuming Unmanaged DLL Functions](~/add/includes/ajax-current-ext-md.md).       The HandleRef value type, like <xref:System.Runtime.InteropServices.GCHandle>, is a special type recognized by the interop marshaler. A normal, nonpinned <xref:System.Runtime.InteropServices.GCHandle> also prevents untimely garbage collection, yet HandleRef provides better performance. Although using HandleRef to keep an object alive for the duration of a platform invoke call is preferred, you can also use the <xref:System.GC.KeepAlive%2A?displayProperty=fullName> method for the same purpose.       The HandleRef constructor takes two parameters: an <xref:System.Object> representing the wrapper, and an <xref:System.IntPtr> representing the unmanaged handle. The interop marshaler passes only the handle to unmanaged code, and guarantees that the wrapper (passed as the first parameter to the constructor of the `HandleRef`) remains alive for the duration of the call."
+  summary: "包装持有句柄到传递给非托管代码使用平台的资源的托管的对象调用。"
+  remarks: "> [!IMPORTANT]1> 从.NET Framework 2.0，HandleRef 类的功能已被取代<xref:System.Runtime.InteropServices.SafeHandle>类和派生的类，也就<xref:System.Runtime.InteropServices.CriticalHandle>类</xref:System.Runtime.InteropServices.CriticalHandle></xref:System.Runtime.InteropServices.SafeHandle>       如果使用平台调用来调用的托管的对象和平台 invoke 调用之后，不在其他位置引用的对象，它可以为垃圾回收器以完成对托管的对象。 此操作将释放资源并使该句柄，从而导致平台 invoke 调用失败。 包装的句柄与 HandleRef 保证托管的对象不垃圾回收之前的平台调用调用完成。 有关平台的说明来调用服务，请参阅[使用非托管 DLL 函数](~/add/includes/ajax-current-ext-md.md)。       HandleRef 值类型，如<xref:System.Runtime.InteropServices.GCHandle>，是识别的互操作封送处理程序的特殊类型。</xref:System.Runtime.InteropServices.GCHandle> 一个正常的、 nonpinned<xref:System.Runtime.InteropServices.GCHandle>还可以防止不及时垃圾回收，同时还可 HandleRef 提供更好的性能。</xref:System.Runtime.InteropServices.GCHandle> 尽管使用 HandleRef 使对象保持活动状态的持续时间内的一个平台调用调用首选，你还可以使用<xref:System.GC.KeepAlive%2A?displayProperty=fullName>用于相同目的的方法。</xref:System.GC.KeepAlive%2A?displayProperty=fullName>       HandleRef 构造函数采用两个参数︰<xref:System.Object>表示包装和<xref:System.IntPtr>表示的非托管的句柄。</xref:System.IntPtr> </xref:System.Object> 互操作封送处理程序将仅将句柄传递给非托管代码，而可保证包装 (作为第一个参数传递给的构造函数`HandleRef`) 调用持续时间内保持活动状态。"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -38,16 +38,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Initializes a new instance of the <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;></xref> class with the object to wrap and a handle to the resource used by unmanaged code."
+  summary: "初始化的新实例<xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;></xref>类包装的对象和由非托管代码使用的资源的句柄。"
   syntax:
     content: public HandleRef (object wrapper, IntPtr handle);
     parameters:
     - id: wrapper
       type: System.Object
-      description: "A managed object that should not be finalized until the platform invoke call returns."
+      description: "应完成，直到平台 invoke 调用的托管的对象返回。"
     - id: handle
       type: System.IntPtr
-      description: "An <xref:System.IntPtr> that indicates a handle to a resource."
+      description: "<xref:System.IntPtr>，该值指示资源的句柄。</xref:System.IntPtr>"
   overload: System.Runtime.InteropServices.HandleRef.#ctor*
   exceptions: []
   platform:
@@ -64,12 +64,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Gets the handle to a resource."
+  summary: "获取资源的句柄。"
   syntax:
     content: public IntPtr Handle { get; }
     return:
       type: System.IntPtr
-      description: "The handle to a resource."
+      description: "资源句柄。"
   overload: System.Runtime.InteropServices.HandleRef.Handle*
   exceptions: []
   platform:
@@ -91,10 +91,10 @@ items:
     parameters:
     - id: value
       type: System.Runtime.InteropServices.HandleRef
-      description: "To be added."
+      description: "要添加。"
     return:
       type: System.IntPtr
-      description: "To be added."
+      description: "要添加。"
   overload: System.Runtime.InteropServices.HandleRef.op_Explicit*
   exceptions: []
   platform:
@@ -111,16 +111,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Returns the internal integer representation of a <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;></xref> object."
+  summary: "返回的内部整数表示形式<xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;></xref>对象。"
   syntax:
     content: public static IntPtr ToIntPtr (System.Runtime.InteropServices.HandleRef value);
     parameters:
     - id: value
       type: System.Runtime.InteropServices.HandleRef
-      description: "A <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;></xref> object to retrieve an internal integer representation from."
+      description: "A <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;> </xref>对象以检索从内部整数表示形式。"
     return:
       type: System.IntPtr
-      description: "An <xref:System.IntPtr> object that represents a <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;></xref> object."
+      description: "<xref:System.IntPtr>对象，表示<xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;></xref>对象。</xref:System.IntPtr>"
   overload: System.Runtime.InteropServices.HandleRef.ToIntPtr*
   exceptions: []
   platform:
@@ -137,12 +137,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Gets the object holding the handle to a resource."
+  summary: "获取保存资源句柄的对象。"
   syntax:
     content: public object Wrapper { get; }
     return:
       type: System.Object
-      description: "The object holding the handle to a resource."
+      description: "保存对资源的句柄的对象。"
   overload: System.Runtime.InteropServices.HandleRef.Wrapper*
   exceptions: []
   platform:

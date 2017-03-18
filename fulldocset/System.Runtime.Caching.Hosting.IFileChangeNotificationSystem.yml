@@ -11,8 +11,8 @@ items:
   nameWithType: IFileChangeNotificationSystem
   fullName: System.Runtime.Caching.Hosting.IFileChangeNotificationSystem
   type: Interface
-  summary: "Defines a way to expose a custom <xref href=&quot;System.Runtime.Caching.FileChangeMonitor&quot;></xref> object to a cache implementation."
-  remarks: "In ASP.NET, the IFileChangeNotificationSystem interface provides access to internal file-change notification management.       The IFileChangeNotificationSystem interface is used internally by the <xref:System.Runtime.Caching.HostFileChangeMonitor> class.       When a cache implementation runs in an ASP.NET application domain, ASP.NET implements an IFileChangeNotificationSystem interface through the <xref:System.Runtime.Caching.ObjectCache.Host%2A> property. The <xref:System.Runtime.Caching.HostFileChangeMonitor> class detects this property and uses the ASP.NET file-change notification system to evict cache entries based on file-change notification.       In non-ASP.NET applications, there is no host environment that implements a custom IFileChangeNotificationSystem interface. As a result, the <xref:System.Runtime.Caching.HostFileChangeMonitor> class uses the <xref:System.IO.FileSystemWatcher> class of the CLR."
+  summary: "定义了如何公开自定义<xref href=&quot;System.Runtime.Caching.FileChangeMonitor&quot;></xref>向缓存实现的对象。"
+  remarks: "在 ASP.NET 中，IFileChangeNotificationSystem 接口提供对内部的文件更改通知管理的访问。       IFileChangeNotificationSystem 接口用于在内部的<xref:System.Runtime.Caching.HostFileChangeMonitor>类。</xref:System.Runtime.Caching.HostFileChangeMonitor>       ASP.NET 缓存实现运行时在 ASP.NET 应用程序域中，实现通过 IFileChangeNotificationSystem 接口<xref:System.Runtime.Caching.ObjectCache.Host%2A>属性。</xref:System.Runtime.Caching.ObjectCache.Host%2A> <xref:System.Runtime.Caching.HostFileChangeMonitor>类检测此属性，并使用 ASP.NET 文件更改通知系统来收回基于文件更改通知的缓存条目。</xref:System.Runtime.Caching.HostFileChangeMonitor>       在非 ASP.NET 应用程序，没有实现自定义的 IFileChangeNotificationSystem 接口任何主机环境。 因此，<xref:System.Runtime.Caching.HostFileChangeMonitor>类使用<xref:System.IO.FileSystemWatcher>的 CLR 类。</xref:System.IO.FileSystemWatcher> </xref:System.Runtime.Caching.HostFileChangeMonitor>"
   syntax:
     content: public interface IFileChangeNotificationSystem
   implements: []
@@ -30,26 +30,26 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching.Hosting
-  summary: "Registers a file path to monitor with the host environment."
-  remarks: "This method is used by custom cache objects and custom change monitors that implement the host environment&quot;s <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem> interface in order to register file paths for monitoring with the host environment. The StartMonitoring method is called by implementers of the <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem> interface in order to register a file or directory for change monitoring."
+  summary: "注册一个文件路径以监视与主机环境。"
+  remarks: "此方法使用由自定义缓存对象和自定义更改实现主机环境的监视器<xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem>接口，以便注册以使用主机环境进行监视的文件路径。</xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem> StartMonitoring 方法调用的实施者<xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem>接口，以便注册的文件或用于更改监视的目录。</xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem>"
   syntax:
     content: public void StartMonitoring (string filePath, System.Runtime.Caching.OnChangedCallback onChangedCallback, out object state, out DateTimeOffset lastWriteTime, out long fileSize);
     parameters:
     - id: filePath
       type: System.String
-      description: "The fully qualified physical path of a directory or file to monitor for changes."
+      description: "目录或文件用于监视更改的完全限定的物理路径。"
     - id: onChangedCallback
       type: System.Runtime.Caching.OnChangedCallback
-      description: "A reference to a method that implements the <xref href=&quot;System.Runtime.Caching.OnChangedCallback&quot;></xref> delegate. When the monitored file or directory changes, the host environment&quot;s implementation of the <xref href=&quot;System.Runtime.Caching.Hosting.IFileChangeNotificationSystem&quot;></xref> interface raises an event by calling the <xref href=&quot;System.Runtime.Caching.OnChangedCallback&quot;></xref> class."
+      description: "实现方法的引用<xref href=&quot;System.Runtime.Caching.OnChangedCallback&quot;></xref>委托。 监视的文件或目录发生更改时，宿主环境的实现<xref href=&quot;System.Runtime.Caching.Hosting.IFileChangeNotificationSystem&quot;></xref>接口通过调用来引发事件<xref href=&quot;System.Runtime.Caching.OnChangedCallback&quot;></xref>类。"
     - id: state
       type: System.Object
-      description: "The state that is supplied by the host environment. Cache implementations and custom change monitors should treat the state value as opaque. However, the state must be stored so that it can be sent to the host environment when the cache implementation calls the <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StopMonitoring*> method."
+      description: "由主机环境提供的状态。 缓存实现和自定义更改监视器应将状态的值视为不透明。 但是，状态必须存储，以便可以将它发送给主机环境时的缓存实现调用<xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StopMonitoring*>方法。</xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StopMonitoring*>"
     - id: lastWriteTime
       type: System.DateTimeOffset
-      description: "When this method returns, contains the last date and time that a write operation occurred on `filePath`. This parameter is passed uninitialized. This parameter is returned from the host environment."
+      description: "此方法返回时，包含上次的日期和发生写入操作的时间`filePath`。 此参数传递时未经初始化。 从主机环境时返回此参数。"
     - id: fileSize
       type: System.Int64
-      description: "When this method returns, contains the total size of the monitored `filePath`. This parameter is passed uninitialized. This parameter is returned from the host environment."
+      description: "此方法返回时，包含所监视的总大小`filePath`。 此参数传递时未经初始化。 从主机环境时返回此参数。"
   overload: System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*
   exceptions: []
   platform:
@@ -66,17 +66,17 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching.Hosting
-  summary: "Ends change monitoring."
-  remarks: "The StopMonitoring method must be called by custom caches and custom change monitors that are being disposed by the host environment in order to stop monitoring file paths and directories."
+  summary: "结束更改监视。"
+  remarks: "必须由自定义缓存和正在停止监视文件路径和目录以释放由宿主环境的自定义更改监视器调用 StopMonitoring 方法。"
   syntax:
     content: public void StopMonitoring (string filePath, object state);
     parameters:
     - id: filePath
       type: System.String
-      description: "The path of the file or folder to stop monitoring. This should match a file path value that was passed in an earlier call to the <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*> method."
+      description: "文件或要停止监视文件夹的路径。 这应匹配到的早期调用中传递一个文件路径值<xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*>方法。</xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*>"
     - id: state
       type: System.Object
-      description: "The state information that was originally supplied by the host environment during an earlier call to the <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*> method."
+      description: "在以前调用期间最初由主机环境提供的状态信息<xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*>方法。</xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*>"
   overload: System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StopMonitoring*
   exceptions: []
   platform:

@@ -13,8 +13,8 @@ items:
   nameWithType: ResolveEventArgs
   fullName: System.ResolveEventArgs
   type: Class
-  summary: "Provides data for loader resolution events, such as the <xref href=&quot;System.AppDomain.TypeResolve&quot;></xref>, <xref href=&quot;System.AppDomain.ResourceResolve&quot;></xref>, <xref href=&quot;System.AppDomain.ReflectionOnlyAssemblyResolve&quot;></xref>, and <xref href=&quot;System.AppDomain.AssemblyResolve&quot;></xref> events."
-  remarks: "When the loader cannot resolve an assembly reference and a handler has been provided for the appropriate loader resolution event, the event is raised and the ResolveEventArgs contains information about the item to be resolved.      -   The <xref:System.ResolveEventArgs.Name%2A> property contains the name of the item to be resolved.      -   Beginning with the [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], the <xref:System.ResolveEventArgs.RequestingAssembly%2A> property contains the assembly that requested an assembly that can provide the named item. For more information, see the <xref:System.ResolveEventArgs.RequestingAssembly%2A> property."
+  summary: "提供数据加载程序解析事件，如<xref href=&quot;System.AppDomain.TypeResolve&quot;> </xref>， <xref href=&quot;System.AppDomain.ResourceResolve&quot;> </xref>， <xref href=&quot;System.AppDomain.ReflectionOnlyAssemblyResolve&quot;> </xref>，和<xref href=&quot;System.AppDomain.AssemblyResolve&quot;></xref>事件。"
+  remarks: "当加载程序无法解析程序集引用和处理程序针对提供了相应的加载程序解析事件，引发该事件和 ResolveEventArgs 包含有关要解析的项的信息。      -<xref:System.ResolveEventArgs.Name%2A>属性包含的要解析的项的名称。</xref:System.ResolveEventArgs.Name%2A>      -从[!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)]、<xref:System.ResolveEventArgs.RequestingAssembly%2A>属性包含请求可以提供命名的项程序集的程序集。</xref:System.ResolveEventArgs.RequestingAssembly%2A> 有关详细信息，请参阅<xref:System.ResolveEventArgs.RequestingAssembly%2A>属性。</xref:System.ResolveEventArgs.RequestingAssembly%2A>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -38,14 +38,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Initializes a new instance of the <xref href=&quot;System.ResolveEventArgs&quot;></xref> class, specifying the name of the item to resolve."
-  remarks: "This constructor is typically called only by the common language runtime."
+  summary: "初始化的新实例<xref href=&quot;System.ResolveEventArgs&quot;></xref>类，指定要解析的项的名称。"
+  remarks: "此构造函数通常仅由公共语言运行时调用。"
   syntax:
     content: public ResolveEventArgs (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of an item to resolve."
+      description: "要解析的项的名称。"
   overload: System.ResolveEventArgs.#ctor*
   exceptions: []
   platform:
@@ -62,16 +62,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Initializes a new instance of the <xref href=&quot;System.ResolveEventArgs&quot;></xref> class, specifying the name of the item to resolve and the assembly whose dependency is being resolved."
+  summary: "初始化的新实例<xref href=&quot;System.ResolveEventArgs&quot;></xref>类，指定要解析的项以及其依赖项所解析的程序集的名称。"
   syntax:
     content: public ResolveEventArgs (string name, System.Reflection.Assembly requestingAssembly);
     parameters:
     - id: name
       type: System.String
-      description: "The name of an item to resolve."
+      description: "要解析的项的名称。"
     - id: requestingAssembly
       type: System.Reflection.Assembly
-      description: "The assembly whose dependency is being resolved."
+      description: "正在解析其依赖项程序集。"
   overload: System.ResolveEventArgs.#ctor*
   exceptions: []
   platform:
@@ -88,13 +88,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Gets the name of the item to resolve."
-  remarks: "For the <xref:System.AppDomain.AssemblyResolve> event, Name is the assembly name before policy is applied."
+  summary: "获取要解析的项的名称。"
+  remarks: "有关<xref:System.AppDomain.AssemblyResolve>事件，应用策略之前名称是程序集名称。</xref:System.AppDomain.AssemblyResolve>"
   syntax:
     content: public string Name { get; }
     return:
       type: System.String
-      description: "The name of the item to resolve."
+      description: "要解析的项的名称。"
   overload: System.ResolveEventArgs.Name*
   exceptions: []
   platform:
@@ -111,13 +111,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Gets the assembly whose dependency is being resolved."
-  remarks: "The assembly that is returned by this property is an assembly that was unable to resolve the item specified by the <xref:System.ResolveEventArgs.Name%2A> property, because the item did not exist in that assembly, in any of its loaded dependencies, or in any dependencies the loader could find through probing.       For example, suppose the current assembly uses the <xref:System.Reflection.Assembly.LoadFile%2A?displayProperty=fullName> method to load assembly A from a directory outside the probing path, in order to use class CA. Suppose further that class CA uses class CB, in assembly B, and that assembly A has a compile-time reference to assembly B, also located outside the probing path. When the current assembly attempts to instantiate CA, the loader attempts to resolve the reference to assembly B. However, because assembly A was loaded by using the <xref:System.Reflection.Assembly.LoadFile%2A?displayProperty=fullName> method, the loader cannot resolve the dependency. If there is a handler for the <xref:System.AppDomain.AssemblyResolve?displayProperty=fullName> event, the event is raised, and the RequestingAssembly property of the resulting <xref:System.ResolveEventArgs> object contains assembly A, because assembly A is the assembly that is missing a dependency.       The semantics of the RequestingAssembly property vary, depending on how the requesting assembly was loaded:      -   Load context: The value of the property might be `null`. The load context is load-order independent, and the identity of the requesting assembly is not necessarily meaningful. A non-null example occurs when the <xref:System.Type.GetType%2A?displayProperty=fullName> method is called and the specified type is not known to the requesting assembly or any of its dependencies.      -   Load-from context: The property can be used as a probing hint, but the event handler should not get more than one request for a given assembly name.      -   No context (that is, the requesting assembly was loaded by using the <xref:System.Reflection.Assembly.LoadFile%2A?displayProperty=fullName> method, or as a byte stream, or in mixed mode): The handler can use the RequestingAssembly property to load different implementations of the same assembly based on the identity of the requesting assembly."
+  summary: "获取要解析其依赖项的程序集。"
+  remarks: "此属性返回的程序集是无法解析指定的项的程序集<xref:System.ResolveEventArgs.Name%2A>属性，因为该程序集中，不存在项中任何加载依赖项，或任何依赖关系中加载程序无法找到通过探测。</xref:System.ResolveEventArgs.Name%2A>       例如，假定当前程序集使用<xref:System.Reflection.Assembly.LoadFile%2A?displayProperty=fullName>方法以便使用类 CA 从外部的探测路径的目录中加载程序集 A。</xref:System.Reflection.Assembly.LoadFile%2A?displayProperty=fullName> 假设进一步该类 CA 使用类 CB，在程序集 B 和程序集 A 具有对程序集 B 的编译时引用也位于探测路径外。 当尝试实例化 CA 当前程序集时，加载程序将尝试解析对程序集 b。 引用但是，因为通过使用已加载程序集 A<xref:System.Reflection.Assembly.LoadFile%2A?displayProperty=fullName>方法，加载程序无法解析依赖项。</xref:System.Reflection.Assembly.LoadFile%2A?displayProperty=fullName> 如果没有处理程序<xref:System.AppDomain.AssemblyResolve?displayProperty=fullName>引发事件，该事件时，所生成的 RequestingAssembly 属性<xref:System.ResolveEventArgs>对象包含程序集 A，因为程序集 A 是程序集，缺少依赖关系。</xref:System.ResolveEventArgs> </xref:System.AppDomain.AssemblyResolve?displayProperty=fullName>       RequestingAssembly 属性的语义不同，具体取决于请求程序集的加载方式:-加载上下文︰ 属性的值可能是`null`。 加载上下文即可加载顺序无关和标识请求的程序集不一定有意义。 则会发生非 null 示例时<xref:System.Type.GetType%2A?displayProperty=fullName>调用方法和指定的类型不为请求的程序集或任何依赖项所知。</xref:System.Type.GetType%2A?displayProperty=fullName>      -加载源上下文︰ 属性可以用作探测的提示，但事件处理程序应获取对给定的程序集名称的多个请求。      -无上下文 (即，请求已加载程序集使用<xref:System.Reflection.Assembly.LoadFile%2A?displayProperty=fullName>方法，或作为字节流，或在混合模式下): 处理程序可以使用 RequestingAssembly 属性加载基于请求的程序集的标识相同程序集的不同实施。</xref:System.Reflection.Assembly.LoadFile%2A?displayProperty=fullName>"
   syntax:
     content: public System.Reflection.Assembly RequestingAssembly { get; }
     return:
       type: System.Reflection.Assembly
-      description: "The assembly that requested the item specified by the <xref:System.ResolveEventArgs.Name*> property."
+      description: "请求由指定的项的程序集<xref:System.ResolveEventArgs.Name*>属性。</xref:System.ResolveEventArgs.Name*>"
   overload: System.ResolveEventArgs.RequestingAssembly*
   exceptions: []
   platform:

@@ -12,8 +12,8 @@ items:
   nameWithType: ManagedToNativeComInteropStubAttribute
   fullName: System.Runtime.InteropServices.ManagedToNativeComInteropStubAttribute
   type: Class
-  summary: "Provides support for user customization of interop stubs in managed-to-COM interop scenarios."
-  remarks: "This attribute enables interop developers who have knowledge about marshaling and the inner workings of interop calls to do the following:      -   Take advantage of customized interop stubs at build time instead of run time.      -   Debug customized interop stubs.      -   Provide marshaling capabilities within a stub that the runtime does not provide.      -   Provide user-specific method dispatch capabilities.       You apply the attribute on a method in an interface to specify a corresponding stub method for managed-to-native COM interop.       If this attribute is encountered during run time, the common language runtime does not dynamically generate an interop stub. Instead, it invokes the custom stub that was created at build time.       The ManagedToNativeComInteropStubAttribute attribute has the following characteristics:      -   The attribute can be used only on methods from interfaces that are marked `[ComImport]`. If the attribute is applied to non-interface types, it is ignored by the runtime.      -   The attribute can be used only once on the same method in an interface. If it is used more than once, the compiler generates a duplicated attribute error.      -   The attribute is not inheritable from a base interface. Derived interfaces must explicitly assign the attribute.      -   The assembly that contains the attributed method must also contain the customized stub.       Overloaded stub methods are valid. Although you specify only the type and the name of the stub method, the runtime will discover the corresponding stub. It does this by examining all the arguments on the interface method, and then performing full signature matching by using an explicit `this` pointer.       It is also possible for multiple methods in an interface to share the same stub method; however, you should be careful when you use shared stubs.      > [!NOTE] >  Stub methods must be static.       You could inform the runtime to use a customized interop stub at build time instead of run time with the following C# code:      ```   [ComImport]   interface IMyInterface   {       [ManagedToNativeComInteropStubAttribute(typeof(TestStubClass),                 &quot;ForwardTestStub&quot;)]       void GetString (string arg);   }   ```       You could then use the following code to declare the corresponding stub method:      ```   class TestStubClass   {       internal static void ForwardTestStub(IMyInterface thisObject,                string arg) {…}   }   ```"
+  summary: "提供的互操作存根 （stub） 在托管到 COM 互操作方案中的用户自定义项的支持。"
+  remarks: "使用此属性，互操作的开发人员有关于封送处理的知识和互操作调用，以实现以下的内部工作情况:-在生成时，而不是运行时充分利用自定义互操作的存根。      调试自定义互操作的存根。      -提供在存根中运行时不提供封送处理功能。      -提供特定于用户的方法调度功能。       指定托管到本机 COM 互操作的相应存根 （stub） 方法的接口中的方法上应用该特性。       如果在运行时遇到此属性时，公共语言运行时不动态生成互操作的存根。 相反，它会调用已在生成时创建的自定义存根。       ManagedToNativeComInteropStubAttribute 属性具有以下特征:-特性可用于仅在从标记的接口的方法上`[ComImport]`。 如果该属性将应用于非接口类型，则忽略由运行时它。      -该属性上的接口中相同的方法可以使用仅一次。 如果不止一次使用它，编译器将生成重复的属性错误。      -该属性不是可继承基接口中。 该特性，必须显式分配的派生的接口。      -包含特性化的方法的程序集还必须包含自定义的存根 （stub）。       重载存根 （stub） 方法都是有效的。 虽然你指定的类型和存根 （stub） 方法的名称，运行时将发现相应的存根。 这是通过检查接口方法上的所有自变量，然后再执行完整签名匹配使用显式`this`指针。       还有可能接口共享相同的存根 （stub） 方法; 中的多个方法但是，你应小心使用共享存根 （stub） 时。      1> [!NOTE]&1;> 存根 （stub） 方法必须是静态的。       无法通知运行时，必须在生成时，而不是用下面的 C# 代码的运行时使用自定义互操作存根 （stub）︰```   [ComImport]   interface IMyInterface   {       [ManagedToNativeComInteropStubAttribute(typeof(TestStubClass),                 &quot;ForwardTestStub&quot;)]       void GetString (string arg);   }   ```然后可以使用下面的代码来声明相应的存根 （stub） 方法︰```   class TestStubClass   {       internal static void ForwardTestStub(IMyInterface thisObject,                string arg) {…}   }   ```"
   syntax:
     content: >-
       [System.AttributeUsage(System.AttributeTargets.Method, AllowMultiple=false, Inherited=false)]
@@ -39,24 +39,24 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Initializes a new instance of the <xref href=&quot;System.Runtime.InteropServices.ManagedToNativeComInteropStubAttribute&quot;></xref> class with the specified class type and method name."
+  summary: "初始化的新实例<xref href=&quot;System.Runtime.InteropServices.ManagedToNativeComInteropStubAttribute&quot;></xref>使用指定的类类型和方法名称的类。"
   syntax:
     content: public ManagedToNativeComInteropStubAttribute (Type classType, string methodName);
     parameters:
     - id: classType
       type: System.Type
-      description: "The class that contains the required stub method."
+      description: "包含所需的存根 （stub） 方法的类。"
     - id: methodName
       type: System.String
-      description: "The name of the stub method."
+      description: "存根 （stub） 方法的名称。"
   overload: System.Runtime.InteropServices.ManagedToNativeComInteropStubAttribute.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>methodName</code> cannot be found.       -or-       The method is not static or non-generic.       -or-       The method&quot;s parameter list does not match the expected parameter list for the stub."
+    description: "<code>methodName</code>无法找到。       -或者-此方法不是静态或非泛型。       -或者-方法的参数列表与存根 （stub） 的预期的参数列表不匹配。"
   - type: System.MethodAccessException
     commentId: T:System.MethodAccessException
-    description: "The interface that contains the managed interop method has no access to the stub method, because the stub method has private or protected accessibility, or because of a security issue."
+    description: "包含托管互操作方法的接口不具有访问权限的存根 （stub） 方法，因为存根 （stub） 方法具有私有或受保护可访问性，或由于安全问题。"
   platform:
   - net462
 - uid: System.Runtime.InteropServices.ManagedToNativeComInteropStubAttribute.ClassType
@@ -71,12 +71,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Gets the class that contains the required stub method."
+  summary: "获取包含所需的存根 （stub） 方法的类。"
   syntax:
     content: public Type ClassType { get; }
     return:
       type: System.Type
-      description: "The class that contains the customized interop stub."
+      description: "包含自定义互操作的存根 （stub） 的类。"
   overload: System.Runtime.InteropServices.ManagedToNativeComInteropStubAttribute.ClassType*
   exceptions: []
   platform:
@@ -93,12 +93,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Gets the name of the stub method."
+  summary: "获取存根 （stub） 方法的名称。"
   syntax:
     content: public string MethodName { get; }
     return:
       type: System.String
-      description: "The name of a customized interop stub."
+      description: "自定义互操作存根 （stub） 的名称。"
   overload: System.Runtime.InteropServices.ManagedToNativeComInteropStubAttribute.MethodName*
   exceptions: []
   platform:

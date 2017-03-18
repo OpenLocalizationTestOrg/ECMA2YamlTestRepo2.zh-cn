@@ -19,8 +19,8 @@ items:
   nameWithType: BinaryClientFormatterSink
   fullName: System.Runtime.Remoting.Channels.BinaryClientFormatterSink
   type: Class
-  summary: "Provides the implementation for a client formatter sink that uses the <xref href=&quot;System.Runtime.Serialization.Formatters.Binary.BinaryFormatter&quot;></xref>."
-  remarks: "The function of the formatter sink is to generate the necessary headers and serialize the message to the stream. After the formatter sink, the <xref:System.Runtime.Remoting.Messaging.IMessage> is forwarded to all sinks in the chain through the <xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A> or <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A> calls. At this stage the message has already been serialized and is provided as information only. Sinks that need to create or modify the message must be placed in the sink chain before the formatter. This is easily achieved by implementing the <xref:System.Runtime.Remoting.Channels.IClientFormatterSink> interface, which gives the impression of having a reference to the formatter sink. The real formatter sink can then be placed later in the sink chain.      |Property|Description|   |--------------|-----------------|   |`includeVersions`|Specifies whether the formatter will include versioning information. Values are `true` or `false`.|      > [!IMPORTANT] >  Using an instance of this object with untrusted data or across an unsecure channel is a security risk. Use this object only with trusted data and across a secure channel. For more information, see [Untrusted Data Security Risks](http://go.microsoft.com/fwlink/?LinkId=330378)."
+  summary: "提供使用的客户端格式化程序接收器的实现<xref href=&quot;System.Runtime.Serialization.Formatters.Binary.BinaryFormatter&quot;> </xref>。"
+  remarks: "格式化程序接收器的作用是生成必要的标头并序列化到流的消息。 格式化程序接收器之后<xref:System.Runtime.Remoting.Messaging.IMessage>转发到通过链中的所有接收器<xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A>或<xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A>调用。</xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A> </xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A> </xref:System.Runtime.Remoting.Messaging.IMessage> 在此阶段消息已序列化，并且仅作为信息提供。 需要创建或修改消息的接收器必须放置在之前格式化程序接收器链中。 这通过实现轻松地实现<xref:System.Runtime.Remoting.Channels.IClientFormatterSink>接口，使具有对格式化程序接收器的引用的效果。</xref:System.Runtime.Remoting.Channels.IClientFormatterSink> 然后可以该接收器链中更高版本中放置真实的格式化程序接收器。      |属性 |说明 |  |--------------|-----------------|  |`includeVersions`|指定格式化程序是否将包括版本信息。 值为`true`或`false`。 |    &1;> [!IMPORTANT]&1;> 与不受信任的数据或在不安全通道使用此对象的实例会带来安全风险。 使用此对象仅与受信任的数据以及跨安全通道。 有关详细信息，请参阅[不受信任的数据安全风险](http://go.microsoft.com/fwlink/?LinkId=330378)。"
   syntax:
     content: 'public class BinaryClientFormatterSink : System.Runtime.Remoting.Channels.IClientFormatterSink'
   inheritance:
@@ -42,13 +42,13 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.Channels
-  summary: "Initializes a new instance of the <xref href=&quot;System.Runtime.Remoting.Channels.BinaryClientFormatterSink&quot;></xref> class."
+  summary: "初始化的新实例<xref href=&quot;System.Runtime.Remoting.Channels.BinaryClientFormatterSink&quot;></xref>类。"
   syntax:
     content: public BinaryClientFormatterSink (System.Runtime.Remoting.Channels.IClientChannelSink nextSink);
     parameters:
     - id: nextSink
       type: System.Runtime.Remoting.Channels.IClientChannelSink
-      description: "The next <xref href=&quot;System.Runtime.Remoting.Channels.IClientChannelSink&quot;></xref> in the sink chain."
+      description: "下一步<xref href=&quot;System.Runtime.Remoting.Channels.IClientChannelSink&quot;></xref>接收器链中。"
   overload: System.Runtime.Remoting.Channels.BinaryClientFormatterSink.#ctor*
   exceptions: []
   platform:
@@ -65,19 +65,19 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.Channels
-  summary: "Asynchronously processes the provided message."
+  summary: "以异步方式处理所提供的消息。"
   syntax:
     content: public System.Runtime.Remoting.Messaging.IMessageCtrl AsyncProcessMessage (System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Messaging.IMessageSink replySink);
     parameters:
     - id: msg
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "The message to process."
+      description: "要处理的消息。"
     - id: replySink
       type: System.Runtime.Remoting.Messaging.IMessageSink
-      description: "The sink that will receive the reply to the provided message."
+      description: "将接收答复所提供的消息的接收器。"
     return:
       type: System.Runtime.Remoting.Messaging.IMessageCtrl
-      description: "A <xref href=&quot;System.Runtime.Remoting.Messaging.IMessageCtrl&quot;></xref> that provides a way to control the asynchronous message after it has been dispatched."
+      description: "A <xref href=&quot;System.Runtime.Remoting.Messaging.IMessageCtrl&quot;> </xref> ，它提供一种方法来调度后处理控制异步消息。"
   overload: System.Runtime.Remoting.Channels.BinaryClientFormatterSink.AsyncProcessMessage*
   exceptions: []
   platform:
@@ -94,22 +94,22 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.Channels
-  summary: "Requests asynchronous processing of a method call on the current sink."
+  summary: "在当前接收器上调用异步方法的处理的请求。"
   syntax:
     content: public void AsyncProcessRequest (System.Runtime.Remoting.Channels.IClientChannelSinkStack sinkStack, System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Channels.ITransportHeaders headers, System.IO.Stream stream);
     parameters:
     - id: sinkStack
       type: System.Runtime.Remoting.Channels.IClientChannelSinkStack
-      description: "A stack of channel sinks that called the current sink."
+      description: "接收器调用了当前接收器的通道堆栈。"
     - id: msg
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "The message to process."
+      description: "要处理的消息。"
     - id: headers
       type: System.Runtime.Remoting.Channels.ITransportHeaders
-      description: "The headers to add to the outgoing message that is heading to the server."
+      description: "要添加到将发往服务器的传出消息的标头。"
     - id: stream
       type: System.IO.Stream
-      description: "The stream that is headed toward the transport sink."
+      description: "将发往传输接收器流。"
   overload: System.Runtime.Remoting.Channels.BinaryClientFormatterSink.AsyncProcessRequest*
   exceptions: []
   platform:
@@ -126,22 +126,22 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.Channels
-  summary: "Requests asynchronous processing of a response to a method call on the current sink."
+  summary: "在当前接收器上调用异步处理对方法的响应的请求。"
   syntax:
     content: public void AsyncProcessResponse (System.Runtime.Remoting.Channels.IClientResponseChannelSinkStack sinkStack, object state, System.Runtime.Remoting.Channels.ITransportHeaders headers, System.IO.Stream stream);
     parameters:
     - id: sinkStack
       type: System.Runtime.Remoting.Channels.IClientResponseChannelSinkStack
-      description: "A stack of sinks that called the current sink."
+      description: "接收器调用了当前接收器的堆栈。"
     - id: state
       type: System.Object
-      description: "Information that is associated with the current sink, generated on the request side and needed on the response side."
+      description: "与当前的接收器中，关联的信息请求端上生成，并在响应端需要。"
     - id: headers
       type: System.Runtime.Remoting.Channels.ITransportHeaders
-      description: "The headers that are retrieved from the server response stream."
+      description: "从服务器响应流检索标头。"
     - id: stream
       type: System.IO.Stream
-      description: "The stream that is coming back from the transport sink."
+      description: "返回来自于传输接收器流。"
   overload: System.Runtime.Remoting.Channels.BinaryClientFormatterSink.AsyncProcessResponse*
   exceptions: []
   platform:
@@ -158,20 +158,20 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.Channels
-  summary: "Returns the <xref:System.IO.Stream> onto which the provided message is to be serialized."
-  remarks: "The GetRequestStream method is called by the formatter sink before it serializes the message."
+  summary: "返回<xref:System.IO.Stream>所提供的消息进行序列化到其上。</xref:System.IO.Stream>"
+  remarks: "序列化消息之前，将由格式化程序接收器调用 GetRequestStream 方法。"
   syntax:
     content: public System.IO.Stream GetRequestStream (System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Channels.ITransportHeaders headers);
     parameters:
     - id: msg
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "The <xref href=&quot;System.Runtime.Remoting.Messaging.IMethodCallMessage&quot;></xref> that contains details about the method call."
+      description: "<xref href=&quot;System.Runtime.Remoting.Messaging.IMethodCallMessage&quot;> </xref>包含有关方法调用的详细信息。"
     - id: headers
       type: System.Runtime.Remoting.Channels.ITransportHeaders
-      description: "The headers to add to the outgoing message that is heading to the server."
+      description: "要添加到将发往服务器的传出消息的标头。"
     return:
       type: System.IO.Stream
-      description: "The <xref:System.IO.Stream> onto which the provided message is to be serialized."
+      description: "<xref:System.IO.Stream>所提供的消息进行序列化到其上。</xref:System.IO.Stream>"
   overload: System.Runtime.Remoting.Channels.BinaryClientFormatterSink.GetRequestStream*
   exceptions: []
   platform:
@@ -188,12 +188,12 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.Channels
-  summary: "Gets the next <xref href=&quot;System.Runtime.Remoting.Channels.IClientChannelSink&quot;></xref> in the sink chain."
+  summary: "获取下一个<xref href=&quot;System.Runtime.Remoting.Channels.IClientChannelSink&quot;></xref>接收器链中。"
   syntax:
     content: public System.Runtime.Remoting.Channels.IClientChannelSink NextChannelSink { get; }
     return:
       type: System.Runtime.Remoting.Channels.IClientChannelSink
-      description: "The next <xref href=&quot;System.Runtime.Remoting.Channels.IClientChannelSink&quot;></xref> in the sink chain."
+      description: "下一步<xref href=&quot;System.Runtime.Remoting.Channels.IClientChannelSink&quot;></xref>接收器链中。"
   overload: System.Runtime.Remoting.Channels.BinaryClientFormatterSink.NextChannelSink*
   exceptions: []
   platform:
@@ -210,12 +210,12 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.Channels
-  summary: "Gets the next <xref href=&quot;System.Runtime.Remoting.Messaging.IMessageSink&quot;></xref> in the sink chain."
+  summary: "获取下一个<xref href=&quot;System.Runtime.Remoting.Messaging.IMessageSink&quot;></xref>接收器链中。"
   syntax:
     content: public System.Runtime.Remoting.Messaging.IMessageSink NextSink { get; }
     return:
       type: System.Runtime.Remoting.Messaging.IMessageSink
-      description: "The next <xref href=&quot;System.Runtime.Remoting.Messaging.IMessageSink&quot;></xref> in the sink chain."
+      description: "下一步<xref href=&quot;System.Runtime.Remoting.Messaging.IMessageSink&quot;></xref>接收器链中。"
   overload: System.Runtime.Remoting.Channels.BinaryClientFormatterSink.NextSink*
   exceptions: []
   platform:
@@ -232,25 +232,25 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.Channels
-  summary: "Requests message processing from the current sink."
+  summary: "从当前接收器处理的请求消息。"
   syntax:
     content: public void ProcessMessage (System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Channels.ITransportHeaders requestHeaders, System.IO.Stream requestStream, out System.Runtime.Remoting.Channels.ITransportHeaders responseHeaders, out System.IO.Stream responseStream);
     parameters:
     - id: msg
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "The message to process."
+      description: "要处理的消息。"
     - id: requestHeaders
       type: System.Runtime.Remoting.Channels.ITransportHeaders
-      description: "The headers to add to the outgoing message that is heading to the server."
+      description: "要添加到将发往服务器的传出消息的标头。"
     - id: requestStream
       type: System.IO.Stream
-      description: "The stream that is headed toward the transport sink."
+      description: "将发往传输接收器流。"
     - id: responseHeaders
       type: System.Runtime.Remoting.Channels.ITransportHeaders
-      description: "When this method returns, contains a <xref href=&quot;System.Runtime.Remoting.Channels.ITransportHeaders&quot;></xref> interface that holds the headers that the server returned. This parameter is passed uninitialized."
+      description: "此方法返回时，包含<xref href=&quot;System.Runtime.Remoting.Channels.ITransportHeaders&quot;></xref>持有服务器返回的标头的接口。 此参数传递时未经初始化。"
     - id: responseStream
       type: System.IO.Stream
-      description: "When this method returns, contains a <xref:System.IO.Stream> that is coming back from the transport sink. This parameter is passed uninitialized."
+      description: "此方法返回时，包含<xref:System.IO.Stream>，来自重新传输接收器。</xref:System.IO.Stream> 此参数传递时未经初始化。"
   overload: System.Runtime.Remoting.Channels.BinaryClientFormatterSink.ProcessMessage*
   exceptions: []
   platform:
@@ -267,13 +267,13 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.Channels
-  summary: "Gets a <xref:System.Collections.IDictionary> of properties for the current channel sink."
-  remarks: "For more information, see [&#91;\\<topic://cpconchannelformatterconfigurationproperties>&#93;](http://msdn.microsoft.com/en-us/226ecf74-ebbd-4ea0-a701-dcf4441deefe)."
+  summary: "获取<xref:System.Collections.IDictionary>的当前通道接收器的属性。</xref:System.Collections.IDictionary>"
+  remarks: "有关详细信息，请参阅[[\\<topic://cpconchannelformatterconfigurationproperties&1;>]](http://msdn.microsoft.com/en-us/226ecf74-ebbd-4ea0-a701-dcf4441deefe)。"
   syntax:
     content: public System.Collections.IDictionary Properties { get; }
     return:
       type: System.Collections.IDictionary
-      description: "A <xref:System.Collections.IDictionary> of properties for the current channel sink."
+      description: "A<xref:System.Collections.IDictionary>的当前通道接收器的属性。</xref:System.Collections.IDictionary>"
   overload: System.Runtime.Remoting.Channels.BinaryClientFormatterSink.Properties*
   exceptions: []
   platform:
@@ -290,16 +290,16 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.Channels
-  summary: "Synchronously processes the provided message."
+  summary: "以同步方式处理所提供的消息。"
   syntax:
     content: public System.Runtime.Remoting.Messaging.IMessage SyncProcessMessage (System.Runtime.Remoting.Messaging.IMessage msg);
     parameters:
     - id: msg
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "The message to process."
+      description: "要处理的消息。"
     return:
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "The response to the processed message."
+      description: "处理消息的响应。"
   overload: System.Runtime.Remoting.Channels.BinaryClientFormatterSink.SyncProcessMessage*
   exceptions: []
   platform:

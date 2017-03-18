@@ -16,8 +16,8 @@ items:
   nameWithType: Binder
   fullName: System.Reflection.Binder
   type: Class
-  summary: "Selects a member from a list of candidates, and performs type conversion from actual argument type to formal argument type."
-  remarks: "Implementations of the Binder class are used by methods such as <xref:System.Type.InvokeMember%2A?displayProperty=fullName>, which selects from a set of possible members to execute, based on a set of parameter types and argument values; <xref:System.Type.GetMethod%2A?displayProperty=fullName>, which selects a method based on parameter types; and so on.       A default implementation of the Binder class is provided by the <xref:System.Type.DefaultBinder%2A?displayProperty=fullName> property."
+  summary: "从候选项列表中选择成员并执行从实参类型到形参类型的类型转换。"
+  remarks: "联编程序类的实现使用的方法<xref:System.Type.InvokeMember%2A?displayProperty=fullName>，如从一组的可能的成员，若要执行，选择基于一组参数类型和自变量值;<xref:System.Type.GetMethod%2A?displayProperty=fullName>，后者选择基于参数类型; 等的方法。</xref:System.Type.GetMethod%2A?displayProperty=fullName> </xref:System.Type.InvokeMember%2A?displayProperty=fullName>       联编程序类的默认实现由<xref:System.Type.DefaultBinder%2A?displayProperty=fullName>属性。</xref:System.Type.DefaultBinder%2A?displayProperty=fullName>"
   example:
   - "The following example implements and demonstrates all members of the `Binder` class. The private method `CanConvertFrom` finds compatible types for a given type.  \n  \n [!code-cpp[Binder_1#1](~/add/codesnippet/cpp/t-system.reflection.binder_1.cpp)]\n [!code-vb[Binder_1#1](~/add/codesnippet/visualbasic/t-system.reflection.binder_1.vb)]\n [!code-cs[Binder_1#1](~/add/codesnippet/csharp/t-system.reflection.binder_1.cs)]"
   syntax:
@@ -45,8 +45,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Initializes a new instance of the <xref href=&quot;System.Reflection.Binder&quot;></xref> class."
-  remarks: "This constructor is called by the constructors of derived classes, to initialize state in this type."
+  summary: "初始化的新实例<xref href=&quot;System.Reflection.Binder&quot;></xref>类。"
+  remarks: "派生类中，可将在这种类型的状态初始化的构造函数将调用此构造函数。"
   syntax:
     content: protected Binder ();
     parameters: []
@@ -66,37 +66,37 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Selects a field from the given set of fields, based on the specified criteria."
-  remarks: "If `bindingAttr` does not include <xref:System.Reflection.BindingFlags?displayProperty=fullName>, the default binder implementation provided by <xref:System.Type.DefaultBinder%2A?displayProperty=fullName> simply returns the first element of `match`. No selection is done.       This method controls the binding provided by <xref:System.Type.InvokeMember%2A?displayProperty=fullName>."
+  summary: "从给定的一组字段，基于指定条件中选择一个字段。"
+  remarks: "如果`bindingAttr`不包括<xref:System.Reflection.BindingFlags?displayProperty=fullName>，由提供的默认联编程序实现<xref:System.Type.DefaultBinder%2A?displayProperty=fullName>只是返回的第一个元素`match`。</xref:System.Type.DefaultBinder%2A?displayProperty=fullName> </xref:System.Reflection.BindingFlags?displayProperty=fullName> 不进行选择。       此方法由<xref:System.Type.InvokeMember%2A?displayProperty=fullName>.</xref:System.Type.InvokeMember%2A?displayProperty=fullName>绑定的控件"
   syntax:
     content: public abstract System.Reflection.FieldInfo BindToField (System.Reflection.BindingFlags bindingAttr, System.Reflection.FieldInfo[] match, object value, System.Globalization.CultureInfo culture);
     parameters:
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: "A bitwise combination of <xref href=&quot;System.Reflection.BindingFlags&quot;></xref> values."
+      description: "按位组合<xref href=&quot;System.Reflection.BindingFlags&quot;></xref>值。"
     - id: match
       type: System.Reflection.FieldInfo[]
-      description: "The set of fields that are candidates for matching. For example, when a <xref href=&quot;System.Reflection.Binder&quot;></xref> object is used by &lt;xref:System.Type.InvokeMember%2A?displayProperty=fullName&gt;, this parameter specifies the set of fields that reflection has determined to be possible matches, typically because they have the correct member name. The default implementation provided by &lt;xref:System.Type.DefaultBinder%2A?displayProperty=fullName&gt; changes the order of this array."
+      description: "用于匹配的候选项的字段集。 例如，当<xref href=&quot;System.Reflection.Binder&quot;></xref>使用对象&lt;xref:System.Type.InvokeMember%2A?displayProperty=fullName&gt;，此参数指定的反射已确定为可能的字段集匹配项，通常是因为它们具有正确的成员名称。 由提供的默认实现&lt;xref:System.Type.DefaultBinder%2A?displayProperty=fullName&gt;更改此数组的顺序。"
     - id: value
       type: System.Object
-      description: "The field value used to locate a matching field."
+      description: "用于查找匹配的字段的字段值。"
     - id: culture
       type: System.Globalization.CultureInfo
-      description: "An instance of <xref:System.Globalization.CultureInfo> that is used to control the coercion of data types, in binder implementations that coerce types. If `culture` is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, the <xref:System.Globalization.CultureInfo> for the current thread is used.       Note   For example, if a binder implementation allows coercion of string values to numeric types, this parameter is necessary to convert a <xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;></xref> that represents 1000 to a <xref uid=&quot;langword_csharp_Double&quot; name=&quot;Double&quot; href=&quot;&quot;></xref> value, because 1000 is represented differently by different cultures. The default binder does not do such string coercions."
+      description: "实例<xref:System.Globalization.CultureInfo>用于控制类型强制的数据，强制类型的联编程序实现中。</xref:System.Globalization.CultureInfo> 如果`culture`是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>、<xref:System.Globalization.CultureInfo>则使用当前线程。</xref:System.Globalization.CultureInfo>       注意︰ 对于示例中，如果联编程序实现允许将值强制转换字符串为数值类型，此参数是必需的要转换<xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;></xref>表示 1000 到<xref uid=&quot;langword_csharp_Double&quot; name=&quot;Double&quot; href=&quot;&quot;></xref>值，因为不同的区域性以不同方式表示 1000年。 默认的联编程序不执行此类字符串强制。"
     return:
       type: System.Reflection.FieldInfo
-      description: "The matching field."
+      description: "匹配字段。"
   overload: System.Reflection.Binder.BindToField*
   exceptions:
   - type: System.Reflection.AmbiguousMatchException
     commentId: T:System.Reflection.AmbiguousMatchException
-    description: "For the default binder, <code>bindingAttr</code> includes <xref href=&quot;System.Reflection.BindingFlags&quot;></xref>, and <code>match</code> contains multiple fields that are equally good matches for <code>value</code>. For example, <code>value</code> contains a `MyClass` object that implements the `IMyClass` interface, and <code>match</code> contains a field of type `MyClass` and a field of type `IMyClass`."
+    description: "对于默认联编程序， <code> bindingAttr </code>包括<xref href=&quot;System.Reflection.BindingFlags&quot;> </xref>，和<code> match </code>包含同样很好的匹配项的多个字段<code> value </code>。 例如， <code> value </code>包含`MyClass`实现对象`IMyClass`接口，和<code> match </code>包含类型的字段`MyClass`和类型的字段`IMyClass`。"
   - type: System.MissingFieldException
     commentId: T:System.MissingFieldException
-    description: "For the default binder, <code>bindingAttr</code> includes <xref href=&quot;System.Reflection.BindingFlags&quot;></xref>, and <code>match</code> contains no fields that can accept <code>value</code>."
+    description: "对于默认联编程序， <code> bindingAttr </code>包括<xref href=&quot;System.Reflection.BindingFlags&quot;> </xref>，和<code> match </code>不包含可以接受任何字段<code> value </code>。"
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
-    description: "For the default binder, <code>bindingAttr</code> includes <xref href=&quot;System.Reflection.BindingFlags&quot;></xref>, and <code>match</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty array.       -or-       <code>bindingAttr</code> includes <xref href=&quot;System.Reflection.BindingFlags&quot;></xref>, and <code>value</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "对于默认联编程序， <code> bindingAttr </code>包括<xref href=&quot;System.Reflection.BindingFlags&quot;> </xref>，和<code> match </code>是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>或为空数组。       -or-       <code>bindingAttr</code> includes <xref href=&quot;System.Reflection.BindingFlags&quot;></xref>, and <code>value</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Reflection.Binder.BindToMethod(System.Reflection.BindingFlags,System.Reflection.MethodBase[],System.Object[]@,System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[],System.Object@)
@@ -111,46 +111,46 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Selects a method to invoke from the given set of methods, based on the supplied arguments."
-  remarks: "The default binder takes into account both parameters that have values and `params` arrays (`ParamArray` arrays in Visual Basic). Thus, it is possible to find a match in cases where `args` and `match` do not contain the same number of elements.       The binder enables a client to map the array of arguments back to its original form if the argument array has been manipulated by BindToMethod. Use this remap capability to get back by-reference arguments when such arguments are present. When you pass arguments by name, the binder reorders the argument array. The `state` parameter keeps track of argument reordering, thus enabling the binder&quot;s <xref:System.Reflection.Binder.ReorderArgumentArray%2A> method to reorder the argument array to its original form.       The BindToMethod method is used by the <xref:System.Type.InvokeMember%2A?displayProperty=fullName> method."
+  summary: "选择要从给定的一组方法，根据所提供的参数调用的方法。"
+  remarks: "默认的联编程序会考虑这两个参数具有值和`params`数组 (`ParamArray` Visual Basic 中的数组)。 因此，很可能在情况下查找匹配项其中`args`和`match`不包含相同数量的元素。       联编程序使客户端将参数数组的映射回其原始格式，如果自变量数组具有已由 BindToMethod 操作。 使用此重新映射功能时应存在的此类参数取回按引用自变量。 当你按名称传递自变量时，活页夹重新排序自变量数组。 `state`参数将跟踪的参数重新排序，从而使活页夹的<xref:System.Reflection.Binder.ReorderArgumentArray%2A>方法能够为其原始形式自变量数组重新排序。</xref:System.Reflection.Binder.ReorderArgumentArray%2A>       将使用 BindToMethod 方法的<xref:System.Type.InvokeMember%2A?displayProperty=fullName>方法。</xref:System.Type.InvokeMember%2A?displayProperty=fullName>"
   syntax:
     content: public abstract System.Reflection.MethodBase BindToMethod (System.Reflection.BindingFlags bindingAttr, System.Reflection.MethodBase[] match, ref object[] args, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, string[] names, out object state);
     parameters:
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: "A bitwise combination of <xref href=&quot;System.Reflection.BindingFlags&quot;></xref> values."
+      description: "按位组合<xref href=&quot;System.Reflection.BindingFlags&quot;></xref>值。"
     - id: match
       type: System.Reflection.MethodBase[]
-      description: "The set of methods that are candidates for matching. For example, when a <xref href=&quot;System.Reflection.Binder&quot;></xref> object is used by &lt;xref:System.Type.InvokeMember%2A?displayProperty=fullName&gt;, this parameter specifies the set of methods that reflection has determined to be possible matches, typically because they have the correct member name. The default implementation provided by &lt;xref:System.Type.DefaultBinder%2A?displayProperty=fullName&gt; changes the order of this array."
+      description: "方法用于匹配的候选项集。 例如，当<xref href=&quot;System.Reflection.Binder&quot;></xref>使用对象&lt;xref:System.Type.InvokeMember%2A?displayProperty=fullName&gt;，此参数指定的反射已确定为可能的方法集匹配项，通常是因为它们具有正确的成员名称。 由提供的默认实现&lt;xref:System.Type.DefaultBinder%2A?displayProperty=fullName&gt;更改此数组的顺序。"
     - id: args
       type: System.Object[]
-      description: "The arguments that are passed in. The binder can change the order of the arguments in this array; for example, the default binder changes the order of arguments if the `names` parameter is used to specify an order other than positional order. If a binder implementation coerces argument types, the types and values of the arguments can be changed as well."
+      description: "在传递的参数。 联编程序可以更改此数组中; 中的自变量的顺序例如，默认的联编程序更改参数的顺序，如果`names`参数用于指定位置顺序以外顺序。 如果联编程序实现将自变量类型强制转换，可以以及更改的类型和参数的值。"
     - id: modifiers
       type: System.Reflection.ParameterModifier[]
-      description: "An array of parameter modifiers that enable binding to work with parameter signatures in which the types have been modified. The default binder implementation does not use this parameter."
+      description: "启用绑定，以便与在其中修改类型的参数签名一起工作的参数修饰符的数组。 默认的联编程序实现不使用此参数。"
     - id: culture
       type: System.Globalization.CultureInfo
-      description: "An instance of <xref:System.Globalization.CultureInfo> that is used to control the coercion of data types, in binder implementations that coerce types. If `culture` is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, the <xref:System.Globalization.CultureInfo> for the current thread is used.       Note   For example, if a binder implementation allows coercion of string values to numeric types, this parameter is necessary to convert a <xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;></xref> that represents 1000 to a <xref uid=&quot;langword_csharp_Double&quot; name=&quot;Double&quot; href=&quot;&quot;></xref> value, because 1000 is represented differently by different cultures. The default binder does not do such string coercions."
+      description: "实例<xref:System.Globalization.CultureInfo>用于控制类型强制的数据，强制类型的联编程序实现中。</xref:System.Globalization.CultureInfo> 如果`culture`是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>、<xref:System.Globalization.CultureInfo>则使用当前线程。</xref:System.Globalization.CultureInfo>       注意︰ 对于示例中，如果联编程序实现允许将值强制转换字符串为数值类型，此参数是必需的要转换<xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;></xref>表示 1000 到<xref uid=&quot;langword_csharp_Double&quot; name=&quot;Double&quot; href=&quot;&quot;></xref>值，因为不同的区域性以不同方式表示 1000年。 默认的联编程序不执行此类字符串强制。"
     - id: names
       type: System.String[]
-      description: "The parameter names, if parameter names are to be considered when matching, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if arguments are to be treated as purely positional. For example, parameter names must be used if arguments are not supplied in positional order."
+      description: "参数名称，如果参数名称都视为匹配时，或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果的被视为纯位置自变量。 例如，如果自变量不按位置顺序提供，则必须使用参数名称。"
     - id: state
       type: System.Object
-      description: "After the method returns, `state` contains a binder-provided object that keeps track of argument reordering. The binder creates this object, and the binder is the sole consumer of this object. If `state` is not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> when <xref uid=&quot;langword_csharp_BindToMethod&quot; name=&quot;BindToMethod&quot; href=&quot;&quot;></xref> returns, you must pass `state` to the <xref:System.Reflection.Binder.ReorderArgumentArray*> method if you want to restore `args` to its original order, for example, so that you can retrieve the values of <xref uid=&quot;langword_csharp_ref&quot; name=&quot;ref&quot; href=&quot;&quot;></xref> parameters (<xref uid=&quot;langword_csharp_ByRef&quot; name=&quot;ByRef&quot; href=&quot;&quot;></xref> parameters in Visual Basic)."
+      description: "该方法返回后，`state`包含一个提供联编程序的对象，用于跟踪的参数重新排序。 联编程序创建此对象，并活页夹是此对象的唯一使用者。 如果`state`不<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>时<xref uid=&quot;langword_csharp_BindToMethod&quot; name=&quot;BindToMethod&quot; href=&quot;&quot;></xref>返回时，必须传递`state`到<xref:System.Reflection.Binder.ReorderArgumentArray*>方法如果你想要还原`args`到其原始顺序，例如，以便你可以检索的值<xref uid=&quot;langword_csharp_ref&quot; name=&quot;ref&quot; href=&quot;&quot;></xref>参数 (<xref uid=&quot;langword_csharp_ByRef&quot; name=&quot;ByRef&quot; href=&quot;&quot;> </xref>参数在 Visual Basic 中的)。</xref:System.Reflection.Binder.ReorderArgumentArray*>"
     return:
       type: System.Reflection.MethodBase
-      description: "The matching method."
+      description: "匹配的方法。"
   overload: System.Reflection.Binder.BindToMethod*
   exceptions:
   - type: System.Reflection.AmbiguousMatchException
     commentId: T:System.Reflection.AmbiguousMatchException
-    description: "For the default binder, <code>match</code> contains multiple methods that are equally good matches for <code>args</code>. For example, <code>args</code> contains a `MyClass` object that implements the `IMyClass` interface, and <code>match</code> contains a method that takes `MyClass` and a method that takes `IMyClass`."
+    description: "对于默认联编程序， <code> match </code>包含同样很好的匹配项的多个方法<code> args </code>。 例如， <code> args </code>包含`MyClass`实现对象`IMyClass`接口，和<code> match </code>包含采用的方法`MyClass`和采用的方法`IMyClass`。"
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
-    description: "For the default binder, <code>match</code> contains no methods that can accept the arguments supplied in <code>args</code>."
+    description: "对于默认联编程序， <code> match </code>包含可以接受中提供的参数没有方法<code> args </code>。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "For the default binder, <code>match</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty array."
+    description: "对于默认联编程序， <code> match </code>是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>或为空数组。"
   platform:
   - net462
 - uid: System.Reflection.Binder.ChangeType(System.Object,System.Type,System.Globalization.CultureInfo)
@@ -165,23 +165,23 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Changes the type of the given <xref uid=&quot;langword_csharp_Object&quot; name=&quot;Object&quot; href=&quot;&quot;></xref> to the given <xref uid=&quot;langword_csharp_Type&quot; name=&quot;Type&quot; href=&quot;&quot;></xref>."
-  remarks: "Reflection models the accessibility rules of the common type system. For example, if the caller is in the same assembly, the caller does not need special permissions for internal members. Otherwise, the caller needs <xref:System.Security.Permissions.ReflectionPermission>. This is consistent with lookup of members that are protected, private, and so on.       The general principle is that `ChangeType` should perform only widening coercions, which never lose data. An example of a widening coercion is coercing a value that is a 32-bit signed integer to a value that is a 64-bit signed integer. This is distinguished from a narrowing coercion, which may lose data. An example of a narrowing coercion is coercing a 64-bit signed integer to a 32-bit signed integer.       The following table lists the coercions performed by the default `ChangeType`.      |Source type|Target type|   |-----------------|-----------------|   |Any type|Its base type.|   |Any type|The interface it implements.|   |Char|UInt16, UInt32, Int32, UInt64, Int64, Single, Double|   |Byte|Char, UInt16, Int16, UInt32, Int32, UInt64, Int64, Single, Double|   |SByte|Int16, Int32, Int64, Single, Double|   |UInt16|UInt32, Int32, UInt64, Int64, Single, Double|   |Int16|Int32, Int64, Single, Double|   |UInt32|UInt64, Int64, Single, Double|   |Int32|Int64, Single, Double|   |UInt64|Single, Double|   |Int64|Single, Double|   |Single|Double|   |Non-reference|By-reference.|"
+  summary: "类型更改给定<xref uid=&quot;langword_csharp_Object&quot; name=&quot;Object&quot; href=&quot;&quot;></xref>到给定<xref uid=&quot;langword_csharp_Type&quot; name=&quot;Type&quot; href=&quot;&quot;> </xref>。"
+  remarks: "反射建模常规类型系统可访问性的规则。 例如，如果调用方在同一程序集，调用方不将特殊权限需要用于内部成员。 否则，调用方需要<xref:System.Security.Permissions.ReflectionPermission>.</xref:System.Security.Permissions.ReflectionPermission> 这是与受保护的成员的查找一致、 专用和等。       一般原则是，`ChangeType`应执行仅扩大强制转换，永远不会丢失数据。 扩大强制的一个示例强制转换为 64 位有符号的整数的值将 32 位有符号的整数的值。 这被有别于收缩强制不同，后者可能会丢失数据。 收缩强制的一个示例强制转换为 32 位有符号整数一个 64 位带符号的整数。       下表列出了默认情况下执行的强制`ChangeType`。      |源类型 |目标类型 |  |-----------------|-----------------|  |任何类型 |与其基类型。 |  |任何类型 |它实现的接口。 |  |Char |UInt16、 UInt32、 Int32、 UInt64、 Int64、 Single、 Double |  |字节 |Char、 UInt16、 Int16、 UInt32、 Int32、 UInt64、 Int64、 Single、 Double |  |SByte |Int16、 Int32、 Int64、 Single、 Double |  |UInt16 |UInt32、 Int32、 UInt64、 Int64、 Single、 Double |  |Int16 |Int32、 Int64、 Single、 Double |  |UInt32 |UInt64、 Int64、 Single、 Double |  |Int32 |Int64、 单，双击 |  |UInt64 |单个，双精度型 |  |Int64 |单个，双精度型 |  |单个 |Double |  |非引用 |按引用。 |"
   syntax:
     content: public abstract object ChangeType (object value, Type type, System.Globalization.CultureInfo culture);
     parameters:
     - id: value
       type: System.Object
-      description: "The object to change into a new <xref uid=&quot;langword_csharp_Type&quot; name=&quot;Type&quot; href=&quot;&quot;></xref>."
+      description: "要将更改为一个新的对象<xref uid=&quot;langword_csharp_Type&quot; name=&quot;Type&quot; href=&quot;&quot;> </xref>。"
     - id: type
       type: System.Type
-      description: "The new <xref uid=&quot;langword_csharp_Type&quot; name=&quot;Type&quot; href=&quot;&quot;></xref> that `value` will become."
+      description: "新<xref uid=&quot;langword_csharp_Type&quot; name=&quot;Type&quot; href=&quot;&quot;> </xref> ，`value`将变得。"
     - id: culture
       type: System.Globalization.CultureInfo
-      description: "An instance of <xref:System.Globalization.CultureInfo> that is used to control the coercion of data types. If `culture` is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, the <xref:System.Globalization.CultureInfo> for the current thread is used.       Note   For example, this parameter is necessary to convert a <xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;></xref> that represents 1000 to a <xref uid=&quot;langword_csharp_Double&quot; name=&quot;Double&quot; href=&quot;&quot;></xref> value, because 1000 is represented differently by different cultures."
+      description: "实例<xref:System.Globalization.CultureInfo>用于控制类型强制的数据。</xref:System.Globalization.CultureInfo> 如果`culture`是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>、<xref:System.Globalization.CultureInfo>则使用当前线程。</xref:System.Globalization.CultureInfo>       注意︰ 对于示例中，此参数是必需要转换<xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;></xref>表示 1000 到<xref uid=&quot;langword_csharp_Double&quot; name=&quot;Double&quot; href=&quot;&quot;></xref>值，因为不同的区域性以不同方式表示 1000年。"
     return:
       type: System.Object
-      description: "An object that contains the given value as the new type."
+      description: "一个包含给定的值作为新类型的对象。"
   overload: System.Reflection.Binder.ChangeType*
   exceptions: []
   platform:
@@ -198,17 +198,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Upon returning from <xref:System.Reflection.Binder.BindToMethod*>, restores the <code>args</code> argument to what it was when it came from <xref uid=&quot;langword_csharp_BindToMethod&quot; name=&quot;BindToMethod&quot; href=&quot;&quot;></xref>."
-  remarks: "The common language runtime calls this method if `state` is not `null` after a return from `BindToMethod`."
+  summary: "返回从时<xref:System.Reflection.Binder.BindToMethod*>，还原<code> args </code>它来自时自变量<xref uid=&quot;langword_csharp_BindToMethod&quot; name=&quot;BindToMethod&quot; href=&quot;&quot;> </xref>。</xref:System.Reflection.Binder.BindToMethod*>"
+  remarks: "公共语言运行时调用此方法，如果`state`不`null`后从返回`BindToMethod`。"
   syntax:
     content: public abstract void ReorderArgumentArray (ref object[] args, object state);
     parameters:
     - id: args
       type: System.Object[]
-      description: "The actual arguments that are passed in. Both the types and values of the arguments can be changed."
+      description: "在传递的实际自变量。 可以更改的类型和参数的值。"
     - id: state
       type: System.Object
-      description: "A binder-provided object that keeps track of argument reordering."
+      description: "一个提供联编程序的对象，用于跟踪的参数重新排序。"
   overload: System.Reflection.Binder.ReorderArgumentArray*
   exceptions: []
   platform:
@@ -225,34 +225,34 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Selects a method from the given set of methods, based on the argument type."
-  remarks: "This method should return `null` if no method matches the criteria. This method controls the selection provided by the `GetConstructor` and `GetMethod` methods on `Type`."
+  summary: "从给定的一组方法，根据自变量类型选择的方法。"
+  remarks: "此方法应返回`null`如果没有方法与条件匹配。 此方法控制由所选内容`GetConstructor`和`GetMethod`方法`Type`。"
   syntax:
     content: public abstract System.Reflection.MethodBase SelectMethod (System.Reflection.BindingFlags bindingAttr, System.Reflection.MethodBase[] match, Type[] types, System.Reflection.ParameterModifier[] modifiers);
     parameters:
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: "A bitwise combination of <xref href=&quot;System.Reflection.BindingFlags&quot;></xref> values."
+      description: "按位组合<xref href=&quot;System.Reflection.BindingFlags&quot;></xref>值。"
     - id: match
       type: System.Reflection.MethodBase[]
-      description: "The set of methods that are candidates for matching. For example, when a <xref href=&quot;System.Reflection.Binder&quot;></xref> object is used by &lt;xref:System.Type.InvokeMember%2A?displayProperty=fullName&gt;, this parameter specifies the set of methods that reflection has determined to be possible matches, typically because they have the correct member name. The default implementation provided by &lt;xref:System.Type.DefaultBinder%2A?displayProperty=fullName&gt; changes the order of this array."
+      description: "方法用于匹配的候选项集。 例如，当<xref href=&quot;System.Reflection.Binder&quot;></xref>使用对象&lt;xref:System.Type.InvokeMember%2A?displayProperty=fullName&gt;，此参数指定的反射已确定为可能的方法集匹配项，通常是因为它们具有正确的成员名称。 由提供的默认实现&lt;xref:System.Type.DefaultBinder%2A?displayProperty=fullName&gt;更改此数组的顺序。"
     - id: types
       type: System.Type[]
-      description: "The parameter types used to locate a matching method."
+      description: "用于定位匹配方法的参数类型。"
     - id: modifiers
       type: System.Reflection.ParameterModifier[]
-      description: "An array of parameter modifiers that enable binding to work with parameter signatures in which the types have been modified."
+      description: "启用绑定，以便与在其中修改类型的参数签名一起工作的参数修饰符的数组。"
     return:
       type: System.Reflection.MethodBase
-      description: "The matching method, if found; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "匹配方法，如果找到了;否则为<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.Reflection.Binder.SelectMethod*
   exceptions:
   - type: System.Reflection.AmbiguousMatchException
     commentId: T:System.Reflection.AmbiguousMatchException
-    description: "For the default binder, <code>match</code> contains multiple methods that are equally good matches for the parameter types described by <code>types</code>. For example, the array in <code>types</code> contains a <xref:System.Type> object for `MyClass` and the array in <code>match</code> contains a method that takes a base class of `MyClass` and a method that takes an interface that `MyClass` implements."
+    description: "对于默认联编程序， <code> match </code>包含很好的匹配项所描述的参数类型的多个方法<code> types </code>。 例如中的数组<code> types </code>包含<xref:System.Type>对象`MyClass`和中的数组<code> match </code>包含采用的基类的方法`MyClass`和采用接口的方法`MyClass`实现。</xref:System.Type>"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "For the default binder, <code>match</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty array.       -or-       An element of <code>types</code> derives from <xref:System.Type>, but is not of type <xref uid=&quot;langword_csharp_RuntimeType&quot; name=&quot;RuntimeType&quot; href=&quot;&quot;></xref>."
+    description: "对于默认联编程序， <code> match </code>是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>或为空数组。       -的元素<code> types </code>派生自<xref:System.Type>，但不是类型<xref uid=&quot;langword_csharp_RuntimeType&quot; name=&quot;RuntimeType&quot; href=&quot;&quot;> </xref>。</xref:System.Type>"
   platform:
   - net462
 - uid: System.Reflection.Binder.SelectProperty(System.Reflection.BindingFlags,System.Reflection.PropertyInfo[],System.Type,System.Type[],System.Reflection.ParameterModifier[])
@@ -267,37 +267,37 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Selects a property from the given set of properties, based on the specified criteria."
-  remarks: "This method controls the selection provided by the `GetProperty` method on `Type`."
+  summary: "从给定的一组属性，基于指定条件中选择一个属性。"
+  remarks: "此方法控制由所选内容`GetProperty`方法`Type`。"
   syntax:
     content: public abstract System.Reflection.PropertyInfo SelectProperty (System.Reflection.BindingFlags bindingAttr, System.Reflection.PropertyInfo[] match, Type returnType, Type[] indexes, System.Reflection.ParameterModifier[] modifiers);
     parameters:
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: "A bitwise combination of <xref href=&quot;System.Reflection.BindingFlags&quot;></xref> values."
+      description: "按位组合<xref href=&quot;System.Reflection.BindingFlags&quot;></xref>值。"
     - id: match
       type: System.Reflection.PropertyInfo[]
-      description: "The set of properties that are candidates for matching. For example, when a <xref href=&quot;System.Reflection.Binder&quot;></xref> object is used by &lt;xref:System.Type.InvokeMember%2A?displayProperty=fullName&gt;, this parameter specifies the set of properties that reflection has determined to be possible matches, typically because they have the correct member name. The default implementation provided by &lt;xref:System.Type.DefaultBinder%2A?displayProperty=fullName&gt; changes the order of this array."
+      description: "用于匹配的候选项的属性集。 例如，当<xref href=&quot;System.Reflection.Binder&quot;></xref>使用对象&lt;xref:System.Type.InvokeMember%2A?displayProperty=fullName&gt;，此参数指定的反射已确定为可能的属性集匹配项，通常是因为它们具有正确的成员名称。 由提供的默认实现&lt;xref:System.Type.DefaultBinder%2A?displayProperty=fullName&gt;更改此数组的顺序。"
     - id: returnType
       type: System.Type
-      description: "The return value the matching property must have."
+      description: "必须具有返回值匹配的属性。"
     - id: indexes
       type: System.Type[]
-      description: "The index types of the property being searched for. Used for index properties such as the indexer for a class."
+      description: "要搜索的属性索引类型。 用于索引属性，例如一个类的索引器。"
     - id: modifiers
       type: System.Reflection.ParameterModifier[]
-      description: "An array of parameter modifiers that enable binding to work with parameter signatures in which the types have been modified."
+      description: "启用绑定，以便与在其中修改类型的参数签名一起工作的参数修饰符的数组。"
     return:
       type: System.Reflection.PropertyInfo
-      description: "The matching property."
+      description: "匹配的属性。"
   overload: System.Reflection.Binder.SelectProperty*
   exceptions:
   - type: System.Reflection.AmbiguousMatchException
     commentId: T:System.Reflection.AmbiguousMatchException
-    description: "For the default binder, <code>match</code> contains multiple properties that are equally good matches for <code>returnType</code> and <code>indexes</code>."
+    description: "对于默认联编程序， <code> match </code>包含多个属性都同样很好的匹配项<code> returnType </code>和<code> indexes </code>。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "For the default binder, <code>match</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty array."
+    description: "对于默认联编程序， <code> match </code>是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>或为空数组。"
   platform:
   - net462
 references:

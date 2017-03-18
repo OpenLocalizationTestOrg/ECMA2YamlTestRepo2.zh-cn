@@ -17,8 +17,8 @@ items:
   nameWithType: IRegistrationServices
   fullName: System.Runtime.InteropServices.IRegistrationServices
   type: Interface
-  summary: "Provides a set of services for registering and unregistering managed assemblies for use from COM."
-  remarks: "Registration is needed when the objects within an assembly are being used by COM clients."
+  summary: "提供了一套用于注册和注销的服务可供使用的程序集管理从 com。"
+  remarks: "当程序集内的对象正在使用的 COM 客户端时，需要注册。"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -41,13 +41,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Returns the GUID of the COM category that contains the managed classes."
+  summary: "返回包含的托管的类的 COM 类别的 GUID。"
   syntax:
     content: public Guid GetManagedCategoryGuid ();
     parameters: []
     return:
       type: System.Guid
-      description: "The GUID of the COM category that contains the managed classes."
+      description: "包含的托管的类 COM 类别的 GUID。"
   overload: System.Runtime.InteropServices.IRegistrationServices.GetManagedCategoryGuid*
   exceptions: []
   platform:
@@ -64,16 +64,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Retrieves the COM ProgID for a specified type."
+  summary: "检索指定类型的 ProgID COM。"
   syntax:
     content: public string GetProgIdForType (Type type);
     parameters:
     - id: type
       type: System.Type
-      description: "The type whose ProgID is being requested."
+      description: "正在请求其 ProgID 的类型。"
     return:
       type: System.String
-      description: "The ProgID for the specified type."
+      description: "指定类型的 ProgID。"
   overload: System.Runtime.InteropServices.IRegistrationServices.GetProgIdForType*
   exceptions: []
   platform:
@@ -90,16 +90,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Retrieves a list of classes in an assembly that would be registered by a call to <xref:System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly*>."
+  summary: "检索将通过<xref:System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly*>.</xref:System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly*>调用注册的程序集中的类的列表"
   syntax:
     content: public Type[] GetRegistrableTypesInAssembly (System.Reflection.Assembly assembly);
     parameters:
     - id: assembly
       type: System.Reflection.Assembly
-      description: "The assembly to search for classes."
+      description: "要搜索的类的程序集。"
     return:
       type: System.Type[]
-      description: "A <xref:System.Type> array containing a list of classes in <code>assembly</code>."
+      description: "A<xref:System.Type>数组，其中包含的类中的列表<code> assembly </code>。</xref:System.Type>"
   overload: System.Runtime.InteropServices.IRegistrationServices.GetRegistrableTypesInAssembly*
   exceptions: []
   platform:
@@ -116,28 +116,28 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Registers the classes in a managed assembly to enable creation from COM."
-  remarks: "`RegisterAssembly` adds the appropriate registry entries for the types in the specified assembly. This method also calls any registration functions found in the assembly.       Use <xref:System.Reflection.Assembly.Load%2A?displayProperty=fullName> to get an assembly."
+  summary: "在要能够从 COM 创建的托管程序集注册类"
+  remarks: "`RegisterAssembly`在指定的程序集添加相应的注册表项的类型。 此方法还会调用程序集中找到的任何注册函数。       使用<xref:System.Reflection.Assembly.Load%2A?displayProperty=fullName>来获取程序集。</xref:System.Reflection.Assembly.Load%2A?displayProperty=fullName>"
   syntax:
     content: public bool RegisterAssembly (System.Reflection.Assembly assembly, System.Runtime.InteropServices.AssemblyRegistrationFlags flags);
     parameters:
     - id: assembly
       type: System.Reflection.Assembly
-      description: "The assembly to be registered."
+      description: "要注册的程序集。"
     - id: flags
       type: System.Runtime.InteropServices.AssemblyRegistrationFlags
-      description: "An <xref href=&quot;System.Runtime.InteropServices.AssemblyRegistrationFlags&quot;></xref> value indicating any special settings needed when registering `assembly`."
+      description: "<xref href=&quot;System.Runtime.InteropServices.AssemblyRegistrationFlags&quot;> </xref>值，该值指示在注册时所需的任何特殊设置`assembly`。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>assembly</code> contains types that were successfully registered; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the assembly contains no eligible types."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果<code> assembly </code>包含类型成功注册; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>如果该程序集包含不符合条件的类型。"
   overload: System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>assembly</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The full name of <code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       A method marked with <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;></xref> is not <xref uid=&quot;langword_csharp_static&quot; name=&quot;static&quot; href=&quot;&quot;></xref>.       -or-       There is more than one method marked with <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;></xref> at a given level of the hierarchy.       -or-       The signature of the method marked with <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;></xref> is not valid."
+    description: "The full name of <code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -或-的方法标记为<xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;></xref>不<xref uid=&quot;langword_csharp_static&quot; name=&quot;static&quot; href=&quot;&quot;> </xref>。       -或-没有标有多个方法<xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;></xref>在给定级别的层次结构。       -或-方法的签名标有<xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;></xref>无效。"
   platform:
   - net462
 - uid: System.Runtime.InteropServices.IRegistrationServices.RegisterTypeForComClients(System.Type,System.Guid@)
@@ -152,17 +152,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Registers the specified type with COM using the specified GUID."
-  remarks: "This method is equivalent to calling `CoRegisterClassObject` in COM."
+  summary: "使用指定的 GUID 的 COM 注册指定的类型。"
+  remarks: "此方法等效于调用`CoRegisterClassObject`COM 中"
   syntax:
     content: public void RegisterTypeForComClients (Type type, ref Guid g);
     parameters:
     - id: type
       type: System.Type
-      description: "The type to be registered for use from COM."
+      description: "要从 com。 用于注册的类型"
     - id: g
       type: System.Guid
-      description: "GUID used to register the specified type."
+      description: "用于注册指定的类型的 GUID。"
   overload: System.Runtime.InteropServices.IRegistrationServices.RegisterTypeForComClients*
   exceptions: []
   platform:
@@ -179,16 +179,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Determines whether the specified type is a COM type."
+  summary: "确定指定的类型是否为 COM 类型。"
   syntax:
     content: public bool TypeRepresentsComType (Type type);
     parameters:
     - id: type
       type: System.Type
-      description: "The type to determine if it is a COM type."
+      description: "要确定它是否为 COM 类型的类型。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the specified type is a COM type; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果指定的类型是 COM 类型;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Runtime.InteropServices.IRegistrationServices.TypeRepresentsComType*
   exceptions: []
   platform:
@@ -205,16 +205,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Determines whether the specified type requires registration."
+  summary: "确定指定的类型是否需要注册。"
   syntax:
     content: public bool TypeRequiresRegistration (Type type);
     parameters:
     - id: type
       type: System.Type
-      description: "The type to check for COM registration requirements."
+      description: "要检查 COM 注册要求的类型。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the type must be registered for use from COM; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果该类型必须注册以供从 COM;，否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Runtime.InteropServices.IRegistrationServices.TypeRequiresRegistration*
   exceptions: []
   platform:
@@ -231,25 +231,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Unregisters the classes in a managed assembly."
-  remarks: '`UnregisterAssembly` removes the registry entries for the types in the specified assembly previously added by <xref:System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly%2A>. This method also calls any unregistration functions found in the assembly.'
+  summary: "注销托管程序集中的类。"
+  remarks: '`UnregisterAssembly`在指定的程序集之前添加的<xref:System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly%2A>.</xref:System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly%2A>中移除的类型的注册表项 此方法还会调用程序集中找到的任何注销函数。'
   syntax:
     content: public bool UnregisterAssembly (System.Reflection.Assembly assembly);
     parameters:
     - id: assembly
       type: System.Reflection.Assembly
-      description: "The assembly to be unregistered."
+      description: "要取消注册的程序集。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>assembly</code> contains types that were successfully unregistered; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the assembly contains no eligible types."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果<code> assembly </code>包含已成功注销; 否则为类型<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>如果该程序集包含不符合条件的类型。"
   overload: System.Runtime.InteropServices.IRegistrationServices.UnregisterAssembly*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>assembly</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The full name of <code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       A method marked with <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;></xref> is not <xref uid=&quot;langword_csharp_static&quot; name=&quot;static&quot; href=&quot;&quot;></xref>.       -or-       There is more than one method marked with <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;></xref> at a given level of the hierarchy.       -or-       The signature of the method marked with <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;></xref> is not valid."
+    description: "The full name of <code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -或-的方法标记为<xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;></xref>不<xref uid=&quot;langword_csharp_static&quot; name=&quot;static&quot; href=&quot;&quot;> </xref>。       -或-没有标有多个方法<xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;></xref>在给定级别的层次结构。       -或-方法的签名标有<xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;></xref>无效。"
   platform:
   - net462
 references:

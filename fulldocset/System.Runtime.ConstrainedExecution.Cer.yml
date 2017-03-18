@@ -12,8 +12,8 @@ items:
   nameWithType: Cer
   fullName: System.Runtime.ConstrainedExecution.Cer
   type: Enum
-  summary: "Specifies a method&quot;s behavior when called within a constrained execution region."
-  remarks: "The Cer enumeration specifies the behavior of a method, type, or assembly within a constrained execution region (CER). Use one of the three available values to indicate that the entity will succeed, has no knowledge of a CER, or might (deterministically) be able to report success or failure.       A CER provides guarantees that the region of code will execute uninterrupted even if an asynchronous exception such as an aborted thread out-of-memory exception, or stack overflow is raised."
+  summary: "指定当在受约束的执行区域内调用的方法的行为。"
+  remarks: "Cer 枚举指定的方法、 类型或在受约束的执行区域 (CER) 内的程序集的行为。 使用三个可用的值，以指示该实体将成功，之一 CER 不了解或者 （肯定） 可能能够报告成功或失败。       CER 提供了将执行的代码区域的保证不间断即使引发异步如中止的线程内存不足异常或堆栈溢出异常。"
   example:
   - "The following code example demonstrates the use of the Cer enumeration when specifying a constrained execution region for a method. This code example is part of a larger example provided for the <xref:System.Runtime.ConstrainedExecution.ReliabilityContractAttribute.%23ctor%2A> constructor.  \n  \n [!code-vb[System.Runtime.ConstrainedExecution#3](~/add/codesnippet/visualbasic/t-system.runtime.constra_2_1.vb)]\n [!code-cs[System.Runtime.ConstrainedExecution#3](~/add/codesnippet/csharp/t-system.runtime.constra_2_1.cs)]"
   syntax:
@@ -34,12 +34,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.ConstrainedExecution
-  summary: "In the face of exceptional conditions, the method might fail. In this case, the method will report back to the calling method whether it succeeded or failed. The method must have a CER around the method body to ensure that it can report the return value."
+  summary: "在遇到异常情况时，该方法可能会失败。 在这种情况下，该方法将报告返回到调用方法它是成功还是失败。 方法必须具有的方法体周围 CER，以确保它可以报告的返回值。"
   syntax:
     content: MayFail
     return:
       type: System.Runtime.ConstrainedExecution.Cer
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -55,13 +55,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.ConstrainedExecution
-  summary: 'The method, type, or assembly has no concept of a CER. It does not take advantage of CER guarantees. This implies the following:'
-  remarks: "-   In the face of exceptional conditions the method might fail.      -   The method might or might not report that it failed (it is non-deterministic).      -   The method is not written with CERs in mind (which is the most likely scenario).       If a method, type, or assembly is not explicitly marked to succeed, it is implicitly marked as `Cer.None`."
+  summary: '方法、 类型或程序集具有 CER 没有概念。 它不会使用的 CER 保证。 这意味着︰'
+  remarks: "-在遇到异常情况方法可能会失败。      -此方法可能或可能不失败的报告 （它是不确定）。      -方法不编写时 Cer 记住 （这是最可能的方案）。       如果方法、 类型或程序集未被显式标记为成功的隐式标记为`Cer.None`。"
   syntax:
     content: None
     return:
       type: System.Runtime.ConstrainedExecution.Cer
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -77,12 +77,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.ConstrainedExecution
-  summary: "In the face of exceptional conditions, the method is guaranteed to succeed. You should always construct a CER around the method that is called, even when it is called from within a non-CER region. A method is successful if it accomplishes what is intended. For example, marking <xref:System.Collections.ArrayList.Count*> with `ReliabilityContractAttribute(Cer.Success)` implies that when it is run under a CER, it always returns a count of the number of elements in the <xref href=&quot;System.Collections.ArrayList&quot;></xref> and it can never leave the internal fields in an undetermined state."
+  summary: "在遇到异常情况，保证该方法成功。 你应始终周围构造 CER 调用，即使当它调用从非 CER 区域内的方法。 一个方法是如果这是通过实现预期成功。 例如，标记<xref:System.Collections.ArrayList.Count*>与`ReliabilityContractAttribute(Cer.Success)`意味着当它在 CER 下运行，则它始终返回中的元素数的计数<xref href=&quot;System.Collections.ArrayList&quot;></xref>并且它永远不会将内部字段保留为不确定状态。</xref:System.Collections.ArrayList.Count*>"
   syntax:
     content: Success
     return:
       type: System.Runtime.ConstrainedExecution.Cer
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462

@@ -15,8 +15,8 @@ items:
   nameWithType: TypeToTypeInfoMarshaler
   fullName: System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler
   type: Class
-  summary: "Marshals the unmanaged <xref uid=&quot;langword_csharp_ITypeInfo&quot; name=&quot;ITypeInfo&quot; href=&quot;&quot;></xref> interface to the managed <xref:System.Type> class, and marshals the managed <xref:System.Type> class to the unmanaged <xref uid=&quot;langword_csharp_ITypeInfo&quot; name=&quot;ITypeInfo&quot; href=&quot;&quot;></xref> interface."
-  remarks: "The `ITypeInfo` interface exposed for a .NET type is based on the metadata that would appear in an exported type library. Likewise, the <xref:System.Type> instance exposed for an `ITypeInfo` interface is based on the metadata that would appear in an imported assembly.       The Type Library Importer (Tlbimp.exe) marks `ITypeInfo` parameters with the appropriate <xref:System.Runtime.InteropServices.MarshalAsAttribute> with the <xref:System.Runtime.InteropServices.UnmanagedType> enumeration member when converting signatures that use `ITypeInfo` parameters to signatures that use <xref:System.Type> parameters.       The same conversion functionality can be accomplished without the custom marshaler, by calling <xref:System.Runtime.InteropServices.Marshal.GetITypeInfoForType%2A> and <xref:System.Runtime.InteropServices.Marshal.GetTypeForITypeInfo%2A>."
+  summary: "将非托管代码封送<xref uid=&quot;langword_csharp_ITypeInfo&quot; name=&quot;ITypeInfo&quot; href=&quot;&quot;></xref>接口的托管<xref:System.Type>类和封送处理的托管<xref:System.Type>到非托管类<xref uid=&quot;langword_csharp_ITypeInfo&quot; name=&quot;ITypeInfo&quot; href=&quot;&quot;></xref>接口。</xref:System.Type> </xref:System.Type>"
+  remarks: "`ITypeInfo`公开的.NET 类型取决于将在导出的类型库中显示的元数据接口。 同样，<xref:System.Type>实例公开 for`ITypeInfo`界面基于将出现在导入的程序集中的元数据。</xref:System.Type>       类型库导入程序 (Tlbimp.exe) 标记`ITypeInfo`使用相应的参数<xref:System.Runtime.InteropServices.MarshalAsAttribute>与<xref:System.Runtime.InteropServices.UnmanagedType>枚举成员转换使用的签名时`ITypeInfo`参数使用的签名<xref:System.Type>参数。</xref:System.Type> </xref:System.Runtime.InteropServices.UnmanagedType> </xref:System.Runtime.InteropServices.MarshalAsAttribute>       可以通过调用<xref:System.Runtime.InteropServices.Marshal.GetITypeInfoForType%2A>和<xref:System.Runtime.InteropServices.Marshal.GetTypeForITypeInfo%2A>.</xref:System.Runtime.InteropServices.Marshal.GetTypeForITypeInfo%2A></xref:System.Runtime.InteropServices.Marshal.GetITypeInfoForType%2A>没有自定义封送处理程序，实现相同的转换功能"
   syntax:
     content: 'public class TypeToTypeInfoMarshaler : System.Runtime.InteropServices.ICustomMarshaler'
   inheritance:
@@ -38,14 +38,14 @@ items:
   assemblies:
   - CustomMarshalers
   namespace: System.Runtime.InteropServices.CustomMarshalers
-  summary: "Performs necessary cleanup of the managed data when it is no longer needed."
-  remarks: "The CLR calls this method to clean up managed data allocated in the <xref:System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.MarshalNativeToManaged%2A> method."
+  summary: "当不再需要将执行必要的托管数据的清理。"
+  remarks: "CLR 调用此方法来清理中分配的托管数据<xref:System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.MarshalNativeToManaged%2A>方法。</xref:System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.MarshalNativeToManaged%2A>"
   syntax:
     content: public virtual void CleanUpManagedData (object pManagedObj);
     parameters:
     - id: pManagedObj
       type: System.Object
-      description: "The managed object to be destroyed."
+      description: "要销毁的托管的对象。"
   overload: System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.CleanUpManagedData*
   exceptions: []
   platform:
@@ -62,14 +62,14 @@ items:
   assemblies:
   - CustomMarshalers
   namespace: System.Runtime.InteropServices.CustomMarshalers
-  summary: "Performs necessary cleanup of the unmanaged data when it is no longer needed."
-  remarks: "The CLR calls this method to clean up the unmanaged data allocated in the <xref:System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.MarshalManagedToNative%2A> method."
+  summary: "当不再需要将执行必要的非托管数据的清理。"
+  remarks: "CLR 调用此方法来清理中分配的非托管数据<xref:System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.MarshalManagedToNative%2A>方法。</xref:System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.MarshalManagedToNative%2A>"
   syntax:
     content: public virtual void CleanUpNativeData (IntPtr pNativeData);
     parameters:
     - id: pNativeData
       type: System.IntPtr
-      description: "A pointer to the unmanaged data to be destroyed."
+      description: "指向要销毁的非托管数据的指针。"
   overload: System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.CleanUpNativeData*
   exceptions: []
   platform:
@@ -86,17 +86,17 @@ items:
   assemblies:
   - CustomMarshalers
   namespace: System.Runtime.InteropServices.CustomMarshalers
-  summary: "Returns an instance of the custom marshaler."
-  remarks: "All custom marshalers must implement this method, although it is not part of the <xref:System.Runtime.InteropServices.ICustomMarshaler> interface definition."
+  summary: "返回自定义封送处理程序的一个实例。"
+  remarks: "尽管这不是，所有自定义封必须实现此方法的一部分<xref:System.Runtime.InteropServices.ICustomMarshaler>接口定义。</xref:System.Runtime.InteropServices.ICustomMarshaler>"
   syntax:
     content: public static System.Runtime.InteropServices.ICustomMarshaler GetInstance (string pstrCookie);
     parameters:
     - id: pstrCookie
       type: System.String
-      description: "String &quot;cookie&quot; parameter that can be used by the custom marshaler."
+      description: "字符串&quot;cookie&quot;参数，可由自定义封送处理程序。"
     return:
       type: System.Runtime.InteropServices.ICustomMarshaler
-      description: "An instance of the custom marshaler."
+      description: "自定义封送处理程序的实例。"
   overload: System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.GetInstance*
   exceptions: []
   platform:
@@ -113,14 +113,14 @@ items:
   assemblies:
   - CustomMarshalers
   namespace: System.Runtime.InteropServices.CustomMarshalers
-  summary: "Returns the size in bytes of the unmanaged data to be marshaled."
-  remarks: "Because custom marshaling of value types is not supported in the .NET Framework, this method always returns -1."
+  summary: "返回以字节为单位的封送的非托管数据的大小。"
+  remarks: "由于.NET Framework 不支持自定义封送处理值类型，此方法始终返回-1。"
   syntax:
     content: public virtual int GetNativeDataSize ();
     parameters: []
     return:
       type: System.Int32
-      description: "-1 to indicate the type this marshaler handles is not a value type."
+      description: "-1 以指示此封送处理程序处理的类型不是值类型。"
   overload: System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.GetNativeDataSize*
   exceptions: []
   platform:
@@ -137,22 +137,22 @@ items:
   assemblies:
   - CustomMarshalers
   namespace: System.Runtime.InteropServices.CustomMarshalers
-  summary: "Marshals an object from managed code to unmanaged code."
-  remarks: "The CLR calls this method with the specified instance of a managed object to convert that object from managed code to unmanaged code, and it returns a pointer to the appropriate unmanaged object, representing the COM view of that object."
+  summary: "将对象从托管代码与非托管代码封送。"
+  remarks: "CLR 调用此方法使用指定的实例托管的对象来将该对象从托管代码转换到非托管代码，并将指针返回到相应的非托管对象，表示该对象的 COM 视图。"
   syntax:
     content: public virtual IntPtr MarshalManagedToNative (object pManagedObj);
     parameters:
     - id: pManagedObj
       type: System.Object
-      description: "The managed object to be converted."
+      description: "要转换的托管的对象。"
     return:
       type: System.IntPtr
-      description: "A pointer to the unmanaged object."
+      description: "指向非托管对象的指针。"
   overload: System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.MarshalManagedToNative*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>pManagedObj</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>pManagedObj</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.MarshalNativeToManaged(System.IntPtr)
@@ -167,22 +167,22 @@ items:
   assemblies:
   - CustomMarshalers
   namespace: System.Runtime.InteropServices.CustomMarshalers
-  summary: "Marshals an object from unmanaged code to managed code."
-  remarks: "The CLR calls this method with the specified pointer to an unmanaged object to convert that object from unmanaged code to managed code, and returns a managed object representing the managed view of the unmanaged data."
+  summary: "将对象从非托管代码与托管代码封送。"
+  remarks: "CLR 使用指向要将该对象从非托管代码转换为托管代码的非托管对象的指定指针调用此方法，并返回一个表示非托管数据的托管的视图的托管的对象。"
   syntax:
     content: public virtual object MarshalNativeToManaged (IntPtr pNativeData);
     parameters:
     - id: pNativeData
       type: System.IntPtr
-      description: "A pointer to the unmanaged object to be converted."
+      description: "指向要转换的非托管对象的指针。"
     return:
       type: System.Object
-      description: "A managed object."
+      description: "托管的对象。"
   overload: System.Runtime.InteropServices.CustomMarshalers.TypeToTypeInfoMarshaler.MarshalNativeToManaged*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>pNativeData</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>pNativeData</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 references:
