@@ -11,8 +11,8 @@ items:
   nameWithType: ServiceDomain
   fullName: System.EnterpriseServices.ServiceDomain
   type: Class
-  summary: "Allows a code segment identified by <xref:System.EnterpriseServices.ServiceDomain.Enter*> and <xref:System.EnterpriseServices.ServiceDomain.Leave*> to run in its own context and behave as if it were a method that is called on an object created within the context. This class cannot be inherited."
-  remarks: "The <xref:System.EnterpriseServices.ServiceDomain.Enter%2A> and <xref:System.EnterpriseServices.ServiceDomain.Leave%2A> methods are used in pairs to surround code that can then use COM+ services. Code that is enclosed between calls to <xref:System.EnterpriseServices.ServiceDomain.Enter%2A> and <xref:System.EnterpriseServices.ServiceDomain.Leave%2A> runs in its own context and behaves as if it were a method that is called on an object created within the context. The <xref:System.EnterpriseServices.ServiceDomain.Enter%2A> and <xref:System.EnterpriseServices.ServiceDomain.Leave%2A> pairs can be nested. It is up to the user to make sure that pairs of calls are balanced so that every call to <xref:System.EnterpriseServices.ServiceDomain.Leave%2A> matches a previous call to <xref:System.EnterpriseServices.ServiceDomain.Enter%2A>."
+  summary: "允许由标识代码段<> *1> 和<> *1> 若要在其自己的上下文中运行和行为就像它是在上下文中创建的对象调用的方法。 此类不能被继承。"
+  remarks: "<xref:System.EnterpriseServices.ServiceDomain.Enter%2A>和<xref:System.EnterpriseServices.ServiceDomain.Leave%2A>方法中对使用以然后，可以使用 COM + 服务的代码外侧。</xref:System.EnterpriseServices.ServiceDomain.Leave%2A> </xref:System.EnterpriseServices.ServiceDomain.Enter%2A> 括调用的代码<xref:System.EnterpriseServices.ServiceDomain.Enter%2A>和<xref:System.EnterpriseServices.ServiceDomain.Leave%2A>在其自己的上下文中运行，行为方式就像它是在上下文中创建的对象调用的方法。</xref:System.EnterpriseServices.ServiceDomain.Leave%2A> </xref:System.EnterpriseServices.ServiceDomain.Enter%2A> <xref:System.EnterpriseServices.ServiceDomain.Enter%2A>和<xref:System.EnterpriseServices.ServiceDomain.Leave%2A>对可以嵌套。</xref:System.EnterpriseServices.ServiceDomain.Leave%2A> </xref:System.EnterpriseServices.ServiceDomain.Enter%2A> 由用户负责确保平衡对的调用，以便<xref:System.EnterpriseServices.ServiceDomain.Leave%2A>匹配<xref:System.EnterpriseServices.ServiceDomain.Enter%2A>.</xref:System.EnterpriseServices.ServiceDomain.Enter%2A>的以前调用</xref:System.EnterpriseServices.ServiceDomain.Leave%2A>的每个调用"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(false)]
@@ -36,19 +36,19 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Creates the context specified by the <xref href=&quot;System.EnterpriseServices.ServiceConfig&quot;></xref> object and pushes it onto the context stack to become the current context."
-  remarks: "Enter first creates a context configured as specified by the <xref:System.EnterpriseServices.ServiceConfig> object that is passed as the `cfg` parameter. Policies on both the client and server sides are then triggered as if a method call had occurred. The new context is then pushed onto a context stack and becomes the current context. Because of their efficient design and because no thread marshaling is involved, using Enter and <xref:System.EnterpriseServices.ServiceDomain.Leave%2A> involves significantly reduced overhead compared to an equivalent method call."
+  summary: "创建指定的上下文<xref href=&quot;System.EnterpriseServices.ServiceConfig&quot;></xref>对象，并将其推入到上下文堆栈成为当前上下文。"
+  remarks: "输入首次创建配置为指定的上下文<xref:System.EnterpriseServices.ServiceConfig>作为传递对象`cfg`参数。</xref:System.EnterpriseServices.ServiceConfig> 就像方法调用出现，然后将触发客户端和服务器端上的策略。 新的上下文然后推送到上下文堆栈，并成为当前上下文。 由于它们高效的设计和因为涉及没有线程封送处理，请使用 enter 键和<xref:System.EnterpriseServices.ServiceDomain.Leave%2A>涉及显著减少开销相比的等效方法调用。</xref:System.EnterpriseServices.ServiceDomain.Leave%2A>"
   syntax:
     content: public static void Enter (System.EnterpriseServices.ServiceConfig cfg);
     parameters:
     - id: cfg
       type: System.EnterpriseServices.ServiceConfig
-      description: "A <xref href=&quot;System.EnterpriseServices.ServiceConfig&quot;></xref> that contains the configuration information for the services to be used within the enclosed code."
+      description: "A <xref href=&quot;System.EnterpriseServices.ServiceConfig&quot;> </xref>包含要在所包含的代码中使用的服务的配置信息。"
   overload: System.EnterpriseServices.ServiceDomain.Enter*
   exceptions:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "<xref href=&quot;System.EnterpriseServices.ServiceConfig&quot;></xref> is not supported on the current platform."
+    description: "<xref href=&quot;System.EnterpriseServices.ServiceConfig&quot;></xref>当前平台上不支持。"
   platform:
   - net462
 - uid: System.EnterpriseServices.ServiceDomain.Leave
@@ -63,18 +63,18 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Triggers the server and then the client side policies as if a method call were returning. The current context is then popped from the context stack, and the context that was running when <xref:System.EnterpriseServices.ServiceDomain.Enter*> was called becomes the current context."
+  summary: "就像方法调用已返回将触发服务器，然后选择客户端的策略。 然后从上下文堆栈，并且正在运行时的上下文中弹出当前上下文<xref:System.EnterpriseServices.ServiceDomain.Enter*>调用成为当前上下文。</xref:System.EnterpriseServices.ServiceDomain.Enter*>"
   syntax:
     content: public static System.EnterpriseServices.TransactionStatus Leave ();
     parameters: []
     return:
       type: System.EnterpriseServices.TransactionStatus
-      description: "One of the <xref href=&quot;System.EnterpriseServices.TransactionStatus&quot;></xref> values."
+      description: "之一<xref href=&quot;System.EnterpriseServices.TransactionStatus&quot;></xref>值。"
   overload: System.EnterpriseServices.ServiceDomain.Leave*
   exceptions:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "<xref href=&quot;System.EnterpriseServices.ServiceConfig&quot;></xref> is not supported on the current platform."
+    description: "<xref href=&quot;System.EnterpriseServices.ServiceConfig&quot;></xref>当前平台上不支持。"
   platform:
   - net462
 references:

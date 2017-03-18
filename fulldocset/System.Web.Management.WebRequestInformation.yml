@@ -15,8 +15,8 @@ items:
   nameWithType: WebRequestInformation
   fullName: System.Web.Management.WebRequestInformation
   type: Class
-  summary: "Provides information about the current Web request."
-  remarks: "ASP.NET health monitoring allows production and operations staff to manage deployed Web applications. The <xref:System.Web.Management> namespace contains the health-event types responsible for packaging application health-status data and the provider types responsible for processing this data. It also contains supporting types that help during the management of health events.       Instances of the WebRequestInformation class contain information that is obtained using the <xref:System.Web.Management.WebRequestEvent>, <xref:System.Web.Management.WebAuditEvent>, <xref:System.Web.Management.WebErrorEvent>, or <xref:System.Web.Management.WebRequestErrorEvent> types.       Your application needs the appropriate permissions to access protected information provided by this type.      > [!NOTE] >  In most cases you will be able to use the ASP.NET health-monitoring types as implemented, and you will control the health-monitoring system by specifying values in the `healthMonitoring` configuration section. You can also derive from the health-monitoring types to create your own custom events and providers. For an example of creating a custom event class, see the example provided in this topic."
+  summary: "提供有关当前 Web 请求的信息。"
+  remarks: "ASP.NET 运行状况监视，用于管理已部署的 Web 应用程序的生产和操作人员。 <xref:System.Web.Management>命名空间包含负责打包应用程序运行状况状态数据和负责处理此数据提供程序类型的运行状况事件类型。</xref:System.Web.Management> 它还包含在管理运行状况事件期间帮助的支持类型。       WebRequestInformation 类的实例包含通过获取信息<xref:System.Web.Management.WebRequestEvent>， <xref:System.Web.Management.WebAuditEvent>， <xref:System.Web.Management.WebErrorEvent>，或<xref:System.Web.Management.WebRequestErrorEvent>类型。</xref:System.Web.Management.WebRequestErrorEvent> </xref:System.Web.Management.WebErrorEvent> </xref:System.Web.Management.WebAuditEvent> </xref:System.Web.Management.WebRequestEvent>       你的应用程序需要访问受保护的信息，此类型提供的适当权限。      1> [!NOTE]&1;> 在大多数情况下，你将是一种能够使用 ASP.NET 运行状况监视类型，因为实现，并且将通过指定中的值控制运行状况监视系统`healthMonitoring`配置节。 你还可以从要创建你自己的自定义事件和提供程序的运行状况监视类型派生。 有关创建自定义的事件类的示例，请参阅本主题中提供的示例。"
   example:
   - "The following code example shows how to implement a custom event that uses the WebRequestInformation type.  \n  \n Also shown is an excerpt of the configuration file that enables ASP.NET to use this custom event.  \n  \n Ensure that your custom event is raised at the proper time, that is, when the equivalent system health event it replaces would be raised.  \n  \n```  \n<healthMonitoring  \n  heartBeatInterval=\"0\" enabled=\"true\">  \n  \n  <profiles>  \n    <add name=\"Custom\"   \n      minInstances=\"1\"   \n      maxLimit=\"Infinite\"   \n      minInterval=\"00:00:00\" />  \n  </profiles>  \n  \n  <eventMappings>  \n  \n    <add   \n      name=\"SampleWebRequestInformation\"   \n      type=\"SamplesAspNet.SampleWebRequestInformation,webrequestinformation,Version=1.0.1782.28745, Culture=neutral, PublicKeyToken=79955d9b8521c250,processorArchitecture=MSIL\" />  \n  \n  </eventMappings>  \n  \n  <rules>  \n  \n    <add name=\"Custom Web Request Info Event\"   \n      eventName=\"SampleWebRequestInformation\"   \n      provider=\"EventLogProvider\"  \n      profile=\"Custom\" />  \n  \n  </rules>  \n  \n</healthMonitoring>  \n```  \n  \n [!code-cs[System.Web.Management.WebRequestInformation#1](~/add/codesnippet/csharp/t-system.web.management._11_1.cs)]\n [!code-vb[System.Web.Management.WebRequestInformation#1](~/add/codesnippet/visualbasic/t-system.web.management._11_1.vb)]"
   syntax:
@@ -39,8 +39,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Formats the Web-request information."
-  remarks: "The FormatToString method provides a uniform format for event information, which is useful if the event data must be logged and later presented to the user. It is called internally when the provider invokes one of the <xref:System.Web.Management.WebBaseEvent.ToString%2A> methods."
+  summary: "设置 Web 请求信息的格式。"
+  remarks: "FormatToString 方法为事件信息，这很有用，如果必须记录事件数据，并将其更高版本提供给用户提供统一的格式。 当提供程序调用之一时内部调用<xref:System.Web.Management.WebBaseEvent.ToString%2A>方法。</xref:System.Web.Management.WebBaseEvent.ToString%2A>"
   example:
   - "The following code example shows how to format custom information.  \n  \n [!code-cs[System.Web.Management.WebRequestInformation#9](~/add/codesnippet/csharp/ca29f60b-9b94-4c78-a2ae-_1.cs)]\n [!code-vb[System.Web.Management.WebRequestInformation#9](~/add/codesnippet/visualbasic/ca29f60b-9b94-4c78-a2ae-_1.vb)]"
   syntax:
@@ -48,7 +48,7 @@ items:
     parameters:
     - id: formatter
       type: System.Web.Management.WebEventFormatter
-      description: "The <xref href=&quot;System.Web.Management.WebEventFormatter&quot;></xref> that contains the tab and indentation settings used to format the Web health event information."
+      description: "<xref href=&quot;System.Web.Management.WebEventFormatter&quot;> </xref>包含制表符和缩进设置用于格式化 Web 运行状况事件信息。"
   overload: System.Web.Management.WebRequestInformation.FormatToString*
   exceptions: []
   platform:
@@ -65,15 +65,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the instance of the managed-code principal associated with the Web request."
-  remarks: "The principal refers to the authenticated entity that issued the Web request."
+  summary: "获取与 Web 请求关联的托管代码主体的实例。"
+  remarks: "主体是指发出 Web 请求的经过身份验证实体。"
   example:
   - "The following code example shows how to use the principal associated with the Web request.  \n  \n [!code-cs[System.Web.Management.WebRequestInformation#8](~/add/codesnippet/csharp/p-system.web.management._39_1.cs)]\n [!code-vb[System.Web.Management.WebRequestInformation#8](~/add/codesnippet/visualbasic/p-system.web.management._39_1.vb)]"
   syntax:
     content: public System.Security.Principal.IPrincipal Principal { get; }
     return:
       type: System.Security.Principal.IPrincipal
-      description: "The <xref:System.Security.Principal.IPrincipal> instance that is associated with the request event."
+      description: "<xref:System.Security.Principal.IPrincipal>与请求事件相关联的实例。</xref:System.Security.Principal.IPrincipal>"
   overload: System.Web.Management.WebRequestInformation.Principal*
   exceptions: []
   platform:
@@ -90,7 +90,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the physical path of the Web request."
+  summary: "获取 Web 请求的物理路径。"
   remarks: ''
   example:
   - "The following code example shows how to get the Web-request path.  \n  \n [!code-cs[System.Web.Management.WebRequestInformation#5](~/add/codesnippet/csharp/p-system.web.management._0_1.cs)]\n [!code-vb[System.Web.Management.WebRequestInformation#5](~/add/codesnippet/visualbasic/p-system.web.management._0_1.vb)]"
@@ -98,7 +98,7 @@ items:
     content: public string RequestPath { get; }
     return:
       type: System.String
-      description: "The physical path of the request."
+      description: "请求的物理路径。"
   overload: System.Web.Management.WebRequestInformation.RequestPath*
   exceptions: []
   platform:
@@ -115,13 +115,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the logical path of the request."
-  remarks: "The following code example shows how to get the Web-request logical path.       [!code-cs[System.Web.Management.WebRequestInformation#6](~/add/codesnippet/csharp/p-system.web.management._10_1.cs)]  [!code-vb[System.Web.Management.WebRequestInformation#6](~/add/codesnippet/visualbasic/p-system.web.management._10_1.vb)]"
+  summary: "获取请求的逻辑路径。"
+  remarks: "下面的代码示例演示如何获取 Web 请求的逻辑路径。       [!code-cs[System.Web.Management.WebRequestInformation#6](~/add/codesnippet/csharp/p-system.web.management._10_1.cs)][!code-vb[System.Web.Management.WebRequestInformation#6  ](~/add/codesnippet/visualbasic/p-system.web.management._10_1.vb)]"
   syntax:
     content: public string RequestUrl { get; }
     return:
       type: System.String
-      description: "The logical path of the request."
+      description: "请求的逻辑路径。"
   overload: System.Web.Management.WebRequestInformation.RequestUrl*
   exceptions: []
   platform:
@@ -138,13 +138,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets a string that represents the Windows logon name of the user on whose behalf the code is being run."
-  remarks: "The value of this property is determined by the current <xref:System.Security.Principal.WindowsIdentity> object&quot;s <xref:System.Security.Principal.WindowsIdentity.Name%2A> property."
+  summary: "获取表示的用户的名义运行代码的 Windows 登录名的字符串。"
+  remarks: "此属性的值由当前<xref:System.Security.Principal.WindowsIdentity>对象的<xref:System.Security.Principal.WindowsIdentity.Name%2A>属性。</xref:System.Security.Principal.WindowsIdentity.Name%2A> </xref:System.Security.Principal.WindowsIdentity>"
   syntax:
     content: public string ThreadAccountName { get; }
     return:
       type: System.String
-      description: "The Windows logon name of the user on whose behalf the code is being run."
+      description: "用户的名义运行代码的 Windows 登录名。"
   overload: System.Web.Management.WebRequestInformation.ThreadAccountName*
   exceptions: []
   platform:
@@ -161,13 +161,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the user host address."
-  remarks: "The following code example shows how to get the user host address.       [!code-cs[System.Web.Management.WebRequestInformation#7](~/add/codesnippet/csharp/p-system.web.management._4_1.cs)]  [!code-vb[System.Web.Management.WebRequestInformation#7](~/add/codesnippet/visualbasic/p-system.web.management._4_1.vb)]"
+  summary: "获取用户主机地址。"
+  remarks: "下面的代码示例演示如何获取用户主机地址。       [!code-cs[System.Web.Management.WebRequestInformation#7](~/add/codesnippet/csharp/p-system.web.management._4_1.cs)][!code-vb[System.Web.Management.WebRequestInformation#7  ](~/add/codesnippet/visualbasic/p-system.web.management._4_1.vb)]"
   syntax:
     content: public string UserHostAddress { get; }
     return:
       type: System.String
-      description: "The user host address."
+      description: "用户主机地址。"
   overload: System.Web.Management.WebRequestInformation.UserHostAddress*
   exceptions: []
   platform:

@@ -10,8 +10,8 @@ items:
   nameWithType: IApplicationTrustManager
   fullName: System.Security.Policy.IApplicationTrustManager
   type: Interface
-  summary: "Determines whether an application should be executed and which set of permissions should be granted to it."
-  remarks: "Trust managers must implement the IApplicationTrustManager interface. The host calls the <xref:System.Security.Policy.IApplicationTrustManager.DetermineApplicationTrust%2A?displayProperty=fullName> method to determine whether an application should be executed and which permissions should be granted to the application.       In the [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)] and later, there is only one trust manager, which can be a custom implementation of the IApplicationTrustManager interface. The default trust manager implementation prompts the user for permission to install the application and to elevate the permissions granted to the application. Other trust manager implementations might provide different user experiences. For example, an implementation might check an enterprise list for trusted applications instead of prompting the user for that information."
+  summary: "确定是否应执行应用程序以及哪个权限集应授予给它。"
+  remarks: "信任管理器必须实现 IApplicationTrustManager 接口。 宿主调用<xref:System.Security.Policy.IApplicationTrustManager.DetermineApplicationTrust%2A?displayProperty=fullName>方法来确定是否应执行应用程序和应用程序应授予哪些权限。</xref:System.Security.Policy.IApplicationTrustManager.DetermineApplicationTrust%2A?displayProperty=fullName>       在[!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)]和更高版本，没有只有一个信任关系管理器，它可以是 IApplicationTrustManager 接口的自定义实现。 默认信任关系管理器实现提示用户输入的权限安装应用程序和提升到应用程序授予的权限。 其他信任关系管理器实现可能提供不同的用户体验。 例如，实现可能会检查受信任的应用程序，而不是提示用户输入此信息为企业列表。"
   example:
   - "The following example shows a simple implementation of IApplicationTrustManager.  \n  \n [!code-cs[System.Security.Policy.IApplicationTrustManager#1](~/add/codesnippet/csharp/t-system.security.policy_3_1.cs)]\n [!code-vb[System.Security.Policy.IApplicationTrustManager#1](~/add/codesnippet/visualbasic/t-system.security.policy_3_1.vb)]"
   syntax:
@@ -35,8 +35,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Determines whether an application should be executed and which set of permissions should be granted to it."
-  remarks: "The DetermineApplicationTrust method is called by the host to determine whether an application should be executed and which set of permissions it should be granted. DetermineApplicationTrust returns an <xref:System.Security.Policy.ApplicationTrust> object with a <xref:System.Security.Policy.ApplicationTrust.DefaultGrantSet%2A> property that contains a permission set representing the permissions to be granted to each assembly executing within the context of the application. The granted permissions do not apply to assemblies in the global assembly cache. The <xref:System.Security.Policy.ApplicationTrust> object also has an <xref:System.Security.Policy.ApplicationTrust.IsApplicationTrustedToRun%2A> property that the trust manager sets to indicate whether the application should be trusted. If the trust manager indicates that the application can be trusted, the host activates the application and grants its assemblies the set of permissions provided in the <xref:System.Security.Policy.ApplicationTrust> collection."
+  summary: "确定是否应执行应用程序以及哪个权限集应授予给它。"
+  remarks: "通过主机来确定是否应执行应用程序和哪一组权限它应被授予调用 DetermineApplicationTrust 方法。 DetermineApplicationTrust 返回<xref:System.Security.Policy.ApplicationTrust>对象<xref:System.Security.Policy.ApplicationTrust.DefaultGrantSet%2A>属性，它包含权限集，代表为每个应用程序的上下文中执行的程序集授予的权限。</xref:System.Security.Policy.ApplicationTrust.DefaultGrantSet%2A> </xref:System.Security.Policy.ApplicationTrust> 全局程序集缓存中的程序集不适用于授予的权限。 <xref:System.Security.Policy.ApplicationTrust>对象还具有<xref:System.Security.Policy.ApplicationTrust.IsApplicationTrustedToRun%2A>信任关系管理器设置以指示是否应该信任应用程序的属性。</xref:System.Security.Policy.ApplicationTrust.IsApplicationTrustedToRun%2A> </xref:System.Security.Policy.ApplicationTrust> 如果信任关系管理器指示应用程序可以是受信任，主机激活该应用程序，并授予其程序集的中提供的权限集<xref:System.Security.Policy.ApplicationTrust>集合。</xref:System.Security.Policy.ApplicationTrust>"
   example:
   - "The following example shows an implementation of the DetermineApplicationTrust method for a custom trust manager. This code example is part of a larger example provided for the <xref:System.Security.Policy.IApplicationTrustManager> interface.  \n  \n [!code-cs[System.Security.Policy.IApplicationTrustManager#2](~/add/codesnippet/csharp/24b6db65-f82b-47e4-ac93-_1.cs)]\n [!code-vb[System.Security.Policy.IApplicationTrustManager#2](~/add/codesnippet/visualbasic/24b6db65-f82b-47e4-ac93-_1.vb)]"
   syntax:
@@ -44,13 +44,13 @@ items:
     parameters:
     - id: activationContext
       type: System.ActivationContext
-      description: "The activation context for the application."
+      description: "应用程序的激活上下文。"
     - id: context
       type: System.Security.Policy.TrustManagerContext
-      description: "The trust manager context for the application."
+      description: "应用程序的信任管理器上下文。"
     return:
       type: System.Security.Policy.ApplicationTrust
-      description: "An object that contains security decisions about the application."
+      description: "包含有关应用程序的安全决策的对象。"
   overload: System.Security.Policy.IApplicationTrustManager.DetermineApplicationTrust*
   exceptions: []
   platform:

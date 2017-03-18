@@ -12,8 +12,8 @@ items:
   nameWithType: ApplicationSecurityManager
   fullName: System.Security.Policy.ApplicationSecurityManager
   type: Class
-  summary: "Manages trust decisions for manifest-activated applications."
-  remarks: "The ApplicationSecurityManager class provides essential information for the execution of a manifest-based application. The <xref:System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager%2A> property identifies the trust manager responsible for determining whether an application is trusted. The <xref:System.Security.Policy.ApplicationSecurityManager.DetermineApplicationTrust%2A> method calls the application trust manager to determine whether an application is trusted. The <xref:System.Security.Policy.ApplicationSecurityManager.UserApplicationTrusts%2A> property contains the cached trust decisions for the user."
+  summary: "管理清单激活的应用程序信任决定。"
+  remarks: "ApplicationSecurityManager 类提供了基于清单的应用程序的执行有关的基本信息。 <xref:System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager%2A>属性标识负责确定应用程序是否受信任的信任关系管理器。</xref:System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager%2A> <xref:System.Security.Policy.ApplicationSecurityManager.DetermineApplicationTrust%2A>方法调用应用程序信任管理器以确定应用程序是否受信任。</xref:System.Security.Policy.ApplicationSecurityManager.DetermineApplicationTrust%2A> <xref:System.Security.Policy.ApplicationSecurityManager.UserApplicationTrusts%2A>属性包含用户缓存的信任决定。</xref:System.Security.Policy.ApplicationSecurityManager.UserApplicationTrusts%2A>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -37,18 +37,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Gets the current application trust manager."
-  remarks: "In the current release there is only one trust manager, which can be a custom implementation of the <xref:System.Security.Policy.IApplicationTrustManager> interface. The default trust manager implementation prompts the user for permission to install the application and elevate the permissions granted to the application. Other trust manager implementations might have different user experiences. For example, an implementation might check an enterprise list for trusted applications, rather than prompting the user for that information."
+  summary: "获取当前应用程序信任关系管理器。"
+  remarks: "在当前版本中没有只有一个信任关系管理器，它可以是自定义实现的<xref:System.Security.Policy.IApplicationTrustManager>接口。</xref:System.Security.Policy.IApplicationTrustManager> 默认信任关系管理器实现提示用户输入的权限安装应用程序，提升到应用程序授予的权限。 其他信任关系管理器实现可能具有不同的用户体验。 例如，实现可能会检查企业列表以获取受信任的应用程序，而不是提示用户输入此信息。"
   syntax:
     content: public static System.Security.Policy.IApplicationTrustManager ApplicationTrustManager { get; }
     return:
       type: System.Security.Policy.IApplicationTrustManager
-      description: "An <xref href=&quot;System.Security.Policy.IApplicationTrustManager&quot;></xref> that represents the current trust manager."
+      description: "<xref href=&quot;System.Security.Policy.IApplicationTrustManager&quot;> </xref> ，它表示当前的信任关系管理器。"
   overload: System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager*
   exceptions:
   - type: System.Security.Policy.PolicyException
     commentId: T:System.Security.Policy.PolicyException
-    description: "The policy on this application does not have a trust manager."
+    description: "此应用程序上的策略没有信任关系管理器。"
   platform:
   - net462
 - uid: System.Security.Policy.ApplicationSecurityManager.DetermineApplicationTrust(System.ActivationContext,System.Security.Policy.TrustManagerContext)
@@ -63,20 +63,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Determines whether the user approves the specified application to execute with the requested permission set."
-  remarks: "DetermineApplicationTrust uses the configured <xref:System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager%2A> property to determine whether to allow execution of the specified application with the permission set requested in the application manifest. The trust manager&quot;s behavior is dependent on the trust manager implementation and the information passed in the `context` parameter. The default behavior of the trust manager is to establish a user interface (UI) dialog box to determine the user&quot;s approval. However, a trust manager can also determine an application&quot;s trust status based on other criteria, such as decisions provided by a corporate database. The trust decision can be persisted, depending upon the `context` parameters properties and the trust manager implementation. If the trust for the application is persisted for a decision based on a user dialog box, future calls to the <xref:System.Security.Policy.ApplicationSecurityManager> will not present the UI dialog box for every request for that application. DetermineApplicationTrust is called after the manifest, but before the application has been downloaded to the local system."
+  summary: "确定用户是否批准指定的应用程序以执行请求的权限集。"
+  remarks: "DetermineApplicationTrust 使用配置<xref:System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager%2A>属性来确定是否允许应用程序清单中请求的权限集与指定的应用程序的执行。</xref:System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager%2A> 信任关系管理器的行为是依赖于信任关系管理器实现，并且信息传递中`context`参数。 信任关系管理器的默认行为是建立的用户界面 (UI) 对话框，以确定用户的批准。 但是，信任关系管理器还可以确定基于其他条件，如决策企业数据库提供的应用程序的信任状态。 可以保留信任决定，具体取决于`context`参数属性和信任关系管理器实现。 如果该应用程序信任决定基于用户对话框中保持不变，将来调用<xref:System.Security.Policy.ApplicationSecurityManager>不存在为该应用程序的每个请求的用户界面对话框。</xref:System.Security.Policy.ApplicationSecurityManager> DetermineApplicationTrust 称为清单之后，但之前应用程序已下载到本地系统。"
   syntax:
     content: public static bool DetermineApplicationTrust (ActivationContext activationContext, System.Security.Policy.TrustManagerContext context);
     parameters:
     - id: activationContext
       type: System.ActivationContext
-      description: "An <xref href=&quot;System.ActivationContext&quot;></xref> identifying the activation context for the application."
+      description: "<xref href=&quot;System.ActivationContext&quot;> </xref>标识应用程序的激活上下文。"
     - id: context
       type: System.Security.Policy.TrustManagerContext
-      description: "A <xref href=&quot;System.Security.Policy.TrustManagerContext&quot;></xref> identifying the trust manager context for the application."
+      description: "A <xref href=&quot;System.Security.Policy.TrustManagerContext&quot;> </xref>标识应用程序的信任管理器上下文。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to execute the specified application; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>若要执行指定的应用程序;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Security.Policy.ApplicationSecurityManager.DetermineApplicationTrust*
   exceptions:
   - type: System.ArgumentNullException
@@ -96,13 +96,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Gets an application trust collection that contains the cached trust decisions for the user."
-  remarks: "The trust decisions in the collection are maintained using the methods of the collection, such as the <xref:System.Security.Policy.ApplicationTrustCollection.Add%2A> method or the <xref:System.Security.Policy.ApplicationTrustCollection.Remove%2A> method."
+  summary: "获取包含用户的缓存的信任决定的应用程序信任集合。"
+  remarks: "集合中的信任决定将保留使用方法的集合，如<xref:System.Security.Policy.ApplicationTrustCollection.Add%2A>方法或<xref:System.Security.Policy.ApplicationTrustCollection.Remove%2A>方法。</xref:System.Security.Policy.ApplicationTrustCollection.Remove%2A> </xref:System.Security.Policy.ApplicationTrustCollection.Add%2A>"
   syntax:
     content: public static System.Security.Policy.ApplicationTrustCollection UserApplicationTrusts { get; }
     return:
       type: System.Security.Policy.ApplicationTrustCollection
-      description: "An <xref href=&quot;System.Security.Policy.ApplicationTrustCollection&quot;></xref> that contains the cached trust decisions for the user."
+      description: "<xref href=&quot;System.Security.Policy.ApplicationTrustCollection&quot;> </xref> ，其中包含用户缓存的信任决定。"
   overload: System.Security.Policy.ApplicationSecurityManager.UserApplicationTrusts*
   exceptions: []
   platform:
