@@ -19,8 +19,8 @@ items:
   nameWithType: UdpSingleSourceMulticastClient
   fullName: System.Net.Sockets.UdpSingleSourceMulticastClient
   type: Class
-  summary: "A client receiver for multicast traffic from a single source, also known as Source Specific Multicast (SSM)."
-  remarks: "The multicast group address and sender source address must be known.       In addition to receiving multicast data from a specific sender, the UdpSingleSourceMulticastClient client can also send unicast data back to the sender.       To receive multicast from multiple sources, or when the sources aren&quot;t known in advance, use the UdpSingleSourceMulticastClient class instead."
+  summary: "客户端接收方的多播流量从单个源，也称为源特定多播 (SSM)。"
+  remarks: "必须知道的多播的组地址和发件人源地址。       从特定的发件人接收多播的数据，除了 UdpSingleSourceMulticastClient 客户端还可以返回到发件人发送单播数据。       若要接收多播来自多个源，或不在提前知道源时，请改为使用 UdpSingleSourceMulticastClient 类。"
   syntax:
     content: >-
       [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
@@ -47,34 +47,34 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Creates a new <xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;></xref> UDP client that can subscribe to a group address and receive datagrams from a single source."
-  remarks: "The UdpSingleSourceMulticastClient constructor associates a UDP multicast socket with a group address and port, but does not bind or otherwise use the socket.       The `groupAddress` parameter may be either an IPv6 or IPv4 multicast address. However, the address family of the `sourceAddress` and `groupAddress` parameters must the same.       The `localPort` parameter must not specify a port less than 1,024."
+  summary: "创建一个新<xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;></xref>可以订阅组地址并从单一源接收数据报的 UDP 客户端。"
+  remarks: "UdpSingleSourceMulticastClient 构造函数将 UDP 多播套接字的组地址和端口，与相关联，但不将绑定或以其他方式使用套接字。       `groupAddress`参数可能是 IPv6 或 IPv4 多播地址。 但是的地址族`sourceAddress`和`groupAddress`参数必须相同。       `localPort`参数必须指定一个端口小于 1024。"
   syntax:
     content: public UdpSingleSourceMulticastClient (System.Net.IPAddress sourceAddress, System.Net.IPAddress groupAddress, int localPort);
     parameters:
     - id: sourceAddress
       type: System.Net.IPAddress
-      description: "The sender source address for this receiver to subscribe to."
+      description: "此接收器要订阅的发送器源地址。"
     - id: groupAddress
       type: System.Net.IPAddress
-      description: "The multicast group address for this receiver to subscribe to."
+      description: "此接收器要订阅的多播的组地址。"
     - id: localPort
       type: System.Int32
-      description: "The local port for this receiver to bind to."
+      description: "此接收器要绑定到本地端口。"
   overload: System.Net.Sockets.UdpSingleSourceMulticastClient.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>sourceAddress</code> and <code>groupAddress</code> must be the same address family."
+    description: "<code>sourceAddress</code>和<code>groupAddress</code>必须是相同的地址族。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>sourceAddress</code> is a null reference (Nothing in Visual Basic).       -or-       <code>groupAddress</code> is a null reference (Nothing in Visual Basic)."
+    description: "<code>sourceAddress</code>为空引用 (在 Visual Basic 中为 Nothing)。       -或-<code>groupAddress</code>为空引用 (在 Visual Basic 中为 Nothing)。"
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>localPort</code> is less than 0       -or-       <code>localPort</code> is greater than 65,535."
+    description: "<code>localPort</code>小于 0-或-<code>localPort</code>大于 65,535。"
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
-    description: "<code>localPort</code> is less than 1024"
+    description: "<code>localPort</code>小于 1024"
   platform:
   - net462
 - uid: System.Net.Sockets.UdpSingleSourceMulticastClient.BeginJoinGroup(System.AsyncCallback,System.Object)
@@ -89,31 +89,31 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Binds the socket and begins a join operation to the multicast group to allow datagrams to be received from a single source address."
-  remarks: "The BeginJoinGroup method binds a UDP multicast socket to a local port and joins a multicast group to allow datagrams to be received from a single source address. The multicast group address, single source address, and local port to bind to are specified in the <xref:System.Net.Sockets.UdpSingleSourceMulticastClient.%23ctor%2A> constructor.       The method specified in the `callback` parameter is invoked when the operation to join the multicast group has completed.       If required by the runtime, the  BeginJoinGroup method also performs a policy check to verify that the client is allowed to access the multicast group. If the client is not allowed access, a <xref:System.Net.Sockets.SocketException> is thrown with <xref:System.Net.Sockets.SocketError>."
+  summary: "绑定套接字并开始多播组以允许从单个源地址收到的数据报的联接操作。"
+  remarks: "BeginJoinGroup 方法将 UDP 多播套接字绑定到的本地端口和联接多播的组以允许从单个源地址收到的数据报。 中指定的多播的组地址、 单个源地址和要绑定到的本地端口<xref:System.Net.Sockets.UdpSingleSourceMulticastClient.%23ctor%2A>构造函数。</xref:System.Net.Sockets.UdpSingleSourceMulticastClient.%23ctor%2A>       中指定的方法`callback`要加入多播的组的操作已完成时调用参数。       如果需要由运行时，BeginJoinGroup 方法还会执行策略检查以验证客户端允许访问多播的组。 如果客户端不允许访问，<xref:System.Net.Sockets.SocketException>则会引发<xref:System.Net.Sockets.SocketError>。</xref:System.Net.Sockets.SocketError> </xref:System.Net.Sockets.SocketException>"
   syntax:
     content: public IAsyncResult BeginJoinGroup (AsyncCallback callback, object state);
     parameters:
     - id: callback
       type: System.AsyncCallback
-      description: "A callback method to invoke when the operation completes."
+      description: "要在操作完成时调用回调方法。"
     - id: state
       type: System.Object
-      description: "Optional state information to pass to the `callback` method for this operation."
+      description: "可选状态信息要传递给`callback`对于此操作的方法。"
     return:
       type: System.IAsyncResult
-      description: "Returns <xref:System.IAsyncResult>.       An <xref:System.IAsyncResult> that references this operation."
+      description: "返回<xref:System.IAsyncResult>.</xref:System.IAsyncResult>       <xref:System.IAsyncResult>引用此操作。</xref:System.IAsyncResult>"
   overload: System.Net.Sockets.UdpSingleSourceMulticastClient.BeginJoinGroup*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The multicast group has already been joined or a join operation is currently in progress."
+    description: "尚未联接多播的组，或联接操作当前正在进行。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;></xref> has been disposed."
+    description: "<xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;> </xref>已释放。"
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
-    description: "An error occurred when attempting to access the socket. See the Remarks section for more information."
+    description: "在尝试访问套接字时出错。 请参阅备注部分以了解更多信息。"
   platform:
   - net462
 - uid: System.Net.Sockets.UdpSingleSourceMulticastClient.BeginReceiveFromSource(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)
@@ -128,46 +128,46 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Begins the operation of receiving a packet from the joined multicast group and invokes the specified callback when a packet has arrived on the group from a specified sender."
-  remarks: "The BeginReceiveFromSource method begins an operation of receiving a UDP packet from the joined multicast group from a single sender. The local port, multicast group, and sender source address are specified in the <xref:System.Net.Sockets.UdpSingleSourceMulticastClient.%23ctor%2A> constructor. The multicast client must also have completed a join to the multicast group.       The method specified in the `callback` parameter is invoked when a packet has received.       It is possible to have a socket failure if a receive operation fails synchronously, although this is uncommon with UDP. If a socket failure occurs, a <xref:System.Net.Sockets.SocketException> is thrown. The error received is specified as a member of the <xref:System.Net.Sockets.SocketError> enumeration."
+  summary: "开始从已联接的多播组接收数据包的操作，并在来自指定发送器的数据包到达组时调用指定的回调。"
+  remarks: "BeginReceiveFromSource 方法开始从来自单个发件人已联接的多播组接收 UDP 数据包的操作。 中指定的本地端口、 多播的组和发件人源地址<xref:System.Net.Sockets.UdpSingleSourceMulticastClient.%23ctor%2A>构造函数。</xref:System.Net.Sockets.UdpSingleSourceMulticastClient.%23ctor%2A> 多播客户端必须具有已完成加入多播组。       中指定的方法`callback`收到数据包时，将调用参数。       它可具有套接字失败，如果接收操作失败同步，虽然这是使用 UDP 不常见。 如果发生套接字失败，<xref:System.Net.Sockets.SocketException>引发。</xref:System.Net.Sockets.SocketException> 收到的错误指定的成员为<xref:System.Net.Sockets.SocketError>枚举。</xref:System.Net.Sockets.SocketError>"
   syntax:
     content: public IAsyncResult BeginReceiveFromSource (byte[] buffer, int offset, int count, AsyncCallback callback, object state);
     parameters:
     - id: buffer
       type: System.Byte[]
-      description: "The buffer to store the received data."
+      description: "用于存储已接收的数据的缓冲区。"
     - id: offset
       type: System.Int32
-      description: "The offset, in bytes, from the beginning of the `buffer` where the data should be stored."
+      description: "偏移量，以字节为单位，从开始处`buffer`应在其中存储数据。"
     - id: count
       type: System.Int32
-      description: "The maximum number of bytes to receive and store in the `buffer`."
+      description: "要接收并存储在字节的最大数`buffer`。"
     - id: callback
       type: System.AsyncCallback
-      description: "The callback method to invoke when the operation completes."
+      description: "要在操作完成时调用的回调方法。"
     - id: state
       type: System.Object
-      description: "Optional state information to pass to the `callback` method for this operation."
+      description: "可选状态信息要传递给`callback`对于此操作的方法。"
     return:
       type: System.IAsyncResult
-      description: "Returns <xref:System.IAsyncResult>.       An <xref:System.IAsyncResult> that references this operation."
+      description: "返回<xref:System.IAsyncResult>.</xref:System.IAsyncResult>       <xref:System.IAsyncResult>引用此操作。</xref:System.IAsyncResult>"
   overload: System.Net.Sockets.UdpSingleSourceMulticastClient.BeginReceiveFromSource*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>buffer</code> is a null reference (Nothing in Visual Basic)."
+    description: "<code>buffer</code>为空引用 (在 Visual Basic 中为 Nothing)。"
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>offset</code> is less than 0       -or-       <code>offset</code> is greater than the length of the <code>buffer</code>.       -or-       <code>count</code> is less than 0       -or-       <code>offset</code> plus the count is greater than the length of the <code>buffer</code>."
+    description: "<code>offset</code>小于 0-<code>offset</code>大于的长度<code>buffer</code>。       -<code>count</code>小于 0-<code>offset</code>加上计数大于的长度<code>buffer</code>。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The multicast group has not yet been joined."
+    description: "尚未联接多播的组。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;></xref> has been disposed."
+    description: "<xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;> </xref>已释放。"
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
-    description: "An error occurred when attempting to access the socket for receiving. See the Remarks section for more information."
+    description: "在尝试访问用于接收套接字时出错。 请参阅备注部分以了解更多信息。"
   platform:
   - net462
 - uid: System.Net.Sockets.UdpSingleSourceMulticastClient.BeginSendToSource(System.Byte[],System.Int32,System.Int32,System.Int32,System.AsyncCallback,System.Object)
@@ -182,49 +182,49 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Begins the operation of sending a unicast packet to the source previously specified."
-  remarks: "The BeginSendToSource method begins an operation of sending a UDP packet to the source previously specified.       Some protocols use this information to pass along flow control, quality of service statistics, or recovery messages.       The method specified in the `callback` parameter is invoked when a packet has been sent.       The client must have completed a join to the multicast group.       If the destination port specified in the `remotePort` parameter is less than 1,024, a <xref:System.Net.Sockets.SocketException> is thrown with <xref:System.Net.Sockets.SocketError>.       It is possible to have a socket failure if a send operation fails synchronously, although this is uncommon with UDP. If a socket failure occurs, a <xref:System.Net.Sockets.SocketException> is thrown. The error received is specified as a member of the <xref:System.Net.Sockets.SocketError> enumeration."
+  summary: "开始之前指定的源发送单播数据包的操作。"
+  remarks: "BeginSendToSource 方法开始将 UDP 数据包发送到以前指定的源的操作。       某些协议使用此信息来传递流控制，质量的服务统计信息或恢复消息。       中指定的方法`callback`发送数据包时，将调用参数。       客户端必须已完成加入多播组。       如果在指定目标端口`remotePort`参数为小于 1024，<xref:System.Net.Sockets.SocketException>则会引发<xref:System.Net.Sockets.SocketError>。</xref:System.Net.Sockets.SocketError> </xref:System.Net.Sockets.SocketException>       它可具有套接字失败，如果发送操作失败同步，虽然这是使用 UDP 不常见。 如果发生套接字失败，<xref:System.Net.Sockets.SocketException>引发。</xref:System.Net.Sockets.SocketException> 收到的错误指定的成员为<xref:System.Net.Sockets.SocketError>枚举。</xref:System.Net.Sockets.SocketError>"
   syntax:
     content: public IAsyncResult BeginSendToSource (byte[] buffer, int offset, int count, int remotePort, AsyncCallback callback, object state);
     parameters:
     - id: buffer
       type: System.Byte[]
-      description: "The buffer that contains the data to send."
+      description: "包含要发送的数据的缓冲区。"
     - id: offset
       type: System.Int32
-      description: "The offset, in bytes, from the beginning of the `buffer` to read the data to be sent."
+      description: "偏移量，以字节为单位，从开始处`buffer`读取要发送的数据。"
     - id: count
       type: System.Int32
-      description: "The number of bytes to send from the `buffer`."
+      description: "要从发送的字节数`buffer`。"
     - id: remotePort
       type: System.Int32
-      description: "The remote port to which the packet is to be sent. The remote address is specified by the &lt;xref:System.Net.Sockets.UdpSingleSourceMulticastClient.%23ctor%2A&gt; constructor."
+      description: "远程端口的数据包已发送。 通过指定的远程地址&lt;xref:System.Net.Sockets.UdpSingleSourceMulticastClient.%23ctor%2A&gt;构造函数。"
     - id: callback
       type: System.AsyncCallback
-      description: "The callback method to invoke when the operation completes."
+      description: "要在操作完成时调用的回调方法。"
     - id: state
       type: System.Object
-      description: "Optional state information to pass to the `callback` method for this operation."
+      description: "可选状态信息要传递给`callback`对于此操作的方法。"
     return:
       type: System.IAsyncResult
-      description: "Returns <xref:System.IAsyncResult>.       An <xref:System.IAsyncResult> that references this operation."
+      description: "返回<xref:System.IAsyncResult>.</xref:System.IAsyncResult>       <xref:System.IAsyncResult>引用此操作。</xref:System.IAsyncResult>"
   overload: System.Net.Sockets.UdpSingleSourceMulticastClient.BeginSendToSource*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>buffer</code> is a null reference (Nothing in Visual Basic)."
+    description: "<code>buffer</code>为空引用 (在 Visual Basic 中为 Nothing)。"
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>offset</code> is less than 0       -or-       <code>offset</code> is greater than the length of the <code>buffer</code>.       -or-       <code>count</code> is less than 0       -or-       <code>offset</code> plus the count is greater than the length of the <code>buffer</code>.       -or-       <code>remotePort</code> is less than 0 or greater than 65,535."
+    description: "<code>offset</code>小于 0-<code>offset</code>大于的长度<code>buffer</code>。       -<code>count</code>小于 0-<code>offset</code>加上计数大于的长度<code>buffer</code>。       -或-<code>remotePort</code>小于 0 或大于 65,535。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The multicast group has not yet been joined."
+    description: "尚未联接多播的组。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;></xref> has been disposed."
+    description: "<xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;> </xref>已释放。"
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
-    description: "An error occurred when attempting to access the socket. See the Remarks section for more information."
+    description: "在尝试访问套接字时出错。 请参阅备注部分以了解更多信息。"
   platform:
   - net462
 - uid: System.Net.Sockets.UdpSingleSourceMulticastClient.Dispose
@@ -239,8 +239,8 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Leaves the multicast group and releases all resources used by the current instance of the <xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;></xref> class and the underlying the <xref:System.Net.Sockets.Socket>."
-  remarks: "Call Dispose when you are finished using the <xref:System.Net.Sockets.UdpSingleSourceMulticastClient>. The Dispose method leaves the <xref:System.Net.Sockets.UdpSingleSourceMulticastClient> in an unusable state. After calling Dispose, you must release all references to the <xref:System.Net.Sockets.UdpSingleSourceMulticastClient> so the garbage collector can reclaim the memory that the <xref:System.Net.Sockets.UdpSingleSourceMulticastClient> was occupying.       Always call Dispose before you release your last reference to the <xref:System.Net.Sockets.UdpSingleSourceMulticastClient>. Otherwise, the resources it is using will not be freed until the garbage collector calls the <xref:System.Net.Sockets.UdpSingleSourceMulticastClient> object&quot;s <xref:System.Object.Finalize%2A> method."
+  summary: "离开多播的组并释放使用的当前实例的所有资源<xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;></xref>类和基础<xref:System.Net.Sockets.Socket>.</xref:System.Net.Sockets.Socket>"
+  remarks: "在完成使用<xref:System.Net.Sockets.UdpSingleSourceMulticastClient>.</xref:System.Net.Sockets.UdpSingleSourceMulticastClient>时调用的 Dispose Dispose 方法离开<xref:System.Net.Sockets.UdpSingleSourceMulticastClient>中不可用状态。</xref:System.Net.Sockets.UdpSingleSourceMulticastClient> 调用 Dispose 后，必须释放对所有引用<xref:System.Net.Sockets.UdpSingleSourceMulticastClient>以便垃圾回收器才能回收的内存，<xref:System.Net.Sockets.UdpSingleSourceMulticastClient>占用。</xref:System.Net.Sockets.UdpSingleSourceMulticastClient> </xref:System.Net.Sockets.UdpSingleSourceMulticastClient>       在发布到<xref:System.Net.Sockets.UdpSingleSourceMulticastClient>。</xref:System.Net.Sockets.UdpSingleSourceMulticastClient>最后一个引用之前，始终调用 Dispose 否则，它所使用的资源之前，不会释放垃圾回收器调用<xref:System.Net.Sockets.UdpSingleSourceMulticastClient>对象的<xref:System.Object.Finalize%2A>方法。</xref:System.Object.Finalize%2A> </xref:System.Net.Sockets.UdpSingleSourceMulticastClient>"
   syntax:
     content: public void Dispose ();
     parameters: []
@@ -260,25 +260,25 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Completes the asynchronous join group operation to a multicast group."
-  remarks: "The EndJoinGroup method completes an asynchronous bind to a socket and join operation to a multicast group.       If required by the runtime, the  EndJoinGroup method also performs a policy check to verify that the client is allowed to access the multicast group. If the client is not allowed access, a <xref:System.Net.Sockets.SocketException> is thrown with <xref:System.Net.Sockets.SocketError>.       If there is a socket failure while performing the join group operation, a <xref:System.Net.Sockets.SocketException> is thrown. The error received is specified as a member of the <xref:System.Net.Sockets.SocketError> enumeration."
+  summary: "完成异步联接组操作到多播组。"
+  remarks: "EndJoinGroup 方法完成异步绑定到套接字和联接的多播组的操作。       如果需要由运行时，EndJoinGroup 方法还会执行策略检查以验证客户端允许访问多播的组。 如果客户端不允许访问，<xref:System.Net.Sockets.SocketException>则会引发<xref:System.Net.Sockets.SocketError>。</xref:System.Net.Sockets.SocketError> </xref:System.Net.Sockets.SocketException>       如果执行联接组操作，时套接字失败<xref:System.Net.Sockets.SocketException>引发。</xref:System.Net.Sockets.SocketException> 收到的错误指定的成员为<xref:System.Net.Sockets.SocketError>枚举。</xref:System.Net.Sockets.SocketError>"
   syntax:
     content: public void EndJoinGroup (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The result of the asynchronous join operation."
+      description: "异步联接操作的结果。"
   overload: System.Net.Sockets.UdpSingleSourceMulticastClient.EndJoinGroup*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>result</code> is a null reference (Nothing in Visual Basic)."
+    description: "<code>result</code>为空引用 (在 Visual Basic 中为 Nothing)。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;></xref> has been disposed."
+    description: "<xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;> </xref>已释放。"
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
-    description: "An error occurred when attempting to access the socket. See the Remarks section for more information."
+    description: "在尝试访问套接字时出错。 请参阅备注部分以了解更多信息。"
   platform:
   - net462
 - uid: System.Net.Sockets.UdpSingleSourceMulticastClient.EndReceiveFromSource(System.IAsyncResult,System.Int32@)
@@ -293,34 +293,34 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Completes the asynchronous operation of receiving a packet from the joined multicast group and provides the information received."
-  remarks: "The EndReceiveFromSource method completes an asynchronous operation to receive a packet from a single source in a multicast group.       If there is a socket failure while performing the receive operation, a <xref:System.Net.Sockets.SocketException> is thrown. The error received is specified as a member of the <xref:System.Net.Sockets.SocketError> enumeration."
+  summary: "完成从已联接的多播组接收数据包的异步操作，并提供接收到的信息。"
+  remarks: "EndReceiveFromSource 方法完成一个异步操作以从单个源中的多播组接收数据包。       如果在执行接收操作时出现套接字失败<xref:System.Net.Sockets.SocketException>引发。</xref:System.Net.Sockets.SocketException> 收到的错误指定的成员为<xref:System.Net.Sockets.SocketError>枚举。</xref:System.Net.Sockets.SocketError>"
   syntax:
     content: public int EndReceiveFromSource (IAsyncResult result, out int sourcePort);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The result of the asynchronous receive operation."
+      description: "结果的异步接收操作。"
     - id: sourcePort
       type: System.Int32
-      description: "The source endpoint where the packet was received from."
+      description: "从中接收数据包时源终结点。"
     return:
       type: System.Int32
-      description: "Returns <xref:System.Int32>.       The length, in bytes, of the message stored in the <code>buffer</code> parameter passed to the <xref:System.Net.Sockets.UdpSingleSourceMulticastClient.BeginReceiveFromSource*> method."
+      description: "返回<xref:System.Int32>.</xref:System.Int32>       存储在消息的长度，以字节为单位， <code> buffer </code>参数传递给<xref:System.Net.Sockets.UdpSingleSourceMulticastClient.BeginReceiveFromSource*>方法。</xref:System.Net.Sockets.UdpSingleSourceMulticastClient.BeginReceiveFromSource*>"
   overload: System.Net.Sockets.UdpSingleSourceMulticastClient.EndReceiveFromSource*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>result</code> is a null reference (Nothing in Visual Basic)."
+    description: "<code>result</code>为空引用 (在 Visual Basic 中为 Nothing)。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The multicast group has not yet been joined."
+    description: "尚未联接多播的组。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;></xref> has been disposed."
+    description: "<xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;> </xref>已释放。"
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
-    description: "An error occurred when attempting to access the socket. See the Remarks section for more information."
+    description: "在尝试访问套接字时出错。 请参阅备注部分以了解更多信息。"
   platform:
   - net462
 - uid: System.Net.Sockets.UdpSingleSourceMulticastClient.EndSendToSource(System.IAsyncResult)
@@ -335,28 +335,28 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Completes the operation of sending a unicast packet to a single source."
-  remarks: "The EndSendToSource method completes an asynchronous operation to send a packet to single source previously specified.       If there is a socket failure while performing the receive operation, a <xref:System.Net.Sockets.SocketException> is thrown. The error received is specified as a member of the <xref:System.Net.Sockets.SocketError> enumeration."
+  summary: "完成向单个源发送单播数据包的操作。"
+  remarks: "EndSendToSource 方法完成一个异步操作以将数据包发送到以前指定的单一源。       如果在执行接收操作时出现套接字失败<xref:System.Net.Sockets.SocketException>引发。</xref:System.Net.Sockets.SocketException> 收到的错误指定的成员为<xref:System.Net.Sockets.SocketError>枚举。</xref:System.Net.Sockets.SocketError>"
   syntax:
     content: public void EndSendToSource (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The result of the asynchronous send operation."
+      description: "异步发送操作的结果。"
   overload: System.Net.Sockets.UdpSingleSourceMulticastClient.EndSendToSource*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>result</code> is a null reference (Nothing in Visual Basic)."
+    description: "<code>result</code>为空引用 (在 Visual Basic 中为 Nothing)。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The multicast group has not yet been joined."
+    description: "尚未联接多播的组。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;></xref> has been disposed."
+    description: "<xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;> </xref>已释放。"
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
-    description: "An error occurred when attempting to access the socket. See the Remarks section for more information."
+    description: "在尝试访问套接字时出错。 请参阅备注部分以了解更多信息。"
   platform:
   - net462
 - uid: System.Net.Sockets.UdpSingleSourceMulticastClient.ReceiveBufferSize
@@ -371,24 +371,24 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Gets or sets the size, in bytes, of the receive buffer of the <xref:System.Net.Sockets.Socket> used for multicast receive operations on this <xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;></xref> instance."
-  remarks: "The `ReceiveBufferSize` property gets or sets the size, in bytes, of the receive buffer of the underlying <xref:System.Net.Sockets.Socket> used for multicast receive operations on this <xref:System.Net.Sockets.UdpSingleSourceMulticastClient> instance. Specifically, the `ReceiveBufferSize` property controls the size of the buffer used by the stack when a packet arrives, but the application has not yet called the <xref:System.Net.Sockets.UdpSingleSourceMulticastClient.BeginReceiveFromSource%2A> method. If this buffer gets filled up and packets keep coming before the application calls the <xref:System.Net.Sockets.UdpSingleSourceMulticastClient.BeginReceiveFromSource%2A> and <xref:System.Net.Sockets.UdpSingleSourceMulticastClient.EndReceiveFromSource%2A> methods, old packets will get dropped. The application will never be able to receive the old packets, and will instead receive newer packets when it calls the <xref:System.Net.Sockets.UdpSingleSourceMulticastClient.BeginReceiveFromSource%2A> method.       The default size of the receive buffer on Windows is 8,192."
+  summary: "获取或设置大小，以字节为单位的接收缓冲区的<xref:System.Net.Sockets.Socket>用于对此的多播的接收操作<xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;></xref>实例。</xref:System.Net.Sockets.Socket>"
+  remarks: "`ReceiveBufferSize`属性获取或设置大小，以字节为单位的接收缓冲区的基础<xref:System.Net.Sockets.Socket>用于对此的多播的接收操作<xref:System.Net.Sockets.UdpSingleSourceMulticastClient>实例。</xref:System.Net.Sockets.UdpSingleSourceMulticastClient> </xref:System.Net.Sockets.Socket> 具体而言，`ReceiveBufferSize`属性控制当数据包到达，但尚未调用应用程序时，堆栈所使用的缓冲区的大小<xref:System.Net.Sockets.UdpSingleSourceMulticastClient.BeginReceiveFromSource%2A>方法。</xref:System.Net.Sockets.UdpSingleSourceMulticastClient.BeginReceiveFromSource%2A> 如果此缓冲区被填满和应用程序调用之前不断涌现数据包<xref:System.Net.Sockets.UdpSingleSourceMulticastClient.BeginReceiveFromSource%2A>和<xref:System.Net.Sockets.UdpSingleSourceMulticastClient.EndReceiveFromSource%2A>方法，旧的数据包将被丢弃。</xref:System.Net.Sockets.UdpSingleSourceMulticastClient.EndReceiveFromSource%2A> </xref:System.Net.Sockets.UdpSingleSourceMulticastClient.BeginReceiveFromSource%2A> 应用程序永远无法接收旧的数据包，并在它调用时将收到较新的数据包<xref:System.Net.Sockets.UdpSingleSourceMulticastClient.BeginReceiveFromSource%2A>方法。</xref:System.Net.Sockets.UdpSingleSourceMulticastClient.BeginReceiveFromSource%2A>       在 Windows 上的接收缓冲区的默认大小为 8192。"
   syntax:
     content: public int ReceiveBufferSize { get; set; }
     return:
       type: System.Int32
-      description: "Returns <xref:System.Int32>.       The size, in bytes, of the receive buffer."
+      description: "返回<xref:System.Int32>.</xref:System.Int32>       以字节为单位的接收缓冲区的大小。"
   overload: System.Net.Sockets.UdpSingleSourceMulticastClient.ReceiveBufferSize*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The buffer size specified is less than 0."
+    description: "指定的缓冲区大小小于 0。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The multicast group has not yet been joined."
+    description: "尚未联接多播的组。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;></xref> has been disposed."
+    description: "<xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;> </xref>已释放。"
   platform:
   - net462
 - uid: System.Net.Sockets.UdpSingleSourceMulticastClient.SendBufferSize
@@ -403,24 +403,24 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Gets or sets the size, in bytes, of the send buffer of the <xref:System.Net.Sockets.Socket> used for multicast send operations on this <xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;></xref> instance."
-  remarks: "The SendBufferSize property gets or sets the size, in bytes, of the send buffer of the underlying <xref:System.Net.Sockets.Socket> used for multicast send operations on this <xref:System.Net.Sockets.UdpSingleSourceMulticastClient> instance.       On Mac OS X, the SendBufferSize property controls how many bytes can be in the network stack&quot;s waiting-to-be-sent buffer before additional calls to the <xref:System.Net.Sockets.UdpSingleSourceMulticastClient.BeginSendToSource%2A> method start failing. Applications on Mac OS X may need to be concerned with this property if they are sending a large number of UDP packets in a short timeframe.       On Windows, calls to the <xref:System.Net.Sockets.UdpSingleSourceMulticastClient.BeginSendToSource%2A> method will take longer to call the callback depending on the value of the SendBufferSize property if the send buffer is full. The SendBufferSize property only controls whether the user&quot;s buffer stays locked in physical memory until the send completes.       The default size of the send buffer on Windows is 8,192."
+  summary: "获取或设置大小，以字节为单位的发送缓冲区的<xref:System.Net.Sockets.Socket>用于对此的多播的发送操作<xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;></xref>实例。</xref:System.Net.Sockets.Socket>"
+  remarks: "SendBufferSize 属性获取或设置大小，以字节为单位的发送缓冲区的基础<xref:System.Net.Sockets.Socket>用于对此的多播的发送操作<xref:System.Net.Sockets.UdpSingleSourceMulticastClient>实例。</xref:System.Net.Sockets.UdpSingleSourceMulticastClient> </xref:System.Net.Sockets.Socket>       在 Mac OS X 上 SendBufferSize 属性控制字节数可能处于网络堆栈发送等待缓冲区之前对其他调用<xref:System.Net.Sockets.UdpSingleSourceMulticastClient.BeginSendToSource%2A>方法启动失败。</xref:System.Net.Sockets.UdpSingleSourceMulticastClient.BeginSendToSource%2A> Mac OS X 上的应用程序可能需要加以注意此属性，如果它们在短时间范围内发送大量的 UDP 数据包。       在 Windows 上，调用<xref:System.Net.Sockets.UdpSingleSourceMulticastClient.BeginSendToSource%2A>方法将采用较长的时间调用的回调根据 SendBufferSize 属性的值，如果发送缓冲区已满。</xref:System.Net.Sockets.UdpSingleSourceMulticastClient.BeginSendToSource%2A> SendBufferSize 属性仅控制是否在物理内存中锁定用户的缓冲区保持直至发送完成。       在 Windows 上的发送缓冲区的默认大小为 8192。"
   syntax:
     content: public int SendBufferSize { get; set; }
     return:
       type: System.Int32
-      description: "Returns <xref:System.Int32>.       The size, in bytes, of the send buffer."
+      description: "返回<xref:System.Int32>.</xref:System.Int32>       以字节为单位的发送缓冲区的大小。"
   overload: System.Net.Sockets.UdpSingleSourceMulticastClient.SendBufferSize*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The buffer size specified is less than 0."
+    description: "指定的缓冲区大小小于 0。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The multicast group has not yet been joined."
+    description: "尚未联接多播的组。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;></xref> has been disposed."
+    description: "<xref href=&quot;System.Net.Sockets.UdpSingleSourceMulticastClient&quot;> </xref>已释放。"
   platform:
   - net462
 references:
