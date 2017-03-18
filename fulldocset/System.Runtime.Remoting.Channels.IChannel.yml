@@ -12,8 +12,8 @@ items:
   nameWithType: IChannel
   fullName: System.Runtime.Remoting.Channels.IChannel
   type: Interface
-  summary: "Provides conduits for messages that cross remoting boundaries."
-  remarks: "Remoting boundaries can be <xref:System.Runtime.Remoting.Contexts.Context>s, <xref:System.AppDomain>s, processes, or computers. An application can cross these boundaries only by using channels. These crossings can be inbound and outbound. A channel can listen on an endpoint for inbound messages, send to an endpoint for outbound messages, or both. This provides an extensibility point in the runtime to plug in a wide range protocols, even though the runtime might not be at the other end of the channel.       Run-time objects can be used to represent a wide and rich set of semantics and entities. The channel provides the extensibility point to convert the messages to and from the specific protocols. If there are runtimes at both ends of the channel, a virtual channel is created between the two ends, in order to connect the client and server sink chains on either side of the boundary.       The client part of the channel is located at the end of a client context sink chain. The server part of the channel is located at the start of the server context sink chain. Messages are delivered to the client channel using the <xref:System.Runtime.Remoting.Messaging.IMessageSink> interface, travel through the channel, and are then received by the server channel. The server channel delivers the message to the first server context sink.       Channels must expose the IChannel interface, which provides informational properties such as the <xref:System.Runtime.Remoting.Channels.IChannel.ChannelName%2A> and <xref:System.Runtime.Remoting.Channels.IChannel.ChannelPriority%2A> properties. Channels can be registered using the <xref:System.Runtime.Remoting.Channels.ChannelServices.RegisterChannel%2A?displayProperty=fullName> method."
+  summary: "程序跨越远程处理边界的消息中提供的管道。"
+  remarks: "远程处理边界可以是<xref:System.Runtime.Remoting.Contexts.Context>s， <xref:System.AppDomain>s、 进程或计算机。</xref:System.AppDomain> </xref:System.Runtime.Remoting.Contexts.Context> 只能通过使用通道，应用程序可以跨这些边界。 这些交叉可以是入站和出站。 通道可以侦听终结点上的入站消息，将发送给出站消息，还是两者都的终结点。 这提供了在运行时中插入范围广泛的协议，一个扩展点，即使运行时可能不是在另一端的通道。       运行时对象可用于表示宽丰富的语义和实体集。 通道提供要将消息转换与特定协议的扩展点。 如果有在两个通道端的运行时，两个端点，若要连接的边界任何一侧的客户端和服务器接收器链之间创建虚拟通道。       通道的客户端部分是位于客户端上下文接收器链的结尾。 通道的服务器部分位于服务器上下文接收器链的起点。 消息传递到客户端通道使用<xref:System.Runtime.Remoting.Messaging.IMessageSink>接口、 传输通道，也然后接收服务器通道。</xref:System.Runtime.Remoting.Messaging.IMessageSink> 服务器通道将消息传送至第一个服务器上下文接收器。       通道必须公开 IChannel 接口，提供信息性的属性，如<xref:System.Runtime.Remoting.Channels.IChannel.ChannelName%2A>和<xref:System.Runtime.Remoting.Channels.IChannel.ChannelPriority%2A>属性。</xref:System.Runtime.Remoting.Channels.IChannel.ChannelPriority%2A> </xref:System.Runtime.Remoting.Channels.IChannel.ChannelName%2A> 可以使用注册通道<xref:System.Runtime.Remoting.Channels.ChannelServices.RegisterChannel%2A?displayProperty=fullName>方法。</xref:System.Runtime.Remoting.Channels.ChannelServices.RegisterChannel%2A?displayProperty=fullName>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -34,7 +34,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Gets the name of the channel."
+  summary: "获取通道的名称。"
   remarks: ''
   example:
   - >-
@@ -45,12 +45,12 @@ items:
     content: public string ChannelName { get; }
     return:
       type: System.String
-      description: "The name of the channel."
+      description: "通道的名称。"
   overload: System.Runtime.Remoting.Channels.IChannel.ChannelName*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "直接调用方没有基础结构权限。"
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.IChannel.ChannelPriority
@@ -65,8 +65,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Gets the priority of the channel."
-  remarks: "Higher numbers indicate higher priority, so a channel with priority of 50 has a higher priority than a channel with priority 25. The cross application domain channel has a priority of 100.       Client channels with higher priority are given the first chance to connect to a remote object specified by a URL or a particular channel data entry from a <xref:System.Runtime.Remoting.ObjRef>.       For server channels, the priority indicates the order in which their channel data will appear in a <xref:System.Runtime.Remoting.ObjRef>, which in turn affects the order in which clients will try to connect to the server object. If the server is listening on an HTTP channel with priority 50 and a TCP channel with priority 25 and the client has registered both an HTTP and TCP channel, then the client will use the HTTP channel to talk to the server."
+  summary: "获取通道的优先级。"
+  remarks: "较高的数字指定更高的优先级，以使具有优先级 50 的通道的优先级高于通道使用优先级为 25。 跨应用程序域的信道的优先级为 100。       可以连接到指定的 URL，也可以从一种<xref:System.Runtime.Remoting.ObjRef>。</xref:System.Runtime.Remoting.ObjRef>的特定通道数据条目的远程对象的第一个机会优先级较高的客户端通道。       对于服务器信道，优先级指示将在其中其通道数据显示中的顺序<xref:System.Runtime.Remoting.ObjRef>，这反过来会影响客户端将尝试连接到服务器对象的顺序。</xref:System.Runtime.Remoting.ObjRef> 如果服务器正在侦听具有优先级 50 一个 HTTP 通道以及具有优先级为 25 的 TCP 通道，并且客户端已注册了 HTTP 和 TCP 通道，则客户端将使用 HTTP 通道与服务器通信。"
   example:
   - >-
     [!code-cs[HttpServerChannel_Server_Client#5](~/add/codesnippet/csharp/p-system.runtime.remotin_5_1.cs)]
@@ -76,12 +76,12 @@ items:
     content: public int ChannelPriority { get; }
     return:
       type: System.Int32
-      description: "An integer that indicates the priority of the channel."
+      description: "一个整数，指示通道的优先级。"
   overload: System.Runtime.Remoting.Channels.IChannel.ChannelPriority*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "直接调用方没有基础结构权限。"
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.IChannel.Parse(System.String,System.String@)
@@ -96,7 +96,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Returns the object URI as an out parameter, and the URI of the current channel as the return value."
+  summary: "返回对象 URI 作为输出参数，并作为返回值的当前通道的 URI。"
   remarks: ''
   example:
   - >-
@@ -108,18 +108,18 @@ items:
     parameters:
     - id: url
       type: System.String
-      description: "The URL of the object."
+      description: "对象的 URL。"
     - id: objectURI
       type: System.String
-      description: "When this method returns, contains a <xref:System.String> that holds the object URI. This parameter is passed uninitialized."
+      description: "此方法返回时，包含<xref:System.String>，用于保存对象 URI。</xref:System.String> 此参数传递时未经初始化。"
     return:
       type: System.String
-      description: "The URI of the current channel, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the URI does not belong to this channel."
+      description: "当前通道的 URI 或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果 URI 不属于此通道。"
   overload: System.Runtime.Remoting.Channels.IChannel.Parse*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "直接调用方没有基础结构权限。"
   platform:
   - net462
 references:

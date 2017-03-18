@@ -11,8 +11,8 @@ items:
   nameWithType: DependencyPropertyKey
   fullName: System.Windows.DependencyPropertyKey
   type: Class
-  summary: "Provides a dependency property identifier for limited write access to a read-only dependency property."
-  remarks: "DependencyPropertyKey instances are obtained as the return value of a dependency property registration call using the methods <xref:System.Windows.DependencyProperty.RegisterReadOnly%2A> or <xref:System.Windows.DependencyProperty.RegisterAttachedReadOnly%2A>.       The types that register a dependency property can use the DependencyPropertyKey in calls to <xref:System.Windows.DependencyObject.SetValue%2A> and <xref:System.Windows.DependencyObject.ClearValue%2A> that adjust the property&quot;s value as part of class logic. If permitted by the access level of the key, related classes can use the key and the dependency property also. For instance, you can declare the key as internal, and other types within the same assembly can also set that dependency property.       The DependencyPropertyKey returned by read-only dependency property registration should not be made public, because exposing the key makes the property settable, thus defeating the point of registering it as a read-only dependency property. Also, exposing the key causes a mismatch between the available dependency property behaviors and its [!INCLUDE[TLA#tla_clr](~/add/includes/tlasharptla-clr-md.md)] property wrapper implementations, which is bad class design.       Instead of exposing the key itself, you should instead expose the <xref:System.Windows.DependencyPropertyKey.DependencyProperty%2A> value of the DependencyPropertyKey as a `public static readonly`<xref:System.Windows.DependencyProperty> on your class. This enables the property to return a valid dependency property identifier for certain property system operations such as enumerating locally set values. However, the identifier thus obtained does not have the full capabilities of a <xref:System.Windows.DependencyProperty> for many property system operations."
+  summary: "提供对只读依赖属性的有限写入访问权限的一个依赖属性标识符。"
+  remarks: "DependencyPropertyKey 实例获取作为使用方法<xref:System.Windows.DependencyProperty.RegisterReadOnly%2A>或<xref:System.Windows.DependencyProperty.RegisterAttachedReadOnly%2A>。</xref:System.Windows.DependencyProperty.RegisterAttachedReadOnly%2A></xref:System.Windows.DependencyProperty.RegisterReadOnly%2A>的依赖项属性注册调用的返回值       注册一个依赖项属性的类型可以在调用中使用 DependencyPropertyKey<xref:System.Windows.DependencyObject.SetValue%2A>和<xref:System.Windows.DependencyObject.ClearValue%2A>，调整属性的值作为类逻辑的一部分。</xref:System.Windows.DependencyObject.ClearValue%2A> </xref:System.Windows.DependencyObject.SetValue%2A> 如果允许密钥的访问级别，相关的类也可以使用的密钥和依赖项属性。 例如，可以声明为内部，密钥，而同一程序集内的其他类型还可以设置该依赖项属性。       返回注册只读依赖属性 DependencyPropertyKey 不应成为公共的因为公开键将使该属性可设置，从而与将它注册为只读依赖属性的点。 此外，公开密钥还会使可用依赖项对象之间的不匹配属性行为并将其[!INCLUDE[TLA#tla_clr](~/add/includes/tlasharptla-clr-md.md)]属性包装实现，这是不好的类设计。       而不是公开密钥本身，而是应公开<xref:System.Windows.DependencyPropertyKey.DependencyProperty%2A>值作为 DependencyPropertyKey `public static readonly` <xref:System.Windows.DependencyProperty>你类</xref:System.Windows.DependencyProperty></xref:System.Windows.DependencyPropertyKey.DependencyProperty%2A> 这样，要返回一个有效的依赖属性标识符，对于某些属性系统操作，如枚举本地设置值的属性。 但是，从而获取的标识符不具有的全部功能<xref:System.Windows.DependencyProperty>对于许多属性系统操作。</xref:System.Windows.DependencyProperty>"
   example:
   - "The following example registers a read-only dependency property, and also uses the key for two purposes in other class members: implementing the get \"wrapper\", and as the identifier for a protected determination operation that sets the value based on calculations of other property values.  \n  \n [!code-cs[WPFAquariumSln#RODP](~/add/codesnippet/csharp/WPFAquariumSln/WPFAquariumObjects/Class1.cs#rodp)]\n [!code-vb[WPFAquariumSln#RODP](~/add/codesnippet/visualbasic/wpfaquariumobjects/class1.vb#rodp)]"
   syntax:
@@ -35,15 +35,15 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows
-  summary: "Gets the dependency property identifier associated with this specialized read-only dependency property identifier."
-  remarks: "The DependencyProperty value enables a read-only property&quot;s identifier to participate in common property system operations using some of the same interfaces as used for read-write dependency properties.       In order to implement the get property accessor for a read-only dependency property, you should create and expose a <xref:System.Windows.DependencyProperty> identifier on your class. This serves two purposes:      -   Your own class needs the <xref:System.Windows.DependencyProperty> identifier in order to implement the get accessor for the property wrapper. You use the <xref:System.Windows.DependencyProperty> as a parameter for the <xref:System.Windows.DependencyObject.GetValue%2A> call that implements the get accessor.      -   <xref:System.Windows.DependencyProperty> identifiers expose your dependency property to the property system such that other methods that rely on metadata can access it in a standard form. For instance, if you called <xref:System.Windows.DependencyObject.GetLocalValueEnumerator%2A> on some <xref:System.Windows.DependencyObject> and obtained an enumeration of locally set properties (values and identifiers) the identifier returned for a read-only dependency property would be your <xref:System.Windows.DependencyProperty> value rather than the key. Not exposing a <xref:System.Windows.DependencyProperty> identifier does not increase the security of your read-only dependency property in any way, it just makes operations that involve your property more awkward both for subsequent derived classes and class instances.       To expose the  <xref:System.Windows.DependencyProperty> identifier on your class, you call DependencyProperty directly on your key. Use this value to create a `public static readonly`<xref:System.Windows.DependencyProperty> identifier on the class, which parallels the <xref:System.Windows.DependencyPropertyKey>."
+  summary: "获取与此专用只读依赖属性标识符关联的依赖项属性标识符。"
+  remarks: "DependencyProperty 值启用要参与到公共使用的相同的接口部分所使用的读写依赖项属性的属性系统操作的只读属性的标识符。       为了实现只读依赖属性的 get 属性访问器，你应创建和公开<xref:System.Windows.DependencyProperty>你的类标识符</xref:System.Windows.DependencyProperty> 这有两个用途:-你拥有的类需要<xref:System.Windows.DependencyProperty>为了实现属性包装了 get 访问器的标识符。</xref:System.Windows.DependencyProperty> 你使用<xref:System.Windows.DependencyProperty>的参数<xref:System.Windows.DependencyObject.GetValue%2A>实现 get 访问器的调用。</xref:System.Windows.DependencyObject.GetValue%2A> </xref:System.Windows.DependencyProperty>      -<xref:System.Windows.DependencyProperty>标识符公开到属性系统依赖项属性，以便其他依赖于元数据的方法可以在标准窗体中访问它。</xref:System.Windows.DependencyProperty> 例如，如果调用<xref:System.Windows.DependencyObject.GetLocalValueEnumerator%2A>上某些<xref:System.Windows.DependencyObject>和标识符获取本地设置的属性 （值和标识符） 的枚举为只读依赖属性将返回你<xref:System.Windows.DependencyProperty>值而不是键。</xref:System.Windows.DependencyProperty> </xref:System.Windows.DependencyObject> </xref:System.Windows.DependencyObject.GetLocalValueEnumerator%2A> 不公开<xref:System.Windows.DependencyProperty>标识符不会增加的安全性以任何方式你只读依赖属性，它只是使牵涉到属性更繁琐后续派生的类和类实例的操作。</xref:System.Windows.DependencyProperty>       若要公开<xref:System.Windows.DependencyProperty>在类上的标识符，你调用 DependencyProperty 直接你的密钥。</xref:System.Windows.DependencyProperty> 使用此值来创建`public static readonly`<xref:System.Windows.DependencyProperty>类，其便可与<xref:System.Windows.DependencyPropertyKey>.</xref:System.Windows.DependencyPropertyKey>标识符</xref:System.Windows.DependencyProperty>"
   example:
   - "The following example calls DependencyProperty to expose the <xref:System.Windows.DependencyProperty> identifier (`AquariumGraphicProperty`) for the `AquariumGraphic` read-only dependency property on a class. The example also shows the <xref:System.Windows.DependencyPropertyKey> creation (as an internal member) and the get accessor for `AquariumGraphic`.  \n  \n [!code-cs[WPFAquariumSln#RODP](~/add/codesnippet/csharp/WPFAquariumSln/WPFAquariumObjects/Class1.cs#rodp)]\n [!code-vb[WPFAquariumSln#RODP](~/add/codesnippet/visualbasic/wpfaquariumobjects/class1.vb#rodp)]"
   syntax:
     content: public System.Windows.DependencyProperty DependencyProperty { get; }
     return:
       type: System.Windows.DependencyProperty
-      description: "The relevant dependency property identifier."
+      description: "相关的依赖项属性标识符。"
   overload: System.Windows.DependencyPropertyKey.DependencyProperty*
   exceptions: []
   platform:
@@ -60,8 +60,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows
-  summary: "Overrides the metadata of a read-only dependency property that is represented by this dependency property identifier."
-  remarks: "Overriding metadata on a read-only dependency property is done for similar reasons as overriding metadata on a read-write dependency property, and is restricted to access at the key level because behaviors specified in the metadata can change the set behavior (the default value, for instance).       As with read-write dependency properties, overriding metadata on a read-only dependency property should only be done prior to that property being placed in use by the property system (this equates to the time that specific instances of objects that register the property are instantiated). Calls to OverrideMetadata should only be performed within the static constructors of the type that provides itself as the `forType` parameter of this method, or equivalent initialization for that class.       This method effectively forwards to the <xref:System.Windows.DependencyProperty.OverrideMetadata%2A> method, passing the <xref:System.Windows.DependencyPropertyKey> instance as the key parameter."
+  summary: "重写此依赖属性标识符表示的只读依赖属性元数据。"
+  remarks: "重写只读依赖属性上的元数据出于类似重写上读写依赖项属性的元数据的原因，因此仅限于密钥级别的访问权限，因为指定的元数据中的行为可以更改组行为 （例如的默认值）。       为具有读写依赖项属性重写只读依赖属性的元数据应仅在之前完成 （这相当于注册该属性的对象的特定实例进行实例化的时间） 属性系统会将被放置在使用该属性。 只应提供本身为的类型的静态构造函数内执行调用 OverrideMetadata`forType`此方法或为该类的等效初始化参数。       此方法有效地将转发到<xref:System.Windows.DependencyProperty.OverrideMetadata%2A>方法，并传递<xref:System.Windows.DependencyPropertyKey>实例作为键参数。</xref:System.Windows.DependencyPropertyKey> </xref:System.Windows.DependencyProperty.OverrideMetadata%2A>"
   example:
   - "The following example overrides metadata for an existing read-only dependency property that a class inherits. In this case, the scenario goal was to add a coerce value callback that the base property metadata did not have. You could also override metadata for any of the other reasons that overriding metadata is typically appropriate (changing default value, adding <xref:System.Windows.FrameworkPropertyMetadataOptions> values, etc.)  \n  \n [!code-cs[WPFAquariumSln#RODPOverride](~/add/codesnippet/csharp/WPFAquariumSln/WPFAquariumObjects/Class1.cs#rodpoverride)]\n [!code-vb[WPFAquariumSln#RODPOverride](~/add/codesnippet/visualbasic/wpfaquariumobjects/class1.vb#rodpoverride)]"
   syntax:
@@ -69,18 +69,18 @@ items:
     parameters:
     - id: forType
       type: System.Type
-      description: "The type on which this dependency property exists and metadata should be overridden."
+      description: "在其此依赖属性存在，并且应重写元数据类型。"
     - id: typeMetadata
       type: System.Windows.PropertyMetadata
-      description: "Metadata supplied for this type."
+      description: "为此类型提供的元数据。"
   overload: System.Windows.DependencyPropertyKey.OverrideMetadata*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "Attempted metadata override on a read-write dependency property (cannot be done using this signature)."
+    description: "尝试的元数据上读写依赖项属性重写 (不能使用此签名)。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "Metadata was already established for the property as it exists on the provided type."
+    description: "已为该属性建立元数据，因为它存在于所提供的类型。"
   platform:
   - net462
 references:

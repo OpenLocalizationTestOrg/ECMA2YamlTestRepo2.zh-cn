@@ -21,7 +21,7 @@ items:
   nameWithType: ServiceInstaller
   fullName: System.ServiceProcess.ServiceInstaller
   type: Class
-  summary: "Installs a class that extends <xref href=&quot;System.ServiceProcess.ServiceBase&quot;></xref> to implement a service. This class is called by the install utility when installing a service application."
+  summary: "安装扩展的类的<xref href=&quot;System.ServiceProcess.ServiceBase&quot;></xref>若要实现服务。 安装服务应用程序时，将由安装实用工具调用此类。"
   remarks: "The ServiceInstaller does work specific to the service with which it is associated. It is used by the installation utility to write registry values associated with the service to a subkey within the HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services registry key. The service is identified by its ServiceName within this subkey. The subkey also includes the name of the executable or .dll to which the service belongs.  \n  \n To install a service, create a project installer class that inherits from the <xref:System.Configuration.Install.Installer> class, and set the <xref:System.ComponentModel.RunInstallerAttribute> attribute on the class to `true`. Within your project, create one <xref:System.ServiceProcess.ServiceProcessInstaller> instance per service application, and one ServiceInstaller instance for each service in the application. Within your project installer class constructor, set the installation properties for the service using the <xref:System.ServiceProcess.ServiceProcessInstaller> and ServiceInstaller instances, and add the instances to the <xref:System.Configuration.Install.Installer.Installers%2A> collection.  \n  \n> [!NOTE]\n>  It is recommended that you use the constructor for adding installer instances; however, if you need to add to the <xref:System.Configuration.Install.Installer.Installers%2A> collection in the <xref:System.ServiceProcess.ServiceInstaller.Install%2A> method, be sure to perform the same additions to the collection in the <xref:System.ServiceProcess.ServiceInstaller.Uninstall%2A> method.  \n  \n For all classes deriving from the <xref:System.Configuration.Install.Installer> class, the state of the <xref:System.Configuration.Install.Installer.Installers%2A> collection must be the same in the <xref:System.ServiceProcess.ServiceInstaller.Install%2A> and <xref:System.ServiceProcess.ServiceInstaller.Uninstall%2A> methods. However, you can avoid the maintenance of the collection across the <xref:System.ServiceProcess.ServiceInstaller.Install%2A> and <xref:System.ServiceProcess.ServiceInstaller.Uninstall%2A> methods if you add installer instances to the <xref:System.Configuration.Install.Installer.Installers%2A> collection in your custom installer class constructor.When the install utility is called, it looks for the <xref:System.ComponentModel.RunInstallerAttribute> attribute. If the attribute is `true`, the utility installs all the services that were added to the <xref:System.Configuration.Install.Installer.Installers%2A> collection that were associated with your project installer. If <xref:System.ComponentModel.RunInstallerAttribute> is `false` or does not exist, the install utility ignores the project installer.  \n  \n The <xref:System.ServiceProcess.ServiceProcessInstaller> associated with your project installation class installs information common to all ServiceInstaller instances in the project. If this service has anything that separates it from the other services in the installation project, that service-specific information is installed by this method.  \n  \n> [!NOTE]\n>  It is crucial that the <xref:System.ServiceProcess.ServiceInstaller.ServiceName%2A> be identical to the <xref:System.ServiceProcess.ServiceBase.ServiceName%2A?displayProperty=fullName> of the class you derived from <xref:System.ServiceProcess.ServiceBase>. Normally, the value of the <xref:System.ServiceProcess.ServiceBase.ServiceName%2A?displayProperty=fullName> property for the service is set within the Main() function of the service application's executable. The Service Control Manager uses the <xref:System.ServiceProcess.ServiceInstaller.ServiceName%2A?displayProperty=fullName> property to locate the service within this executable.  \n  \n You can modify other properties on the ServiceInstaller either before or after adding it to the <xref:System.Configuration.Install.Installer.Installers%2A> collection of your project installer. For example, a service's <xref:System.ServiceProcess.ServiceInstaller.StartType%2A> may be set to start the service automatically at reboot or require a user to start the service manually.  \n  \n Normally, you will not call the methods on ServiceInstaller within your code; they are generally called only by the install utility. The install utility automatically calls the <xref:System.ServiceProcess.ServiceProcessInstaller.Install%2A?displayProperty=fullName> and <xref:System.ServiceProcess.ServiceInstaller.Install%2A?displayProperty=fullName> methods during the installation process. It backs out failures, if necessary, by calling <xref:System.ServiceProcess.ServiceProcessInstaller.Rollback%2A> (or <xref:System.ServiceProcess.ServiceInstaller.Rollback%2A?displayProperty=fullName>) on all previously installed components.  \n  \n The installation utility calls <xref:System.ServiceProcess.ServiceInstaller.Uninstall%2A> to remove the object.  \n  \n An application's install routine maintains information automatically about the components already installed, using the project installer's <xref:System.Configuration.Install.Installer.Context%2A?displayProperty=fullName>. This state information is continuously updated as the <xref:System.ServiceProcess.ServiceProcessInstaller> instance, and each ServiceInstaller instance is installed by the utility. It is usually unnecessary for your code to modify state information explicitly.  \n  \n When the installation is performed, it automatically creates an <xref:System.Diagnostics.EventLogInstaller> to install the event log source associated with the <xref:System.ServiceProcess.ServiceBase> derived class. The <xref:System.Diagnostics.EventLog.Log%2A> property for this source is set by the <xref:System.ServiceProcess.ServiceInstaller.%23ctor%2A> constructor to the computer's Application log. When you set the <xref:System.ServiceProcess.ServiceInstaller.ServiceName%2A> of the ServiceInstaller (which should be identical to the <xref:System.ServiceProcess.ServiceBase.ServiceName%2A?displayProperty=fullName> of the service), the <xref:System.Diagnostics.EventLog.Source%2A> is automatically set to the same value. In an installation failure, the source's installation is rolled-back along with previously installed services.  \n  \n The <xref:System.ServiceProcess.ServiceInstaller.Uninstall%2A> method tries to stop the service if it is running. Whether this succeeds or not, <xref:System.ServiceProcess.ServiceInstaller.Uninstall%2A> undoes the changes made by <xref:System.ServiceProcess.ServiceInstaller.Install%2A>. If a new source was created for event logging, the source is deleted."
   example:
   - "The following example creates a project installer, called `MyProjectInstaller`, which inherits from <xref:System.Configuration.Install.Installer>. It is assumed there is a service executable that contains two services, \"Hello-World Service 1\" and \"Hello-World Service 2\". Within the constructor for `MyProjectInstaller` (which would be called by the install utility), ServiceInstaller objects are created for each of these services, and a <xref:System.ServiceProcess.ServiceProcessInstaller> is created for the executable. For the install utility to recognize `MyProjectInstaller` as a valid installer, the <xref:System.ComponentModel.RunInstallerAttribute> attribute is set to `true`.  \n  \n Optional properties are set on the process installer and the service installers before the installers are added to the <xref:System.Configuration.Install.Installer.Installers%2A> collection. When the install utility accesses `MyProjectInstaller`, the objects added to the <xref:System.Configuration.Install.Installer.Installers%2A> collection through a call to <xref:System.Configuration.Install.InstallerCollection.Add%2A?displayProperty=fullName> will be installed in turn. During the process, the installer maintains state information indicating which objects have been installed, so each can be backed out in turn, if an installation failure occurs.  \n  \n Normally, you would not create an instance of your project installer class explicitly. You would create it and add the <xref:System.ComponentModel.RunInstallerAttribute> attribute to the syntax, but it is the install utility that actually calls, and therefore instantiates, the class.  \n  \n [!code-cpp[Classic ServiceInstaller Example#1](~/add/codesnippet/cpp/t-system.serviceprocess._4_1.cpp)]\n [!code-cs[Classic ServiceInstaller Example#1](~/add/codesnippet/csharp/t-system.serviceprocess._4_1.cs)]\n [!code-vb[Classic ServiceInstaller Example#1](~/add/codesnippet/visualbasic/t-system.serviceprocess._4_1.vb)]"
@@ -84,8 +84,8 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceProcess.ServiceInstaller&quot;></xref> class."
-  remarks: "To install a service, create a project installer class that inherits from the <xref:System.Configuration.Install.Installer> class, and set the <xref:System.ComponentModel.RunInstallerAttribute> attribute on the class to `true`. Within your project, create one <xref:System.ServiceProcess.ServiceProcessInstaller> instance per service application, and one <xref:System.ServiceProcess.ServiceInstaller> instance for each service in the application. Within your project installer class constructor, set the installation properties for the service using the <xref:System.ServiceProcess.ServiceProcessInstaller> and <xref:System.ServiceProcess.ServiceInstaller> instances, and add the instances to the <xref:System.Configuration.Install.Installer.Installers%2A> collection.       The ServiceInstaller constructor automatically generates an event log source whose <xref:System.Diagnostics.EventLog.Log%2A> property is set to the computer&quot;s Application log, and an <xref:System.Diagnostics.EventLogInstaller>. When you set the <xref:System.ServiceProcess.ServiceInstaller.ServiceName%2A> of the <xref:System.ServiceProcess.ServiceInstaller>, which should be identical to the <xref:System.ServiceProcess.ServiceBase.ServiceName%2A?displayProperty=fullName> of the service, the <xref:System.Diagnostics.EventLog.Source%2A> property of the event log is automatically set to the same value. The source is deleted automatically in the case of an installation failure.       The ServiceInstaller constructor sets the <xref:System.ServiceProcess.ServiceInstaller.StartType%2A> property to `ServiceStartMode.Manual` to specify that a user start the service. You can reset the property to `ServiceStartMode.Automatic` to specify that the service start when the computer reboots."
+  summary: "初始化的新实例<xref href=&quot;System.ServiceProcess.ServiceInstaller&quot;></xref>类。"
+  remarks: "若要安装服务，创建继承自项目安装程序类<xref:System.Configuration.Install.Installer>类，并将设置<xref:System.ComponentModel.RunInstallerAttribute>到类中的属性`true`。</xref:System.ComponentModel.RunInstallerAttribute> </xref:System.Configuration.Install.Installer> 在项目中，创建一个<xref:System.ServiceProcess.ServiceProcessInstaller>每个服务应用程序，另一个实例<xref:System.ServiceProcess.ServiceInstaller>应用程序中每个服务的实例。</xref:System.ServiceProcess.ServiceInstaller> </xref:System.ServiceProcess.ServiceProcessInstaller> 在您项目安装程序类的构造函数，将设置为服务使用的安装属性<xref:System.ServiceProcess.ServiceProcessInstaller>和<xref:System.ServiceProcess.ServiceInstaller>实例，并将实例添加到<xref:System.Configuration.Install.Installer.Installers%2A>集合。</xref:System.Configuration.Install.Installer.Installers%2A> </xref:System.ServiceProcess.ServiceInstaller> </xref:System.ServiceProcess.ServiceProcessInstaller>       ServiceInstaller 构造函数自动生成的事件日志源<xref:System.Diagnostics.EventLog.Log%2A>属性设置为计算机的应用程序日志和<xref:System.Diagnostics.EventLogInstaller>。</xref:System.Diagnostics.EventLogInstaller> </xref:System.Diagnostics.EventLog.Log%2A> 当你将设置<xref:System.ServiceProcess.ServiceInstaller.ServiceName%2A>的<xref:System.ServiceProcess.ServiceInstaller>，应等于<xref:System.ServiceProcess.ServiceBase.ServiceName%2A?displayProperty=fullName>的服务，<xref:System.Diagnostics.EventLog.Source%2A>的事件日志的属性自动设置为相同的值。</xref:System.Diagnostics.EventLog.Source%2A> </xref:System.ServiceProcess.ServiceBase.ServiceName%2A?displayProperty=fullName> </xref:System.ServiceProcess.ServiceInstaller> </xref:System.ServiceProcess.ServiceInstaller.ServiceName%2A> 安装失败的情况下，源会自动删除。       ServiceInstaller 构造函数集<xref:System.ServiceProcess.ServiceInstaller.StartType%2A>属性`ServiceStartMode.Manual`指定用户启动服务。</xref:System.ServiceProcess.ServiceInstaller.StartType%2A> 你可以重置将属性设为`ServiceStartMode.Automatic`指定当计算机重新启动时启动服务。"
   syntax:
     content: public ServiceInstaller ();
     parameters: []
@@ -105,19 +105,19 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Copies properties from an instance of <xref href=&quot;System.ServiceProcess.ServiceBase&quot;></xref> to this installer."
-  remarks: "This method will rarely be called within your code. CopyFromComponent is usually called only by designers.       CopyFromComponent saves the service name of the `component` parameter to the <xref:System.ServiceProcess.ServiceInstaller.ServiceName%2A> of the <xref:System.ServiceProcess.ServiceInstaller> instance. (Because the parameter must be an instance of a class that derives from <xref:System.ServiceProcess.ServiceBase>, `component` is guaranteed to have a <xref:System.ServiceProcess.ServiceBase.ServiceName%2A?displayProperty=fullName> property.)      > [!NOTE] >  If you are using the Visual Studio designer, this method is called at design time when the user clicks `Add Installer` on a component that specified this class as its installer. The installer takes all information it can from the live component and stores it for use at install time."
+  summary: "将属性复制的实例<xref href=&quot;System.ServiceProcess.ServiceBase&quot;></xref>到此安装程序。"
+  remarks: "极少数情况下将在代码中调用此方法。 CopyFromComponent 通常称为仅由设计器。       CopyFromComponent 将保存的服务名称`component`参数<xref:System.ServiceProcess.ServiceInstaller.ServiceName%2A>的<xref:System.ServiceProcess.ServiceInstaller>实例。</xref:System.ServiceProcess.ServiceInstaller> </xref:System.ServiceProcess.ServiceInstaller.ServiceName%2A> (因为该参数必须派生自<xref:System.ServiceProcess.ServiceBase>，类的实例`component`保证有<xref:System.ServiceProcess.ServiceBase.ServiceName%2A?displayProperty=fullName>属性。)    &1;> [!NOTE]&1;> 如果使用 Visual Studio 设计器，在当用户单击的设计时调用此方法`Add Installer`上指定此类为其安装程序的组件。</xref:System.ServiceProcess.ServiceBase.ServiceName%2A?displayProperty=fullName> </xref:System.ServiceProcess.ServiceBase> 安装程序不需要它可以从实时组件并将其存储在安装时使用的所有信息。"
   syntax:
     content: public override void CopyFromComponent (System.ComponentModel.IComponent component);
     parameters:
     - id: component
       type: System.ComponentModel.IComponent
-      description: "The <xref href=&quot;System.ComponentModel.IComponent&quot;></xref> from which to copy."
+      description: "<xref href=&quot;System.ComponentModel.IComponent&quot;> </xref>从中进行复制。"
   overload: System.ServiceProcess.ServiceInstaller.CopyFromComponent*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The component you are associating with this installer does not inherit from <xref href=&quot;System.ServiceProcess.ServiceBase&quot;></xref>."
+    description: "您要与此安装程序相关联的组件不是继承自<xref href=&quot;System.ServiceProcess.ServiceBase&quot;> </xref>。"
   platform:
   - net462
 - uid: System.ServiceProcess.ServiceInstaller.DelayedAutoStart
@@ -132,13 +132,13 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Gets or sets a value that indicates whether the service should be delayed from starting until other automatically started services are running."
-  remarks: "The DelayedAutoStart property can be applied to any service, but it is ignored unless the service&quot;s start mode is <xref:System.ServiceProcess.ServiceStartMode>. The setting takes effect the next time the system is restarted. The Service Control Manager does not guarantee a specific start time for the service.       A delayed automatic start service cannot be a member of a load ordering group, but it can depend on another automatic start service. If an application calls a delayed automatic start service before it is loaded, the call fails.       On operating systems that do not support delayed automatic start, setting this property has no effect."
+  summary: "获取或设置一个值，该值指示服务是否应推迟之前运行其他自动启动的服务无法启动。"
+  remarks: "DelayedAutoStart 属性可以应用到任何服务，但它将被忽略，除非服务的启动模式是<xref:System.ServiceProcess.ServiceStartMode>.</xref:System.ServiceProcess.ServiceStartMode> 该设置将生效的下次重新启动系统。 服务控制管理器不能保证服务特定的开始时间。       延迟的自动启动服务不能加载顺序组的成员，但它可以依赖于另一个自动启动服务。 如果应用程序调用延迟的自动启动服务，然后加载它，则调用将失败。       不支持延迟的自动启动的操作系统，请将此属性设置不起。"
   syntax:
     content: public bool DelayedAutoStart { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to delay automatic start of the service; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>对延迟自动启动的服务;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.ServiceProcess.ServiceInstaller.DelayedAutoStart*
   exceptions: []
   platform:
@@ -155,15 +155,15 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Gets or sets the description for the service."
-  remarks: "Use the Description property to describe the purpose of the installed service to the user. The user can view the service description in applications that display details for installed services.       For example, using Windows XP, you can view the service description with the Service Control command-line utility (Sc.exe) or you can view the service description within the **Services** node of the **Computer Management** console."
+  summary: "获取或设置服务的说明。"
+  remarks: "使用 Description 属性来描述向用户已安装的服务的用途。 显示已安装的服务的详细信息的应用程序中，用户可以查看服务说明。       例如，使用 Windows XP，你可以查看与服务控制命令行实用工具 (Sc.exe) 的服务说明或可以查看中的服务说明**服务**节点**计算机管理**控制台。"
   example:
   - "The following code example sets the installation properties for a new Windows service application. The example sets the service name, along with the display name and description. After assigning the installation properties for the service, the example adds the <xref:System.ServiceProcess.ServiceInstaller> object to the <xref:System.Configuration.Install.Installer.Installers%2A> collection.  \n  \n [!code-cs[ServiceProcess_ServiceInstaller#3](~/add/codesnippet/csharp/p-system.serviceprocess._7_1.cs)]\n [!code-vb[ServiceProcess_ServiceInstaller#3](~/add/codesnippet/visualbasic/p-system.serviceprocess._7_1.vb)]"
   syntax:
     content: public string Description { get; set; }
     return:
       type: System.String
-      description: "The description of the service. The default is an empty string (&quot;&quot;)."
+      description: "服务的说明。 默认值为空字符串 (&quot;&quot;)。"
   overload: System.ServiceProcess.ServiceInstaller.Description*
   exceptions: []
   platform:
@@ -180,13 +180,13 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Indicates the friendly name that identifies the service to the user."
+  summary: "指示向用户标识该服务的友好名称。"
   remarks: "The DisplayName is used, for example, in the Service Control Manager to provide a user-readable descriptive name for the service. The DisplayName is a registry value, but is never used as a registry key. Therefore, restrictions on the <xref:System.ServiceProcess.ServiceInstaller.ServiceName%2A> property value do not apply. <xref:System.ServiceProcess.ServiceInstaller.ServiceName%2A> is used as the HKEY_LOCAL_MACHINES\\System\\CurrentControlSet\\Services registry key, so it is restricted.  \n  \n The display name is never used by the install utility to identify the service, so there are no restrictions on the choice of name, as there is for the <xref:System.ServiceProcess.ServiceInstaller.ServiceName%2A> property."
   syntax:
     content: public string DisplayName { get; set; }
     return:
       type: System.String
-      description: "The name associated with the service, used frequently for interactive tools."
+      description: "与交互式工具经常使用的服务关联的名称。"
   overload: System.ServiceProcess.ServiceInstaller.DisplayName*
   exceptions: []
   platform:
@@ -203,25 +203,25 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Installs the service by writing service application information to the registry. This method is meant to be used by installation tools, which process the appropriate methods automatically."
-  remarks: "Normally, you will not call the methods on <xref:System.ServiceProcess.ServiceInstaller> within your code; they are generally called only by the install utility. The install utility automatically calls the Install method during installation. It backs out failures, if necessary, by calling <xref:System.ServiceProcess.ServiceInstaller.Rollback%2A> on the object that generated the exception.       An application&quot;s install routine maintains information automatically about the components that were already installed, using the project installer&quot;s <xref:System.Configuration.Install.Installer.Context%2A?displayProperty=fullName>. This state information, passed into Install as the `stateSaver` parameter, is continuously updated as the <xref:System.ServiceProcess.ServiceProcessInstaller> instance and each <xref:System.ServiceProcess.ServiceInstaller> instance is installed by the utility. It is usually unnecessary for your code to modify this state information explicitly.       The <xref:System.ServiceProcess.ServiceProcessInstaller> associated with your project installation class installs information common to all <xref:System.ServiceProcess.ServiceInstaller> instances in the project. If this service has anything that separates it from the other services in the installation project, that service-specific information is installed by this method.       To install a service, create a project installer class that inherits from the <xref:System.Configuration.Install.Installer> class, and set the <xref:System.ComponentModel.RunInstallerAttribute> attribute on the class to `true`. Within your project, create one <xref:System.ServiceProcess.ServiceProcessInstaller> instance per service application, and one <xref:System.ServiceProcess.ServiceInstaller> instance for each service in the application. Within your project installer class constructor, set the installation properties for the service using the <xref:System.ServiceProcess.ServiceProcessInstaller> and <xref:System.ServiceProcess.ServiceInstaller> instances, and add the instances to the <xref:System.Configuration.Install.Installer.Installers%2A> collection.      > [!NOTE] >  It is recommended that you use the constructor for adding installer instances; however, if you need to add to the <xref:System.Configuration.Install.Installer.Installers%2A> collection in the Install method, be sure to perform the same additions to the collection in the <xref:System.ServiceProcess.ServiceInstaller.Uninstall%2A> method.       For all classes deriving from the <xref:System.Configuration.Install.Installer> class, the state of the <xref:System.Configuration.Install.Installer.Installers%2A> collection must be the same in the Install and <xref:System.ServiceProcess.ServiceInstaller.Uninstall%2A> methods. However, you can avoid the maintenance of the collection across the Install and <xref:System.ServiceProcess.ServiceInstaller.Uninstall%2A> methods if you add installer instances to the <xref:System.Configuration.Install.Installer.Installers%2A> collection in your custom installer class constructor."
+  summary: "安装程序服务应用程序信息写入注册表的服务。 此方法旨在用于安装工具，可自动处理适当的方法。"
+  remarks: "通常情况下，你将不调用对象方法<xref:System.ServiceProcess.ServiceInstaller>在代码中; 它们是通常只能由调用安装实用工具。</xref:System.ServiceProcess.ServiceInstaller> 安装实用程序在安装过程中自动调用安装方法。 如有必要，它退出故障，通过调用<xref:System.ServiceProcess.ServiceInstaller.Rollback%2A>上生成异常的对象。</xref:System.ServiceProcess.ServiceInstaller.Rollback%2A>       应用程序的安装例程维护自动有关已安装，使用项目安装<xref:System.Configuration.Install.Installer.Context%2A?displayProperty=fullName>.</xref:System.Configuration.Install.Installer.Context%2A?displayProperty=fullName>组件的信息 此状态信息传递到会安装为`stateSaver`参数，将持续更新作为<xref:System.ServiceProcess.ServiceProcessInstaller>实例和每个<xref:System.ServiceProcess.ServiceInstaller>由实用工具安装实例。</xref:System.ServiceProcess.ServiceInstaller> </xref:System.ServiceProcess.ServiceProcessInstaller> 它是通常情况下不必为你的代码来显式修改此状态信息。       <xref:System.ServiceProcess.ServiceProcessInstaller>与项目安装类安装信息普遍适用于所有关联<xref:System.ServiceProcess.ServiceInstaller>项目中的实例。</xref:System.ServiceProcess.ServiceInstaller> </xref:System.ServiceProcess.ServiceProcessInstaller> 如果此服务已将它隔离从安装项目中的其他服务的任何内容，此方法被安装该特定于服务的信息。       若要安装服务，创建继承自项目安装程序类<xref:System.Configuration.Install.Installer>类，并将设置<xref:System.ComponentModel.RunInstallerAttribute>到类中的属性`true`。</xref:System.ComponentModel.RunInstallerAttribute> </xref:System.Configuration.Install.Installer> 在项目中，创建一个<xref:System.ServiceProcess.ServiceProcessInstaller>每个服务应用程序，另一个实例<xref:System.ServiceProcess.ServiceInstaller>应用程序中每个服务的实例。</xref:System.ServiceProcess.ServiceInstaller> </xref:System.ServiceProcess.ServiceProcessInstaller> 在您项目安装程序类的构造函数，将设置为服务使用的安装属性<xref:System.ServiceProcess.ServiceProcessInstaller>和<xref:System.ServiceProcess.ServiceInstaller>实例，并将实例添加到<xref:System.Configuration.Install.Installer.Installers%2A>集合。</xref:System.Configuration.Install.Installer.Installers%2A> </xref:System.ServiceProcess.ServiceInstaller> </xref:System.ServiceProcess.ServiceProcessInstaller>      1> [!NOTE]&1;> 建议你可用于构造函数添加安装程序实例; 但是，如果你需要将添加到<xref:System.Configuration.Install.Installer.Installers%2A>集合中的安装方法中，请务必执行上述相同的元素添加到集合中<xref:System.ServiceProcess.ServiceInstaller.Uninstall%2A>方法。</xref:System.ServiceProcess.ServiceInstaller.Uninstall%2A> </xref:System.Configuration.Install.Installer.Installers%2A>       为派生自的所有类<xref:System.Configuration.Install.Installer>类的状态<xref:System.Configuration.Install.Installer.Installers%2A>集合必须在安装相同和<xref:System.ServiceProcess.ServiceInstaller.Uninstall%2A>方法。</xref:System.ServiceProcess.ServiceInstaller.Uninstall%2A> </xref:System.Configuration.Install.Installer.Installers%2A> </xref:System.Configuration.Install.Installer> 但是，您可以避免跨安装的集合的维护和<xref:System.ServiceProcess.ServiceInstaller.Uninstall%2A>方法如果你安装程序将实例添加到<xref:System.Configuration.Install.Installer.Installers%2A>在自定义安装程序类构造函数的集合。</xref:System.Configuration.Install.Installer.Installers%2A> </xref:System.ServiceProcess.ServiceInstaller.Uninstall%2A>"
   syntax:
     content: public override void Install (System.Collections.IDictionary stateSaver);
     parameters:
     - id: stateSaver
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the context information associated with the installation."
+      description: "<xref:System.Collections.IDictionary>，包含与安装关联的上下文信息。</xref:System.Collections.IDictionary>"
   overload: System.ServiceProcess.ServiceInstaller.Install*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The installation does not contain a <xref href=&quot;System.ServiceProcess.ServiceProcessInstaller&quot;></xref> for the executable.       -or-       The file name for the assembly is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty string.       -or-       The service name is invalid.       -or-       The Service Control Manager could not be opened."
+    description: "安装不包含<xref href=&quot;System.ServiceProcess.ServiceProcessInstaller&quot;></xref>的可执行文件。       -或-程序集的文件名称是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>或空字符串。       -或者-服务名称无效。       -或者-无法打开服务控制管理器。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The display name for the service is more than 255 characters in length."
+    description: "该服务的显示名称的长度超过 255 个字符。"
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "The system could not generate a handle to the service.       -or-       A service with that name is already installed."
+    description: "系统无法生成服务的句柄。       -或者-已安装具有该名称的服务。"
   platform:
   - net462
 - uid: System.ServiceProcess.ServiceInstaller.IsEquivalentInstaller(System.Configuration.Install.ComponentInstaller)
@@ -236,17 +236,17 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Indicates whether two installers would install the same service."
-  remarks: "IsEquivalentInstaller indicates, for example, whether two installers would install the same service under the same user account."
+  summary: "指示两个安装程序是否将安装相同的服务。"
+  remarks: "IsEquivalentInstaller 指示，例如，两个安装程序是否将安装在相同的用户帐户下相同的服务。"
   syntax:
     content: public override bool IsEquivalentInstaller (System.Configuration.Install.ComponentInstaller otherInstaller);
     parameters:
     - id: otherInstaller
       type: System.Configuration.Install.ComponentInstaller
-      description: "A <xref href=&quot;System.Configuration.Install.ComponentInstaller&quot;></xref> to which you are comparing the current installer."
+      description: "A <xref href=&quot;System.Configuration.Install.ComponentInstaller&quot;> </xref>在比较当前的安装程序。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if calling <xref:System.ServiceProcess.ServiceInstaller.Install*> on both of these installers would result in installing the same service; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果调用<xref:System.ServiceProcess.ServiceInstaller.Install*>这两个这些安装程序将导致安装相同服务; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。</xref:System.ServiceProcess.ServiceInstaller.Install*>"
   overload: System.ServiceProcess.ServiceInstaller.IsEquivalentInstaller*
   exceptions: []
   platform:
@@ -263,14 +263,14 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Rolls back service application information written to the registry by the installation procedure. This method is meant to be used by installation tools, which process the appropriate methods automatically."
-  remarks: "Normally, you will not call the methods on <xref:System.ServiceProcess.ServiceInstaller> within your code; they are generally called only by the install utility. The install utility automatically calls the <xref:System.ServiceProcess.ServiceInstaller.Install%2A> method during the installation process. It backs out failures, if necessary, by calling Rollback on the object that generated the exception.       An application&quot;s install routine maintains information automatically about the components already installed, using the project installer&quot;s <xref:System.Configuration.Install.Installer.Context%2A?displayProperty=fullName>. This state information, passed into Rollback as the `savedState` parameter, is continuously updated as the <xref:System.ServiceProcess.ServiceProcessInstaller> instance and each <xref:System.ServiceProcess.ServiceInstaller> instance is installed by the utility. It is usually unnecessary for your code to modify this state information explicitly."
+  summary: "回滚服务应用程序信息写入注册表的安装过程。 此方法旨在用于安装工具，可自动处理适当的方法。"
+  remarks: "通常情况下，你将不调用对象方法<xref:System.ServiceProcess.ServiceInstaller>在代码中; 它们是通常只能由调用安装实用工具。</xref:System.ServiceProcess.ServiceInstaller> 安装实用程序将自动调用<xref:System.ServiceProcess.ServiceInstaller.Install%2A>在安装过程中的方法。</xref:System.ServiceProcess.ServiceInstaller.Install%2A> 它退出故障，如果有必要，请通过在对象上调用回滚生成异常。       应用程序的安装例程维护自动有关组件已安装，使用项目安装<xref:System.Configuration.Install.Installer.Context%2A?displayProperty=fullName>.</xref:System.Configuration.Install.Installer.Context%2A?displayProperty=fullName>的信息 此状态信息传递到作为回滚`savedState`参数，将持续更新作为<xref:System.ServiceProcess.ServiceProcessInstaller>实例和每个<xref:System.ServiceProcess.ServiceInstaller>由实用工具安装实例。</xref:System.ServiceProcess.ServiceInstaller> </xref:System.ServiceProcess.ServiceProcessInstaller> 它是通常情况下不必为你的代码来显式修改此状态信息。"
   syntax:
     content: public override void Rollback (System.Collections.IDictionary savedState);
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the context information associated with the installation."
+      description: "<xref:System.Collections.IDictionary>，包含与安装关联的上下文信息。</xref:System.Collections.IDictionary>"
   overload: System.ServiceProcess.ServiceInstaller.Rollback*
   exceptions: []
   platform:
@@ -287,18 +287,18 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Indicates the name used by the system to identify this service. This property must be identical to the &lt;xref:System.ServiceProcess.ServiceBase.ServiceName%2A?displayProperty=fullName&gt; of the service you want to install."
+  summary: "指示系统用于标识此服务的名称。 此属性必须与相同&lt;xref:System.ServiceProcess.ServiceBase.ServiceName%2A?displayProperty=fullName&gt;你想要安装的服务。"
   remarks: "It is crucial that the ServiceName be identical to the <xref:System.ServiceProcess.ServiceBase.ServiceName%2A?displayProperty=fullName> of the class you derived from <xref:System.ServiceProcess.ServiceBase>. Normally, the value of the <xref:System.ServiceProcess.ServiceBase.ServiceName%2A?displayProperty=fullName> property for the service is set within the Main() function of the service application's executable. The Service Control Manager uses the ServiceName property to locate the service within this executable.  \n  \n When you set the ServiceName of the service installer, the <xref:System.Diagnostics.EventLog.Source%2A> of the associated event log is set to the same value. This allows the service to automatically log service commands (such as Start and Stop) calls to the Application log on the computer.  \n  \n> [!NOTE]\n>  If a source by the same name already exists on the computer, but in a log other than the Application log, an exception will be thrown. If the source exists and is associated with the Application log, that source is used to report command calls to the service, and no exception is thrown.  \n  \n The ServiceName cannot be `null` or have zero length. Its maximum size is 256 characters. It also cannot contain forward or backward slashes, '/' or '\\\\', or characters from the ASCII character set with value less than decimal value 32."
   syntax:
     content: public string ServiceName { get; set; }
     return:
       type: System.String
-      description: "The name of the service to be installed. This value must be set before the install utility attempts to install the service."
+      description: "要安装的服务名称。 在尝试安装服务安装实用程序之前，必须设置此值。"
   overload: System.ServiceProcess.ServiceInstaller.ServiceName*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The ServiceName property is invalid."
+    description: "ServiceName 属性无效。"
   platform:
   - net462
 - uid: System.ServiceProcess.ServiceInstaller.ServicesDependedOn
@@ -313,13 +313,13 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Indicates the services that must be running for this service to run."
-  remarks: "A service can require other services to be running before it can start. The information from this property is written to a key in the registry. When the user (or the system, in the case of automatic startup) tries to run the service, the Service Control Manager (SCM) verifies that each of the services in the array has already been started.       If any service in the array is not running then, the SCM tries to start them. This includes services with `Manual`<xref:System.ServiceProcess.ServiceInstaller.StartType%2A>.       If any service upon which this service depends fails to start, this service will not start. An exception is not thrown if the system is not started because there is no exception handling at the system level to detect this. Decide how to handle service start failures and implement this in your code. Typically, a dialog appears to the user at startup if a service fails to start.       If the service does not start, an entry is written to the Application event log.       The services upon which this service depends do not need to be in the same executable."
+  summary: "指示必须运行此服务运行的服务。"
+  remarks: "服务可能需要其他服务正在运行，才能启动。 此属性中的信息写入到注册表中的键。 当用户 （或在自动启动系统） 尝试运行该服务时，服务控制管理器 (SCM) 验证每个数组中的服务已经启动。       如果数组中的任何服务未然后运行，则 SCM 将尝试启动它们。 这包括服务与`Manual` <xref:System.ServiceProcess.ServiceInstaller.StartType%2A>.</xref:System.ServiceProcess.ServiceInstaller.StartType%2A>       如果此服务所依赖的任何服务启动失败时，将无法启动此服务。 如果系统未启动，因为没有在系统级别来检测该处理异常，不会引发异常。 决定如何处理服务启动失败，并在你的代码中实现这。 通常情况下，对话框向用户显示在启动时如果无法启动服务。       如果服务未启动，会在应用程序事件日志中写入一个条目。       此服务所依赖的服务不需要处于同一可执行文件。"
   syntax:
     content: public string[] ServicesDependedOn { get; set; }
     return:
       type: System.String[]
-      description: "An array of services that must be running before the service associated with this installer can run."
+      description: "此安装程序与关联的服务可以运行之前必须运行的服务数组。"
   overload: System.ServiceProcess.ServiceInstaller.ServicesDependedOn*
   exceptions: []
   platform:
@@ -336,18 +336,18 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Indicates how and when this service is started."
-  remarks: "Set the StartType to specify either that the service be started automatically after reboot or that a user must manually start the service. A service can also be disabled, specifying that it cannot be started, either manually or programmatically, until it is enabled.       You cannot change <xref:System.ServiceProcess.ServiceInstaller> property values after installation. To change the StartType, you either have to uninstall and reinstall your service, or manually change the setting using the Service Control Manager."
+  summary: "指示如何以及何时启动此服务。"
+  remarks: "设置指定，在重新启动后自动启动该服务或用户必须手动启动该服务启动类型。 服务也被禁用，指定，不能启动，手动或以编程方式，直至启用。       无法更改<xref:System.ServiceProcess.ServiceInstaller>安装后的属性值。</xref:System.ServiceProcess.ServiceInstaller> 若要更改 StartType，你必须卸载并重新安装你的服务，或者手动更改使用服务控制管理器的设置。"
   syntax:
     content: public System.ServiceProcess.ServiceStartMode StartType { get; set; }
     return:
       type: System.ServiceProcess.ServiceStartMode
-      description: "A <xref href=&quot;System.ServiceProcess.ServiceStartMode&quot;></xref> that represents the way the service is started. The default is <xref uid=&quot;langword_csharp_Manual&quot; name=&quot;Manual&quot; href=&quot;&quot;></xref>, which specifies that the service will not automatically start after reboot."
+      description: "A <xref href=&quot;System.ServiceProcess.ServiceStartMode&quot;> </xref>表示该服务已启动的方式。 默认值是<xref uid=&quot;langword_csharp_Manual&quot; name=&quot;Manual&quot; href=&quot;&quot;> </xref>，它指定，该服务将不自动重新启动后。"
   overload: System.ServiceProcess.ServiceInstaller.StartType*
   exceptions:
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "The start mode is not a value of the <xref href=&quot;System.ServiceProcess.ServiceStartMode&quot;></xref> enumeration."
+    description: "启动模式不是值的<xref href=&quot;System.ServiceProcess.ServiceStartMode&quot;></xref>枚举。"
   platform:
   - net462
 - uid: System.ServiceProcess.ServiceInstaller.Uninstall(System.Collections.IDictionary)
@@ -362,19 +362,19 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Uninstalls the service by removing information about it from the registry."
-  remarks: "Uninstall first attempts to stop the service before uninstalling it. If the service cannot be stopped, no exception is caught, and the method continues with the removal of the service.       Normally, you will not call the methods on <xref:System.ServiceProcess.ServiceInstaller> within your code; they are generally called only by the install utility. InstallUtil is used to uninstall services as well as install them; uninstalling takes a switch in the command line call.       An application&quot;s uninstall routine maintains information automatically about the components being uninstalled, using the project installer&quot;s <xref:System.Configuration.Install.Installer.Context%2A?displayProperty=fullName>. This state information, passed into Uninstall as the `savedState` parameter, is continuously updated as the <xref:System.ServiceProcess.ServiceProcessInstaller> instance and each <xref:System.ServiceProcess.ServiceInstaller> instance is installed by the utility. It is usually unnecessary for your code to modify this state information explicitly.       For all classes deriving from the <xref:System.Configuration.Install.Installer> class, the state of the <xref:System.Configuration.Install.Installer.Installers%2A> collection must be the same in the <xref:System.ServiceProcess.ServiceInstaller.Install%2A> and Uninstall methods. However, you can avoid the maintenance of the collection across the <xref:System.ServiceProcess.ServiceInstaller.Install%2A> and Uninstall methods if you add installer instances to the <xref:System.Configuration.Install.Installer.Installers%2A> collection in your custom installer class constructor.       There is no rollback mechanism for uninstalling, so if one service fails to uninstall, this does not affect the other services (usually within the same installation project) being uninstalled."
+  summary: "通过从注册表中删除有关它的信息来卸载该服务。"
+  remarks: "卸载在卸载之前停止该服务的第一个尝试。 如果不停止该服务，不捕获到异常，并方法继续删除服务。       通常情况下，你将不调用对象方法<xref:System.ServiceProcess.ServiceInstaller>在代码中; 它们是通常只能由调用安装实用工具。</xref:System.ServiceProcess.ServiceInstaller> InstallUtil 用于卸载服务，以及安装它们。卸载命令行调用中将一个交换机。       应用程序的卸载例程维护自动有关组件的信息正在卸载，使用项目安装<xref:System.Configuration.Install.Installer.Context%2A?displayProperty=fullName>.</xref:System.Configuration.Install.Installer.Context%2A?displayProperty=fullName> 此状态信息传递到作为卸载`savedState`参数，将持续更新作为<xref:System.ServiceProcess.ServiceProcessInstaller>实例和每个<xref:System.ServiceProcess.ServiceInstaller>由实用工具安装实例。</xref:System.ServiceProcess.ServiceInstaller> </xref:System.ServiceProcess.ServiceProcessInstaller> 它是通常情况下不必为你的代码来显式修改此状态信息。       为派生自的所有类<xref:System.Configuration.Install.Installer>类的状态<xref:System.Configuration.Install.Installer.Installers%2A>集合必须在相同<xref:System.ServiceProcess.ServiceInstaller.Install%2A>和卸载方法。</xref:System.ServiceProcess.ServiceInstaller.Install%2A> </xref:System.Configuration.Install.Installer.Installers%2A> </xref:System.Configuration.Install.Installer> 但是，您可以避免在对集合进行维护<xref:System.ServiceProcess.ServiceInstaller.Install%2A>和卸载方法，如果你安装程序将实例添加到<xref:System.Configuration.Install.Installer.Installers%2A>在自定义安装程序类构造函数的集合。</xref:System.Configuration.Install.Installer.Installers%2A> </xref:System.ServiceProcess.ServiceInstaller.Install%2A>       因此，如果一个服务卸载失败，这不会影响内的其他服务 （通常是相同的安装项目） 正在卸载，没有用于卸载，回滚机制。"
   syntax:
     content: public override void Uninstall (System.Collections.IDictionary savedState);
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the context information associated with the installation."
+      description: "<xref:System.Collections.IDictionary>，包含与安装关联的上下文信息。</xref:System.Collections.IDictionary>"
   overload: System.ServiceProcess.ServiceInstaller.Uninstall*
   exceptions:
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "The Service Control Manager could not be opened.       -or-       The system could not get a handle to the service."
+    description: "无法打开服务控制管理器。       -或者-系统无法获取服务的句柄。"
   platform:
   - net462
 references:
