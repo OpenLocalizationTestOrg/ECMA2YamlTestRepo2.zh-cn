@@ -102,8 +102,8 @@ items:
   nameWithType: DataGridTableStyle
   fullName: System.Windows.Forms.DataGridTableStyle
   type: Class
-  summary: "Represents the table drawn by the <xref href=&quot;System.Windows.Forms.DataGrid&quot;></xref> control at run time."
-  remarks: "The <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control displays data in the form of a grid. The DataGridTableStyle is a class that represents the drawn grid only. This grid should not be confused with the <xref:System.Data.DataTable> class, which is a possible source of data for the grid. Instead, the DataGridTableStyle strictly represents the grid as it is painted in the control. Therefore, through the DataGridTableStyle you can control the appearance of the grid for each <xref:System.Data.DataTable>. To specify which DataGridTableStyle is used when displaying data from a particular <xref:System.Data.DataTable>, set the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> to the <xref:System.Data.DataTable.TableName%2A> of a <xref:System.Data.DataTable>.       The <xref:System.Windows.Forms.GridTableStylesCollection> retrieved through the <xref:System.Windows.Forms.DataGrid.TableStyles%2A> property contains all the DataGridTableStyle objects used by a <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control. The collection can contain as many DataGridTableStyle objects as you need, however the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> of each must be unique. At run time, this allows you to substitute a different DataGridTableStyle for the same data, depending on the user&quot;s preference. To do this:      1.  Populate the <xref:System.Windows.Forms.GridTableStylesCollection> with DataGridTableStyle objects. If a DataGridTableStyle exists in the <xref:System.Windows.Forms.GridTableStylesCollection> whose <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> property value equals the <xref:System.Data.DataTable> object&quot;s <xref:System.Data.DataTable.TableName%2A> property, the <xref:System.Data.DataTable> is displayed with this DataGridTableStyle. If no DataGridTableStyle exists with a matching <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>, the <xref:System.Data.DataTable> is displayed with the default style for data grid tables.      2.  When a different grid style is needed, use the `Item` property to select the appropriate DataGridTableStyle (pass the <xref:System.Data.DataTable.TableName%2A> to the <xref:System.Windows.Forms.GridTableStylesCollection.Item%2A> property) and set the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> of the returned object to a new value.      3.  Use the <xref:System.Windows.Forms.GridTableStylesCollection.Item%2A> property to select the desired DataGridTableStyle, and set its <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> to the <xref:System.Data.DataTable.TableName%2A> of the <xref:System.Data.DataTable>.      > [!CAUTION] >  Always create <xref:System.Windows.Forms.DataGridColumnStyle> objects and add them to the <xref:System.Windows.Forms.GridColumnStylesCollection> before adding DataGridTableStyle objects to the <xref:System.Windows.Forms.GridTableStylesCollection>. When you add an empty DataGridTableStyle with a valid <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> value to the collection, <xref:System.Windows.Forms.DataGridColumnStyle> objects are automatically generated for you. Consequently, an exception will be thrown if you try to add new <xref:System.Windows.Forms.DataGridColumnStyle> objects with duplicate <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> values to the <xref:System.Windows.Forms.GridColumnStylesCollection>.       To determine which DataGridTableStyle is currently displayed, use the <xref:System.Windows.Forms.DataGrid.DataSource%2A> and <xref:System.Windows.Forms.DataGrid.DataMember%2A> properties of the <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> to return a <xref:System.Windows.Forms.CurrencyManager>. If the data source implements the <xref:System.ComponentModel.ITypedList> interface, you can use the <xref:System.ComponentModel.ITypedList.GetListName%2A> method to return the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> of the current table. This is shown in the C# code below:      ```   private void PrintCurrentListName(DataGrid myDataGrid){    CurrencyManager myCM = (CurrencyManager)    BindingContext[myDataGrid.DataSource, myDataGrid.DataMember];    IList myList = myCM.List;    ITypedList thisList = (ITypedList) myList;    Console.WriteLine(thisList.GetListName(null));   }   ```       If the <xref:System.Data.DataSet> contains <xref:System.Data.DataTable> objects related through <xref:System.Data.DataRelation> objects, and the currently displayed <xref:System.Data.DataTable> is a child table, the <xref:System.Windows.Forms.DataGrid.DataMember%2A> will return a string in the form of TableName.RelationName (in the simplest case). If the <xref:System.Data.DataTable> is further down in the hierarchy, the string will consist of the parent table&quot;s name followed by the necessary <xref:System.Data.DataRelation.RelationName%2A> values required to reach the table&quot;s level. For example, imagine three <xref:System.Data.DataTable> objects in a hierarchical relationship named (top to bottom) `Regions`, `Customers`, and `Orders`, and two <xref:System.Data.DataRelation> objects named `RegionsToCustomers` and `CustomersToOrders`, the <xref:System.Windows.Forms.DataGrid.DataMember%2A> property will return &quot;Regions.RegionsToCustomers.CustomersToOrders&quot;. However, the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> will then be &quot;Orders&quot;.       The collection of DataGridTableStyle objects is returned through the <xref:System.Windows.Forms.DataGrid.TableStyles%2A> property of the <xref:System.Windows.Forms.DataGrid?displayProperty=fullName>.       When a DataGridTableStyle is displayed, the settings for the DataGridTableStyle will override the settings for the <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control. If a value is not set for a particular DataGridTableStyle property, the <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control&quot;s value will be used instead. The following list shows the <xref:System.Windows.Forms.DataGridColumnStyle> properties that can be set to override <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control properties:      -   <xref:System.Windows.Forms.DataGridTableStyle.AllowSorting%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.BackColor%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.ColumnHeadersVisible%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.ForeColor%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.GridLineColor%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.GridLineStyle%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.HeaderFont%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.LinkColor%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.PreferredColumnWidth%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.PreferredRowHeight%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.ReadOnly%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.RowHeadersVisible%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.RowHeaderWidth%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor%2A>       To bind the <xref:System.Windows.Forms.DataGrid> to a strongly typed array of objects, the object type must contain public properties. To create a DataGridTableStyle that displays the array, set the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A?displayProperty=fullName> property to `typename` where `typename` is replaced by the name of the object type. Also note that the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> property is case-sensitive; the type name must be matched exactly. See the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> property for an example.       You can also bind the <xref:System.Windows.Forms.DataGrid> to an <xref:System.Collections.ArrayList>. A feature of the <xref:System.Collections.ArrayList> is that it can contain objects of multiple types, but the <xref:System.Windows.Forms.DataGrid> can only bind to such a list when all items in the list are of the same type as the first item. This means that all objects must either be of the same type, or they must inherit from the same class as the first item in the list. For example, if the first item in a list is a <xref:System.Windows.Forms.Control>, the second item could be a <xref:System.Windows.Forms.TextBox> (which inherits from <xref:System.Windows.Forms.Control>). If, on the other hand, the first item is a <xref:System.Windows.Forms.TextBox>, the second object cannot be a <xref:System.Windows.Forms.Control>. Further, the <xref:System.Collections.ArrayList> must have items in it when it is bound and the objects in the DataGridTableStyle must contain public properties. An empty <xref:System.Collections.ArrayList> will result in an empty grid. When binding to an <xref:System.Collections.ArrayList>, set the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> of the DataGridTableStyle to &quot;ArrayList&quot; (the type name)."
+  summary: "表示绘制的表<xref href=&quot;System.Windows.Forms.DataGrid&quot;></xref>控件在运行时。"
+  remarks: "<xref:System.Windows.Forms.DataGrid?displayProperty=fullName>控件的网格的形式显示数据。</xref:System.Windows.Forms.DataGrid?displayProperty=fullName> DataGridTableStyle 是一个类，表示绘制的网格。 此网格不应与混淆<xref:System.Data.DataTable>类，它是可能的网格的数据源。</xref:System.Data.DataTable> 相反，DataGridTableStyle 严格表示网格控件中绘制。 因此，通过 DataGridTableStyle 可以控制每个<xref:System.Data.DataTable>。</xref:System.Data.DataTable>网格的外观 若要指定哪些 DataGridTableStyle 所时使用显示数据从尤其是<xref:System.Data.DataTable>，将设置<xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>到<xref:System.Data.DataTable.TableName%2A>的一种<xref:System.Data.DataTable>。</xref:System.Data.DataTable> </xref:System.Data.DataTable.TableName%2A> </xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> </xref:System.Data.DataTable>       <xref:System.Windows.Forms.GridTableStylesCollection>通过检索<xref:System.Windows.Forms.DataGrid.TableStyles%2A>属性包含使用的所有 DataGridTableStyle 对象<xref:System.Windows.Forms.DataGrid?displayProperty=fullName>控件。</xref:System.Windows.Forms.DataGrid?displayProperty=fullName> </xref:System.Windows.Forms.DataGrid.TableStyles%2A> </xref:System.Windows.Forms.GridTableStylesCollection> 集合可以包含任意多个 DataGridTableStyle 对象根据需要但是<xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>每个必须唯一。</xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> 在运行时，这使你可以用相同的数据，具体取决于用户的首选项不同 DataGridTableStyle。 若要执行此操作︰ 1。  填充<xref:System.Windows.Forms.GridTableStylesCollection>DataGridTableStyle 对象。</xref:System.Windows.Forms.GridTableStylesCollection> 如果在存在 DataGridTableStyle<xref:System.Windows.Forms.GridTableStylesCollection>其<xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>属性值等于<xref:System.Data.DataTable>对象的<xref:System.Data.DataTable.TableName%2A>属性，<xref:System.Data.DataTable>显示与此 DataGridTableStyle。</xref:System.Data.DataTable> </xref:System.Data.DataTable.TableName%2A> </xref:System.Data.DataTable> </xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> </xref:System.Windows.Forms.GridTableStylesCollection> 如果没有 DataGridTableStyle 存在具有匹配<xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>、<xref:System.Data.DataTable>显示与数据网格表的默认样式。</xref:System.Data.DataTable> </xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>      2.  当需要不同的网格样式时，使用`Item`属性选择适当的 DataGridTableStyle (传递<xref:System.Data.DataTable.TableName%2A>到<xref:System.Windows.Forms.GridTableStylesCollection.Item%2A>属性) 和设置<xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>返回的对象为新值。</xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> </xref:System.Windows.Forms.GridTableStylesCollection.Item%2A> </xref:System.Data.DataTable.TableName%2A>      3.  使用<xref:System.Windows.Forms.GridTableStylesCollection.Item%2A>属性选择所需的 DataGridTableStyle，并将设置其<xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>到<xref:System.Data.DataTable.TableName%2A>的<xref:System.Data.DataTable>。</xref:System.Data.DataTable> </xref:System.Data.DataTable.TableName%2A> </xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> </xref:System.Windows.Forms.GridTableStylesCollection.Item%2A>      1> [!CAUTION]&1;> 始终创建<xref:System.Windows.Forms.DataGridColumnStyle>对象，并将其添加到<xref:System.Windows.Forms.GridColumnStylesCollection>之前添加到<xref:System.Windows.Forms.GridTableStylesCollection>。</xref:System.Windows.Forms.GridTableStylesCollection> DataGridTableStyle 对象</xref:System.Windows.Forms.GridColumnStylesCollection></xref:System.Windows.Forms.DataGridColumnStyle> 当你将添加使用一个有效空 DataGridTableStyle<xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>到集合中，值<xref:System.Windows.Forms.DataGridColumnStyle>自动为你生成的对象。</xref:System.Windows.Forms.DataGridColumnStyle> </xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> 如果你尝试添加新<xref:System.Windows.Forms.DataGridColumnStyle>对象的重复<xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>值到<xref:System.Windows.Forms.GridColumnStylesCollection>。</xref:System.Windows.Forms.GridColumnStylesCollection></xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A></xref:System.Windows.Forms.DataGridColumnStyle>因此，将引发异常       若要确定哪些 DataGridTableStyle 目前显示，请使用<xref:System.Windows.Forms.DataGrid.DataSource%2A>和<xref:System.Windows.Forms.DataGrid.DataMember%2A><xref:System.Windows.Forms.DataGrid?displayProperty=fullName>返回一种<xref:System.Windows.Forms.CurrencyManager>。</xref:System.Windows.Forms.CurrencyManager></xref:System.Windows.Forms.DataGrid?displayProperty=fullName>属性</xref:System.Windows.Forms.DataGrid.DataMember%2A></xref:System.Windows.Forms.DataGrid.DataSource%2A> 如果数据源实现<xref:System.ComponentModel.ITypedList>接口，你可以使用<xref:System.ComponentModel.ITypedList.GetListName%2A>方法以返回<xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>的当前表。</xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> </xref:System.ComponentModel.ITypedList.GetListName%2A> </xref:System.ComponentModel.ITypedList> 这下面的 C# 代码中所示︰```   private void PrintCurrentListName(DataGrid myDataGrid){    CurrencyManager myCM = (CurrencyManager)    BindingContext[myDataGrid.DataSource, myDataGrid.DataMember];    IList myList = myCM.List;    ITypedList thisList = (ITypedList) myList;    Console.WriteLine(thisList.GetListName(null));   }   ```如果<xref:System.Data.DataSet>包含<xref:System.Data.DataTable>通过相关对象<xref:System.Data.DataRelation>对象和当前显示<xref:System.Data.DataTable>是子表中，<xref:System.Windows.Forms.DataGrid.DataMember%2A>将 TableName.RelationName （中的最简单的情况下） 的形式返回字符串。</xref:System.Windows.Forms.DataGrid.DataMember%2A> </xref:System.Data.DataTable> </xref:System.Data.DataRelation> </xref:System.Data.DataTable> </xref:System.Data.DataSet> 如果<xref:System.Data.DataTable>是进一步向下层次结构，该字符串将包含父表的名称后跟所需的<xref:System.Data.DataRelation.RelationName%2A>到达表的级别所需的值。</xref:System.Data.DataRelation.RelationName%2A> </xref:System.Data.DataTable> 例如，假设三个<xref:System.Data.DataTable>层次结构关系名为 （上到下） 中的对象`Regions`， `Customers`，和`Orders`，和两个<xref:System.Data.DataRelation>对象命名的`RegionsToCustomers`和`CustomersToOrders`、<xref:System.Windows.Forms.DataGrid.DataMember%2A>属性将返回&quot;Regions.RegionsToCustomers.CustomersToOrders&quot;。</xref:System.Windows.Forms.DataGrid.DataMember%2A> </xref:System.Data.DataRelation> </xref:System.Data.DataTable> 但是，<xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>然后将&quot;Orders&quot;。</xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>       通过<xref:System.Windows.Forms.DataGrid.TableStyles%2A><xref:System.Windows.Forms.DataGrid?displayProperty=fullName>.</xref:System.Windows.Forms.DataGrid?displayProperty=fullName>属性</xref:System.Windows.Forms.DataGrid.TableStyles%2A>返回的 DataGridTableStyle 对象的集合       当显示 DataGridTableStyle 时，DataGridTableStyle 的设置将替代的设置<xref:System.Windows.Forms.DataGrid?displayProperty=fullName>控件。</xref:System.Windows.Forms.DataGrid?displayProperty=fullName> 如果没有为特定的 DataGridTableStyle 属性，设置一个值<xref:System.Windows.Forms.DataGrid?displayProperty=fullName>将改为使用控件的值。</xref:System.Windows.Forms.DataGrid?displayProperty=fullName> 下面的列表显示<xref:System.Windows.Forms.DataGridColumnStyle>属性，可设置为重写<xref:System.Windows.Forms.DataGrid?displayProperty=fullName>控制属性:- <xref:System.Windows.Forms.DataGridTableStyle.AllowSorting%2A>- <xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor%2A>- <xref:System.Windows.Forms.DataGridTableStyle.BackColor%2A>- <xref:System.Windows.Forms.DataGridTableStyle.ColumnHeadersVisible%2A>- <xref:System.Windows.Forms.DataGridTableStyle.ForeColor%2A>- <xref:System.Windows.Forms.DataGridTableStyle.GridLineColor%2A>- <xref:System.Windows.Forms.DataGridTableStyle.GridLineStyle%2A>- <xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor%2A>- <xref:System.Windows.Forms.DataGridTableStyle.HeaderFont%2A>- <xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor%2A>- <xref:System.Windows.Forms.DataGridTableStyle.LinkColor%2A>- <xref:System.Windows.Forms.DataGridTableStyle.PreferredColumnWidth%2A>- <xref:System.Windows.Forms.DataGridTableStyle.PreferredRowHeight%2A>- <xref:System.Windows.Forms.DataGridTableStyle.ReadOnly%2A>- <xref:System.Windows.Forms.DataGridTableStyle.RowHeadersVisible%2A>- <xref:System.Windows.Forms.DataGridTableStyle.RowHeaderWidth%2A>- <xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor%2A>-<xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor%2A>绑定<xref:System.Windows.Forms.DataGrid>对象类型必须为对象的强类型化数组包含公共属性。</xref:System.Windows.Forms.DataGrid> </xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor%2A> </xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor%2A> </xref:System.Windows.Forms.DataGridTableStyle.RowHeaderWidth%2A> </xref:System.Windows.Forms.DataGridTableStyle.RowHeadersVisible%2A> </xref:System.Windows.Forms.DataGridTableStyle.ReadOnly%2A> </xref:System.Windows.Forms.DataGridTableStyle.PreferredRowHeight%2A> </xref:System.Windows.Forms.DataGridTableStyle.PreferredColumnWidth%2A> </xref:System.Windows.Forms.DataGridTableStyle.LinkColor%2A> </xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor%2A> </xref:System.Windows.Forms.DataGridTableStyle.HeaderFont%2A> </xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor%2A> </xref:System.Windows.Forms.DataGridTableStyle.GridLineStyle%2A> </xref:System.Windows.Forms.DataGridTableStyle.GridLineColor%2A> </xref:System.Windows.Forms.DataGridTableStyle.ForeColor%2A> </xref:System.Windows.Forms.DataGridTableStyle.ColumnHeadersVisible%2A> </xref:System.Windows.Forms.DataGridTableStyle.BackColor%2A> </xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor%2A> </xref:System.Windows.Forms.DataGridTableStyle.AllowSorting%2A> </xref:System.Windows.Forms.DataGrid?displayProperty=fullName> </xref:System.Windows.Forms.DataGridColumnStyle> 若要创建显示数组 DataGridTableStyle，设置<xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A?displayProperty=fullName>属性`typename`其中`typename`由对象类型的名称替换。</xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A?displayProperty=fullName> 另请注意，<xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>属性是区分大小写; 必须完全匹配的类型名称。</xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> 请参阅<xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>有关示例的属性。</xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>       你还可以绑定<xref:System.Windows.Forms.DataGrid>到<xref:System.Collections.ArrayList>。</xref:System.Collections.ArrayList> </xref:System.Windows.Forms.DataGrid> 一项功能<xref:System.Collections.ArrayList>是，它可以包含多个类型的对象但<xref:System.Windows.Forms.DataGrid>与第一项相同的类型的列表中的所有项时只能绑定到此类列表。</xref:System.Windows.Forms.DataGrid> </xref:System.Collections.ArrayList> 这意味着所有对象必须都是相同的类型，或者它们必须从列表中的第一个项相同的类继承。 例如，如果在列表中的第一项<xref:System.Windows.Forms.Control>，第二个项可能是<xref:System.Windows.Forms.TextBox>(其继承自<xref:System.Windows.Forms.Control>)。</xref:System.Windows.Forms.Control> </xref:System.Windows.Forms.TextBox> </xref:System.Windows.Forms.Control> 如果在另一方面，第一项是一个<xref:System.Windows.Forms.TextBox>、 第二个对象不能为一种<xref:System.Windows.Forms.Control>。</xref:System.Windows.Forms.Control> </xref:System.Windows.Forms.TextBox> 此外，<xref:System.Collections.ArrayList>时将其绑定和 DataGridTableStyle 中的对象必须包含公共属性必须具有在其中的项。</xref:System.Collections.ArrayList> 一个空<xref:System.Collections.ArrayList>将导致空网格。</xref:System.Collections.ArrayList> 绑定到时<xref:System.Collections.ArrayList>，将其设置<xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>的到&quot;ArrayList&quot;（类型名称） DataGridTableStyle。</xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> </xref:System.Collections.ArrayList>"
   example:
   - "The following code example creates two DataGridTableStyle instances and sets the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> of each object to the <xref:System.Data.DataTable.TableName%2A> of a <xref:System.Data.DataTable> in a <xref:System.Data.DataSet>. The example then adds <xref:System.Windows.Forms.DataGridColumnStyle> objects to the <xref:System.Windows.Forms.GridColumnStylesCollection> of each DataGridTableStyle. For an example that runs, see the <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> example.  \n  \n [!code-cs[Classic DataGridTableStyle Example#1](~/add/codesnippet/csharp/t-system.windows.forms.d_25_1.cs)]\n [!code-vb[Classic DataGridTableStyle Example#1](~/add/codesnippet/visualbasic/t-system.windows.forms.d_25_1.vb)]\n [!code-cpp[Classic DataGridTableStyle Example#1](~/add/codesnippet/cpp/t-system.windows.forms.d_25_1.cpp)]"
   syntax:
@@ -147,7 +147,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.DataGridTableStyle&quot;></xref> class."
+  summary: "初始化的新实例<xref href=&quot;System.Windows.Forms.DataGridTableStyle&quot;></xref>类。"
   remarks: ''
   example:
   - "The following code example creates a new <xref:System.Windows.Forms.DataGridTableStyle> and adds it to the <xref:System.Windows.Forms.GridTableStylesCollection>.  \n  \n [!code-cpp[Classic DataGridTableStyle.DataGridTableStyle Example#1](~/add/codesnippet/cpp/m-system.windows.forms.d_36_1.cpp)]\n [!code-cs[Classic DataGridTableStyle.DataGridTableStyle Example#1](~/add/codesnippet/csharp/m-system.windows.forms.d_36_1.cs)]\n [!code-vb[Classic DataGridTableStyle.DataGridTableStyle Example#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_36_1.vb)]"
@@ -170,7 +170,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.DataGridTableStyle&quot;></xref> class using the specified value to determine whether the grid table is the default style."
+  summary: "初始化的新实例<xref href=&quot;System.Windows.Forms.DataGridTableStyle&quot;></xref>类使用指定的值以确定网格表是否为默认样式。"
   remarks: ''
   example:
   - "The following code example creates a new <xref:System.Windows.Forms.DataGridTableStyle> and adds it to the <xref:System.Windows.Forms.GridTableStylesCollection>.  \n  \n [!code-cpp[Classic DataGridTableStyle.DataGridTableStyle Example#1](~/add/codesnippet/cpp/m-system.windows.forms.d_32_1.cpp)]\n [!code-cs[Classic DataGridTableStyle.DataGridTableStyle Example#1](~/add/codesnippet/csharp/m-system.windows.forms.d_32_1.cs)]\n [!code-vb[Classic DataGridTableStyle.DataGridTableStyle Example#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_32_1.vb)]"
@@ -179,7 +179,7 @@ items:
     parameters:
     - id: isDefaultTableStyle
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to specify the table as the default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>若要将该表指定为默认设置;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.#ctor*
   exceptions: []
   platform:
@@ -196,7 +196,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.DataGridTableStyle&quot;></xref> class with the specified <xref href=&quot;System.Windows.Forms.CurrencyManager&quot;></xref>."
+  summary: "初始化的新实例<xref href=&quot;System.Windows.Forms.DataGridTableStyle&quot;></xref>使用指定的类<xref href=&quot;System.Windows.Forms.CurrencyManager&quot;> </xref>。"
   remarks: ''
   example:
   - "The following code example creates a new <xref:System.Windows.Forms.DataGridTableStyle> using a <xref:System.Windows.Forms.CurrencyManager> for a <xref:System.Data.DataTable>.  \n  \n [!code-cpp[Classic DataGridTableStyle.DataGridTableStyle2 Example#1](~/add/codesnippet/cpp/6664725b-15b1-4da2-8a4a-_1.cpp)]\n [!code-cs[Classic DataGridTableStyle.DataGridTableStyle2 Example#1](~/add/codesnippet/csharp/6664725b-15b1-4da2-8a4a-_1.cs)]\n [!code-vb[Classic DataGridTableStyle.DataGridTableStyle2 Example#1](~/add/codesnippet/visualbasic/6664725b-15b1-4da2-8a4a-_1.vb)]"
@@ -222,15 +222,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether sorting is allowed on the grid table when this <xref href=&quot;System.Windows.Forms.DataGridTableStyle&quot;></xref> is used."
-  remarks: "When the AllowSorting property is set to `true`, a triangle appears in each column header indicating the direction of the sort. The user can click on any column header to sort the grid by that column. Clicking the column a second time changes the direction of the sort.       This property overrides the <xref:System.Windows.Forms.DataGrid.AllowSorting%2A?displayProperty=fullName> property."
+  summary: "指示是否在网格上允许排序表时此<xref href=&quot;System.Windows.Forms.DataGridTableStyle&quot;></xref>使用。"
+  remarks: "当 AllowSorting 属性设置为`true`，排序方向，该值指示每个列标题中将出现的三角形。 用户可以单击任意列标题以按该列对网格进行排序。 第二次单击的列更改排序方向。       此属性将替代<xref:System.Windows.Forms.DataGrid.AllowSorting%2A?displayProperty=fullName>属性。</xref:System.Windows.Forms.DataGrid.AllowSorting%2A?displayProperty=fullName>"
   example:
   - "The following code example allows you to toggle sorting availability on a <xref:System.Windows.Forms.DataGrid> by clicking a button and the current sorting status is displayed in a label. This example requires that you have a <xref:System.Windows.Forms.DataGrid> with a <xref:System.Data.DataSet?displayProperty=fullName> that contains some data, a <xref:System.Windows.Forms.Button> and a <xref:System.Windows.Forms.Label> on a <xref:System.Windows.Forms.Form>.  \n  \n [!code-cpp[DataGridTableStyle_Sample2#1](~/add/codesnippet/cpp/p-system.windows.forms.d_25_1.cpp)]\n [!code-cs[DataGridTableStyle_Sample2#1](~/add/codesnippet/csharp/p-system.windows.forms.d_25_1.cs)]\n [!code-vb[DataGridTableStyle_Sample2#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_25_1.vb)]"
   syntax:
     content: public bool AllowSorting { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if sorting is allowed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果允许排序;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.AllowSorting*
   exceptions: []
   platform:
@@ -247,15 +247,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.AllowSorting*> property value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "发生时<xref:System.Windows.Forms.DataGridTableStyle.AllowSorting*>属性值更改。</xref:System.Windows.Forms.DataGridTableStyle.AllowSorting*>"
+  remarks: "有关处理事件的详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example allows you to toggle sorting availability on a <xref:System.Windows.Forms.DataGrid> by clicking a button and the current sorting status is displayed in a label. This example requires that you have a <xref:System.Windows.Forms.DataGrid> with a <xref:System.Data.DataSet?displayProperty=fullName> that contains some data, a <xref:System.Windows.Forms.Button> and a <xref:System.Windows.Forms.Label> on a <xref:System.Windows.Forms.Form>.  \n  \n [!code-cpp[DataGridTableStyle_Sample2#1](~/add/codesnippet/cpp/e-system.windows.forms.d_131_1.cpp)]\n [!code-cs[DataGridTableStyle_Sample2#1](~/add/codesnippet/csharp/e-system.windows.forms.d_131_1.cs)]\n [!code-vb[DataGridTableStyle_Sample2#1](~/add/codesnippet/visualbasic/e-system.windows.forms.d_131_1.vb)]"
   syntax:
     content: public event EventHandler AllowSortingChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -271,7 +271,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the background color of odd-numbered rows of the grid."
+  summary: "获取或设置网格中奇数行的背景色。"
   remarks: ''
   example:
   - "The following code example creates an instance of <xref:System.Windows.Forms.DataGridTableStyle> and sets the <xref:System.Windows.Forms.DataGridTableStyle.BackColor%2A> and AlternatingBackColor properties to new values. The example requires that you have a <xref:System.Windows.Forms.DataGrid> with a <xref:System.Data.DataSet?displayProperty=fullName> that contains some data, and a <xref:System.Windows.Forms.Button> on a <xref:System.Windows.Forms.Form>.  \n  \n [!code-cs[DataGridTableStyle_sample5#1](~/add/codesnippet/csharp/p-system.windows.forms.d_360_1.cs)]\n [!code-vb[DataGridTableStyle_sample5#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_360_1.vb)]\n [!code-cpp[DataGridTableStyle_sample5#1](~/add/codesnippet/cpp/p-system.windows.forms.d_360_1.cpp)]"
@@ -279,7 +279,7 @@ items:
     content: public System.Drawing.Color AlternatingBackColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "A <xref href=&quot;System.Drawing.Color&quot;></xref> that represents the background color of odd-numbered rows. The default is <xref:System.Drawing.SystemBrushes.Window*>"
+      description: "A <xref href=&quot;System.Drawing.Color&quot;> </xref> ，表示奇数行的背景色。 默认值为<xref:System.Drawing.SystemBrushes.Window*></xref:System.Drawing.SystemBrushes.Window*>"
   overload: System.Windows.Forms.DataGridTableStyle.AlternatingBackColor*
   exceptions: []
   platform:
@@ -296,15 +296,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "发生时<xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor*>值更改。</xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor*>"
+  remarks: "有关处理事件的详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the AlternatingBackColorChanged event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing <xref:System.Windows.Forms.MessageBox.Show%2A?displayProperty=fullName> with <xref:System.Console.WriteLine%2A?displayProperty=fullName> or appending the message to a multiline <xref:System.Windows.Forms.TextBox>.  \n  \n To run the example code, paste it into a project that contains an instance of type <xref:System.Windows.Forms.DataGridTableStyle> named `DataGridTableStyle1`. Then ensure that the event handler is associated with the AlternatingBackColorChanged event.  \n  \n [!code-cs[System.Windows.Forms.EventExamples#221](~/add/codesnippet/csharp/e-system.windows.forms.d_12_1.cs)]\n [!code-vb[System.Windows.Forms.EventExamples#221](~/add/codesnippet/visualbasic/e-system.windows.forms.d_12_1.vb)]"
   syntax:
     content: public event EventHandler AlternatingBackColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -320,15 +320,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the background color of even-numbered rows of the grid."
-  remarks: "The <xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor%2A> property can also be set to create a ledger-like appearance."
+  summary: "获取或设置网格中偶数行的背景色。"
+  remarks: "<xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor%2A>属性还可以设置要创建类似帐目的外观。</xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor%2A>"
   example:
   - "The following code example creates an instance of <xref:System.Windows.Forms.DataGridTableStyle> and sets the BackColor and <xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor%2A> properties to new values. The example requires that you have a <xref:System.Windows.Forms.DataGrid> with a <xref:System.Data.DataSet?displayProperty=fullName> that contains some data, and a <xref:System.Windows.Forms.Button> on a <xref:System.Windows.Forms.Form>.  \n  \n [!code-cs[DataGridTableStyle_sample5#1](~/add/codesnippet/csharp/p-system.windows.forms.d_321_1.cs)]\n [!code-vb[DataGridTableStyle_sample5#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_321_1.vb)]\n [!code-cpp[DataGridTableStyle_sample5#1](~/add/codesnippet/cpp/p-system.windows.forms.d_321_1.cpp)]"
   syntax:
     content: public System.Drawing.Color BackColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "A <xref href=&quot;System.Drawing.Color&quot;></xref> that represents the background color of odd-numbered rows."
+      description: "A <xref href=&quot;System.Drawing.Color&quot;> </xref> ，表示奇数行的背景色。"
   overload: System.Windows.Forms.DataGridTableStyle.BackColor*
   exceptions: []
   platform:
@@ -345,15 +345,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.BackColor*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "发生时<xref:System.Windows.Forms.DataGridTableStyle.BackColor*>值更改。</xref:System.Windows.Forms.DataGridTableStyle.BackColor*>"
+  remarks: "有关处理事件的详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the BackColorChanged event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing <xref:System.Windows.Forms.MessageBox.Show%2A?displayProperty=fullName> with <xref:System.Console.WriteLine%2A?displayProperty=fullName> or appending the message to a multiline <xref:System.Windows.Forms.TextBox>.  \n  \n To run the example code, paste it into a project that contains an instance of type <xref:System.Windows.Forms.DataGridTableStyle> named `DataGridTableStyle1`. Then ensure that the event handler is associated with the BackColorChanged event.  \n  \n [!code-cs[System.Windows.Forms.EventExamples#222](~/add/codesnippet/csharp/e-system.windows.forms.d_141_1.cs)]\n [!code-vb[System.Windows.Forms.EventExamples#222](~/add/codesnippet/visualbasic/e-system.windows.forms.d_141_1.vb)]"
   syntax:
     content: public event EventHandler BackColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -369,8 +369,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Requests an edit operation."
-  remarks: "The BeginEdit method is intended to notify the <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control when the user has begun an editing operation. When the control is in edit mode, multiple edits can be made and the constraints will be temporarily unenforced.       Call the <xref:System.Windows.Forms.DataGridTableStyle.EndEdit%2A> method to quit the edit mode."
+  summary: "请求编辑操作。"
+  remarks: "BeginEdit 方法旨在通知<xref:System.Windows.Forms.DataGrid?displayProperty=fullName>控制当用户已开始编辑操作。</xref:System.Windows.Forms.DataGrid?displayProperty=fullName> 当控件处于编辑模式时，可多次编辑，约束将暂时未强制实施。       调用<xref:System.Windows.Forms.DataGridTableStyle.EndEdit%2A>方法退出编辑模式。</xref:System.Windows.Forms.DataGridTableStyle.EndEdit%2A>"
   example:
   - "The following code example calls the BeginEdit method on the current <xref:System.Windows.Forms.DataGridTableStyle> in a <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control.  \n  \n [!code-cpp[Classic DataGridTableStyle.BeginEdit Example#1](~/add/codesnippet/cpp/b9c87dfa-7ead-4e85-b82d-_1.cpp)]\n [!code-cs[Classic DataGridTableStyle.BeginEdit Example#1](~/add/codesnippet/csharp/b9c87dfa-7ead-4e85-b82d-_1.cs)]\n [!code-vb[Classic DataGridTableStyle.BeginEdit Example#1](~/add/codesnippet/visualbasic/b9c87dfa-7ead-4e85-b82d-_1.vb)]"
   syntax:
@@ -378,13 +378,13 @@ items:
     parameters:
     - id: gridColumn
       type: System.Windows.Forms.DataGridColumnStyle
-      description: "The <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref> to edit."
+      description: "<xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;> </xref>编辑。"
     - id: rowNumber
       type: System.Int32
-      description: "The number of the edited row."
+      description: "编辑过的行数。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, if the operation succeeds; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果该操作成功，则否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.BeginEdit*
   exceptions: []
   platform:
@@ -401,15 +401,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets a value indicating whether column headers are visible."
-  remarks: "To set header caption text, use the <xref:System.Windows.Forms.DataGridColumnStyle.HeaderText%2A> property of the <xref:System.Windows.Forms.DataGridColumnStyle> class."
+  summary: "获取或设置一个值，该值指示列标题是否可见。"
+  remarks: "若要设置标题的标题文本，请使用<xref:System.Windows.Forms.DataGridColumnStyle.HeaderText%2A>属性的<xref:System.Windows.Forms.DataGridColumnStyle>类。</xref:System.Windows.Forms.DataGridColumnStyle> </xref:System.Windows.Forms.DataGridColumnStyle.HeaderText%2A>"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_Sample3#1](~/add/codesnippet/csharp/p-system.windows.forms.d_242_1.cs)]\n [!code-vb[DataGridTableStyle_Sample3#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_242_1.vb)]\n [!code-cpp[DataGridTableStyle_Sample3#1](~/add/codesnippet/cpp/p-system.windows.forms.d_242_1.cpp)]"
   syntax:
     content: public bool ColumnHeadersVisible { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if column headers are visible; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果列标题可见，则否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.ColumnHeadersVisible*
   exceptions: []
   platform:
@@ -426,15 +426,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.ColumnHeadersVisible*> value changes."
-  remarks: "To set the caption text for each column in a grid, set the <xref:System.Windows.Forms.DataGridColumnStyle.HeaderText%2A> property of the <xref:System.Windows.Forms.DataGridColumnStyle> class.       For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "发生时<xref:System.Windows.Forms.DataGridTableStyle.ColumnHeadersVisible*>值更改。</xref:System.Windows.Forms.DataGridTableStyle.ColumnHeadersVisible*>"
+  remarks: "若要在网格中设置为每个列的标题文本，设置<xref:System.Windows.Forms.DataGridColumnStyle.HeaderText%2A>属性的<xref:System.Windows.Forms.DataGridColumnStyle>类。</xref:System.Windows.Forms.DataGridColumnStyle> </xref:System.Windows.Forms.DataGridColumnStyle.HeaderText%2A>       有关处理事件的详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_Sample3#2](~/add/codesnippet/csharp/e-system.windows.forms.d_147_1.cs)]\n [!code-vb[DataGridTableStyle_Sample3#2](~/add/codesnippet/visualbasic/e-system.windows.forms.d_147_1.vb)]\n [!code-cpp[DataGridTableStyle_Sample3#2](~/add/codesnippet/cpp/e-system.windows.forms.d_147_1.cpp)]"
   syntax:
     content: public event EventHandler ColumnHeadersVisibleChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -450,16 +450,16 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Creates a <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref>, using the specified property descriptor."
+  summary: "创建<xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;> </xref>，使用指定的属性描述符。"
   syntax:
     content: protected virtual System.Windows.Forms.DataGridColumnStyle CreateGridColumn (System.ComponentModel.PropertyDescriptor prop);
     parameters:
     - id: prop
       type: System.ComponentModel.PropertyDescriptor
-      description: "The <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;></xref> used to create the column style object."
+      description: "<xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;> </xref>用于创建列样式对象。"
     return:
       type: System.Windows.Forms.DataGridColumnStyle
-      description: "The newly created <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref>."
+      description: "新创建<xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.CreateGridColumn*
   exceptions: []
   platform:
@@ -476,19 +476,19 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Creates a <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref> using the specified property descriptor. Specifies whether the <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref> is a default column style."
+  summary: "创建<xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref>使用指定的属性描述符。 指定是否<xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref>是否为默认列样式。"
   syntax:
     content: protected virtual System.Windows.Forms.DataGridColumnStyle CreateGridColumn (System.ComponentModel.PropertyDescriptor prop, bool isDefault);
     parameters:
     - id: prop
       type: System.ComponentModel.PropertyDescriptor
-      description: "The <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;></xref> used to create the column style object."
+      description: "<xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;> </xref>用于创建列样式对象。"
     - id: isDefault
       type: System.Boolean
-      description: "Specifies whether the <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref> is a default column style. This parameter is read-only."
+      description: "指定是否<xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref>是否为默认列样式。 此参数是只读的。"
     return:
       type: System.Windows.Forms.DataGridColumnStyle
-      description: "The newly created <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref>."
+      description: "新创建<xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.CreateGridColumn*
   exceptions: []
   platform:
@@ -505,15 +505,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the <xref href=&quot;System.Windows.Forms.DataGrid&quot;></xref> control for the drawn table."
-  remarks: "The <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control displays data in the form of a grid. The <xref:System.Windows.Forms.DataGridTableStyle> is an object that represents the drawn grid. The <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> property returns a reference to the control that is displaying the grid.       The DataGrid property is set when a <xref:System.Windows.Forms.DataGridTableStyle> is added to a <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control&quot;s <xref:System.Windows.Forms.GridTableStylesCollection>. You should not try to set this property unless you are overriding it and creating a designer for a user control that incorporates the <xref:System.Windows.Forms.DataGrid> control."
+  summary: "获取或设置<xref href=&quot;System.Windows.Forms.DataGrid&quot;></xref>所绘制表的控件。"
+  remarks: "<xref:System.Windows.Forms.DataGrid?displayProperty=fullName>控件的网格的形式显示数据。</xref:System.Windows.Forms.DataGrid?displayProperty=fullName> <xref:System.Windows.Forms.DataGridTableStyle>是一个对象，表示所绘制的网格。</xref:System.Windows.Forms.DataGridTableStyle> <xref:System.Windows.Forms.DataGrid?displayProperty=fullName>属性返回对当前显示网格控件的引用。</xref:System.Windows.Forms.DataGrid?displayProperty=fullName>       DataGrid 属性设置时<xref:System.Windows.Forms.DataGridTableStyle>添加到<xref:System.Windows.Forms.DataGrid?displayProperty=fullName>控件<xref:System.Windows.Forms.GridTableStylesCollection>。</xref:System.Windows.Forms.GridTableStylesCollection> </xref:System.Windows.Forms.DataGrid?displayProperty=fullName> </xref:System.Windows.Forms.DataGridTableStyle> 不应尝试将此属性设置，除非重写它并将创建包含用户控件的设计器<xref:System.Windows.Forms.DataGrid>控件。</xref:System.Windows.Forms.DataGrid>"
   example:
   - "The following code example prints the <xref:System.Windows.Forms.DataGrid.CurrentCell%2A> of the <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> displaying a <xref:System.Windows.Forms.DataGridTableStyle>.  \n  \n [!code-cs[Classic DataGridTableStyle.DataGrid Example#1](~/add/codesnippet/csharp/p-system.windows.forms.d_223_1.cs)]\n [!code-cpp[Classic DataGridTableStyle.DataGrid Example#1](~/add/codesnippet/cpp/p-system.windows.forms.d_223_1.cpp)]\n [!code-vb[Classic DataGridTableStyle.DataGrid Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_223_1.vb)]"
   syntax:
     content: public virtual System.Windows.Forms.DataGrid DataGrid { get; set; }
     return:
       type: System.Windows.Forms.DataGrid
-      description: "The <xref href=&quot;System.Windows.Forms.DataGrid&quot;></xref> control that displays the table."
+      description: "<xref href=&quot;System.Windows.Forms.DataGrid&quot;> </xref>显示表的控件。"
   overload: System.Windows.Forms.DataGridTableStyle.DataGrid*
   exceptions: []
   platform:
@@ -530,12 +530,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets the default table style."
+  summary: "获取默认的表样式。"
   syntax:
     content: public static readonly System.Windows.Forms.DataGridTableStyle DefaultTableStyle;
     return:
       type: System.Windows.Forms.DataGridTableStyle
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -551,14 +551,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Disposes of the resources (other than memory) used by the <xref href=&quot;System.Windows.Forms.DataGridTableStyle&quot;></xref>."
-  remarks: "The method calls the Dispose method on each <xref:System.Windows.Forms.DataGridColumnStyle> contained by the collection before calling <xref:System.Windows.Forms.DataGrid.Dispose%2A?displayProperty=fullName> on the grid itself."
+  summary: "使用的资源 （内存除外） 释放<xref href=&quot;System.Windows.Forms.DataGridTableStyle&quot;> </xref>。"
+  remarks: "该方法在每个调用的 Dispose 方法<xref:System.Windows.Forms.DataGridColumnStyle>之前调用集合包含<xref:System.Windows.Forms.DataGrid.Dispose%2A?displayProperty=fullName>网格本身上。</xref:System.Windows.Forms.DataGrid.Dispose%2A?displayProperty=fullName> </xref:System.Windows.Forms.DataGridColumnStyle>"
   syntax:
     content: protected override void Dispose (bool disposing);
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to release both managed and unmanaged resources; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to release only unmanaged resources."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>若要释放托管和非托管资源;<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>若要仅释放非托管的资源。"
   overload: System.Windows.Forms.DataGridTableStyle.Dispose*
   exceptions: []
   platform:
@@ -575,8 +575,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Requests an end to an edit operation."
-  remarks: "Similar to the <xref:System.Windows.Forms.DataGridTableStyle.BeginEdit%2A> method, the EndEdit method is intended to notify the <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> when an edit operation is ending."
+  summary: "请求结束编辑操作。"
+  remarks: "类似于<xref:System.Windows.Forms.DataGridTableStyle.BeginEdit%2A>方法，方法用于通知 EndEdit<xref:System.Windows.Forms.DataGrid?displayProperty=fullName>时结束编辑操作。</xref:System.Windows.Forms.DataGrid?displayProperty=fullName> </xref:System.Windows.Forms.DataGridTableStyle.BeginEdit%2A>"
   example:
   - "The following code example calls the <xref:System.Windows.Forms.DataGridTableStyle.BeginEdit%2A> method on the current <xref:System.Windows.Forms.DataGridTableStyle> in a <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control.  \n  \n [!code-cpp[Classic DataGridTableStyle.EndEdit Example#1](~/add/codesnippet/cpp/eb830448-c8b8-4607-acc3-_1.cpp)]\n [!code-vb[Classic DataGridTableStyle.EndEdit Example#1](~/add/codesnippet/visualbasic/eb830448-c8b8-4607-acc3-_1.vb)]\n [!code-cs[Classic DataGridTableStyle.EndEdit Example#1](~/add/codesnippet/csharp/eb830448-c8b8-4607-acc3-_1.cs)]"
   syntax:
@@ -584,16 +584,16 @@ items:
     parameters:
     - id: gridColumn
       type: System.Windows.Forms.DataGridColumnStyle
-      description: "The <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref> to edit."
+      description: "<xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;> </xref>编辑。"
     - id: rowNumber
       type: System.Int32
-      description: "The number of the edited row."
+      description: "编辑过的行数。"
     - id: shouldAbort
       type: System.Boolean
-      description: "A value indicating whether the operation should be stopped; <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if it should stop; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "一个值，该值指示是否应停止该操作;<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>如果应当停止; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the edit operation ends successfully; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果成功，则结束编辑操作，否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.EndEdit*
   exceptions: []
   platform:
@@ -610,7 +610,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the foreground color of the grid table."
+  summary: "获取或设置网格表的前景色。"
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_ForeColor#1](~/add/codesnippet/csharp/p-system.windows.forms.d_238_1.cs)]\n [!code-vb[DataGridTableStyle_ForeColor#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_238_1.vb)]\n [!code-cpp[DataGridTableStyle_ForeColor#1](~/add/codesnippet/cpp/p-system.windows.forms.d_238_1.cpp)]"
@@ -618,7 +618,7 @@ items:
     content: public System.Drawing.Color ForeColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "A <xref href=&quot;System.Drawing.Color&quot;></xref> that represents the foreground color of the grid table."
+      description: "A <xref href=&quot;System.Drawing.Color&quot;> </xref> ，表示网格表的前景色。"
   overload: System.Windows.Forms.DataGridTableStyle.ForeColor*
   exceptions: []
   platform:
@@ -635,15 +635,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.ForeColor*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "发生时<xref:System.Windows.Forms.DataGridTableStyle.ForeColor*>值更改。</xref:System.Windows.Forms.DataGridTableStyle.ForeColor*>"
+  remarks: "有关处理事件的详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the ForeColorChanged event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing <xref:System.Windows.Forms.MessageBox.Show%2A?displayProperty=fullName> with <xref:System.Console.WriteLine%2A?displayProperty=fullName> or appending the message to a multiline <xref:System.Windows.Forms.TextBox>.  \n  \n To run the example code, paste it into a project that contains an instance of type <xref:System.Windows.Forms.DataGridTableStyle> named `DataGridTableStyle1`. Then ensure that the event handler is associated with the ForeColorChanged event.  \n  \n [!code-cs[System.Windows.Forms.EventExamples#223](~/add/codesnippet/csharp/e-system.windows.forms.d_62_1.cs)]\n [!code-vb[System.Windows.Forms.EventExamples#223](~/add/codesnippet/visualbasic/e-system.windows.forms.d_62_1.vb)]"
   syntax:
     content: public event EventHandler ForeColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -659,15 +659,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets the collection of columns drawn for this table."
-  remarks: "The <xref:System.Windows.Forms.GridColumnStylesCollection> returned by the GridColumnStyles property allows you to create a customized set of column styles. For each <xref:System.Data.DataColumn> in a <xref:System.Data.DataTable>, set the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> of a <xref:System.Windows.Forms.DataGridColumnStyle> to the <xref:System.Data.DataColumn.ColumnName%2A>. That column style will automatically be used when this <xref:System.Windows.Forms.DataGridTableStyle> is displayed.       If you create a <xref:System.Windows.Forms.DataGridTableStyle> without adding any <xref:System.Windows.Forms.DataGridColumnStyle> objects to the <xref:System.Windows.Forms.GridColumnStylesCollection>, a collection of <xref:System.Windows.Forms.DataGridColumnStyle> objects will be created automatically when a <xref:System.Windows.Forms.DataGridTableStyle> with a valid <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> is added to the <xref:System.Windows.Forms.GridTableStylesCollection>. An exception will be thrown if you attempt to add <xref:System.Windows.Forms.DataGridColumnStyle> objects with duplicate <xref:System.Windows.Forms.DataGridColumnStyle.MappingName%2A> values to the collection."
+  summary: "获取绘制的该表中列的集合。"
+  remarks: "<xref:System.Windows.Forms.GridColumnStylesCollection>返回属性允许你创建一组自定义的列样式 GridColumnStyles。</xref:System.Windows.Forms.GridColumnStylesCollection> 为每个<xref:System.Data.DataColumn>在<xref:System.Data.DataTable>，设置<xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A><xref:System.Windows.Forms.DataGridColumnStyle>到<xref:System.Data.DataColumn.ColumnName%2A>。</xref:System.Data.DataColumn.ColumnName%2A> </xref:System.Windows.Forms.DataGridColumnStyle> </xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> </xref:System.Data.DataTable> </xref:System.Data.DataColumn> 将自动为该列样式时使用此<xref:System.Windows.Forms.DataGridTableStyle>显示。</xref:System.Windows.Forms.DataGridTableStyle>       如果你创建，<xref:System.Windows.Forms.DataGridTableStyle>而无需添加任何<xref:System.Windows.Forms.DataGridColumnStyle><xref:System.Windows.Forms.GridColumnStylesCollection>，<xref:System.Windows.Forms.DataGridColumnStyle>自动后<xref:System.Windows.Forms.DataGridTableStyle>使用<xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>添加到<xref:System.Windows.Forms.GridTableStylesCollection>。</xref:System.Windows.Forms.GridTableStylesCollection></xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>有效</xref:System.Windows.Forms.DataGridTableStyle>，则将创建对象</xref:System.Windows.Forms.DataGridColumnStyle>的一个集合</xref:System.Windows.Forms.GridColumnStylesCollection>对象</xref:System.Windows.Forms.DataGridColumnStyle></xref:System.Windows.Forms.DataGridTableStyle> 将引发异常，如果你尝试添加<xref:System.Windows.Forms.DataGridColumnStyle>对象具有重复<xref:System.Windows.Forms.DataGridColumnStyle.MappingName%2A>到集合的值。</xref:System.Windows.Forms.DataGridColumnStyle.MappingName%2A> </xref:System.Windows.Forms.DataGridColumnStyle>"
   example:
   - "The following code example gets the <xref:System.Windows.Forms.GridColumnStylesCollection> of a <xref:System.Windows.Forms.DataGridTableStyle> and prints each object's header.  \n  \n [!code-cs[Classic DataGridTableStyle.GridColumnStyles Example#1](~/add/codesnippet/csharp/p-system.windows.forms.d_293_1.cs)]\n [!code-cpp[Classic DataGridTableStyle.GridColumnStyles Example#1](~/add/codesnippet/cpp/p-system.windows.forms.d_293_1.cpp)]\n [!code-vb[Classic DataGridTableStyle.GridColumnStyles Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_293_1.vb)]"
   syntax:
     content: public virtual System.Windows.Forms.GridColumnStylesCollection GridColumnStyles { get; }
     return:
       type: System.Windows.Forms.GridColumnStylesCollection
-      description: "A <xref href=&quot;System.Windows.Forms.GridColumnStylesCollection&quot;></xref> that contains all <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref> objects for the table."
+      description: "A <xref href=&quot;System.Windows.Forms.GridColumnStylesCollection&quot;> </xref> ，其中包含所有<xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref>表的对象。"
   overload: System.Windows.Forms.DataGridTableStyle.GridColumnStyles*
   exceptions: []
   platform:
@@ -684,7 +684,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the color of grid lines."
+  summary: "获取或设置网格线的颜色。"
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_sample5#2](~/add/codesnippet/csharp/p-system.windows.forms.d_181_1.cs)]\n [!code-vb[DataGridTableStyle_sample5#2](~/add/codesnippet/visualbasic/p-system.windows.forms.d_181_1.vb)]\n [!code-cpp[DataGridTableStyle_sample5#2](~/add/codesnippet/cpp/p-system.windows.forms.d_181_1.cpp)]"
@@ -692,7 +692,7 @@ items:
     content: public System.Drawing.Color GridLineColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "A <xref href=&quot;System.Drawing.Color&quot;></xref> that represents the grid line color."
+      description: "A <xref href=&quot;System.Drawing.Color&quot;> </xref> ，表示网格线的颜色。"
   overload: System.Windows.Forms.DataGridTableStyle.GridLineColor*
   exceptions: []
   platform:
@@ -709,15 +709,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.GridLineColor*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "发生时<xref:System.Windows.Forms.DataGridTableStyle.GridLineColor*>值更改。</xref:System.Windows.Forms.DataGridTableStyle.GridLineColor*>"
+  remarks: "有关处理事件的详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_sample5#3](~/add/codesnippet/csharp/e-system.windows.forms.d_121_1.cs)]\n [!code-vb[DataGridTableStyle_sample5#3](~/add/codesnippet/visualbasic/e-system.windows.forms.d_121_1.vb)]\n [!code-cpp[DataGridTableStyle_sample5#3](~/add/codesnippet/cpp/e-system.windows.forms.d_121_1.cpp)]"
   syntax:
     content: public event EventHandler GridLineColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -733,12 +733,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the style of grid lines."
+  summary: "获取或设置网格线的样式。"
   syntax:
     content: public System.Windows.Forms.DataGridLineStyle GridLineStyle { get; set; }
     return:
       type: System.Windows.Forms.DataGridLineStyle
-      description: "One of the <xref href=&quot;System.Windows.Forms.DataGridLineStyle&quot;></xref> values. The default is <xref uid=&quot;langword_csharp_DataGridLineStyle.Solid&quot; name=&quot;DataGridLineStyle.Solid&quot; href=&quot;&quot;></xref>."
+      description: "之一<xref href=&quot;System.Windows.Forms.DataGridLineStyle&quot;></xref>值。 默认值是<xref uid=&quot;langword_csharp_DataGridLineStyle.Solid&quot; name=&quot;DataGridLineStyle.Solid&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.GridLineStyle*
   exceptions: []
   platform:
@@ -755,15 +755,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.GridLineStyle*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "发生时<xref:System.Windows.Forms.DataGridTableStyle.GridLineStyle*>值更改。</xref:System.Windows.Forms.DataGridTableStyle.GridLineStyle*>"
+  remarks: "有关处理事件的详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_sample1#2](~/add/codesnippet/csharp/e-system.windows.forms.d_107_1.cs)]\n [!code-vb[DataGridTableStyle_sample1#2](~/add/codesnippet/visualbasic/e-system.windows.forms.d_107_1.vb)]\n [!code-cpp[DataGridTableStyle_sample1#2](~/add/codesnippet/cpp/e-system.windows.forms.d_107_1.cpp)]"
   syntax:
     content: public event EventHandler GridLineStyleChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -779,7 +779,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the background color of headers."
+  summary: "获取或设置标题的背景色。"
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cpp[DataGridTableStyle_Header_4#4](~/add/codesnippet/cpp/p-system.windows.forms.d_95_1.cpp)]\n [!code-cs[DataGridTableStyle_Header_4#4](~/add/codesnippet/csharp/p-system.windows.forms.d_95_1.cs)]\n [!code-vb[DataGridTableStyle_Header_4#4](~/add/codesnippet/visualbasic/p-system.windows.forms.d_95_1.vb)]"
@@ -787,7 +787,7 @@ items:
     content: public System.Drawing.Color HeaderBackColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "A <xref href=&quot;System.Drawing.Color&quot;></xref> that represents the background color of headers."
+      description: "A <xref href=&quot;System.Drawing.Color&quot;> </xref>表示标头的背景色。"
   overload: System.Windows.Forms.DataGridTableStyle.HeaderBackColor*
   exceptions: []
   platform:
@@ -804,7 +804,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor*> value changes."
+  summary: "发生时<xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor*>值更改。</xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor*>"
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cpp[DataGridTableStyle_Header_4#3](~/add/codesnippet/cpp/e-system.windows.forms.d_79_1.cpp)]\n [!code-cs[DataGridTableStyle_Header_4#3](~/add/codesnippet/csharp/e-system.windows.forms.d_79_1.cs)]\n [!code-vb[DataGridTableStyle_Header_4#3](~/add/codesnippet/visualbasic/e-system.windows.forms.d_79_1.vb)]"
@@ -812,7 +812,7 @@ items:
     content: public event EventHandler HeaderBackColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -828,15 +828,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the font used for header captions."
-  remarks: "To set header caption text, use the <xref:System.Windows.Forms.DataGridColumnStyle.HeaderText%2A> property of the <xref:System.Windows.Forms.DataGridColumnStyle> class."
+  summary: "获取或设置用于标题的标题的字体。"
+  remarks: "若要设置标题的标题文本，请使用<xref:System.Windows.Forms.DataGridColumnStyle.HeaderText%2A>属性的<xref:System.Windows.Forms.DataGridColumnStyle>类。</xref:System.Windows.Forms.DataGridColumnStyle> </xref:System.Windows.Forms.DataGridColumnStyle.HeaderText%2A>"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_Sample#2](~/add/codesnippet/csharp/p-system.windows.forms.d_329_1.cs)]\n [!code-vb[DataGridTableStyle_Sample#2](~/add/codesnippet/visualbasic/p-system.windows.forms.d_329_1.vb)]\n [!code-cpp[DataGridTableStyle_Sample#2](~/add/codesnippet/cpp/p-system.windows.forms.d_329_1.cpp)]"
   syntax:
     content: public System.Drawing.Font HeaderFont { get; set; }
     return:
       type: System.Drawing.Font
-      description: "The <xref href=&quot;System.Drawing.Font&quot;></xref> used for captions."
+      description: "<xref href=&quot;System.Drawing.Font&quot;> </xref>用于标题。"
   overload: System.Windows.Forms.DataGridTableStyle.HeaderFont*
   exceptions: []
   platform:
@@ -853,15 +853,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.HeaderFont*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "发生时<xref:System.Windows.Forms.DataGridTableStyle.HeaderFont*>值更改。</xref:System.Windows.Forms.DataGridTableStyle.HeaderFont*>"
+  remarks: "有关处理事件的详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_Sample#4](~/add/codesnippet/csharp/e-system.windows.forms.d_114_1.cs)]\n [!code-vb[DataGridTableStyle_Sample#4](~/add/codesnippet/visualbasic/e-system.windows.forms.d_114_1.vb)]\n [!code-cpp[DataGridTableStyle_Sample#4](~/add/codesnippet/cpp/e-system.windows.forms.d_114_1.cpp)]"
   syntax:
     content: public event EventHandler HeaderFontChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -877,7 +877,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the foreground color of headers."
+  summary: "获取或设置标头的前景色。"
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cpp[DataGridTableStyle_Header_4#2](~/add/codesnippet/cpp/p-system.windows.forms.d_101_1.cpp)]\n [!code-cs[DataGridTableStyle_Header_4#2](~/add/codesnippet/csharp/p-system.windows.forms.d_101_1.cs)]\n [!code-vb[DataGridTableStyle_Header_4#2](~/add/codesnippet/visualbasic/p-system.windows.forms.d_101_1.vb)]"
@@ -885,7 +885,7 @@ items:
     content: public System.Drawing.Color HeaderForeColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "A <xref href=&quot;System.Drawing.Color&quot;></xref> that represents the foreground color of headers."
+      description: "A <xref href=&quot;System.Drawing.Color&quot;> </xref>表示标头的前景色。"
   overload: System.Windows.Forms.DataGridTableStyle.HeaderForeColor*
   exceptions: []
   platform:
@@ -902,15 +902,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "发生时<xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor*>值更改。</xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor*>"
+  remarks: "有关处理事件的详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cpp[DataGridTableStyle_Header_4#1](~/add/codesnippet/cpp/e-system.windows.forms.d_169_1.cpp)]\n [!code-cs[DataGridTableStyle_Header_4#1](~/add/codesnippet/csharp/e-system.windows.forms.d_169_1.cs)]\n [!code-vb[DataGridTableStyle_Header_4#1](~/add/codesnippet/visualbasic/e-system.windows.forms.d_169_1.vb)]"
   syntax:
     content: public event EventHandler HeaderForeColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -926,7 +926,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the color of link text."
+  summary: "获取或设置链接文本的颜色。"
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_Sample#1](~/add/codesnippet/csharp/p-system.windows.forms.d_193_1.cs)]\n [!code-vb[DataGridTableStyle_Sample#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_193_1.vb)]\n [!code-cpp[DataGridTableStyle_Sample#1](~/add/codesnippet/cpp/p-system.windows.forms.d_193_1.cpp)]"
@@ -934,7 +934,7 @@ items:
     content: public System.Drawing.Color LinkColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "The <xref href=&quot;System.Drawing.Color&quot;></xref> of link text."
+      description: "<xref href=&quot;System.Drawing.Color&quot;> </xref>的链接文本。"
   overload: System.Windows.Forms.DataGridTableStyle.LinkColor*
   exceptions: []
   platform:
@@ -951,15 +951,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.LinkColor*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "发生时<xref:System.Windows.Forms.DataGridTableStyle.LinkColor*>值更改。</xref:System.Windows.Forms.DataGridTableStyle.LinkColor*>"
+  remarks: "有关处理事件的详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_Sample#3](~/add/codesnippet/csharp/e-system.windows.forms.d_101_1.cs)]\n [!code-vb[DataGridTableStyle_Sample#3](~/add/codesnippet/visualbasic/e-system.windows.forms.d_101_1.vb)]\n [!code-cpp[DataGridTableStyle_Sample#3](~/add/codesnippet/cpp/e-system.windows.forms.d_101_1.cpp)]"
   syntax:
     content: public event EventHandler LinkColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -975,12 +975,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the color displayed when hovering over link text."
+  summary: "获取或设置当悬停在链接文本上方时显示颜色。"
   syntax:
     content: public System.Drawing.Color LinkHoverColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "A <xref href=&quot;System.Drawing.Color&quot;></xref> that represents the hover color."
+      description: "A <xref href=&quot;System.Drawing.Color&quot;> </xref> ，它代表悬停颜色。"
   overload: System.Windows.Forms.DataGridTableStyle.LinkHoverColor*
   exceptions: []
   platform:
@@ -997,13 +997,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.LinkHoverColor*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "发生时<xref:System.Windows.Forms.DataGridTableStyle.LinkHoverColor*>值更改。</xref:System.Windows.Forms.DataGridTableStyle.LinkHoverColor*>"
+  remarks: "有关处理事件的详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。"
   syntax:
     content: public event EventHandler LinkHoverColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1019,15 +1019,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the name used to map this table to a specific data source."
-  remarks: "To bind the <xref:System.Windows.Forms.DataGrid> to a strongly typed array of objects, the object type must contain public properties. To create a <xref:System.Windows.Forms.DataGridTableStyle> that displays the array, set the MappingName property to `typename` where `typename` is replaced by the name of the object type. Also note that the MappingName property is case-sensitive; the type name must be matched exactly. See the MappingName property for an example.       You can also bind the <xref:System.Windows.Forms.DataGrid> to an <xref:System.Collections.ArrayList>. A feature of the <xref:System.Collections.ArrayList> is that it can contain objects of multiple types, but the <xref:System.Windows.Forms.DataGrid> can only bind to such a list when all items in the list are of the same type as the first item. This means that all objects must either be of the same type, or they must inherit from the same class as the first item in the list. For example, if the first item in a list is a <xref:System.Windows.Forms.Control>, the second item could be a <xref:System.Windows.Forms.TextBox> (which inherits from <xref:System.Windows.Forms.Control>). If, on the other hand, the first item is a <xref:System.Windows.Forms.TextBox>, the second object cannot be a <xref:System.Windows.Forms.Control>. Further, the <xref:System.Collections.ArrayList> must have items in it when it is bound. An empty <xref:System.Collections.ArrayList> will result in an empty grid. When binding to an <xref:System.Collections.ArrayList>, set the MappingName of the <xref:System.Windows.Forms.DataGridTableStyle> to &quot;ArrayList&quot; (the type name).       The default is the name of the list managed by the <xref:System.Windows.Forms.CurrencyManager> for this grid. The <xref:System.Windows.Forms.CurrencyManager> for the <xref:System.Windows.Forms.DataGridTableStyle> is set using the <xref:System.Windows.Forms.DataGridTableStyle.%23ctor%2A> constructor.       The <xref:System.Windows.Forms.DataGridTableStyle.MappingNameChanged> event occurs when the MappingName value changes."
+  summary: "获取或设置用来将此表映射到特定数据源的名称。"
+  remarks: "若要将绑定<xref:System.Windows.Forms.DataGrid>对象类型必须为对象的强类型化数组包含公共属性。</xref:System.Windows.Forms.DataGrid> 若要创建<xref:System.Windows.Forms.DataGridTableStyle>显示数组时，将 MappingName 属性设置为`typename`其中`typename`由对象类型的名称替换。</xref:System.Windows.Forms.DataGridTableStyle> 另请注意，MappingName 属性是区分大小写;必须完全匹配的类型名称。 请参阅示例 MappingName 属性。       你还可以绑定<xref:System.Windows.Forms.DataGrid>到<xref:System.Collections.ArrayList>。</xref:System.Collections.ArrayList> </xref:System.Windows.Forms.DataGrid> 一项功能<xref:System.Collections.ArrayList>是，它可以包含多个类型的对象但<xref:System.Windows.Forms.DataGrid>与第一项相同的类型的列表中的所有项时只能绑定到此类列表。</xref:System.Windows.Forms.DataGrid> </xref:System.Collections.ArrayList> 这意味着所有对象必须都是相同的类型，或者它们必须从列表中的第一个项相同的类继承。 例如，如果在列表中的第一项<xref:System.Windows.Forms.Control>，第二个项可能是<xref:System.Windows.Forms.TextBox>(其继承自<xref:System.Windows.Forms.Control>)。</xref:System.Windows.Forms.Control> </xref:System.Windows.Forms.TextBox> </xref:System.Windows.Forms.Control> 如果在另一方面，第一项是一个<xref:System.Windows.Forms.TextBox>、 第二个对象不能为一种<xref:System.Windows.Forms.Control>。</xref:System.Windows.Forms.Control> </xref:System.Windows.Forms.TextBox> 此外，<xref:System.Collections.ArrayList>时将其绑定必须具有在其中的项。</xref:System.Collections.ArrayList> 一个空<xref:System.Collections.ArrayList>将导致空网格。</xref:System.Collections.ArrayList> 绑定到时<xref:System.Collections.ArrayList>，设置的 MappingName<xref:System.Windows.Forms.DataGridTableStyle>到&quot;ArrayList&quot;（类型名称）。</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Collections.ArrayList>       默认值是由管理的列表的名称<xref:System.Windows.Forms.CurrencyManager>此网格。</xref:System.Windows.Forms.CurrencyManager> <xref:System.Windows.Forms.CurrencyManager>为<xref:System.Windows.Forms.DataGridTableStyle>使用设置<xref:System.Windows.Forms.DataGridTableStyle.%23ctor%2A>构造函数。</xref:System.Windows.Forms.DataGridTableStyle.%23ctor%2A> </xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.CurrencyManager>       <xref:System.Windows.Forms.DataGridTableStyle.MappingNameChanged>MappingName 值更改时发生事件。</xref:System.Windows.Forms.DataGridTableStyle.MappingNameChanged>"
   example:
   - "The following code example creates an array of `Widget` objects and binds a <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control to the array. The code then creates a <xref:System.Windows.Forms.DataGridTableStyle> and sets the MappingName to the name of the class plus brackets.  \n  \n [!code-cpp[DataGridTable.MappingName Example#1](~/add/codesnippet/cpp/p-system.windows.forms.d_187_1.cpp)]\n [!code-cs[DataGridTable.MappingName Example#1](~/add/codesnippet/csharp/p-system.windows.forms.d_187_1.cs)]\n [!code-vb[DataGridTable.MappingName Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_187_1.vb)]"
   syntax:
     content: public string MappingName { get; set; }
     return:
       type: System.String
-      description: "The name used to map this grid to a specific data source."
+      description: "用于将此网格映射到特定数据源的名称。"
   overload: System.Windows.Forms.DataGridTableStyle.MappingName*
   exceptions: []
   platform:
@@ -1044,15 +1044,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.MappingName*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "发生时<xref:System.Windows.Forms.DataGridTableStyle.MappingName*>值更改。</xref:System.Windows.Forms.DataGridTableStyle.MappingName*>"
+  remarks: "有关处理事件的详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_sample1#1](~/add/codesnippet/csharp/e-system.windows.forms.d_21_1.cs)]\n [!code-vb[DataGridTableStyle_sample1#1](~/add/codesnippet/visualbasic/e-system.windows.forms.d_21_1.vb)]\n [!code-cpp[DataGridTableStyle_sample1#1](~/add/codesnippet/cpp/e-system.windows.forms.d_21_1.cpp)]"
   syntax:
     content: public event EventHandler MappingNameChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1068,14 +1068,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.AllowSortingChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnAllowSortingChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Windows.Forms.DataGridTableStyle.AllowSortingChanged&quot;></xref>事件。"
+  remarks: "引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnAllowSortingChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected virtual void OnAllowSortingChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnAllowSortingChanged*
   exceptions: []
   platform:
@@ -1092,14 +1092,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.AlternatingBackColorChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnAlternatingBackColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Windows.Forms.DataGridTableStyle.AlternatingBackColorChanged&quot;></xref>事件。"
+  remarks: "引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnAlternatingBackColorChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected virtual void OnAlternatingBackColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnAlternatingBackColorChanged*
   exceptions: []
   platform:
@@ -1116,14 +1116,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.BackColorChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnBackColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Windows.Forms.DataGridTableStyle.BackColorChanged&quot;></xref>事件。"
+  remarks: "引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnBackColorChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected virtual void OnBackColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnBackColorChanged*
   exceptions: []
   platform:
@@ -1140,14 +1140,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.ColumnHeadersVisibleChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnColumnHeadersVisibleChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Windows.Forms.DataGridTableStyle.ColumnHeadersVisibleChanged&quot;></xref>事件。"
+  remarks: "引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnColumnHeadersVisibleChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected virtual void OnColumnHeadersVisibleChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnColumnHeadersVisibleChanged*
   exceptions: []
   platform:
@@ -1164,14 +1164,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.ForeColorChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnForeColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Windows.Forms.DataGridTableStyle.ForeColorChanged&quot;></xref>事件。"
+  remarks: "引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnForeColorChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected virtual void OnForeColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnForeColorChanged*
   exceptions: []
   platform:
@@ -1188,14 +1188,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.GridLineColorChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnGridLineColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Windows.Forms.DataGridTableStyle.GridLineColorChanged&quot;></xref>事件。"
+  remarks: "引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnGridLineColorChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected virtual void OnGridLineColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnGridLineColorChanged*
   exceptions: []
   platform:
@@ -1212,14 +1212,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.GridLineStyleChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnGridLineStyleChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Windows.Forms.DataGridTableStyle.GridLineStyleChanged&quot;></xref>事件。"
+  remarks: "引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnGridLineStyleChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected virtual void OnGridLineStyleChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnGridLineStyleChanged*
   exceptions: []
   platform:
@@ -1236,14 +1236,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.HeaderBackColorChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnHeaderBackColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Windows.Forms.DataGridTableStyle.HeaderBackColorChanged&quot;></xref>事件。"
+  remarks: "引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnHeaderBackColorChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected virtual void OnHeaderBackColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnHeaderBackColorChanged*
   exceptions: []
   platform:
@@ -1260,14 +1260,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.HeaderFontChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnHeaderFontChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Windows.Forms.DataGridTableStyle.HeaderFontChanged&quot;></xref>事件。"
+  remarks: "引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnHeaderFontChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected virtual void OnHeaderFontChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnHeaderFontChanged*
   exceptions: []
   platform:
@@ -1284,14 +1284,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.HeaderForeColorChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnHeaderForeColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Windows.Forms.DataGridTableStyle.HeaderForeColorChanged&quot;></xref>事件。"
+  remarks: "引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnHeaderForeColorChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected virtual void OnHeaderForeColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnHeaderForeColorChanged*
   exceptions: []
   platform:
@@ -1308,14 +1308,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.LinkColorChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnLinkColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Windows.Forms.DataGridTableStyle.LinkColorChanged&quot;></xref>事件。"
+  remarks: "引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnLinkColorChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected virtual void OnLinkColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnLinkColorChanged*
   exceptions: []
   platform:
@@ -1332,14 +1332,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref uid=&quot;langword_csharp_LinkHoverColorChanged&quot; name=&quot;LinkHoverColorChanged&quot; href=&quot;&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnLinkHoverColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref uid=&quot;langword_csharp_LinkHoverColorChanged&quot; name=&quot;LinkHoverColorChanged&quot; href=&quot;&quot;></xref>事件。"
+  remarks: "引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnLinkHoverColorChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected virtual void OnLinkHoverColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnLinkHoverColorChanged*
   exceptions: []
   platform:
@@ -1356,14 +1356,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.MappingNameChanged&quot;></xref> event"
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnMappingNameChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Windows.Forms.DataGridTableStyle.MappingNameChanged&quot;></xref>事件"
+  remarks: "引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnMappingNameChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected virtual void OnMappingNameChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnMappingNameChanged*
   exceptions: []
   platform:
@@ -1380,14 +1380,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.PreferredColumnWidthChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnPreferredColumnWidthChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Windows.Forms.DataGridTableStyle.PreferredColumnWidthChanged&quot;></xref>事件。"
+  remarks: "引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnPreferredColumnWidthChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected virtual void OnPreferredColumnWidthChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnPreferredColumnWidthChanged*
   exceptions: []
   platform:
@@ -1404,14 +1404,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.PreferredRowHeightChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnPreferredRowHeightChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Windows.Forms.DataGridTableStyle.PreferredRowHeightChanged&quot;></xref>事件。"
+  remarks: "引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnPreferredRowHeightChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected virtual void OnPreferredRowHeightChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnPreferredRowHeightChanged*
   exceptions: []
   platform:
@@ -1428,14 +1428,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.ReadOnlyChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnReadOnlyChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Windows.Forms.DataGridTableStyle.ReadOnlyChanged&quot;></xref>事件。"
+  remarks: "引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnReadOnlyChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected virtual void OnReadOnlyChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnReadOnlyChanged*
   exceptions: []
   platform:
@@ -1452,14 +1452,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.RowHeadersVisibleChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnRowHeadersVisibleChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Windows.Forms.DataGridTableStyle.RowHeadersVisibleChanged&quot;></xref>事件。"
+  remarks: "引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnRowHeadersVisibleChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected virtual void OnRowHeadersVisibleChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnRowHeadersVisibleChanged*
   exceptions: []
   platform:
@@ -1476,14 +1476,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.RowHeaderWidthChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnRowHeaderWidthChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Windows.Forms.DataGridTableStyle.RowHeaderWidthChanged&quot;></xref>事件。"
+  remarks: "引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnRowHeaderWidthChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected virtual void OnRowHeaderWidthChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnRowHeaderWidthChanged*
   exceptions: []
   platform:
@@ -1500,14 +1500,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.SelectionBackColorChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnSelectionBackColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Windows.Forms.DataGridTableStyle.SelectionBackColorChanged&quot;></xref>事件。"
+  remarks: "引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnSelectionBackColorChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected virtual void OnSelectionBackColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnSelectionBackColorChanged*
   exceptions: []
   platform:
@@ -1524,14 +1524,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.SelectionForeColorChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnSelectionForeColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Windows.Forms.DataGridTableStyle.SelectionForeColorChanged&quot;></xref>事件。"
+  remarks: "引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnSelectionForeColorChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected virtual void OnSelectionForeColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnSelectionForeColorChanged*
   exceptions: []
   platform:
@@ -1548,7 +1548,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the width used to create columns when a new grid is displayed."
+  summary: "获取或设置用于显示新网格时创建列的宽度。"
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_PreferredColumnWidth#1](~/add/codesnippet/csharp/p-system.windows.forms.d_45_1.cs)]\n [!code-cpp[DataGridTableStyle_PreferredColumnWidth#1](~/add/codesnippet/cpp/p-system.windows.forms.d_45_1.cpp)]\n [!code-vb[DataGridTableStyle_PreferredColumnWidth#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_45_1.vb)]"
@@ -1556,7 +1556,7 @@ items:
     content: public int PreferredColumnWidth { get; set; }
     return:
       type: System.Int32
-      description: "The width used to create columns when a new grid is displayed."
+      description: "若要显示新网格时创建列所用的宽度。"
   overload: System.Windows.Forms.DataGridTableStyle.PreferredColumnWidth*
   exceptions: []
   platform:
@@ -1573,7 +1573,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.PreferredColumnWidth*> property value changes."
+  summary: "发生时<xref:System.Windows.Forms.DataGridTableStyle.PreferredColumnWidth*>属性值更改。</xref:System.Windows.Forms.DataGridTableStyle.PreferredColumnWidth*>"
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the PreferredColumnWidthChanged event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing <xref:System.Windows.Forms.MessageBox.Show%2A?displayProperty=fullName> with <xref:System.Console.WriteLine%2A?displayProperty=fullName> or appending the message to a multiline <xref:System.Windows.Forms.TextBox>.  \n  \n To run the example code, paste it into a project that contains an instance of type <xref:System.Windows.Forms.DataGridTableStyle> named `DataGridTableStyle1`. Then ensure that the event handler is associated with the PreferredColumnWidthChanged event.  \n  \n [!code-cs[System.Windows.Forms.EventExamples#231](~/add/codesnippet/csharp/e-system.windows.forms.d_26_1.cs)]\n [!code-vb[System.Windows.Forms.EventExamples#231](~/add/codesnippet/visualbasic/e-system.windows.forms.d_26_1.vb)]"
@@ -1581,7 +1581,7 @@ items:
     content: public event EventHandler PreferredColumnWidthChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1597,15 +1597,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the height used to create a row when a new grid is displayed."
-  remarks: "The preferred height is the minimum height needed to accommodate the displayed text with the assigned <xref:System.Windows.Forms.DataGridTableStyle.HeaderFont%2A>. A row will not be created with a height less than the specified value. If the font size requires it, however, the row height may be greater than the specified value."
+  summary: "获取或设置用于显示新网格时创建的行的高度。"
+  remarks: "首选的高度是适应分配<xref:System.Windows.Forms.DataGridTableStyle.HeaderFont%2A>。</xref:System.Windows.Forms.DataGridTableStyle.HeaderFont%2A>显示的文本所需的最小高度 行不会创建与高度小于指定值。 如果将字体大小需要它，但是，可能大于指定值的行高度。"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_PreferredRowHeight#1](~/add/codesnippet/csharp/p-system.windows.forms.d_49_1.cs)]\n [!code-cpp[DataGridTableStyle_PreferredRowHeight#1](~/add/codesnippet/cpp/p-system.windows.forms.d_49_1.cpp)]\n [!code-vb[DataGridTableStyle_PreferredRowHeight#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_49_1.vb)]"
   syntax:
     content: public int PreferredRowHeight { get; set; }
     return:
       type: System.Int32
-      description: "The height of a row, in pixels."
+      description: "行，以像素为单位的高度。"
   overload: System.Windows.Forms.DataGridTableStyle.PreferredRowHeight*
   exceptions: []
   platform:
@@ -1622,15 +1622,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.PreferredRowHeight*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "发生时<xref:System.Windows.Forms.DataGridTableStyle.PreferredRowHeight*>值更改。</xref:System.Windows.Forms.DataGridTableStyle.PreferredRowHeight*>"
+  remarks: "有关处理事件的详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_PreferredRowHeightChanged#1](~/add/codesnippet/csharp/e-system.windows.forms.d_59_1.cs)]\n [!code-vb[DataGridTableStyle_PreferredRowHeightChanged#1](~/add/codesnippet/visualbasic/e-system.windows.forms.d_59_1.vb)]\n [!code-cpp[DataGridTableStyle_PreferredRowHeightChanged#1](~/add/codesnippet/cpp/e-system.windows.forms.d_59_1.cpp)]"
   syntax:
     content: public event EventHandler PreferredRowHeightChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1646,15 +1646,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets a value indicating whether columns can be edited."
-  remarks: "You can also specify whether individual columns within the table are editable by setting the <xref:System.Windows.Forms.DataGridColumnStyle> class&quot;s <xref:System.Windows.Forms.DataGridColumnStyle.ReadOnly%2A?displayProperty=fullName> property to an appropriate value, `true` or `false`.       Alternatively, to ensure that the data is not edited, you can set the <xref:System.Data.DataColumn> class&quot;s <xref:System.Data.DataColumn.ReadOnly%2A> property to `true`."
+  summary: "获取或设置一个值，该值指示是否可以编辑列。"
+  remarks: "你还可以指定表中的单个列是否可编辑通过设置<xref:System.Windows.Forms.DataGridColumnStyle>类的<xref:System.Windows.Forms.DataGridColumnStyle.ReadOnly%2A?displayProperty=fullName>为适当的值，属性`true`或`false`。</xref:System.Windows.Forms.DataGridColumnStyle.ReadOnly%2A?displayProperty=fullName> </xref:System.Windows.Forms.DataGridColumnStyle>       或者，若要确保不能编辑数据，可以设置<xref:System.Data.DataColumn>类的<xref:System.Data.DataColumn.ReadOnly%2A>属性`true`。</xref:System.Data.DataColumn.ReadOnly%2A> </xref:System.Data.DataColumn>"
   example:
   - "The following code example returns the ReadOnly property for each <xref:System.Windows.Forms.DataGridTableStyle> in a <xref:System.Windows.Forms.GridTableStylesCollection>.  \n  \n [!code-cpp[Classic DataGridTableStyle.ReadOnly Example#1](~/add/codesnippet/cpp/p-system.windows.forms.d_184_1.cpp)]\n [!code-vb[Classic DataGridTableStyle.ReadOnly Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_184_1.vb)]\n [!code-cs[Classic DataGridTableStyle.ReadOnly Example#1](~/add/codesnippet/csharp/p-system.windows.forms.d_184_1.cs)]"
   syntax:
     content: public virtual bool ReadOnly { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, if columns cannot be edited; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果无法编辑列;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.ReadOnly*
   exceptions: []
   platform:
@@ -1671,15 +1671,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.ReadOnly*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "发生时<xref:System.Windows.Forms.DataGridTableStyle.ReadOnly*>值更改。</xref:System.Windows.Forms.DataGridTableStyle.ReadOnly*>"
+  remarks: "有关处理事件的详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-vb[DataGridTableStyle_ReadOnlyChanged#1](~/add/codesnippet/visualbasic/e-system.windows.forms.d_73_1.vb)]\n [!code-cpp[DataGridTableStyle_ReadOnlyChanged#1](~/add/codesnippet/cpp/e-system.windows.forms.d_73_1.cpp)]\n [!code-cs[DataGridTableStyle_ReadOnlyChanged#1](~/add/codesnippet/csharp/e-system.windows.forms.d_73_1.cs)]"
   syntax:
     content: public event EventHandler ReadOnlyChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1695,8 +1695,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>. You can use the <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeAlternatingBackColor%2A> method to determine whether the property value has changed from its default."
+  summary: "重置<xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor*>为其默认值的属性。</xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法 你可以使用<xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeAlternatingBackColor%2A>方法来确定是否不再是默认值已更改的属性值。</xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeAlternatingBackColor%2A>"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-vb[DataGridTableStyle_ResetAlternatingBackcolor#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_70_1.vb)]\n [!code-cs[DataGridTableStyle_ResetAlternatingBackcolor#1](~/add/codesnippet/csharp/m-system.windows.forms.d_70_1.cs)]\n [!code-cpp[DataGridTableStyle_ResetAlternatingBackcolor#1](~/add/codesnippet/cpp/m-system.windows.forms.d_70_1.cpp)]"
   syntax:
@@ -1718,8 +1718,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.BackColor*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "重置<xref:System.Windows.Forms.DataGridTableStyle.BackColor*>为其默认值的属性。</xref:System.Windows.Forms.DataGridTableStyle.BackColor*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cpp[DataGridTableStyle_ResetBackColor#1](~/add/codesnippet/cpp/m-system.windows.forms.d_73_1.cpp)]\n [!code-vb[DataGridTableStyle_ResetBackColor#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_73_1.vb)]\n [!code-cs[DataGridTableStyle_ResetBackColor#1](~/add/codesnippet/csharp/m-system.windows.forms.d_73_1.cs)]"
   syntax:
@@ -1741,8 +1741,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.ForeColor*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>. You can use the <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeForeColor%2A> method to determine whether the property value has changed from its default."
+  summary: "重置<xref:System.Windows.Forms.DataGridTableStyle.ForeColor*>为其默认值的属性。</xref:System.Windows.Forms.DataGridTableStyle.ForeColor*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法 你可以使用<xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeForeColor%2A>方法来确定是否不再是默认值已更改的属性值。</xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeForeColor%2A>"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_ResetForeColor#1](~/add/codesnippet/csharp/m-system.windows.forms.d_23_1.cs)]\n [!code-vb[DataGridTableStyle_ResetForeColor#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_23_1.vb)]\n [!code-cpp[DataGridTableStyle_ResetForeColor#1](~/add/codesnippet/cpp/m-system.windows.forms.d_23_1.cpp)]"
   syntax:
@@ -1764,8 +1764,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.GridLineColor*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>. You can use the <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeGridLineColor%2A> method to determine whether the property value has changed from its default."
+  summary: "重置<xref:System.Windows.Forms.DataGridTableStyle.GridLineColor*>为其默认值的属性。</xref:System.Windows.Forms.DataGridTableStyle.GridLineColor*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法 你可以使用<xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeGridLineColor%2A>方法来确定是否不再是默认值已更改的属性值。</xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeGridLineColor%2A>"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_ResetGridLineColor#1](~/add/codesnippet/csharp/m-system.windows.forms.d_71_1.cs)]\n [!code-vb[DataGridTableStyle_ResetGridLineColor#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_71_1.vb)]\n [!code-cpp[DataGridTableStyle_ResetGridLineColor#1](~/add/codesnippet/cpp/m-system.windows.forms.d_71_1.cpp)]"
   syntax:
@@ -1787,8 +1787,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>. You can use the <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeHeaderBackColor%2A> method to determine whether the property value has changed from its default."
+  summary: "重置<xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor*>为其默认值的属性。</xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法 你可以使用<xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeHeaderBackColor%2A>方法来确定是否不再是默认值已更改的属性值。</xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeHeaderBackColor%2A>"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cpp[DataGridTableStyle_ResetHeaderBackColor#1](~/add/codesnippet/cpp/m-system.windows.forms.d_7_1.cpp)]\n [!code-cs[DataGridTableStyle_ResetHeaderBackColor#1](~/add/codesnippet/csharp/m-system.windows.forms.d_7_1.cs)]\n [!code-vb[DataGridTableStyle_ResetHeaderBackColor#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_7_1.vb)]"
   syntax:
@@ -1810,8 +1810,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.HeaderFont*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "重置<xref:System.Windows.Forms.DataGridTableStyle.HeaderFont*>为其默认值的属性。</xref:System.Windows.Forms.DataGridTableStyle.HeaderFont*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cpp[DataGridTableStyle_ResetHeaderFont1#1](~/add/codesnippet/cpp/m-system.windows.forms.d_8_1.cpp)]\n [!code-cs[DataGridTableStyle_ResetHeaderFont1#1](~/add/codesnippet/csharp/m-system.windows.forms.d_8_1.cs)]\n [!code-vb[DataGridTableStyle_ResetHeaderFont1#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_8_1.vb)]"
   syntax:
@@ -1833,8 +1833,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>. You can use the <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeHeaderForeColor%2A> method to determine whether the property value has changed from its default."
+  summary: "重置<xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor*>为其默认值的属性。</xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法 你可以使用<xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeHeaderForeColor%2A>方法来确定是否不再是默认值已更改的属性值。</xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeHeaderForeColor%2A>"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_ResetHeaderForeColor#1](~/add/codesnippet/csharp/m-system.windows.forms.d_60_1.cs)]\n [!code-cpp[DataGridTableStyle_ResetHeaderForeColor#1](~/add/codesnippet/cpp/m-system.windows.forms.d_60_1.cpp)]\n [!code-vb[DataGridTableStyle_ResetHeaderForeColor#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_60_1.vb)]"
   syntax:
@@ -1856,8 +1856,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.LinkColor*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>. You can use the <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeLinkColor%2A> method to determine whether the property value has changed from its default."
+  summary: "重置<xref:System.Windows.Forms.DataGridTableStyle.LinkColor*>为其默认值的属性。</xref:System.Windows.Forms.DataGridTableStyle.LinkColor*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法 你可以使用<xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeLinkColor%2A>方法来确定是否不再是默认值已更改的属性值。</xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeLinkColor%2A>"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cpp[DataGridTableStyle_ResetLinkColor#1](~/add/codesnippet/cpp/m-system.windows.forms.d_3_1.cpp)]\n [!code-cs[DataGridTableStyle_ResetLinkColor#1](~/add/codesnippet/csharp/m-system.windows.forms.d_3_1.cs)]\n [!code-vb[DataGridTableStyle_ResetLinkColor#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_3_1.vb)]"
   syntax:
@@ -1879,8 +1879,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.LinkHoverColor*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>. You can use the <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeLinkHoverColor%2A> method to determine whether the property value has changed from its default."
+  summary: "重置<xref:System.Windows.Forms.DataGridTableStyle.LinkHoverColor*>为其默认值的属性。</xref:System.Windows.Forms.DataGridTableStyle.LinkHoverColor*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法 你可以使用<xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeLinkHoverColor%2A>方法来确定是否不再是默认值已更改的属性值。</xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeLinkHoverColor%2A>"
   syntax:
     content: public void ResetLinkHoverColor ();
     parameters: []
@@ -1900,8 +1900,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>. You can use the <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeSelectionBackColor%2A> method to determine whether the property value has changed from its default."
+  summary: "重置<xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor*>为其默认值的属性。</xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法 你可以使用<xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeSelectionBackColor%2A>方法来确定是否不再是默认值已更改的属性值。</xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeSelectionBackColor%2A>"
   syntax:
     content: public void ResetSelectionBackColor ();
     parameters: []
@@ -1921,8 +1921,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>. You can use the <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeSelectionForeColor%2A> method to determine whether the property value has changed from its default."
+  summary: "重置<xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor*>为其默认值的属性。</xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法 你可以使用<xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeSelectionForeColor%2A>方法来确定是否不再是默认值已更改的属性值。</xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeSelectionForeColor%2A>"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-vb[DataGridTableStyle_SelectionForeColor#2](~/add/codesnippet/visualbasic/m-system.windows.forms.d_78_1.vb)]\n [!code-cs[DataGridTableStyle_SelectionForeColor#2](~/add/codesnippet/csharp/m-system.windows.forms.d_78_1.cs)]\n [!code-cpp[DataGridTableStyle_SelectionForeColor#2](~/add/codesnippet/cpp/m-system.windows.forms.d_78_1.cpp)]"
   syntax:
@@ -1944,15 +1944,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets a value indicating whether row headers are visible."
-  remarks: "When row headers are visible, a plus sign is displayed in each row header if the underlying <xref:System.Data.DataTable> has a related child table.       This property will not function until you add <xref:System.Windows.Forms.DataGridTableStyle> objects to the <xref:System.Windows.Forms.GridTableStylesCollection>. Until then, setting this property will have no effect."
+  summary: "获取或设置一个值，该值指示行标题是否可见。"
+  remarks: "如果在行标题可见时，每个行标题中显示一个加号基础<xref:System.Data.DataTable>具有相关的子表。</xref:System.Data.DataTable>       直到你将<xref:System.Windows.Forms.DataGridTableStyle>对象</xref:System.Windows.Forms.DataGridTableStyle>添加到<xref:System.Windows.Forms.GridTableStylesCollection>.</xref:System.Windows.Forms.GridTableStylesCollection>上此属性不起作用 到那时，设置此属性将产生任何影响。"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_RowHeadersVisibleChanged#1](~/add/codesnippet/csharp/p-system.windows.forms.d_368_1.cs)]\n [!code-cpp[DataGridTableStyle_RowHeadersVisibleChanged#1](~/add/codesnippet/cpp/p-system.windows.forms.d_368_1.cpp)]\n [!code-vb[DataGridTableStyle_RowHeadersVisibleChanged#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_368_1.vb)]"
   syntax:
     content: public bool RowHeadersVisible { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if row headers are visible; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果行标题可见，则否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.RowHeadersVisible*
   exceptions: []
   platform:
@@ -1969,15 +1969,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.RowHeadersVisible*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "发生时<xref:System.Windows.Forms.DataGridTableStyle.RowHeadersVisible*>值更改。</xref:System.Windows.Forms.DataGridTableStyle.RowHeadersVisible*>"
+  remarks: "有关处理事件的详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_RowHeadersVisibleChanged#2](~/add/codesnippet/csharp/e-system.windows.forms.d_43_1.cs)]\n [!code-cpp[DataGridTableStyle_RowHeadersVisibleChanged#2](~/add/codesnippet/cpp/e-system.windows.forms.d_43_1.cpp)]\n [!code-vb[DataGridTableStyle_RowHeadersVisibleChanged#2](~/add/codesnippet/visualbasic/e-system.windows.forms.d_43_1.vb)]"
   syntax:
     content: public event EventHandler RowHeadersVisibleChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1993,15 +1993,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the width of row headers."
-  remarks: "When row headers are visible a plus sign is displayed in each row header if the underlying data has a related child table.       This property will not function until you add <xref:System.Windows.Forms.DataGridTableStyle> objects to the <xref:System.Windows.Forms.GridTableStylesCollection>. Until then, setting this property will have no effect."
+  summary: "获取或设置行标题的宽度。"
+  remarks: "在行标题可见时如果基础数据中有一个相关的子表，每个行标题中会显示一个加号。       直到你将<xref:System.Windows.Forms.DataGridTableStyle>对象</xref:System.Windows.Forms.DataGridTableStyle>添加到<xref:System.Windows.Forms.GridTableStylesCollection>.</xref:System.Windows.Forms.GridTableStylesCollection>上此属性不起作用 到那时，设置此属性将产生任何影响。"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-vb[DataGridTableStyle_RowHeaderWidth#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_159_1.vb)]\n [!code-cpp[DataGridTableStyle_RowHeaderWidth#1](~/add/codesnippet/cpp/p-system.windows.forms.d_159_1.cpp)]\n [!code-cs[DataGridTableStyle_RowHeaderWidth#1](~/add/codesnippet/csharp/p-system.windows.forms.d_159_1.cs)]"
   syntax:
     content: public int RowHeaderWidth { get; set; }
     return:
       type: System.Int32
-      description: "The width of row headers, in pixels."
+      description: "行标题，以像素为单位的宽度。"
   overload: System.Windows.Forms.DataGridTableStyle.RowHeaderWidth*
   exceptions: []
   platform:
@@ -2018,15 +2018,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.RowHeaderWidth*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "发生时<xref:System.Windows.Forms.DataGridTableStyle.RowHeaderWidth*>值更改。</xref:System.Windows.Forms.DataGridTableStyle.RowHeaderWidth*>"
+  remarks: "有关处理事件的详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-vb[DataGridTableStyle_RowHeaderWidth#2](~/add/codesnippet/visualbasic/e-system.windows.forms.d_52_1.vb)]\n [!code-cpp[DataGridTableStyle_RowHeaderWidth#2](~/add/codesnippet/cpp/e-system.windows.forms.d_52_1.cpp)]\n [!code-cs[DataGridTableStyle_RowHeaderWidth#2](~/add/codesnippet/csharp/e-system.windows.forms.d_52_1.cs)]"
   syntax:
     content: public event EventHandler RowHeaderWidthChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -2042,7 +2042,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the background color of selected cells."
+  summary: "获取或设置选定单元格的背景色。"
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cpp[DataGridTableStyle_SelectionBackColor#2](~/add/codesnippet/cpp/p-system.windows.forms.d_96_1.cpp)]\n [!code-cs[DataGridTableStyle_SelectionBackColor#2](~/add/codesnippet/csharp/p-system.windows.forms.d_96_1.cs)]\n [!code-vb[DataGridTableStyle_SelectionBackColor#2](~/add/codesnippet/visualbasic/p-system.windows.forms.d_96_1.vb)]"
@@ -2050,7 +2050,7 @@ items:
     content: public System.Drawing.Color SelectionBackColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "The <xref href=&quot;System.Drawing.Color&quot;></xref> that represents the background color of selected cells."
+      description: "<xref href=&quot;System.Drawing.Color&quot;> </xref>表示选定单元格的背景色。"
   overload: System.Windows.Forms.DataGridTableStyle.SelectionBackColor*
   exceptions: []
   platform:
@@ -2067,15 +2067,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "发生时<xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor*>值更改。</xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor*>"
+  remarks: "有关处理事件的详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cpp[DataGridTableStyle_SelectionBackColor#1](~/add/codesnippet/cpp/e-system.windows.forms.d_78_1.cpp)]\n [!code-cs[DataGridTableStyle_SelectionBackColor#1](~/add/codesnippet/csharp/e-system.windows.forms.d_78_1.cs)]\n [!code-vb[DataGridTableStyle_SelectionBackColor#1](~/add/codesnippet/visualbasic/e-system.windows.forms.d_78_1.vb)]"
   syntax:
     content: public event EventHandler SelectionBackColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -2091,7 +2091,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the foreground color of selected cells."
+  summary: "获取或设置选定的单元格的前景色。"
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-vb[DataGridTableStyle_SelectionForeColor#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_412_1.vb)]\n [!code-cs[DataGridTableStyle_SelectionForeColor#1](~/add/codesnippet/csharp/p-system.windows.forms.d_412_1.cs)]\n [!code-cpp[DataGridTableStyle_SelectionForeColor#1](~/add/codesnippet/cpp/p-system.windows.forms.d_412_1.cpp)]"
@@ -2099,7 +2099,7 @@ items:
     content: public System.Drawing.Color SelectionForeColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "The <xref href=&quot;System.Drawing.Color&quot;></xref> that represents the foreground color of selected cells."
+      description: "<xref href=&quot;System.Drawing.Color&quot;> </xref>表示选定单元格的前景色。"
   overload: System.Windows.Forms.DataGridTableStyle.SelectionForeColor*
   exceptions: []
   platform:
@@ -2116,7 +2116,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor*> value changes."
+  summary: "发生时<xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor*>值更改。</xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor*>"
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the SelectionForeColorChanged event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing <xref:System.Windows.Forms.MessageBox.Show%2A?displayProperty=fullName> with <xref:System.Console.WriteLine%2A?displayProperty=fullName> or appending the message to a multiline <xref:System.Windows.Forms.TextBox>.  \n  \n To run the example code, paste it into a project that contains an instance of type <xref:System.Windows.Forms.DataGridTableStyle> named `DataGridTableStyle1`. Then ensure that the event handler is associated with the SelectionForeColorChanged event.  \n  \n [!code-cs[System.Windows.Forms.EventExamples#237](~/add/codesnippet/csharp/e-system.windows.forms.d_70_1.cs)]\n [!code-vb[System.Windows.Forms.EventExamples#237](~/add/codesnippet/visualbasic/e-system.windows.forms.d_70_1.vb)]"
@@ -2124,7 +2124,7 @@ items:
     content: public event EventHandler SelectionForeColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -2140,14 +2140,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "指示是否<xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor*>属性应对其进行持久化。</xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法"
   syntax:
     content: protected virtual bool ShouldSerializeAlternatingBackColor ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果属性值已更改其默认设置;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializeAlternatingBackColor*
   exceptions: []
   platform:
@@ -2164,14 +2164,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.BackColor*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "指示是否<xref:System.Windows.Forms.DataGridTableStyle.BackColor*>属性应对其进行持久化。</xref:System.Windows.Forms.DataGridTableStyle.BackColor*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法"
   syntax:
     content: protected bool ShouldSerializeBackColor ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果属性值已更改其默认设置;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializeBackColor*
   exceptions: []
   platform:
@@ -2188,14 +2188,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.ForeColor*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "指示是否<xref:System.Windows.Forms.DataGridTableStyle.ForeColor*>属性应对其进行持久化。</xref:System.Windows.Forms.DataGridTableStyle.ForeColor*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法"
   syntax:
     content: protected bool ShouldSerializeForeColor ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果属性值已更改其默认设置;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializeForeColor*
   exceptions: []
   platform:
@@ -2212,14 +2212,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.GridLineColor*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "指示是否<xref:System.Windows.Forms.DataGridTableStyle.GridLineColor*>属性应对其进行持久化。</xref:System.Windows.Forms.DataGridTableStyle.GridLineColor*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法"
   syntax:
     content: protected virtual bool ShouldSerializeGridLineColor ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果属性值已更改其默认设置;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializeGridLineColor*
   exceptions: []
   platform:
@@ -2236,14 +2236,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "指示是否<xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor*>属性应对其进行持久化。</xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法"
   syntax:
     content: protected virtual bool ShouldSerializeHeaderBackColor ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果属性值已更改其默认设置;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializeHeaderBackColor*
   exceptions: []
   platform:
@@ -2260,14 +2260,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "指示是否<xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor*>属性应对其进行持久化。</xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法"
   syntax:
     content: protected virtual bool ShouldSerializeHeaderForeColor ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果属性值已更改其默认设置;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializeHeaderForeColor*
   exceptions: []
   platform:
@@ -2284,14 +2284,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.LinkColor*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "指示是否<xref:System.Windows.Forms.DataGridTableStyle.LinkColor*>属性应对其进行持久化。</xref:System.Windows.Forms.DataGridTableStyle.LinkColor*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法"
   syntax:
     content: protected virtual bool ShouldSerializeLinkColor ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果属性值已更改其默认设置;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializeLinkColor*
   exceptions: []
   platform:
@@ -2308,14 +2308,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.LinkHoverColor*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "指示是否<xref:System.Windows.Forms.DataGridTableStyle.LinkHoverColor*>属性应对其进行持久化。</xref:System.Windows.Forms.DataGridTableStyle.LinkHoverColor*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法"
   syntax:
     content: protected virtual bool ShouldSerializeLinkHoverColor ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果属性值已更改其默认设置;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializeLinkHoverColor*
   exceptions: []
   platform:
@@ -2332,14 +2332,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.PreferredRowHeight*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "指示是否<xref:System.Windows.Forms.DataGridTableStyle.PreferredRowHeight*>属性应对其进行持久化。</xref:System.Windows.Forms.DataGridTableStyle.PreferredRowHeight*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法"
   syntax:
     content: protected bool ShouldSerializePreferredRowHeight ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果属性值已更改其默认设置;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializePreferredRowHeight*
   exceptions: []
   platform:
@@ -2356,14 +2356,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "指示是否<xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor*>属性应对其进行持久化。</xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法"
   syntax:
     content: protected bool ShouldSerializeSelectionBackColor ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果属性值已更改其默认设置;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializeSelectionBackColor*
   exceptions: []
   platform:
@@ -2380,14 +2380,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "指示是否<xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor*>属性应对其进行持久化。</xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor*>"
+  remarks: "如果你创建的设计器<xref:System.Windows.Forms.DataGridTableStyle>或创建你自己控制合并<xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle></xref:System.Windows.Forms.DataGridTableStyle>通常使用此方法"
   syntax:
     content: protected virtual bool ShouldSerializeSelectionForeColor ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果属性值已更改其默认设置;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializeSelectionForeColor*
   exceptions: []
   platform:
