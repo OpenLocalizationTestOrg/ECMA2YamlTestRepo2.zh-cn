@@ -16,8 +16,8 @@ items:
   nameWithType: PeerNode
   fullName: System.ServiceModel.PeerNode
   type: Class
-  summary: "Defines the instance of of a peer node used by an application participating in a specific peer mesh."
-  remarks: "A peer node can host multiple peer channels within the mesh as long as they share a common URI and host name in the <xref:System.ServiceModel.EndpointAddress> supplied to the binding for each channel.       If two or more peer channels defined for a peer node are created with separate bindings, then the <xref:System.ServiceModel.NetPeerTcpBinding.Port%2A>, <xref:System.ServiceModel.NetPeerTcpBinding.ListenIPAddress%2A>, and <xref:System.ServiceModel.NetPeerTcpBinding.Resolver%2A> properties must be identical on all bindings.       If a subsequent channel binding is created after the first one for the same peer node instance, then the <xref:System.ServiceModel.NetPeerTcpBinding.MaxReceivedMessageSize%2A> property on this and subsequent bindings must be less than or equal to the value of <xref:System.ServiceModel.NetPeerTcpBinding.MaxReceivedMessageSize%2A> property as set on the first channel binding."
+  summary: "定义参与特定对等网格的应用程序使用的对等节点的实例。"
+  remarks: "对等节点可以托管在网格中的多个对等通道，只要它们共享中的公用的 URI 和主机名<xref:System.ServiceModel.EndpointAddress>提供给每个通道的绑定。</xref:System.ServiceModel.EndpointAddress>       如果为某个对等节点定义的两个或多个对等通道创建使用单独绑定，则<xref:System.ServiceModel.NetPeerTcpBinding.Port%2A>， <xref:System.ServiceModel.NetPeerTcpBinding.ListenIPAddress%2A>，和<xref:System.ServiceModel.NetPeerTcpBinding.Resolver%2A>属性必须在所有绑定上完全相同。</xref:System.ServiceModel.NetPeerTcpBinding.Resolver%2A> </xref:System.ServiceModel.NetPeerTcpBinding.ListenIPAddress%2A> </xref:System.ServiceModel.NetPeerTcpBinding.Port%2A>       如果之后的第一个相同的对等节点实例，创建一个后续通道绑定则<xref:System.ServiceModel.NetPeerTcpBinding.MaxReceivedMessageSize%2A>属性对此绑定或后续绑定必须小于或等于的值<xref:System.ServiceModel.NetPeerTcpBinding.MaxReceivedMessageSize%2A>作为第一个通道绑定中设置的属性。</xref:System.ServiceModel.NetPeerTcpBinding.MaxReceivedMessageSize%2A> </xref:System.ServiceModel.NetPeerTcpBinding.MaxReceivedMessageSize%2A>"
   syntax:
     content: 'public sealed class PeerNode : System.ServiceModel.IOnlineStatus'
   inheritance:
@@ -39,13 +39,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets a value indicating whether the peer node is online and able to send messages to neighboring nodes in the peer mesh."
-  remarks: "&quot;Online&quot; indicates that a peer node has available neighbor nodes. &quot;Offline&quot; indicates that a peer node has no available neighbors."
+  summary: "获取一个值，该值指示对等节点是否联机以及是否能够将消息发送到对等网格中的相邻节点。"
+  remarks: "&quot;联机&quot;，则指示对等节点具有可用的相邻节点。 &quot;脱机&quot;表示对等节点都没有可用的相邻。"
   syntax:
     content: public bool IsOnline { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the peer node is online; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果对等节点处于联机状态;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.ServiceModel.PeerNode.IsOnline*
   exceptions: []
   platform:
@@ -62,18 +62,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets and sets a custom filter for messages received over the peer channel."
-  remarks: "The message filter must be a derived type and should be recast to that type to use any custom features defined on it."
+  summary: "获取和设置自定义筛选器通过对等通道接收的消息。"
+  remarks: "消息筛选器必须是派生的类型，而且应强制转换为此类型以使用在其上定义的任何自定义功能。"
   syntax:
     content: public System.ServiceModel.PeerMessagePropagationFilter MessagePropagationFilter { get; set; }
     return:
       type: System.ServiceModel.PeerMessagePropagationFilter
-      description: "<xref href=&quot;System.ServiceModel.PeerMessagePropagationFilter&quot;></xref> that contains a custom message filter."
+      description: "<xref href=&quot;System.ServiceModel.PeerMessagePropagationFilter&quot;></xref>包含自定义消息筛选器。"
   overload: System.ServiceModel.PeerNode.MessagePropagationFilter*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No channel is open for listening."
+    description: "通道不处于打开状态侦听。"
   platform:
   - net462
 - uid: System.ServiceModel.PeerNode.Offline
@@ -88,13 +88,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Signals when the peer node goes offline from the peer mesh."
-  remarks: "An offline peer node has no neighbor nodes within the peer mesh to which it can connect."
+  summary: "当网格发出信号从对等方的对等节点处于脱机状态。"
+  remarks: "脱机的对等节点都有可以连接到的对等网格中没有相邻节点。"
   syntax:
     content: public event EventHandler Offline;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -110,13 +110,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Signals when a peer node comes online within the peer mesh."
-  remarks: "An online peer node has at least one neighbor node within the peer mesh to which it is connected."
+  summary: "当对等节点处于联机状态等网格中，用信号通知。"
+  remarks: "联机的对等节点连接到的对等网格中具有至少一个邻居节点。"
   syntax:
     content: public event EventHandler Online;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -132,17 +132,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets the network port on which the peer node is listening."
+  summary: "获取对等节点所侦听的网络端口。"
   syntax:
     content: public int Port { get; }
     return:
       type: System.Int32
-      description: "<xref:System.Int32> that specifies the network port on which the peer node is listening."
+      description: "<xref:System.Int32>它指定对等节点所侦听的网络端口。</xref:System.Int32>"
   overload: System.ServiceModel.PeerNode.Port*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No channel is open for listening."
+    description: "通道不处于打开状态侦听。"
   platform:
   - net462
 - uid: System.ServiceModel.PeerNode.RefreshConnection
@@ -157,7 +157,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Refreshes the connection with the peer mesh."
+  summary: "刷新与对等网格的连接。"
   syntax:
     content: public void RefreshConnection ();
     parameters: []
@@ -165,19 +165,19 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No channel is open for listening."
+    description: "通道不处于打开状态侦听。"
   - type: System.TimeoutException
     commentId: T:System.TimeoutException
-    description: "The refresh operation timed out."
+    description: "刷新操作超时。"
   - type: System.ServiceModel.CommunicationException
     commentId: T:System.ServiceModel.CommunicationException
-    description: "A network error occurred during the refresh attempt."
+    description: "尝试刷新时出现网络错误。"
   - type: System.ServiceModel.CommunicationObjectAbortedException
     commentId: T:System.ServiceModel.CommunicationObjectAbortedException
-    description: "The connection aborted during the refresh attempt."
+    description: "在尝试刷新期间中止连接。"
   - type: System.ServiceModel.CommunicationObjectFaultedException
     commentId: T:System.ServiceModel.CommunicationObjectFaultedException
-    description: "The connection faulted during the refresh attempt."
+    description: "连接尝试刷新时出错。"
   platform:
   - net462
 - uid: System.ServiceModel.PeerNode.ToString
@@ -192,13 +192,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Provides a string representation of a peer node."
+  summary: "提供的字符串表示形式的对等节点。"
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "<xref:System.String> value that contains the mesh ID of the peer node if the mesh ID is set; otherwise, it returns the type."
+      description: "<xref:System.String>包含对等节点的网络 ID，如果设置了网格 ID; 的值否则，它返回的类型。</xref:System.String>"
   overload: System.ServiceModel.PeerNode.ToString*
   exceptions: []
   platform:
