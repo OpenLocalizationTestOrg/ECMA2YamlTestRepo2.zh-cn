@@ -12,8 +12,8 @@ items:
   nameWithType: MessageProtectionOrder
   fullName: System.ServiceModel.Security.MessageProtectionOrder
   type: Enum
-  summary: "Specifies the order of operations that protect a message."
-  remarks: "This enumeration is used with the <xref:System.ServiceModel.Channels.AsymmetricSecurityBindingElement.MessageProtectionOrder%2A?displayProperty=fullName> property of the <xref:System.ServiceModel.Channels.AsymmetricSecurityBindingElement> and the <xref:System.ServiceModel.Channels.SymmetricSecurityBindingElement.MessageProtectionOrder%2A?displayProperty=fullName> property of the <xref:System.ServiceModel.Channels.SymmetricSecurityBindingElement> classes.       If a message is vulnerable to a digest attack (for example, if the message is short or the entropy is low), you should use the SignBeforeEncryptAndEncryptSignature or EncryptBeforeSign option. (*Entropy* is random data provided by a server, a client, or both, and is used to create a shared key for encrypting and decrypting data.)      ## What Is Ordered?    [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] offers three different protection levels that determine how messages are secured using SOAP message security. The default is SignBeforeEncryptAndEncryptSignature. This setting first signs the message, encrypts the message body, and then encrypts the XML signature. This reduces the likelihood of a successful cryptographic guessing attack against the signature.       However, using the default has performance implications. In effect, there is a tradeoff of performance for increased security. Encrypting the signature can decrease performance between 10 percent and 40 percent. If the data content of the message is of low value, and performance throughput is more significant, use SignBeforeEncrypt. With this setting, the signature digest is sent in clear text, and thus the message is more vulnerable to guess-and-verify attacks on low entropy.      ## Custom Bindings Only    To change the `MessageProtectionOrder` property requires the creation of a custom security binding. For more information about creating custom bindings, see [Creating User-Defined Bindings](~/add/includes/ajax-current-ext-md.md). For more information about creating a custom binding for a specific authentication mode, see [How to: Create a SecurityBindingElement for a Specified Authentication Mode](~/add/includes/ajax-current-ext-md.md)."
+  summary: "指定保护消息的操作的顺序。"
+  remarks: "此枚举用于<xref:System.ServiceModel.Channels.AsymmetricSecurityBindingElement.MessageProtectionOrder%2A?displayProperty=fullName>属性<xref:System.ServiceModel.Channels.AsymmetricSecurityBindingElement>和<xref:System.ServiceModel.Channels.SymmetricSecurityBindingElement.MessageProtectionOrder%2A?displayProperty=fullName>属性<xref:System.ServiceModel.Channels.SymmetricSecurityBindingElement>类。</xref:System.ServiceModel.Channels.SymmetricSecurityBindingElement> </xref:System.ServiceModel.Channels.SymmetricSecurityBindingElement.MessageProtectionOrder%2A?displayProperty=fullName> </xref:System.ServiceModel.Channels.AsymmetricSecurityBindingElement> </xref:System.ServiceModel.Channels.AsymmetricSecurityBindingElement.MessageProtectionOrder%2A?displayProperty=fullName>       如果消息容易受到摘要攻击 （例如，如果消息很短或平均信息量较低），应使用为 SignBeforeEncryptAndEncryptSignature 或 EncryptBeforeSign 选项。 (*平均信息量*是由服务器、 客户端，或同时，提供的随机数据，用于创建共享的密钥用于加密和解密数据。)     # # 哪些内容进行排序？    [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)]提供三个不同的保护级别，确定消息如何使用 SOAP 消息安全保护。 默认值为 SignBeforeEncryptAndEncryptSignature。 此设置首先签名消息，加密消息正文，然后加密 XML 签名。 这减少了对该签名了成功加密猜测攻击的可能性。       但是，使用默认值对性能产生影响。 实际上，是性能的为了提高安全性打折扣。 加密签名可以降低 10%到 40%的性能。 如果消息的数据内容为低的值，并且性能吞吐量更重要，则使用 SignBeforeEncrypt。 使用此设置，签名摘要将以明文形式发送，因此该消息更易受到低平均信息量的猜测和验证攻击。      ## 自定义绑定仅对更改`MessageProtectionOrder`属性需要创建自定义安全绑定。 有关创建自定义绑定的详细信息，请参阅[创建用户定义绑定](~/add/includes/ajax-current-ext-md.md)。 有关创建自定义绑定的特定身份验证模式的详细信息，请参阅[如何︰ 为指定的身份验证模式创建 SecurityBindingElement](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following example creates a <xref:System.ServiceModel.Channels.SymmetricSecurityBindingElement> element and sets its <xref:System.ServiceModel.Channels.SymmetricSecurityBindingElement.MessageProtectionOrder%2A> property to SignBeforeEncrypt.  \n  \n [!code-vb[c_CustomBinding#3](~/add/codesnippet/visualbasic/t-system.servicemodel.se_8_1.vb)]\n [!code-cs[c_CustomBinding#3](~/add/codesnippet/csharp/t-system.servicemodel.se_8_1.cs)]"
   syntax:
@@ -34,12 +34,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Security
-  summary: "Specifies that the SOAP message is encrypted before a digital signature is generated for the SOAP message."
+  summary: "指定之前为 SOAP 消息生成数字签名的加密 SOAP 消息。"
   syntax:
     content: EncryptBeforeSign
     return:
       type: System.ServiceModel.Security.MessageProtectionOrder
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -55,12 +55,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Security
-  summary: "Specifies that a digital signature is generated for the SOAP message before any portion of the SOAP message is encrypted, but the digital signature is not encrypted."
+  summary: "指定之前加密 SOAP 消息的任何部分，但不是加密数字签名的 SOAP 消息生成数字签名。"
   syntax:
     content: SignBeforeEncrypt
     return:
       type: System.ServiceModel.Security.MessageProtectionOrder
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -76,12 +76,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Security
-  summary: "Specifies that a digital signature is generated for the SOAP message before any portion of the SOAP message is encrypted, and the digital signature is encrypted."
+  summary: "指定之前加密 SOAP 消息的任何部分，并且加密数字签名的 SOAP 消息生成数字签名。"
   syntax:
     content: SignBeforeEncryptAndEncryptSignature
     return:
       type: System.ServiceModel.Security.MessageProtectionOrder
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462

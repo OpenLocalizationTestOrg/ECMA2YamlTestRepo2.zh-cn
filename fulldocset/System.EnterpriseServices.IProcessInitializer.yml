@@ -11,8 +11,8 @@ items:
   nameWithType: IProcessInitializer
   fullName: System.EnterpriseServices.IProcessInitializer
   type: Interface
-  summary: "Supports methods that can be called when a COM component starts up or shuts down."
-  remarks: "Implement the IProcessInitializer interface methods on serviced components if you want to run initialization or shutdown code when a server process (Dllhost.exe) starts up or shuts down, respectively.       COM+ provides `Startup` and `Shutdown` events when Dllhost.exe starts and ends. This feature enables any COM+ components that are installed in a COM+ server application (referred to as server components hereafter) to run custom initialization and clean up code. An instance of each component that implements the IProcessInitializer interface will be created and stored for the duration of the process, and called on the interface methods during startup and shutdown. When implemented on a <xref:System.EnterpriseServices.ServicedComponent>, during registration of the component, the `InitializesServerApplication` parameter in the `COMAdminCatalogObject` within the Components collection is set to `true`.       Using the `Startup` and `Shutdown` events, you can initialize resources, create connections, initialize shared data, and run cleanup code. However, you must not access states that are specific to COM+ because instances of server components have not yet been created. In addition, the code in the `Startup` and `Shutdown` events should return as quickly as possible, because the system waits only 90 seconds for Dllhost.exe to prepare to accept activations after the system starts the process. If Dllhost.exe does not signal that it is ready within 90 seconds, the system ends the process; thus, all initialization processing needs to be completed within this time frame. Each server component that participates in initialization must support the IProcessInitializer interface. On DllHost.exe startup, COM+ creates all server components that requested this service, calls `QueryInterface` for the IProcessInitializer interface, and calls the <xref:System.EnterpriseServices.IProcessInitializer.Startup%2A> function. Similarly, when the DllHost.exe process is shut down, it calls the <xref:System.EnterpriseServices.IProcessInitializer.Shutdown%2A> function on those previously stored interface pointers."
+  summary: "支持的 COM 组件启动或关闭时可以调用的方法。"
+  remarks: "如果你想要时服务器进程 (Dllhost.exe) 启动或关闭，分别运行初始化或关闭代码，请在服务组件中实现 IProcessInitializer 接口方法。       COM + 提供`Startup`和`Shutdown`Dllhost.exe 开始和结束时的事件。 此功能允许任何安装在 COM + 服务器应用程序 （称为服务器组件以后） 来运行自定义初始化和清理代码的 COM + 组件。 将创建和存储的持续时间内的进程，并在启动和关闭过程中调用接口方法上实现 IProcessInitializer 接口的每个组件的实例。 在上实现时<xref:System.EnterpriseServices.ServicedComponent>，该组件，注册期间`InitializesServerApplication`中的参数`COMAdminCatalogObject`内组件集合设置为`true`。</xref:System.EnterpriseServices.ServicedComponent>       使用`Startup`和`Shutdown`事件，你可以初始化资源、 创建连接、 初始化共享数据，并运行清理代码。 但是，你不能访问不特定于 COM +，因为尚未创建的服务器组件实例的状态。 此外中的代码`Startup`和`Shutdown`事件应尽可能快地返回，因为系统等待 90 秒仅针对 Dllhost.exe 若要准备接受激活，则在系统启动过程。 如果 Dllhost.exe 不发出信号，就可以在 90 秒内，系统会结束该进程;因此，所有的初始化处理需要在此时限内完成。 参与初始化每个服务器组件必须支持 IProcessInitializer 接口。 在 DllHost.exe 启动 COM + 创建请求此服务，调用的所有服务器组件`QueryInterface`IProcessInitializer 接口，并调用<xref:System.EnterpriseServices.IProcessInitializer.Startup%2A>函数。</xref:System.EnterpriseServices.IProcessInitializer.Startup%2A> 同样，当 DllHost.exe 进程关闭的情况下，它将调用<xref:System.EnterpriseServices.IProcessInitializer.Shutdown%2A>函数对以前存储的接口指针。</xref:System.EnterpriseServices.IProcessInitializer.Shutdown%2A>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.Guid("1113f52d-dc7f-4943-aed6-88d04027e32a")]
@@ -35,8 +35,8 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Performs shutdown actions. Called when Dllhost.exe is shut down."
-  remarks: "Shutdown is not called during a failfast or other catastrophic shutdown events."
+  summary: "执行关闭操作。 当 Dllhost.exe 关闭时调用。"
+  remarks: "Failfast 或其他灾难性关闭事件过程中没有调用关闭。"
   syntax:
     content: public void Shutdown ();
     parameters: []
@@ -56,14 +56,14 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Performs initialization at startup. Called when Dllhost.exe is started."
-  remarks: "The object referenced by `punkProcessControl` implements an <xref:System.EnterpriseServices.IProcessInitControl> interface. <xref:System.EnterpriseServices.IProcessInitControl> supports the single method <xref:System.EnterpriseServices.IProcessInitControl.ResetInitializerTimeout%2A>.       The initialization code in Startup can call the <xref:System.EnterpriseServices.IProcessInitControl.ResetInitializerTimeout%2A>, with the time-out set equal to the number of seconds remaining before the startup of the component times out."
+  summary: "执行在启动时初始化。 启动 Dllhost.exe 时调用。"
+  remarks: "所引用的对象`punkProcessControl`实现<xref:System.EnterpriseServices.IProcessInitControl>接口。</xref:System.EnterpriseServices.IProcessInitControl> <xref:System.EnterpriseServices.IProcessInitControl>支持单个方法<xref:System.EnterpriseServices.IProcessInitControl.ResetInitializerTimeout%2A>.</xref:System.EnterpriseServices.IProcessInitControl.ResetInitializerTimeout%2A></xref:System.EnterpriseServices.IProcessInitControl>       中启动的初始化代码可以调用<xref:System.EnterpriseServices.IProcessInitControl.ResetInitializerTimeout%2A>，且超时的值将设置为等于在组件超时的启动之前剩余的秒数。</xref:System.EnterpriseServices.IProcessInitControl.ResetInitializerTimeout%2A>"
   syntax:
     content: public void Startup (object punkProcessControl);
     parameters:
     - id: punkProcessControl
       type: System.Object
-      description: "In Microsoft Windows XP, a pointer to the <xref uid=&quot;langword_csharp_IUnknown&quot; name=&quot;IUnknown&quot; href=&quot;&quot;></xref> interface of the COM component starting up. In Microsoft Windows 2000, this argument is always <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "在 Microsoft Windows XP 中，指向的指针<xref uid=&quot;langword_csharp_IUnknown&quot; name=&quot;IUnknown&quot; href=&quot;&quot;></xref>启动的 COM 组件的接口。 在 Microsoft Windows 2000 中，此自变量始终是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.EnterpriseServices.IProcessInitializer.Startup*
   exceptions: []
   platform:

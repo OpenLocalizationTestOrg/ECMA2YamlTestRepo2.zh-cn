@@ -13,8 +13,8 @@ items:
   nameWithType: SubsetMatchingMode
   fullName: System.Speech.Recognition.SubsetMatchingMode
   type: Enum
-  summary: "Enumerates values of subset matching mode."
-  remarks: "In System.Speech, you can construct a grammar that successfully recognizes a phrase even though only a subset of its contents is found in the audio input.       By default, a recognition engine requires an exact match against an entire phrase. The recognition engine can also match partial phrases according to parameters defined by a SubsetMatchingMode member used as an argument to the <xref:System.Speech.Recognition.GrammarBuilder.%23ctor%2A> or <xref:System.Speech.Recognition.SrgsGrammar.SrgsSubset.%23ctor%2A> constructors, or the <xref:System.Speech.Recognition.GrammarBuilder.Append%2A> method.       The following illustrates how each of the SubsetMatchingMode members affects recognition when used in a grammar that contains the phrase &quot;a car the truck a boat that plane&quot;.       **OrderedSubset**       This mode indicates that a subset of the phrase will be used to successfully recognize the entire phrase if the following are true:      -   One or more words in the phrase are recognized in the audio input.      -   The relative order of those recognized words is the same as in the phrase.      -   Matched words may consist of only prepositions and articles.       Adding the phrase &quot;a car the truck a boat that plane&quot; to a grammar using OrderedSubset mode produces the following result on recognition:      |**Input Phrase**|**Result**|   |----------------------|----------------|   |&quot;a car the truck a boat that plane&quot;|The entire phrase &quot;a car the truck a boat that plane&quot; is recognized.|   |&quot;a car the truck a boat&quot;|The entire phrase &quot;a car the truck a boat that plane&quot; is recognized.|   |&quot;a car the that plane&quot;|The entire phrase &quot;a car the truck a boat that plane&quot; is recognized. A recognized subset is not required to be a sequence of the original string.|   |&quot;a car the boat a truck that plane&quot;|Recognition is not successful. The words are out of order.|   |&quot;a the&quot;|The entire phrase &quot;a car the truck a boat that plane&quot; is recognized. Prepositions and articles are used for recognition.|       **OrderedSubsetContentRequired**       This mode indicates that a subset of the phrase will be used to successfully recognize the entire phrase if the following are true:      -   One or more words in the phrase are recognized in the audio input, and      -   The relative order of those recognized words is the same as in the phrase.      -   Matched words cannot consist of only prepositions and articles.       Adding the phrase &quot;a car the truck a boat that plane&quot; to a grammar using OrderedSubsetContentRequired mode produces the following result on recognition:      |**Input Phrase**|**Result**|   |----------------------|----------------|   |&quot;a car the truck a boat that plane&quot;|The entire phrase &quot;a car the truck a boat that plane&quot; is recognized.|   |&quot;a car the truck a boat&quot;|The entire phrase &quot;a car the truck a boat that plane&quot; is recognized.|   |&quot;a car the that plane&quot;|The entire phrase &quot;a car the truck a boat that plane&quot; is recognized. A recognized subset is not required to be a sequence of the original string.|   |&quot;a car the boat a truck that plane&quot;|Recognition is not successful. The words are out of order.|   |&quot;a the&quot;|Recognition is not successful.  Speech input must contain words other than articles and prepositions.|       **Subsequence:**       This mode indicates that a subset of the phrase will be used to successfully recognize the entire phrase if the following are true:      -   One or more words in the phrase are recognized in the audio input as a sequence of the phrase, and      -   The relative order of those recognized words is the same as in the phrase.      -   Matched words may consist of only prepositions and articles.       Adding the phrase &quot;a car the truck a boat that plane&quot; to a grammar using Subsequence mode produces the following result on recognition:      |**Input Phrase**|**Result**|   |----------------------|----------------|   |&quot;a car the truck a boat that plane&quot;|The entire phrase &quot;a car the truck a boat that plane&quot; is recognized.|   |&quot;a car the truck a boat&quot;|The entire phrase &quot;a car the truck a boat that plane&quot; is recognized.|   |&quot;a car the that plane&quot;|Recognition is not successful. A recognized subset is required to be a sequence of the original string.|   |&quot;a car the boat a truck that plane&quot;|Recognition is not successful. The words are out of order.|   |&quot;a the&quot;|The entire phrase &quot;a car the truck a boat that plane&quot; is recognized. Prepositions and articles are used for recognition.|       **SubsequenceContentRequired**       This mode indicates that a subset of the phrase will be used to successfully recognize the entire phrase if the following are true:      -   One or more words in the match string are recognized in the audio input as a sequence of the phrase.      -   Matched words cannot consist of only prepositions and articles.       Adding the phrase &quot;a car the truck a boat that plane&quot; to a grammar using SubsequenceContentRequired mode produces the following result on recognition:      |**Input Phrase**|**Result**|   |----------------------|----------------|   |&quot;a car the truck a boat that plane&quot;|The entire phrase &quot;a car the truck a boat that plane&quot; is recognized.|   |&quot;a car the truck a boat&quot;|The entire phrase &quot;a car the truck a boat that plane&quot; is recognized.|   |&quot;a car the that plane&quot;|Recognition is not successful. A recognized subset is required to be a sequence of the original string.|   |&quot;a car the boat a truck that plane&quot;|Recognition is not successful. The words are out of order.|   |&quot;a the&quot;|Recognition is not successful. Speech input must contain words other than articles and prepositions.|"
+  summary: "枚举值的匹配模式的子集。"
+  remarks: "在 System.Speech，您可以构造成功识别的短语，即使在音频的输入中找到其内容的一个子集语法。       默认情况下，识别引擎要求整个短语完全匹配。 识别引擎还可以匹配根据 SubsetMatchingMode 成员用作的自变量所定义的参数部分短语<xref:System.Speech.Recognition.GrammarBuilder.%23ctor%2A>或<xref:System.Speech.Recognition.SrgsGrammar.SrgsSubset.%23ctor%2A>构造函数，或<xref:System.Speech.Recognition.GrammarBuilder.Append%2A>方法。</xref:System.Speech.Recognition.GrammarBuilder.Append%2A> </xref:System.Speech.Recognition.SrgsGrammar.SrgsSubset.%23ctor%2A> </xref:System.Speech.Recognition.GrammarBuilder.%23ctor%2A>       下面显示了每个 SubsetMatchingMode 成员会识别包含短语语法中使用&quot;一辆汽车的平面的船舶卡车&quot;时的影响。       **OrderedSubset**此模式将指示该短语的子集将用于成功识别整个短语，如果满足以下条件:-在音频的输入中识别的短语中的一个或多个单词。      的这些可识别的单词相对顺序是与短语中的相同。      -匹配单词可能只能包含介词和文章。       将短语&quot;car 的平面的船舶卡车&quot;添加到使用 OrderedSubset 语法模式产生识别下面的结果: |**Input Phrase**|**Result**|  |----------------------|----------------|  |&quot;一辆汽车的平面的船舶卡车&quot;|识别整个短语&quot;car 的平面的船舶 truck&quot;。 |  |&quot;一辆汽车的船舶卡车&quot;|识别整个短语&quot;car 的平面的船舶 truck&quot;。 |  |&quot;一辆汽车的平面&quot;|整个短语&quot;car 的平面的船舶卡车&quot;将被识别。 识别的子集不需要是一串的原始字符串。 |  |&quot;一辆汽车的平面的卡车船&quot;|识别未成功。 单词是无序。 |  |&quot;&quot;|整个短语&quot;car 的平面的船舶卡车&quot;将被识别。 介词和文章将用于识别。 |      **OrderedSubsetContentRequired**此模式将指示该短语的子集将用于成功识别整个短语，如果满足以下条件:-在音频的输入中, 识别的短语中的一个或多个单词和-其中的相对顺序识别单词是与短语中的相同。      -匹配单词不能包含仅介词和文章。       将短语&quot;car 的平面的船舶卡车&quot;添加到使用 OrderedSubsetContentRequired 语法模式产生识别下面的结果: |**Input Phrase**|**Result**|  |----------------------|----------------|  |&quot;一辆汽车的平面的船舶卡车&quot;|识别整个短语&quot;car 的平面的船舶 truck&quot;。 |  |&quot;一辆汽车的船舶卡车&quot;|识别整个短语&quot;car 的平面的船舶 truck&quot;。 |  |&quot;一辆汽车的平面&quot;|整个短语&quot;car 的平面的船舶卡车&quot;将被识别。 识别的子集不需要是一串的原始字符串。 |  |&quot;一辆汽车的平面的卡车船&quot;|识别未成功。 单词是无序。 |  |&quot;&quot;|识别未成功。  语音输入必须包含文章和介词以外的单词。 |      **子序列︰**此模式将指示该短语的子集将用于成功识别整个短语，如果满足以下条件:-短语中的一个或多个单词在音频的输入中识别为这个短语︰ 的序列和-其中的相对顺序识别单词是与短语中的相同。      -匹配单词可能只能包含介词和文章。       使用子序列模式语法添加短语&quot;car 的平面的船舶卡车&quot;产生识别下面的结果: |**Input Phrase**|**Result**|  |----------------------|----------------|  |&quot;一辆汽车的平面的船舶卡车&quot;|识别整个短语&quot;car 的平面的船舶 truck&quot;。 |  |&quot;一辆汽车的船舶卡车&quot;|识别整个短语&quot;car 的平面的船舶 truck&quot;。 |  |&quot;一辆汽车的平面&quot;|识别未成功。 识别的子集需要为一系列的原始字符串。 |  |&quot;一辆汽车的平面的卡车船&quot;|识别未成功。 单词是无序。 |  |&quot;&quot;|整个短语&quot;car 的平面的船舶卡车&quot;将被识别。 介词和文章将用于识别。 |      **SubsequenceContentRequired**此模式将指示该短语的子集将用于成功识别整个短语，如果满足以下条件:-将匹配字符串中的一个或多个单词被认为是音频的输入中的短语序列。      -匹配单词不能包含仅介词和文章。       将短语&quot;car 的平面的船舶卡车&quot;添加到使用 SubsequenceContentRequired 语法模式产生识别下面的结果: |**Input Phrase**|**Result**|  |----------------------|----------------|  |&quot;一辆汽车的平面的船舶卡车&quot;|识别整个短语&quot;car 的平面的船舶 truck&quot;。 |  |&quot;一辆汽车的船舶卡车&quot;|识别整个短语&quot;car 的平面的船舶 truck&quot;。 |  |&quot;一辆汽车的平面&quot;|识别未成功。 识别的子集需要为一系列的原始字符串。 |  |&quot;一辆汽车的平面的卡车船&quot;|识别未成功。 单词是无序。 |  |&quot;&quot;|识别未成功。 语音输入必须包含文章和介词以外的单词。 |"
   example:
   - "Below is a test routine which generates four <xref:System.Speech.Recognition.Grammar> objects, using the same phrase, for each of the `SubsetMatchingModes`. These <xref:System.Speech.Recognition.Grammar> objects can then be tested.  \n  \n```  \nprivate void CreateSubsetMatchTest()   \n{  \n  foreach ( System.Speech.Recognition.SubsetMatchingMode mode   \n              in Enum.GetValues(typeof(System.Speech.Recognition.SubsetMatchingMode)))  \n  {  \n    GrammarBuilder gb = new GrammarBuilder(\"a car the truck a boat that plane\",mode);  \n    Grammar grammar = new Grammar(gb);  \n    grammar.Name = mode.ToString();  \n    grammar.Enabled=true;  \n    _recognizer.LoadGrammar(grammar);  \n  }  \n}  \n```"
   syntax:
@@ -35,12 +35,12 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Recognition
-  summary: "Indicates that subset matching mode is **OrderedSubset**."
+  summary: "指示该子集匹配模式是**OrderedSubset**。"
   syntax:
     content: OrderedSubset
     return:
       type: System.Speech.Recognition.SubsetMatchingMode
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -56,12 +56,12 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Recognition
-  summary: "Indicates that subset matching mode is **OrderedSubsetContentRequired**."
+  summary: "指示该子集匹配模式是**OrderedSubsetContentRequired**。"
   syntax:
     content: OrderedSubsetContentRequired
     return:
       type: System.Speech.Recognition.SubsetMatchingMode
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -77,12 +77,12 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Recognition
-  summary: "Indicates that subset matching mode is **Subsequence**."
+  summary: "指示该子集匹配模式是**子序列**。"
   syntax:
     content: Subsequence
     return:
       type: System.Speech.Recognition.SubsetMatchingMode
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -98,12 +98,12 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Recognition
-  summary: "Indicates that subset matching mode is **SubsequenceContentRequired**."
+  summary: "指示该子集匹配模式是**SubsequenceContentRequired**。"
   syntax:
     content: SubsequenceContentRequired
     return:
       type: System.Speech.Recognition.SubsetMatchingMode
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462

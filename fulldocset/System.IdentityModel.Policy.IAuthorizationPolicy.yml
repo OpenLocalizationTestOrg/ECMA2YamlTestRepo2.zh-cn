@@ -11,8 +11,8 @@ items:
   nameWithType: IAuthorizationPolicy
   fullName: System.IdentityModel.Policy.IAuthorizationPolicy
   type: Interface
-  summary: "Defines a set of rules for authorizing a user, given a set of claims."
-  remarks: "Implement the IAuthorizationPolicy interface to add or map one set of claims to another. An authorization policy examines a set of claims and adds additional claims based on the current set. For example, an authorization policy might evaluate a claim that contains the date of birth and add a claim that asserts that the user is over 21 years old and add an Over21 claim to the <xref:System.IdentityModel.Policy.EvaluationContext>.       Classes that implement the IAuthorizationPolicy interface do not authorize users, but they enable the <xref:System.ServiceModel.ServiceAuthorizationManager> class to do so. The <xref:System.ServiceModel.ServiceAuthorizationManager> calls the <xref:System.IdentityModel.Policy.IAuthorizationPolicy.Evaluate%2A> method for each authorization policy in effect. The <xref:System.IdentityModel.Policy.IAuthorizationPolicy.Evaluate%2A> method determines whether additional claims should be added for the user, based on the current context. An authorization policy&quot;s <xref:System.IdentityModel.Policy.IAuthorizationPolicy.Evaluate%2A> method may be called multiple times, as claims are added to the <xref:System.IdentityModel.Policy.EvaluationContext> by other authorization policies. When all authorization policies in effect are done, the <xref:System.ServiceModel.ServiceAuthorizationManager> class makes authorization decisions based upon the final set of claims. The <xref:System.ServiceModel.ServiceAuthorizationManager> class then creates an <xref:System.IdentityModel.Policy.AuthorizationContext> that contains an immutable set of claims that reflects these authorization decisions."
+  summary: "定义一组授权用户，给定一组声明的规则。"
+  remarks: "实现 IAuthorizationPolicy 接口，可添加或映射到另一个声明的一组。 授权策略检查声明的一组并添加基于当前的组的其他声明。 例如，授权策略可能评估包含出生日期的声明和添加断言用户是超过 21 岁的声明并添加到<xref:System.IdentityModel.Policy.EvaluationContext>。</xref:System.IdentityModel.Policy.EvaluationContext> Over21 声明       实现 IAuthorizationPolicy 接口的类进行授权用户，但它们可令<xref:System.ServiceModel.ServiceAuthorizationManager>类来执行此操作。</xref:System.ServiceModel.ServiceAuthorizationManager> <xref:System.ServiceModel.ServiceAuthorizationManager>调用<xref:System.IdentityModel.Policy.IAuthorizationPolicy.Evaluate%2A>每个有效授权策略的方法。</xref:System.IdentityModel.Policy.IAuthorizationPolicy.Evaluate%2A> </xref:System.ServiceModel.ServiceAuthorizationManager> <xref:System.IdentityModel.Policy.IAuthorizationPolicy.Evaluate%2A>方法确定是否应为用户，根据当前上下文中添加其他声明。</xref:System.IdentityModel.Policy.IAuthorizationPolicy.Evaluate%2A> 授权策略<xref:System.IdentityModel.Policy.IAuthorizationPolicy.Evaluate%2A>方法可能会多次调用，如声明添加到<xref:System.IdentityModel.Policy.EvaluationContext>由其他授权策略。</xref:System.IdentityModel.Policy.EvaluationContext> </xref:System.IdentityModel.Policy.IAuthorizationPolicy.Evaluate%2A> 当所有授权策略实际上都完时，<xref:System.ServiceModel.ServiceAuthorizationManager>类，使授权决策基于最终的声明集。</xref:System.ServiceModel.ServiceAuthorizationManager> <xref:System.ServiceModel.ServiceAuthorizationManager>类会创建<xref:System.IdentityModel.Policy.AuthorizationContext>包含反映这些授权决定的不可变声明集。</xref:System.IdentityModel.Policy.AuthorizationContext> </xref:System.ServiceModel.ServiceAuthorizationManager>"
   example:
   - >-
     [!code-cs[C_IAuthorizationPolicy#1](~/add/codesnippet/csharp/t-system.identitymodel.p_1_1.cs)]
@@ -35,8 +35,8 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Policy
-  summary: "Evaluates whether a user meets the requirements for this authorization policy."
-  remarks: "> [!NOTE] >  Implementers of the <xref:System.IdentityModel.Policy.IAuthorizationPolicy> interface should expect the Evaluate method to be called multiple times by different threads.       Implementers of the <xref:System.IdentityModel.Policy.IAuthorizationPolicy> interface can use the `state` parameter to track state between calls to the Evaluate method. If a state object is set inside a given call to the Evaluate method, the same object instance is passed to each and every subsequent call to the Evaluate method in the current evaluation process."
+  summary: "评估用户是否符合此授权策略的要求。"
+  remarks: "> [!NOTE]1> 的实施者<xref:System.IdentityModel.Policy.IAuthorizationPolicy>接口应该会多次调用不同的线程的计算方法。</xref:System.IdentityModel.Policy.IAuthorizationPolicy>       实现者<xref:System.IdentityModel.Policy.IAuthorizationPolicy>接口可以使用`state`参数评估方法的调用之间跟踪状态。</xref:System.IdentityModel.Policy.IAuthorizationPolicy> 如果评估方法的给定调用中设置的状态对象，则相同的对象实例传递给当前评估过程中的评估方法的每个后续调用。"
   example:
   - >-
     [!code-cs[C_IAuthorizationPolicy#2](~/add/codesnippet/csharp/b64090c9-1ef7-4f2c-956c-_1.cs)]
@@ -46,13 +46,13 @@ items:
     parameters:
     - id: evaluationContext
       type: System.IdentityModel.Policy.EvaluationContext
-      description: "An <xref href=&quot;System.IdentityModel.Policy.EvaluationContext&quot;></xref> that contains the claim set that the authorization policy evaluates."
+      description: "<xref href=&quot;System.IdentityModel.Policy.EvaluationContext&quot;> </xref> ，其中包含授权策略所评估的声明集。"
     - id: state
       type: System.Object
-      description: "A <xref:System.Object>, passed by reference that represents the custom state for this authorization policy."
+      description: "A <xref:System.Object>，传递的引用，它表示此授权策略的自定义状态。</xref:System.Object>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the Evaluate method for this authorization policy must be called if additional claims are added by other authorization policies to <code>evaluationContext</code>; otherwise, <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to state no additional evaluation is required by this authorization policy."
+      description: "<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>到其他授权策略添加其他声明时，如果必须调用此授权策略的评估方法<code> evaluationContext </code>; 否则为<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>到此授权策略不的需要任何其他评估。"
   overload: System.IdentityModel.Policy.IAuthorizationPolicy.Evaluate*
   exceptions: []
   platform:
@@ -69,12 +69,12 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Policy
-  summary: "Gets a claim set that represents the issuer of the authorization policy."
+  summary: "获取一个表示授权策略颁发者的声明集。"
   syntax:
     content: public System.IdentityModel.Claims.ClaimSet Issuer { get; }
     return:
       type: System.IdentityModel.Claims.ClaimSet
-      description: "A <xref href=&quot;System.IdentityModel.Claims.ClaimSet&quot;></xref> that represents the issuer of the authorization policy."
+      description: "A <xref href=&quot;System.IdentityModel.Claims.ClaimSet&quot;> </xref>表示的授权策略颁发者。"
   overload: System.IdentityModel.Policy.IAuthorizationPolicy.Issuer*
   exceptions: []
   platform:

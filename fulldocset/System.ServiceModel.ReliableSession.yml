@@ -13,8 +13,8 @@ items:
   nameWithType: ReliableSession
   fullName: System.ServiceModel.ReliableSession
   type: Class
-  summary: "Provides convenient access to the properties of a reliable session binding element that are available when using one of the system-provided bindings."
-  remarks: "The properties contained in the ReliableSession class are the subset of those contained in the <xref:System.ServiceModel.Channels.ReliableSessionBindingElement> that are accessible from a predefined binding. This subset consists of the <xref:System.ServiceModel.ReliableSession.InactivityTimeout%2A> and <xref:System.ServiceModel.ReliableSession.Ordered%2A> properties. The ReliableSession class references the same objects as does the <xref:System.ServiceModel.Channels.ReliableSessionBindingElement>, so changing the value of one changes the value of the other too. This class gathers these two properties of reliable session binding element together for better discoverability."
+  summary: "提供对可靠会话绑定元素时使用的系统提供绑定之一，可用的属性的便捷访问。"
+  remarks: "包含在 ReliableSession 类中的属性是中包含的子集<xref:System.ServiceModel.Channels.ReliableSessionBindingElement>访问从预定义的绑定。</xref:System.ServiceModel.Channels.ReliableSessionBindingElement> 此子集组成<xref:System.ServiceModel.ReliableSession.InactivityTimeout%2A>和<xref:System.ServiceModel.ReliableSession.Ordered%2A>属性。</xref:System.ServiceModel.ReliableSession.Ordered%2A> </xref:System.ServiceModel.ReliableSession.InactivityTimeout%2A> ReliableSession 类引用相同的对象<xref:System.ServiceModel.Channels.ReliableSessionBindingElement>，因此更改其中一个的值也会更改另一个的值。</xref:System.ServiceModel.Channels.ReliableSessionBindingElement> 此类将可靠会话绑定元素组合在一起以更好地可发现性这两个属性。"
   example:
   - "The following example shows how to create a new reliable session, and access and change the property values of that session. The ReliableSession class allows you to write:  \n  \n [!code-cs[UEReliableSession#1](~/add/codesnippet/csharp/t-system.servicemodel.re_0_1.cs)]\n [!code-vb[UEReliableSession#1](~/add/codesnippet/visualbasic/t-system.servicemodel.re_0_1.vb)]"
   syntax:
@@ -37,7 +37,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.ReliableSession&quot;></xref> class."
+  summary: "初始化的新实例<xref href=&quot;System.ServiceModel.ReliableSession&quot;></xref>类。"
   syntax:
     content: public ReliableSession ();
     parameters: []
@@ -57,7 +57,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.ReliableSession&quot;></xref> class from a reliable session binding element."
+  summary: "初始化的新实例<xref href=&quot;System.ServiceModel.ReliableSession&quot;></xref>从可靠会话绑定元素的类。"
   remarks: ''
   example:
   - >-
@@ -68,7 +68,7 @@ items:
     parameters:
     - id: reliableSessionBindingElement
       type: System.ServiceModel.Channels.ReliableSessionBindingElement
-      description: "The <xref href=&quot;System.ServiceModel.Channels.ReliableSessionBindingElement&quot;></xref> whose property values are used to initialize the reliable session."
+      description: "<xref href=&quot;System.ServiceModel.Channels.ReliableSessionBindingElement&quot;> </xref>其属性值用于初始化可靠会话。"
   overload: System.ServiceModel.ReliableSession.#ctor*
   exceptions:
   - type: System.ArgumentNullException
@@ -88,8 +88,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets an interval of time that a service can remain inactive before closing."
-  remarks: "The property gets and sets the value of the <xref:System.ServiceModel.Channels.ReliableSessionBindingElement.InactivityTimeout%2A> property.       Activity on a channel is defined as receiving an application or infrastructure message. The inactivity timeout property controls the maximum amount of time to keep an inactive session alive. If more than the InactivityTimeout specified time interval passes with no activity, the session is aborted by the infrastructure and the channel faults. The reliable session is torn down unilaterally.       If the sending application has no messages to send then the reliable session is normally not faulted because of inactivity; instead a keep-alive mechanism keeps the session active indefinitely. Note that the dispatcher could independently abort the reliable session if no application messages are sent or received. Thus, the inactivity timeout typically expires if network conditions are such that no messages of any sort are received or if there is a failure on the sender.       Setting this timeout prevents the server from holding onto a security session if the client does not close it. If the security session has not received a message for the inactivity interval of time, it is closed by the server. This mitigates a potential denial of service attack.       When using a reliable session, there are two different inactivity timers that must be satisfied to keep the connection alive. If either of these inactivity timers goes off, then the connection is dropped.      -   The first inactivity timer is on the reliable session and is called the InactivityTimeout. This inactivity timer fires if no messages, either application or infrastructure, are received within the timeout period. An infrastructure message is a message that is generated for the purpose of one of the protocols in the channel stack, such as a keep alive or an acknowledgment, rather than containing application data.      -   The second inactivity timer is on the service and uses the <xref:System.ServiceModel.Channels.Binding.ReceiveTimeout%2A> setting of the binding. This inactivity timer fires if no application messages are received within the timeout period.       Since the connection is dropped if either inactivity timer fires, increasing InactivityTimeout once it is greater than <xref:System.ServiceModel.Channels.Binding.ReceiveTimeout%2A> has no effect. The default for both of these timeouts is 10 minutes, so you always have to increase both of them to make a difference when using a reliable session."
+  summary: "获取或设置的服务保持在关闭前处于非活动状态的时间间隔。"
+  remarks: "属性会获取和设置的值<xref:System.ServiceModel.Channels.ReliableSessionBindingElement.InactivityTimeout%2A>属性。</xref:System.ServiceModel.Channels.ReliableSessionBindingElement.InactivityTimeout%2A>       通道上的活动定义为接收应用程序或基础结构消息。 非活动超时属性控制保持非活动会话存在的最大次数。 如果多个 InactivityTimeout 指定的时间间隔后仍没有活动，将会中止会话，基础结构且通道会出错。 可靠会话是遭到单方面撤销。       如果发送应用程序没有要发送然后可靠会话的消息通常不会出错由于处于非活动状态;而是保持活动状态的机制会让会话活动无限期。 请注意，是否发送或接收任何应用程序消息，调度程序可以单独中止可靠会话。 因此，非活动超时通常会过期如果网络状况为未收到任何消息的任何排序或如果发送方失败。       将设置此超时可防止服务器占用安全会话，如果客户端不会关闭它。 如果安全会话处于非活动状态的时间间隔未收到一条消息，关闭服务器。 这样可降低潜在拒绝服务攻击。       在使用可靠会话时，两个不同的非活动计时器，必须满足才能使连接处于活动状态。 如果任一非活动计时器结束计时，则断开连接。      的第一个非活动计时器是可靠会话，并且调用了 InactivityTimeout。 如果在超时期限内没有收到任何消息，应用程序或基础结构，将此非活动计时器激发。 基础结构消息是为了通道堆栈，如保持活动状态的协议之一或确认，而不是包含应用程序数据生成的消息。      的第二个非活动计时器在服务上，使用<xref:System.ServiceModel.Channels.Binding.ReceiveTimeout%2A>绑定的设置。</xref:System.ServiceModel.Channels.Binding.ReceiveTimeout%2A> 如果在超时期限内没有收到任何应用程序消息，此非活动计时器将激发。       由于任一非活动计时器激发都会断开连接，因此单纯增大 InactivityTimeout 大于后<xref:System.ServiceModel.Channels.Binding.ReceiveTimeout%2A>不起作用。</xref:System.ServiceModel.Channels.Binding.ReceiveTimeout%2A> 这两个这些超时的默认值是 10 分钟，因此你始终必须增大这两个使用可靠会话时，会起作用。"
   example:
   - >-
     [!code-cs[UEReliableSession#2](~/add/codesnippet/csharp/p-system.servicemodel.re_0_1.cs)]
@@ -98,12 +98,12 @@ items:
     content: public TimeSpan InactivityTimeout { get; set; }
     return:
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies the interval of time that a service remains inactive before closing. The default value is 10 minutes."
+      description: "<xref:System.TimeSpan>，它指定的服务保持在关闭前处于非活动状态的时间间隔。</xref:System.TimeSpan> 默认值为 10 分钟。"
   overload: System.ServiceModel.ReliableSession.InactivityTimeout*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to zero."
+    description: "设置的值小于或等于零。"
   platform:
   - net462
 - uid: System.ServiceModel.ReliableSession.Ordered
@@ -118,8 +118,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets a value that indicates whether message delivery must preserve the order in which messages are sent."
-  remarks: "The property gets and sets the value of the <xref:System.ServiceModel.Channels.ReliableSessionBindingElement.Ordered%2A> property."
+  summary: "获取或设置一个值，该值指示消息传递是否必须保持一致发送消息的顺序。"
+  remarks: "属性会获取和设置的值<xref:System.ServiceModel.Channels.ReliableSessionBindingElement.Ordered%2A>属性。</xref:System.ServiceModel.Channels.ReliableSessionBindingElement.Ordered%2A>"
   example:
   - >-
     [!code-cs[UEReliableSession#2](~/add/codesnippet/csharp/p-system.servicemodel.re_1_1.cs)]
@@ -128,7 +128,7 @@ items:
     content: public bool Ordered { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if messages must be delivered in the order in which they are sent; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default value is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果必须将消息传递在其中发送; 顺序否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   overload: System.ServiceModel.ReliableSession.Ordered*
   exceptions: []
   platform:

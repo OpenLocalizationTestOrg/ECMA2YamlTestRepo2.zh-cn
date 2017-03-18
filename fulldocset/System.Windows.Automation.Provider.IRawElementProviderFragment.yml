@@ -15,8 +15,8 @@ items:
   nameWithType: IRawElementProviderFragment
   fullName: System.Windows.Automation.Provider.IRawElementProviderFragment
   type: Interface
-  summary: "Exposes methods and properties on [!INCLUDE[TLA#tla_ui](~/add/includes/tlasharptla-ui-md.md)] elements that are part of a structure more than one level deep, such as a list box or a list item. Implemented by UI Automation providers."
-  remarks: "The root node of the fragment must support the <xref:System.Windows.Automation.Provider.IRawElementProviderFragmentRoot> interface, which inherits from IRawElementProviderFragment."
+  summary: "在上公开方法和属性[!INCLUDE[TLA#tla_ui](~/add/includes/tlasharptla-ui-md.md)]是多个结构的一部分的元素级别深，例如列表框或列表项。 由 UI 自动化提供程序实现。"
+  remarks: "片段的根节点必须支持<xref:System.Windows.Automation.Provider.IRawElementProviderFragmentRoot>接口，继承自 IRawElementProviderFragment。</xref:System.Windows.Automation.Provider.IRawElementProviderFragmentRoot>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -42,15 +42,15 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Gets the bounding rectangle of this element."
-  remarks: "No clipping is required if the element is partly obscured or partly off-screen. The <xref:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsOffscreen%2A> property should be set to indicate whether the rectangle is actually visible.       Not all points within the bounding rectangle are necessarily clickable."
+  summary: "获取此元素的边框。"
+  remarks: "如果该元素已部分模糊或位于屏幕之外，没有剪辑是必需的。 <xref:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsOffscreen%2A>应设置属性以指示矩形是否实际可见。</xref:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsOffscreen%2A>       边界矩形中的不是所有点都是一定可单击。"
   example:
   - "In the following example code, the internal state of the bounding rectangle is kept in a <xref:System.Drawing.Rectangle?displayProperty=fullName>, which is converted to a <xref:System.Windows.Rect?displayProperty=fullName> before being returned.  \n  \n [!code-vb[UIAFragmentProvider_snip#104](~/add/codesnippet/visualbasic/UIAFragmentProviderVB/ListItemFragment.vb#104)]\n [!code-cs[UIAFragmentProvider_snip#104](~/add/codesnippet/csharp/UIAFragmentProvider_snip.ElementProvider/ListItemFragment.cs#104)]"
   syntax:
     content: public System.Windows.Rect BoundingRectangle { get; }
     return:
       type: System.Windows.Rect
-      description: "The bounding rectangle, in screen coordinates."
+      description: "在屏幕坐标的边界矩形。"
   overload: System.Windows.Automation.Provider.IRawElementProviderFragment.BoundingRectangle*
   exceptions: []
   platform:
@@ -67,15 +67,15 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Retrieves the root node of the fragment."
-  remarks: "A provider that implements <xref:System.Windows.Automation.Provider.IRawElementProviderFragmentRoot> should return itself."
+  summary: "检索片段的根节点。"
+  remarks: "实现的提供程序<xref:System.Windows.Automation.Provider.IRawElementProviderFragmentRoot>应该返回其自身。</xref:System.Windows.Automation.Provider.IRawElementProviderFragmentRoot>"
   example:
   - "The following code example shows an implementation for an element in a fragment, such as a list item within a list box.  \n  \n [!code-vb[UIAFragmentProvider_snip#105](~/add/codesnippet/visualbasic/UIAFragmentProviderVB/ListItemFragment.vb#105)]\n [!code-cs[UIAFragmentProvider_snip#105](~/add/codesnippet/csharp/UIAFragmentProvider_snip.ElementProvider/ListItemFragment.cs#105)]"
   syntax:
     content: public System.Windows.Automation.Provider.IRawElementProviderFragmentRoot FragmentRoot { get; }
     return:
       type: System.Windows.Automation.Provider.IRawElementProviderFragmentRoot
-      description: "The root node."
+      description: "根节点中。"
   overload: System.Windows.Automation.Provider.IRawElementProviderFragment.FragmentRoot*
   exceptions: []
   platform:
@@ -92,14 +92,14 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Retrieves an array of fragment roots that are embedded in the [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] element tree rooted at the current element."
-  remarks: "This method returns an array of fragments only if the current element is hosting another [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] framework. Most providers return `null`."
+  summary: "检索数组中嵌入的片段根[!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)]元素树取得 root 权限的当前元素。"
+  remarks: "此方法返回数组的片段，仅当另一个承载当前元素[!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)]framework。 大多数提供程序返回`null`。"
   syntax:
     content: public System.Windows.Automation.Provider.IRawElementProviderSimple[] GetEmbeddedFragmentRoots ();
     parameters: []
     return:
       type: System.Windows.Automation.Provider.IRawElementProviderSimple[]
-      description: "An array of root fragments, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "数组的根片段或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Automation.Provider.IRawElementProviderFragment.GetEmbeddedFragmentRoots*
   exceptions: []
   platform:
@@ -116,8 +116,8 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Retrieves the runtime identifier of an element."
-  remarks: "Implementations should return `null` for an element that corresponds to a window handle. Other elements should return an array that contains <xref:System.Windows.Automation.Provider.AutomationInteropProvider.AppendRuntimeId>, followed by a value that is unique within the fragment.       It is the provider&quot;s responsibility to ensure uniqueness within the fragment; for example, each item in a list must be individually numbered. The [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] engine ensures that the identifier is unique among all instances, by translating the <xref:System.Windows.Automation.Provider.AutomationInteropProvider.AppendRuntimeId>value."
+  summary: "检索元素的运行时标识符。"
+  remarks: "实现应返回`null`对应的窗口句柄的元素。 其他元素应返回一个数组，包含<xref:System.Windows.Automation.Provider.AutomationInteropProvider.AppendRuntimeId>后, 跟一个值，在片段中是唯一。</xref:System.Windows.Automation.Provider.AutomationInteropProvider.AppendRuntimeId>       提供程序的负责确保片段; 中的唯一性例如，必须单独编号列表中的每个项。 [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)]引擎可确保该标识符将转换是在所有情况下，唯一<xref:System.Windows.Automation.Provider.AutomationInteropProvider.AppendRuntimeId>值。</xref:System.Windows.Automation.Provider.AutomationInteropProvider.AppendRuntimeId>"
   example:
   - "The following example code shows an implementation of this method by an element within a fragment, such as an item within a list box. The item has its own unique identifier within this instance of the fragment, and the <xref:System.Windows.Automation.Provider.AutomationInteropProvider.AppendRuntimeId> value ensures that the identifier returned by the method is unique in the [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] tree.  \n  \n [!code-vb[UIAFragmentProvider_snip#101](~/add/codesnippet/visualbasic/UIAFragmentProviderVB/ListItemFragment.vb#101)]\n [!code-cs[UIAFragmentProvider_snip#101](~/add/codesnippet/csharp/UIAFragmentProvider_snip.ElementProvider/ListItemFragment.cs#101)]"
   syntax:
@@ -125,7 +125,7 @@ items:
     parameters: []
     return:
       type: System.Int32[]
-      description: "The unique run-time identifier of the element."
+      description: "元素的唯一运行时标识符。"
   overload: System.Windows.Automation.Provider.IRawElementProviderFragment.GetRuntimeId*
   exceptions: []
   platform:
@@ -142,8 +142,8 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Retrieves the [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] element in a specified direction within the tree."
-  remarks: "The [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] server&quot;s implementations of this method define the structure of the [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] element tree.       Navigation must be supported upward to the parent, downward to the first and last child, and laterally to the next and previous siblings, as applicable.       Each child node has only one parent and must be placed in the chain of siblings reached from the parent by <xref:System.Windows.Automation.Provider.NavigateDirection> and <xref:System.Windows.Automation.Provider.NavigateDirection>.       Relationships among siblings must be identical in both directions: if A is B&quot;s <xref:System.Windows.Automation.Provider.NavigateDirection>, then B is A&quot;s <xref:System.Windows.Automation.Provider.NavigateDirection>. A <xref:System.Windows.Automation.Provider.NavigateDirection> has no <xref:System.Windows.Automation.Provider.NavigateDirection>, and a <xref:System.Windows.Automation.Provider.NavigateDirection> has no <xref:System.Windows.Automation.Provider.NavigateDirection>.       Fragment roots do not enable navigation to a parent or siblings; navigation among fragment roots is handled by the default window providers. Elements in fragments must navigate only to other elements within that fragment."
+  summary: "检索[!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)]指定方向在树中的元素。"
+  remarks: "[!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)]此方法的服务器的实现定义的结构[!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)]元素树。       导航必须支持向上为 parent，向下的下一步到第一个和最后一个子和横向和上一个同级节点，（如果适用）。       每个子节点有只能有一个父级，且必须放在由<xref:System.Windows.Automation.Provider.NavigateDirection>和<xref:System.Windows.Automation.Provider.NavigateDirection>。</xref:System.Windows.Automation.Provider.NavigateDirection></xref:System.Windows.Automation.Provider.NavigateDirection>到达从父节点的同级链中       同级之间的关系必须在两个方向相同︰ 如果 A 是 B 的<xref:System.Windows.Automation.Provider.NavigateDirection>，则 B 是 A 的<xref:System.Windows.Automation.Provider.NavigateDirection>.</xref:System.Windows.Automation.Provider.NavigateDirection> </xref:System.Windows.Automation.Provider.NavigateDirection> A<xref:System.Windows.Automation.Provider.NavigateDirection>未包含任何<xref:System.Windows.Automation.Provider.NavigateDirection>，并且<xref:System.Windows.Automation.Provider.NavigateDirection>有没有<xref:System.Windows.Automation.Provider.NavigateDirection>.</xref:System.Windows.Automation.Provider.NavigateDirection> </xref:System.Windows.Automation.Provider.NavigateDirection> </xref:System.Windows.Automation.Provider.NavigateDirection> </xref:System.Windows.Automation.Provider.NavigateDirection>       片段根不支持导航到父级或同级;默认窗口提供程序由处理各片段根之间的导航。 片段中的元素必须只能导航到该片段中的其他元素。"
   example:
   - "The following example code shows the implementation of Navigate by a fragment root that has a single child element. Because the implementing element is a fragment root, it does not enable navigation to a parent element or sibling elements.  \n  \n [!code-cs[UIAProvider_snip#105](~/add/codesnippet/csharp/UIAProvider/FragmentRoot.cs#105)]\n [!code-vb[UIAProvider_snip#105](~/add/codesnippet/visualbasic/UIAProviderVB/FragmentRoot.vb#105)]  \n  \n The following example shows an implementation by a fragment that represents a single item within a list box. In this case, the element enables navigation to its parent and siblings, but not to any children.  \n  \n [!code-vb[UIAFragmentProvider_snip#103](~/add/codesnippet/visualbasic/UIAFragmentProviderVB/ListItemFragment.vb#103)]\n [!code-cs[UIAFragmentProvider_snip#103](~/add/codesnippet/csharp/UIAFragmentProvider_snip.ElementProvider/ListItemFragment.cs#103)]"
   syntax:
@@ -151,10 +151,10 @@ items:
     parameters:
     - id: direction
       type: System.Windows.Automation.Provider.NavigateDirection
-      description: "The direction in which to navigate."
+      description: "在其中导航方向。"
     return:
       type: System.Windows.Automation.Provider.IRawElementProviderFragment
-      description: "The element in the specified direction, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there is no element in that direction"
+      description: "指定的方向中的元素或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果该方向没有任何元素"
   overload: System.Windows.Automation.Provider.IRawElementProviderFragment.Navigate*
   exceptions: []
   platform:
@@ -171,8 +171,8 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Sets the focus to this element."
-  remarks: "The [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] framework will ensure that the part of the interface that hosts this fragment is already focused before calling this method. Your implementation should update only its internal focus state; for example, by repainting a list item to show that it has the focus. If you prefer that [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] not focus the parent window, set the <xref:System.Windows.Automation.Provider.ProviderOptions> option in <xref:System.Windows.Automation.Provider.ProviderOptions> for the fragment root."
+  summary: "将焦点设置到此元素。"
+  remarks: "[!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] Framework 将确保承载此片段的接口的一部分调用此方法之前已获得焦点。 您的实现应更新仅其内部的焦点状态;例如，通过重新绘制要显示其具有焦点的列表项。 如果你愿意，[!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)]不专注父窗口，请将设置<xref:System.Windows.Automation.Provider.ProviderOptions>选项<xref:System.Windows.Automation.Provider.ProviderOptions>片段根。</xref:System.Windows.Automation.Provider.ProviderOptions> </xref:System.Windows.Automation.Provider.ProviderOptions>"
   syntax:
     content: public void SetFocus ();
     parameters: []

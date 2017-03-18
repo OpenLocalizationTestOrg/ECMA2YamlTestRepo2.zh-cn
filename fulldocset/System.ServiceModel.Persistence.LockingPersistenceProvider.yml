@@ -29,8 +29,8 @@ items:
   nameWithType: LockingPersistenceProvider
   fullName: System.ServiceModel.Persistence.LockingPersistenceProvider
   type: Class
-  summary: "The abstract base class from which all durable service persistence providers that implement locking are derived."
-  remarks: "In addition to persistence, the LockingPersistenceProvider class implements locking of service state data records. Methods that interact with persisted data (such as the `Load` method) have an optional parameter (`lockInstance`) that defines whether locks on the data in question are released or maintained."
+  summary: "抽象基类从中派生所有持久性服务永久性提供程序实现锁定的。"
+  remarks: "除了持久性，LockingPersistenceProvider 类实现服务状态数据记录的锁定。 与之交互的方法保存数据 (如`Load`方法) 具有一个可选参数 (`lockInstance`)，它定义是否发布或维护相关数据的锁。"
   syntax:
     content: >-
       [System.Obsolete("The WF3 types are deprecated.  Instead, please use the new WF4 types from System.Activities.*")]
@@ -63,13 +63,13 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, creates a new instance of the <xref href=&quot;System.ServiceModel.Persistence.LockingPersistenceProvider&quot;></xref> class, configured with the specified identity value."
+  summary: "在派生类中实现时创建的新实例<xref href=&quot;System.ServiceModel.Persistence.LockingPersistenceProvider&quot;></xref>类，使用指定的标识值配置。"
   syntax:
     content: protected LockingPersistenceProvider (Guid id);
     parameters:
     - id: id
       type: System.Guid
-      description: "The unique identifier to be associated with this persistence provider instance."
+      description: "为要与此永久性提供程序实例相关联的唯一标识符。"
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.#ctor*
   exceptions: []
   platform:
@@ -86,26 +86,26 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to create instance state information in the persistence store using the parameters. This method does not unlock the instance after saving the state information."
-  remarks: "This method calls into the <xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate%2A> method, which takes an additional parameter to determine whether the instance is unlocked. This method passes `false` as a value for this parameter to the calling method."
+  summary: "开始一个异步操作以在持久性存储区中使用参数创建实例状态信息。 此方法不会在保存状态信息后进行解锁实例。"
+  remarks: "此方法调入<xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate%2A>方法，后者采用附加参数来确定实例是否为解锁。</xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate%2A> 此方法将传递`false`作为此参数为调用的方法的值。"
   syntax:
     content: public override IAsyncResult BeginCreate (object instance, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance whose state information is saved into the persistence store."
+      description: "其状态信息保存到持久性存储区的实例。"
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the operation must be completed without timing out."
+      description: "必须在其中完成该操作而不超时间隔。"
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation completes."
+      description: "在操作完成时接收通知的委托。"
     - id: state
       type: System.Object
-      description: "The state information associated with the asynchronous operation."
+      description: "与异步操作关联的状态信息。"
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "异步操作的状态。"
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate*
   exceptions: []
   platform:
@@ -122,28 +122,28 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to create instance state information in the persistence store using the parameters. This method unlocks the instance after saving the instance state if the value of the <code>unlockInstance</code> parameter is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+  summary: "开始一个异步操作以在持久性存储区中使用参数创建实例状态信息。 此方法如果保存实例状态后解除对该实例的值<code> unlockInstance </code>参数是<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   syntax:
     content: public abstract IAsyncResult BeginCreate (object instance, TimeSpan timeout, bool unlockInstance, AsyncCallback callback, object state);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance whose state information is saved into the persistence store."
+      description: "其状态信息保存到持久性存储区的实例。"
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the operation must be completed without timing out."
+      description: "必须在其中完成该操作而不超时间隔。"
     - id: unlockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance must be unlocked in the persistence store; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果在持久性存储区; 中的实例必须为解锁否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation completes."
+      description: "在操作完成时接收通知的委托。"
     - id: state
       type: System.Object
-      description: "The state information associated with the asynchronous operation."
+      description: "与异步操作关联的状态信息。"
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "异步操作的状态。"
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate*
   exceptions: []
   platform:
@@ -160,23 +160,23 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to load an instance based on state information in the persistence store using the parameters. This method does not lock the instance."
-  remarks: "This method calls into the <xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad%2A>, which takes an additional parameter that specifies whether the instance must be locked in the persistence store. This method passes `false` as a value for this parameter to the calling method."
+  summary: "开始一个异步操作以加载实例基于持久性存储区使用的参数中的状态信息。 此方法不会锁定该实例。"
+  remarks: "此方法调入<xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad%2A>，其采用附加参数，指定是否必须在持久性存储区中锁定实例。</xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad%2A> 此方法将传递`false`作为此参数为调用的方法的值。"
   syntax:
     content: public override IAsyncResult BeginLoad (TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the operation must be completed without timing out."
+      description: "必须在其中完成该操作而不超时间隔。"
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation completes."
+      description: "在操作完成时接收通知的委托。"
     - id: state
       type: System.Object
-      description: "The state information associated with the asynchronous operation."
+      description: "与异步操作关联的状态信息。"
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "异步操作的状态。"
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad*
   exceptions: []
   platform:
@@ -193,25 +193,25 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to load an instance based on state information in the persistence store using the parameters. This method locks the instance after loading the instance state if the value of the <code>lockInstance</code> parameter is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+  summary: "开始一个异步操作以加载实例基于持久性存储区使用的参数中的状态信息。 如果加载实例状态后，此方法锁定实例的值<code> lockInstance </code>参数是<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   syntax:
     content: public abstract IAsyncResult BeginLoad (TimeSpan timeout, bool lockInstance, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "An interval in which the operation must be completed before timing out."
+      description: "间隔在超时前必须在其中完成该操作。"
     - id: lockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance must be locked; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果必须锁定实例，则否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation completes."
+      description: "在操作完成时接收通知的委托。"
     - id: state
       type: System.Object
-      description: "The state information associated with the asynchronous operation."
+      description: "与异步操作关联的状态信息。"
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "异步操作的状态。"
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad*
   exceptions: []
   platform:
@@ -228,25 +228,25 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the beginning of the LoadIfChanged phase. The LoadIfChanged phase occurs when state data is loaded into the persistence provider from the persistence store and the state data in the persistence store has been changed. This method call does not lock the instance in the persistence store."
+  summary: "在派生类中实现时表示进入 loadifchanged 阶段开始。 进入 loadifchanged 阶段状态数据加载到永久性提供程序从持久性存储区，并且持久性存储区中的状态数据已更改时发生。 此方法调用不会锁定持久性存储区中的实例。"
   syntax:
     content: public override IAsyncResult BeginLoadIfChanged (TimeSpan timeout, object instanceToken, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this operation."
+      description: "时间段，永久性提供程序后将中止此操作。"
     - id: instanceToken
       type: System.Object
-      description: "The token returned by a previous <xref uid=&quot;langword_csharp_Create&quot; name=&quot;Create&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_Update&quot; name=&quot;Update&quot; href=&quot;&quot;></xref> method that represents the current state held by the caller."
+      description: "通过前一个返回的标记<xref uid=&quot;langword_csharp_Create&quot; name=&quot;Create&quot; href=&quot;&quot;></xref>或<xref uid=&quot;langword_csharp_Update&quot; name=&quot;Update&quot; href=&quot;&quot;></xref>表示的当前状态的方法由调用方。"
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the operation is completed."
+      description: "要完成该操作时调用的方法。"
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous operation from other operations."
+      description: "用户提供的对象，用于区分此特定异步操作与其他操作。"
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "异步操作的状态。"
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoadIfChanged*
   exceptions: []
   platform:
@@ -263,28 +263,28 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the beginning of the LoadIfChanged phase. The LoadIfChanged phase occurs when state data is loaded into the persistence provider from the persistence store and the state data in the persistence store has been changed. This method call lets you specify whether you want to lock the instance in the persistence store."
+  summary: "在派生类中实现时表示进入 loadifchanged 阶段开始。 进入 loadifchanged 阶段状态数据加载到永久性提供程序从持久性存储区，并且持久性存储区中的状态数据已更改时发生。 此方法调用中，可以指定你是否想要锁定的持久性存储中的实例。"
   syntax:
     content: public virtual IAsyncResult BeginLoadIfChanged (TimeSpan timeout, object instanceToken, bool lockInstance, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this operation."
+      description: "时间段，永久性提供程序后将中止此操作。"
     - id: instanceToken
       type: System.Object
-      description: "The token returned by a previous <xref uid=&quot;langword_csharp_Create&quot; name=&quot;Create&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_Update&quot; name=&quot;Update&quot; href=&quot;&quot;></xref> method that represents the current state held by the caller."
+      description: "通过前一个返回的标记<xref uid=&quot;langword_csharp_Create&quot; name=&quot;Create&quot; href=&quot;&quot;></xref>或<xref uid=&quot;langword_csharp_Update&quot; name=&quot;Update&quot; href=&quot;&quot;></xref>表示的当前状态的方法由调用方。"
     - id: lockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance is locked in the persistence store; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果在持久性存储区; 中锁定实例否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the operation is completed."
+      description: "要完成该操作时调用的方法。"
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous operation from other operations."
+      description: "用户提供的对象，用于区分此特定异步操作与其他操作。"
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "异步操作的状态。"
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoadIfChanged*
   exceptions: []
   platform:
@@ -301,22 +301,22 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to unlock an instance in the persistence store."
+  summary: "开始一个异步操作以在持久性存储区中的实例进行解锁。"
   syntax:
     content: public abstract IAsyncResult BeginUnlock (TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "An interval in which the operation must be completed before timing out."
+      description: "间隔在超时前必须在其中完成该操作。"
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation completes."
+      description: "在操作完成时接收通知的委托。"
     - id: state
       type: System.Object
-      description: "The state information associated with the asynchronous operation."
+      description: "与异步操作关联的状态信息。"
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "异步操作的状态。"
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUnlock*
   exceptions: []
   platform:
@@ -333,26 +333,26 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to update instance state information in the persistence store using the parameters passed. This operation does not unlock the instance in the instance store."
-  remarks: "This method calls into the <xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate%2A> method and passes a `false` value for the `unlockInstance` parameter."
+  summary: "开始一个异步操作以更新实例状态信息在持久性存储区使用传递的参数。 此操作不会进行解锁实例存储中的实例。"
+  remarks: "此方法调入<xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate%2A>方法并传递`false`值`unlockInstance`参数。</xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate%2A>"
   syntax:
     content: public override IAsyncResult BeginUpdate (object instance, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance whose state information is being updated in the persistence store."
+      description: "在持久性存储区中正在更新其状态信息实例。"
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the operation must complete without timing out."
+      description: "在其中操作必须完成而不超时的时间间隔。"
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation is completed."
+      description: "用于在操作完成时接收通知的委托。"
     - id: state
       type: System.Object
-      description: "The state information about the asynchronous operation."
+      description: "有关异步操作的状态信息。"
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "异步操作的状态。"
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate*
   exceptions: []
   platform:
@@ -369,28 +369,28 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to update instance state information in the persistence store using the parameters passed. This operation locks the instance in the persistence store if the value of the <code>unlockInstance</code> parameter is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+  summary: "开始一个异步操作以更新实例状态信息在持久性存储区使用传递的参数。 如果此操作将锁定持久性存储区中的实例的值<code> unlockInstance </code>参数是<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   syntax:
     content: public abstract IAsyncResult BeginUpdate (object instance, TimeSpan timeout, bool unlockInstance, AsyncCallback callback, object state);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance whose state information is being updated in the persistence store."
+      description: "在持久性存储区中正在更新其状态信息实例。"
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the operation must complete without timing out."
+      description: "在其中操作必须完成而不超时的时间间隔。"
     - id: unlockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance must be locked after the instance state is updated in the persistence store; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果必须锁定实例，在持久性存储区; 中更新实例状态后否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation completes."
+      description: "在操作完成时接收通知的委托。"
     - id: state
       type: System.Object
-      description: "The state information about the asynchronous operation."
+      description: "有关异步操作的状态信息。"
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "异步操作的状态。"
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate*
   exceptions: []
   platform:
@@ -407,19 +407,19 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Creates instance state information in the persistence store using parameters passed into the method. This method does not unlock the instance in the persistence store after saving the instance state."
+  summary: "使用传入方法的参数的持久性存储中创建实例状态信息。 此方法不会在保存实例状态后进行解锁持久性存储区中的实例。"
   syntax:
     content: public override object Create (object instance, TimeSpan timeout);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance object whose state information must be saved into the persistence store."
+      description: "其状态信息必须保存到持久性存储区的实例对象。"
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the operation must complete before timing out."
+      description: "该操作在超时前必须完成的时间间隔。"
     return:
       type: System.Object
-      description: "The state information."
+      description: "状态信息。"
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Create*
   exceptions: []
   platform:
@@ -436,22 +436,22 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "This method creates instance state information in the persistence store using parameters passed into the method. The method unlocks the instance in the instance store if the value of the <code>unlockInstance</code> parameter is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+  summary: "此方法使用传入方法的参数的持久性存储中创建实例状态信息。 该方法将解除实例存储中的实例，如果值<code> unlockInstance </code>参数是<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   syntax:
     content: public abstract object Create (object instance, TimeSpan timeout, bool unlockInstance);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance object whose state information is saved into the persistence store."
+      description: "其状态信息保存到持久性存储区中的实例对象。"
     - id: timeout
       type: System.TimeSpan
-      description: "The interval within which the operation must complete before timing out."
+      description: "在此操作必须完成在超时前的时间间隔。"
     - id: unlockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance must be unlocked in the persistence store; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果在持久性存储区; 中的实例必须为解锁否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
     return:
       type: System.Object
-      description: "The state information."
+      description: "状态信息。"
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Create*
   exceptions: []
   platform:
@@ -468,13 +468,13 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Ends the asynchronous operation to unlock an instance in the persistence store."
+  summary: "结束异步操作以在持久性存储区中的实例进行解锁。"
   syntax:
     content: public abstract void EndUnlock (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The result returned by the unlock operation."
+      description: "解锁操作返回的结果。"
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.EndUnlock*
   exceptions: []
   platform:
@@ -491,17 +491,17 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Loads service state information from the persistence store without locking the instance."
-  remarks: "This method invokes the <xref:System.ServiceModel.Persistence.LockingPersistenceProvider.Load%2A> method with `lockInstance` parameter set to `false`."
+  summary: "加载服务而不锁定实例从持久性存储区的状态信息。"
+  remarks: "此方法调用<xref:System.ServiceModel.Persistence.LockingPersistenceProvider.Load%2A>方法替换`lockInstance`参数设置为`false`。</xref:System.ServiceModel.Persistence.LockingPersistenceProvider.Load%2A>"
   syntax:
     content: public override object Load (TimeSpan timeout);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "时间段，永久性提供程序后将中止此尝试。"
     return:
       type: System.Object
-      description: "The service state information."
+      description: "服务状态信息。"
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Load*
   exceptions: []
   platform:
@@ -518,19 +518,19 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Loads state information from the persistence store after locking the instance."
+  summary: "加载状态锁定实例后从持久性存储区的信息。"
   syntax:
     content: public abstract object Load (TimeSpan timeout, bool lockInstance);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The period after which the persistence provider aborts this operation."
+      description: "段，永久性提供程序后将中止此操作。"
     - id: lockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance should be locked; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果应锁定实例，则否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
     return:
       type: System.Object
-      description: "The state information."
+      description: "状态信息。"
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Load*
   exceptions: []
   platform:
@@ -547,22 +547,22 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Loads the instance state information from the persistence store if the state information has been changed since the last time the information was loaded by the caller. This method does not lock the instance in the persistence store."
+  summary: "如果自上次被调用方加载后已更改的状态信息，请从持久性存储区中加载实例状态信息。 此方法不会锁定持久性存储区中的实例。"
   syntax:
     content: public override bool LoadIfChanged (TimeSpan timeout, object instanceToken, out object instance);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this operation."
+      description: "时间段，永久性提供程序后将中止此操作。"
     - id: instanceToken
       type: System.Object
-      description: "The token returned by the previous <xref uid=&quot;langword_csharp_Create&quot; name=&quot;Create&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_Update&quot; name=&quot;Update&quot; href=&quot;&quot;></xref> method calls, which represents the current state held by the caller."
+      description: "通过对前一个返回的标记<xref uid=&quot;langword_csharp_Create&quot; name=&quot;Create&quot; href=&quot;&quot;></xref>或<xref uid=&quot;langword_csharp_Update&quot; name=&quot;Update&quot; href=&quot;&quot;></xref>方法调用，表示调用方具有的当前状态。"
     - id: instance
       type: System.Object
-      description: "The actual instance state information."
+      description: "实际的实例状态信息。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance should be locked in the persistence store at the end of this operation; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果应在此操作; 的末尾处的持久性存储中锁定实例否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.LoadIfChanged*
   exceptions: []
   platform:
@@ -579,25 +579,25 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Loads the instance state information from the persistence store if the state information has been changed since the last time the information was loaded by the caller. This method also lets the caller specify whether to lock the instance in the persistence store."
+  summary: "如果自上次被调用方加载后已更改的状态信息，请从持久性存储区中加载实例状态信息。 此方法还允许调用方指定是否锁定持久性存储区中的实例。"
   syntax:
     content: public virtual bool LoadIfChanged (TimeSpan timeout, object instanceToken, bool lockInstance, out object instance);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this operation."
+      description: "时间段，永久性提供程序后将中止此操作。"
     - id: instanceToken
       type: System.Object
-      description: "The token returned by the previous Create or Update method calls, which represents the current state held by the caller."
+      description: "返回的标记以前创建或更新的方法调用，表示调用方具有的当前状态。"
     - id: lockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance should be locked in the persistence store at the end of this operation; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果应在此操作; 的末尾处的持久性存储中锁定实例否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
     - id: instance
       type: System.Object
-      description: "The instance state information."
+      description: "实例状态信息。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance should be locked in the persistence store at the end of this operation; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果应在此操作; 的末尾处的持久性存储中锁定实例否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.LoadIfChanged*
   exceptions: []
   platform:
@@ -614,13 +614,13 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Unlocks the instance whose ID is specified when constructing the <xref href=&quot;System.ServiceModel.Persistence.LockingPersistenceProvider&quot;></xref> object in the persistence store."
+  summary: "解除对该实例在构造时指定其 ID <xref href=&quot;System.ServiceModel.Persistence.LockingPersistenceProvider&quot;> </xref>持久性存储中的对象。"
   syntax:
     content: public abstract void Unlock (TimeSpan timeout);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts the operation."
+      description: "时间段，永久性提供程序后将中止该操作。"
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Unlock*
   exceptions: []
   platform:
@@ -637,19 +637,19 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, updates the instance state information in the persistence store. This method does not unlock the instance after updating the instance state information in the persistence store."
+  summary: "派生类中实现时，更新持久性存储区中的实例状态信息。 此方法不会在更新持久性存储区中的实例状态信息后进行解锁实例。"
   syntax:
     content: public override object Update (object instance, TimeSpan timeout);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance state information."
+      description: "实例状态信息。"
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts the operation."
+      description: "时间段，永久性提供程序后将中止该操作。"
     return:
       type: System.Object
-      description: "The instance state information."
+      description: "实例状态信息。"
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Update*
   exceptions: []
   platform:
@@ -666,22 +666,22 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, updates the instance state information in the persistence store. This method does not unlock the instance after updating the instance state information in the persistence store."
+  summary: "派生类中实现时，更新持久性存储区中的实例状态信息。 此方法不会在更新持久性存储区中的实例状态信息后进行解锁实例。"
   syntax:
     content: public abstract object Update (object instance, TimeSpan timeout, bool unlockInstance);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance state information."
+      description: "实例状态信息。"
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts the operation."
+      description: "时间段，永久性提供程序后将中止该操作。"
     - id: unlockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance is unlocked after the instance state information is updated; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果更新实例状态信息; 后，该实例处于解除锁定状态否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
     return:
       type: System.Object
-      description: "The instance state information."
+      description: "实例状态信息。"
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Update*
   exceptions: []
   platform:

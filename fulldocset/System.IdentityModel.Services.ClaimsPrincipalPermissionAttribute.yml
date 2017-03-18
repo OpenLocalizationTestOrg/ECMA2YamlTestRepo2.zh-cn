@@ -13,7 +13,7 @@ items:
   nameWithType: ClaimsPrincipalPermissionAttribute
   fullName: System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute
   type: Class
-  summary: "Represents a security attribute used to declaratively assign access checks based on the logic provided by the <xref href=&quot;System.Security.Claims.ClaimsAuthorizationManager&quot;></xref> instance in the current application context. This class cannot be inherited."
+  summary: "表示用于以声明方式将分配基于提供的逻辑的访问检查的安全特性<xref href=&quot;System.Security.Claims.ClaimsAuthorizationManager&quot;></xref>当前的应用程序上下文中的实例。 此类不能被继承。"
   remarks: "The ClaimsPrincipalPermissionAttribute is used to declaratively request an access check using the configured <xref:System.Security.Claims.ClaimsAuthorizationManager>.  \n  \n You must specify one of the <xref:System.Security.Permissions.SecurityAction> values, a `Resource` and an `Operation` in your ClaimsPrincipalPermissionAttribute declaration. The `Resource` and `Operation` properties specify the resource and action for which the current principal (<xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName>) must be authorized for execution to proceed. If the current principal is not authorized to perform the specified action (operation) on the specified resource, a <xref:System.Security.SecurityException> is thrown.  \n  \n> [!IMPORTANT]\n>  The ClaimsPrincipalPermissionAttribute class uses the claims authorization manager configured by the <xref:System.IdentityModel.Configuration.IdentityConfiguration> that is set under the <xref:System.IdentityModel.Services.FederatedAuthentication.FederationConfiguration%2A?displayProperty=fullName> property. This is true in all cases, even in scenarios where WS-Federation is not used; for example, active (WCF) Web applications and Console applications. You can specify the claims authorization manager either in configuration or programmatically. To specify the claims authorization manager in a configuration file, set the [\\&lt;claimsAuthorizationManager\\&gt;](../Topic/%3CclaimsAuthorizationManager%3E.md) element under an [\\&lt;identityConfiguration\\&gt;](../Topic/%3CidentityConfiguration%3E.md) element and ensure that this identity configuration is referenced by the [\\&lt;federationConfiguration\\&gt;](../Topic/%3CfederationConfiguration%3E.md) element that is loaded by the runtime (for example, by setting the `identityConfigurationName` attribute). To set the claims authorization manager programmatically, provide a handler for the <xref:System.IdentityModel.Services.FederatedAuthentication.FederationConfigurationCreated?displayProperty=fullName> event."
   example:
   - "The following example shows how to protect a method by decorating it with the ClaimsPrincipalPermissionAttribute attribute. The attribute will evaluate whether access should be granted to the current principal by leveraging the logic provided by the <xref:System.Security.Claims.ClaimsAuthorizationManager> instance in the application context. If the current principal is not authorized for the specified action on the specified resource, a <xref:System.Security.SecurityException> is thrown; otherwise, execution proceeds.  \n  \n [!code-cs[WifCppWithCam#4](~/add/codesnippet/csharp/wifcppwithcam/program.cs#4)]  \n  \n The following XML shows the minimum configuration required to use a custom claims authorization manager with the ClaimsPrincipalPermissionAttribute class. You must, at a minimum, declare both the `system.identityModel` and the `system.identityModel.services` sections in the `<configSection>` element and then specify your authorization manager in a [\\&lt;claimsAuthorizationManager\\&gt;](../Topic/%3CclaimsAuthorizationManager%3E.md) element under the default identity configuration. This will ensure that your authorization manager is referenced from the default federation configuration. Alternatively, you can specify the name of the identity configuration under which your authorization manager is specified in the `identityConfigurationName` attribute of the [\\&lt;federationConfiguration\\&gt;](../Topic/%3CfederationConfiguration%3E.md) element.  \n  \n```xml  \n<?xml version=\"1.0\" encoding=\"utf-8\" ?>  \n<configuration>  \n  <configSections>  \n    <!-- WIF configuration sections -->  \n    <section name=\"system.identityModel\" type=\"System.IdentityModel.Configuration.SystemIdentityModelSection, System.IdentityModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089\"/>  \n    <section name=\"system.identityModel.services\" type=\"System.IdentityModel.Services.Configuration.SystemIdentityModelServicesSection, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B77A5C561934E089\"/>  \n  </configSections>  \n  \n  <startup>  \n    <supportedRuntime version=\"v4.0\" sku=\".NETFramework,Version=v4.5\" />  \n  </startup>  \n  \n  <system.identityModel>  \n    <identityConfiguration>  \n      <claimsAuthorizationManager type =\"MyClaimsAuthorizationManager.MyClaimsAuthorizationManager, MyClaimsAuthorizationManager\"/>  \n    </identityConfiguration>  \n  </system.identityModel>  \n  \n</configuration>  \n```"
@@ -44,14 +44,14 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute&quot;></xref> class."
-  remarks: "You must also specify the `Operation` and `Resource` properties in your <xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute> declaration or an exception will be thrown when the <xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.CreatePermission%2A> method is invoked to create the permission."
+  summary: "初始化的新实例<xref href=&quot;System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute&quot;></xref>类。"
+  remarks: "你还必须指定`Operation`和`Resource`属性在你<xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute>声明或引发异常时将引发<xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.CreatePermission%2A>方法调用来创建权限。</xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.CreatePermission%2A> </xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute>"
   syntax:
     content: public ClaimsPrincipalPermissionAttribute (System.Security.Permissions.SecurityAction action);
     parameters:
     - id: action
       type: System.Security.Permissions.SecurityAction
-      description: "One of the values that specifies the security actions that can be performed when using declarative security."
+      description: "指定在使用声明性安全时可以执行的安全操作的值之一。"
   overload: System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.#ctor*
   exceptions: []
   platform:
@@ -68,14 +68,14 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Creates new instance of the <xref href=&quot;System.IdentityModel.Services.ClaimsPrincipalPermission&quot;></xref> class that is based on the current instance."
-  remarks: "The <xref:System.IdentityModel.Services.ClaimsPrincipalPermission> object is created by using the value of the <xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.Operation%2A> property and the <xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.Resource%2A> property. You must specify the `Operation` and `Resource` properties in your <xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute> declaration or an exception will be thrown when the CreatePermission method is invoked to create the permission."
+  summary: "创建的新实例<xref href=&quot;System.IdentityModel.Services.ClaimsPrincipalPermission&quot;></xref>基于当前实例的类。"
+  remarks: "<xref:System.IdentityModel.Services.ClaimsPrincipalPermission>对象由使用的值创建<xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.Operation%2A>属性和<xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.Resource%2A>属性。</xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.Resource%2A> </xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.Operation%2A> </xref:System.IdentityModel.Services.ClaimsPrincipalPermission> 必须指定`Operation`和`Resource`属性在你<xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute>CreatePermission 方法调用来创建权限时，将引发声明或引发异常。</xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute>"
   syntax:
     content: public override System.Security.IPermission CreatePermission ();
     parameters: []
     return:
       type: System.Security.IPermission
-      description: "A <xref href=&quot;System.IdentityModel.Services.ClaimsPrincipalPermission&quot;></xref> with the operation and resource associated with this instance."
+      description: "A <xref href=&quot;System.IdentityModel.Services.ClaimsPrincipalPermission&quot;> </xref>使用操作和与此实例关联的资源。"
   overload: System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.CreatePermission*
   exceptions: []
   platform:
@@ -92,13 +92,13 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Gets or sets the operation for which the current principal should be authorized on the specified resource."
-  remarks: "The operation is the action for which the current principal should be authorized on the specified resource. You must set the `Operation` property in your <xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute> declaration or an exception will be thrown when the <xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.CreatePermission%2A> method is called to create the permission."
+  summary: "获取或设置应为其授权当前主体的操作对指定资源。"
+  remarks: "该操作是当前的主体应授权对指定资源的操作。 必须设置`Operation`属性在你<xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute>声明或引发异常时将引发<xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.CreatePermission%2A>调用方法来创建的权限。</xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.CreatePermission%2A> </xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute>"
   syntax:
     content: public string Operation { get; set; }
     return:
       type: System.String
-      description: "The action for which the current principal should be authorized."
+      description: "应为其授权当前主体的操作。"
   overload: System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.Operation*
   exceptions: []
   platform:
@@ -115,13 +115,13 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Gets or sets the resource on which the principal should be authorized to perform the specified action (operation)."
-  remarks: "The resource on which the current principal should be authorized to perform the specified action. You must set the `Resource` property in your <xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute> declaration or an exception will be thrown when the <xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.CreatePermission%2A> method is called to create the permission."
+  summary: "获取或设置在其应授权主体执行指定的操作 （操作） 的资源。"
+  remarks: "在其的当前主体应该有权执行指定的操作的资源。 必须设置`Resource`属性在你<xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute>声明或引发异常时将引发<xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.CreatePermission%2A>调用方法来创建的权限。</xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.CreatePermission%2A> </xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute>"
   syntax:
     content: public string Resource { get; set; }
     return:
       type: System.String
-      description: "The resource on which the current principal should be authorized."
+      description: "应在其授权当前主体资源。"
   overload: System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute.Resource*
   exceptions: []
   platform:

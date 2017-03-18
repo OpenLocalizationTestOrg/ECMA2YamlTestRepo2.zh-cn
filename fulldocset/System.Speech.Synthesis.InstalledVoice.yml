@@ -13,8 +13,8 @@ items:
   nameWithType: InstalledVoice
   fullName: System.Speech.Synthesis.InstalledVoice
   type: Class
-  summary: "Contains information about a speech synthesis voice installed in Windows."
-  remarks: "Use this class to get information about an installed voice, including its culture, name, gender, age, and whether it is enabled.       To perform text-to-speech using the language specified in the <xref:System.Speech.Synthesis.PromptBuilder.Culture%2A> property, a speech synthesis engine that supports that language-country code must be installed. The speech synthesis engines that shipped with Microsoft Windows 7 work with the following language-country codes:      -   en-US. English (United States)      -   zh-CN. Chinese (China)      -   zh-TW. Chinese (Taiwan)       Two-letter language codes such as &quot;en&quot; are also permitted."
+  summary: "包含有关 Windows 中安装语音合成语音的信息。"
+  remarks: "此类用于获取已安装的声音，包括其区域性、 名称、 性别、 年龄有关的信息以及是否启用它。       若要执行文本到语音转换使用中指定的语言<xref:System.Speech.Synthesis.PromptBuilder.Culture%2A>属性、 语音合成引擎支持，必须安装语言-国家/地区代码。</xref:System.Speech.Synthesis.PromptBuilder.Culture%2A> 语音合成引擎附带的以下语言-国家/地区代码的 Microsoft Windows 7 工作:-EN-US。 英语 （美国）-ZH-CN。 中文 （中国）-ZH-TW。 此外允许例如&quot;en&quot;中文 （台湾） 两个字母语言代码。"
   example:
   - "The following example is part of a console application that initializes a <xref:System.Speech.Synthesis.SpeechSynthesizer> object and outputs to the console a list of the installed voices (engines for speech synthesis) and demonstrates the information that is available for each voice.  \n  \n```c#  \nusing System;  \nusing System.Speech.Synthesis;  \nusing System.Speech.AudioFormat;  \n  \nnamespace SampleSynthesis  \n{  \n  class Program  \n  {  \n    static void Main(string[] args)  \n    {  \n  \n      // Initialize a new instance of the SpeechSynthesizer.  \n      using (SpeechSynthesizer synth = new SpeechSynthesizer())  \n      {  \n  \n        // Output information about all of the installed voices.   \n        Console.WriteLine(\"Installed voices -\");  \n        foreach (InstalledVoice voice in synth.GetInstalledVoices())  \n        {  \n          VoiceInfo info = voice.VoiceInfo;  \n          string AudioFormats = \"\";  \n          foreach (SpeechAudioFormatInfo fmt in info.SupportedAudioFormats)  \n          {  \n            AudioFormats += String.Format(\"{0}\\n\",  \n            fmt.EncodingFormat.ToString());  \n          }  \n  \n          Console.WriteLine(\" Name:          \" + info.Name);  \n          Console.WriteLine(\" Culture:       \" + info.Culture);  \n          Console.WriteLine(\" Age:           \" + info.Age);  \n          Console.WriteLine(\" Gender:        \" + info.Gender);  \n          Console.WriteLine(\" Description:   \" + info.Description);  \n          Console.WriteLine(\" ID:            \" + info.Id);  \n          Console.WriteLine(\" Enabled:       \" + voice.Enabled);  \n          if (info.SupportedAudioFormats.Count != 0)  \n          {  \n            Console.WriteLine( \" Audio formats: \" + AudioFormats);  \n          }  \n          else  \n          {  \n            Console.WriteLine(\" No supported audio formats found\");  \n          }  \n  \n          string AdditionalInfo = \"\";  \n          foreach (string key in info.AdditionalInfo.Keys)  \n          {  \n            AdditionalInfo += String.Format(\"  {0}: {1}\\n\", key, info.AdditionalInfo[key]);  \n          }  \n  \n          Console.WriteLine(\" Additional Info - \" + AdditionalInfo);  \n          Console.WriteLine();  \n        }  \n      }  \n      Console.WriteLine(\"Press any key to exit...\");  \n      Console.ReadKey();  \n    }  \n  }  \n}  \n  \n```"
   syntax:
@@ -40,13 +40,13 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Synthesis
-  summary: "Gets or sets whether a voice can be used to generate speech."
-  remarks: "The value of the Enabled property is `true` by default. When an application calls <xref:System.Speech.Synthesis.SpeechSynthesizer.GetInstalledVoices%2A>, the method verifies that each of the voices it finds in the registry meets certain minimum criteria. For any voice that fails verification, <xref:System.Speech.Synthesis.SpeechSynthesizer.GetInstalledVoices%2A> sets its Enabled property to `false`. An application cannot select a voice whose Enabled property is `false`. Typically, applications will not set a voice’s Enabled property."
+  summary: "获取或设置是否可以使用一种声音来生成语音。"
+  remarks: "Enabled 属性的值是`true`默认情况下。 在应用程序调用<xref:System.Speech.Synthesis.SpeechSynthesizer.GetInstalledVoices%2A>，该方法验证是否在注册表中查找的语音的每个符合特定最小的条件。</xref:System.Speech.Synthesis.SpeechSynthesizer.GetInstalledVoices%2A> 对于未通过验证，任何声音<xref:System.Speech.Synthesis.SpeechSynthesizer.GetInstalledVoices%2A>将其 Enabled 属性设置为`false`。</xref:System.Speech.Synthesis.SpeechSynthesizer.GetInstalledVoices%2A> 应用程序不能选择其已启用属性的声音`false`。 通常情况下，应用程序不会设置语音的 Enabled 属性。"
   syntax:
     content: public bool Enabled { get; set; }
     return:
       type: System.Boolean
-      description: "Returns a <xref uid=&quot;langword_csharp_bool&quot; name=&quot;bool&quot; href=&quot;&quot;></xref> that represents the enabled state of the voice."
+      description: "返回<xref uid=&quot;langword_csharp_bool&quot; name=&quot;bool&quot; href=&quot;&quot;></xref>表示语音的启用的状态。"
   overload: System.Speech.Synthesis.InstalledVoice.Enabled*
   exceptions: []
   platform:
@@ -63,17 +63,17 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Synthesis
-  summary: "Determines if a given object is an instance of <xref href=&quot;System.Speech.Synthesis.InstalledVoice&quot;></xref> and equal to the current instance of <xref href=&quot;System.Speech.Synthesis.InstalledVoice&quot;></xref>."
-  remarks: "The method returns false if the <xref:System.Object> provided by the `obj` argument cannot be cast to <xref:System.Speech.Synthesis.InstalledVoice>."
+  summary: "确定给定的对象是否的实例<xref href=&quot;System.Speech.Synthesis.InstalledVoice&quot;></xref>和等于当前实例的<xref href=&quot;System.Speech.Synthesis.InstalledVoice&quot;> </xref>。"
+  remarks: "如果此方法返回 false<xref:System.Object>由`obj`自变量不能强制转换为<xref:System.Speech.Synthesis.InstalledVoice>.</xref:System.Speech.Synthesis.InstalledVoice> </xref:System.Object>"
   syntax:
     content: public override bool Equals (object obj);
     parameters:
     - id: obj
       type: System.Object
-      description: "An object that can be cast to an instance of <xref href=&quot;System.Speech.Synthesis.InstalledVoice&quot;></xref>."
+      description: "可以强制转换为的实例的对象<xref href=&quot;System.Speech.Synthesis.InstalledVoice&quot;> </xref>。"
     return:
       type: System.Boolean
-      description: "Returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the current instance of <xref href=&quot;System.Speech.Synthesis.InstalledVoice&quot;></xref> and that obtained from the <code>obj</code> argument are equal, otherwise returns <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "返回<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果的当前实例<xref href=&quot;System.Speech.Synthesis.InstalledVoice&quot;></xref>从获取<code> obj </code>参数相等时，否则返回<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Speech.Synthesis.InstalledVoice.Equals*
   exceptions: []
   platform:
@@ -90,13 +90,13 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Synthesis
-  summary: "Provides a hash code for an `InstalledVoice` object."
+  summary: "提供的哈希代码`InstalledVoice`对象。"
   syntax:
     content: public override int GetHashCode ();
     parameters: []
     return:
       type: System.Int32
-      description: "A hash code for the current <xref href=&quot;System.Speech.Synthesis.InstalledVoice&quot;></xref> object."
+      description: "当前的哈希代码<xref href=&quot;System.Speech.Synthesis.InstalledVoice&quot;></xref>对象。"
   overload: System.Speech.Synthesis.InstalledVoice.GetHashCode*
   exceptions: []
   platform:
@@ -113,12 +113,12 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Synthesis
-  summary: "Gets information about a voice, such as culture, name, gender, and age."
+  summary: "获取有关语音，例如区域性、 名称、 性别和年龄的信息。"
   syntax:
     content: public System.Speech.Synthesis.VoiceInfo VoiceInfo { get; }
     return:
       type: System.Speech.Synthesis.VoiceInfo
-      description: "The information about an installed voice."
+      description: "有关已安装语音的信息。"
   overload: System.Speech.Synthesis.InstalledVoice.VoiceInfo*
   exceptions: []
   platform:

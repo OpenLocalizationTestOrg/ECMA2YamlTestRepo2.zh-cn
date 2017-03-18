@@ -10,8 +10,8 @@ items:
   nameWithType: ThreadAbortException
   fullName: System.Threading.ThreadAbortException
   type: Class
-  summary: "The exception that is thrown when a call is made to the <xref:System.Threading.Thread.Abort*> method. This class cannot be inherited."
-  remarks: "When a call is made to the <xref:System.Threading.Thread.Abort%2A> method to destroy a thread, the common language runtime throws a ThreadAbortException. ThreadAbortException is a special exception that can be caught, but it will automatically be raised again at the end of the `catch` block. When this exception is raised, the runtime executes all the `finally` blocks before ending the thread. Because the thread can do an unbounded computation in the `finally` blocks or call <xref:System.Threading.Thread.ResetAbort%2A?displayProperty=fullName> to cancel the abort, there is no guarantee that the thread will ever end. If you want to wait until the aborted thread has ended, you can call the <xref:System.Threading.Thread.Join%2A?displayProperty=fullName> method. <xref:System.Threading.Thread.Join%2A> is a blocking call that does not return until the thread actually stops executing.      > [!NOTE] >  When the common language runtime (CLR) stops background threadsafter all foreground threads in a managed executable have ended, it does not use <xref:System.Threading.Thread.Abort%2A?displayProperty=fullName>. Therefore, you cannot use ThreadAbortException to detect when background threads are being terminated by the CLR.       ThreadAbortException uses the HRESULT COR_E_THREADABORTED, which has the value 0x80131530.      > [!NOTE] >  The value of the inherited <xref:System.Exception.Data%2A> property is always `null`."
+  summary: "为进行调用时引发的异常<xref:System.Threading.Thread.Abort*>方法。</xref:System.Threading.Thread.Abort*> 此类不能被继承。"
+  remarks: "当调用<xref:System.Threading.Thread.Abort%2A>方法以销毁线程时，公共语言运行时引发了 ThreadAbortException。</xref:System.Threading.Thread.Abort%2A> ThreadAbortException 是特殊异常可捕获，但它将自动被再次引发的末尾`catch`块。 当引发此异常时，运行时执行所有`finally`块结束线程之前。 因为线程可以不受限制的计算`finally`块或调用<xref:System.Threading.Thread.ResetAbort%2A?displayProperty=fullName>来取消中止，存在是没有保证的线程将完全结束。</xref:System.Threading.Thread.ResetAbort%2A?displayProperty=fullName> 如果你想要等待，直到中止的线程已结束，则可以调用<xref:System.Threading.Thread.Join%2A?displayProperty=fullName>方法。</xref:System.Threading.Thread.Join%2A?displayProperty=fullName> <xref:System.Threading.Thread.Join%2A>是一个阻塞调用不返回直到线程实际停止执行。</xref:System.Threading.Thread.Join%2A>      1> [!NOTE]&1;> 当公共语言运行时 (CLR) 停止后台 threadsafter 托管可执行文件中的所有前台线程已都结束时，它不使用<xref:System.Threading.Thread.Abort%2A?displayProperty=fullName>.</xref:System.Threading.Thread.Abort%2A?displayProperty=fullName> 因此，不能使用 ThreadAbortException 来检测何时正在由 CLR 终止后台线程。       ThreadAbortException 使用 HRESULT COR_E_THREADABORTED，其值 0x80131530。      1> [!NOTE]&1;> 的值继承<xref:System.Exception.Data%2A>属性始终是`null`。</xref:System.Exception.Data%2A>"
   example:
   - "The following example demonstrates aborting a thread. The thread that receives the `ThreadAbortException` uses the <xref:System.Threading.Thread.ResetAbort%2A> method to cancel the abort request and continue executing.  \n  \n [!code-cpp[ThreadAbEx#1](~/add/codesnippet/cpp/t-system.threading.threa_4_1.cpp)]\n [!code-vb[ThreadAbEx#1](~/add/codesnippet/visualbasic/t-system.threading.threa_4_1.vb)]\n [!code-cs[ThreadAbEx#1](~/add/codesnippet/csharp/t-system.threading.threa_4_1.cs)]  \n  \n This code produces the following output:  \n  \n```  \nThread - working.  \nMain - aborting my thread.  \nThread - caught ThreadAbortException - resetting.  \nException message: Thread was being aborted.  \nThread - still alive and working.  \nThread - finished working.  \nMain ending.  \n```"
   syntax:
@@ -38,15 +38,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Gets an object that contains application-specific information related to the thread abort."
-  remarks: "The object returned by this property is specified through the `stateInfo` parameter of the <xref:System.Threading.Thread.Abort%2A> method. The exact content and usage of this object is application defined; it is typically used to convey information that is meaningful to the thread being aborted."
+  summary: "获取包含与线程中止相关的应用程序特定信息的对象。"
+  remarks: "通过指定此属性返回的对象`stateInfo`参数<xref:System.Threading.Thread.Abort%2A>方法。</xref:System.Threading.Thread.Abort%2A> 确切内容和此对象的用法是应用程序定义;它通常用于传达对正在中止的线程有意义的信息。"
   example:
   - "The following code example shows how to pass information to a thread that is being aborted.  \n  \n [!code-cs[System.Threading.Thread.Abort2#1](~/add/codesnippet/csharp/p-system.threading.threa_10_1.cs)]\n [!code-cpp[System.Threading.Thread.Abort2#1](~/add/codesnippet/cpp/p-system.threading.threa_10_1.cpp)]\n [!code-vb[System.Threading.Thread.Abort2#1](~/add/codesnippet/visualbasic/p-system.threading.threa_10_1.vb)]"
   syntax:
     content: public object ExceptionState { get; }
     return:
       type: System.Object
-      description: "An object containing application-specific information."
+      description: "包含应用程序特定信息的对象。"
   overload: System.Threading.ThreadAbortException.ExceptionState*
   exceptions: []
   platform:
