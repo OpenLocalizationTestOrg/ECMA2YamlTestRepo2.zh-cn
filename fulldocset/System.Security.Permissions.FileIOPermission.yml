@@ -30,7 +30,7 @@ items:
   nameWithType: FileIOPermission
   fullName: System.Security.Permissions.FileIOPermission
   type: Class
-  summary: "Controls the ability to access files and folders. This class cannot be inherited."
+  summary: "控制可以访问文件和文件夹的能力。 此类不能被继承。"
   remarks: "This permission distinguishes between the following four types of file IO access provided by <xref:System.Security.Permissions.FileIOPermissionAccess>:  \n  \n-   `Read`: Read access to the contents of the file or access to information about the file, such as its length or last modification time.  \n  \n-   `Write`: Write access to the contents of the file or access to change information about the file, such as its name. Also allows for deletion and overwriting.  \n  \n-   `Append`: Ability to write to the end of a file only. No ability to read.  \n  \n-   `PathDiscovery`: Access to the information in the path itself. This helps protect sensitive information in the path, such as user names, as well as information about the directory structure that is revealed in the path. This value does not grant access to files or folders represented by the path.  \n  \n> [!NOTE]\n>  Giving <xref:System.Security.Permissions.FileIOPermissionAccess> access to an assembly is similar to granting it full trust. If an application should not write to the file system, it should not have <xref:System.Security.Permissions.FileIOPermissionAccess> access.  \n  \n All these permissions are independent, meaning that rights to one do not imply rights to another. For example, `Write` permission does not imply permission to `Read` or `Append`. If more than one permission is desired, they can be combined using a bitwise OR as shown in the code example that follows. File permission is defined in terms of canonical absolute paths; calls should always be made with canonical file paths.  \n  \n FileIOPermission describes protected operations on files and folders. The <xref:System.IO.File> class helps provide secure access to files and folders. The security access check is performed when the handle to the file is created. By doing the check at creation time, the performance impact of the security check is minimized. Opening a file happens once, while reading and writing can happen multiple times. Once the file is opened, no further checks are done. If the object is passed to an untrusted caller, it can be misused. For example, file handles should not be stored in public global statics where code with less permission can access them.  \n  \n <xref:System.Security.Permissions.FileIOPermissionAccess> specifies actions that can be performed on the file or folder. In addition, these actions can be combined using a bitwise OR to form complex instances.  \n  \n Access to a folder implies access to all the files it contains, as well as access to all the files and folders in its subfolders. For example, `Read` access to C:\\folder1\\ implies `Read` access to C:\\folder1\\file1.txt, C:\\folder1\\folder2\\\\, C:\\folder1\\folder2\\file2.txt, and so on.  \n  \n> [!NOTE]\n>  In versions of the .NET Framework before the [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], you could use the <xref:System.Security.CodeAccessPermission.Deny%2A?displayProperty=fullName> method to prevent inadvertent access to system resources by trusted code. <xref:System.Security.CodeAccessPermission.Deny%2A> is now obsolete, and access to resources is now determined solely by the granted permission set for an assembly. To limit access to files, you must run partially trusted code in a sandbox and assign it permissions only to resources that the code is allowed to access. For information about running an application in a sandbox, see [How to: Run Partially Trusted Code in a Sandbox](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following examples illustrate code that uses FileIOPermission. After the following two lines of code, the object `f` represents permission to read all files on the client computer's local disks. The code example then demands the permission to determine whether the application has permission to read the files.  \n  \n [!code-cs[Classic FileIOPermission Example#1](~/add/codesnippet/csharp/t-system.security.permis_23_1.cs)]\n [!code-vb[Classic FileIOPermission Example#1](~/add/codesnippet/visualbasic/t-system.security.permis_23_1.vb)]\n [!code-cpp[Classic FileIOPermission Example#1](~/add/codesnippet/cpp/t-system.security.permis_23_1.cpp)]  \n  \n After the following two lines of code, the object `f2` represents permissions to read C:\\test_r and read and write to C:\\example\\out.txt. `Read` and `Write` represent the file/folder permissions as previously described. After creating the permission, the code demands the permission to determine whether the application has the right to read and write to the file.  \n  \n [!code-cs[Classic FileIOPermission Example#2](~/add/codesnippet/csharp/t-system.security.permis_23_2.cs)]\n [!code-vb[Classic FileIOPermission Example#2](~/add/codesnippet/visualbasic/t-system.security.permis_23_2.vb)]\n [!code-cpp[Classic FileIOPermission Example#2](~/add/codesnippet/cpp/t-system.security.permis_23_2.cpp)]"
@@ -68,8 +68,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> class with fully restricted or unrestricted permission as specified."
-  remarks: "Creates either fully restricted (`None`) or `Unrestricted` access to files and directories."
+  summary: "初始化的新实例<xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref>用指定的完全受限制或不受限制的权限的类。"
+  remarks: "创建完全受限制 (`None`) 或`Unrestricted`对文件和目录的访问。"
   example:
   - "The following code example creates a new instance of the <xref:System.Security.Permissions.FileIOPermission> class with fully restricted read access.  \n  \n [!code-cs[Classic FileIOPermission Example#1](~/add/codesnippet/csharp/77d769e4-2464-4991-ba06-_1.cs)]\n [!code-vb[Classic FileIOPermission Example#1](~/add/codesnippet/visualbasic/77d769e4-2464-4991-ba06-_1.vb)]\n [!code-cpp[Classic FileIOPermission Example#1](~/add/codesnippet/cpp/77d769e4-2464-4991-ba06-_1.cpp)]"
   syntax:
@@ -77,12 +77,12 @@ items:
     parameters:
     - id: state
       type: System.Security.Permissions.PermissionState
-      description: "One of the <xref href=&quot;System.Security.Permissions.PermissionState&quot;></xref> enumeration values."
+      description: "之一<xref href=&quot;System.Security.Permissions.PermissionState&quot;></xref>枚举值。"
   overload: System.Security.Permissions.FileIOPermission.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>state</code> parameter is not a valid value of <xref href=&quot;System.Security.Permissions.PermissionState&quot;></xref>."
+    description: "<code> state </code>参数不是有效的值的<xref href=&quot;System.Security.Permissions.PermissionState&quot;> </xref>。"
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.#ctor(System.Security.Permissions.FileIOPermissionAccess,System.String)
@@ -97,8 +97,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> class with the specified access to the designated file or directory."
-  remarks: "This constructor allows only one of the <xref:System.Security.Permissions.FileIOPermissionAccess> values to be specified for the specified file or directory. Use the <xref:System.Security.Permissions.FileIOPermission.AddPathList%2A> method to define complex permissions."
+  summary: "初始化的新实例<xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref>对指定的文件或目录的指定访问权限的类。"
+  remarks: "此构造函数只允许一个的<xref:System.Security.Permissions.FileIOPermissionAccess>值指定为指定的文件或目录。</xref:System.Security.Permissions.FileIOPermissionAccess> 使用<xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>方法用来定义复杂的权限。</xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>"
   example:
   - "The following code example shows the use of the FileIOPermission constructor to create a new instance of the <xref:System.Security.Permissions.FileIOPermission> class, which provides complete access to the C:\\test_r file.  \n  \n [!code-cs[Classic FileIOPermission Example#2](~/add/codesnippet/csharp/51a3f39e-30ae-4011-8c38-_1.cs)]\n [!code-vb[Classic FileIOPermission Example#2](~/add/codesnippet/visualbasic/51a3f39e-30ae-4011-8c38-_1.vb)]\n [!code-cpp[Classic FileIOPermission Example#2](~/add/codesnippet/cpp/51a3f39e-30ae-4011-8c38-_1.cpp)]"
   syntax:
@@ -106,15 +106,15 @@ items:
     parameters:
     - id: access
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "A bitwise combination of the <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref> enumeration values."
+      description: "按位组合<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>枚举值。"
     - id: path
       type: System.String
-      description: "The absolute path of the file or directory."
+      description: "文件或目录的绝对路径。"
   overload: System.Security.Permissions.FileIOPermission.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>access</code> parameter is not a valid value of <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>.       -or-       The <code>path</code> parameter is not a valid string.       -or-       The <code>path</code> parameter does not specify the absolute path to the file or directory."
+    description: "<code> access </code>参数不是有效的值的<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>。       -或- <code> path </code>参数不是有效的字符串。       -或- <code> path </code>参数并不指定文件或目录的绝对路径。"
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.#ctor(System.Security.Permissions.FileIOPermissionAccess,System.String[])
@@ -129,22 +129,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> class with the specified access to the designated files and directories."
-  remarks: "This constructor allows only one <xref:System.Security.Permissions.FileIOPermissionAccess> value to be specified for the specified files and directories. Use the <xref:System.Security.Permissions.FileIOPermission.AddPathList%2A> method to define complex permissions."
+  summary: "初始化的新实例<xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref>对指定的文件和目录的指定访问权限的类。"
+  remarks: "此构造函数只允许一个<xref:System.Security.Permissions.FileIOPermissionAccess>为指定的文件和目录指定的值。</xref:System.Security.Permissions.FileIOPermissionAccess> 使用<xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>方法用来定义复杂的权限。</xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>"
   syntax:
     content: public FileIOPermission (System.Security.Permissions.FileIOPermissionAccess access, string[] pathList);
     parameters:
     - id: access
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "A bitwise combination of the <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref> enumeration values."
+      description: "按位组合<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>枚举值。"
     - id: pathList
       type: System.String[]
-      description: "An array containing the absolute paths of the files and directories."
+      description: "包含的文件和目录的绝对路径的数组。"
   overload: System.Security.Permissions.FileIOPermission.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>access</code> parameter is not a valid value of <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>.       -or-       An entry in the <code>pathList</code> array is not a valid string."
+    description: "<code> access </code>参数不是有效的值的<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>。       -将项记入<code> pathList </code>数组不是有效的字符串。"
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.#ctor(System.Security.Permissions.FileIOPermissionAccess,System.Security.AccessControl.AccessControlActions,System.String)
@@ -159,25 +159,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> class with the specified access to the designated file or directory and the specified access rights to file control information."
-  remarks: "This constructor allows only one <xref:System.Security.Permissions.FileIOPermissionAccess> value to be specified for the specified file or directories. Use the <xref:System.Security.Permissions.FileIOPermission.AddPathList%2A> method to define complex permissions.       The `control` parameter specifies whether the access control list (ACL) for the file or directory specified by `path` can be changed, viewed, or cannot be accessed.      > [!IMPORTANT] >  An access control list (ACL) describes individuals or groups who have, or do not have, rights to specific actions on the given file and its properties.  The ability to change or view an ACL is an important permission and should be granted with caution."
+  summary: "初始化的新实例<xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref>类到指定的文件或目录的指定访问权限和对文件控制信息的指定的访问权限。"
+  remarks: "此构造函数只允许一个<xref:System.Security.Permissions.FileIOPermissionAccess>要为指定的文件或目录指定值。</xref:System.Security.Permissions.FileIOPermissionAccess> 使用<xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>方法用来定义复杂的权限。</xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>       `control`参数指定的访问控制列表 (ACL) 文件或指定的目录是否从而`path`可以更改、 查看或无法访问。      1> [!IMPORTANT]&1;> 访问控制列表 (ACL) 描述个人或组具有或没有执行到给定的文件和其属性上的特定操作的权限。  能够更改或查看 ACL 是重要的权限，并应多加小心授予。"
   syntax:
     content: public FileIOPermission (System.Security.Permissions.FileIOPermissionAccess access, System.Security.AccessControl.AccessControlActions control, string path);
     parameters:
     - id: access
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "A bitwise combination of the <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref> enumeration values."
+      description: "按位组合<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>枚举值。"
     - id: control
       type: System.Security.AccessControl.AccessControlActions
-      description: "A bitwise combination of the <xref href=&quot;System.Security.AccessControl.AccessControlActions&quot;></xref> enumeration values."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.AccessControlActions&quot;></xref>枚举值。"
     - id: path
       type: System.String
-      description: "The absolute path of the file or directory."
+      description: "文件或目录的绝对路径。"
   overload: System.Security.Permissions.FileIOPermission.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>access</code> parameter is not a valid value of <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>.       -or-       The <code>path</code> parameter is not a valid string.       -or-       The <code>path</code> parameter does not specify the absolute path to the file or directory."
+    description: "<code> access </code>参数不是有效的值的<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>。       -或- <code> path </code>参数不是有效的字符串。       -或- <code> path </code>参数并不指定文件或目录的绝对路径。"
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.#ctor(System.Security.Permissions.FileIOPermissionAccess,System.Security.AccessControl.AccessControlActions,System.String[])
@@ -192,25 +192,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> class with the specified access to the designated files and directories and the specified access rights to file control information."
-  remarks: "This constructor allows only one <xref:System.Security.Permissions.FileIOPermissionAccess> value to be specified for the specified files and directories. Use the <xref:System.Security.Permissions.FileIOPermission.AddPathList%2A> method to define complex permissions.       The `control` parameter specifies whether the access control list (ACL) for the file or directory specified by `path` can be changed, viewed, or cannot be accessed.      > [!IMPORTANT] >  An access control list (ACL) describes individuals or groups who have, or do not have, rights to specific actions on the given file and its properties.  The ability to change or view an ACL is an important permission and should be granted with caution."
+  summary: "初始化的新实例<xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref>使用对指定的文件和目录的指定访问权限和对文件控制信息的指定的访问权限的类。"
+  remarks: "此构造函数只允许一个<xref:System.Security.Permissions.FileIOPermissionAccess>为指定的文件和目录指定的值。</xref:System.Security.Permissions.FileIOPermissionAccess> 使用<xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>方法用来定义复杂的权限。</xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>       `control`参数指定的访问控制列表 (ACL) 文件或指定的目录是否从而`path`可以更改、 查看或无法访问。      1> [!IMPORTANT]&1;> 访问控制列表 (ACL) 描述个人或组具有或没有执行到给定的文件和其属性上的特定操作的权限。  能够更改或查看 ACL 是重要的权限，并应多加小心授予。"
   syntax:
     content: public FileIOPermission (System.Security.Permissions.FileIOPermissionAccess access, System.Security.AccessControl.AccessControlActions control, string[] pathList);
     parameters:
     - id: access
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "A bitwise combination of the <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref> enumeration values."
+      description: "按位组合<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>枚举值。"
     - id: control
       type: System.Security.AccessControl.AccessControlActions
-      description: "A bitwise combination of the <xref href=&quot;System.Security.AccessControl.AccessControlActions&quot;></xref> enumeration values."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.AccessControlActions&quot;></xref>枚举值。"
     - id: pathList
       type: System.String[]
-      description: "An array containing the absolute paths of the files and directories."
+      description: "包含的文件和目录的绝对路径的数组。"
   overload: System.Security.Permissions.FileIOPermission.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>access</code> parameter is not a valid value of <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>.       -or-       An entry in the <code>pathList</code> array is not a valid string."
+    description: "<code> access </code>参数不是有效的值的<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>。       -将项记入<code> pathList </code>数组不是有效的字符串。"
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.AddPathList(System.Security.Permissions.FileIOPermissionAccess,System.String)
@@ -225,8 +225,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Adds access for the specified file or directory to the existing state of the permission."
-  remarks: "Use this method to modify file and directory access by adding to the state of the current permission."
+  summary: "将指定的文件或目录的访问权限添加到现有的权限状态。"
+  remarks: "使用此方法以将添加到当前权限的状态来修改文件和目录的访问。"
   example:
   - "The following code example shows the use of the AddPathList method.  \n  \n [!code-cs[Classic FileIOPermission Example#2](~/add/codesnippet/csharp/179395dd-6ede-43e0-bf6e-_1.cs)]\n [!code-vb[Classic FileIOPermission Example#2](~/add/codesnippet/visualbasic/179395dd-6ede-43e0-bf6e-_1.vb)]\n [!code-cpp[Classic FileIOPermission Example#2](~/add/codesnippet/cpp/179395dd-6ede-43e0-bf6e-_1.cpp)]"
   syntax:
@@ -234,21 +234,21 @@ items:
     parameters:
     - id: access
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "A bitwise combination of the <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref> values."
+      description: "按位组合<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>值。"
     - id: path
       type: System.String
-      description: "The absolute path of a file or directory."
+      description: "文件或目录的绝对路径。"
   overload: System.Security.Permissions.FileIOPermission.AddPathList*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>access</code> parameter is not a valid value of <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>.       -or-       The <code>path</code> parameter is not a valid string.       -or-       The <code>path</code> parameter did not specify the absolute path to the file or directory."
+    description: "<code> access </code>参数不是有效的值的<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>。       -或- <code> path </code>参数不是有效的字符串。       -或- <code> path </code>参数未指定文件或目录的绝对路径。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The <code>path</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The <code>path</code> parameter has an invalid format."
+    description: "<code> path </code>参数具有无效的格式。"
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.AddPathList(System.Security.Permissions.FileIOPermissionAccess,System.String[])
@@ -263,25 +263,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Adds access for the specified files and directories to the existing state of the permission."
-  remarks: "Use this method to modify file and directory access by adding to the state of the current permission."
+  summary: "将指定的文件和目录的访问权限添加到现有的权限状态。"
+  remarks: "使用此方法以将添加到当前权限的状态来修改文件和目录的访问。"
   syntax:
     content: public void AddPathList (System.Security.Permissions.FileIOPermissionAccess access, string[] pathList);
     parameters:
     - id: access
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "A bitwise combination of the <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref> values."
+      description: "按位组合<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>值。"
     - id: pathList
       type: System.String[]
-      description: "An array containing the absolute paths of the files and directories."
+      description: "包含的文件和目录的绝对路径的数组。"
   overload: System.Security.Permissions.FileIOPermission.AddPathList*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>access</code> parameter is not a valid value of <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>.       -or-       An entry in the <code>pathList</code> array is not valid."
+    description: "<code> access </code>参数不是有效的值的<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>。       -将项记入<code> pathList </code>数组无效。"
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "An entry in the <code>pathList</code> array has an invalid format."
+    description: "将项记入<code> pathList </code>数组具有无效的格式。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The <code>pathList</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
@@ -299,15 +299,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Gets or sets the permitted access to all files."
-  remarks: "This property gets or sets the permitted access to all files on the local computer and network drives.       An individual <xref:System.Security.Permissions.FileIOPermissionAccess> value can be checked for using a bitwise AND operation."
+  summary: "获取或设置对所有文件的允许访问权限。"
+  remarks: "此属性获取或设置对在本地计算机和网络驱动器上的所有文件的允许访问权限。       个人<xref:System.Security.Permissions.FileIOPermissionAccess>在检查值是否为使用按位与运算。</xref:System.Security.Permissions.FileIOPermissionAccess>"
   example:
   - "The following code example shows the use of the AllFiles property.  \n  \n [!code-cs[Classic FileIOPermission Example#3](~/add/codesnippet/csharp/p-system.security.permis_9_1.cs)]\n [!code-vb[Classic FileIOPermission Example#3](~/add/codesnippet/visualbasic/p-system.security.permis_9_1.vb)]\n [!code-cpp[Classic FileIOPermission Example#3](~/add/codesnippet/cpp/p-system.security.permis_9_1.cpp)]"
   syntax:
     content: public System.Security.Permissions.FileIOPermissionAccess AllFiles { get; set; }
     return:
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "The set of file I/O flags for all files."
+      description: "文件 I/O 标志集合的所有文件。"
   overload: System.Security.Permissions.FileIOPermission.AllFiles*
   exceptions: []
   platform:
@@ -324,15 +324,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Gets or sets the permitted access to all local files."
-  remarks: "Local files are files contained on the local computer. Any files not accessed through a network drive are local files.       An individual <xref:System.Security.Permissions.FileIOPermissionAccess> value can be checked for using a bitwise AND operation."
+  summary: "获取或设置对所有本地文件的允许访问权限。"
+  remarks: "本地文件是包含在本地计算机上的文件。 通过网络驱动器不访问任何文件是本地文件。       个人<xref:System.Security.Permissions.FileIOPermissionAccess>在检查值是否为使用按位与运算。</xref:System.Security.Permissions.FileIOPermissionAccess>"
   example:
   - "The following code example shows the use of the AllLocalFiles property.  \n  \n [!code-cs[Classic FileIOPermission Example#1](~/add/codesnippet/csharp/p-system.security.permis_10_1.cs)]\n [!code-vb[Classic FileIOPermission Example#1](~/add/codesnippet/visualbasic/p-system.security.permis_10_1.vb)]\n [!code-cpp[Classic FileIOPermission Example#1](~/add/codesnippet/cpp/p-system.security.permis_10_1.cpp)]"
   syntax:
     content: public System.Security.Permissions.FileIOPermissionAccess AllLocalFiles { get; set; }
     return:
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "The set of file I/O flags for all local files."
+      description: "文件 I/O 标志集合为所有本地文件。"
   overload: System.Security.Permissions.FileIOPermission.AllLocalFiles*
   exceptions: []
   platform:
@@ -349,14 +349,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Creates and returns an identical copy of the current permission."
-  remarks: "A copy of the permission represents the same access to resources as the original permission."
+  summary: "创建并返回当前权限的相同副本。"
+  remarks: "权限的副本与原始权限资源表示相同的访问权限。"
   syntax:
     content: public override System.Security.IPermission Copy ();
     parameters: []
     return:
       type: System.Security.IPermission
-      description: "A copy of the current permission."
+      description: "当前权限的副本。"
   overload: System.Security.Permissions.FileIOPermission.Copy*
   exceptions: []
   platform:
@@ -373,17 +373,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Determines whether the specified <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> object is equal to the current <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref>."
-  remarks: "For more information, see <xref:System.Object.Equals%2A>."
+  summary: "确定是否指定<xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref>对象是否等于当前<xref href=&quot;System.Security.Permissions.FileIOPermission&quot;> </xref>。"
+  remarks: "有关详细信息，请参阅<xref:System.Object.Equals%2A>。</xref:System.Object.Equals%2A>"
   syntax:
     content: public override bool Equals (object obj);
     parameters:
     - id: obj
       type: System.Object
-      description: "The <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> object to compare with the current <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref>."
+      description: "<xref href=&quot;System.Security.Permissions.FileIOPermission&quot;> </xref>要与当前比较对象<xref href=&quot;System.Security.Permissions.FileIOPermission&quot;> </xref>。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the specified <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> is equal to the current <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> object; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果指定<xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref>等同于当前<xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref>对象; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Security.Permissions.FileIOPermission.Equals*
   exceptions: []
   platform:
@@ -400,13 +400,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Reconstructs a permission with a specified state from an XML encoding."
+  summary: "重新构造具有指定状态的 XML 编码的权限。"
   syntax:
     content: public override void FromXml (System.Security.SecurityElement esd);
     parameters:
     - id: esd
       type: System.Security.SecurityElement
-      description: "The XML encoding used to reconstruct the permission."
+      description: "用于重新构造权限的 XML 编码。"
   overload: System.Security.Permissions.FileIOPermission.FromXml*
   exceptions:
   - type: System.ArgumentNullException
@@ -414,7 +414,7 @@ items:
     description: "The <code>esd</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>esd</code> parameter is not a valid permission element.       -or-       The <code>esd</code> parameter&quot;s version number is not compatible."
+    description: "<code> esd </code>参数不是有效的权限元素。       -或- <code> esd </code>参数的版本号不兼容。"
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.GetHashCode
@@ -429,14 +429,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Gets a hash code for the <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> object that is suitable for use in hashing algorithms and data structures such as a hash table."
-  remarks: "The hash code for two instances of the same permission might be different, hence a hash code should not be used to compare two <xref:System.Security.Permissions.FileIOPermission> objects."
+  summary: "获取的哈希代码<xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref>是适合在哈希算法和数据结构，如哈希表中使用的对象。"
+  remarks: "相同的权限的两个实例的哈希代码可能会有所不同，因此不应使用的哈希代码来比较两个<xref:System.Security.Permissions.FileIOPermission>对象。</xref:System.Security.Permissions.FileIOPermission>"
   syntax:
     content: public override int GetHashCode ();
     parameters: []
     return:
       type: System.Int32
-      description: "A hash code for the current <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> object."
+      description: "当前的哈希代码<xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref>对象。"
   overload: System.Security.Permissions.FileIOPermission.GetHashCode*
   exceptions: []
   platform:
@@ -453,8 +453,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Gets all files and directories with the specified <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>."
-  remarks: "Use this method to get the state of the current permission. To get the state of both `Read` and `Write` access, two calls to this method are required.      > [!NOTE] >  The `access` parameter is limited to the values of <xref:System.Security.Permissions.FileIOPermissionAccess>, which represent single types of file access. Those values are <xref:System.Security.Permissions.FileIOPermissionAccess>, <xref:System.Security.Permissions.FileIOPermissionAccess>, <xref:System.Security.Permissions.FileIOPermissionAccess>, and <xref:System.Security.Permissions.FileIOPermissionAccess>. The values acceptable to `access` do not include <xref:System.Security.Permissions.FileIOPermissionAccess> and <xref:System.Security.Permissions.FileIOPermissionAccess>, which do not represent single types of file access."
+  summary: "获取所有文件和与指定的目录<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>。"
+  remarks: "使用此方法以获取当前权限的状态。 若要获取的两状态`Read`和`Write`访问，两次调用此方法所需。      1> [!NOTE]&1;>`access`参数最多的值为<xref:System.Security.Permissions.FileIOPermissionAccess>，分别表示一种类型的文件访问。</xref:System.Security.Permissions.FileIOPermissionAccess> 这些值为<xref:System.Security.Permissions.FileIOPermissionAccess>， <xref:System.Security.Permissions.FileIOPermissionAccess>， <xref:System.Security.Permissions.FileIOPermissionAccess>，和<xref:System.Security.Permissions.FileIOPermissionAccess>。</xref:System.Security.Permissions.FileIOPermissionAccess> </xref:System.Security.Permissions.FileIOPermissionAccess> </xref:System.Security.Permissions.FileIOPermissionAccess> </xref:System.Security.Permissions.FileIOPermissionAccess> 可接受值`access`不包括<xref:System.Security.Permissions.FileIOPermissionAccess>和<xref:System.Security.Permissions.FileIOPermissionAccess>，这不表示一种类型的文件访问。</xref:System.Security.Permissions.FileIOPermissionAccess> </xref:System.Security.Permissions.FileIOPermissionAccess>"
   example:
   - "The following code example shows the use of the GetPathList method. This example is part of a larger example provided for the <xref:System.Security.Permissions.FileIOPermission> class.  \n  \n [!code-cpp[System.Security.Permissions.FileIOPermission#7](~/add/codesnippet/cpp/996247c6-c512-46ad-9cab-_1.cpp)]\n [!code-cs[System.Security.Permissions.FileIOPermission#7](~/add/codesnippet/csharp/996247c6-c512-46ad-9cab-_1.cs)]\n [!code-vb[System.Security.Permissions.FileIOPermission#7](~/add/codesnippet/visualbasic/996247c6-c512-46ad-9cab-_1.vb)]"
   syntax:
@@ -462,15 +462,15 @@ items:
     parameters:
     - id: access
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "One of the <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref> values that represents a single type of file access."
+      description: "之一<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>表示文件访问的单一类型的值。"
     return:
       type: System.String[]
-      description: "An array containing the paths of the files and directories to which access specified by the <code>access</code> parameter is granted."
+      description: "包含文件和文件夹的访问权限由指定的路径的数组<code> access </code>授予参数。"
   overload: System.Security.Permissions.FileIOPermission.GetPathList*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>access</code> is not a valid value of <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>.       -or-       <code>access</code> is <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>, which represents more than one type of file access, or <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>, which does not represent any type of file access."
+    description: "<code>access</code>不是有效的值<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>。       -<code>access</code>是<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>，它表示多个类型的文件访问或<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>，它不表示任何类型的文件访问。"
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.Intersect(System.Security.IPermission)
@@ -485,22 +485,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Creates and returns a permission that is the intersection of the current permission and the specified permission."
-  remarks: "The intersection of two permissions is a permission that describes the set of operations they both describe in common. Only a demand that passes both original permissions will pass the intersection."
+  summary: "创建并返回是当前权限和指定的权限的交集的权限。"
+  remarks: "以下两个权限的交集是描述组的二者共同描述的操作的权限。 仅通过两个原始权限的请求将通过该交集。"
   syntax:
     content: public override System.Security.IPermission Intersect (System.Security.IPermission target);
     parameters:
     - id: target
       type: System.Security.IPermission
-      description: "A permission to intersect with the current permission. It must be the same type as the current permission."
+      description: "要与当前权限相交的权限。 它必须与当前权限属于同一类型。"
     return:
       type: System.Security.IPermission
-      description: "A new permission that represents the intersection of the current permission and the specified permission. This new permission is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the intersection is empty."
+      description: "表示当前权限和指定的权限的交集的一个新权限。 此新权限为<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果交集为空。"
   overload: System.Security.Permissions.FileIOPermission.Intersect*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>target</code> parameter is not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> and is not of the same type as the current permission."
+    description: "<code> target </code>参数不是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>并且不是与当前权限属于同一类型。"
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.IsSubsetOf(System.Security.IPermission)
@@ -515,22 +515,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Determines whether the current permission is a subset of the specified permission."
-  remarks: "The current permission is a subset of the specified permission if the current permission specifies a set of operations that is contained by the specified permission. For example, a permission that represents read access to C:\\example.txt is a subset of a permission that represents read access to C:\\\\. If this method returns `true`, the current permission represents no more access to the protected resource than does the specified permission."
+  summary: "确定当前权限是否为指定权限的子集。"
+  remarks: "如果当前权限指定一组包含通过指定权限的操作，当前权限是指定权限的子集。 例如，表示对 C:\\example.txt 读取访问权限的权限是到 c︰ 表示读取访问权限的子集\\\\。 如果此方法返回`true`，当前的权限表示对受保护资源的访问权限不超过指定的权限。"
   syntax:
     content: public override bool IsSubsetOf (System.Security.IPermission target);
     parameters:
     - id: target
       type: System.Security.IPermission
-      description: "A permission that is to be tested for the subset relationship. This permission must be the same type as the current permission."
+      description: "将要测试子集关系的权限。 此权限必须与当前权限属于同一类型。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the current permission is a subset of the specified permission; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果当前权限是指定权限; 的子集否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Security.Permissions.FileIOPermission.IsSubsetOf*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>target</code> parameter is not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> and is not of the same type as the current permission."
+    description: "<code> target </code>参数不是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>并且不是与当前权限属于同一类型。"
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.IsUnrestricted
@@ -545,14 +545,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Returns a value indicating whether the current permission is unrestricted."
-  remarks: "An unrestricted permission represents access to all resources protected by the permission."
+  summary: "返回一个值，该值指示当前权限是否不受限制。"
+  remarks: "无限制的权限表示对权限所保护的所有资源的访问权限。"
   syntax:
     content: public bool IsUnrestricted ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the current permission is unrestricted; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果当前权限不受限制;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Security.Permissions.FileIOPermission.IsUnrestricted*
   exceptions: []
   platform:
@@ -569,7 +569,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Sets the specified access to the specified file or directory, replacing the existing state of the permission."
+  summary: "将指定的访问权限设置为指定的文件或目录，替换现有的权限状态。"
   remarks: "The previous state of the current permission for the specified access type is overwritten. The following code sets the access for C:\\temp to <xref:System.Security.Permissions.FileIOPermissionAccess>.  \n  \n [!code-cpp[System.Security.Permissions.FileIOPermission#12](~/add/codesnippet/cpp/21456ab4-f876-4c97-b331-_1.cpp)]\n [!code-vb[System.Security.Permissions.FileIOPermission#12](~/add/codesnippet/visualbasic/21456ab4-f876-4c97-b331-_1.vb)]\n [!code-cs[System.Security.Permissions.FileIOPermission#12](~/add/codesnippet/csharp/21456ab4-f876-4c97-b331-_1.cs)]  \n  \n This access will not be overwritten by the following code because the access types are not the same.  \n  \n [!code-cpp[System.Security.Permissions.FileIOPermission#13](~/add/codesnippet/cpp/21456ab4-f876-4c97-b331-_2.cpp)]\n [!code-vb[System.Security.Permissions.FileIOPermission#13](~/add/codesnippet/visualbasic/21456ab4-f876-4c97-b331-_2.vb)]\n [!code-cs[System.Security.Permissions.FileIOPermission#13](~/add/codesnippet/csharp/21456ab4-f876-4c97-b331-_2.cs)]"
   example:
   - "The following code example shows the use of the SetPathList method.  \n  \n [!code-cpp[System.Security.Permissions.FileIOPermission#7](~/add/codesnippet/cpp/21456ab4-f876-4c97-b331-_3.cpp)]\n [!code-cs[System.Security.Permissions.FileIOPermission#7](~/add/codesnippet/csharp/21456ab4-f876-4c97-b331-_3.cs)]\n [!code-vb[System.Security.Permissions.FileIOPermission#7](~/add/codesnippet/visualbasic/21456ab4-f876-4c97-b331-_3.vb)]"
@@ -578,15 +578,15 @@ items:
     parameters:
     - id: access
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "A bitwise combination of the <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref> values."
+      description: "按位组合<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>值。"
     - id: path
       type: System.String
-      description: "The absolute path of the file or directory."
+      description: "文件或目录的绝对路径。"
   overload: System.Security.Permissions.FileIOPermission.SetPathList*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>access</code> parameter is not a valid value of <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>.       -or-       The <code>path</code> parameter is not a valid string.       -or-       The <code>path</code> parameter did not specify the absolute path to the file or directory."
+    description: "<code> access </code>参数不是有效的值的<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>。       -或- <code> path </code>参数不是有效的字符串。       -或- <code> path </code>参数未指定文件或目录的绝对路径。"
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.SetPathList(System.Security.Permissions.FileIOPermissionAccess,System.String[])
@@ -601,22 +601,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Sets the specified access to the specified files and directories, replacing the current state for the specified access with the new set of paths."
+  summary: "将指定的访问权限设置为指定的文件和目录，新组的路径替换指定访问权限的当前状态。"
   remarks: "The previous state of the current permission for the specified access type is overwritten. The following code sets the access for C:\\temp to <xref:System.Security.Permissions.FileIOPermissionAccess>.  \n  \n This access will not be overwritten by the following code because the access types are not the same.  \n  \n [!code-cpp[System.Security.Permissions.FileIOPermission#15](~/add/codesnippet/cpp/653665a4-6451-42cc-8bd1-_1.cpp)]\n [!code-vb[System.Security.Permissions.FileIOPermission#15](~/add/codesnippet/visualbasic/653665a4-6451-42cc-8bd1-_1.vb)]\n [!code-cs[System.Security.Permissions.FileIOPermission#15](~/add/codesnippet/csharp/653665a4-6451-42cc-8bd1-_1.cs)]"
   syntax:
     content: public void SetPathList (System.Security.Permissions.FileIOPermissionAccess access, string[] pathList);
     parameters:
     - id: access
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "A bitwise combination of the <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref> values."
+      description: "按位组合<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>值。"
     - id: pathList
       type: System.String[]
-      description: "An array containing the absolute paths of the files and directories."
+      description: "包含的文件和目录的绝对路径的数组。"
   overload: System.Security.Permissions.FileIOPermission.SetPathList*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>access</code> parameter is not a valid value of <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>.       -or-       An entry in the <code>pathList</code> parameter is not a valid string."
+    description: "<code> access </code>参数不是有效的值的<xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>。       -将项记入<code> pathList </code>参数不是有效的字符串。"
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.ToXml
@@ -631,13 +631,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Creates an XML encoding of the permission and its current state."
+  summary: "创建权限及其当前状态的 XML 编码。"
   syntax:
     content: public override System.Security.SecurityElement ToXml ();
     parameters: []
     return:
       type: System.Security.SecurityElement
-      description: "An XML encoding of the permission, including any state information."
+      description: "权限，包括任何状态信息的 XML 编码。"
   overload: System.Security.Permissions.FileIOPermission.ToXml*
   exceptions: []
   platform:
@@ -654,22 +654,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Creates a permission that is the union of the current permission and the specified permission."
-  remarks: "The result of a call to Union is a permission that represents all the operations represented by both the current permission and the specified permission. Any demand that passes either permission passes their union."
+  summary: "创建兼具当前权限和指定的权限的权限。"
+  remarks: "对联合的调用的结果是由当前权限和指定的权限表示所表示的所有操作的权限。 任何请求都会通过任一权限传递其联合。"
   syntax:
     content: public override System.Security.IPermission Union (System.Security.IPermission other);
     parameters:
     - id: other
       type: System.Security.IPermission
-      description: "A permission to combine with the current permission. It must be the same type as the current permission."
+      description: "若要与当前权限合并的权限。 它必须与当前权限属于同一类型。"
     return:
       type: System.Security.IPermission
-      description: "A new permission that represents the union of the current permission and the specified permission."
+      description: "表示同时兼具当前权限和指定的权限的新权限。"
   overload: System.Security.Permissions.FileIOPermission.Union*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>other</code> parameter is not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> and is not of the same type as the current permission."
+    description: "<code> other </code>参数不是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>并且不是与当前权限属于同一类型。"
   platform:
   - net462
 references:

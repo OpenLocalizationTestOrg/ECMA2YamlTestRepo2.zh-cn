@@ -10,8 +10,8 @@ items:
   nameWithType: IAsyncErrorNotify
   fullName: System.EnterpriseServices.IAsyncErrorNotify
   type: Interface
-  summary: "Implements error trapping on the asynchronous batch work that is submitted by the <xref href=&quot;System.EnterpriseServices.Activity&quot;></xref> object."
-  remarks: "IAsyncErrorNotify is used to implement error trapping on the asynchronous batch work that is submitted by the <xref:System.EnterpriseServices.Activity> object. Implement this interface on the object that is passed in the call to <xref:System.EnterpriseServices.Activity.AsynchronousCall%2A> on the <xref:System.EnterpriseServices.Activity> object. <xref:System.EnterpriseServices.Activity.AsynchronousCall%2A> determines if an error occurred in batch work that is running asynchronously. This interface enables you to be informed of errors that occur in asynchronous batch work, and the process will terminate (failfast) on any unrecoverable error.       For information about failfast, see the &quot;Fault Isolation and Failfast Policy&quot; topic in the Platform SDK in MSDN."
+  summary: "提交的异步批处理工作上的实现错误捕获<xref href=&quot;System.EnterpriseServices.Activity&quot;></xref>对象。"
+  remarks: "IAsyncErrorNotify 用于提交的异步批处理工作上实现错误捕获<xref:System.EnterpriseServices.Activity>对象。</xref:System.EnterpriseServices.Activity> 在调用中传递的对象上实现此接口<xref:System.EnterpriseServices.Activity.AsynchronousCall%2A>上<xref:System.EnterpriseServices.Activity>对象。</xref:System.EnterpriseServices.Activity> </xref:System.EnterpriseServices.Activity.AsynchronousCall%2A> <xref:System.EnterpriseServices.Activity.AsynchronousCall%2A>确定在以异步方式运行的批处理工作中是否发生了错误。</xref:System.EnterpriseServices.Activity.AsynchronousCall%2A> 此接口，可在异步批处理工作中发生的错误通知并在有任何不可恢复的错误，则进程将终止 (failfast)。       Failfast 有关的信息，请参阅 MSDN 中的平台 SDK 中的&quot;错误隔离和 Failfast 策略&quot;主题。"
   syntax:
     content: >-
       [System.Runtime.InteropServices.Guid("FE6777FB-A674-4177-8F32-6D707E113484")]
@@ -34,14 +34,14 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Handles errors for asynchronous batch work."
-  remarks: "This method should be implemented to gracefully handle errors that occur when batch work is running asynchronously. Because the process terminates (failfast) on any unrecoverable error, without this method there is no way of knowing when errors occur in asynchronous batch work. The process also terminates when this method returns an error as its return value. The batch work itself is implemented in <xref:System.EnterpriseServices.IServiceCall.OnCall%2A>, and it is run asynchronously by calling <xref:System.EnterpriseServices.Activity.AsynchronousCall%2A>.       This method supports the standard return values `E_FAIL`, `E_INVALIDARG`, and `E_OUTOFMEMORY`, as well as `S_OK`, which indicates the method call returned successfully."
+  summary: "处理异步批处理工作的错误。"
+  remarks: "此方法应实现妥善处理以异步方式运行批处理工作时出现的错误。 因为在进程终止 (failfast) 在有任何不可恢复的错误，而无需此方法没有无法知道错误发生在异步批处理工作中。 此方法返回作为其返回值出错时，也会终止进程。 在中实现批处理工作自身<xref:System.EnterpriseServices.IServiceCall.OnCall%2A>，并通过调用<xref:System.EnterpriseServices.Activity.AsynchronousCall%2A>.</xref:System.EnterpriseServices.Activity.AsynchronousCall%2A>以异步方式运行</xref:System.EnterpriseServices.IServiceCall.OnCall%2A>       此方法支持标准的返回值`E_FAIL`， `E_INVALIDARG`，和`E_OUTOFMEMORY`，以及`S_OK`，指示方法调用成功返回。"
   syntax:
     content: public void OnError (int hresult);
     parameters:
     - id: hresult
       type: System.Int32
-      description: "The HRESULT of the error that occurred while the batch work was running asynchronously."
+      description: "以异步方式运行的批处理工作时出现的错误的 HRESULT。"
   overload: System.EnterpriseServices.IAsyncErrorNotify.OnError*
   exceptions: []
   platform:

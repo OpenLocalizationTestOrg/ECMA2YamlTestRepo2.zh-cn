@@ -37,7 +37,7 @@ items:
   nameWithType: SessionAuthenticationModule
   fullName: System.IdentityModel.Services.SessionAuthenticationModule
   type: Class
-  summary: "Implements an ASP.NET module that processes session cookies in WS-Federation scenarios."
+  summary: "实现处理 WS 联合身份验证方案中的会话 cookie 的 ASP.NET 模块。"
   remarks: "When present in the ASP.NET pipeline, the SessionAuthenticationModule (SAM) processes session cookies in WS-Federation scenarios. It uses the cookie handler specified by the <xref:System.IdentityModel.Services.SessionAuthenticationModule.CookieHandler%2A> property to read the raw session cookie from the HTTP request and write it to the HTTP response. It uses the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> that is configured for an application to deserialize the raw session cookie into <xref:System.IdentityModel.Tokens.SessionSecurityToken> objects. The session security token contains the claims (<xref:System.Security.Claims.Claim>) and principal (<xref:System.Security.Claims.ClaimsPrincipal>) associated with the entity for which the request is being served.  \n  \n The SAM adds its <xref:System.IdentityModel.Services.SessionAuthenticationModule.OnAuthenticateRequest%2A> event handler to the <xref:System.Web.HttpApplication.AuthenticateRequest?displayProperty=fullName> event in the ASP.NET pipeline. This handler intercepts sign-in requests, and, if there is a session cookie, deserializes it into a session token, and sets the <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> and <xref:System.Web.HttpContext.User%2A?displayProperty=fullName> properties to the claims principal contained in the session token. It invokes several of the other methods exposed by the SAM during this process.  \n  \n The <xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A> method can be invoked to sign the user out of a session (for example, in a SignOut.aspx.cs code-behind file).  \n  \n The SAM exposes several events that provide access to its processing pipeline. The <xref:System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenReceived> and <xref:System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenCreated> events enable you to modify session tokens that are read from cookies or created during processing. Typically, this is done to add, remove, or transform claims in the token or to adjust its expiration time. The <xref:System.IdentityModel.Services.SessionAuthenticationModule.SigningOut>, <xref:System.IdentityModel.Services.SessionAuthenticationModule.SignedOut>, and <xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOutError> events provide hooks into the processing of sign-out requests. For many scenarios, simply adding handlers for these events, often to the global.asax.cs file, will be sufficient.  \n  \n For more complicated scenarios, you can derive from SessionAuthenticationModule to implement a custom SAM. To this end, many of the methods that are invoked during <xref:System.IdentityModel.Services.SessionAuthenticationModule.OnAuthenticateRequest%2A> and <xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A> are exposed so that you can provide custom behavior at specific stages of the session processing lifecycle.  \n  \n You can add the SAM to the ASP.NET pipeline in a configuration file by adding it to the HTTP modules under either the `<system.webServer>` element for IIS version 7 and later or under the `<system.web>` element for versions prior to IIS 7. The cookie handler used by the SAM can be configured with the [\\&lt;cookieHandler\\&gt;](../Topic/%3CcookieHandler%3E.md) element."
   example:
   - "[!code-cs[WifSAM#1](~/add/codesnippet/csharp/sam/global.asax.cs#1)]  \n  \n The following XML shows how to configure the SAM in the ASP.NET pipeline. Many other elements that are present in a typical configuration are omitted here for brevity.  \n  \n```xml  \n<configuration>  \n  <system.webServer>  \n    <modules>  \n      <!--WIF 4.5 modules -->  \n      <add name=\"SessionAuthenticationModule\" type=\"System.IdentityModel.Services.SessionAuthenticationModule, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\"/>  \n      <add name=\"WsFederationAuthenticationModule\" type=\"System.IdentityModel.Services.WSFederationAuthenticationModule, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\"/>  \n    </modules>  \n  </system.webServer>  \n</configuration>  \n```"
@@ -65,8 +65,8 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Services.SessionAuthenticationModule&quot;></xref> class."
-  remarks: "The <xref:System.IdentityModel.Services.SessionAuthenticationModule.IsReferenceMode%2A> property is set to `false` and the <xref:System.IdentityModel.Services.SessionAuthenticationModule.CookieHandler%2A> property is initialized to a default instance of the <xref:System.IdentityModel.Services.CookieHandlerElement.ChunkedCookieHandler%2A> class."
+  summary: "初始化的新实例<xref href=&quot;System.IdentityModel.Services.SessionAuthenticationModule&quot;></xref>类。"
+  remarks: "<xref:System.IdentityModel.Services.SessionAuthenticationModule.IsReferenceMode%2A>属性设置为`false`和<xref:System.IdentityModel.Services.SessionAuthenticationModule.CookieHandler%2A>属性初始化为<xref:System.IdentityModel.Services.CookieHandlerElement.ChunkedCookieHandler%2A>类</xref:System.IdentityModel.Services.CookieHandlerElement.ChunkedCookieHandler%2A>的默认实例</xref:System.IdentityModel.Services.SessionAuthenticationModule.CookieHandler%2A></xref:System.IdentityModel.Services.SessionAuthenticationModule.IsReferenceMode%2A>"
   syntax:
     content: public SessionAuthenticationModule ();
     parameters: []
@@ -86,17 +86,17 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Authenticates the incoming request by validating the incoming session token. Upon successful validation, it updates the current HTTP context and thread principal with the specified  <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref>."
-  remarks: "The AuthenticateSessionSecurityToken method is called from the <xref:System.IdentityModel.Services.SessionAuthenticationModule.OnAuthenticateRequest%2A> method. It calls the <xref:System.IdentityModel.Services.SessionAuthenticationModule.SetPrincipalFromSessionToken%2A> method to validate the incoming token and update the <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> and the <xref:System.Web.HttpContext.User%2A?displayProperty=fullName> properties. If the `writeCookie` parameter is `true`, the <xref:System.IdentityModel.Services.SessionAuthenticationModule.WriteSessionTokenToCookie%2A> method is invoked to write the session token to a cookie."
+  summary: "对传入的请求进行验证传入的会话令牌身份验证。 验证成功时，它的当前 HTTP 上下文和主体的线程会用更新指定<xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;> </xref>。"
+  remarks: "从调用 AuthenticateSessionSecurityToken 方法<xref:System.IdentityModel.Services.SessionAuthenticationModule.OnAuthenticateRequest%2A>方法。</xref:System.IdentityModel.Services.SessionAuthenticationModule.OnAuthenticateRequest%2A> 它调用<xref:System.IdentityModel.Services.SessionAuthenticationModule.SetPrincipalFromSessionToken%2A>方法来验证传入令牌和更新<xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName>和<xref:System.Web.HttpContext.User%2A?displayProperty=fullName>属性。</xref:System.Web.HttpContext.User%2A?displayProperty=fullName> </xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> </xref:System.IdentityModel.Services.SessionAuthenticationModule.SetPrincipalFromSessionToken%2A> 如果`writeCookie`参数是`true`、<xref:System.IdentityModel.Services.SessionAuthenticationModule.WriteSessionTokenToCookie%2A>方法调用以将会话令牌编写为一个 cookie。</xref:System.IdentityModel.Services.SessionAuthenticationModule.WriteSessionTokenToCookie%2A>"
   syntax:
     content: public virtual void AuthenticateSessionSecurityToken (System.IdentityModel.Tokens.SessionSecurityToken sessionToken, bool writeCookie);
     parameters:
     - id: sessionToken
       type: System.IdentityModel.Tokens.SessionSecurityToken
-      description: "The session security token to use to authenticate the incoming HTTP request."
+      description: "要使用传入的 HTTP 请求进行身份验证的会话安全令牌。"
     - id: writeCookie
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to write the session cookie; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>要写入的会话 cookie;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.IdentityModel.Services.SessionAuthenticationModule.AuthenticateSessionSecurityToken*
   exceptions: []
   platform:
@@ -113,21 +113,21 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Determines whether a session cookie is in the specified cookie collection."
+  summary: "确定指定的 cookie 集合中是否为会话 cookie。"
   syntax:
     content: public bool ContainsSessionTokenCookie (System.Web.HttpCookieCollection httpCookieCollection);
     parameters:
     - id: httpCookieCollection
       type: System.Web.HttpCookieCollection
-      description: "The collection of cookies in which to search."
+      description: "在其中进行搜索的 cookie 的集合。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a session cookie is found; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果找到一个会话 cookie;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.IdentityModel.Services.SessionAuthenticationModule.ContainsSessionTokenCookie*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>httpCookieCollection</code> is null"
+    description: "<code>httpCookieCollection</code>为 null"
   platform:
   - net462
 - uid: System.IdentityModel.Services.SessionAuthenticationModule.ContextSessionSecurityToken
@@ -142,12 +142,12 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Gets the active <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref> for the current <xref href=&quot;System.Web.HttpContext&quot;></xref>."
+  summary: "获取活动<xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref>当前<xref href=&quot;System.Web.HttpContext&quot;> </xref>。"
   syntax:
     content: public virtual System.IdentityModel.Tokens.SessionSecurityToken ContextSessionSecurityToken { get; }
     return:
       type: System.IdentityModel.Tokens.SessionSecurityToken
-      description: "The active session security token."
+      description: "活动会话安全令牌。"
   overload: System.IdentityModel.Services.SessionAuthenticationModule.ContextSessionSecurityToken*
   exceptions: []
   platform:
@@ -164,13 +164,13 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Gets the cookie handler that is used to read, write, and delete session cookies."
-  remarks: "The CookieHandler property is initialized by the <xref:System.IdentityModel.Services.SessionAuthenticationModule.InitializePropertiesFromConfiguration%2A> method. This method initializes the property based on the cookie handler specified on the <xref:System.IdentityModel.Services.Configuration.FederationConfiguration> object that is set on the <xref:System.IdentityModel.Services.FederatedAuthentication.FederationConfiguration%2A?displayProperty=fullName> property. You can set the cookie handler in a configuration file through the [\\&lt;cookieHandler\\&gt;](../Topic/%3CcookieHandler%3E.md) element."
+  summary: "获取用于读取、 写入和删除会话 cookie 的 cookie 处理程序。"
+  remarks: "CookieHandler 属性由初始化<xref:System.IdentityModel.Services.SessionAuthenticationModule.InitializePropertiesFromConfiguration%2A>方法。</xref:System.IdentityModel.Services.SessionAuthenticationModule.InitializePropertiesFromConfiguration%2A> 此方法将根据上指定的 cookie 处理程序的属性初始化<xref:System.IdentityModel.Services.Configuration.FederationConfiguration>设置的对象<xref:System.IdentityModel.Services.FederatedAuthentication.FederationConfiguration%2A?displayProperty=fullName>属性。</xref:System.IdentityModel.Services.FederatedAuthentication.FederationConfiguration%2A?displayProperty=fullName> </xref:System.IdentityModel.Services.Configuration.FederationConfiguration> 你可以通过配置文件中设置的 cookie 处理[ \\&lt; cookieHandler\\&gt;](../Topic/%3CcookieHandler%3E.md)元素。"
   syntax:
     content: public System.IdentityModel.Services.CookieHandler CookieHandler { get; set; }
     return:
       type: System.IdentityModel.Services.CookieHandler
-      description: "The cookie handler."
+      description: "Cookie 处理程序。"
   overload: System.IdentityModel.Services.SessionAuthenticationModule.CookieHandler*
   exceptions: []
   platform:
@@ -187,33 +187,33 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Creates a <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref> from the specified parameters by using the configured session token handler."
+  summary: "创建<xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref>从通过使用配置的会话令牌处理程序指定的参数。"
   syntax:
     content: public System.IdentityModel.Tokens.SessionSecurityToken CreateSessionSecurityToken (System.Security.Claims.ClaimsPrincipal principal, string context, DateTime validFrom, DateTime validTo, bool isPersistent);
     parameters:
     - id: principal
       type: System.Security.Claims.ClaimsPrincipal
-      description: "The principal to be captured in the token."
+      description: "要在令牌中捕获的主体。"
     - id: context
       type: System.String
-      description: "An application-defined context string."
+      description: "已应用程序定义的上下文的字符串。"
     - id: validFrom
       type: System.DateTime
-      description: "The first instant in which this token is valid."
+      description: "此令牌无效的最初时刻。"
     - id: validTo
       type: System.DateTime
-      description: "The last instant in which this token is valid."
+      description: "此令牌无效最后时刻。"
     - id: isPersistent
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the value should be persisted by the user agent; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果值应保持用户代理;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
     return:
       type: System.IdentityModel.Tokens.SessionSecurityToken
-      description: "The session token."
+      description: "会话令牌中。"
   overload: System.IdentityModel.Services.SessionAuthenticationModule.CreateSessionSecurityToken*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "There is not a valid session token handler configured. (There is no <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityTokenHandler&quot;></xref> configured in the <xref:System.IdentityModel.Configuration.IdentityConfiguration.SecurityTokenHandlers*> property.)"
+    description: "没有配置的有效会话令牌处理程序。 (没有任何<xref href=&quot;System.IdentityModel.Tokens.SessionSecurityTokenHandler&quot;></xref>中配置<xref:System.IdentityModel.Configuration.IdentityConfiguration.SecurityTokenHandlers*>属性。)</xref:System.IdentityModel.Configuration.IdentityConfiguration.SecurityTokenHandlers*>"
   platform:
   - net462
 - uid: System.IdentityModel.Services.SessionAuthenticationModule.DeleteSessionTokenCookie
@@ -228,8 +228,8 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Deletes the session cookie and removes it from the cache."
-  remarks: "Deletes the session cookie by using the cookie handler specified by the <xref:System.IdentityModel.Services.SessionAuthenticationModule.CookieHandler%2A> property. This method is called during sign-out by the <xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A> method."
+  summary: "删除会话 cookie，并将其从缓存中删除。"
+  remarks: "通过使用指定的 cookie 处理程序中删除会话 cookie<xref:System.IdentityModel.Services.SessionAuthenticationModule.CookieHandler%2A>属性。</xref:System.IdentityModel.Services.SessionAuthenticationModule.CookieHandler%2A> 在调用此方法通过注销<xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A>方法。</xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A>"
   syntax:
     content: public void DeleteSessionTokenCookie ();
     parameters: []
@@ -249,14 +249,14 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Initializes the module and prepares it to handle events from the module&quot;s [!INCLUDE[vstecasp](~/add/includes/vstecasp-md.md)] application object."
-  remarks: "Adds the <xref:System.IdentityModel.Services.SessionAuthenticationModule.OnAuthenticateRequest%2A> and the <xref:System.IdentityModel.Services.SessionAuthenticationModule.OnPostAuthenticateRequest%2A> handlers to the <xref:System.Web.HttpApplication.AuthenticateRequest?displayProperty=fullName> and <xref:System.Web.HttpApplication.PostAuthenticateRequest?displayProperty=fullName> events of the application object specified by the `context` parameter."
+  summary: "初始化模块并准备对其处理的模块中的事件[!INCLUDE[vstecasp](~/add/includes/vstecasp-md.md)]应用程序对象。"
+  remarks: "将添加<xref:System.IdentityModel.Services.SessionAuthenticationModule.OnAuthenticateRequest%2A>和<xref:System.IdentityModel.Services.SessionAuthenticationModule.OnPostAuthenticateRequest%2A>到处理程序<xref:System.Web.HttpApplication.AuthenticateRequest?displayProperty=fullName>和<xref:System.Web.HttpApplication.PostAuthenticateRequest?displayProperty=fullName>指定的应用程序对象事件`context`参数。</xref:System.Web.HttpApplication.PostAuthenticateRequest?displayProperty=fullName> </xref:System.Web.HttpApplication.AuthenticateRequest?displayProperty=fullName> </xref:System.IdentityModel.Services.SessionAuthenticationModule.OnPostAuthenticateRequest%2A> </xref:System.IdentityModel.Services.SessionAuthenticationModule.OnAuthenticateRequest%2A>"
   syntax:
     content: protected override void InitializeModule (System.Web.HttpApplication context);
     parameters:
     - id: context
       type: System.Web.HttpApplication
-      description: "The HTTP application object that contains this module."
+      description: "包含此模块的 HTTP 应用程序对象。"
   overload: System.IdentityModel.Services.SessionAuthenticationModule.InitializeModule*
   exceptions: []
   platform:
@@ -273,8 +273,8 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Initializes the module properties based on definitions in the configuration file."
-  remarks: "Initializes the <xref:System.IdentityModel.Services.SessionAuthenticationModule.CookieHandler%2A> property from the handler specified in configuration by the <xref:System.IdentityModel.Services.Configuration.FederationConfiguration?displayProperty=fullName> object that is set on the <xref:System.IdentityModel.Services.FederatedAuthentication.FederationConfiguration%2A?displayProperty=fullName> property. You can specify the cookie handler in a configuration file through the [\\&lt;cookieHandler\\&gt;](../Topic/%3CcookieHandler%3E.md) element."
+  summary: "初始化基于配置文件中定义的模块属性。"
+  remarks: "初始化<xref:System.IdentityModel.Services.SessionAuthenticationModule.CookieHandler%2A>来自处理程序的配置中指定的属性<xref:System.IdentityModel.Services.Configuration.FederationConfiguration?displayProperty=fullName>设置的对象<xref:System.IdentityModel.Services.FederatedAuthentication.FederationConfiguration%2A?displayProperty=fullName>属性。</xref:System.IdentityModel.Services.FederatedAuthentication.FederationConfiguration%2A?displayProperty=fullName> </xref:System.IdentityModel.Services.Configuration.FederationConfiguration?displayProperty=fullName> </xref:System.IdentityModel.Services.SessionAuthenticationModule.CookieHandler%2A> 你可以通过配置文件中指定的 cookie 处理[ \\&lt; cookieHandler\\&gt;](../Topic/%3CcookieHandler%3E.md)元素。"
   syntax:
     content: protected override void InitializePropertiesFromConfiguration ();
     parameters: []
@@ -294,13 +294,13 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Gets or sets a value that specifies whether the session information (claim values, etc.) should be stored in the session cookie or whether the session content should be stored on the server side, using the cookie to store just a reference."
-  remarks: "In reference mode, the <xref:System.IdentityModel.Tokens.SessionSecurityToken> is stored in a server-side cache (an object that derives from <xref:System.IdentityModel.Tokens.SessionSecurityTokenCache>). The issued cookie just contains a context identifier that is used to retrieve the token from the cache.      > [!IMPORTANT] >  To operate in reference mode, Microsoft recommends providing a handler for the <xref:System.IdentityModel.Services.WSFederationAuthenticationModule.SessionSecurityTokenCreated?displayProperty=fullName> event in the global.asax.cs file and setting the <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A?displayProperty=fullName> property on the token passed in the <xref:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.SessionToken%2A?displayProperty=fullName> property. This will ensure that the session token operates in reference mode for every request and is favored over merely setting the IsReferenceMode property on the Session Authentication Module."
+  summary: "获取或设置一个值，指定是否应将会话信息 （声明值等） 存储在会话 cookie 或是否应在服务器端，使用 cookie 来存储只是引用存储会话内容。"
+  remarks: "在引用模式下，<xref:System.IdentityModel.Tokens.SessionSecurityToken>存储在服务器端缓存 (一个对象，派生自<xref:System.IdentityModel.Tokens.SessionSecurityTokenCache>)。</xref:System.IdentityModel.Tokens.SessionSecurityTokenCache> </xref:System.IdentityModel.Tokens.SessionSecurityToken> 颁发的 cookie 中只包含用于从缓存中检索令牌的上下文标识符。      1> [!IMPORTANT]&1;> 在引用模式下，操作提供的处理程序的 Microsoft 建议<xref:System.IdentityModel.Services.WSFederationAuthenticationModule.SessionSecurityTokenCreated?displayProperty=fullName>global.asax.cs 文件和设置中的事件<xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A?displayProperty=fullName>令牌上的属性中传递<xref:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.SessionToken%2A?displayProperty=fullName>属性。</xref:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.SessionToken%2A?displayProperty=fullName> </xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A?displayProperty=fullName> </xref:System.IdentityModel.Services.WSFederationAuthenticationModule.SessionSecurityTokenCreated?displayProperty=fullName> 这将确保会话令牌在为每个请求的引用模式下运行，并且通过只在会话身份验证模块上设置 IsReferenceMode 属性进行访问偏好形式。"
   syntax:
     content: public bool IsReferenceMode { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if issued cookies are in reference mode; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>, which specifies that issued cookies are not in reference mode."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果颁发的 cookie 位于引用模式;，否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>，它指定颁发 cookie 未处于引用模式。"
   overload: System.IdentityModel.Services.SessionAuthenticationModule.IsReferenceMode*
   exceptions: []
   platform:
@@ -317,22 +317,22 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Handles the <xref href=&quot;System.Web.HttpApplication.AuthenticateRequest&quot;></xref> event from the [!INCLUDE[vstecasp](~/add/includes/vstecasp-md.md)] pipeline."
-  remarks: "This method does the following:      1.  Invokes the <xref:System.IdentityModel.Services.SessionAuthenticationModule.TryReadSessionTokenFromCookie%2A> method to read a <xref:System.IdentityModel.Tokens.SessionSecurityToken> from the session cookie, if one is present.      2.  If a session security token cannot be read (most likely because a session has not been established), return.      3.  Invokes the <xref:System.IdentityModel.Services.SessionAuthenticationModule.OnSessionSecurityTokenReceived%2A> method to raise the <xref:System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenReceived> event. This provides an opportunity for the token read from the cookie to be modified or for the request to be canceled. The handler can also specify that the token should be reissued, by setting the <xref:System.IdentityModel.Services.SessionSecurityTokenReceivedEventArgs.ReissueCookie%2A?displayProperty=fullName> property.      4.  If the token is to be reissued, removes it from the cache and invokes the <xref:System.IdentityModel.Services.SessionAuthenticationModule.OnSessionSecurityTokenCreated%2A> method to raise the <xref:System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenCreated> event. This provides opportunity for the token to again be modified. The reissue behavior can also be modified by setting the <xref:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.WriteSessionCookie%2A?displayProperty=fullName> property in the event handler.      5.  Invokes the <xref:System.IdentityModel.Services.SessionAuthenticationModule.AuthenticateSessionSecurityToken%2A> method to authenticate the user. If successful, this has the effect of setting the <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> property to the principal that is contained in the <xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A?displayProperty=fullName> property of the incoming token.      6.  If the session has expired, invokes the <xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A> method.       The OnAuthenticateRequest method is added to the handlers for the <xref:System.Web.HttpApplication.AuthenticateRequest?displayProperty=fullName> event in the <xref:System.IdentityModel.Services.SessionAuthenticationModule.InitializeModule%2A> method."
+  summary: "处理<xref href=&quot;System.Web.HttpApplication.AuthenticateRequest&quot;></xref>事件从[!INCLUDE[vstecasp](~/add/includes/vstecasp-md.md)]管道。"
+  remarks: "此方法执行以下︰ 1。  调用<xref:System.IdentityModel.Services.SessionAuthenticationModule.TryReadSessionTokenFromCookie%2A>方法来读取<xref:System.IdentityModel.Tokens.SessionSecurityToken>从会话 cookie，如果有的话。</xref:System.IdentityModel.Tokens.SessionSecurityToken> </xref:System.IdentityModel.Services.SessionAuthenticationModule.TryReadSessionTokenFromCookie%2A>      2.  如果会话安全令牌不能为读 （最有可能是因为尚未建立会话），将返回。      3.  调用<xref:System.IdentityModel.Services.SessionAuthenticationModule.OnSessionSecurityTokenReceived%2A>方法来引发<xref:System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenReceived>事件。</xref:System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenReceived> </xref:System.IdentityModel.Services.SessionAuthenticationModule.OnSessionSecurityTokenReceived%2A> 读取从 cookie 要修改的标记或取消的请求，这提供了机会。 处理程序还可以指定应颁发令牌，通过设置<xref:System.IdentityModel.Services.SessionSecurityTokenReceivedEventArgs.ReissueCookie%2A?displayProperty=fullName>属性。</xref:System.IdentityModel.Services.SessionSecurityTokenReceivedEventArgs.ReissueCookie%2A?displayProperty=fullName>      4.  如果要重新颁发令牌，将其从缓存中删除，并调用<xref:System.IdentityModel.Services.SessionAuthenticationModule.OnSessionSecurityTokenCreated%2A>方法来引发<xref:System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenCreated>事件。</xref:System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenCreated> </xref:System.IdentityModel.Services.SessionAuthenticationModule.OnSessionSecurityTokenCreated%2A> 这提供机会再次要修改的令牌。 此外可以通过设置修改重新发出行为<xref:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.WriteSessionCookie%2A?displayProperty=fullName>事件处理程序中的属性。</xref:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.WriteSessionCookie%2A?displayProperty=fullName>      5.  调用<xref:System.IdentityModel.Services.SessionAuthenticationModule.AuthenticateSessionSecurityToken%2A>方法进行身份验证用户。</xref:System.IdentityModel.Services.SessionAuthenticationModule.AuthenticateSessionSecurityToken%2A> 如果成功，这将面临设置的效果<xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName>属性中包含的主体<xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A?displayProperty=fullName>的传入令牌的属性。</xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A?displayProperty=fullName> </xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName>      6.  如果会话已过期，将调用<xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A>方法。</xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A>       OnAuthenticateRequest 方法添加到的处理程序<xref:System.Web.HttpApplication.AuthenticateRequest?displayProperty=fullName>中的事件<xref:System.IdentityModel.Services.SessionAuthenticationModule.InitializeModule%2A>方法。</xref:System.IdentityModel.Services.SessionAuthenticationModule.InitializeModule%2A> </xref:System.Web.HttpApplication.AuthenticateRequest?displayProperty=fullName>"
   syntax:
     content: protected virtual void OnAuthenticateRequest (object sender, EventArgs eventArgs);
     parameters:
     - id: sender
       type: System.Object
-      description: "The source for the event. This will be an <xref href=&quot;System.Web.HttpApplication&quot;></xref> object."
+      description: "事件源。 这将是<xref href=&quot;System.Web.HttpApplication&quot;></xref>对象。"
     - id: eventArgs
       type: System.EventArgs
-      description: "The data for the event."
+      description: "事件的数据。"
   overload: System.IdentityModel.Services.SessionAuthenticationModule.OnAuthenticateRequest*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "There is not a valid session token handler configured. (There is no <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityTokenHandler&quot;></xref> configured in the <xref:System.IdentityModel.Configuration.IdentityConfiguration.SecurityTokenHandlers*> property.)"
+    description: "没有配置的有效会话令牌处理程序。 (没有任何<xref href=&quot;System.IdentityModel.Tokens.SessionSecurityTokenHandler&quot;></xref>中配置<xref:System.IdentityModel.Configuration.IdentityConfiguration.SecurityTokenHandlers*>属性。)</xref:System.IdentityModel.Configuration.IdentityConfiguration.SecurityTokenHandlers*>"
   platform:
   - net462
 - uid: System.IdentityModel.Services.SessionAuthenticationModule.OnPostAuthenticateRequest(System.Object,System.EventArgs)
@@ -347,17 +347,17 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Handles the <xref href=&quot;System.Web.HttpApplication.PostAuthenticateRequest&quot;></xref> event from the [!INCLUDE[vstecasp](~/add/includes/vstecasp-md.md)] pipeline."
-  remarks: "The default implementation is empty.       The OnPostAuthenticateRequest handler is added to the handlers for the <xref:System.Web.HttpApplication.PostAuthenticateRequest?displayProperty=fullName> event in the <xref:System.IdentityModel.Services.SessionAuthenticationModule.InitializeModule%2A> method."
+  summary: "处理<xref href=&quot;System.Web.HttpApplication.PostAuthenticateRequest&quot;></xref>事件从[!INCLUDE[vstecasp](~/add/includes/vstecasp-md.md)]管道。"
+  remarks: "默认实现为空。       OnPostAuthenticateRequest 处理程序添加到的处理程序<xref:System.Web.HttpApplication.PostAuthenticateRequest?displayProperty=fullName>中的事件<xref:System.IdentityModel.Services.SessionAuthenticationModule.InitializeModule%2A>方法。</xref:System.IdentityModel.Services.SessionAuthenticationModule.InitializeModule%2A> </xref:System.Web.HttpApplication.PostAuthenticateRequest?displayProperty=fullName>"
   syntax:
     content: protected virtual void OnPostAuthenticateRequest (object sender, EventArgs e);
     parameters:
     - id: sender
       type: System.Object
-      description: "The source for the event. This will be an <xref href=&quot;System.Web.HttpApplication&quot;></xref> object."
+      description: "事件源。 这将是<xref href=&quot;System.Web.HttpApplication&quot;></xref>对象。"
     - id: e
       type: System.EventArgs
-      description: "The data for the event."
+      description: "事件的数据。"
   overload: System.IdentityModel.Services.SessionAuthenticationModule.OnPostAuthenticateRequest*
   exceptions: []
   platform:
@@ -374,14 +374,14 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Raises the <xref href=&quot;System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenCreated&quot;></xref> event."
-  remarks: "Called from the <xref:System.IdentityModel.Services.SessionAuthenticationModule.OnAuthenticateRequest%2A> method."
+  summary: "引发<xref href=&quot;System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenCreated&quot;></xref>事件。"
+  remarks: "从调用<xref:System.IdentityModel.Services.SessionAuthenticationModule.OnAuthenticateRequest%2A>方法。</xref:System.IdentityModel.Services.SessionAuthenticationModule.OnAuthenticateRequest%2A>"
   syntax:
     content: protected virtual void OnSessionSecurityTokenCreated (System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs args);
     parameters:
     - id: args
       type: System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs
-      description: "The data for the event."
+      description: "事件的数据。"
   overload: System.IdentityModel.Services.SessionAuthenticationModule.OnSessionSecurityTokenCreated*
   exceptions: []
   platform:
@@ -398,14 +398,14 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Raises the <xref href=&quot;System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenReceived&quot;></xref> event."
-  remarks: "Called from the <xref:System.IdentityModel.Services.SessionAuthenticationModule.OnAuthenticateRequest%2A> method."
+  summary: "引发<xref href=&quot;System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenReceived&quot;></xref>事件。"
+  remarks: "从调用<xref:System.IdentityModel.Services.SessionAuthenticationModule.OnAuthenticateRequest%2A>方法。</xref:System.IdentityModel.Services.SessionAuthenticationModule.OnAuthenticateRequest%2A>"
   syntax:
     content: protected virtual void OnSessionSecurityTokenReceived (System.IdentityModel.Services.SessionSecurityTokenReceivedEventArgs args);
     parameters:
     - id: args
       type: System.IdentityModel.Services.SessionSecurityTokenReceivedEventArgs
-      description: "The data for the event."
+      description: "事件的数据。"
   overload: System.IdentityModel.Services.SessionAuthenticationModule.OnSessionSecurityTokenReceived*
   exceptions: []
   platform:
@@ -422,14 +422,14 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Raises the <xref href=&quot;System.IdentityModel.Services.SessionAuthenticationModule.SignedOut&quot;></xref> event."
-  remarks: "This method is invoked from the <xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A> method after the sign-out has been performed and the session cookie has been deleted."
+  summary: "引发<xref href=&quot;System.IdentityModel.Services.SessionAuthenticationModule.SignedOut&quot;></xref>事件。"
+  remarks: "此方法调用从<xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A>方法后注销已执行并且会话 cookie 已被删除。</xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A>"
   syntax:
     content: protected virtual void OnSignedOut (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "The data for the event."
+      description: "事件的数据。"
   overload: System.IdentityModel.Services.SessionAuthenticationModule.OnSignedOut*
   exceptions: []
   platform:
@@ -446,14 +446,14 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Raises the <xref href=&quot;System.IdentityModel.Services.SessionAuthenticationModule.SigningOut&quot;></xref> event."
-  remarks: "This method is invoked from the <xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A> method to perform sign-out. It is invoked before the session cookie is deleted."
+  summary: "引发<xref href=&quot;System.IdentityModel.Services.SessionAuthenticationModule.SigningOut&quot;></xref>事件。"
+  remarks: "此方法调用从<xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A>方法来执行注销。</xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A> 它被调用之前删除会话 cookie。"
   syntax:
     content: protected virtual void OnSigningOut (System.IdentityModel.Services.SigningOutEventArgs e);
     parameters:
     - id: e
       type: System.IdentityModel.Services.SigningOutEventArgs
-      description: "The data for the event."
+      description: "事件的数据。"
   overload: System.IdentityModel.Services.SessionAuthenticationModule.OnSigningOut*
   exceptions: []
   platform:
@@ -470,14 +470,14 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Raises the <xref href=&quot;System.IdentityModel.Services.SessionAuthenticationModule.SignOutError&quot;></xref> event."
-  remarks: "This method is invoked from the <xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A> method if an error occurs during sign-out."
+  summary: "引发<xref href=&quot;System.IdentityModel.Services.SessionAuthenticationModule.SignOutError&quot;></xref>事件。"
+  remarks: "此方法调用从<xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A>方法如果注销过程中发生错误。</xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A>"
   syntax:
     content: protected virtual void OnSignOutError (System.IdentityModel.Services.ErrorEventArgs e);
     parameters:
     - id: e
       type: System.IdentityModel.Services.ErrorEventArgs
-      description: "The data for the event."
+      description: "事件的数据。"
   overload: System.IdentityModel.Services.SessionAuthenticationModule.OnSignOutError*
   exceptions: []
   platform:
@@ -494,21 +494,21 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Reads a <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref> from the specified session cookie."
+  summary: "读取<xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref>从指定的会话 cookie。"
   syntax:
     content: public System.IdentityModel.Tokens.SessionSecurityToken ReadSessionTokenFromCookie (byte[] sessionCookie);
     parameters:
     - id: sessionCookie
       type: System.Byte[]
-      description: "The cookie, in raw form, that contains the session token."
+      description: "中包含的会话令牌的原始的表单的 cookie。"
     return:
       type: System.IdentityModel.Tokens.SessionSecurityToken
-      description: "The session token that was read from the cookie."
+      description: "从 cookie 读取会话令牌。"
   overload: System.IdentityModel.Services.SessionAuthenticationModule.ReadSessionTokenFromCookie*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "There is not a valid session token handler configured. (There is no <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityTokenHandler&quot;></xref> configured in the <xref:System.IdentityModel.Configuration.IdentityConfiguration.SecurityTokenHandlers*> property.)"
+    description: "没有配置的有效会话令牌处理程序。 (没有任何<xref href=&quot;System.IdentityModel.Tokens.SessionSecurityTokenHandler&quot;></xref>中配置<xref:System.IdentityModel.Configuration.IdentityConfiguration.SecurityTokenHandlers*>属性。)</xref:System.IdentityModel.Configuration.IdentityConfiguration.SecurityTokenHandlers*>"
   platform:
   - net462
 - uid: System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenCreated
@@ -523,15 +523,15 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Occurs when a session security token has been created."
-  remarks: "You can use this event to modify the session security token before it is written to a cookie.       The SessionSecurityTokenCreated event is raised from within the <xref:System.IdentityModel.Services.SessionAuthenticationModule.OnAuthenticateRequest%2A> method after a session token (<xref:System.IdentityModel.Tokens.SessionSecurityToken>) has been created. This happens, for example, if an event handler for the <xref:System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenReceived> event modifies the token.       You can use this event to modify properties of the session token before it is passed further along the pipeline and is used to authenticate the entity making the request (user).       In an event handler, you can access the token through the <xref:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.SessionToken%2A?displayProperty=fullName> property. After modifying the token, you can ensure that it is written back to the cookie by setting the <xref:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.WriteSessionCookie%2A?displayProperty=fullName> property to `true`. Unlike, the SessionSecurityTokenCreated event, SessionSecurityTokenCreated is not a cancelable event."
+  summary: "在创建会话安全令牌时发生。"
+  remarks: "你可以使用此事件之前已写入到 cookie 修改会话安全令牌。       从内引发 SessionSecurityTokenCreated 事件<xref:System.IdentityModel.Services.SessionAuthenticationModule.OnAuthenticateRequest%2A>方法之后会话令牌 (<xref:System.IdentityModel.Tokens.SessionSecurityToken>) 已创建。</xref:System.IdentityModel.Tokens.SessionSecurityToken> </xref:System.IdentityModel.Services.SessionAuthenticationModule.OnAuthenticateRequest%2A> 发生这种情况，例如，如果一个事件处理程序<xref:System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenReceived>事件修改该令牌。</xref:System.IdentityModel.Services.SessionAuthenticationModule.SessionSecurityTokenReceived>       此事件可用于修改的会话令牌的属性，然后它会进一步沿管道传递并用于发出请求 （用户） 的实体进行身份验证。       在事件处理程序，您可以访问通过令牌<xref:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.SessionToken%2A?displayProperty=fullName>属性。</xref:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.SessionToken%2A?displayProperty=fullName> 令牌之后，你可以确保将它写入返回到 cookie 通过设置<xref:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.WriteSessionCookie%2A?displayProperty=fullName>属性`true`。</xref:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.WriteSessionCookie%2A?displayProperty=fullName> 与，SessionSecurityTokenCreated 事件，SessionSecurityTokenCreated 不是可取消的事件。"
   example:
   - "The following code shows a handler for the SessionSecurityTokenCreated event implemented in the global.asax.cs file of an ASP.NET web application. You must also add the handler to the event. A more complete example is shown in the <xref:System.IdentityModel.Services.SessionAuthenticationModule> overview topic.  \n  \n [!code-cs[WifSAM#6](~/add/codesnippet/csharp/sam/global.asax.cs#6)]"
   syntax:
     content: public event EventHandler<System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs> SessionSecurityTokenCreated;
     return:
       type: System.EventHandler{System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs}
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -547,7 +547,7 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Occurs when a session security token has been read from a cookie."
+  summary: "已从 cookie 读取会话安全令牌时发生。"
   remarks: "The SessionSecurityTokenReceived event is raised from within the <xref:System.IdentityModel.Services.SessionAuthenticationModule.OnAuthenticateRequest%2A> method after a session token (<xref:System.IdentityModel.Tokens.SessionSecurityToken>) has been successfully read from the session cookie.  \n  \n You can use this event to modify properties of the session token before it is passed further along the pipeline and is used to authenticate the entity making the request (user). One of the most common scenarios involves modifying the session expiration time (accessible through the <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A?displayProperty=fullName> property) to override the session expiration time set in configuration through the `lifetime` attribute of the [\\&lt;sessionTokenRequirement\\&gt;](../Topic/%3CsessionTokenRequirement%3E.md) element. By modifying this property on each request, you can implement a sliding session; that is, a session in which the lifetime is extended each time the user accesses the site.  \n  \n In an event handler, you can access the token through the <xref:System.IdentityModel.Services.SessionSecurityTokenReceivedEventArgs.SessionToken%2A?displayProperty=fullName> property. After modifying the token, you can ensure that it is written back to the cookie by setting the <xref:System.IdentityModel.Services.SessionSecurityTokenReceivedEventArgs.ReissueCookie%2A?displayProperty=fullName> to `true`. Finally, the SessionSecurityTokenReceived event is a cancelable event, and you can set the <xref:System.ComponentModel.CancelEventArgs.Cancel%2A> property of the <xref:System.IdentityModel.Services.SessionSecurityTokenReceivedEventArgs> to abort further processing of the request."
   example:
   - "The following code shows a handler for the SessionSecurityTokenReceived event implemented in the global.asax.cs file of an ASP.NET web application. You must also add the handler to the event. A more complete example is shown in the <xref:System.IdentityModel.Services.SessionAuthenticationModule> overview topic.  \n  \n [!code-cs[WifSAM#5](~/add/codesnippet/csharp/sam/global.asax.cs#5)]"
@@ -555,7 +555,7 @@ items:
     content: public event EventHandler<System.IdentityModel.Services.SessionSecurityTokenReceivedEventArgs> SessionSecurityTokenReceived;
     return:
       type: System.EventHandler{System.IdentityModel.Services.SessionSecurityTokenReceivedEventArgs}
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -571,14 +571,14 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Sets the principal on the <xref href=&quot;System.Web.HttpContext&quot;></xref> and <xref href=&quot;System.Threading.Thread&quot;></xref> to the principal that is contained in the specified session token."
-  remarks: "Invokes the <xref:System.IdentityModel.Services.SessionAuthenticationModule.ValidateSessionToken%2A> method and sets the <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> property and the <xref:System.Web.HttpContext.User%2A?displayProperty=fullName> property on <xref:System.Web.HttpContext.Current%2A?displayProperty=fullName> using the identities that are returned.       This method is called from the <xref:System.IdentityModel.Services.SessionAuthenticationModule.AuthenticateSessionSecurityToken%2A> method."
+  summary: "上设置的主体<xref href=&quot;System.Web.HttpContext&quot;></xref>和<xref href=&quot;System.Threading.Thread&quot;></xref>到指定的会话令牌中包含的主体。"
+  remarks: "调用<xref:System.IdentityModel.Services.SessionAuthenticationModule.ValidateSessionToken%2A>方法和集<xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName>属性和<xref:System.Web.HttpContext.User%2A?displayProperty=fullName>属性<xref:System.Web.HttpContext.Current%2A?displayProperty=fullName>使用返回的标识。</xref:System.Web.HttpContext.Current%2A?displayProperty=fullName> </xref:System.Web.HttpContext.User%2A?displayProperty=fullName> </xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> </xref:System.IdentityModel.Services.SessionAuthenticationModule.ValidateSessionToken%2A>       此方法调用从<xref:System.IdentityModel.Services.SessionAuthenticationModule.AuthenticateSessionSecurityToken%2A>方法。</xref:System.IdentityModel.Services.SessionAuthenticationModule.AuthenticateSessionSecurityToken%2A>"
   syntax:
     content: protected virtual void SetPrincipalFromSessionToken (System.IdentityModel.Tokens.SessionSecurityToken sessionSecurityToken);
     parameters:
     - id: sessionSecurityToken
       type: System.IdentityModel.Tokens.SessionSecurityToken
-      description: "The session token from which to set the principal."
+      description: "要根据其设置主体会话令牌。"
   overload: System.IdentityModel.Services.SessionAuthenticationModule.SetPrincipalFromSessionToken*
   exceptions: []
   platform:
@@ -595,15 +595,15 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Occurs after the user is signed out."
-  remarks: "Raised from the <xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A> method just after the <xref:System.IdentityModel.Services.SessionAuthenticationModule.DeleteSessionTokenCookie%2A> method is invoked.       This event is not guaranteed to be called for every session. For example, the cookies may be deleted at the client-side, in which case, this event would never be raised because there is no server-side event for deleting the session."
+  summary: "在用户注销后发生。"
+  remarks: "从引发<xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A>方法紧后面<xref:System.IdentityModel.Services.SessionAuthenticationModule.DeleteSessionTokenCookie%2A>调用方法。</xref:System.IdentityModel.Services.SessionAuthenticationModule.DeleteSessionTokenCookie%2A> </xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A>       此事件不能保证调用为每个会话。 例如，可能在客户端删除 cookie 在这种情况下，引发此事件将永远不会因为没有删除该会话的服务器端事件。"
   example:
   - "The following code shows a handler for the SignedOut event implemented in the global.asax.cs file of an ASP.NET web application. You must also add the handler to the event. A more complete example is shown in the <xref:System.IdentityModel.Services.SessionAuthenticationModule> overview topic.  \n  \n [!code-cs[WifSAM#3](~/add/codesnippet/csharp/sam/global.asax.cs#3)]"
   syntax:
     content: public event EventHandler SignedOut;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -619,15 +619,15 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Occurs before deleting the sign-in session."
-  remarks: "Raised from the <xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A> method just before the <xref:System.IdentityModel.Services.SessionAuthenticationModule.DeleteSessionTokenCookie%2A> method is invoked.       This event is not guaranteed to be called for every session. For example, the cookies may be deleted at the client-side, in which case, this event would never be raised because there is no server-side event for deleting the session."
+  summary: "在删除登录会话之前发生。"
+  remarks: "从引发<xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A>方法之前<xref:System.IdentityModel.Services.SessionAuthenticationModule.DeleteSessionTokenCookie%2A>调用方法。</xref:System.IdentityModel.Services.SessionAuthenticationModule.DeleteSessionTokenCookie%2A> </xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A>       此事件不能保证调用为每个会话。 例如，可能在客户端删除 cookie 在这种情况下，引发此事件将永远不会因为没有删除该会话的服务器端事件。"
   example:
   - "The following code shows a handler for the SigningOut event implemented in the global.asax.cs file of an ASP.NET web application. You must also add the handler to the event. A more complete example is shown in the <xref:System.IdentityModel.Services.SessionAuthenticationModule> overview topic.  \n  \n [!code-cs[WifSAM#4](~/add/codesnippet/csharp/sam/global.asax.cs#4)]"
   syntax:
     content: public event EventHandler<System.IdentityModel.Services.SigningOutEventArgs> SigningOut;
     return:
       type: System.EventHandler{System.IdentityModel.Services.SigningOutEventArgs}
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -643,8 +643,8 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Signs the current user out and raises the associated events."
-  remarks: "Invokes the <xref:System.IdentityModel.Services.SessionAuthenticationModule.OnSigningOut%2A>, <xref:System.IdentityModel.Services.SessionAuthenticationModule.DeleteSessionTokenCookie%2A>, and <xref:System.IdentityModel.Services.SessionAuthenticationModule.OnSignedOut%2A> methods to perform sign-out. If an exception occurs, the <xref:System.IdentityModel.Services.SessionAuthenticationModule.OnSignOutError%2A> method is invoked to raise the <xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOutError> event. You can set the <xref:System.ComponentModel.CancelEventArgs.Cancel%2A> property of the <xref:System.IdentityModel.Services.ErrorEventArgs> object passed into the event handler for this event to cancel the sign-out and prevent the exception from being propagated to the client.       You can override this method to add application-specific behavior."
+  summary: "注销当前用户，并引发关联的事件。"
+  remarks: "调用<xref:System.IdentityModel.Services.SessionAuthenticationModule.OnSigningOut%2A>， <xref:System.IdentityModel.Services.SessionAuthenticationModule.DeleteSessionTokenCookie%2A>，和<xref:System.IdentityModel.Services.SessionAuthenticationModule.OnSignedOut%2A>方法执行注销。</xref:System.IdentityModel.Services.SessionAuthenticationModule.OnSignedOut%2A> </xref:System.IdentityModel.Services.SessionAuthenticationModule.DeleteSessionTokenCookie%2A> </xref:System.IdentityModel.Services.SessionAuthenticationModule.OnSigningOut%2A> 如果发生异常，<xref:System.IdentityModel.Services.SessionAuthenticationModule.OnSignOutError%2A>调用方法来引发<xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOutError>事件。</xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOutError> </xref:System.IdentityModel.Services.SessionAuthenticationModule.OnSignOutError%2A> 你可以设置<xref:System.ComponentModel.CancelEventArgs.Cancel%2A>属性<xref:System.IdentityModel.Services.ErrorEventArgs>对象传递到此事件来取消注销并阻止未传播至客户端异常事件处理程序。</xref:System.IdentityModel.Services.ErrorEventArgs> </xref:System.ComponentModel.CancelEventArgs.Cancel%2A>       你可以重写此方法可添加特定于应用程序的行为。"
   example:
   - "The following code shows code for invoking the SignOut method from a SignOut.aspx page (SignOut.aspx.cs) in an ASP.NET web application. A more complete example is shown in the <xref:System.IdentityModel.Services.SessionAuthenticationModule> overview topic.  \n  \n [!code-cs[WifSAM#7](~/add/codesnippet/csharp/sam/global.asax.cs#7)]"
   syntax:
@@ -666,15 +666,15 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Occurs when there is an error during sign-out."
-  remarks: "Raised from the <xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A> method when an error occurs during sign-out.       In an event handler, you can get the exception that resulted in the event being raised from the <xref:System.IdentityModel.Services.ErrorEventArgs.Exception%2A?displayProperty=fullName> property. You can cancel further processing of the exception, which has the result of not propagating the exception to the client, by setting the <xref:System.ComponentModel.CancelEventArgs.Cancel%2A> property of the <xref:System.IdentityModel.Services.ErrorEventArgs> to `true`.       This event is not guaranteed to be called for every session. For example, the cookies may be deleted at the client-side, in which case, this event would never be raised because there is no server-side event for deleting the session."
+  summary: "在注销过程时出现错误时发生。"
+  remarks: "从引发<xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A>方法时注销过程中发生错误。</xref:System.IdentityModel.Services.SessionAuthenticationModule.SignOut%2A>       在事件处理程序，你可以在事件导致从引发的异常<xref:System.IdentityModel.Services.ErrorEventArgs.Exception%2A?displayProperty=fullName>属性。</xref:System.IdentityModel.Services.ErrorEventArgs.Exception%2A?displayProperty=fullName> 你可以取消进一步处理的异常，这会具有的不通过设置传播到客户端，异常结果<xref:System.ComponentModel.CancelEventArgs.Cancel%2A>属性<xref:System.IdentityModel.Services.ErrorEventArgs>到`true`。</xref:System.IdentityModel.Services.ErrorEventArgs> </xref:System.ComponentModel.CancelEventArgs.Cancel%2A>       此事件不能保证调用为每个会话。 例如，可能在客户端删除 cookie 在这种情况下，引发此事件将永远不会因为没有删除该会话的服务器端事件。"
   example:
   - "The following code shows a handler for the SignOutError event implemented in the global.asax.cs file of an ASP.NET web application. You must also add the handler to the event. A more complete example is shown in the <xref:System.IdentityModel.Services.SessionAuthenticationModule> overview topic.  \n  \n [!code-cs[WifSAM#2](~/add/codesnippet/csharp/sam/global.asax.cs#2)]"
   syntax:
     content: public event EventHandler<System.IdentityModel.Services.ErrorEventArgs> SignOutError;
     return:
       type: System.EventHandler{System.IdentityModel.Services.ErrorEventArgs}
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -690,17 +690,17 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Attempts to read a <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref> from a session cookie and returns a value that indicates whether the session cookie was successfully read."
-  remarks: "Reads the cookie by using the cookie handler that is configured in the <xref:System.IdentityModel.Services.SessionAuthenticationModule.CookieHandler%2A> property and then invokes the <xref:System.IdentityModel.Services.SessionAuthenticationModule.ReadSessionTokenFromCookie%2A> method to read the token from the cookie."
+  summary: "尝试读取<xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref>从会话 cookie，并返回一个值，该值指示是否已成功读取的会话 cookie。"
+  remarks: "通过使用的 cookie 处理程序配置中读取 cookie<xref:System.IdentityModel.Services.SessionAuthenticationModule.CookieHandler%2A>属性并调用<xref:System.IdentityModel.Services.SessionAuthenticationModule.ReadSessionTokenFromCookie%2A>方法从 cookie 读取令牌。</xref:System.IdentityModel.Services.SessionAuthenticationModule.ReadSessionTokenFromCookie%2A> </xref:System.IdentityModel.Services.SessionAuthenticationModule.CookieHandler%2A>"
   syntax:
     content: public bool TryReadSessionTokenFromCookie (out System.IdentityModel.Tokens.SessionSecurityToken sessionToken);
     parameters:
     - id: sessionToken
       type: System.IdentityModel.Tokens.SessionSecurityToken
-      description: "When this method returns, contains the session security token that was read from the session cookie."
+      description: "此方法返回时，包含从会话 cookie 读取会话安全令牌。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the session cookie was successfully read from the request; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果已成功阅读请求; 中的会话 cookie否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.IdentityModel.Services.SessionAuthenticationModule.TryReadSessionTokenFromCookie*
   exceptions: []
   platform:
@@ -717,28 +717,28 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Validates the specified <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref> and returns its identities."
-  remarks: "This method is called from the <xref:System.IdentityModel.Services.SessionAuthenticationModule.AuthenticateSessionSecurityToken%2A> method. It invokes the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.ValidateToken%2A?displayProperty=fullName> method of the configured session token handler to validate the token and extract its identities."
+  summary: "验证指定<xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref>并返回其标识。"
+  remarks: "此方法调用从<xref:System.IdentityModel.Services.SessionAuthenticationModule.AuthenticateSessionSecurityToken%2A>方法。</xref:System.IdentityModel.Services.SessionAuthenticationModule.AuthenticateSessionSecurityToken%2A> 它将调用<xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.ValidateToken%2A?displayProperty=fullName>的配置的会话令牌处理程序以验证此令牌并提取其标识的方法。</xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.ValidateToken%2A?displayProperty=fullName>"
   syntax:
     content: protected System.Collections.ObjectModel.ReadOnlyCollection<System.Security.Claims.ClaimsIdentity> ValidateSessionToken (System.IdentityModel.Tokens.SessionSecurityToken sessionSecurityToken);
     parameters:
     - id: sessionSecurityToken
       type: System.IdentityModel.Tokens.SessionSecurityToken
-      description: "The token to validate."
+      description: "要验证的标记。"
     return:
       type: System.Collections.ObjectModel.ReadOnlyCollection{System.Security.Claims.ClaimsIdentity}
-      description: "The collection of identities that are contained in the token."
+      description: "令牌中包含的标识的集合。"
   overload: System.IdentityModel.Services.SessionAuthenticationModule.ValidateSessionToken*
   exceptions:
   - type: System.IdentityModel.Services.FederatedSessionExpiredException
     commentId: T:System.IdentityModel.Services.FederatedSessionExpiredException
-    description: "The token has expired."
+    description: "令牌已过期。"
   - type: System.IdentityModel.Services.FederationException
     commentId: T:System.IdentityModel.Services.FederationException
-    description: "The token start time is not yet valid."
+    description: "令牌的起始时间尚不可有效。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "There is not a valid session token handler configured. (There is no <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityTokenHandler&quot;></xref> configured in the <xref:System.IdentityModel.Configuration.IdentityConfiguration.SecurityTokenHandlers*> property.)"
+    description: "没有配置的有效会话令牌处理程序。 (没有任何<xref href=&quot;System.IdentityModel.Tokens.SessionSecurityTokenHandler&quot;></xref>中配置<xref:System.IdentityModel.Configuration.IdentityConfiguration.SecurityTokenHandlers*>属性。)</xref:System.IdentityModel.Configuration.IdentityConfiguration.SecurityTokenHandlers*>"
   platform:
   - net462
 - uid: System.IdentityModel.Services.SessionAuthenticationModule.WriteSessionTokenToCookie(System.IdentityModel.Tokens.SessionSecurityToken)
@@ -753,22 +753,22 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Writes the specified <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref> to a session cookie."
-  remarks: "Writes the cookie by using the cookie handler that is configured in the <xref:System.IdentityModel.Services.SessionAuthenticationModule.CookieHandler%2A> property."
+  summary: "将指定<xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref>至的会话 cookie。"
+  remarks: "通过使用配置中的 cookie 处理写入 cookie<xref:System.IdentityModel.Services.SessionAuthenticationModule.CookieHandler%2A>属性。</xref:System.IdentityModel.Services.SessionAuthenticationModule.CookieHandler%2A>"
   syntax:
     content: public void WriteSessionTokenToCookie (System.IdentityModel.Tokens.SessionSecurityToken sessionToken);
     parameters:
     - id: sessionToken
       type: System.IdentityModel.Tokens.SessionSecurityToken
-      description: "The session security token to write."
+      description: "要写入的会话安全令牌。"
   overload: System.IdentityModel.Services.SessionAuthenticationModule.WriteSessionTokenToCookie*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>sessionToken</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>sessionToken</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "There is not a valid session token handler configured. (There is no <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityTokenHandler&quot;></xref> configured in the <xref:System.IdentityModel.Configuration.IdentityConfiguration.SecurityTokenHandlers*> property.)"
+    description: "没有配置的有效会话令牌处理程序。 (没有任何<xref href=&quot;System.IdentityModel.Tokens.SessionSecurityTokenHandler&quot;></xref>中配置<xref:System.IdentityModel.Configuration.IdentityConfiguration.SecurityTokenHandlers*>属性。)</xref:System.IdentityModel.Configuration.IdentityConfiguration.SecurityTokenHandlers*>"
   platform:
   - net462
 references:

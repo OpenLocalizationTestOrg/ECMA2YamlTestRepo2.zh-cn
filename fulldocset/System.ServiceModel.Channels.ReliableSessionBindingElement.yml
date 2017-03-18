@@ -26,8 +26,8 @@ items:
   nameWithType: ReliableSessionBindingElement
   fullName: System.ServiceModel.Channels.ReliableSessionBindingElement
   type: Class
-  summary: "Represents the binding element that can produce the sending and receiving channels required for a reliable session between endpoints."
-  remarks: "Provides sessions and optionally provides ordered message delivery. This implemented session can cross SOAP and transport intermediaries.       Each binding element represents a processing step when sending or receiving messages. At runtime, binding elements create the channel factories and listeners that are necessary to build outgoing and incoming channel stacks required to send and receive messages. The ReliableSessionBindingElement provides an optional layer in the stack that can establish a reliable session between endpoints and configure the behavior of this session.       The ReliableSessionBindingElement is provided on the standard bindings in the following table.      |Binding|Default|   |-------------|-------------|   |<xref:System.ServiceModel.NetTcpBinding>|Off|   |<xref:System.ServiceModel.WSHttpBinding>|Off|   |<xref:System.ServiceModel.WSDualHttpBinding>|On (required)|"
+  summary: "表示可生成发送和接收通道终结点间可靠会话所需的绑定元素。"
+  remarks: "提供会话并有选择性地提供有序的消息传递。 此实现的会话可通过 SOAP 和传输中介。       每个绑定元素表示时发送或接收消息的处理步骤。 在运行时，绑定元素创建的通道工厂和侦听器所需生成发送和接收消息所需的传出和传入通道堆栈。 ReliableSessionBindingElement 提供可以建立终结点之间的可靠会话并配置此会话的行为的堆栈中的可选层。       ReliableSessionBindingElement 提供下表中的标准绑定上。      |绑定 |默认 |  |-------------|-------------|  |<xref:System.ServiceModel.NetTcpBinding>|关闭 |  |<xref:System.ServiceModel.WSHttpBinding>|关闭 |  |<xref:System.ServiceModel.WSDualHttpBinding>|上 （必需） |</xref:System.ServiceModel.WSDualHttpBinding> </xref:System.ServiceModel.WSHttpBinding> </xref:System.ServiceModel.NetTcpBinding>"
   example:
   - "The ReliableSessionBindingElement can be added to any custom binding. This is done using the following configuration elements.  \n  \n```  \n<bindings>  \n    <customBinding>  \n        <binding configurationName=”ReliabilityHTTP”>  \n            <reliableSession/>  \n        </binding>  \n    </customBinding>  \n</bindings>  \n```  \n  \n The following sample code demonstrates how to use ReliableSessionBindingElement in code.  \n  \n [!code-vb[S_Imperative#1](~/add/codesnippet/visualbasic/t-system.servicemodel.ch_0_1.vb)]\n [!code-cs[S_Imperative#1](~/add/codesnippet/csharp/t-system.servicemodel.ch_0_1.cs)]"
   syntax:
@@ -51,7 +51,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Channels.ReliableSessionBindingElement&quot;></xref> class."
+  summary: "初始化的新实例<xref href=&quot;System.ServiceModel.Channels.ReliableSessionBindingElement&quot;></xref>类。"
   syntax:
     content: public ReliableSessionBindingElement ();
     parameters: []
@@ -71,13 +71,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Channels.ReliableSessionBindingElement&quot;></xref> class that specifies whether message delivery must preserve the order in which messages are sent."
+  summary: "初始化的新实例<xref href=&quot;System.ServiceModel.Channels.ReliableSessionBindingElement&quot;></xref>类，该类指定消息传递是否必须保持一致发送消息的顺序。"
   syntax:
     content: public ReliableSessionBindingElement (bool ordered);
     parameters:
     - id: ordered
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if messages must be delivered in the order in which they are sent; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default value is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果必须将消息传递在其中发送; 顺序否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.#ctor*
   exceptions: []
   platform:
@@ -94,18 +94,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the interval of time that a destination waits before sending an acknowledgment to the message source on reliable channels that are created by the factory."
-  remarks: "The destination that receives messages on a reliable channel groups the acknowledgments for these messages together into a single message to reduce network traffic and to increase information density on messages. Grouping scales better as traffic increases. It does not attempt to send an acknowledgment for every message it receives as soon as possible, but rather waits for an interval of time, groups together the acknowledgments that have arrived during that interval, and then sends them all together. The first message that is received is the exception; it is acknowledged as soon as it is delivered. Also, if reliable sessions are used with single HTTP connections, as is the case for example with the <xref:System.ServiceModel.WSHttpBinding> but not <xref:System.ServiceModel.WSDualHttpBinding>, then this setting is not used.       The value that is set with the AcknowledgementInterval property is a recommendation to the infrastructure and not a hard limit."
+  summary: "获取或设置由工厂的向创建的可靠通道上的消息源发送确认之前目标等待的时间间隔。"
+  remarks: "可靠通道接收消息的目标组到一条消息，以减少网络流量，并增加对消息的信息密度一起这些消息的确认。 分组缩放流量增加时更好。 它不会尝试发送确认，为每条消息，它接收越早越好，但而是会等待的时间，间隔组合在一起的间隔期间到达的确认，然后将它们发送所有组合在一起。 收到第一条消息是异常;它已确认就会立即将它传送。 此外，如果通过单个 HTTP 连接使用可靠会话，将作为是这种情况，例如用<xref:System.ServiceModel.WSHttpBinding>但不是<xref:System.ServiceModel.WSDualHttpBinding>，则不使用此设置。</xref:System.ServiceModel.WSDualHttpBinding> </xref:System.ServiceModel.WSHttpBinding>       通过 AcknowledgementInterval 属性来设置的值是对基础结构和不是硬性限制的建议。"
   syntax:
     content: public TimeSpan AcknowledgementInterval { get; set; }
     return:
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies the interval of time that a service waits until sending an acknowledgment to the message source. The default value is 2 seconds."
+      description: "<xref:System.TimeSpan>指定向消息源发送确认之前服务等待的时间间隔。</xref:System.TimeSpan> 默认值为 2 秒。"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.AcknowledgementInterval*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to zero."
+    description: "设置的值小于或等于零。"
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ReliableSessionBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
@@ -125,10 +125,10 @@ items:
     parameters:
     - id: context
       type: System.ServiceModel.Channels.BindingContext
-      description: "To be added."
+      description: "要添加。"
     return:
       type: System.ServiceModel.Channels.IChannelFactory{TChannel}
-      description: "To be added."
+      description: "要添加。"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.BuildChannelFactory<TChannel>*
   exceptions: []
   platform:
@@ -150,10 +150,10 @@ items:
     parameters:
     - id: context
       type: System.ServiceModel.Channels.BindingContext
-      description: "To be added."
+      description: "要添加。"
     return:
       type: System.ServiceModel.Channels.IChannelListener`1
-      description: "To be added."
+      description: "要添加。"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.BuildChannelListener<TChannel>*
   exceptions: []
   platform:
@@ -175,10 +175,10 @@ items:
     parameters:
     - id: context
       type: System.ServiceModel.Channels.BindingContext
-      description: "To be added."
+      description: "要添加。"
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "要添加。"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.CanBuildChannelFactory<TChannel>*
   exceptions: []
   platform:
@@ -200,10 +200,10 @@ items:
     parameters:
     - id: context
       type: System.ServiceModel.Channels.BindingContext
-      description: "To be added."
+      description: "要添加。"
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "要添加。"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.CanBuildChannelListener<TChannel>*
   exceptions: []
   platform:
@@ -220,13 +220,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Creates a copy of the current reliable session binding element."
+  summary: "创建当前可靠会话绑定元素的副本。"
   syntax:
     content: public override System.ServiceModel.Channels.BindingElement Clone ();
     parameters: []
     return:
       type: System.ServiceModel.Channels.BindingElement
-      description: "A <xref:System.ServiceModel.Channels.BindingElement> that is a clone of the current binding element."
+      description: "A <xref:System.ServiceModel.Channels.BindingElement>，它是当前绑定元素的复本。</xref:System.ServiceModel.Channels.BindingElement>"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.Clone*
   exceptions: []
   platform:
@@ -243,13 +243,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets a value that indicates whether the reliable session has flow control enabled."
-  remarks: "Flow control is a mechanism that reliable sessions implement to ensure that senders do not send more messages than a receiver can handle. Receivers have a buffer of messages that is used to accommodate message bursts and out-of-order messages. Receivers advertise to senders the amount of space that remains in this buffer in each of their acknowledgements. Senders can use this information to stop sending new messages whenever the receiver has no buffer space left."
+  summary: "获取或设置一个值，该值指示可靠会话是否已启用流控制。"
+  remarks: "流控制是可靠会话实现以确保发送方不发送超过接收方可处理的多个消息的机制。 接收方有用于适应消息突发的消息和无序消息的缓冲区。 接收方告知发送方此缓冲区中的确认时都会每个剩余空间的量。 发件人可以使用此信息停止发送新消息时接收方已没有缓冲区空间左。"
   syntax:
     content: public bool FlowControlEnabled { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the reliable session has flow control enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果可靠会话已启用; 流控制否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.FlowControlEnabled*
   exceptions: []
   platform:
@@ -271,10 +271,10 @@ items:
     parameters:
     - id: context
       type: System.ServiceModel.Channels.BindingContext
-      description: "To be added."
+      description: "要添加。"
     return:
       type: T
-      description: "To be added."
+      description: "要添加。"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.GetProperty<T>*
   exceptions: []
   platform:
@@ -291,18 +291,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets an interval of time that a service remains inactive before closing."
-  remarks: "Activity on a channel is defined as receiving an application or infrastructure message. The inactivity timeout parameter controls the maximum amount of time to keep an inactive session alive. If more than InactivityTimeout time interval passes with no activity, the session is aborted by the infrastructure and the channel faults. The reliable session is torn down unilaterally.       If the sending application has no messages to send then the reliable session is normally not faulted because of inactivity; instead a keep-alive mechanism keeps the session active indefinitely. Note that the dispatcher can independently abort the reliable session if no application messages are sent or received. Thus, the inactivity timeout typically expires if network conditions are such that no messages are received or if there is a failure on the sender."
+  summary: "获取或设置的服务保持在关闭前处于非活动状态的时间间隔。"
+  remarks: "通道上的活动定义为接收应用程序或基础结构消息。 非活动超时参数控制的最大保持非活动会话存在的时间量。 如果有超过 InactivityTimeout 时间间隔后仍没有活动，将会中止会话，基础结构且通道会出错。 可靠会话是遭到单方面撤销。       如果发送应用程序没有要发送然后可靠会话的消息通常不会出错由于处于非活动状态;而是保持活动状态的机制会让会话活动无限期。 请注意，是否发送或接收任何应用程序消息，调度程序可以单独中止可靠会话。 因此，非活动超时通常会过期如果网络状况为未收到任何消息，或如果发送方失败。"
   syntax:
     content: public TimeSpan InactivityTimeout { get; set; }
     return:
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies the interval of time that a service remains inactive before closing. The default value is 10 minutes."
+      description: "<xref:System.TimeSpan>，它指定的服务保持在关闭前处于非活动状态的时间间隔。</xref:System.TimeSpan> 默认值为 10 分钟。"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.InactivityTimeout*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to zero or greater than either <xref:System.Int32.MaxValue> or <xref:System.TimeSpan.MaxValue>."
+    description: "设置的值小于或等于为零或大于其中一种<xref:System.Int32.MaxValue>或<xref:System.TimeSpan.MaxValue>。</xref:System.TimeSpan.MaxValue> </xref:System.Int32.MaxValue>"
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxPendingChannels
@@ -317,18 +317,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the largest number of channels that can be pending during the reliable session."
-  remarks: "Channels are pending when they are waiting to be accepted. Once that limit is reached, no channels are created and put in pending mode until this number goes down (by accepting pending channels). This is a limit for each listener.       When the threshold is reached and a remote application tries to establish a new reliable session, the request is denied and the open operation that prompted this faults."
+  summary: "获取或设置的最大可为挂起状态的通道数在可靠会话期间。"
+  remarks: "通道处于挂起状态在等待时才能被接受。 一旦达到该限制，没有通道被创建并放在挂起模式达到此数值之前 （通过接受挂起的通道）。 这是为每个侦听器的限制。       当达到此阈值时远程应用程序尝试建立新的可靠会话，则会拒绝请求且打开操作将提示此错误。"
   syntax:
     content: public int MaxPendingChannels { get; set; }
     return:
       type: System.Int32
-      description: "The largest number of channels that can be pending. The default value is 4."
+      description: "最大可为挂起状态的通道数。 默认值为 4。"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxPendingChannels*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to zero or greater than 16384."
+    description: "设置的值小于或等于零，或者大于 16384。"
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxRetryCount
@@ -343,18 +343,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the maximum number of times that a message attempts to be transferred during the reliable session."
-  remarks: "A message is considered to be transferred if its delivery at the recipient has been acknowledged by the recipient.       If an acknowledgment has not been received within a certain amount of time for a message that has been transmitted, the infrastructure automatically retransmits the message. The infrastructure tries to send the message for, at most, a MaxRetryCount number of times. Not receiving an acknowledgment before this limit is reached is considered a fatal communication failure and causes the channel faulted event to be raised.       The infrastructure uses an exponential back-off algorithm to determine when to retransmit, based on a computed average round-trip time. The initial retry time is computed based on the measured roundtrip time of establishing the session. The retransmission algorithm doubles the delay with every attempt, which results in approximately 8.5 minutes passing between the first transmission attempt and the last retransmission attempt. The time for the first retransmission attempt is adjusted according to the calculated round-trip time and the resulting stretch of time that those attempts take varies accordingly. This allows the retransmission time to dynamically adapt to varying network conditions."
+  summary: "获取或设置尝试在可靠会话期间传输消息的最大次数。"
+  remarks: "如果为接收方的传递已确认接收方传输，则认为该消息。       如果尚未在一定的操作已传输的消息的时间内收到确认，则基础结构自动重新传输该消息。 此基础结构尝试将消息发送的最多，MaxRetryCount 次数。 在达到此限制之前未接收到确认被认为是致命的通信失败，并使通道出错的事件被引发。       基础结构使用指数退让算法来确定何时重新传输，基于计算的平均往返时间。 初始重试时间将计算基于建立会话的测量的往返时间。 重新传输算法两倍，每次尝试，大约会经过 8.5 分钟第一次传输尝试和最后一次尝试之间传递会导致延迟时间。 第一次尝试的时间调整根据计算的往返时间经历的时间这些尝试采用相应地变化。 这样使重新传输时间动态地适应不断变化的网络条件。"
   syntax:
     content: public int MaxRetryCount { get; set; }
     return:
       type: System.Int32
-      description: "The maximum number of times that a message attempts to be re-sent. The minimum value is 1; the maximum is <xref:System.Int32>; and the default value is 8."
+      description: "尝试重新发送消息最大次数。 最小值为 1;最大值是<xref:System.Int32>; 默认值为 8。</xref:System.Int32>"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxRetryCount*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to zero."
+    description: "设置的值小于或等于零。"
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxTransferWindowSize
@@ -369,18 +369,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the largest number of messages that can exist in either the send buffer or the receive buffer."
-  remarks: "The value of the MaxTransferWindowSize property can be set on both the sender and the receiver. This value is included in the binding policy of the WSDL, so if you use the [ServiceModel Metadata Utility Tool (Svcutil.exe)](~/add/includes/ajax-current-ext-md.md) to construct your client, it has the same value. Otherwise this value is whatever you set it to be on the client.       When this limit is reached on the sender, additional calls to send are blocked. When this limit is reached on the receiver, new messages that arrive on the underlying channel are not accepted.       A reliable session uses a windowing protocol to help improve network utilization. The amount of buffering required is directly derived from the size of the transmission window. When tuning this value, note that the optimal transmission window is related to the bandwidth and the latency in a straight-forward way. The ideal maximum window size is the bandwidth times the latency. Anything smaller yields less than 100% network utilization; anything larger is just wasted space."
+  summary: "获取或设置发送缓冲区或接收缓冲区中的最大可以存在的消息数。"
+  remarks: "可以在发送方和接收方上设置 MaxTransferWindowSize 属性的值。 此值内含在 WSDL 绑定策略中因此，如果你使用[ServiceModel 元数据实用工具 (Svcutil.exe)](~/add/includes/ajax-current-ext-md.md)要构建你的客户端，它具有相同的值。 否则该值是设置的任何就是在客户端上。       如果发件人达到此限制，将阻止其他发送调用。 当在接收方达到此限制时，不会接受到达基础通道的新消息。       可靠会话使用窗口协议来帮助提高网络利用率。 所需的缓冲量直接派生自的传输窗口大小。 当调整此值，请注意最佳传输窗口中直截了当的方法相关的带宽和延迟。 理想的最大窗口大小是带宽乘以延迟。 得更小低于 100%网络利用率;值大，就会浪费的空间。"
   syntax:
     content: public int MaxTransferWindowSize { get; set; }
     return:
       type: System.Int32
-      description: "The largest number of messages that can be buffered. The minimum value is 1; the maximum value is 4096; and the default value is 32."
+      description: "最大可以缓冲的消息数。 最小值为 1;最大值为 4096;默认值为 32。"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxTransferWindowSize*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to one or greater than 4096."
+    description: "设置的值小于或等于 1，或者大于 4096。"
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ReliableSessionBindingElement.Ordered
@@ -395,13 +395,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets a value that indicates whether message delivery must preserve the order in which messages are sent."
-  remarks: "To get messages dispatched in order, you also must set the <xref:System.ServiceModel.ConcurrencyMode> to <xref:System.ServiceModel.ConcurrencyMode>."
+  summary: "获取或设置一个值，该值指示消息传递是否必须保持一致发送消息的顺序。"
+  remarks: "若要获取按顺序调度消息，你还必须将<xref:System.ServiceModel.ConcurrencyMode>到<xref:System.ServiceModel.ConcurrencyMode>。</xref:System.ServiceModel.ConcurrencyMode> </xref:System.ServiceModel.ConcurrencyMode>"
   syntax:
     content: public bool Ordered { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if messages must be delivered in the order in which they are sent; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果必须将消息传递在其中发送; 顺序否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.Ordered*
   exceptions: []
   platform:
@@ -418,13 +418,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the version of WS-ReliableMessaging specified by the binding element."
-  remarks: 'There are currently two versions of the WS-ReliableMessaging protocol supported by [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)]: WS-ReliableMessaging1.1 and WS-ReliableMessagingFebruary2005. The default version is WS-ReliableMessagingFebruary2005.'
+  summary: "获取或设置绑定元素指定的 Ws-reliablemessaging 的版本。"
+  remarks: '目前，有两个版本的 Ws-reliablemessaging 协议支持[!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)]: Ws-reliablemessaging1.1 和 Ws-reliablemessagingfebruary2005。 默认版本为 Ws-reliablemessagingfebruary2005。'
   syntax:
     content: public System.ServiceModel.ReliableMessagingVersion ReliableMessagingVersion { get; set; }
     return:
       type: System.ServiceModel.ReliableMessagingVersion
-      description: "An instance derived from <xref href=&quot;System.ServiceModel.ReliableMessagingVersion&quot;></xref> that represents the version of the WS-ReliableMessaging protocol used by the configuration element."
+      description: "从派生的实例<xref href=&quot;System.ServiceModel.ReliableMessagingVersion&quot;> </xref> ，表示配置元素所使用的 Ws-reliablemessaging 协议的版本。"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.ReliableMessagingVersion*
   exceptions: []
   platform:
@@ -442,16 +442,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Maps the information contained in the reliable session binding element into the WSDL elements that enable a remote endpoint to access the service with a reliable session."
+  summary: "将映射到可启用远程终结点中，以通过可靠会话访问服务的 WSDL 元素可靠会话绑定元素中包含的信息。"
   syntax:
     content: void IPolicyExportExtension.ExportPolicy (System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext context);
     parameters:
     - id: exporter
       type: System.ServiceModel.Description.MetadataExporter
-      description: "The <xref href=&quot;System.ServiceModel.Description.MetadataExporter&quot;></xref> that exports the binding information in the reliable session binding element to the WSDL elements."
+      description: "<xref href=&quot;System.ServiceModel.Description.MetadataExporter&quot;> </xref>中可靠会话绑定元素的绑定信息导出到 WSDL 元素。"
     - id: context
       type: System.ServiceModel.Description.PolicyConversionContext
-      description: "The <xref href=&quot;System.ServiceModel.Description.PolicyConversionContext&quot;></xref> that provides the mapping from exported WSDL elements to the endpoint description."
+      description: "<xref href=&quot;System.ServiceModel.Description.PolicyConversionContext&quot;> </xref>提供从导出的 WSDL 元素到终结点说明的映射。"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.System#ServiceModel#Description#IPolicyExportExtension#ExportPolicy*
   exceptions: []
   platform:
