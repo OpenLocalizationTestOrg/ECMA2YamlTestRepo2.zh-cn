@@ -27,8 +27,8 @@ items:
   nameWithType: MutexSecurity
   fullName: System.Security.AccessControl.MutexSecurity
   type: Class
-  summary: "Represents the Windows access control security for a named mutex. This class cannot be inherited."
-  remarks: "A MutexSecurity object specifies access rights for a named system mutex, and also specifies how access attempts are audited. Access rights to the mutex are expressed as rules, with each access rule represented by a <xref:System.Security.AccessControl.MutexAccessRule> object. Each auditing rule is represented by a <xref:System.Security.AccessControl.MutexAuditRule> object.       This mirrors the underlying Windows security system, in which each securable object has at most one discretionary access control list (DACL) that controls access to the secured object, and at most one system access control list (SACL) that specifies which access attempts are audited. The DACL and SACL are ordered lists of access control entries (ACE) that specify access and auditing for users and groups. A <xref:System.Security.AccessControl.MutexAccessRule> or <xref:System.Security.AccessControl.MutexAuditRule> object might represent more than one ACE.      > [!NOTE] >  A <xref:System.Threading.Mutex> object can represent a local mutex or a named system mutex. Windows access control security is meaningful only for named system mutexes.       The MutexSecurity, <xref:System.Security.AccessControl.MutexAccessRule>, and <xref:System.Security.AccessControl.MutexAuditRule> classes hide the implementation details of ACLs and ACEs. They allow you to ignore the seventeen different ACE types and the complexity of correctly maintaining inheritance and propagation of access rights. These objects are also designed to prevent the following common access control errors:      -   Creating a security descriptor with a null DACL. A null reference to a DACL allows any user to add access rules to an object, potentially creating a denial-of-service attack. A new MutexSecurity object always starts with an empty DACL, which denies all access for all users.      -   Violating the canonical ordering of ACEs. If the ACE list in the DACL is not kept in the canonical order, users might inadvertently be given access to the secured object. For example, denied access rights must always appear before allowed access rights. MutexSecurity objects maintain the correct order internally.      -   Manipulating security descriptor flags, which should be under resource manager control only.      -   Creating invalid combinations of ACE flags.      -   Manipulating inherited ACEs. Inheritance and propagation are handled by the resource manager, in response to changes you make to access and audit rules.      -   Inserting meaningless ACEs into ACLs.       The only capabilities not supported by the .NET security objects are dangerous activities that should be avoided by the majority of application developers, such as the following:      -   Low-level tasks that are normally performed by the resource manager.      -   Adding or removing access control entries in ways that do not maintain the canonical ordering.       To modify Windows access control security for a named mutex, use the <xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName> method to get the MutexSecurity object. Modify the security object by adding and removing rules, and then use the <xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName> method to reattach it.      > [!IMPORTANT] >  Changes you make to a MutexSecurity object do not affect the access levels of the named mutex until you call the <xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName> method to assign the altered security object to the named mutex.       To copy access control security from one mutex to another, use the <xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName> method to get a MutexSecurity object representing the access and audit rules for the first mutex, and then use the <xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName> method, or a constructor that accepts a MutexSecurity object, to assign those rules to the second mutex.       Users with an investment in the security descriptor definition language (SDDL) can use the <xref:System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorSddlForm%2A> method to set access rules for a named mutex, and the <xref:System.Security.AccessControl.ObjectSecurity.GetSecurityDescriptorSddlForm%2A> method to obtain a string that represents the access rules in SDDL format. This is not recommended for new development.      > [!NOTE] >  Security on synchronization objects is not supported for Windows 98 or Windows Millennium Edition."
+  summary: "表示命名的互斥体的 Windows 访问控制安全性。 此类不能被继承。"
+  remarks: "MutexSecurity 对象指定已命名的系统互斥体的访问权限，并且还指定如何审核访问尝试。 互斥体的访问权限表示为规则，由表示每个访问规则<xref:System.Security.AccessControl.MutexAccessRule>对象。</xref:System.Security.AccessControl.MutexAccessRule> 每个审核规则由<xref:System.Security.AccessControl.MutexAuditRule>对象。</xref:System.Security.AccessControl.MutexAuditRule>       这反映了基础的 Windows 安全系统，其中每个安全对象具有最多有一个自定义访问控制列表 (DACL) 控制访问受保护的对象以及最多有一个系统访问控制列表 (SACL) 指定哪些访问尝试进行审核。 DACL 和 SACL 进行排序的指定访问和审核用户和组的访问控制项 (ACE) 的列表。 A<xref:System.Security.AccessControl.MutexAccessRule>或<xref:System.Security.AccessControl.MutexAuditRule>对象可以表示多个 ACE。</xref:System.Security.AccessControl.MutexAuditRule> </xref:System.Security.AccessControl.MutexAccessRule>      1> [!NOTE]&1;> A<xref:System.Threading.Mutex>对象可以表示了局部互斥体或已命名的系统互斥体。</xref:System.Threading.Mutex> Windows 访问控制安全，则仅对已命名的系统互斥体有意义。       MutexSecurity， <xref:System.Security.AccessControl.MutexAccessRule>，和<xref:System.Security.AccessControl.MutexAuditRule>类隐藏 Acl 和 Ace 的实现详细信息。</xref:System.Security.AccessControl.MutexAuditRule> </xref:System.Security.AccessControl.MutexAccessRule> 这使你忽略十七不同的 ACE 类型和正确维护继承和访问权限的传播的复杂性。 这些对象还旨在防止以下常见的访问控制错误:-使用 null DACL 创建安全描述符。 对 DACL 的 null 引用允许任何用户将访问规则添加到一个对象，该对象可能创建的拒绝服务攻击。 新的 MutexSecurity 对象开始时始终具有一个空元素，此操作会拒绝所有用户的所有访问权限的 DACL。      -违反 Ace 的规范顺序。 如果 DACL 中的 ACE 列表不保存在规范顺序，用户可能会无意中被赋予访问受保护的对象。 例如，被拒绝的访问权限必须始终出现在允许的访问权限之前。 MutexSecurity 对象内部维护正确的顺序。      操作安全描述符标志，它应在资源管理器控件。      -创建 ACE 标志的无效的组合。      -操纵继承的 Ace。 继承和传播由资源管理器，以响应对访问和审核规则所做的更改处理。      -将无意义的 Ace 插入到 Acl。       不支持的.NET 安全对象的唯一功能是应当避免由应用程序开发人员，如下所示的大部分的危险活动:-低级通常由资源管理器执行的任务。      -添加或移除访问控制项的不维护规范排序的方式。       若要修改的已命名的互斥体的 Windows 访问控制安全性，请使用<xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName>方法以获取 MutexSecurity 对象。</xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName> 通过添加和删除规则，修改安全对象，然后使用该<xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName>方法将重新附加它。</xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName>      1> [!IMPORTANT]&1;> MutexSecurity 对象所做的更改不影响已命名的互斥体的访问级别直到你调用<xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName>方法以将修改过的安全对象分配给命名互斥体。</xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName>       若要将访问控制安全性复制到另一个互斥体，使用<xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName>方法获取表示第一个互斥体的访问和审核规则 MutexSecurity 对象，然后使用<xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName>方法或接受 MutexSecurity 对象，将这些规则分配给第二个互斥体的构造函数。</xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName> </xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName>       以安全描述符定义语言 (SDDL) 中的投资的用户可以使用<xref:System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorSddlForm%2A>方法以设置的已命名的互斥体，访问规则和<xref:System.Security.AccessControl.ObjectSecurity.GetSecurityDescriptorSddlForm%2A>方法来获取表示访问规则的 SDDL 格式的字符串。</xref:System.Security.AccessControl.ObjectSecurity.GetSecurityDescriptorSddlForm%2A> </xref:System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorSddlForm%2A> 这不是建议新的开发。      1> [!NOTE] 1> Windows 98 或 Windows Millennium Edition 不支持同步对象的安全性。"
   example:
   - "The following code example demonstrates the separation between <xref:System.Security.AccessControl.AccessControlType> rules and <xref:System.Security.AccessControl.AccessControlType> rules, and shows the combination of rights in compatible rules. The example creates a MutexSecurity object, adds rules that allow and deny various rights for the current user, and displays the resulting pair of rules. The example then allows new rights for the current user and displays the result, showing that the new rights are merged with the existing <xref:System.Security.AccessControl.AccessControlType> rule.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.Mutex> object. Examples that attach security objects can be found in <xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-vb[System.Security.AccessControl.MutexSecurity.AddAccessRule#1](~/add/codesnippet/visualbasic/t-system.security.access_12_1.vb)]\n [!code-cs[System.Security.AccessControl.MutexSecurity.AddAccessRule#1](~/add/codesnippet/csharp/t-system.security.access_12_1.cs)]"
   syntax:
@@ -105,8 +105,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.AccessControl.MutexSecurity&quot;></xref> class with default values."
-  remarks: "A new <xref:System.Security.AccessControl.MutexSecurity> object always starts with an empty discretionary access list (DACL), which denies all access for all users."
+  summary: "初始化的新实例<xref href=&quot;System.Security.AccessControl.MutexSecurity&quot;></xref>类使用默认值。"
+  remarks: "一个新<xref:System.Security.AccessControl.MutexSecurity>对象开始时始终具有空的自由访问控制列表 (DACL)，此操作会拒绝所有用户的所有访问权限。</xref:System.Security.AccessControl.MutexSecurity>"
   syntax:
     content: public MutexSecurity ();
     parameters: []
@@ -114,7 +114,7 @@ items:
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "This class is not supported on Windows 98 or Windows Millennium Edition."
+    description: "在 Windows 98 或 Windows Millennium Edition 上不支持此类。"
   platform:
   - net462
 - uid: System.Security.AccessControl.MutexSecurity.#ctor(System.String,System.Security.AccessControl.AccessControlSections)
@@ -129,25 +129,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.AccessControl.MutexSecurity&quot;></xref> class with the specified sections of the access control security rules from the system mutex with the specified name."
-  remarks: "This constructor allows you to obtain the access control security for a named system mutex without first creating a <xref:System.Threading.Mutex> object.       Caution must be exercised when working with named system objects. If there is a system object named `name` that is not a mutex, its control access security might be retrieved."
+  summary: "初始化的新实例<xref href=&quot;System.Security.AccessControl.MutexSecurity&quot;></xref>类从具有指定名称的系统互斥体的访问控制安全规则的指定部分。"
+  remarks: "此构造函数，可获取已命名的系统互斥体的访问控制安全性，而不必首先创建<xref:System.Threading.Mutex>对象。</xref:System.Threading.Mutex>       在使用已命名的系统对象时必须小心谨慎。 如果没有名为系统对象`name`不互斥体，可能会检索其访问控制安全性。"
   syntax:
     content: public MutexSecurity (string name, System.Security.AccessControl.AccessControlSections includeSections);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the system mutex whose access control security rules are to be retrieved."
+      description: "其访问控制安全性规则是要检索的系统互斥体的名称。"
     - id: includeSections
       type: System.Security.AccessControl.AccessControlSections
-      description: "A combination of <xref href=&quot;System.Security.AccessControl.AccessControlSections&quot;></xref> flags specifying the sections to retrieve."
+      description: "组合<xref href=&quot;System.Security.AccessControl.AccessControlSections&quot;></xref>标志指定要检索的部分。"
   overload: System.Security.AccessControl.MutexSecurity.#ctor*
   exceptions:
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "There is no system object with the specified name."
+    description: "没有具有指定名称的系统对象。"
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "This class is not supported on Windows 98 or Windows Millennium Edition."
+    description: "在 Windows 98 或 Windows Millennium Edition 上不支持此类。"
   platform:
   - net462
 - uid: System.Security.AccessControl.MutexSecurity.AccessRightType
@@ -162,13 +162,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Gets the enumeration that the <xref href=&quot;System.Security.AccessControl.MutexSecurity&quot;></xref> class uses to represent access rights."
-  remarks: "Classes that derive from the <xref:System.Security.AccessControl.ObjectSecurity> class override the <xref:System.Security.AccessControl.ObjectSecurity.AccessRightType%2A> property and return the type they use to represent access rights. When you work with arrays or collections that contain multiple types of security objects, use this property to determine the correct enumeration type to use with each security object."
+  summary: "获取枚举<xref href=&quot;System.Security.AccessControl.MutexSecurity&quot;></xref>类用于表示的访问权限。"
+  remarks: "派生自的类<xref:System.Security.AccessControl.ObjectSecurity>类替代<xref:System.Security.AccessControl.ObjectSecurity.AccessRightType%2A>属性，并返回它们用于表示的访问权限的类型。</xref:System.Security.AccessControl.ObjectSecurity.AccessRightType%2A> </xref:System.Security.AccessControl.ObjectSecurity> 当使用数组或包含多个类型的安全对象的集合时，使用此属性来确定要用于每个安全对象的正确的枚举类型。"
   syntax:
     content: public override Type AccessRightType { get; }
     return:
       type: System.Type
-      description: "A <xref:System.Type> object representing the <xref href=&quot;System.Security.AccessControl.MutexRights&quot;></xref> enumeration."
+      description: "A<xref:System.Type>对象，表示<xref href=&quot;System.Security.AccessControl.MutexRights&quot;></xref>枚举。</xref:System.Type>"
   overload: System.Security.AccessControl.MutexSecurity.AccessRightType*
   exceptions: []
   platform:
@@ -185,43 +185,43 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Creates a new access control rule for the specified user, with the specified access rights, access control, and flags."
-  remarks: "The recommended way to create access control rules is to use the constructors of the <xref:System.Security.AccessControl.MutexAccessRule> class.      > [!NOTE] >  Although inheritance and propagation flags are meaningless for named mutexes, it is still possible to specify them. This is not recommended, because it needlessly complicates the maintenance of rules, for example by interfering with the combination of rules that would otherwise be compatible."
+  summary: "创建新的访问控制规则指定的用户，使用指定的访问权限、 访问控制和标志。"
+  remarks: "创建访问控制规则的建议的方法是使用<xref:System.Security.AccessControl.MutexAccessRule>类</xref:System.Security.AccessControl.MutexAccessRule>的构造函数      1> [!NOTE]&1;> 虽然继承和传播标志的已命名互斥无意义，则仍可以指定它们。 这不是建议，因为它不必要地增加复杂性进行维护的规则，例如通过干扰本来可以兼容的规则的组合。"
   syntax:
     content: public override System.Security.AccessControl.AccessRule AccessRuleFactory (System.Security.Principal.IdentityReference identityReference, int accessMask, bool isInherited, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags, System.Security.AccessControl.AccessControlType type);
     parameters:
     - id: identityReference
       type: System.Security.Principal.IdentityReference
-      description: "An <xref href=&quot;System.Security.Principal.IdentityReference&quot;></xref> that identifies the user or group the rule applies to."
+      description: "<xref href=&quot;System.Security.Principal.IdentityReference&quot;> </xref>标识用户或组规则适用于。"
     - id: accessMask
       type: System.Int32
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.MutexRights&quot;></xref> values specifying the access rights to allow or deny, cast to an integer."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.MutexRights&quot;></xref>值指定的访问权限以允许或拒绝，强制转换为整数。"
     - id: isInherited
       type: System.Boolean
-      description: "Meaningless for named mutexes, because they have no hierarchy."
+      description: "对于没有意义命名互斥体，因为它们没有层次结构。"
     - id: inheritanceFlags
       type: System.Security.AccessControl.InheritanceFlags
-      description: "Meaningless for named mutexes, because they have no hierarchy."
+      description: "对于没有意义命名互斥体，因为它们没有层次结构。"
     - id: propagationFlags
       type: System.Security.AccessControl.PropagationFlags
-      description: "Meaningless for named mutexes, because they have no hierarchy."
+      description: "对于没有意义命名互斥体，因为它们没有层次结构。"
     - id: type
       type: System.Security.AccessControl.AccessControlType
-      description: "One of the <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> values specifying whether the rights are allowed or denied."
+      description: "之一<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref>值指定是否允许或拒绝权限。"
     return:
       type: System.Security.AccessControl.AccessRule
-      description: "A <xref href=&quot;System.Security.AccessControl.MutexAccessRule&quot;></xref> object representing the specified rights for the specified user."
+      description: "A <xref href=&quot;System.Security.AccessControl.MutexAccessRule&quot;> </xref>对象，表示指定的用户指定的权限。"
   overload: System.Security.AccessControl.MutexSecurity.AccessRuleFactory*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>accessMask</code>, <code>inheritanceFlags</code>, <code>propagationFlags</code>, or <code>type</code> specifies an invalid value."
+    description: "<code>accessMask</code><code>inheritanceFlags</code>， <code>propagationFlags</code>，或<code>type</code>指定了一个无效值。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>identityReference</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>accessMask</code> is zero."
+    description: "<code>identityReference</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -或-<code>accessMask</code>为零。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>identityReference</code> is neither of type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>, nor of a type such as <xref href=&quot;System.Security.Principal.NTAccount&quot;></xref> that can be converted to type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>."
+    description: "<code>identityReference</code>既不属于类型<xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>，也不的类型，如<xref href=&quot;System.Security.Principal.NTAccount&quot;></xref>可以转换为类型<xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>。"
   platform:
   - net462
 - uid: System.Security.AccessControl.MutexSecurity.AccessRuleType
@@ -236,13 +236,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Gets the type that the <xref href=&quot;System.Security.AccessControl.MutexSecurity&quot;></xref> class uses to represent access rules."
-  remarks: "Classes that derive from the <xref:System.Security.AccessControl.ObjectSecurity> class override the <xref:System.Security.AccessControl.ObjectSecurity.AccessRuleType%2A> property and return the type they use to represent access rules. When you work with arrays or collections that contain multiple types of security objects, use this property to determine the correct access rule type to use with each security object."
+  summary: "获取的类型<xref href=&quot;System.Security.AccessControl.MutexSecurity&quot;></xref>类用于表示访问规则。"
+  remarks: "派生自的类<xref:System.Security.AccessControl.ObjectSecurity>类替代<xref:System.Security.AccessControl.ObjectSecurity.AccessRuleType%2A>属性，并返回它们用于表示访问规则的类型。</xref:System.Security.AccessControl.ObjectSecurity.AccessRuleType%2A> </xref:System.Security.AccessControl.ObjectSecurity> 当使用数组或包含多个类型的安全对象的集合时，使用此属性来确定要使用每个安全对象的正确的访问规则类型。"
   syntax:
     content: public override Type AccessRuleType { get; }
     return:
       type: System.Type
-      description: "A <xref:System.Type> object representing the <xref href=&quot;System.Security.AccessControl.MutexAccessRule&quot;></xref> class."
+      description: "A<xref:System.Type>对象，表示<xref href=&quot;System.Security.AccessControl.MutexAccessRule&quot;></xref>类</xref:System.Type>"
   overload: System.Security.AccessControl.MutexSecurity.AccessRuleType*
   exceptions: []
   platform:
@@ -259,8 +259,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for a matching access control rule with which the new rule can be merged. If none are found, adds the new rule."
-  remarks: "The AddAccessRule method searches for rules with the same user or group and the same <xref:System.Security.AccessControl.AccessControlType> as `rule`. If none are found, `rule` is added. If a matching rule is found, the rights in `rule` are merged with the existing rule."
+  summary: "搜索匹配访问控制规则可以与之合并新规则。 如果找不到之后，将添加新规则。"
+  remarks: "AddAccessRule 方法搜索与同一用户或组，以及相同的规则<xref:System.Security.AccessControl.AccessControlType>作为`rule`。</xref:System.Security.AccessControl.AccessControlType> 如果找不到之后，`rule`添加。 如果找到匹配规则是中的权限`rule`合并与现有规则。"
   example:
   - "The following code example demonstrates the separation between <xref:System.Security.AccessControl.AccessControlType> rules and <xref:System.Security.AccessControl.AccessControlType> rules, and shows the combination of rights in compatible rules. The example creates a <xref:System.Security.AccessControl.MutexSecurity> object, adds rules that allow and deny various rights for the current user, and displays the resulting pair of rules. The example then allows new rights for the current user and displays the result, showing that the new rights are merged with the existing <xref:System.Security.AccessControl.AccessControlType> rule.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.Mutex> object. Examples that attach security objects can be found in <xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName><xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-vb[System.Security.AccessControl.MutexSecurity.AddAccessRule#1](~/add/codesnippet/visualbasic/a07c477f-17a9-4bd4-908e-_1.vb)]\n [!code-cs[System.Security.AccessControl.MutexSecurity.AddAccessRule#1](~/add/codesnippet/csharp/a07c477f-17a9-4bd4-908e-_1.cs)]"
   syntax:
@@ -268,15 +268,15 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.MutexAccessRule
-      description: "The access control rule to add."
+      description: "要添加的访问控制规则。"
   overload: System.Security.AccessControl.MutexSecurity.AddAccessRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Security.Principal.IdentityNotMappedException
     commentId: T:System.Security.Principal.IdentityNotMappedException
-    description: "<code>rule </code>cannot be mapped to a known identity."
+    description: "<code>rule </code>无法映射到已知标识。"
   platform:
   - net462
 - uid: System.Security.AccessControl.MutexSecurity.AddAuditRule(System.Security.AccessControl.MutexAuditRule)
@@ -291,14 +291,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for an audit rule with which the new rule can be merged. If none are found, adds the new rule."
-  remarks: "The AddAuditRule method searches for rules with the same user or group as `rule`. If none are found, `rule` is added. If a matching rule is found, the flags in `rule` are merged into the existing rule."
+  summary: "可以与之合并新规则的审核规则的搜索。 如果找不到之后，将添加新规则。"
+  remarks: "AddAuditRule 方法搜索规则具有相同的用户或组作为`rule`。 如果找不到之后，`rule`添加。 如果找到匹配规则是中的标志`rule`合并到现有规则。"
   syntax:
     content: public void AddAuditRule (System.Security.AccessControl.MutexAuditRule rule);
     parameters:
     - id: rule
       type: System.Security.AccessControl.MutexAuditRule
-      description: "The audit rule to add. The user specified by this rule determines the search."
+      description: "要添加的审核规则。 此规则指定的用户确定搜索。"
   overload: System.Security.AccessControl.MutexSecurity.AddAuditRule*
   exceptions: []
   platform:
@@ -315,43 +315,43 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Creates a new audit rule, specifying the user the rule applies to, the access rights to audit, and the outcome that triggers the audit rule."
-  remarks: "The recommended way to create audit rules is to use the constructors of the <xref:System.Security.AccessControl.MutexAuditRule> class.      > [!NOTE] >  Although inheritance and propagation flags are meaningless for named mutexes, it is still possible to specify them. This is not recommended, because it needlessly complicates the maintenance of rules, for example by interfering with the combination of rules that would otherwise be compatible."
+  summary: "创建一个新的审核规则，指定该规则适用于审核的访问权限以及触发审计规则的结果的用户。"
+  remarks: "创建审核规则的建议的方法是使用<xref:System.Security.AccessControl.MutexAuditRule>类</xref:System.Security.AccessControl.MutexAuditRule>的构造函数      1> [!NOTE]&1;> 虽然继承和传播标志的已命名互斥无意义，则仍可以指定它们。 这不是建议，因为它不必要地增加复杂性进行维护的规则，例如通过干扰本来可以兼容的规则的组合。"
   syntax:
     content: public override System.Security.AccessControl.AuditRule AuditRuleFactory (System.Security.Principal.IdentityReference identityReference, int accessMask, bool isInherited, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags, System.Security.AccessControl.AuditFlags flags);
     parameters:
     - id: identityReference
       type: System.Security.Principal.IdentityReference
-      description: "An <xref href=&quot;System.Security.Principal.IdentityReference&quot;></xref> that identifies the user or group the rule applies to."
+      description: "<xref href=&quot;System.Security.Principal.IdentityReference&quot;> </xref>标识用户或组规则适用于。"
     - id: accessMask
       type: System.Int32
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.MutexRights&quot;></xref> values specifying the access rights to audit, cast to an integer."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.MutexRights&quot;></xref>值指定的访问权限审核，强制转换为整数。"
     - id: isInherited
       type: System.Boolean
-      description: "Meaningless for named wait handles, because they have no hierarchy."
+      description: "对于没有意义命名的等待句柄，因为它们没有层次结构。"
     - id: inheritanceFlags
       type: System.Security.AccessControl.InheritanceFlags
-      description: "Meaningless for named wait handles, because they have no hierarchy."
+      description: "对于没有意义命名的等待句柄，因为它们没有层次结构。"
     - id: propagationFlags
       type: System.Security.AccessControl.PropagationFlags
-      description: "Meaningless for named wait handles, because they have no hierarchy."
+      description: "对于没有意义命名的等待句柄，因为它们没有层次结构。"
     - id: flags
       type: System.Security.AccessControl.AuditFlags
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.AuditFlags&quot;></xref> values that specify whether to audit successful access, failed access, or both."
+      description: "按位组合<xref href=&quot;System.Security.AccessControl.AuditFlags&quot;></xref>指定是否要审核的成功访问、 失败的访问，或两者的值。"
     return:
       type: System.Security.AccessControl.AuditRule
-      description: "A <xref href=&quot;System.Security.AccessControl.MutexAuditRule&quot;></xref> object representing the specified audit rule for the specified user. The return type of the method is the base class, <xref href=&quot;System.Security.AccessControl.AuditRule&quot;></xref>, but the return value can be cast safely to the derived class."
+      description: "A <xref href=&quot;System.Security.AccessControl.MutexAuditRule&quot;> </xref>对象，表示指定的用户指定的审核规则。 该方法的返回类型是基类， <xref href=&quot;System.Security.AccessControl.AuditRule&quot;> </xref>，但返回的值可以安全地强制转换到派生的类。"
   overload: System.Security.AccessControl.MutexSecurity.AuditRuleFactory*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>accessMask</code>, <code>inheritanceFlags</code>, <code>propagationFlags</code>, or <code>flags</code> specifies an invalid value."
+    description: "<code>accessMask</code><code>inheritanceFlags</code>， <code>propagationFlags</code>，或<code>flags</code>指定了一个无效值。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>identityReference</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>accessMask</code> is zero."
+    description: "<code>identityReference</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -或-<code>accessMask</code>为零。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>identityReference</code> is neither of type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>, nor of a type such as <xref href=&quot;System.Security.Principal.NTAccount&quot;></xref> that can be converted to type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>."
+    description: "<code>identityReference</code>既不属于类型<xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>，也不的类型，如<xref href=&quot;System.Security.Principal.NTAccount&quot;></xref>可以转换为类型<xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>。"
   platform:
   - net462
 - uid: System.Security.AccessControl.MutexSecurity.AuditRuleType
@@ -366,13 +366,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Gets the type that the <xref href=&quot;System.Security.AccessControl.MutexSecurity&quot;></xref> class uses to represent audit rules."
-  remarks: "Classes that derive from the <xref:System.Security.AccessControl.ObjectSecurity> class override the <xref:System.Security.AccessControl.ObjectSecurity.AuditRuleType%2A> property and return the type they use to represent audit rights. When you work with arrays or collections that contain multiple types of security objects, use this property to determine the correct audit rule type to use with each security object."
+  summary: "获取的类型<xref href=&quot;System.Security.AccessControl.MutexSecurity&quot;></xref>类用于表示审核规则。"
+  remarks: "派生自的类<xref:System.Security.AccessControl.ObjectSecurity>类替代<xref:System.Security.AccessControl.ObjectSecurity.AuditRuleType%2A>属性，并返回它们用于表示审核权限的类型。</xref:System.Security.AccessControl.ObjectSecurity.AuditRuleType%2A> </xref:System.Security.AccessControl.ObjectSecurity> 当使用数组或包含多个类型的安全对象的集合时，使用此属性来确定要用于每个安全对象的正确的审核规则类型。"
   syntax:
     content: public override Type AuditRuleType { get; }
     return:
       type: System.Type
-      description: "A <xref:System.Type> object representing the <xref href=&quot;System.Security.AccessControl.MutexAuditRule&quot;></xref> class."
+      description: "A<xref:System.Type>对象，表示<xref href=&quot;System.Security.AccessControl.MutexAuditRule&quot;></xref>类</xref:System.Type>"
   overload: System.Security.AccessControl.MutexSecurity.AuditRuleType*
   exceptions: []
   platform:
@@ -389,8 +389,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for an access control rule with the same user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> (allow or deny) as the specified rule, and with compatible inheritance and propagation flags; if such a rule is found, the rights contained in the specified access rule are removed from it."
-  remarks: "The current <xref:System.Security.AccessControl.MutexSecurity> is searched for a rule that has the same user and the same <xref:System.Security.AccessControl.AccessControlType> value as `rule`. If no such rule is found, no action is taken, and the method returns `false`. If matching rules are found, their inheritance and compatibility flags are checked for compatibility with the flags specified in `rule`. If no compatible rule is found, no action is taken, and the method returns `false`. If a rule with compatible flags is found, the rights specified in `rule` are removed from the compatible rule, and the method returns `true`. If `rule` specifies rights not contained in the compatible rule, no action is taken with respect to those rights. If all rights are removed from the compatible rule, the entire rule is removed from the current <xref:System.Security.AccessControl.MutexSecurity> object.      > [!IMPORTANT] >  Although you can specify inheritance and propagation flags for mutex access rules, by creating them with the <xref:System.Security.AccessControl.MutexSecurity.AccessRuleFactory%2A> method, this is not recommended. Inheritance and propagation have no meaning for named mutexes, and they make the maintenance of access rules more complicated."
+  summary: "搜索与同一用户的访问控制规则和<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref> （允许或拒绝） 与指定的规则，并具有兼容的继承和传播标志; 如果找到此类规则，指定的访问规则中包含的权限会从删除它。"
+  remarks: "当前<xref:System.Security.AccessControl.MutexSecurity>具有相同的用户和相同的规则，将会搜索<xref:System.Security.AccessControl.AccessControlType>值作为`rule`。</xref:System.Security.AccessControl.AccessControlType> </xref:System.Security.AccessControl.MutexSecurity> 如果找到任何此类规则，不执行任何操作，并且该方法返回`false`。 如果找到匹配的规则，它们继承和兼容性标志将检查与中指定的标志的兼容性`rule`。 如果找到任何兼容的规则，不执行任何操作，并且该方法返回`false`。 如果找到具有兼容的标志的规则，则在指定的权限`rule`会从兼容的规则，并且该方法返回`true`。 如果`rule`指定不兼容的规则中包含的权限，根据这些权限不执行任何操作。 如果从兼容的规则中移除所有权限，将整个规则都删除从当前<xref:System.Security.AccessControl.MutexSecurity>对象。</xref:System.Security.AccessControl.MutexSecurity>      1> [!IMPORTANT]&1;> 虽然可以通过创建与指定互斥体访问规则的继承和传播标志<xref:System.Security.AccessControl.MutexSecurity.AccessRuleFactory%2A>，这不推荐使用方法。</xref:System.Security.AccessControl.MutexSecurity.AccessRuleFactory%2A> 继承和传播没有任何意义的已命名的互斥，并且它们使访问规则的维护更复杂。"
   example:
   - "The following code example demonstrates the use of the RemoveAccessRule method to remove rights from an <xref:System.Security.AccessControl.AccessControlType> rule in a <xref:System.Security.AccessControl.MutexSecurity> object. It also shows that other rights in `rule` are ignored.  \n  \n The example creates a <xref:System.Security.AccessControl.MutexSecurity> object and adds rules that allow and deny various rights for the current user. The rights allowed include <xref:System.Security.AccessControl.MutexRights>, <xref:System.Security.AccessControl.MutexRights>, and <xref:System.Security.AccessControl.MutexRights>. The example then creates a new rule for the current user, including <xref:System.Security.AccessControl.MutexRights> and <xref:System.Security.AccessControl.MutexRights> rights, and uses that rule with the RemoveAccessRule method to remove <xref:System.Security.AccessControl.MutexRights> from the <xref:System.Security.AccessControl.AccessControlType> rule in the <xref:System.Security.AccessControl.MutexSecurity> object. The extraneous <xref:System.Security.AccessControl.MutexRights> right in `rule` is ignored.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.Mutex> object. Examples that attach security objects can be found in <xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-vb[System.Security.AccessControl.MutexSecurity.RemoveAccessRule#1](~/add/codesnippet/visualbasic/02c8df82-84a8-4212-a3e0-_1.vb)]\n [!code-cs[System.Security.AccessControl.MutexSecurity.RemoveAccessRule#1](~/add/codesnippet/csharp/02c8df82-84a8-4212-a3e0-_1.cs)]"
   syntax:
@@ -398,15 +398,15 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.MutexAccessRule
-      description: "A <xref href=&quot;System.Security.AccessControl.MutexAccessRule&quot;></xref> that specifies the user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> to search for, and a set of inheritance and propagation flags that a matching rule, if found, must be compatible with. Specifies the rights to remove from the compatible rule, if found."
+      description: "A <xref href=&quot;System.Security.AccessControl.MutexAccessRule&quot;> </xref>指定的用户和<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref>搜索，以及一组继承和传播标志，用于匹配规则，如果找到，则必须是与兼容。 指定的权限删除兼容的规则，如果找到。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a compatible rule is found; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果找到兼容的规则;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Security.AccessControl.MutexSecurity.RemoveAccessRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.MutexSecurity.RemoveAccessRuleAll(System.Security.AccessControl.MutexAccessRule)
@@ -421,8 +421,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for all access control rules with the same user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> (allow or deny) as the specified rule and, if found, removes them."
-  remarks: "The current <xref:System.Security.AccessControl.MutexSecurity> object is searched for rules that have the same user and the same <xref:System.Security.AccessControl.AccessControlType> value as `rule`. Any rights specified by `rule` are ignored when performing this search. If no matching rules are found, no action is taken."
+  summary: "搜索所有访问控制规则具有相同的用户和<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref> （允许或拒绝） 指定规则且，如果找到，则删除它们。"
+  remarks: "当前<xref:System.Security.AccessControl.MutexSecurity>对象，具有相同的用户和相同的规则将会搜索<xref:System.Security.AccessControl.AccessControlType>值作为`rule`。</xref:System.Security.AccessControl.AccessControlType> </xref:System.Security.AccessControl.MutexSecurity> 指定的任何权限`rule`时执行此搜索将忽略。 如果不找到任何匹配的规则，不执行任何操作。"
   example:
   - "The following code example shows that the RemoveAccessRuleAll method removes all rules that match user and <xref:System.Security.AccessControl.AccessControlType>, ignoring rights.  \n  \n The example creates a <xref:System.Security.AccessControl.MutexSecurity> object, adds rules that allow and deny various rights for the current user, and then merges additional rights into the <xref:System.Security.AccessControl.AccessControlType> rule. The example then creates a new rule that allows the current user to take ownership, and uses that rule to remove the <xref:System.Security.AccessControl.AccessControlType> rule from the <xref:System.Security.AccessControl.MutexSecurity> object.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.Mutex> object. Examples that attach security objects can be found in <xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-cs[System.Security.AccessControl.MutexSecurity.RemoveAccessRuleAll#1](~/add/codesnippet/csharp/6d97fdf7-4cee-497f-898e-_1.cs)]\n [!code-vb[System.Security.AccessControl.MutexSecurity.RemoveAccessRuleAll#1](~/add/codesnippet/visualbasic/6d97fdf7-4cee-497f-898e-_1.vb)]"
   syntax:
@@ -430,12 +430,12 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.MutexAccessRule
-      description: "A <xref href=&quot;System.Security.AccessControl.MutexAccessRule&quot;></xref> that specifies the user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> to search for. Any rights specified by this rule are ignored."
+      description: "A <xref href=&quot;System.Security.AccessControl.MutexAccessRule&quot;> </xref>指定的用户和<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref>搜索。 指定此规则的任何权限将被忽略。"
   overload: System.Security.AccessControl.MutexSecurity.RemoveAccessRuleAll*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.MutexSecurity.RemoveAccessRuleSpecific(System.Security.AccessControl.MutexAccessRule)
@@ -450,8 +450,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for an access control rule that exactly matches the specified rule and, if found, removes it."
-  remarks: "The rule is removed only if it exactly matches `rule` in all details, including flags. Other rules with the same user and <xref:System.Security.AccessControl.AccessControlType> are not affected.      > [!IMPORTANT] >  A rule represents one or more underlying access control entries (ACE), and these entries are split or combined as necessary when you modify the access security rules for a user. Thus, a rule might no longer exist in the specific form it had when it was added, and in that case the RemoveAccessRuleSpecific method cannot remove it."
+  summary: "搜索完全匹配所指定的访问控制规则的规则和，如果找到，则删除它。"
+  remarks: "仅当完全匹配时，才移除规则`rule`中的所有详细信息，包括标志。 具有相同的用户的其他规则和<xref:System.Security.AccessControl.AccessControlType>不会受到影响。</xref:System.Security.AccessControl.AccessControlType>      1> [!IMPORTANT]&1;> 规则表示一个或多个基础访问控制项 (ACE)，和拆分或修改用户的访问安全性规则时，根据需要组合这些条目。 因此，一个规则可能不再存在时它已添加的特定形式，RemoveAccessRuleSpecific 方法不能在这种情况下删除它。"
   example:
   - "The following code example shows that the RemoveAccessRuleSpecific method requires an exact match in order to remove a rule, and that rules to allow and deny rights are independent of each other.  \n  \n The example creates a <xref:System.Security.AccessControl.MutexSecurity> object, adds rules that allow and deny various rights for the current user, and then merges additional rights into the <xref:System.Security.AccessControl.AccessControlType> access rule. The example then passes the original <xref:System.Security.AccessControl.AccessControlType> rule to the RemoveAccessRuleSpecific method, and displays the results, showing that nothing is deleted. The example then constructs a rule that matches the <xref:System.Security.AccessControl.AccessControlType> rule in the <xref:System.Security.AccessControl.MutexSecurity> object, and successfully uses the RemoveAccessRuleSpecific method to remove the rule.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.Mutex> object. Examples that attach security objects can be found in <xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-vb[System.Security.AccessControl.MutexSecurity.RemoveAccessRuleSpecific#1](~/add/codesnippet/visualbasic/fa20d5ab-0fa1-47be-9c16-_1.vb)]\n [!code-cs[System.Security.AccessControl.MutexSecurity.RemoveAccessRuleSpecific#1](~/add/codesnippet/csharp/fa20d5ab-0fa1-47be-9c16-_1.cs)]"
   syntax:
@@ -459,12 +459,12 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.MutexAccessRule
-      description: "The <xref href=&quot;System.Security.AccessControl.MutexAccessRule&quot;></xref> to remove."
+      description: "<xref href=&quot;System.Security.AccessControl.MutexAccessRule&quot;> </xref>删除。"
   overload: System.Security.AccessControl.MutexSecurity.RemoveAccessRuleSpecific*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.MutexSecurity.RemoveAuditRule(System.Security.AccessControl.MutexAuditRule)
@@ -479,22 +479,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for an audit control rule with the same user as the specified rule, and with compatible inheritance and propagation flags; if a compatible rule is found, the rights contained in the specified rule are removed from it."
-  remarks: "The current <xref:System.Security.AccessControl.MutexSecurity> is searched for an audit rule that has the same user as `rule`. If no such rule is found, no action is taken, and the method returns `false`. If matching rules are found, their inheritance and compatibility flags are checked for compatibility with the flags specified in `rule`. If no compatible rule is found, no action is taken, and the method returns `false`. If a rule with compatible flags is found, the rights specified in `rule` are removed from the compatible rule, and the method returns `true`. If `rule` specifies rights not contained in the compatible rule, no action is taken with respect to those rights. If all rights are removed from the compatible rule, the entire rule is removed from the current <xref:System.Security.AccessControl.MutexSecurity> object.      > [!IMPORTANT] >  Although you can specify inheritance and propagation flags for mutex audit rules, by creating them with the <xref:System.Security.AccessControl.MutexSecurity.AccessRuleFactory%2A> method, this is not recommended. Inheritance and propagation have no meaning for named mutexes, and they make the maintenance of audit rules more complicated."
+  summary: "搜索与同一用户作为指定的规则，并具有兼容的继承和传播标志; 审核控制规则如果找到兼容的规则，则会从其删除指定的规则中包含的权限。"
+  remarks: "当前<xref:System.Security.AccessControl.MutexSecurity>搜索已为同一用户的审核规则`rule`。</xref:System.Security.AccessControl.MutexSecurity> 如果找到任何此类规则，不执行任何操作，并且该方法返回`false`。 如果找到匹配的规则，它们继承和兼容性标志将检查与中指定的标志的兼容性`rule`。 如果找到任何兼容的规则，不执行任何操作，并且该方法返回`false`。 如果找到具有兼容的标志的规则，则在指定的权限`rule`会从兼容的规则，并且该方法返回`true`。 如果`rule`指定不兼容的规则中包含的权限，根据这些权限不执行任何操作。 如果从兼容的规则中移除所有权限，将整个规则都删除从当前<xref:System.Security.AccessControl.MutexSecurity>对象。</xref:System.Security.AccessControl.MutexSecurity>      1> [!IMPORTANT]&1;> 虽然可以通过创建与指定互斥体审核规则的继承和传播标志<xref:System.Security.AccessControl.MutexSecurity.AccessRuleFactory%2A>，这不推荐使用方法。</xref:System.Security.AccessControl.MutexSecurity.AccessRuleFactory%2A> 继承和传播对已命名的互斥，没有意义并且它们使得审核规则的维护更复杂。"
   syntax:
     content: public bool RemoveAuditRule (System.Security.AccessControl.MutexAuditRule rule);
     parameters:
     - id: rule
       type: System.Security.AccessControl.MutexAuditRule
-      description: "A <xref href=&quot;System.Security.AccessControl.MutexAuditRule&quot;></xref> that specifies the user to search for, and a set of inheritance and propagation flags that a matching rule, if found, must be compatible with. Specifies the rights to remove from the compatible rule, if found."
+      description: "A <xref href=&quot;System.Security.AccessControl.MutexAuditRule&quot;> </xref> ，它指定用户来进行搜索和一组继承和传播标志匹配规则，如果找到，则必须是与兼容。 指定的权限删除兼容的规则，如果找到。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a compatible rule is found; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果找到兼容的规则;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Security.AccessControl.MutexSecurity.RemoveAuditRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.MutexSecurity.RemoveAuditRuleAll(System.Security.AccessControl.MutexAuditRule)
@@ -509,19 +509,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for all audit rules with the same user as the specified rule and, if found, removes them."
-  remarks: "The current <xref:System.Security.AccessControl.MutexSecurity> is searched for audit rules that have the same user as `rule`. Any rights specified by `rule` are ignored when performing this search. All matching rules are removed. If no matching rules are found, no action is taken."
+  summary: "搜索所有审核规则与同一用户与指定的规则，如果找到，将删除它们。"
+  remarks: "当前<xref:System.Security.AccessControl.MutexSecurity>会为使用相同用户作为的审核规则搜索`rule`。</xref:System.Security.AccessControl.MutexSecurity> 指定的任何权限`rule`时执行此搜索将忽略。 将删除所有匹配规则。 如果不找到任何匹配的规则，不执行任何操作。"
   syntax:
     content: public void RemoveAuditRuleAll (System.Security.AccessControl.MutexAuditRule rule);
     parameters:
     - id: rule
       type: System.Security.AccessControl.MutexAuditRule
-      description: "A <xref href=&quot;System.Security.AccessControl.MutexAuditRule&quot;></xref> that specifies the user to search for. Any rights specified by this rule are ignored."
+      description: "A <xref href=&quot;System.Security.AccessControl.MutexAuditRule&quot;> </xref> ，指定要搜索的用户。 指定此规则的任何权限将被忽略。"
   overload: System.Security.AccessControl.MutexSecurity.RemoveAuditRuleAll*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.MutexSecurity.RemoveAuditRuleSpecific(System.Security.AccessControl.MutexAuditRule)
@@ -536,19 +536,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for an audit rule that exactly matches the specified rule and, if found, removes it."
-  remarks: "The rule is removed only if it exactly matches `rule` in all details, including flags. Other audit rules for the same user are not affected.      > [!IMPORTANT] >  A rule represents one or more underlying access control entries (ACE), and these entries are split or combined as necessary when you modify the audit security rules for a user. Thus, a rule might no longer exist in the specific form it had when it was added, and in that case the RemoveAuditRuleSpecific method cannot remove it."
+  summary: "搜索完全匹配所指定的审核规则的规则和，如果找到，则删除它。"
+  remarks: "仅当完全匹配时，才移除规则`rule`中的所有详细信息，包括标志。 不会影响同一用户其他审核规则。      1> [!IMPORTANT]&1;> 规则表示一个或多个基础访问控制项 (ACE)，和拆分或修改用户的审核安全规则时，根据需要组合这些条目。 因此，一个规则可能不再存在时它已添加的特定形式，RemoveAuditRuleSpecific 方法不能在这种情况下删除它。"
   syntax:
     content: public void RemoveAuditRuleSpecific (System.Security.AccessControl.MutexAuditRule rule);
     parameters:
     - id: rule
       type: System.Security.AccessControl.MutexAuditRule
-      description: "The <xref href=&quot;System.Security.AccessControl.MutexAuditRule&quot;></xref> to be removed."
+      description: "<xref href=&quot;System.Security.AccessControl.MutexAuditRule&quot;> </xref>要删除。"
   overload: System.Security.AccessControl.MutexSecurity.RemoveAuditRuleSpecific*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.MutexSecurity.ResetAccessRule(System.Security.AccessControl.MutexAccessRule)
@@ -563,8 +563,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Removes all access control rules with the same user as the specified rule, regardless of <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref>, and then adds the specified rule."
-  remarks: "If there are no access rules whose user matches the specified rule, `rule` is added."
+  summary: "移除带有相同用户作为指定的规则，而不考虑的所有访问控制规则<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref>，然后将添加指定的规则。"
+  remarks: "如果没有指定的规则，与匹配的用户的访问规则`rule`添加。"
   example:
   - "The following code example shows how the ResetAccessRule method replaces all rules for the matching user with the rule specified for the match.  \n  \n The example creates a <xref:System.Security.AccessControl.MutexSecurity> object and adds rules that allow and deny various rights for the current user. The example then creates a new rule that allows the current user full control, and uses the ResetAccessRule method to replace both of the existing rules with the new rule.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.Mutex> object. Examples that attach security objects can be found in <xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-cs[System.Security.AccessControl.MutexSecurity.ResetAccessRule#1](~/add/codesnippet/csharp/382093ed-47a5-4dd0-aee6-_1.cs)]\n [!code-vb[System.Security.AccessControl.MutexSecurity.ResetAccessRule#1](~/add/codesnippet/visualbasic/382093ed-47a5-4dd0-aee6-_1.vb)]"
   syntax:
@@ -572,12 +572,12 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.MutexAccessRule
-      description: "The <xref href=&quot;System.Security.AccessControl.MutexAccessRule&quot;></xref> to add. The user specified by this rule determines the rules to remove before this rule is added."
+      description: "The <xref href=&quot;System.Security.AccessControl.MutexAccessRule&quot;></xref> to add. 此规则指定的用户确定要移除之前添加此规则的规则。"
   overload: System.Security.AccessControl.MutexSecurity.ResetAccessRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.MutexSecurity.SetAccessRule(System.Security.AccessControl.MutexAccessRule)
@@ -592,8 +592,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Removes all access control rules with the same user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> (allow or deny) as the specified rule, and then adds the specified rule."
-  remarks: "If the specified rule has <xref:System.Security.AccessControl.AccessControlType>, the effect of this method is to remove all <xref:System.Security.AccessControl.AccessControlType> rules for the specified user, replacing them with the specified rule. If the specified rule has <xref:System.Security.AccessControl.AccessControlType>, all <xref:System.Security.AccessControl.AccessControlType> rules for the specified user are replaced with the specified rule.       If there are no rules whose user and <xref:System.Security.AccessControl.AccessControlType> match the specified rule, `rule` is added."
+  summary: "移除带有相同的用户的所有访问控制规则和<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref> （允许或拒绝） 与指定的规则，然后将添加指定的规则。"
+  remarks: "如果指定的规则具有<xref:System.Security.AccessControl.AccessControlType>，此方法的效果是移除所有<xref:System.Security.AccessControl.AccessControlType>对于指定的用户，并将它们替换为指定的规则的规则。</xref:System.Security.AccessControl.AccessControlType> </xref:System.Security.AccessControl.AccessControlType> 如果指定的规则具有<xref:System.Security.AccessControl.AccessControlType>，所有<xref:System.Security.AccessControl.AccessControlType>规则指定的用户替换与指定的规则。</xref:System.Security.AccessControl.AccessControlType> </xref:System.Security.AccessControl.AccessControlType>       如果没有规则的用户和<xref:System.Security.AccessControl.AccessControlType>匹配指定的规则，`rule`添加。</xref:System.Security.AccessControl.AccessControlType>"
   example:
   - "The following code example shows how the SetAccessRule method removes all rules that match both the user and the <xref:System.Security.AccessControl.AccessControlType> of `rule`, replacing them with `rule`.  \n  \n The example creates a <xref:System.Security.AccessControl.MutexSecurity> object and adds rules that allow and deny various rights for the current user. The example then creates a new rule that allows the current user full control, and uses the SetAccessRule method to replace the existing Allow rule with the new rule. The rule that denies access is not affected.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.Mutex> object. Examples that attach security objects can be found in <xref:System.Threading.Mutex.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.Mutex.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-vb[System.Security.AccessControl.MutexSecurity.SetAccessRule#1](~/add/codesnippet/visualbasic/5e6eedb1-8b35-40cc-b676-_1.vb)]\n [!code-cs[System.Security.AccessControl.MutexSecurity.SetAccessRule#1](~/add/codesnippet/csharp/5e6eedb1-8b35-40cc-b676-_1.cs)]"
   syntax:
@@ -601,12 +601,12 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.MutexAccessRule
-      description: "The <xref href=&quot;System.Security.AccessControl.MutexAccessRule&quot;></xref> to add. The user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> of this rule determine the rules to remove before this rule is added."
+      description: "The <xref href=&quot;System.Security.AccessControl.MutexAccessRule&quot;></xref> to add. 用户和<xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref>此规则确定要移除之前添加此规则的规则。"
   overload: System.Security.AccessControl.MutexSecurity.SetAccessRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.MutexSecurity.SetAuditRule(System.Security.AccessControl.MutexAuditRule)
@@ -621,19 +621,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Removes all audit rules with the same user as the specified rule, regardless of the <xref href=&quot;System.Security.AccessControl.AuditFlags&quot;></xref> value, and then adds the specified rule."
-  remarks: "If there are no audit rules whose user matches the specified rule, `rule` is added."
+  summary: "移除所有审核规则与同一用户作为指定的规则，而不考虑<xref href=&quot;System.Security.AccessControl.AuditFlags&quot;></xref>值，并将指定的规则。"
+  remarks: "如果没有指定的规则，与匹配的用户的审核规则`rule`添加。"
   syntax:
     content: public void SetAuditRule (System.Security.AccessControl.MutexAuditRule rule);
     parameters:
     - id: rule
       type: System.Security.AccessControl.MutexAuditRule
-      description: "The <xref href=&quot;System.Security.AccessControl.MutexAuditRule&quot;></xref> to add. The user specified by this rule determines the rules to remove before this rule is added."
+      description: "The <xref href=&quot;System.Security.AccessControl.MutexAuditRule&quot;></xref> to add. 此规则指定的用户确定要移除之前添加此规则的规则。"
   overload: System.Security.AccessControl.MutexSecurity.SetAuditRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 references:

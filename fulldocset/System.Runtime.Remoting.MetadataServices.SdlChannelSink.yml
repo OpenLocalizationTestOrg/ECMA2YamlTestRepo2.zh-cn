@@ -15,8 +15,8 @@ items:
   nameWithType: SdlChannelSink
   fullName: System.Runtime.Remoting.MetadataServices.SdlChannelSink
   type: Class
-  summary: "Provides the implementation for a server channel sink that generates Web Services Description Language (WSDL) dynamically on the server."
-  remarks: "The SdlChannelSink is used to create WSDL in situations where the URL ends with the string &quot;?wsdl&quot;.       The following table shows the channel configuration properties that can be specified for this channel sink. The first two properties combine to control the WSDL publication of objects published by the application domain. If `false` is specified for the first property, no WSDL is returned, regardless of the second property. (The default is `true`.) Otherwise, the second controls whether the global metadata object URI is permitted to respond. (The default is `false`.)      |Property|Description|   |--------------|-----------------|   |`metadataEnabled`|A Boolean value that specifies whether to honor requests that end in &quot;?wsdl&quot; if this sink is in the channel sink chain. The default setting is `true`. If `false`, the sink throws an exception in all cases where metadata is requested for any object in the application domain.<br /><br /> This property is supported only by the .NET Framework version 1.1 on the following platforms: Windows 98, Windows NT 4.0, Windows Millennium Edition, Windows 2000, Windows XP Home Edition, Windows XP Professional, Windows Server 2003 family.|   |`remoteApplicationMetadataEnabled`|A Boolean value that specifies whether to honor requests for the object URI &quot;RemoteApplicationMetadata?wsdl&quot;, which returns WSDL that describes all objects that are published by the application domain. If `false`, then any request to &quot;RemoteApplicationMetadata.rem&quot; throws an exception. All other &quot;?wsdl&quot; requests for particular object URIs are honored. If `true`, the global metadata request is honored. The default setting is `false`.<br /><br /> This property is supported only by the .NET Framework version 1.1 on the following platforms: Windows 98, Windows NT 4.0, Windows Millennium Edition, Windows 2000, Windows XP Home Edition, Windows XP Professional, Windows Server 2003 family.|"
+  summary: "提供服务器的实现在服务器动态生成 Web 服务描述语言 (WSDL) 的通道接收器。"
+  remarks: "SdlChannelSink 用于在 URL 以字符串的结尾位置的情况下创建 WSDL&quot;？ wsdl&quot;。       下表显示通道可以为此通道接收器指定的配置属性。 前两个属性组合可用于控制 WSDL 发布的发布的应用程序域的对象。 如果`false`指定的第一个属性，则没有 WSDL，则返回，而不考虑第二个属性。 (默认值是`true`。)否则，第二个控制是否允许全局元数据对象 URI 进行响应。 (默认值是`false`。)     |属性 |说明 |  |--------------|-----------------|  |`metadataEnabled`|一个布尔值，指定是否遵守请求以结尾的&quot;？ wsdl&quot;如果此接收器是通道接收器链中。 默认设置是`true`。 如果`false`，接收器将在所有情况下，即应用程序域中的任何对象请求元数据时引发异常。<br /><br /> 只能由.NET Framework 版本 1.1 以下平台上支持此属性︰ Windows 98、 Windows NT 4.0、 Windows Millennium Edition、 Windows 2000、 Windows XP Home Edition、 Windows XP Professional、 Windows Server 2003 系列。 |  |`remoteApplicationMetadataEnabled`|一个布尔值，指定是否遵守对象 URI 请求&quot;RemoteApplicationMetadata？ wsdl&quot;，它由应用程序域返回描述发布的所有对象的 WSDL。 如果`false`，对&quot;RemoteApplicationMetadata.rem&quot;任何请求将引发异常。 所有其他&quot;？ wsdl&quot;对于特定对象的 Uri 的请求需要。 如果`true`，则接受全局元数据请求。 默认设置是`false`。<br /><br /> 只能由.NET Framework 版本 1.1 以下平台上支持此属性︰ Windows 98、 Windows NT 4.0、 Windows Millennium Edition、 Windows 2000、 Windows XP Home Edition、 Windows XP Professional、 Windows Server 2003 系列。 |"
   syntax:
     content: 'public class SdlChannelSink : System.Runtime.Remoting.Channels.IServerChannelSink'
   inheritance:
@@ -38,16 +38,16 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.MetadataServices
-  summary: "Initializes a new instance of the <xref href=&quot;System.Runtime.Remoting.MetadataServices.SdlChannelSink&quot;></xref> class."
+  summary: "初始化的新实例<xref href=&quot;System.Runtime.Remoting.MetadataServices.SdlChannelSink&quot;></xref>类。"
   syntax:
     content: public SdlChannelSink (System.Runtime.Remoting.Channels.IChannelReceiver receiver, System.Runtime.Remoting.Channels.IServerChannelSink nextSink);
     parameters:
     - id: receiver
       type: System.Runtime.Remoting.Channels.IChannelReceiver
-      description: "Indicates the channel that will receive the messages serialized by the new instance of <xref href=&quot;System.Runtime.Remoting.MetadataServices.SdlChannelSink&quot;></xref>."
+      description: "指示将接收的新实例序列化的消息的通道<xref href=&quot;System.Runtime.Remoting.MetadataServices.SdlChannelSink&quot;> </xref>。"
     - id: nextSink
       type: System.Runtime.Remoting.Channels.IServerChannelSink
-      description: "The next sink in the sink chain."
+      description: "接收器链中的下一步接收器。"
   overload: System.Runtime.Remoting.MetadataServices.SdlChannelSink.#ctor*
   exceptions: []
   platform:
@@ -64,25 +64,25 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.MetadataServices
-  summary: "Requests processing from the current sink of the response from a method call that was sent asynchronously."
+  summary: "从当前接收器的方法调用异步发送的响应进行处理的请求。"
   syntax:
     content: public void AsyncProcessResponse (System.Runtime.Remoting.Channels.IServerResponseChannelSinkStack sinkStack, object state, System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Channels.ITransportHeaders headers, System.IO.Stream stream);
     parameters:
     - id: sinkStack
       type: System.Runtime.Remoting.Channels.IServerResponseChannelSinkStack
-      description: "A stack of sinks that lead back to the server transport sink."
+      description: "接收器回服务器传输接收器堆栈。"
     - id: state
       type: System.Object
-      description: "Information associated with the current sink, generated on the request side, and needed on the response side."
+      description: "与当前的接收器中，在请求方中，生成并在响应端所需的信息。"
     - id: msg
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "The response message."
+      description: "响应消息中。"
     - id: headers
       type: System.Runtime.Remoting.Channels.ITransportHeaders
-      description: "The headers to add to the return message heading to the client."
+      description: "要将添加到发往客户端返回消息的标头。"
     - id: stream
       type: System.IO.Stream
-      description: "The stream heading back to the transport sink."
+      description: "流标题回传输接收器。"
   overload: System.Runtime.Remoting.MetadataServices.SdlChannelSink.AsyncProcessResponse*
   exceptions: []
   platform:
@@ -99,26 +99,26 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.MetadataServices
-  summary: "Returns the <xref:System.IO.Stream> onto which the provided response message is to be serialized."
-  remarks: "The current method is called when a response stream needs to be created."
+  summary: "返回<xref:System.IO.Stream>提供的响应消息进行序列化到其上。</xref:System.IO.Stream>"
+  remarks: "当需要创建响应流调用当前方法。"
   syntax:
     content: public System.IO.Stream GetResponseStream (System.Runtime.Remoting.Channels.IServerResponseChannelSinkStack sinkStack, object state, System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Channels.ITransportHeaders headers);
     parameters:
     - id: sinkStack
       type: System.Runtime.Remoting.Channels.IServerResponseChannelSinkStack
-      description: "A stack of sinks that lead back to the server transport sink."
+      description: "接收器回服务器传输接收器堆栈。"
     - id: state
       type: System.Object
-      description: "Information associated with the current sink, generated on the request side, and needed on the response side."
+      description: "与当前的接收器中，在请求方中，生成并在响应端所需的信息。"
     - id: msg
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "The response message to serialize."
+      description: "要序列化的响应消息。"
     - id: headers
       type: System.Runtime.Remoting.Channels.ITransportHeaders
-      description: "The headers to put in the response stream to the client."
+      description: "要放在客户端的响应流中的标头。"
     return:
       type: System.IO.Stream
-      description: "The <xref:System.IO.Stream> onto which the provided response message is to be serialized."
+      description: "<xref:System.IO.Stream>提供的响应消息进行序列化到其上。</xref:System.IO.Stream>"
   overload: System.Runtime.Remoting.MetadataServices.SdlChannelSink.GetResponseStream*
   exceptions: []
   platform:
@@ -135,12 +135,12 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.MetadataServices
-  summary: "Gets the next <xref href=&quot;System.Runtime.Remoting.Channels.IServerChannelSink&quot;></xref> in the sink chain."
+  summary: "获取下一个<xref href=&quot;System.Runtime.Remoting.Channels.IServerChannelSink&quot;></xref>接收器链中。"
   syntax:
     content: public System.Runtime.Remoting.Channels.IServerChannelSink NextChannelSink { get; }
     return:
       type: System.Runtime.Remoting.Channels.IServerChannelSink
-      description: "The next <xref href=&quot;System.Runtime.Remoting.Channels.IServerChannelSink&quot;></xref> in the sink chain."
+      description: "下一步<xref href=&quot;System.Runtime.Remoting.Channels.IServerChannelSink&quot;></xref>接收器链中。"
   overload: System.Runtime.Remoting.MetadataServices.SdlChannelSink.NextChannelSink*
   exceptions: []
   platform:
@@ -157,35 +157,35 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.MetadataServices
-  summary: "Requests message processing from the current sink."
-  remarks: "The proxy&quot;s job is to convert a method call that is invoked on it into a message object. The Message object, which implements the <xref:System.Runtime.Remoting.Messaging.IMessage> interface, is passed from the client end to the server end by invoking <xref:System.Runtime.Remoting.Channels.IServerChannelSink.ProcessMessage%2A> on message sink objects. Message sinks are chained together, which means that every message sink is responsible for calling <xref:System.Runtime.Remoting.Channels.IServerChannelSink.ProcessMessage%2A> on the next message sink after it has performed its work. For instance, a synchronization-related message sink might cause a lock to be acquired or released and delegated to the downstream message sink.       When the formatter channel sink gets a message that needs to be sent over the channel, it calls <xref:System.Runtime.Remoting.Messaging.IMessageSink.SyncProcessMessage%2A>, passing the message as a parameter. The formatter sink then creates the transport header array and calls <xref:System.Runtime.Remoting.Channels.IClientChannelSink.GetRequestStream%2A> on the formatter sink. This call is forwarded down the sink chain, and any sink can create a request stream that is passed back to the formatter sink. After this call returns, the message is serialized, <xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A> is called on the first chain in the sink chain, and the message is passed to the channel sinks.       After the channel sinks get the message, they can write data to the stream, add headers to the header array, and add themselves to the sink stack before forwarding the call to the next sink. When the call reaches the transport sink at the end of the chain, the transport sink sends the headers and serialized message over the channel to the server, where the process is reversed.       When the message reaches the server side, the transport sink retrieves the headers and serialized message from the stream and forwards these through the sink chain until they reach the formatter sink. The formatter sink then deserializes the message and forwards it to remoting, where the message is turned into a method call and the server object is called."
+  summary: "从当前接收器处理的请求消息。"
+  remarks: "代理的作业是将转换为消息对象调用它的方法调用。 消息对象，该实现对象<xref:System.Runtime.Remoting.Messaging.IMessage>接口时，传递从客户端到服务器端通过调用<xref:System.Runtime.Remoting.Channels.IServerChannelSink.ProcessMessage%2A>对消息接收器对象。</xref:System.Runtime.Remoting.Channels.IServerChannelSink.ProcessMessage%2A> </xref:System.Runtime.Remoting.Messaging.IMessage> 消息的接收器被链接在一起，这意味着每个消息接收器负责调用<xref:System.Runtime.Remoting.Channels.IServerChannelSink.ProcessMessage%2A>对下一个消息的接收器后它已执行其工作。</xref:System.Runtime.Remoting.Channels.IServerChannelSink.ProcessMessage%2A> 例如，与同步相关的消息接收器可能会导致锁获取或发布并委派给下游消息接收器。       当格式化程序通道接收器获取一条消息，需要通过通道发送，它调用<xref:System.Runtime.Remoting.Messaging.IMessageSink.SyncProcessMessage%2A>，将消息作为参数传递。</xref:System.Runtime.Remoting.Messaging.IMessageSink.SyncProcessMessage%2A> 格式化程序接收器然后创建的传输标头数组和调用<xref:System.Runtime.Remoting.Channels.IClientChannelSink.GetRequestStream%2A>上格式化程序接收器。</xref:System.Runtime.Remoting.Channels.IClientChannelSink.GetRequestStream%2A> 此调用沿接收器链中，转发并且任何接收器均可创建被传递回格式化程序接收器的请求流。 完成此操作后调用返回后，消息序列化，<xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A>接收器链中的第一个链调用和消息传递到通道接收器。</xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A>       通道接收器收到消息后，它们可以将数据写入到流、 将标头添加到标头的数组，并转发到下一步接收器调用之前将自己添加到接收器堆栈。 当调用达到传输接收器链末尾时，传输接收器发送标头，并通过到服务器，此过程被反转其中通道序列化消息。       当消息到达服务器端时，传输接收器将检索标头和序列化流中的消息并将这些通过接收器链转发，直到到达格式化程序接收器。 然后，格式化程序接收器反序列化消息，并将其转发给远程处理，其中消息转变为方法调用，该服务器对象调用。"
   syntax:
     content: public System.Runtime.Remoting.Channels.ServerProcessing ProcessMessage (System.Runtime.Remoting.Channels.IServerChannelSinkStack sinkStack, System.Runtime.Remoting.Messaging.IMessage requestMsg, System.Runtime.Remoting.Channels.ITransportHeaders requestHeaders, System.IO.Stream requestStream, out System.Runtime.Remoting.Messaging.IMessage responseMsg, out System.Runtime.Remoting.Channels.ITransportHeaders responseHeaders, out System.IO.Stream responseStream);
     parameters:
     - id: sinkStack
       type: System.Runtime.Remoting.Channels.IServerChannelSinkStack
-      description: "A stack of channel sinks that called the current sink."
+      description: "接收器调用了当前接收器的通道堆栈。"
     - id: requestMsg
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "The message that contains the request."
+      description: "包含请求的消息。"
     - id: requestHeaders
       type: System.Runtime.Remoting.Channels.ITransportHeaders
-      description: "The headers that are retrieved from the incoming message from the client."
+      description: "检索从来自客户端的传入消息标头。"
     - id: requestStream
       type: System.IO.Stream
-      description: "The stream that needs to be processed and passed on to the deserialization sink."
+      description: "需要进行处理和传递给反序列化接收器流。"
     - id: responseMsg
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "When this method returns, contains a <xref href=&quot;System.Runtime.Remoting.Messaging.IMessage&quot;></xref> that holds the response message. This parameter is passed uninitialized."
+      description: "此方法返回时，包含<xref href=&quot;System.Runtime.Remoting.Messaging.IMessage&quot;> </xref> ，包含响应消息。 此参数传递时未经初始化。"
     - id: responseHeaders
       type: System.Runtime.Remoting.Channels.ITransportHeaders
-      description: "When this method returns, contains a <xref href=&quot;System.Runtime.Remoting.Channels.ITransportHeaders&quot;></xref> that holds the headers to add to return message heading to the client. This parameter is passed uninitialized."
+      description: "此方法返回时，包含<xref href=&quot;System.Runtime.Remoting.Channels.ITransportHeaders&quot;></xref>容纳要添加到客户端返回消息标题的标头。 此参数传递时未经初始化。"
     - id: responseStream
       type: System.IO.Stream
-      description: "When this method returns, contains a <xref:System.IO.Stream> that is heading to the transport sink. This parameter is passed uninitialized."
+      description: "此方法返回时，包含<xref:System.IO.Stream>即发往传输接收器。</xref:System.IO.Stream> 此参数传递时未经初始化。"
     return:
       type: System.Runtime.Remoting.Channels.ServerProcessing
-      description: "A <xref href=&quot;System.Runtime.Remoting.Channels.ServerProcessing&quot;></xref> status value that provides information about how the message was processed."
+      description: "A <xref href=&quot;System.Runtime.Remoting.Channels.ServerProcessing&quot;> </xref>状态值，提供有关如何处理消息的信息。"
   overload: System.Runtime.Remoting.MetadataServices.SdlChannelSink.ProcessMessage*
   exceptions: []
   platform:
@@ -202,7 +202,7 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.MetadataServices
-  summary: "Gets a <xref:System.Collections.IDictionary> of properties for the current channel sink."
+  summary: "获取<xref:System.Collections.IDictionary>的当前通道接收器的属性。</xref:System.Collections.IDictionary>"
   remarks: >-
     > [!NOTE]
 
@@ -211,7 +211,7 @@ items:
     content: public System.Collections.IDictionary Properties { get; }
     return:
       type: System.Collections.IDictionary
-      description: "A <xref:System.Collections.IDictionary> of properties for the current channel sink."
+      description: "A<xref:System.Collections.IDictionary>的当前通道接收器的属性。</xref:System.Collections.IDictionary>"
   overload: System.Runtime.Remoting.MetadataServices.SdlChannelSink.Properties*
   exceptions: []
   platform:

@@ -11,8 +11,8 @@ items:
   nameWithType: IClientChannelSinkStack
   fullName: System.Runtime.Remoting.Channels.IClientChannelSinkStack
   type: Interface
-  summary: "Provides functionality for a stack of client channel sinks that must be invoked during an asynchronous message response decoding."
-  remarks: "The IClientChannelSinkStack is used during processing of responses to asynchronous calls.       During a synchronous call, the <xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A?displayProperty=fullName> method is called when a message is outbound to the server. Each sink in the sink chain calls the <xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A> method on the next sink until the call reaches the transport sink at the end of the chain. From there the message is transported to the server.       When the formatter sink is called through the <xref:System.Runtime.Remoting.Messaging.IMessageSink.AsyncProcessMessage%2A> method, it dispatches the call asynchronously by calling <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A> on the next channel sink. A stack of reply sinks is needed to process the response. Any sink that wants to process the response needs to push itself to the client channel sink stack inside of <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A>."
+  summary: "提供的客户端堆栈必须异步消息响应解码过程中调用的信道接收器的功能。"
+  remarks: "IClientChannelSinkStack 主要用于对异步调用的响应的处理过程。       在同步调用，<xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A?displayProperty=fullName>消息被发送到服务器时调用方法。</xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A?displayProperty=fullName> 在接收器链调用中的每个接收器<xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A>方法之前调用到达传输接收器链末尾对下一个接收器。</xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A> 从该处消息传输到服务器。       当通过调用格式化程序接收器<xref:System.Runtime.Remoting.Messaging.IMessageSink.AsyncProcessMessage%2A>方法，它调用异步调度通过调用<xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A>对下一个通道接收器。</xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A> </xref:System.Runtime.Remoting.Messaging.IMessageSink.AsyncProcessMessage%2A> 所需的答复接收器堆栈来处理该响应。 想要处理的响应任何接收器需要将其自身推送到客户端通道接收器堆栈内<xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A>.</xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -34,21 +34,21 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Pops the information associated with all the sinks from the sink stack up to and including the specified sink."
+  summary: "弹出达与从接收器堆栈的所有接收器关联和包括指定的接收器的信息。"
   syntax:
     content: public object Pop (System.Runtime.Remoting.Channels.IClientChannelSink sink);
     parameters:
     - id: sink
       type: System.Runtime.Remoting.Channels.IClientChannelSink
-      description: "The sink to remove and return from the sink stack."
+      description: "若要移除并返回从接收器堆栈接收器。"
     return:
       type: System.Object
-      description: "Information generated on the request side and associated with the specified sink."
+      description: "请求端上生成并与指定的接收器相关联的信息。"
   overload: System.Runtime.Remoting.Channels.IClientChannelSinkStack.Pop*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "直接调用方没有基础结构权限。"
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.IClientChannelSinkStack.Push(System.Runtime.Remoting.Channels.IClientChannelSink,System.Object)
@@ -63,22 +63,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Pushes the specified sink and information associated with it onto the sink stack."
-  remarks: "The information generated on the request side and specified in the `state` parameter is returned in the `state` parameter of the <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessResponse%2A> method on the corresponding sink."
+  summary: "将指定的接收器和与它关联到接收器堆栈信息的推送。"
+  remarks: "信息请求端上生成并中指定`state`参数中返回`state`参数<xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessResponse%2A>相应接收器上的方法。</xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessResponse%2A>"
   syntax:
     content: public void Push (System.Runtime.Remoting.Channels.IClientChannelSink sink, object state);
     parameters:
     - id: sink
       type: System.Runtime.Remoting.Channels.IClientChannelSink
-      description: "The sink to push onto the sink stack."
+      description: "要推送到接收器堆栈接收器。"
     - id: state
       type: System.Object
-      description: "Information generated on the request side that is needed on the response side."
+      description: "在响应端需要的请求端上生成的信息。"
   overload: System.Runtime.Remoting.Channels.IClientChannelSinkStack.Push*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "直接调用方没有基础结构权限。"
   platform:
   - net462
 references:

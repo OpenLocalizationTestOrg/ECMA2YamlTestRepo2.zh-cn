@@ -17,8 +17,8 @@ items:
   nameWithType: AcknowledgeTypes
   fullName: System.Messaging.AcknowledgeTypes
   type: Enum
-  summary: "Specifies the types of acknowledgment message that Message Queuing returns to the sending application."
-  remarks: "The AcknowledgeTypes class provides a set of flags that you can combine to request one or more categories of acknowledgment messages.       When an application sends a message, it can request that Message Queuing return acknowledgment messages indicating the success or failure of the original message. Message Queuing sends these acknowledgment messages to the administration queue you specify. Acknowledgment types can be divided broadly into four groups: positive arrival acknowledgments, positive read acknowledgments, negative arrival acknowledgments, and negative read acknowledgments. Requesting acknowledgments enables your application to receive notification of certain occurrences—for example, a message reaching its destination queue, a message being retrieved, or a time-out preventing a message from reaching or being retrieved from the destination queue.       When you are using the <xref:System.Messaging.Message> class to send messages to a queue, you specify the types of acknowledgments your application should receive in the <xref:System.Messaging.Message.AcknowledgeType%2A> property, as well as the administration queue that receives the acknowledgment messages in the <xref:System.Messaging.Message.AdministrationQueue%2A> property.       When you use the <xref:System.Messaging.Message> class to read acknowledgment messages in the administration queue, the instance&quot;s <xref:System.Messaging.Message.Acknowledgment%2A> property indicates the condition responsible for the acknowledgment message, for example, if a time-out expired before the original message was read from the queue."
+  summary: "指定消息队列返回给发送应用程序的确认消息的类型。"
+  remarks: "AcknowledgeTypes 类提供一组标志，你可以组合使用来请求一个或多个类别的确认消息。       当应用程序发送一条消息时，它可以请求，消息队列返回指示成功或失败的原始消息的确认消息。 消息队列将这些确认消息发送到你指定的管理队列。 确认类型可广泛划分为四个组︰ 正到达确认、 肯定读取的确认、 否定到达确认和否定读取的确认。 请求确认使你的应用程序可以接收特定事件的通知-例如，消息到达其目标队列、 正在检索消息或超时妨碍到达或正在从目标队列检索消息。       如果要使用<xref:System.Messaging.Message>类将消息发送到队列中，指定类型的确认你的应用程序应接收在<xref:System.Messaging.Message.AcknowledgeType%2A>属性，以及接收的确认消息中的管理队列<xref:System.Messaging.Message.AdministrationQueue%2A>属性。</xref:System.Messaging.Message.AdministrationQueue%2A> </xref:System.Messaging.Message.AcknowledgeType%2A> </xref:System.Messaging.Message>       当你使用<xref:System.Messaging.Message>类来读取确认消息中的管理队列，该实例的<xref:System.Messaging.Message.Acknowledgment%2A>属性指示的条件负责的确认消息，例如，如果超时过期之前的原始消息已从队列中读取。</xref:System.Messaging.Message.Acknowledgment%2A> </xref:System.Messaging.Message>"
   example:
   - "The following code example sends and receives a message that contains an order to and from a queue. It specifically requests a positive acknowledgment when the original message reaches or is retrieved from the queue.  \n  \n [!code-cs[Message.Acknowledgment#1](~/add/codesnippet/csharp/t-system.messaging.ackno_1_1.cs)]\n [!code-cpp[Message.Acknowledgment#1](~/add/codesnippet/cpp/t-system.messaging.ackno_1_1.cpp)]\n [!code-vb[Message.Acknowledgment#1](~/add/codesnippet/visualbasic/t-system.messaging.ackno_1_1.vb)]"
   syntax:
@@ -42,12 +42,12 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "A mask used to request positive acknowledgment if the original message reaches the queue or negative acknowledgment if the time-to-reach-queue timer expires or if the original message cannot be authenticated."
+  summary: "一个掩码，用于请求肯定确认，如果在原始消息到达队列或否定确认，如果在到达队列时间计时器过期或原始消息无法进行身份验证。"
   syntax:
     content: FullReachQueue
     return:
       type: System.Messaging.AcknowledgeTypes
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -63,12 +63,12 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "A mask used to request positive acknowledgment if the original message is received from the queue before its time-to-be-received timer expires or negative acknowledgment otherwise."
+  summary: "用于请求肯定确认，如果其接收时间计时器过期之前，从该队列接收原始消息或否定确认，否则的掩码。"
   syntax:
     content: FullReceive
     return:
       type: System.Messaging.AcknowledgeTypes
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -84,13 +84,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "A mask used to request a negative acknowledgment when the original message fails to be received from the queue."
-  remarks: "Using the <xref:System.Messaging.MessageQueue.Peek%2A?displayProperty=fullName> method does not remove a message from the queue, so this acknowledgment type could be returned even if you did peek the message. Only the <xref:System.Messaging.MessageQueue.Receive%2A?displayProperty=fullName> method (or the related asynchronous <xref:System.Messaging.MessageQueue.BeginReceive%2A?displayProperty=fullName> method) removes a message from the queue."
+  summary: "用于从队列接收原始消息失败时请求将否定确认的掩码。"
+  remarks: "使用<xref:System.Messaging.MessageQueue.Peek%2A?displayProperty=fullName>因此无法返回此确认类型，即使未扫视消息方法不会从队列中删除一条消息。</xref:System.Messaging.MessageQueue.Peek%2A?displayProperty=fullName> 仅<xref:System.Messaging.MessageQueue.Receive%2A?displayProperty=fullName>方法 (或相关异步<xref:System.Messaging.MessageQueue.BeginReceive%2A?displayProperty=fullName>方法) 中从队列中移除消息。</xref:System.Messaging.MessageQueue.BeginReceive%2A?displayProperty=fullName> </xref:System.Messaging.MessageQueue.Receive%2A?displayProperty=fullName>"
   syntax:
     content: NegativeReceive
     return:
       type: System.Messaging.AcknowledgeTypes
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -106,12 +106,12 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "A mask used to request that no acknowledgment messages (positive or negative) be posted."
+  summary: "发布用于请求任何确认消息 （正或负） 的掩码。"
   syntax:
     content: None
     return:
       type: System.Messaging.AcknowledgeTypes
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -127,12 +127,12 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "A mask used to request a negative acknowledgment when the original message cannot reach the queue. This can happen when the time-to-reach-queue timer expires or if a message cannot be authenticated."
+  summary: "用于原始消息无法到达队列时请求将否定确认的掩码。 这可能发生在到达队列时间计时器过期时，或如果消息无法进行身份验证。"
   syntax:
     content: NotAcknowledgeReachQueue
     return:
       type: System.Messaging.AcknowledgeTypes
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -148,12 +148,12 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "A mask used to request a negative acknowledgment when an error occurs that prevents the original message from being received from the queue before its time-to-be-received timer expires."
+  summary: "掩码，用于请求将否定确认，发生错误时可阻止原始消息的接收时间计时器终止之前从队列接收。"
   syntax:
     content: NotAcknowledgeReceive
     return:
       type: System.Messaging.AcknowledgeTypes
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -169,12 +169,12 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "A mask used to request a positive acknowledgment when the original message reaches the queue."
+  summary: "用于在原始消息到达队列时请求肯定确认的掩码。"
   syntax:
     content: PositiveArrival
     return:
       type: System.Messaging.AcknowledgeTypes
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -190,12 +190,12 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "A mask used to request a positive acknowledgment when the original message is successfully retrieved from the queue."
+  summary: "用于请求肯定确认时原始消息已成功从队列检索的掩码。"
   syntax:
     content: PositiveReceive
     return:
       type: System.Messaging.AcknowledgeTypes
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462

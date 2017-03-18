@@ -11,7 +11,7 @@ items:
   nameWithType: IDebugVsaScriptCodeItem
   fullName: Microsoft.JScript.IDebugVsaScriptCodeItem
   type: Interface
-  summary: "Defines methods that evaluate expressions and parse strings. This interface is typically implemented by an object that represents a code block, and it is typically called by a debugger. This interface provides extra functionality that is needed by an IActiveScript host."
+  summary: "定义对表达式求值和分析字符串的方法。 通常由一个对象，表示代码块，实现此接口，它通常由调试器。 此接口提供程序 IActiveScript 宿主所需的额外功能。"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -34,14 +34,14 @@ items:
   assemblies:
   - Microsoft.JScript
   namespace: Microsoft.JScript
-  summary: "When implemented in a class, evaluates the block, expression, or statement represented by the code item and returns the value. It is typically called by a debugger that needs to evaluate an expression (in a Watch window, for example). For expressions, the value is the result of the expression. For blocks and statements, the resulting expression is the last expression calculated by the block or statement."
-  remarks: "Note that the Evaluate method is functionally identical to the <xref:Microsoft.JScript.IVsaScriptCodeItem.Execute%2A> method. Only the marshaling attributes differ. This version of the interface allows an unmanaged debugger to obtain the return value as an `IUnknown` pointer rather than a `VARIANT`."
+  summary: "类中实现时，计算块、 表达式或语句由代码项，并返回值。 它通常会调用由调试器计算的表达式 （在监视窗口中，例如） 所需。 对于表达式，值为表达式的结果。 对于块和语句中，生成的表达式是计算块或语句的最后一个表达式。"
+  remarks: "请注意，计算方法是功能上等同于<xref:Microsoft.JScript.IVsaScriptCodeItem.Execute%2A>方法。</xref:Microsoft.JScript.IVsaScriptCodeItem.Execute%2A> 与不同，只有封送处理的属性。 此版本的接口允许获取形式的返回值非托管的调试器`IUnknown`指针而不是`VARIANT`。"
   syntax:
     content: public object Evaluate ();
     parameters: []
     return:
       type: System.Object
-      description: "Returns a value that represents the evaluation of the statement, expression, or block."
+      description: "返回一个值，表示语句、 表达式或块的计算。"
   overload: Microsoft.JScript.IDebugVsaScriptCodeItem.Evaluate*
   exceptions: []
   platform:
@@ -58,31 +58,31 @@ items:
   assemblies:
   - Microsoft.JScript
   namespace: Microsoft.JScript
-  summary: 'When implemented in a class, parses strings and returns the parsed-out information. This method is typically called by a debugger that needs to parse information about a breakpoint that is represented as a <xref uid=&quot;langword_csharp_string&quot; name=&quot;string&quot; href=&quot;&quot;></xref>. The debugger might have a breakpoint typed in by the user in the form *functionname-arguments-ILoffset*. A named breakpoint string can have a complex format, for example, `F.B(C.D[], int, arg : double ) : C.Abc + 123.` The parameter list is optional, as is the IL offset.'
+  summary: '类中实现时，分析字符串，并返回分析出的信息。 此方法通常称为由调试器需要分析信息有关断点，表示为<xref uid=&quot;langword_csharp_string&quot; name=&quot;string&quot; href=&quot;&quot;> </xref>。 调试器中可能存在键入用户在窗体中的断点*-参数 Il*。 命名的断点字符串可以包含复杂的格式，例如，`F.B(C.D[], int, arg : double ) : C.Abc + 123.`参数列表是可选的按原样的 IL 偏移量。'
   syntax:
     content: public bool ParseNamedBreakPoint (string input, out string functionName, out int nargs, out string arguments, out string returnType, out ulong offset);
     parameters:
     - id: input
       type: System.String
-      description: "A well-formed named breakpoint string giving a function, optional argument list, and optional IL offset."
+      description: "格式良好的命名断点字符串，它提供函数、 可选自变量列表，以及可选的 IL 偏移量。"
     - id: functionName
       type: System.String
-      description: "Out parameter returning the name of the function parsed out of the input string, or the empty string if the input string is not well formed."
+      description: "Out 参数返回的函数名称外的输入的字符串或为空字符串时分析的输入的字符串的格式不正确。"
     - id: nargs
       type: System.Int32
-      description: "Out parameter returning the number of arguments in the optional argument list. Returns zero if there is no arguments list or if the string is not well formed."
+      description: "输出参数返回可选的参数列表中的参数的数目。 如果没有自变量列表或字符串格式不正确，则返回零。"
     - id: arguments
       type: System.String
-      description: "Out parameter returning a space-separated list of the names of the types of all the arguments in the arguments list, or an empty string if the arguments list was missing or the input string was not well formed."
+      description: "Out 参数的类型的所有自变量的名称以空格分隔的列表返回自变量列表中或空字符串中上，如果自变量列表缺失或格式不正确的输入的字符串。"
     - id: returnType
       type: System.String
-      description: "Out parameter returning a string containing the return type of the function named in the input, or the empty string if the return type was missing or the input string was not well formed."
+      description: "输出参数返回包含名为输入中的函数的返回类型的字符串或空字符串，如果返回类型已丢失或输入的字符串的格式不正确。"
     - id: offset
       type: System.UInt64
-      description: "Unsigned long integer giving the IL offset from the input string, or zero if there was no IL offset or the string was not well formed."
+      description: "给定的 IL 偏移量从输入的字符串或为零，如果没有 IL 偏移量或该字符串格式不正确的无符号长整数。"
     return:
       type: System.Boolean
-      description: "Returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the named breakpoint is successfully parsed, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> otherwise."
+      description: "返回<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果成功地分析了命名的断点， <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>否则为。"
   overload: Microsoft.JScript.IDebugVsaScriptCodeItem.ParseNamedBreakPoint*
   exceptions: []
   platform:
