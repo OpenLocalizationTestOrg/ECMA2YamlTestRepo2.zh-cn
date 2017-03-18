@@ -11,7 +11,7 @@ items:
   nameWithType: ProtectedData
   fullName: System.Security.Cryptography.ProtectedData
   type: Class
-  summary: "Provides methods for encrypting and decrypting data. This class cannot be inherited."
+  summary: "提供用于加密和解密数据的方法。 此类不能被继承。"
   remarks: "This class provides access to the Data Protection API (DPAPI) available in Microsoft Windows 2000 and later operating systems. This is a service that is provided by the operating system and does not require additional libraries. It provides protection using the user or machine credentials to encrypt or decrypt data.  \n  \n The class consists of two wrappers for the unmanaged DPAPI, [Protect(Byte\\[\\], Byte\\[\\], DataProtectionScope)](assetId:///M:System.Security.Cryptography.ProtectedData.Protect(System.Byte[],System.Byte[],System.Security.Cryptography.DataProtectionScope)?qualifyHint=False&autoUpgrade=True) and [Unprotect(Byte\\[\\], Byte\\[\\], DataProtectionScope)](assetId:///M:System.Security.Cryptography.ProtectedData.Unprotect(System.Byte[],System.Byte[],System.Security.Cryptography.DataProtectionScope)?qualifyHint=False&autoUpgrade=True). These two methods can be used to encrypt and decrypt data such as passwords, keys, and connection strings.  \n  \n If you use these methods during impersonation, you may receive the following error: \"Key not valid for use in specified state.\" This occurs because the DPAPI stores the key data in user profiles. If the profile is not loaded, DPAPI won’t be able to perform the decryption. To prevent this error, load the profile of the user you want to impersonate before calling either method. Using DPAPI with impersonation can incur significant complication and requires careful design choices."
   example:
   - "The following example shows how to use data protection.  \n  \n [!code-cs[Cryptography.DataProtectionSample#1](~/add/codesnippet/csharp/t-system.security.crypto_126_1.cs)]\n [!code-cpp[Cryptography.DataProtectionSample#1](~/add/codesnippet/cpp/t-system.security.crypto_126_1.cpp)]\n [!code-vb[Cryptography.DataProtectionSample#1](~/add/codesnippet/visualbasic/t-system.security.crypto_126_1.vb)]"
@@ -35,8 +35,8 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography
-  summary: "Encrypts the data in a specified byte array and returns a byte array that contains the encrypted data."
-  remarks: "This method can be used to encrypt data such as passwords, keys, or connection strings. The `optionalEntropy` parameter enables you to add data to increase the complexity of the encryption; specify `null` for no additional complexity. If provided, this information must also be used when decrypting the data using the <xref:System.Security.Cryptography.ProtectedData.Unprotect%2A> method.      > [!NOTE] >  If you use this method during impersonation, you may receive the following error: &quot;Key not valid for use in specified state.&quot; To prevent this error, load the profile of the user you want to impersonate before calling the method."
+  summary: "在指定的字节数组中加密数据并返回包含已加密的数据的字节数组。"
+  remarks: "此方法可以用于加密数据，例如密码、 密钥或连接字符串。 `optionalEntropy`参数允许你添加数据，以增加加密的复杂性; 指定`null`不要增加复杂度。 如果提供，此信息还必须使用时解密数据使用<xref:System.Security.Cryptography.ProtectedData.Unprotect%2A>方法。</xref:System.Security.Cryptography.ProtectedData.Unprotect%2A>      1> [!NOTE]&1;> 如果在模拟期间使用此方法，则可能收到以下错误:&quot;该项不适于在指定状态。&quot; 若要防止出现此错误，加载你想要在调用方法之前模拟用户的配置文件。"
   example:
   - "The following example shows how to use data protection.  \n  \n [!code-cs[Cryptography.DataProtectionSample#1](~/add/codesnippet/csharp/95867340-d3f0-4c9c-82ca-_1.cs)]\n [!code-cpp[Cryptography.DataProtectionSample#1](~/add/codesnippet/cpp/95867340-d3f0-4c9c-82ca-_1.cpp)]\n [!code-vb[Cryptography.DataProtectionSample#1](~/add/codesnippet/visualbasic/95867340-d3f0-4c9c-82ca-_1.vb)]"
   syntax:
@@ -44,16 +44,16 @@ items:
     parameters:
     - id: userData
       type: System.Byte[]
-      description: "A byte array that contains data to encrypt."
+      description: "包含要加密数据的字节数组。"
     - id: optionalEntropy
       type: System.Byte[]
-      description: "An optional additional byte array used to increase the complexity of the encryption, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> for no additional complexity."
+      description: "可选的附加字节数组用于增加复杂性加密，或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>不要增加复杂度。"
     - id: scope
       type: System.Security.Cryptography.DataProtectionScope
-      description: "One of the enumeration values that specifies the scope of encryption."
+      description: "指定加密范围的枚举值之一。"
     return:
       type: System.Byte[]
-      description: "A byte array representing the encrypted data."
+      description: "表示已加密的数据的字节数组。"
   overload: System.Security.Cryptography.ProtectedData.Protect*
   exceptions:
   - type: System.ArgumentNullException
@@ -61,13 +61,13 @@ items:
     description: "The <code>userData</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "The encryption failed."
+    description: "加密失败。"
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The operating system does not support this method."
+    description: "操作系统不支持此方法。"
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "The system ran out of memory while encrypting the data."
+    description: "加密数据时，系统出现内存不足。"
   platform:
   - net462
 - uid: System.Security.Cryptography.ProtectedData.Unprotect(System.Byte[],System.Byte[],System.Security.Cryptography.DataProtectionScope)
@@ -82,8 +82,8 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography
-  summary: "Decrypts the data in a specified byte array and returns a byte array that contains the decrypted data."
-  remarks: "This method can be used to unprotect data that was encrypted using the <xref:System.Security.Cryptography.ProtectedData.Protect%2A> method. If the `optionalEntropy` parameter was used during encryption, it must be supplied to unencrypt the data.      > [!NOTE] >  If you use this method during impersonation, you may receive the following error: &quot;Key not valid for use in specified state.&quot; To prevent this error, load the profile of the user you want to impersonate before calling the method."
+  summary: "在指定的字节数组中解密数据，并返回包含已解密的数据的字节数组。"
+  remarks: "此方法可以用于取消保护使用加密的数据进行<xref:System.Security.Cryptography.ProtectedData.Protect%2A>方法。</xref:System.Security.Cryptography.ProtectedData.Protect%2A> 如果`optionalEntropy`在加密过程中使用了参数，必须提供解密数据。      1> [!NOTE]&1;> 如果在模拟期间使用此方法，则可能收到以下错误:&quot;该项不适于在指定状态。&quot; 若要防止出现此错误，加载你想要在调用方法之前模拟用户的配置文件。"
   example:
   - "The following code example shows how to use data protection.  \n  \n [!code-cs[Cryptography.DataProtectionSample#1](~/add/codesnippet/csharp/52a5e76e-1631-47b1-9e44-_1.cs)]\n [!code-cpp[Cryptography.DataProtectionSample#1](~/add/codesnippet/cpp/52a5e76e-1631-47b1-9e44-_1.cpp)]\n [!code-vb[Cryptography.DataProtectionSample#1](~/add/codesnippet/visualbasic/52a5e76e-1631-47b1-9e44-_1.vb)]"
   syntax:
@@ -91,16 +91,16 @@ items:
     parameters:
     - id: encryptedData
       type: System.Byte[]
-      description: "A byte array containing data encrypted using the <xref:System.Security.Cryptography.ProtectedData.Protect*> method."
+      description: "包含使用加密的数据的字节数组<xref:System.Security.Cryptography.ProtectedData.Protect*>方法。</xref:System.Security.Cryptography.ProtectedData.Protect*>"
     - id: optionalEntropy
       type: System.Byte[]
-      description: "An optional additional byte array that was used to encrypt the data, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the additional byte array was not used."
+      description: "用于加密数据，一个可选的附加字节数组或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果未使用额外的字节数组。"
     - id: scope
       type: System.Security.Cryptography.DataProtectionScope
-      description: "One of the enumeration values that specifies the scope of data protection that was used to encrypt the data."
+      description: "指定用于加密数据的数据保护的作用域的枚举值之一。"
     return:
       type: System.Byte[]
-      description: "A byte array representing the decrypted data."
+      description: "表示已解密的数据的字节数组。"
   overload: System.Security.Cryptography.ProtectedData.Unprotect*
   exceptions:
   - type: System.ArgumentNullException
@@ -108,13 +108,13 @@ items:
     description: "The <code>encryptedData</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "The decryption failed."
+    description: "解密失败。"
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The operating system does not support this method."
+    description: "操作系统不支持此方法。"
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "Out of memory."
+    description: "内存不足。"
   platform:
   - net462
 references:
