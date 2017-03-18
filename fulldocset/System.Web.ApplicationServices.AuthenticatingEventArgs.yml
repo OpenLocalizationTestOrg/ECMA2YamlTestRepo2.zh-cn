@@ -14,8 +14,8 @@ items:
   nameWithType: AuthenticatingEventArgs
   fullName: System.Web.ApplicationServices.AuthenticatingEventArgs
   type: Class
-  summary: "Provides data for the <xref href=&quot;System.Web.ApplicationServices.AuthenticationService.Authenticating&quot;></xref> event."
-  remarks: "You create a handler for the <xref:System.Web.ApplicationServices.AuthenticationService.Authenticating> event when you want to customize how the user&quot;s credentials are authenticated at run time. The AuthenticatingEventArgs class supplies values to any <xref:System.Web.ApplicationServices.AuthenticationService.Authenticating> event handler. By using the properties available in this class, you can retrieve the user credentials to customize authentication.       The <xref:System.Web.ApplicationServices.AuthenticationService> class raises the <xref:System.Web.ApplicationServices.AuthenticationService.Authenticating> event before validating the user credentials. The <xref:System.Web.ApplicationServices.AuthenticationService> class constructs an instance of the AuthenticatingEventArgs object and passes it to any <xref:System.Web.ApplicationServices.AuthenticationService.Authenticating> event handler.       You can use the <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.UserName%2A>, <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Password%2A> and <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.CustomCredential%2A> properties to retrieve the user credentials. The <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.CustomCredential%2A> property can contain additional values that are required for authentication, such as an identification number.       The <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Authenticated%2A> property indicates whether the user credentials are valid. You set the <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Authenticated%2A> property to the result of your customized authentication. In addition, you set the <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.AuthenticationIsComplete%2A> property to `true` if you have checked the user credentials and do not want the <xref:System.Web.ApplicationServices.AuthenticationService> class to check user credentials through the default membership provider."
+  summary: "提供有关数据<xref href=&quot;System.Web.ApplicationServices.AuthenticationService.Authenticating&quot;></xref>事件。"
+  remarks: "创建的处理程序<xref:System.Web.ApplicationServices.AuthenticationService.Authenticating>时想要自定义如何用户的凭据进行身份验证在运行时的事件。</xref:System.Web.ApplicationServices.AuthenticationService.Authenticating> AuthenticatingEventArgs 类提供了到任何值<xref:System.Web.ApplicationServices.AuthenticationService.Authenticating>事件处理程序。</xref:System.Web.ApplicationServices.AuthenticationService.Authenticating> 通过使用此类中可用的属性，可以检索用于自定义身份验证的用户凭据。       <xref:System.Web.ApplicationServices.AuthenticationService>类所引发<xref:System.Web.ApplicationServices.AuthenticationService.Authenticating>事件之前验证用户凭据。</xref:System.Web.ApplicationServices.AuthenticationService.Authenticating> </xref:System.Web.ApplicationServices.AuthenticationService> <xref:System.Web.ApplicationServices.AuthenticationService>类构造 AuthenticatingEventArgs 对象的实例，并将其传递给任何<xref:System.Web.ApplicationServices.AuthenticationService.Authenticating>事件处理程序。</xref:System.Web.ApplicationServices.AuthenticationService.Authenticating> </xref:System.Web.ApplicationServices.AuthenticationService>       你可以使用<xref:System.Web.ApplicationServices.AuthenticatingEventArgs.UserName%2A>，<xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Password%2A>和<xref:System.Web.ApplicationServices.AuthenticatingEventArgs.CustomCredential%2A>要检索的用户凭据的属性。</xref:System.Web.ApplicationServices.AuthenticatingEventArgs.CustomCredential%2A> </xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Password%2A> </xref:System.Web.ApplicationServices.AuthenticatingEventArgs.UserName%2A> <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.CustomCredential%2A>属性可以包含其他值所需的身份验证，如一个标识号。</xref:System.Web.ApplicationServices.AuthenticatingEventArgs.CustomCredential%2A>       <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Authenticated%2A>属性指示的用户凭据是否有效。</xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Authenticated%2A> 你设置<xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Authenticated%2A>到您的自定义身份验证的结果的属性。</xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Authenticated%2A> 此外，设置<xref:System.Web.ApplicationServices.AuthenticatingEventArgs.AuthenticationIsComplete%2A>属性`true`如果签入的用户凭据且不希望<xref:System.Web.ApplicationServices.AuthenticationService>类检查通过默认成员资格提供程序的用户凭据。</xref:System.Web.ApplicationServices.AuthenticationService> </xref:System.Web.ApplicationServices.AuthenticatingEventArgs.AuthenticationIsComplete%2A>"
   example:
   - "The following example shows an event handler that passes the <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.UserName%2A> and <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Password%2A> values to a custom membership provider to validate the user credentials. The event handler sets <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Authenticated%2A> to the return value of the <xref:System.Web.Security.MembershipProvider.ValidateUser%2A> method and sets <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.AuthenticationIsComplete%2A> to `true` so that the <xref:System.Web.ApplicationServices.AuthenticationService> class does not validate the credentials.  \n  \n [!code-vb[System.Web.Security.LoginService_NonDefaultProvider#2](~/add/codesnippet/visualbasic/t-system.web.application_3_1.asax)]\n [!code-cs[System.Web.Security.LoginService_NonDefaultProvider#2](~/add/codesnippet/csharp/t-system.web.application_3_1.asax)]"
   syntax:
@@ -38,15 +38,15 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.ApplicationServices
-  summary: "Gets or sets a value that indicates whether the user credentials are valid."
-  remarks: "If you authenticate user credentials in an event handler for the <xref:System.Web.ApplicationServices.AuthenticationService.Authenticating> event, set the Authenticated property to indicate whether the user credentials are valid. If the user credentials are valid and no additional validation is needed, set Authenticated to `true` and <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.AuthenticationIsComplete%2A> to `true`. You set the <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.AuthenticationIsComplete%2A> property to indicate that the authentication service should bypass the default steps for authenticating a user. The value in Authenticated is used by the <xref:System.Web.ApplicationServices.AuthenticationService> class only if <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.AuthenticationIsComplete%2A> is set to `true`. If <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.AuthenticationIsComplete%2A> is `false`, the <xref:System.Web.ApplicationServices.AuthenticationService> class calls the default membership provider to validate user credentials, and then overwrites the value in Authenticated."
+  summary: "获取或设置一个值，该值指示用户凭据是否有效。"
+  remarks: "如果你进行身份验证的事件处理程序中的用户凭据<xref:System.Web.ApplicationServices.AuthenticationService.Authenticating>事件中，设置身份验证属性以指示用户凭据是否有效。</xref:System.Web.ApplicationServices.AuthenticationService.Authenticating> 如果用户凭据是否有效，并且需要进行任何其他验证，身份验证设置为`true`和<xref:System.Web.ApplicationServices.AuthenticatingEventArgs.AuthenticationIsComplete%2A>到`true`。</xref:System.Web.ApplicationServices.AuthenticatingEventArgs.AuthenticationIsComplete%2A> 你设置<xref:System.Web.ApplicationServices.AuthenticatingEventArgs.AuthenticationIsComplete%2A>属性以指示身份验证服务应跳过了默认值对用户进行身份验证的步骤。</xref:System.Web.ApplicationServices.AuthenticatingEventArgs.AuthenticationIsComplete%2A> 已通过身份验证中的值由<xref:System.Web.ApplicationServices.AuthenticationService>类才<xref:System.Web.ApplicationServices.AuthenticatingEventArgs.AuthenticationIsComplete%2A>设置为`true`。</xref:System.Web.ApplicationServices.AuthenticatingEventArgs.AuthenticationIsComplete%2A> </xref:System.Web.ApplicationServices.AuthenticationService> 如果<xref:System.Web.ApplicationServices.AuthenticatingEventArgs.AuthenticationIsComplete%2A>是`false`、<xref:System.Web.ApplicationServices.AuthenticationService>类调用默认成员资格提供程序来验证用户凭据，然后覆盖已通过身份验证中的值。</xref:System.Web.ApplicationServices.AuthenticationService> </xref:System.Web.ApplicationServices.AuthenticatingEventArgs.AuthenticationIsComplete%2A>"
   example:
   - "The following example shows an event handler that passes <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.UserName%2A> and <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Password%2A> values to a custom membership provider to validate the user credentials. The event handler sets Authenticated to the return value of the <xref:System.Web.Security.MembershipProvider.ValidateUser%2A> method and sets <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.AuthenticationIsComplete%2A> to `true` so that the <xref:System.Web.ApplicationServices.AuthenticationService> class does not validate the credentials.  \n  \n [!code-vb[System.Web.Security.LoginService_NonDefaultProvider#2](~/add/codesnippet/visualbasic/p-system.web.application_4_1.asax)]\n [!code-cs[System.Web.Security.LoginService_NonDefaultProvider#2](~/add/codesnippet/csharp/p-system.web.application_4_1.asax)]"
   syntax:
     content: public bool Authenticated { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the user credentials are valid; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果用户凭据有效，则为否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.ApplicationServices.AuthenticatingEventArgs.Authenticated*
   exceptions: []
   platform:
@@ -63,15 +63,15 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.ApplicationServices
-  summary: "Gets or sets a value that indicates whether the user credentials have been authenticated."
-  remarks: "You can set the AuthenticationIsComplete property to indicate whether the <xref:System.Web.ApplicationServices.AuthenticationService> class must authenticate the user credentials. If AuthenticationIsComplete is `true`, the <xref:System.Web.ApplicationServices.AuthenticationService> class does not validate the user credentials through the default membership provider. Instead, it uses the value in <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Authenticated%2A> to determine whether to create an authentication cookie.       If AuthenticationIsComplete is `false`, the <xref:System.Web.ApplicationServices.AuthenticationService> class validates the user credentials through the default membership provider and overwrites the value in the <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Authenticated%2A> property."
+  summary: "获取或设置一个值，该值指示是否已验证的用户凭据。"
+  remarks: "你可以设置 AuthenticationIsComplete 属性以指示是否<xref:System.Web.ApplicationServices.AuthenticationService>类必须进行身份验证的用户凭据。</xref:System.Web.ApplicationServices.AuthenticationService> 如果 AuthenticationIsComplete `true`、<xref:System.Web.ApplicationServices.AuthenticationService>类不会验证通过默认成员资格提供程序的用户凭据。</xref:System.Web.ApplicationServices.AuthenticationService> 相反，它使用中的值<xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Authenticated%2A>来确定是否创建身份验证 cookie。</xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Authenticated%2A>       如果 AuthenticationIsComplete `false`、<xref:System.Web.ApplicationServices.AuthenticationService>类验证通过默认成员资格提供程序的用户凭据，并覆盖中的值<xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Authenticated%2A>属性。</xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Authenticated%2A> </xref:System.Web.ApplicationServices.AuthenticationService>"
   example:
   - "The following example shows an event handler that passes <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.UserName%2A> and <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Password%2A> values to a custom membership provider to validate the user credentials. The event handler sets <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Authenticated%2A> to the return value of the <xref:System.Web.Security.MembershipProvider.ValidateUser%2A> method and sets AuthenticationIsComplete to `true` so that the <xref:System.Web.ApplicationServices.AuthenticationService> class does not validate the credentials.  \n  \n [!code-vb[System.Web.Security.LoginService_NonDefaultProvider#2](~/add/codesnippet/visualbasic/db2b0263-dafe-4889-a472-_1.asax)]\n [!code-cs[System.Web.Security.LoginService_NonDefaultProvider#2](~/add/codesnippet/csharp/db2b0263-dafe-4889-a472-_1.asax)]"
   syntax:
     content: public bool AuthenticationIsComplete { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if all the steps for validating the user credentials have been performed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果执行了所有的验证的用户凭据的步骤;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.ApplicationServices.AuthenticatingEventArgs.AuthenticationIsComplete*
   exceptions: []
   platform:
@@ -88,15 +88,15 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.ApplicationServices
-  summary: "Gets additional user values for authentication."
-  remarks: "You can use the CustomCredential property to retrieve authentication values other than user name and password during the <xref:System.Web.ApplicationServices.AuthenticationService.Authenticating> event. For example, an application might be configured to validate an identification number together with the user name and password. In that case, the identification number will be passed in the `CustomCredential` parameter of the <xref:System.Web.ApplicationServices.AuthenticationService.Login%2A> method. You can then retrieve the custom value through the CustomCredential property.       The CustomCredential property contains the customized values in the same format as they are passed to the <xref:System.Web.ApplicationServices.AuthenticationService.Login%2A> method. In the <xref:System.Web.ApplicationServices.AuthenticationService.Authenticating> event handler, if more than one value is stored in the property, you must parse the value of the CustomCredential property to retrieve the values."
+  summary: "获取身份验证的其他用户的值。"
+  remarks: "你可以使用 CustomCredential 属性检索用户名和密码期间以外的身份验证值<xref:System.Web.ApplicationServices.AuthenticationService.Authenticating>事件。</xref:System.Web.ApplicationServices.AuthenticationService.Authenticating> 例如，应用程序可能配置为验证的用户名和密码一起标识号。 在这种情况下，将传入的标识号`CustomCredential`参数<xref:System.Web.ApplicationServices.AuthenticationService.Login%2A>方法。</xref:System.Web.ApplicationServices.AuthenticationService.Login%2A> 然后可以检索通过 CustomCredential 属性的自定义值。       CustomCredential 属性包含相同的格式中的自定义的值，因为它们传递给<xref:System.Web.ApplicationServices.AuthenticationService.Login%2A>方法。</xref:System.Web.ApplicationServices.AuthenticationService.Login%2A> 在<xref:System.Web.ApplicationServices.AuthenticationService.Authenticating>事件处理程序，如果多个值存储在属性中，必须分析 CustomCredential 属性检索值的值。</xref:System.Web.ApplicationServices.AuthenticationService.Authenticating>"
   example:
   - "The following example shows an event handler for the <xref:System.Web.ApplicationServices.AuthenticationService.Authenticating> event that parses two authentication values from the CustomCredential property. It passes the two values and the user name and password to a custom authentication class named `StudentAuthentication`.  \n  \n [!code-cs[System.Web.Security.LoginService_MultipleCredentials#2](~/add/codesnippet/csharp/p-system.web.application_10_1.asax)]\n [!code-vb[System.Web.Security.LoginService_MultipleCredentials#2](~/add/codesnippet/visualbasic/p-system.web.application_10_1.asax)]"
   syntax:
     content: public string CustomCredential { get; }
     return:
       type: System.String
-      description: "The values required for authentication other than user name and password."
+      description: "所需的身份验证用户名和密码以外的值。"
   overload: System.Web.ApplicationServices.AuthenticatingEventArgs.CustomCredential*
   exceptions: []
   platform:
@@ -113,15 +113,15 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.ApplicationServices
-  summary: "Gets the password for the user."
-  remarks: "You use the Password property to retrieve the password during the <xref:System.Web.ApplicationServices.AuthenticationService.Authenticating> event."
+  summary: "获取用户的密码。"
+  remarks: "你使用密码属性来检索期间密码<xref:System.Web.ApplicationServices.AuthenticationService.Authenticating>事件。</xref:System.Web.ApplicationServices.AuthenticationService.Authenticating>"
   example:
   - "The following example shows an event handler that passes <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.UserName%2A> and Password values to a custom membership provider to validate the user credentials. The event handler sets <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Authenticated%2A> to the return value of the <xref:System.Web.Security.MembershipProvider.ValidateUser%2A> method and sets <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.AuthenticationIsComplete%2A> to `true` so that the <xref:System.Web.ApplicationServices.AuthenticationService> class does not validate the credentials.  \n  \n [!code-vb[System.Web.Security.LoginService_NonDefaultProvider#2](~/add/codesnippet/visualbasic/p-system.web.application_1_1.asax)]\n [!code-cs[System.Web.Security.LoginService_NonDefaultProvider#2](~/add/codesnippet/csharp/p-system.web.application_1_1.asax)]"
   syntax:
     content: public string Password { get; }
     return:
       type: System.String
-      description: "The password to validate."
+      description: "要验证的密码。"
   overload: System.Web.ApplicationServices.AuthenticatingEventArgs.Password*
   exceptions: []
   platform:
@@ -138,15 +138,15 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.ApplicationServices
-  summary: "Gets the authentication name for the user."
-  remarks: "You use the UserName property to retrieve the authentication name during the <xref:System.Web.ApplicationServices.AuthenticationService.Authenticating> event."
+  summary: "获取用户的身份验证名称。"
+  remarks: "UserName 属性用于检索期间的身份验证名称<xref:System.Web.ApplicationServices.AuthenticationService.Authenticating>事件。</xref:System.Web.ApplicationServices.AuthenticationService.Authenticating>"
   example:
   - "The following example shows an event handler that selects a membership provider to use based on the value of the UserName property. The handler passes UserName and <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Password%2A> values to the custom membership provider to validate the user credentials. It sets <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.Authenticated%2A> to the return value of the <xref:System.Web.Security.MembershipProvider.ValidateUser%2A> method and sets <xref:System.Web.ApplicationServices.AuthenticatingEventArgs.AuthenticationIsComplete%2A> to `true` so that the <xref:System.Web.ApplicationServices.AuthenticationService> class does not validate the credentials.  \n  \n [!code-vb[System.Web.Security.LoginService_NonDefaultProvider#2](~/add/codesnippet/visualbasic/p-system.web.application_5_1.asax)]\n [!code-cs[System.Web.Security.LoginService_NonDefaultProvider#2](~/add/codesnippet/csharp/p-system.web.application_5_1.asax)]"
   syntax:
     content: public string UserName { get; }
     return:
       type: System.String
-      description: "The user name to validate."
+      description: "要验证的用户名称。"
   overload: System.Web.ApplicationServices.AuthenticatingEventArgs.UserName*
   exceptions: []
   platform:

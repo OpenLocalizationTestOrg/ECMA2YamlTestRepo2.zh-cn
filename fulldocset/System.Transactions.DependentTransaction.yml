@@ -10,8 +10,8 @@ items:
   nameWithType: DependentTransaction
   fullName: System.Transactions.DependentTransaction
   type: Class
-  summary: "Describes a clone of a transaction providing guarantee that the transaction cannot be committed until the application comes to rest regarding work on the transaction. This class cannot be inherited."
-  remarks: "The DependentTransaction is a clone of a <xref:System.Transactions.Transaction> object created using the <xref:System.Transactions.Transaction.DependentClone%2A> method.  Its sole purpose is to allow the application to come to rest and guarantee that the transaction cannot commit while work is still being performed on the transaction (for example, on a worker thread).       When the work done within the cloned transaction is finally complete and ready to be committed, it can inform the creator of the transaction using the <xref:System.Transactions.DependentTransaction.Complete%2A> method. Thus you can preserve the consistency and correctness of data.       The <xref:System.Transactions.DependentCloneOption> enumeration is used to determine the behavior on commit.  This behavior control allows an application to come to rest, as well as provides concurrency support. For more information on how this enumeration is used, see [Managing Concurrency with DependentTransaction](http://msdn.microsoft.com/en-us/bdad8468-2a90-4b81-8375-278067120cab)."
+  summary: "描述提供事务无法提交，直到在应用程序停止工作有关停留在事务上的保证事务的副本。 此类不能被继承。"
+  remarks: "DependentTransaction 是的克隆<xref:System.Transactions.Transaction>对象创建使用<xref:System.Transactions.Transaction.DependentClone%2A>方法。</xref:System.Transactions.Transaction.DependentClone%2A> </xref:System.Transactions.Transaction>  其唯一目的是允许应用程序到 rest 和保证工作仍在执行时 （例如，在辅助线程） 上的事务无法提交事务。       如果必须在克隆的事务中完成的工作，最后完成并可将其提交它可以通知创建者的事务使用<xref:System.Transactions.DependentTransaction.Complete%2A>方法。</xref:System.Transactions.DependentTransaction.Complete%2A> 因此，您可以保留的一致性和数据的正确性。       <xref:System.Transactions.DependentCloneOption>枚举用于确定提交的行为。</xref:System.Transactions.DependentCloneOption>  这种行为控制允许应用程序停止，以及提供并发支持。 有关如何使用此枚举的详细信息，请参阅[与 DependentTransaction 管理并发](http://msdn.microsoft.com/en-us/bdad8468-2a90-4b81-8375-278067120cab)。"
   example:
   - "The following example shows you how to create a dependent transaction.  \n  \n [!code-vb[Tx_DependentTx#1](~/add/codesnippet/visualbasic/t-system.transactions.de_0_1.vb)]\n [!code-cs[Tx_DependentTx#1](~/add/codesnippet/csharp/t-system.transactions.de_0_1.cs)]"
   syntax:
@@ -59,8 +59,8 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Attempts to complete the dependent transaction."
-  remarks: "Call this method when the dependent clone wants to inform the creator of the transaction that it has finished its work, and the transaction can be committed if the parent is also ready.       After this call is invoked, you should not attempt any additional work on the transaction, or an exception is thrown.       If the application domain goes down after this method is called, and before the transaction is completed, the transaction might abort.       **Note** This method should be called only once during the dependent transaction&quot;s lifetime."
+  summary: "尝试完成依赖的事务。"
+  remarks: "当依赖克隆想要通知的事务创建者︰ 它已完成其工作，并可以提交事务，如果父还处于准备，请调用此方法。       此调用后，不应尝试在事务中，任何额外的工作或引发异常。       如果应用程序域出现故障后调用此方法，并在事务完成之前，可能会中止事务。       **请注意**应该依赖事务的生存期内仅一次调用此方法。"
   syntax:
     content: public void Complete ();
     parameters: []
@@ -68,7 +68,7 @@ items:
   exceptions:
   - type: System.Transactions.TransactionException
     commentId: T:System.Transactions.TransactionException
-    description: "Any attempt for additional work on the transaction after this method is called. These include invoking methods such as <xref:System.Transactions.Transaction.EnlistVolatile*>, <xref:System.Transactions.Transaction.EnlistDurable*>, <xref:System.Transactions.Transaction.Clone*>, <xref:System.Transactions.Transaction.DependentClone*> , or any serialization operations on the transaction."
+    description: "调用此方法之后进行其他处理的事务的任何尝试。 其中包括如调用方法<> *1>， <> </> *1>， <> </> *1>， <> </> *1>，将对事务的任何序列化操作。"
   platform:
   - net462
 references:

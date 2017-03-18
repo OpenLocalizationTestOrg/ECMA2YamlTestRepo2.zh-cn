@@ -49,8 +49,8 @@ items:
   nameWithType: ServiceHostBase
   fullName: System.ServiceModel.ServiceHostBase
   type: Class
-  summary: "Extends the ServiceHostBase class to implement hosts that expose custom programming models."
-  remarks: "Use the ServiceHostBase class to create hosts that provide a custom programming model. The [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] service programming model uses the <xref:System.ServiceModel.ServiceHost> class.       Special note for Managed C++ users deriving from this class:      -   Put your cleanup code in (On)(Begin)Close (and/or OnAbort), not in a destructor.      -   Avoid destructors; they cause the compiler to auto-generate <xref:System.IDisposable>.      -   Avoid non-reference members; they can cause the compiler to auto-generate <xref:System.IDisposable>.      -   Avoid finalizers; but if you include one, you should suppress the build warning and call <xref:System.GC.SuppressFinalize%28System.Object%29> and the finalizer itself from (On)(Begin)Close (and/or OnAbort) to emulate what would have been the auto-generated <xref:System.IDisposable> behavior."
+  summary: "扩展 ServiceHostBase 类，以实现可公开自定义编程模型的主机。"
+  remarks: "ServiceHostBase 类用于创建可提供自定义编程模型的主机。 [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)]服务编程模型使用<xref:System.ServiceModel.ServiceHost>类。</xref:System.ServiceModel.ServiceHost>       针对从此类派生的托管 c + + 用户的特别说明:-将你清理代码加入 (On) (Begin) Close （和/或 OnAbort），而不中析构函数。      -避免使用析构函数;它们会导致编译器自动生成<xref:System.IDisposable>.</xref:System.IDisposable>      -避免使用非引用成员;它们可能会导致编译器自动生成<xref:System.IDisposable>.</xref:System.IDisposable>      -避免使用终结器;但如果包含一个，则应该禁止显示生成警告并调用<xref:System.GC.SuppressFinalize%28System.Object%29>和终结器本身从 (On) (Begin) Close （和/或 OnAbort） 来模拟已自动生成<xref:System.IDisposable>行为。</xref:System.IDisposable> </xref:System.GC.SuppressFinalize%28System.Object%29>"
   example:
   - "This sample uses the <xref:System.ServiceModel.ServiceHost> class, which is derived from ServiceHostBase.  \n  \n [!code-cs[S_SelfHost#1](~/add/codesnippet/csharp/t-system.servicemodel.se_10_1.cs)]\n [!code-vb[S_SelfHost#1](~/add/codesnippet/visualbasic/t-system.servicemodel.se_10_1.vb)]"
   syntax:
@@ -75,7 +75,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.ServiceHostBase&quot;></xref> class."
+  summary: "初始化的新实例<xref href=&quot;System.ServiceModel.ServiceHostBase&quot;></xref>类。"
   remarks: ''
   example:
   - '[!code-cs[S_SelfHost#30](~/add/codesnippet/csharp/m-system.servicemodel.se_0_1.cs)]'
@@ -98,19 +98,19 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Adds a base address to the service host."
-  remarks: "This property allows users extending <xref:System.ServiceModel.ServiceHostBase> to provide the base address after the host is constructed. AddBaseAddress can be used to add base addresses to an existing host, but throws an exception if the description is already initialized."
+  summary: "将基址添加到服务主机。"
+  remarks: "此属性，用户可以扩展<xref:System.ServiceModel.ServiceHostBase>以在构造主机之后提供基址。</xref:System.ServiceModel.ServiceHostBase> AddBaseAddress 可以用于将基址添加到现有的主机，但如果说明已经初始化，将引发异常。"
   syntax:
     content: protected void AddBaseAddress (Uri baseAddress);
     parameters:
     - id: baseAddress
       type: System.Uri
-      description: "A <xref:System.Uri> that contains the base address for services hosted on the current host."
+      description: "A <xref:System.Uri>，其中包含当前主机上所承载的服务的基址。</xref:System.Uri>"
   overload: System.ServiceModel.ServiceHostBase.AddBaseAddress*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <code>baseAddress</code> cannot be called."
+    description: "<code> baseAddress </code>不能调用。"
   platform:
   - net462
 - uid: System.ServiceModel.ServiceHostBase.AddDefaultEndpoints
@@ -125,13 +125,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Adds service endpoints for all base addresses in each contract found in the service host with the default binding."
+  summary: "使用默认绑定在服务主机中找到每个协定中添加所有基址的服务终结的点。"
   syntax:
     content: public virtual System.Collections.ObjectModel.ReadOnlyCollection<System.ServiceModel.Description.ServiceEndpoint> AddDefaultEndpoints ();
     parameters: []
     return:
       type: System.Collections.ObjectModel.ReadOnlyCollection{System.ServiceModel.Description.ServiceEndpoint}
-      description: "A read-only collection of default endpoints."
+      description: "默认终结点的只读集合。"
   overload: System.ServiceModel.ServiceHostBase.AddDefaultEndpoints*
   exceptions: []
   platform:
@@ -148,22 +148,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Adds the specified service endpoint to the hosted service."
-  remarks: "When using the method, the service host does a &quot;by-configuration-name&quot; validation on the contract description. In other words, the host verifies that <xref:System.ServiceModel.Description.ContractDescription.ConfigurationName%2A> exists in the list of configuration names of the service contracts implemented by the service. If the validation passes, the description in the <xref:System.ServiceModel.Description.ServiceEndpoint> is used as it is, even if the <xref:System.ServiceModel.Description.ContractDescription> reflected from the service is different.       As an example, assume that the description in the ServiceEndpoint and the contract description reflected from the service have the same name, but different operation behaviors. The implication of only “by-configuration-name” validation is that there is no validation that the behaviors are the same and there are one updates to one description because of another description.       If the `address` is a relative URI, one of the base addresses of the <xref:System.ServiceModel.ServiceHost> (depending on the binding protocol) is used as the endpoint&quot;s base address."
+  summary: "将指定的服务终结点添加到托管服务。"
+  remarks: "使用方法时，服务主机进行的协定说明&quot;通过的配置名称-&quot;验证。 换而言之，主机验证<xref:System.ServiceModel.Description.ContractDescription.ConfigurationName%2A>存在于该服务实现的服务协定的配置名称的列表。</xref:System.ServiceModel.Description.ContractDescription.ConfigurationName%2A> 如果通过验证中的说明<xref:System.ServiceModel.Description.ServiceEndpoint>用作，即使<xref:System.ServiceModel.Description.ContractDescription>从反射的服务是不同。</xref:System.ServiceModel.Description.ContractDescription> </xref:System.ServiceModel.Description.ServiceEndpoint>       例如，假定 ServiceEndpoint 中的说明和协定说明反映从服务具有相同的名称，但不同的操作行为。 仅&quot;通过的配置名称-&quot;验证的含意为没有任何验证，行为是相同并且有一个更新到一个说明由于另一个说明。       如果`address`是相对的 URI，其中一个基址<xref:System.ServiceModel.ServiceHost>（具体取决于绑定协议） 会用作终结点的基址。</xref:System.ServiceModel.ServiceHost>"
   syntax:
     content: public virtual void AddServiceEndpoint (System.ServiceModel.Description.ServiceEndpoint endpoint);
     parameters:
     - id: endpoint
       type: System.ServiceModel.Description.ServiceEndpoint
-      description: "The service endpoint."
+      description: "服务终结点。"
   overload: System.ServiceModel.ServiceHostBase.AddServiceEndpoint*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>Endpoint</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>Endpoint</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The host is not in a Created or an Opening state or there is no <xref href=&quot;System.ServiceModel.Description.ServiceDescription&quot;></xref> for the hosted service."
+    description: "主机未处于已创建或打开状态，或者没有任何<xref href=&quot;System.ServiceModel.Description.ServiceDescription&quot;></xref>所承载服务。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "The <code>Address</code>, <code>Binding, </code> or <code>Contract</code> property is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
@@ -181,7 +181,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Adds a service endpoint to the hosted service with a specified contract, binding, and endpoint address."
+  summary: "将服务终结点添加到具有指定的协定、 绑定和终结点地址的托管服务。"
   remarks: ''
   example:
   - '[!code-cs[S_SelfHost#40](~/add/codesnippet/csharp/edf6e090-b786-4010-8e21-_1.cs)]'
@@ -190,24 +190,24 @@ items:
     parameters:
     - id: implementedContract
       type: System.String
-      description: "The contract implemented by the endpoint."
+      description: "终结点实现的协定。"
     - id: binding
       type: System.ServiceModel.Channels.Binding
-      description: "The <xref:System.ServiceModel.Channels.Binding> for the endpoint added."
+      description: "<xref:System.ServiceModel.Channels.Binding>添加终结点。</xref:System.ServiceModel.Channels.Binding>"
     - id: address
       type: System.String
-      description: "The address for the endpoint added. This can be an absolute or relative URI. If it is a relative URI, one of the base address of the <xref href=&quot;System.ServiceModel.ServiceHost&quot;></xref> (depending on the binding protocol) is used as the endpoint&quot;s base address."
+      description: "添加终结点地址。 这可以是绝对或相对的 URI。 如果是相对的 URI，其中一个的基址<xref href=&quot;System.ServiceModel.ServiceHost&quot;> </xref> （具体取决于绑定协议） 会用作终结点的基址。"
     return:
       type: System.ServiceModel.Description.ServiceEndpoint
-      description: "The <xref:System.ServiceModel.Description.ServiceEndpoint> added to the hosted service."
+      description: "<xref:System.ServiceModel.Description.ServiceEndpoint>添加到托管服务。</xref:System.ServiceModel.Description.ServiceEndpoint>"
   overload: System.ServiceModel.ServiceHostBase.AddServiceEndpoint*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>implementedContract</code> or <code>binding</code> or <code>address</code> or is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>implementedContract</code>or <code>binding</code> or <code>address</code> or is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The host is not in a <xref:System.ServiceModel.CommunicationState> or an <xref:System.ServiceModel.CommunicationState> state or there is no <xref href=&quot;System.ServiceModel.Description.ServiceDescription&quot;></xref> for the hosted service and so an endpoint cannot be added or the binding lacks a transport of binding scheme."
+    description: "主机未处于<xref:System.ServiceModel.CommunicationState>或<xref:System.ServiceModel.CommunicationState>状态，或者没有<xref href=&quot;System.ServiceModel.Description.ServiceDescription&quot;></xref>托管的服务，因此无法添加终结点，或绑定缺少绑定方案的传输。</xref:System.ServiceModel.CommunicationState> </xref:System.ServiceModel.CommunicationState>"
   platform:
   - net462
 - uid: System.ServiceModel.ServiceHostBase.AddServiceEndpoint(System.String,System.ServiceModel.Channels.Binding,System.Uri)
@@ -222,30 +222,30 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Adds a service endpoint to the hosted service with a specified contract, binding, and a URI that contains the endpoint address."
+  summary: "将服务终结点添加到具有指定的协定、 绑定和包含终结点地址的 URI 的托管服务。"
   syntax:
     content: public System.ServiceModel.Description.ServiceEndpoint AddServiceEndpoint (string implementedContract, System.ServiceModel.Channels.Binding binding, Uri address);
     parameters:
     - id: implementedContract
       type: System.String
-      description: "The contract implemented by the endpoint."
+      description: "终结点实现的协定。"
     - id: binding
       type: System.ServiceModel.Channels.Binding
-      description: "The <xref:System.ServiceModel.Channels.Binding> for the endpoint added."
+      description: "<xref:System.ServiceModel.Channels.Binding>添加终结点。</xref:System.ServiceModel.Channels.Binding>"
     - id: address
       type: System.Uri
-      description: "The <xref:System.Uri> that contains the address for the endpoint added. This can be an absolute or relative URI. If it is a relative URI, one of the base address of the <xref href=&quot;System.ServiceModel.ServiceHost&quot;></xref> (depending on the binding protocol) is used as the endpoint&quot;s base address."
+      description: "<xref:System.Uri>包含所添加终结点的地址。</xref:System.Uri> 这可以是绝对或相对的 URI。 如果是相对的 URI，其中一个的基址<xref href=&quot;System.ServiceModel.ServiceHost&quot;> </xref> （具体取决于绑定协议） 会用作终结点的基址。"
     return:
       type: System.ServiceModel.Description.ServiceEndpoint
-      description: "The <xref:System.ServiceModel.Description.ServiceEndpoint> added to the hosted service."
+      description: "<xref:System.ServiceModel.Description.ServiceEndpoint>添加到托管服务。</xref:System.ServiceModel.Description.ServiceEndpoint>"
   overload: System.ServiceModel.ServiceHostBase.AddServiceEndpoint*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>implementedContract</code> or <code>binding</code> or <code>address</code> or is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>implementedContract</code>or <code>binding</code> or <code>address</code> or is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The host is not in a <xref:System.ServiceModel.CommunicationState> or an <xref:System.ServiceModel.CommunicationState> state or there is no <xref href=&quot;System.ServiceModel.Description.ServiceDescription&quot;></xref> for the hosted service and so an endpoint cannot be added."
+    description: "主机未处于<xref:System.ServiceModel.CommunicationState>或<xref:System.ServiceModel.CommunicationState>状态，或者没有<xref href=&quot;System.ServiceModel.Description.ServiceDescription&quot;></xref>托管的服务，因此无法添加终结点。</xref:System.ServiceModel.CommunicationState> </xref:System.ServiceModel.CommunicationState>"
   platform:
   - net462
 - uid: System.ServiceModel.ServiceHostBase.AddServiceEndpoint(System.String,System.ServiceModel.Channels.Binding,System.String,System.Uri)
@@ -260,34 +260,34 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Adds a service endpoint to the hosted service with a specified contract, binding, endpoint address and URI that contains the address at which it listens."
-  remarks: "If the `address` is a relative URI, one of the base addresses of the <xref:System.ServiceModel.ServiceHost> (depending on the binding protocol) is used as the endpoint&quot;s base address."
+  summary: "将服务终结点添加到具有指定的协定、 绑定、 终结点地址和包含它侦听的地址的 URI 的托管服务。"
+  remarks: "如果`address`是相对的 URI，其中一个基址<xref:System.ServiceModel.ServiceHost>（具体取决于绑定协议） 会用作终结点的基址。</xref:System.ServiceModel.ServiceHost>"
   syntax:
     content: public System.ServiceModel.Description.ServiceEndpoint AddServiceEndpoint (string implementedContract, System.ServiceModel.Channels.Binding binding, string address, Uri listenUri);
     parameters:
     - id: implementedContract
       type: System.String
-      description: "The contract implemented by the endpoint."
+      description: "终结点实现的协定。"
     - id: binding
       type: System.ServiceModel.Channels.Binding
-      description: "The <xref:System.ServiceModel.Channels.Binding> for the endpoint added."
+      description: "<xref:System.ServiceModel.Channels.Binding>添加终结点。</xref:System.ServiceModel.Channels.Binding>"
     - id: address
       type: System.String
-      description: "The address for the endpoint added. This address can be an absolute or relative URI. If it is a relative URI, one of the base address of the <xref href=&quot;System.ServiceModel.ServiceHost&quot;></xref> (depending on the binding protocol) is used as the endpoint&quot;s base address."
+      description: "添加终结点地址。 此地址可以是绝对或相对的 URI。 如果是相对的 URI，其中一个的基址<xref href=&quot;System.ServiceModel.ServiceHost&quot;> </xref> （具体取决于绑定协议） 会用作终结点的基址。"
     - id: listenUri
       type: System.Uri
-      description: "The <xref:System.Uri> that contains the address which the endpoint listens to for incoming messages. This URI can be relative or absolute."
+      description: "<xref:System.Uri>包含该终结点侦听传入消息的地址。</xref:System.Uri> 此 URI 可以是相对或绝对。"
     return:
       type: System.ServiceModel.Description.ServiceEndpoint
-      description: "The <xref:System.ServiceModel.Description.ServiceEndpoint> added to the hosted service."
+      description: "<xref:System.ServiceModel.Description.ServiceEndpoint>添加到托管服务。</xref:System.ServiceModel.Description.ServiceEndpoint>"
   overload: System.ServiceModel.ServiceHostBase.AddServiceEndpoint*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>implementedContract</code> or <code>binding</code> or <code>address</code> or is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>implementedContract</code>or <code>binding</code> or <code>address</code> or is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The host is not in a <xref:System.ServiceModel.CommunicationState> or an <xref:System.ServiceModel.CommunicationState> state or there is no <xref href=&quot;System.ServiceModel.Description.ServiceDescription&quot;></xref> for the hosted service and so an endpoint cannot be added."
+    description: "主机未处于<xref:System.ServiceModel.CommunicationState>或<xref:System.ServiceModel.CommunicationState>状态，或者没有<xref href=&quot;System.ServiceModel.Description.ServiceDescription&quot;></xref>托管的服务，因此无法添加终结点。</xref:System.ServiceModel.CommunicationState> </xref:System.ServiceModel.CommunicationState>"
   platform:
   - net462
 - uid: System.ServiceModel.ServiceHostBase.AddServiceEndpoint(System.String,System.ServiceModel.Channels.Binding,System.Uri,System.Uri)
@@ -302,33 +302,33 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Adds a service endpoint to the hosted service with the specified contract, binding, and URIs that contain the endpoint and listening addresses."
+  summary: "将服务终结点添加到具有指定的协定、 绑定和包含终结点与所侦听地址的 Uri 的托管服务。"
   syntax:
     content: public System.ServiceModel.Description.ServiceEndpoint AddServiceEndpoint (string implementedContract, System.ServiceModel.Channels.Binding binding, Uri address, Uri listenUri);
     parameters:
     - id: implementedContract
       type: System.String
-      description: "The contract implemented by the endpoint."
+      description: "终结点实现的协定。"
     - id: binding
       type: System.ServiceModel.Channels.Binding
-      description: "The <xref:System.ServiceModel.Channels.Binding> for the endpoint added."
+      description: "<xref:System.ServiceModel.Channels.Binding>添加终结点。</xref:System.ServiceModel.Channels.Binding>"
     - id: address
       type: System.Uri
-      description: "The <xref:System.Uri> that contains the address for the endpoint added. If it is a relative URI, one of the base address of the <xref href=&quot;System.ServiceModel.ServiceHost&quot;></xref> (depending on the binding protocol) is used as the endpoint&quot;s base address."
+      description: "<xref:System.Uri>包含所添加终结点的地址。</xref:System.Uri> 如果是相对的 URI，其中一个的基址<xref href=&quot;System.ServiceModel.ServiceHost&quot;> </xref> （具体取决于绑定协议） 会用作终结点的基址。"
     - id: listenUri
       type: System.Uri
-      description: "The <xref:System.Uri> that contains the address at which the endpoint listens for incoming messages."
+      description: "<xref:System.Uri>包含在该终结点上侦听传入消息的地址。</xref:System.Uri>"
     return:
       type: System.ServiceModel.Description.ServiceEndpoint
-      description: "The <xref:System.ServiceModel.Description.ServiceEndpoint> added to the hosted service. This URI can be absolute or relative."
+      description: "<xref:System.ServiceModel.Description.ServiceEndpoint>添加到托管服务。</xref:System.ServiceModel.Description.ServiceEndpoint> 此 URI 可以是绝对或相对。"
   overload: System.ServiceModel.ServiceHostBase.AddServiceEndpoint*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>implementedContract</code> or <code>binding</code> or <code>address</code> or is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>implementedContract</code>or <code>binding</code> or <code>address</code> or is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The host is not in a <xref:System.ServiceModel.CommunicationState> or an <xref:System.ServiceModel.CommunicationState> state or there is no <xref href=&quot;System.ServiceModel.Description.ServiceDescription&quot;></xref> for the hosted service and so an endpoint cannot be added."
+    description: "主机未处于<xref:System.ServiceModel.CommunicationState>或<xref:System.ServiceModel.CommunicationState>状态，或者没有<xref href=&quot;System.ServiceModel.Description.ServiceDescription&quot;></xref>托管的服务，因此无法添加终结点。</xref:System.ServiceModel.CommunicationState> </xref:System.ServiceModel.CommunicationState>"
   platform:
   - net462
 - uid: System.ServiceModel.ServiceHostBase.ApplyConfiguration
@@ -343,7 +343,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Loads the service description information from the configuration file and applies it to the runtime being constructed."
+  summary: "从配置文件加载服务说明信息，并将其应用于正在构造的运行时。"
   syntax:
     content: protected virtual void ApplyConfiguration ();
     parameters: []
@@ -351,7 +351,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The description of the service hosted is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "托管的服务的说明<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   platform:
   - net462
 - uid: System.ServiceModel.ServiceHostBase.Authentication
@@ -366,12 +366,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets the service authentication behavior."
+  summary: "获取服务身份验证行为。"
   syntax:
     content: public System.ServiceModel.Description.ServiceAuthenticationBehavior Authentication { get; }
     return:
       type: System.ServiceModel.Description.ServiceAuthenticationBehavior
-      description: "The service authentication behavior."
+      description: "服务身份验证行为。"
   overload: System.ServiceModel.ServiceHostBase.Authentication*
   exceptions: []
   platform:
@@ -388,7 +388,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets the authorization behavior for the service hosted."
+  summary: "获取承载服务的授权行为。"
   remarks: ''
   example:
   - '[!code-cs[S_SelfHost#36](~/add/codesnippet/csharp/p-system.servicemodel.se_20_1.cs)]'
@@ -396,7 +396,7 @@ items:
     content: public System.ServiceModel.Description.ServiceAuthorizationBehavior Authorization { get; }
     return:
       type: System.ServiceModel.Description.ServiceAuthorizationBehavior
-      description: "The <xref href=&quot;System.ServiceModel.Description.ServiceAuthorizationBehavior&quot;></xref> for the service hosted."
+      description: "<xref href=&quot;System.ServiceModel.Description.ServiceAuthorizationBehavior&quot;> </xref>承载服务。"
   overload: System.ServiceModel.ServiceHostBase.Authorization*
   exceptions: []
   platform:
@@ -413,12 +413,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets the base addresses used by the hosted service."
+  summary: "获取所承载服务使用的基址。"
   syntax:
     content: public System.Collections.ObjectModel.ReadOnlyCollection<Uri> BaseAddresses { get; }
     return:
       type: System.Collections.ObjectModel.ReadOnlyCollection{System.Uri}
-      description: "A &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt; of type <xref:System.Uri> that contains the base addresses for the hosted service."
+      description: "A &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt;类型的<xref:System.Uri>，其中包含所承载服务的基址。</xref:System.Uri>"
   overload: System.ServiceModel.ServiceHostBase.BaseAddresses*
   exceptions: []
   platform:
@@ -435,12 +435,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets the collection of channel dispatchers used by the service host."
+  summary: "获取服务主机所使用的通道调度程序的集合。"
   syntax:
     content: public System.ServiceModel.Dispatcher.ChannelDispatcherCollection ChannelDispatchers { get; }
     return:
       type: System.ServiceModel.Dispatcher.ChannelDispatcherCollection
-      description: "The <xref href=&quot;System.ServiceModel.Dispatcher.ChannelDispatcherCollection&quot;></xref> that contains the channel dispatchers used by the service host."
+      description: "<xref href=&quot;System.ServiceModel.Dispatcher.ChannelDispatcherCollection&quot;> </xref> ，该字符串包含服务主机所使用的通道调度程序。"
   overload: System.ServiceModel.ServiceHostBase.ChannelDispatchers*
   exceptions: []
   platform:
@@ -457,7 +457,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets the interval of time allowed for the service host to close."
+  summary: "获取或设置允许服务主机关闭的时间间隔。"
   remarks: ''
   example:
   - '[!code-cs[S_SelfHost#33](~/add/codesnippet/csharp/p-system.servicemodel.se_0_1.cs)]'
@@ -465,21 +465,21 @@ items:
     content: public TimeSpan CloseTimeout { get; set; }
     return:
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies the interval of time allowed for the service host to close."
+      description: "<xref:System.TimeSpan>指定允许服务主机关闭的时间间隔。</xref:System.TimeSpan>"
   overload: System.ServiceModel.ServiceHostBase.CloseTimeout*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value, in milliseconds, is less than zero or is larger than <xref:System.Int32.MaxValue> (2,147,483,647 or, in hexadecimal notation, 0X7FFFFFFF)."
+    description: "值，以毫秒为单位，是小于零或大于<xref:System.Int32.MaxValue>（2147483647 或以十六进制表示的 0X7FFFFFFF）。</xref:System.Int32.MaxValue>"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The host is in an <xref:System.ServiceModel.CommunicationState> or <xref:System.ServiceModel.CommunicationState> state and cannot be modified."
+    description: "主机处于<xref:System.ServiceModel.CommunicationState>或<xref:System.ServiceModel.CommunicationState>状态，无法修改。</xref:System.ServiceModel.CommunicationState> </xref:System.ServiceModel.CommunicationState>"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The host is already in a <xref:System.ServiceModel.CommunicationState> state and cannot be modified."
+    description: "主机已处于<xref:System.ServiceModel.CommunicationState>状态，无法修改。</xref:System.ServiceModel.CommunicationState>"
   - type: System.ServiceModel.CommunicationObjectFaultedException
     commentId: T:System.ServiceModel.CommunicationObjectFaultedException
-    description: "The host is in a <xref:System.ServiceModel.CommunicationState> state and cannot be modified."
+    description: "主机处于<xref:System.ServiceModel.CommunicationState>状态，无法修改。</xref:System.ServiceModel.CommunicationState>"
   platform:
   - net462
 - uid: System.ServiceModel.ServiceHostBase.CreateDescription(System.Collections.Generic.IDictionary{System.String,System.ServiceModel.Description.ContractDescription}@)
@@ -494,7 +494,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "When implemented in a derived class, creates the description of the hosted service."
+  summary: "派生类中实现时，创建托管服务的说明。"
   remarks: ''
   example:
   - '[!code-cs[S_SelfHost#41](~/add/codesnippet/csharp/08a56b4f-56f2-446f-b0f7-_1.cs)]'
@@ -503,10 +503,10 @@ items:
     parameters:
     - id: implementedContracts
       type: System.Collections.Generic.IDictionary{System.String,System.ServiceModel.Description.ContractDescription}
-      description: "The &lt;xref:System.Collections.Generic.IDictionary%602&gt; that contains the <xref:System.ServiceModel.Description.ContractDescription> objects for the service."
+      description: "&lt;Xref:System.Collections.Generic.IDictionary%602&gt;包含<xref:System.ServiceModel.Description.ContractDescription>服务的对象。</xref:System.ServiceModel.Description.ContractDescription>"
     return:
       type: System.ServiceModel.Description.ServiceDescription
-      description: "The <xref href=&quot;System.ServiceModel.Description.ServiceDescription&quot;></xref> for the hosted service."
+      description: "<xref href=&quot;System.ServiceModel.Description.ServiceDescription&quot;> </xref>所承载服务。"
   overload: System.ServiceModel.ServiceHostBase.CreateDescription*
   exceptions: []
   platform:
@@ -523,7 +523,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets the credential for the service hosted."
+  summary: "获取承载服务的凭据。"
   remarks: ''
   example:
   - '[!code-cs[S_SelfHost#37](~/add/codesnippet/csharp/p-system.servicemodel.se_11_1.cs)]'
@@ -531,7 +531,7 @@ items:
     content: public System.ServiceModel.Description.ServiceCredentials Credentials { get; }
     return:
       type: System.ServiceModel.Description.ServiceCredentials
-      description: "The <xref href=&quot;System.ServiceModel.Description.ServiceCredentials&quot;></xref> for the service hosted."
+      description: "<xref href=&quot;System.ServiceModel.Description.ServiceCredentials&quot;> </xref>承载服务。"
   overload: System.ServiceModel.ServiceHostBase.Credentials*
   exceptions: []
   platform:
@@ -548,12 +548,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets the default interval of time allowed for the service host to close."
+  summary: "获取允许服务主机关闭的时间的默认间隔。"
   syntax:
     content: protected override TimeSpan DefaultCloseTimeout { get; }
     return:
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies the default interval of time allowed for the service host to close."
+      description: "<xref:System.TimeSpan>指定允许服务主机关闭的时间的默认间隔。</xref:System.TimeSpan>"
   overload: System.ServiceModel.ServiceHostBase.DefaultCloseTimeout*
   exceptions: []
   platform:
@@ -570,7 +570,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets the default interval of time allowed for the service host to open."
+  summary: "获取允许服务主机打开的时间的默认间隔。"
   remarks: ''
   example:
   - '[!code-cs[S_SelfHost#35](~/add/codesnippet/csharp/p-system.servicemodel.se_16_1.cs)]'
@@ -578,7 +578,7 @@ items:
     content: protected override TimeSpan DefaultOpenTimeout { get; }
     return:
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies the default interval of time allowed for the service host to open."
+      description: "<xref:System.TimeSpan>指定允许服务主机打开的时间的默认间隔。</xref:System.TimeSpan>"
   overload: System.ServiceModel.ServiceHostBase.DefaultOpenTimeout*
   exceptions: []
   platform:
@@ -595,7 +595,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets the description of the service hosted."
+  summary: "获取承载服务的说明。"
   remarks: ''
   example:
   - '[!code-cs[S_SelfHost#38](~/add/codesnippet/csharp/p-system.servicemodel.se_3_1.cs)]'
@@ -603,7 +603,7 @@ items:
     content: public System.ServiceModel.Description.ServiceDescription Description { get; }
     return:
       type: System.ServiceModel.Description.ServiceDescription
-      description: "The <xref href=&quot;System.ServiceModel.Description.ServiceDescription&quot;></xref> for the hosted service."
+      description: "<xref href=&quot;System.ServiceModel.Description.ServiceDescription&quot;> </xref>所承载服务。"
   overload: System.ServiceModel.ServiceHostBase.Description*
   exceptions: []
   platform:
@@ -620,12 +620,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets the extensions for the current specified service host."
+  summary: "获取当前指定的服务主机的扩展。"
   syntax:
     content: public System.ServiceModel.IExtensionCollection<System.ServiceModel.ServiceHostBase> Extensions { get; }
     return:
       type: System.ServiceModel.IExtensionCollection{System.ServiceModel.ServiceHostBase}
-      description: "An &lt;xref:System.ServiceModel.IExtensionCollection%601&gt; of type <xref href=&quot;System.ServiceModel.ServiceHostBase&quot;></xref>."
+      description: "&lt;Xref:System.ServiceModel.IExtensionCollection%601&gt;类型的<xref href=&quot;System.ServiceModel.ServiceHostBase&quot;> </xref>。"
   overload: System.ServiceModel.ServiceHostBase.Extensions*
   exceptions: []
   platform:
@@ -642,12 +642,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Retrieves the contracts implemented by the service hosted."
+  summary: "检索由所承载服务实现的协定。"
   syntax:
     content: protected System.Collections.Generic.IDictionary<string,System.ServiceModel.Description.ContractDescription> ImplementedContracts { get; }
     return:
       type: System.Collections.Generic.IDictionary{System.String,System.ServiceModel.Description.ContractDescription}
-      description: "The &lt;xref:System.Collections.Generic.IDictionary%602&gt; that contains the <xref:System.ServiceModel.Description.ContractDescription> objects for the service."
+      description: "&lt;Xref:System.Collections.Generic.IDictionary%602&gt;包含<xref:System.ServiceModel.Description.ContractDescription>服务的对象。</xref:System.ServiceModel.Description.ContractDescription>"
   overload: System.ServiceModel.ServiceHostBase.ImplementedContracts*
   exceptions: []
   platform:
@@ -664,8 +664,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Increases the limit on the flow rate of messages to the hosted service by a specified increment."
-  remarks: "This limit can be accessed using the <xref:System.ServiceModel.ServiceHostBase.ManualFlowControlLimit%2A> property."
+  summary: "指定的增量增加对消息到承载服务的流入率的限制。"
+  remarks: "可以使用访问此限制<xref:System.ServiceModel.ServiceHostBase.ManualFlowControlLimit%2A>属性。</xref:System.ServiceModel.ServiceHostBase.ManualFlowControlLimit%2A>"
   example:
   - '[!code-cs[S_SelfHost#42](~/add/codesnippet/csharp/84777560-890d-4922-a9a5-_1.cs)]'
   syntax:
@@ -673,15 +673,15 @@ items:
     parameters:
     - id: incrementBy
       type: System.Int32
-      description: "The number of messages by which to increase the flow control limit."
+      description: "乘幂的流控制限制的消息数。"
     return:
       type: System.Int32
-      description: "The new limit after the increment is added."
+      description: "添加增量后的新限制。"
   overload: System.ServiceModel.ServiceHostBase.IncrementManualFlowControlLimit*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value is less than zero."
+    description: "值小于零。"
   platform:
   - net462
 - uid: System.ServiceModel.ServiceHostBase.InitializeDescription(System.ServiceModel.UriSchemeKeyedCollection)
@@ -696,13 +696,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Creates and initializes the service host with the contract and service descriptions."
+  summary: "创建并初始化服务主机使用协定和服务说明。"
   syntax:
     content: protected void InitializeDescription (System.ServiceModel.UriSchemeKeyedCollection baseAddresses);
     parameters:
     - id: baseAddresses
       type: System.ServiceModel.UriSchemeKeyedCollection
-      description: "A <xref href=&quot;System.ServiceModel.UriSchemeKeyedCollection&quot;></xref> that contains the base addresses for the service hosted."
+      description: "A <xref href=&quot;System.ServiceModel.UriSchemeKeyedCollection&quot;> </xref> ，包含承载服务的基址。"
   overload: System.ServiceModel.ServiceHostBase.InitializeDescription*
   exceptions: []
   platform:
@@ -719,7 +719,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Initializes the runtime for the service host."
+  summary: "初始化服务主机的运行时。"
   syntax:
     content: protected virtual void InitializeRuntime ();
     parameters: []
@@ -727,7 +727,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The description of the service hosted is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "托管的服务的说明<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   platform:
   - net462
 - uid: System.ServiceModel.ServiceHostBase.LoadConfigurationSection(System.ServiceModel.Configuration.ServiceElement)
@@ -742,21 +742,21 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Loads the service element from the configuration file of the hosted service."
+  summary: "从托管服务的配置文件加载服务元素。"
   syntax:
     content: protected void LoadConfigurationSection (System.ServiceModel.Configuration.ServiceElement serviceSection);
     parameters:
     - id: serviceSection
       type: System.ServiceModel.Configuration.ServiceElement
-      description: "The <xref href=&quot;System.ServiceModel.Configuration.ServiceElement&quot;></xref> to be loaded from configuration."
+      description: "<xref href=&quot;System.ServiceModel.Configuration.ServiceElement&quot;> </xref>要从配置中加载。"
   overload: System.ServiceModel.ServiceHostBase.LoadConfigurationSection*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>serviceSection</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>serviceSection</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The description of the service hosted is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "托管的服务的说明<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   platform:
   - net462
 - uid: System.ServiceModel.ServiceHostBase.ManualFlowControlLimit
@@ -771,20 +771,20 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets the flow control limit for messages received by the service hosted."
-  remarks: "This limit can be incremented using the <xref:System.ServiceModel.ServiceHostBase.IncrementManualFlowControlLimit%28System.Int32%29> method."
+  summary: "获取或设置由所承载服务接收的消息的流控制限制。"
+  remarks: "可以使用递增此限制<xref:System.ServiceModel.ServiceHostBase.IncrementManualFlowControlLimit%28System.Int32%29>方法。</xref:System.ServiceModel.ServiceHostBase.IncrementManualFlowControlLimit%28System.Int32%29>"
   example:
   - '[!code-cs[S_SelfHost#39](~/add/codesnippet/csharp/p-system.servicemodel.se_10_1.cs)]'
   syntax:
     content: public int ManualFlowControlLimit { get; set; }
     return:
       type: System.Int32
-      description: "The flow control limit for messages received by the service hosted."
+      description: "由所承载服务接收的消息流控制限制。"
   overload: System.ServiceModel.ServiceHostBase.ManualFlowControlLimit*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value is less than zero."
+    description: "值小于零。"
   platform:
   - net462
 - uid: System.ServiceModel.ServiceHostBase.OnAbort
@@ -799,7 +799,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Aborts the service."
+  summary: "中止服务。"
   syntax:
     content: protected override void OnAbort ();
     parameters: []
@@ -819,22 +819,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Begins an asynchronous operation invoked on the close of the service host."
+  summary: "开始在关闭服务主机的调用的异步操作。"
   syntax:
     content: protected override IAsyncResult OnBeginClose (TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies how long the on-close operation has to complete before timing out."
+      description: "<xref:System.TimeSpan>，它指定在超时前完成关闭操作的时限。</xref:System.TimeSpan>"
     - id: callback
       type: System.AsyncCallback
-      description: "The <xref:System.AsyncCallback> delegate that receives the notification of the asynchronous operation on-close completion."
+      description: "<xref:System.AsyncCallback>可接收异步操作关闭完成通知的委托。</xref:System.AsyncCallback>"
     - id: state
       type: System.Object
-      description: "An object, specified by the application, that contains state information associated with the asynchronous on-close operation."
+      description: "指定的对象，由应用程序，它包含与异步关闭操作相关联的状态信息。"
     return:
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> that references the asynchronous on-close operation."
+      description: "<xref:System.IAsyncResult>引用异步关闭操作。</xref:System.IAsyncResult>"
   overload: System.ServiceModel.ServiceHostBase.OnBeginClose*
   exceptions: []
   platform:
@@ -851,22 +851,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Begins an asynchronous operation invoked on the opening of the service host."
+  summary: "开始在打开服务主机上调用的异步操作。"
   syntax:
     content: protected override IAsyncResult OnBeginOpen (TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies how long the on-open operation has to complete before timing out."
+      description: "<xref:System.TimeSpan>，指定在超时前完成打开操作必须多长时间。</xref:System.TimeSpan>"
     - id: callback
       type: System.AsyncCallback
-      description: "The <xref:System.AsyncCallback> delegate that receives the notification of the asynchronous operation on-open completion."
+      description: "<xref:System.AsyncCallback>可接收异步操作打开完成通知的委托。</xref:System.AsyncCallback>"
     - id: state
       type: System.Object
-      description: "An object, specified by the application, that contains state information associated with the asynchronous on-open operation."
+      description: "指定的对象，由应用程序，它包含与异步打开操作关联的状态信息。"
     return:
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> that references the asynchronous on-open operation."
+      description: "<xref:System.IAsyncResult>引用异步打开操作。</xref:System.IAsyncResult>"
   overload: System.ServiceModel.ServiceHostBase.OnBeginOpen*
   exceptions: []
   platform:
@@ -883,14 +883,14 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Closes down the hosted service, including their channel dispatchers and associated instance contexts and listeners."
-  remarks: "Calling OnClose does the following:      -   Closes all input to <xref:System.ServiceModel.Dispatcher.ChannelDispatcher>, which also closes their associated <xref:System.ServiceModel.Channels.IChannelListener> instances. This stops any new channels from being accepting.      -   Calls <xref:System.ServiceModel.Dispatcher.ChannelDispatcher.CloseInput%2A> on all <xref:System.ServiceModel.InstanceContext> objects, which mean they stop accepting new messages.      -   Waits for all <xref:System.ServiceModel.InstanceContext> objects to close down, which happens when their associated channels finish sending all pending messages.      -   Closes the <xref:System.ServiceModel.Dispatcher.ChannelDispatcher> objects associated with the host."
+  summary: "关闭所承载的服务，包括其通道调度程序以及相关的实例上下文和侦听器。"
+  remarks: "调用 OnClose 执行下列任务:-关闭所有的输入<xref:System.ServiceModel.Dispatcher.ChannelDispatcher>，这也将关闭及其关联<xref:System.ServiceModel.Channels.IChannelListener>实例。</xref:System.ServiceModel.Channels.IChannelListener> </xref:System.ServiceModel.Dispatcher.ChannelDispatcher> 这将停止接受任何新通道。      -调用<xref:System.ServiceModel.Dispatcher.ChannelDispatcher.CloseInput%2A>上所有<xref:System.ServiceModel.InstanceContext>对象，这意味着它们将停止接受新消息。</xref:System.ServiceModel.InstanceContext> </xref:System.ServiceModel.Dispatcher.ChannelDispatcher.CloseInput%2A>      -等待所有<xref:System.ServiceModel.InstanceContext>对象关闭，这种情况发生时及其关联的通道完成发送所有挂起消息。</xref:System.ServiceModel.InstanceContext>      -关闭<xref:System.ServiceModel.Dispatcher.ChannelDispatcher>与主机关联的对象。</xref:System.ServiceModel.Dispatcher.ChannelDispatcher>"
   syntax:
     content: protected override void OnClose (TimeSpan timeout);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies how long the on-close operation has to complete before timing out."
+      description: "<xref:System.TimeSpan>，它指定在超时前完成关闭操作的时限。</xref:System.TimeSpan>"
   overload: System.ServiceModel.ServiceHostBase.OnClose*
   exceptions: []
   platform:
@@ -907,7 +907,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Releases resources used by the service host."
+  summary: "释放服务主机所使用的资源。"
   syntax:
     content: protected override void OnClosed ();
     parameters: []
@@ -927,13 +927,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Completes an asynchronous operation invoked on the closing of the service host."
+  summary: "完成在关闭服务主机上调用的异步操作。"
   syntax:
     content: protected override void OnEndClose (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> returned by a call to the &lt;xref:System.ServiceModel.ServiceHostBase.OnBeginClose%28System.TimeSpan%2CSystem.AsyncCallback%2CSystem.Object%29&gt; method."
+      description: "<xref:System.IAsyncResult>返回通过调用&lt;xref:System.ServiceModel.ServiceHostBase.OnBeginClose%28System.TimeSpan%2CSystem.AsyncCallback%2CSystem.Object%29&gt;方法。</xref:System.IAsyncResult>"
   overload: System.ServiceModel.ServiceHostBase.OnEndClose*
   exceptions: []
   platform:
@@ -950,13 +950,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Completes an asynchronous operation invoked on the opening of the service host."
+  summary: "完成在打开服务主机上调用的异步操作。"
   syntax:
     content: protected override void OnEndOpen (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> returned by a call to the &lt;xref:System.ServiceModel.ServiceHostBase.OnBeginOpen%28System.TimeSpan%2CSystem.AsyncCallback%2CSystem.Object%29&gt; method."
+      description: "<xref:System.IAsyncResult>返回通过调用&lt;xref:System.ServiceModel.ServiceHostBase.OnBeginOpen%28System.TimeSpan%2CSystem.AsyncCallback%2CSystem.Object%29&gt;方法。</xref:System.IAsyncResult>"
   overload: System.ServiceModel.ServiceHostBase.OnEndOpen*
   exceptions: []
   platform:
@@ -973,13 +973,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Opens the channel dispatchers."
+  summary: "打开通道调度程序。"
   syntax:
     content: protected override void OnOpen (TimeSpan timeout);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies how long the on-open operation has to complete before timing out."
+      description: "<xref:System.TimeSpan>，指定在超时前完成打开操作必须多长时间。</xref:System.TimeSpan>"
   overload: System.ServiceModel.ServiceHostBase.OnOpen*
   exceptions: []
   platform:
@@ -996,8 +996,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets the service credentials,service authentication and authorization behavior for the hosted service."
-  remarks: "Once these behaviors are initialized when opening the service, they cannot be changed."
+  summary: "托管服务中获取的服务凭据、 服务身份验证和授权行为。"
+  remarks: "一旦这些行为进行了初始化打开服务时，不能更改它们。"
   syntax:
     content: protected override void OnOpened ();
     parameters: []
@@ -1017,26 +1017,26 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets the interval of time allowed for the service host to open."
+  summary: "获取或设置允许服务主机打开的时间间隔。"
   syntax:
     content: public TimeSpan OpenTimeout { get; set; }
     return:
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies the interval of time allowed for the service host to open."
+      description: "<xref:System.TimeSpan>指定允许服务主机打开的时间间隔。</xref:System.TimeSpan>"
   overload: System.ServiceModel.ServiceHostBase.OpenTimeout*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value is less than zero or is larger than <xref:System.Int32.MaxValue> (2,147,483,647 or, in hexadecimal notation, 0X7FFFFFFF)."
+    description: "值是小于零或大于<xref:System.Int32.MaxValue>（2147483647 或以十六进制表示的 0X7FFFFFFF）。</xref:System.Int32.MaxValue>"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The host is in an <xref:System.ServiceModel.CommunicationState> or <xref:System.ServiceModel.CommunicationState> state and cannot be modified."
+    description: "主机处于<xref:System.ServiceModel.CommunicationState>或<xref:System.ServiceModel.CommunicationState>状态，无法修改。</xref:System.ServiceModel.CommunicationState> </xref:System.ServiceModel.CommunicationState>"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The host is already in a <xref:System.ServiceModel.CommunicationState> state and cannot be modified."
+    description: "主机已处于<xref:System.ServiceModel.CommunicationState>状态，无法修改。</xref:System.ServiceModel.CommunicationState>"
   - type: System.ServiceModel.CommunicationObjectFaultedException
     commentId: T:System.ServiceModel.CommunicationObjectFaultedException
-    description: "The host is in a <xref:System.ServiceModel.CommunicationState> state and cannot be modified."
+    description: "主机处于<xref:System.ServiceModel.CommunicationState>状态，无法修改。</xref:System.ServiceModel.CommunicationState>"
   platform:
   - net462
 - uid: System.ServiceModel.ServiceHostBase.ReleasePerformanceCounters
@@ -1051,8 +1051,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Releases the service and channel dispatcher performance counters for the hosted service."
-  remarks: "This method is invoked when calling <xref:System.ServiceModel.ServiceHostBase.OnClose%28System.TimeSpan%29> and       <xref:System.ServiceModel.ServiceHostBase.OnEndClose%28System.IAsyncResult%29>."
+  summary: "释放所承载服务的服务与通道调度程序性能计数器。"
+  remarks: "调用<xref:System.ServiceModel.ServiceHostBase.OnClose%28System.TimeSpan%29>和<xref:System.ServiceModel.ServiceHostBase.OnEndClose%28System.IAsyncResult%29>。</xref:System.ServiceModel.ServiceHostBase.OnEndClose%28System.IAsyncResult%29></xref:System.ServiceModel.ServiceHostBase.OnClose%28System.TimeSpan%29>时，会调用此方法"
   syntax:
     content: protected void ReleasePerformanceCounters ();
     parameters: []
@@ -1072,16 +1072,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Sets the endpoint address of the specified endpoint to the specified address."
+  summary: "将指定的终结点的终结点地址设置为指定的地址。"
   syntax:
     content: public void SetEndpointAddress (System.ServiceModel.Description.ServiceEndpoint endpoint, string relativeAddress);
     parameters:
     - id: endpoint
       type: System.ServiceModel.Description.ServiceEndpoint
-      description: "The service endpoint."
+      description: "服务终结点。"
     - id: relativeAddress
       type: System.String
-      description: "The endpoint address."
+      description: "终结点地址。"
   overload: System.ServiceModel.ServiceHostBase.SetEndpointAddress*
   exceptions: []
   platform:
@@ -1099,7 +1099,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Closes the service host."
+  summary: "关闭服务主机。"
   syntax:
     content: void IDisposable.Dispose ();
     parameters: []
@@ -1119,7 +1119,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Occurs when an unknown message is received."
+  summary: "接收未知的消息时发生。"
   remarks: >-
     > [!WARNING]
 
@@ -1128,7 +1128,7 @@ items:
     content: public event EventHandler<System.ServiceModel.UnknownMessageReceivedEventArgs> UnknownMessageReceived;
     return:
       type: System.EventHandler{System.ServiceModel.UnknownMessageReceivedEventArgs}
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462

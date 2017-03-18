@@ -14,8 +14,8 @@ items:
   nameWithType: CompressedStack
   fullName: System.Threading.CompressedStack
   type: Class
-  summary: "Provides methods for setting and capturing the compressed stack on the current thread. This class cannot be inherited."
-  remarks: "The compressed stack is a compact representation of all the code access security information on the call stack, such as <xref:System.Security.CodeAccessPermission.Deny%2A> and <xref:System.Security.CodeAccessPermission.Assert%2A> actions. For example, if a <xref:System.Security.CodeAccessPermission.Deny%2A> action is two stack frames up from the current frame and there are no other code access security annotations between there and the current frame, the compressed stack records only that information, without having to serialize the entire call stack.       The CompressedStackclass is used internally by the <xref:System.Security.SecurityContext> class. For example, the <xref:System.Security.SecurityContext.Capture%2A?displayProperty=fullName> method captures the compressed stack for the current call stack, along with impersonation and culture information. The <xref:System.Security.SecurityContext> class is used in turn by the <xref:System.Threading.ExecutionContext> class to flow context across threads, for example when scheduling thread pool tasks.       This class is not used in ordinary application programming."
+  summary: "提供用于设置和捕获当前线程上的压缩的堆栈的方法。 此类不能被继承。"
+  remarks: "压缩的堆栈是调用堆栈上的所有代码访问安全信息的简洁表示形式，如<xref:System.Security.CodeAccessPermission.Deny%2A>和<xref:System.Security.CodeAccessPermission.Assert%2A>操作。</xref:System.Security.CodeAccessPermission.Assert%2A> </xref:System.Security.CodeAccessPermission.Deny%2A> 例如，如果<xref:System.Security.CodeAccessPermission.Deny%2A>操作是两个堆栈帧的距离当前帧，并且有没有其他代码访问权限之间有安全批注和当前帧时，压缩的堆栈记录仅的信息，而无需序列化的整个调用堆栈。</xref:System.Security.CodeAccessPermission.Deny%2A>       CompressedStackclass 由内部<xref:System.Security.SecurityContext>类。</xref:System.Security.SecurityContext> 例如，<xref:System.Security.SecurityContext.Capture%2A?displayProperty=fullName>方法捕获的压缩的堆栈中的当前调用堆栈，以及模拟和区域性信息。</xref:System.Security.SecurityContext.Capture%2A?displayProperty=fullName> <xref:System.Security.SecurityContext>类又由<xref:System.Threading.ExecutionContext>到线程，例如在计划线程池任务间流动上下文的类。</xref:System.Threading.ExecutionContext> </xref:System.Security.SecurityContext>       此类不用于普通的应用程序编程。"
   syntax:
     content: 'public sealed class CompressedStack : System.Runtime.Serialization.ISerializable'
   inheritance:
@@ -37,8 +37,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Captures the compressed stack from the current thread."
-  remarks: "Captures all the code access security information on the call stack, such as <xref:System.Security.CodeAccessPermission.Deny%2A> and <xref:System.Security.CodeAccessPermission.Assert%2A> actions, in a compressed format. For example, if a <xref:System.Security.CodeAccessPermission.Deny%2A> action is two stack frames up from the current frame and there are no other code access security annotations between there and the current frame, the compressed stack records only that information, without having to serialize the entire call stack.       The captured compressed stack can be applied to another thread."
+  summary: "捕获从当前线程的压缩的堆栈。"
+  remarks: "如捕获调用堆栈上的所有代码访问安全信息<xref:System.Security.CodeAccessPermission.Deny%2A>和<xref:System.Security.CodeAccessPermission.Assert%2A>操作，以压缩格式。</xref:System.Security.CodeAccessPermission.Assert%2A> </xref:System.Security.CodeAccessPermission.Deny%2A> 例如，如果<xref:System.Security.CodeAccessPermission.Deny%2A>操作是两个堆栈帧的距离当前帧，并且有没有其他代码访问权限之间有安全批注和当前帧时，压缩的堆栈记录仅的信息，而无需序列化的整个调用堆栈。</xref:System.Security.CodeAccessPermission.Deny%2A>       捕获的压缩的堆栈可以应用于另一个线程。"
   syntax:
     content: public static System.Threading.CompressedStack Capture ();
     parameters: []
@@ -61,14 +61,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Creates a copy of the current compressed stack."
-  remarks: "This method is useful for creating a copy of the current compressed stack to apply to another thread."
+  summary: "创建当前压缩堆栈的副本。"
+  remarks: "此方法可用于创建一份要应用于另一个线程的当前压缩堆栈。"
   syntax:
     content: public System.Threading.CompressedStack CreateCopy ();
     parameters: []
     return:
       type: System.Threading.CompressedStack
-      description: "A <xref href=&quot;System.Threading.CompressedStack&quot;></xref> object representing the current compressed stack."
+      description: "A <xref href=&quot;System.Threading.CompressedStack&quot;> </xref>表示当前的压缩的堆栈对象。"
   overload: System.Threading.CompressedStack.CreateCopy*
   exceptions: []
   platform:
@@ -85,19 +85,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Gets the compressed stack for the current thread."
-  remarks: "If security is enabled, the current compressed stack is returned. If security is disabled, GetCompressedStack returns an empty <xref:System.Threading.CompressedStack> object.      > [!NOTE] >  This method uses <xref:System.Security.Permissions.SecurityAction?displayProperty=fullName> to prevent it from being called from untrusted code; only the immediate caller is required to have <xref:System.Security.Permissions.SecurityPermissionAttribute.UnmanagedCode%2A?displayProperty=fullName> permission. For important limitations on using the `LinkDemand` member, see [Demand vs. LinkDemand](http://msdn.microsoft.com/en-us/1ab877f2-70f4-4e0d-8116-943999dfe8f5).      > [!NOTE] >  This member also makes a link demand for the ECMA public key, which is not a valid cryptographic key but a pseudo key. Within the .NET Framework the link demand for the ECMA pseudo key is automatically converted to a link demand for the Microsoft public key. The security exception is based on the Microsoft public key, not the ECMA pseudo key."
+  summary: "获取当前线程的压缩的堆栈。"
+  remarks: "如果启用了安全性，则返回当前压缩的堆栈。 如果禁用了安全性，GetCompressedStack 返回一个空<xref:System.Threading.CompressedStack>对象。</xref:System.Threading.CompressedStack>      1> [!NOTE]&1;> 此方法使用<xref:System.Security.Permissions.SecurityAction?displayProperty=fullName>，防止它调用不受信任代码; 只能直接调用方需要具有<xref:System.Security.Permissions.SecurityPermissionAttribute.UnmanagedCode%2A?displayProperty=fullName>权限。</xref:System.Security.Permissions.SecurityPermissionAttribute.UnmanagedCode%2A?displayProperty=fullName> </xref:System.Security.Permissions.SecurityAction?displayProperty=fullName> 有关在将使用的重要限制`LinkDemand`成员，请参阅[Demand vs。LinkDemand](http://msdn.microsoft.com/en-us/1ab877f2-70f4-4e0d-8116-943999dfe8f5)。      1> [!NOTE]&1;> 此成员还可以针对 ECMA 公共密钥，这不是有效的加密密钥，而一个伪密钥的链接要求。 在.NET Framework 中 ECMA 伪密钥此链接要求会自动转换为 Microsoft 公共密钥的链接要求。 安全异常取决于 Microsoft 公钥，不 ECMA 伪键。"
   syntax:
     content: public static System.Threading.CompressedStack GetCompressedStack ();
     parameters: []
     return:
       type: System.Threading.CompressedStack
-      description: "A <xref href=&quot;System.Threading.CompressedStack&quot;></xref> for the current thread."
+      description: "A <xref href=&quot;System.Threading.CompressedStack&quot;> </xref>当前线程。"
   overload: System.Threading.CompressedStack.GetCompressedStack*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "A caller in the call chain does not have permission to access unmanaged code.       -or-       The request for <xref href=&quot;System.Security.Permissions.StrongNameIdentityPermission&quot;></xref> failed."
+    description: "中的调用链的调用方没有访问非托管的代码的权限。       -请求<xref href=&quot;System.Security.Permissions.StrongNameIdentityPermission&quot;></xref>失败。"
   platform:
   - net462
 - uid: System.Threading.CompressedStack.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
@@ -112,22 +112,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Sets the <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;></xref> object with the logical context information needed to recreate an instance of this execution context."
-  remarks: "GetObjectData sets a <xref:System.Runtime.Serialization.SerializationInfo> with the logical call context information. During deserialization, the execution context object is reconstituted from the <xref:System.Runtime.Serialization.SerializationInfo> transmitted over the stream.       For more information, see <xref:System.Runtime.Serialization.SerializationInfo>."
+  summary: "集<xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;></xref>重新创建此执行上下文的实例所需的逻辑上下文信息的对象。"
+  remarks: "GetObjectData 集<xref:System.Runtime.Serialization.SerializationInfo>用逻辑调用上下文信息。</xref:System.Runtime.Serialization.SerializationInfo> 在反序列化过程的执行上下文对象重建从<xref:System.Runtime.Serialization.SerializationInfo>通过流传输。</xref:System.Runtime.Serialization.SerializationInfo>       有关详细信息，请参阅<xref:System.Runtime.Serialization.SerializationInfo>。</xref:System.Runtime.Serialization.SerializationInfo>"
   syntax:
     content: public void GetObjectData (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
     parameters:
     - id: info
       type: System.Runtime.Serialization.SerializationInfo
-      description: "The <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;></xref> object to be populated with serialization information."
+      description: "<xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;> </xref>要使用的序列化信息填充的对象。"
     - id: context
       type: System.Runtime.Serialization.StreamingContext
-      description: "The <xref:System.Runtime.Serialization.StreamingContext> structure representing the destination context of the serialization."
+      description: "<xref:System.Runtime.Serialization.StreamingContext>结构，它表示序列化的目标上下文。</xref:System.Runtime.Serialization.StreamingContext>"
   overload: System.Threading.CompressedStack.GetObjectData*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>info</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>info</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Threading.CompressedStack.Run(System.Threading.CompressedStack,System.Threading.ContextCallback,System.Object)
@@ -142,8 +142,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Runs a method in the specified compressed stack on the current thread."
-  remarks: "The compressed stack is returned to its previous state when the method completes."
+  summary: "当前线程上运行指定的压缩堆栈中的某个方法。"
+  remarks: "方法完成时，压缩的堆栈被返回到以前的状态。"
   syntax:
     content: public static void Run (System.Threading.CompressedStack compressedStack, System.Threading.ContextCallback callback, object state);
     parameters:
@@ -152,15 +152,15 @@ items:
       description: "The <xref href=&quot;System.Threading.CompressedStack&quot;></xref> to set."
     - id: callback
       type: System.Threading.ContextCallback
-      description: "A <xref:System.Threading.ContextCallback> that represents the method to be run in the specified security context."
+      description: "A <xref:System.Threading.ContextCallback>，它表示要在指定的安全上下文中运行的方法。</xref:System.Threading.ContextCallback>"
     - id: state
       type: System.Object
-      description: "The object to be passed to the callback method."
+      description: "要将传递给回调方法的对象。"
   overload: System.Threading.CompressedStack.Run*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>compressedStack</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>compressedStack</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 references:

@@ -26,8 +26,8 @@ items:
   nameWithType: PersistenceProvider
   fullName: System.ServiceModel.Persistence.PersistenceProvider
   type: Class
-  summary: "The abstract base class from which all durable service persistence providers are derived."
-  remarks: "Users can create classes derived from this type to create durable service persistence providers that use custom persistence stores, such as third-party databases, the file system, or storage systems accessed remotely. To create a system-provided implementation of this type that uses Microsoft SQL Server as a persistence store, see <xref:System.ServiceModel.Persistence.SqlPersistenceProviderFactory>.      > [!NOTE] >  When creating persistence provider implementations, it is important to maintain the thread&quot;s original identity in the new provider&quot;s methods (such as <xref:System.ServiceModel.Persistence.PersistenceProvider.Load%2A>. Otherwise, security loopholes could be created, because operations would then run under the wrong identity."
+  summary: "从中派生所有持久性服务永久性提供程序的抽象基类。"
+  remarks: "用户可以创建从此类型来创建持久性服务永久性提供程序使用自定义暂留存储，如第三方数据库、 文件系统或远程访问的存储系统派生的类。 若要创建使用 Microsoft SQL Server 作为持久性存储区的此类型的系统提供实现，请参阅<xref:System.ServiceModel.Persistence.SqlPersistenceProviderFactory>.</xref:System.ServiceModel.Persistence.SqlPersistenceProviderFactory>      1> [!NOTE]&1;> 时创建持久性提供程序实现，务必维护线程的原始标识中新提供程序的方法 （如<xref:System.ServiceModel.Persistence.PersistenceProvider.Load%2A>.</xref:System.ServiceModel.Persistence.PersistenceProvider.Load%2A> 否则，形成安全漏洞会因为操作将会在错误的标识下运行。"
   example:
   - For an implementation of this type that uses the file system as a persistence store, see the FilePersistenceProviderFactory.cs file in the DurableServiceFactory SDK sample.
   syntax:
@@ -53,7 +53,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, initializes a new instance of the <xref href=&quot;System.ServiceModel.Persistence.PersistenceProvider&quot;></xref> class."
+  summary: "派生类中实现时，初始化的新实例<xref href=&quot;System.ServiceModel.Persistence.PersistenceProvider&quot;></xref>类。"
   remarks: ''
   example:
   - "The following code demonstrates how to use the <xref:System.ServiceModel.Persistence.PersistenceProvider> constructor. This code example is part of the DurableServiceFactory SDK sample from the FilePersistenceProviderFactory.cs file. [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)]the DurableServiceFactory SDK sample.  \n  \n [!code-cs[PersistenceProvider#0](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#0)]"
@@ -62,7 +62,7 @@ items:
     parameters:
     - id: id
       type: System.Guid
-      description: "The unique identifier of the service state data being saved."
+      description: "正在保存的服务状态数据的唯一标识符。"
   overload: System.ServiceModel.Persistence.PersistenceProvider.#ctor*
   exceptions: []
   platform:
@@ -79,7 +79,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the beginning of the Create phase. The Create phase occurs when service instance records are first created in the persistence store."
+  summary: "派生类中实现时，表示创建阶段开始。 首次在持久性存储区中创建服务实例记录时将创建进入阶段。"
   remarks: ''
   example:
   - "The following code demonstrates how to implement the BeginCreate method.  \n  \n [!code-cs[PersistenceProvider#14](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#14)]"
@@ -88,19 +88,19 @@ items:
     parameters:
     - id: instance
       type: System.Object
-      description: "The actual instance state."
+      description: "实际的实例状态。"
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "时间段，永久性提供程序后将中止此尝试。"
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the operation is completed."
+      description: "要完成该操作时调用的方法。"
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous operation from other operations."
+      description: "用户提供的对象，用于区分此特定异步操作与其他操作。"
     return:
       type: System.IAsyncResult
-      description: "The state of the BeginCreate asynchronous method call."
+      description: "BeginCreate 异步方法调用的状态。"
   overload: System.ServiceModel.Persistence.PersistenceProvider.BeginCreate*
   exceptions: []
   platform:
@@ -117,7 +117,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the beginning of the Delete phase. The Delete phase occurs when service state data is permanently deleted from the persistence store."
+  summary: "派生类中实现时，表示删除阶段开始。 服务状态数据从持久性存储区中永久删除时将删除进入阶段。"
   remarks: ''
   example:
   - "The following code demonstrates how to implement the `BeginDelete` method. This code example is part of the DurableServiceFactory SDK sample from the FilePersistenceProviderFactory.cs file. [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)]the DurableServiceFactory SDK sample.  \n  \n [!code-cs[PersistenceProvider#6](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#6)]"
@@ -126,19 +126,19 @@ items:
     parameters:
     - id: instance
       type: System.Object
-      description: "The actual instance state."
+      description: "实际的实例状态。"
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "时间段，永久性提供程序后将中止此尝试。"
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the operation is completed."
+      description: "要完成该操作时调用的方法。"
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous operation from other operations."
+      description: "用户提供的对象，用于区分此特定异步操作与其他操作。"
     return:
       type: System.IAsyncResult
-      description: "The state of the BeginDelete asynchronous method call."
+      description: "BeginDelete 异步方法调用的状态。"
   overload: System.ServiceModel.Persistence.PersistenceProvider.BeginDelete*
   exceptions: []
   platform:
@@ -155,7 +155,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the beginning of the Load phase. The Load phase occurs when state data is loaded into the persistence provider from the persistence store."
+  summary: "派生类中实现时，表示负载阶段开始。 状态数据加载到永久性提供程序从持久性存储区时发生的加载阶段。"
   remarks: ''
   example:
   - "The following code demonstrates how to implement the `BeginLoad` method. This code example is part of the DurableServiceFactory SDK sample from the FilePersistenceProviderFactory.cs file. [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)]the DurableServiceFactory SDK sample.  \n  \n [!code-cs[PersistenceProvider#7](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#7)]"
@@ -164,16 +164,16 @@ items:
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "时间段，永久性提供程序后将中止此尝试。"
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the operation is completed."
+      description: "要完成该操作时调用的方法。"
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous operation from other operations."
+      description: "用户提供的对象，用于区分此特定异步操作与其他操作。"
     return:
       type: System.IAsyncResult
-      description: "The state of the BeginLoad asynchronous method call."
+      description: "BeginLoad 异步方法调用的状态。"
   overload: System.ServiceModel.Persistence.PersistenceProvider.BeginLoad*
   exceptions: []
   platform:
@@ -190,7 +190,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the beginning of the LoadIfChanged phase. The LoadIfChanged phase occurs when state data is loaded into the persistence provider from the persistence store, and the state data in the persistence store has been changed."
+  summary: "在派生类中实现时表示进入 loadifchanged 阶段开始。 进入 loadifchanged 阶段状态数据加载到永久性提供程序从持久性存储中，并且持久性存储区中的状态数据已更改时发生。"
   remarks: ''
   example:
   - "The following code demonstrates how to implement the BeginLoadIfChanged method.  \n  \n [!code-cs[PersistenceProvider#11](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#11)]"
@@ -199,19 +199,19 @@ items:
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "时间段，永久性提供程序后将中止此尝试。"
     - id: instanceToken
       type: System.Object
-      description: "The token returned by a previous <xref:System.ServiceModel.Persistence.PersistenceProvider.Create*> or <xref:System.ServiceModel.Persistence.PersistenceProvider.Update*> that represents the current state held by the caller."
+      description: "通过前一个返回的标记<> *1> 或<> *1>，它表示由调用方具有的当前状态。"
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the operation is completed."
+      description: "要完成该操作时调用的方法。"
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous operation from other operations."
+      description: "用户提供的对象，用于区分此特定异步操作与其他操作。"
     return:
       type: System.IAsyncResult
-      description: "The state of the BeginLoadIfChanged asynchronous method call."
+      description: "BeginLoadIfChanged 异步方法调用的状态。"
   overload: System.ServiceModel.Persistence.PersistenceProvider.BeginLoadIfChanged*
   exceptions: []
   platform:
@@ -228,7 +228,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the beginning of the Update phase. The Update phase occurs when service state data is updated in the persistence store."
+  summary: "派生类中实现时，表示更新阶段开始。 在持久性存储区中更新服务状态数据时的更新阶段。"
   remarks: ''
   example:
   - "The following code demonstrates how to implement the BeginUpdate method.  \n  \n [!code-cs[PersistenceProvider#17](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#17)]"
@@ -237,19 +237,19 @@ items:
     parameters:
     - id: instance
       type: System.Object
-      description: "The actual instance state."
+      description: "实际的实例状态。"
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "时间段，永久性提供程序后将中止此尝试。"
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the operation is completed."
+      description: "要完成该操作时调用的方法。"
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous operation from other operations."
+      description: "用户提供的对象，用于区分此特定异步操作与其他操作。"
     return:
       type: System.IAsyncResult
-      description: "The state of the BeginUpdate asynchronous method call."
+      description: "BeginUpdate 异步方法调用的状态。"
   overload: System.ServiceModel.Persistence.PersistenceProvider.BeginUpdate*
   exceptions: []
   platform:
@@ -266,7 +266,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, creates a service state record in the persistence store."
+  summary: "派生类中实现时，请在持久性存储区中创建服务状态记录。"
   remarks: ''
   example:
   - "The following code demonstrates how to implement the Create method.  \n  \n [!code-cs[PersistenceProvider#15](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#15)]"
@@ -275,13 +275,13 @@ items:
     parameters:
     - id: instance
       type: System.Object
-      description: "The actual instance state."
+      description: "实际的实例状态。"
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "时间段，永久性提供程序后将中止此尝试。"
     return:
       type: System.Object
-      description: "The instance token corresponding to the state just saved. This can be passed to <xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*> to determine whether the state in the persistence store differs from the state when Create was called."
+      description: "刚保存的状态相对应的实例标记。 这可以传递到<xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*>以确定是否在持久性存储区中的状态与不同状态调用 Create 时。</xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*>"
   overload: System.ServiceModel.Persistence.PersistenceProvider.Create*
   exceptions: []
   platform:
@@ -298,7 +298,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, permanently deletes service state information from the persistence store."
+  summary: "派生类中实现时，服务状态信息永久删除从持久性存储中。"
   remarks: ''
   example:
   - "The following code demonstrates how to implement the Delete method. This code example is part of the DurableServiceFactory SDK sample from the FilePersistenceProviderFactory.cs file. [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)]the DurableServiceFactory SDK sample.  \n  \n [!code-cs[PersistenceProvider#9](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#9)]"
@@ -307,10 +307,10 @@ items:
     parameters:
     - id: instance
       type: System.Object
-      description: "The actual instance state."
+      description: "实际的实例状态。"
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "时间段，永久性提供程序后将中止此尝试。"
   overload: System.ServiceModel.Persistence.PersistenceProvider.Delete*
   exceptions: []
   platform:
@@ -327,7 +327,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the end of the Create phase. The Create phase occurs when service state records are first created in the persistence store."
+  summary: "派生类中实现时，表示创建阶段结束。 首次在持久性存储区中创建服务状态记录时发生的创建阶段。"
   remarks: ''
   example:
   - "The following code demonstrates how to implement the EndCreate method.  \n  \n [!code-cs[PersistenceProvider#16](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#16)]"
@@ -336,10 +336,10 @@ items:
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "A reference to the result of the operation."
+      description: "对操作的结果的引用。"
     return:
       type: System.Object
-      description: "The instance token corresponding to the state just saved. This can be passed to <xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*> to determine whether the state in the persistence store differs from the state when Create was called."
+      description: "刚保存的状态相对应的实例标记。 这可以传递到<xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*>以确定是否在持久性存储区中的状态与不同状态调用 Create 时。</xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*>"
   overload: System.ServiceModel.Persistence.PersistenceProvider.EndCreate*
   exceptions: []
   platform:
@@ -356,7 +356,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the end of the Delete phase. The Delete phase occurs when state data is permanently deleted from the persistence store."
+  summary: "派生类中实现时，表示删除阶段结束。 状态数据从持久性存储区中永久删除时将删除进入阶段。"
   remarks: ''
   example:
   - "The following code demonstrates how to implement the EndDelete method. This code example is part of the DurableServiceFactory SDK sample from the FilePersistenceProviderFactory.cs file. For more information, see the DurableServiceFactory SDK sample.  \n  \n [!code-cs[PersistenceProvider#5](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#5)]"
@@ -365,7 +365,7 @@ items:
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "A reference to the result of the operation."
+      description: "对操作的结果的引用。"
   overload: System.ServiceModel.Persistence.PersistenceProvider.EndDelete*
   exceptions: []
   platform:
@@ -382,7 +382,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the end of the Load phase. The Load phase occurs when state data is loaded into the persistence provider from the persistence store."
+  summary: "派生类中实现时，表示负载阶段结束。 状态数据加载到永久性提供程序从持久性存储区时发生的加载阶段。"
   remarks: ''
   example:
   - "The following code demonstrates how to use the `EndLoad` method. This code example is part of the DurableServiceFactory SDK sample from the FilePersistenceProviderFactory.cs file. [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)]the DurableServiceFactory SDK sample.  \n  \n [!code-cs[PersistenceProvider#1](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#1)]"
@@ -391,10 +391,10 @@ items:
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "A reference to the result of the operation."
+      description: "对操作的结果的引用。"
     return:
       type: System.Object
-      description: "The service state information."
+      description: "服务状态信息。"
   overload: System.ServiceModel.Persistence.PersistenceProvider.EndLoad*
   exceptions: []
   platform:
@@ -411,7 +411,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the end of the LoadIfChanged phase. The LoadIfChanged phase occurs when state data is loaded into the persistence provider from the persistence store, and the state data in the persistence store has been changed."
+  summary: "在派生类中实现时表示进入 loadifchanged 阶段结束。 进入 loadifchanged 阶段状态数据加载到永久性提供程序从持久性存储中，并且持久性存储区中的状态数据已更改时发生。"
   remarks: ''
   example:
   - "The following code demonstrates how to implement the EndLoadIfChanged method.  \n  \n [!code-cs[PersistenceProvider#12](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#12)]"
@@ -420,13 +420,13 @@ items:
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "A reference to the result of the operation."
+      description: "对操作的结果的引用。"
     - id: instance
       type: System.Object
-      description: "The actual instance state."
+      description: "实际的实例状态。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance <xref uid=&quot;langword_csharp_out&quot; name=&quot;out&quot; href=&quot;&quot;></xref> parameter has been set with the latest copy from the persistence store; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the locally cached state is already up-to-date."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果实例<xref uid=&quot;langword_csharp_out&quot; name=&quot;out&quot; href=&quot;&quot;></xref>参数已使用最新副本设置从持久性存储区;<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>如果本地缓存的状态已为最新。"
   overload: System.ServiceModel.Persistence.PersistenceProvider.EndLoadIfChanged*
   exceptions: []
   platform:
@@ -443,7 +443,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Represents the end of the Update phase. The Update phase occurs when service state records are updated in the persistence store."
+  summary: "表示更新阶段结束。 服务状态记录会在持久性存储区中更新时发生的更新阶段。"
   remarks: ''
   example:
   - "The following code demonstrates how to implement the EndUpdate method.  \n  \n [!code-cs[PersistenceProvider#19](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#19)]"
@@ -452,10 +452,10 @@ items:
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "A reference to the result of the operation."
+      description: "对操作的结果的引用。"
     return:
       type: System.Object
-      description: "The instance token corresponding to the state just saved. This can be passed to <xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*> to determine whether the state in the persistence store differs from the state when Create was called."
+      description: "刚保存的状态相对应的实例标记。 这可以传递到<xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*>以确定是否在持久性存储区中的状态与不同状态调用 Create 时。</xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*>"
   overload: System.ServiceModel.Persistence.PersistenceProvider.EndUpdate*
   exceptions: []
   platform:
@@ -472,7 +472,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Represents the <xref:System.Guid> associated with this instance."
+  summary: "表示<xref:System.Guid>与此实例关联。</xref:System.Guid>"
   remarks: ''
   example:
   - "The following code demonstrates how to use the Id property.  \n  \n [!code-cs[PersistenceProvider#10](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#10)]"
@@ -480,7 +480,7 @@ items:
     content: public Guid Id { get; }
     return:
       type: System.Guid
-      description: "The GUID associated with this instance."
+      description: "与此实例关联的 GUID。"
   overload: System.ServiceModel.Persistence.PersistenceProvider.Id*
   exceptions: []
   platform:
@@ -497,8 +497,8 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, loads service state information from the persistence store."
-  remarks: "Changes made to the security token in the Load method, if not reverted, stay in effect for the remainder of that message&quot;s processing. This means that the service operation&quot;s user code, the response message path through the dispatcher, as well as any error paths, run in the changed security context."
+  summary: "派生类中实现时，请从持久性存储区加载服务状态信息。"
+  remarks: "更改对在负载方法中，安全令牌，如果不是还原，对该消息的处理的其余部分将继续有效。 这意味着服务操作的用户代码、 通过调度程序的响应消息路径以及任何错误路径已更改的安全上下文中运行。"
   example:
   - "The following code demonstrates how to implement the Load method. This code example is part of the DurableServiceFactory SDK sample from the FilePersistenceProviderFactory.cs file. [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)]the DurableServiceFactory SDK sample.  \n  \n [!code-cs[PersistenceProvider#3](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#3)]"
   syntax:
@@ -506,10 +506,10 @@ items:
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "时间段，永久性提供程序后将中止此尝试。"
     return:
       type: System.Object
-      description: "The loaded instance state."
+      description: "加载的实例状态中。"
   overload: System.ServiceModel.Persistence.PersistenceProvider.Load*
   exceptions: []
   platform:
@@ -526,7 +526,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, loads service state information from the persistence store if that data has been changed."
+  summary: "派生类中实现时，将服务状态信息加载从持久性存储区中，如果该数据已更改。"
   remarks: ''
   example:
   - "The following code demonstrates how to implement the LoadIfChanged method.  \n  \n [!code-cs[PersistenceProvider#13](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#13)]"
@@ -535,16 +535,16 @@ items:
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "时间段，永久性提供程序后将中止此尝试。"
     - id: instanceToken
       type: System.Object
-      description: "The token returned by a previous <xref:System.ServiceModel.Persistence.PersistenceProvider.Create*> or <xref:System.ServiceModel.Persistence.PersistenceProvider.Update*>, which represents the current state held by the caller."
+      description: "通过前一个返回的标记<> *1> 或<> *1>，它表示由调用方具有的当前状态。"
     - id: instance
       type: System.Object
-      description: "The actual instance state."
+      description: "实际的实例状态。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <code>instance</code><xref uid=&quot;langword_csharp_out&quot; name=&quot;out&quot; href=&quot;&quot;></xref> parameter has been set with the latest copy from the persistence store; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the locally cached state is already up to date."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果<code> instance </code> <xref uid=&quot;langword_csharp_out&quot; name=&quot;out&quot; href=&quot;&quot;> </xref>参数已使用最新副本设置从持久性存储区;<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>如果本地缓存的状态已为最新。"
   overload: System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*
   exceptions: []
   platform:
@@ -561,7 +561,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, updates service state records in the persistence store."
+  summary: "派生类中实现时，更新服务的持久性存储中的状态记录。"
   remarks: ''
   example:
   - "The following code demonstrates how to implement the Update method.  \n  \n [!code-cs[PersistenceProvider#18](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#18)]"
@@ -570,13 +570,13 @@ items:
     parameters:
     - id: instance
       type: System.Object
-      description: "The actual instance state."
+      description: "实际的实例状态。"
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "时间段，永久性提供程序后将中止此尝试。"
     return:
       type: System.Object
-      description: "The instance token corresponding to the state just saved. This can be passed to <xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*> to determine whether the state in the persistence store differs from the state when Create was called."
+      description: "刚保存的状态相对应的实例标记。 这可以传递到<xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*>以确定是否在持久性存储区中的状态与不同状态调用 Create 时。</xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*>"
   overload: System.ServiceModel.Persistence.PersistenceProvider.Update*
   exceptions: []
   platform:

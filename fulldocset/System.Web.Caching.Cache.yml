@@ -26,8 +26,8 @@ items:
   nameWithType: Cache
   fullName: System.Web.Caching.Cache
   type: Class
-  summary: "Implements the cache for a Web application. This class cannot be inherited."
-  remarks: "One instance of this class is created per application domain, and it remains valid as long as the application domain remains active. Information about an instance of this class is available through the `Cache` property of the <xref:System.Web.HttpContext> object or the `Cache` property of the <xref:System.Web.UI.Page> object.      > [!NOTE] >  The Cache class is not intended for use outside of ASP.NET applications. It was designed and tested for use in ASP.NET to provide caching for Web applications. For other types of applications, such as console applications or Windows Forms applications, use the <xref:System.Runtime.Caching.ObjectCache> class."
+  summary: "实现的 Web 应用程序缓存。 此类不能被继承。"
+  remarks: "每个应用程序域中创建的此类的一个实例，并会保持有效的只要应用程序域将保持活动状态。 通过提供了有关此类的实例信息`Cache`属性<xref:System.Web.HttpContext>对象或`Cache`属性<xref:System.Web.UI.Page>对象。</xref:System.Web.UI.Page> </xref:System.Web.HttpContext>      1> [!NOTE]&1;> 缓存类不用于在 ASP.NET 应用程序之外的使用。 设计和测试在提供的 Web 应用程序中缓存的 ASP.NET 中使用。 对于其他类型的应用程序，如控制台应用程序或 Windows 窗体应用程序，使用<xref:System.Runtime.Caching.ObjectCache>类。</xref:System.Runtime.Caching.ObjectCache>"
   example:
   - "The following example is a page that shows users the value assigned to an item in the cache, and then notifies them when the item is removed from the cache. It creates a `RemovedCallback` method, which has the signature of the `CacheItemRemovedCallback` delegate, to notify users when the cache item is removed, and it uses the <xref:System.Web.Caching.CacheItemRemovedReason> enumeration to tell them why it was removed. In addition, it uses the <xref:System.Web.Caching.Cache.Item%2A?displayProperty=fullName> property to add objects to the cache and retrieve the value of those objects. In the `AddItemToCache` method, it uses the <xref:System.Web.Caching.Cache.Add%2A?displayProperty=fullName> method to add an item to the cache. To use the `CacheItemRemovedCallback` delegate, you must add an item to the cache with this method or the <xref:System.Web.Caching.Cache.Insert%2A?displayProperty=fullName> method, so that that ASP.NET can automatically make the proper method calls when the item is removed. The custom `RemoveItemFromCache` method uses the <xref:System.Web.Caching.Cache.Remove%2A?displayProperty=fullName> method to explicitly delete the item from the cache, causing the `RemovedCallback` method to be invoked.  \n  \n> [!NOTE]\n>  The instance of Cache that is accessed by the snippet below is a member of the <xref:System.Web.UI.Page> object that this sample inherits.  \n  \n [!code-cs[System.Web.Caching Examples#1](~/add/codesnippet/csharp/t-system.web.caching.cache_1.aspx)]\n [!code-vb[System.Web.Caching Examples#1](~/add/codesnippet/visualbasic/t-system.web.caching.cache_1.aspx)]"
   syntax:
@@ -51,7 +51,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Caching.Cache&quot;></xref> class."
+  summary: "初始化的新实例<xref href=&quot;System.Web.Caching.Cache&quot;></xref>类。"
   syntax:
     content: public Cache ();
     parameters: []
@@ -71,8 +71,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Adds the specified item to the <xref href=&quot;System.Web.Caching.Cache&quot;></xref> object with dependencies, expiration and priority policies, and a delegate you can use to notify your application when the inserted item is removed from the <xref uid=&quot;langword_csharp_Cache&quot; name=&quot;Cache&quot; href=&quot;&quot;></xref>."
-  remarks: "Calls to this method will fail if an item with the same `key` parameter is already stored in the `Cache`. To overwrite an existing `Cache` item using the same `key` parameter, use the <xref:System.Web.Caching.Cache.Insert%2A> method.       You cannot set both the `absoluteExpiration` and `slidingExpiration` parameters. If you intend the cache item to expire at a specific time, you set the `absoluteExpiration` parameter to the specific time, and the `slidingExpiration` parameter to <xref:System.Web.Caching.Cache.NoSlidingExpiration>.       If you intend the cache item to expire after a certain amount of time has passed since the item was last accessed, you set the `slidingExpiration` parameter to the expiration interval, and the `absoluteExpiration` parameter to <xref:System.Web.Caching.Cache.NoAbsoluteExpiration>."
+  summary: "添加到指定的项<xref href=&quot;System.Web.Caching.Cache&quot;></xref>对象具有依赖关系、 过期和优先级策略，以及你可以使用从删除插入的项时通知你的应用程序一个委托<xref uid=&quot;langword_csharp_Cache&quot; name=&quot;Cache&quot; href=&quot;&quot;> </xref>。"
+  remarks: "如果具有相同的项，对此方法的调用将失败`key`参数已存储在`Cache`。 若要覆盖现有`Cache`项使用同一个`key`参数，使用<xref:System.Web.Caching.Cache.Insert%2A>方法。</xref:System.Web.Caching.Cache.Insert%2A>       不能同时设置`absoluteExpiration`和`slidingExpiration`参数。 如果你想要在特定时间过期的缓存项，则设置`absoluteExpiration`到特定的时间，参数和`slidingExpiration`到<xref:System.Web.Caching.Cache.NoSlidingExpiration>。</xref:System.Web.Caching.Cache.NoSlidingExpiration>参数       如果你想的缓存项以在某段时间后过期自已经过了上次访问该项，则将设置`slidingExpiration`过期时间间隔，参数和`absoluteExpiration`到<xref:System.Web.Caching.Cache.NoAbsoluteExpiration>。</xref:System.Web.Caching.Cache.NoAbsoluteExpiration>参数"
   example:
   - "The following example creates an `AddItemToCache` method. When this method is called, it sets an `itemRemoved` property to `false` and registers an `onRemove` method with a new instance of the <xref:System.Web.Caching.CacheItemRemovedCallback> delegate. The delegate's signature is used in the `RemovedCallback` method. The `AddItemToCache` method then checks the value associated with the `Key1` key in the cache. If the value is `null`, the `Add` method places an item in the cache with a key of `Key1`, a value of `Value 1`, an absolute expiration of 60 seconds, and a high cache priority. It also uses the `onRemove` method as an argument. This allows the `RemovedCallback` method to be called when this item is removed from the cache.  \n  \n> [!NOTE]\n>  For examples of how to use the <xref:System.Web.Caching.CacheDependency> class and the <xref:System.Web.Caching.CacheItemRemovedCallback> delegate, see [Caching Application Data](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Caching Examples#3](~/add/codesnippet/csharp/97b35003-2ed6-4e36-acd6-_1.aspx)]\n [!code-vb[System.Web.Caching Examples#3](~/add/codesnippet/visualbasic/97b35003-2ed6-4e36-acd6-_1.aspx)]"
   syntax:
@@ -80,28 +80,28 @@ items:
     parameters:
     - id: key
       type: System.String
-      description: "The cache key used to reference the item."
+      description: "用于引用该项的缓存密钥。"
     - id: value
       type: System.Object
-      description: "The item to be added to the cache."
+      description: "要添加到缓存的项。"
     - id: dependencies
       type: System.Web.Caching.CacheDependency
-      description: "The file or cache key dependencies for the item. When any dependency changes, the object becomes invalid and is removed from the cache. If there are no dependencies, this parameter contains <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "文件或缓存关键的依存关系项。 当任何依赖项更改时，对象将变为无效，并且从缓存中删除。 如果没有依赖关系，此参数将包含<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
     - id: absoluteExpiration
       type: System.DateTime
-      description: "The time at which the added object expires and is removed from the cache. If you are using sliding expiration, the `absoluteExpiration` parameter must be <xref href=&quot;System.Web.Caching.Cache.NoAbsoluteExpiration&quot;></xref>."
+      description: "添加的对象到期，从缓存中删除时间。 如果使用滑动过期`absoluteExpiration`参数必须是<xref href=&quot;System.Web.Caching.Cache.NoAbsoluteExpiration&quot;> </xref>。"
     - id: slidingExpiration
       type: System.TimeSpan
-      description: "The interval between the time the added object was last accessed and the time at which that object expires. If this value is the equivalent of 20 minutes, the object expires and is removed from the cache 20 minutes after it is last accessed. If you are using absolute expiration, the `slidingExpiration` parameter must be <xref href=&quot;System.Web.Caching.Cache.NoSlidingExpiration&quot;></xref>."
+      description: "对象的到期时间和上次访问添加的对象的时间之间的间隔。 如果此值为 20 分钟的等效项，该对象将过期，并从缓存 20 分钟后它上次访问被移除。 如果你使用的绝对过期`slidingExpiration`参数必须是<xref href=&quot;System.Web.Caching.Cache.NoSlidingExpiration&quot;> </xref>。"
     - id: priority
       type: System.Web.Caching.CacheItemPriority
-      description: "The relative cost of the object, as expressed by the <xref href=&quot;System.Web.Caching.CacheItemPriority&quot;></xref> enumeration. The cache uses this value when it evicts objects; objects with a lower cost are removed from the cache before objects with a higher cost."
+      description: "所表示的对象的相对成本<xref href=&quot;System.Web.Caching.CacheItemPriority&quot;></xref>枚举。 缓存时它逐出对象; 使用此值从成本较高的对象之前缓存中删除开销较低的对象。"
     - id: onRemoveCallback
       type: System.Web.Caching.CacheItemRemovedCallback
-      description: "A delegate that, if provided, is called when an object is removed from the cache. You can use this to notify applications when their objects are deleted from the cache."
+      description: "一个委托，如果提供，从缓存中移除对象时调用。 你可以使用此通知应用程序，从缓存删除其对象时。"
     return:
       type: System.Object
-      description: "An object that represents the item that was added if the item was previously stored in the cache; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "一个对象，表示项之前存储在缓存中; 如果已添加的项否则为<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.Caching.Cache.Add*
   exceptions:
   - type: System.ArgumentNullException
@@ -109,10 +109,10 @@ items:
     description: "The <code>key</code> or <code>value</code> parameter is set to <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The <code>slidingExpiration</code> parameter is set to less than <xref uid=&quot;langword_csharp_TimeSpan.Zero&quot; name=&quot;TimeSpan.Zero&quot; href=&quot;&quot;></xref> or more than one year."
+    description: "<code> slidingExpiration </code>参数设置为小于<xref uid=&quot;langword_csharp_TimeSpan.Zero&quot; name=&quot;TimeSpan.Zero&quot; href=&quot;&quot;></xref>或超过一年。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>absoluteExpiration</code> and <code>slidingExpiration</code> parameters are both set for the item you are trying to add to the <xref uid=&quot;langword_csharp_Cache&quot; name=&quot;Cache&quot; href=&quot;&quot;></xref>."
+    description: "<code> absoluteExpiration </code>和<code> slidingExpiration </code>参数都设置为您尝试将添加到项目<xref uid=&quot;langword_csharp_Cache&quot; name=&quot;Cache&quot; href=&quot;&quot;> </xref>。"
   platform:
   - net462
 - uid: System.Web.Caching.Cache.Count
@@ -127,15 +127,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Gets the number of items stored in the cache."
-  remarks: "This property can be useful when monitoring your application&quot;s performance or when using ASP.NET tracing functionality."
+  summary: "获取存储在缓存中的项的数目。"
+  remarks: "监视应用程序的性能时，或使用 ASP.NET 跟踪功能时，此属性可能很有用。"
   example:
   - "The following example obtains the value of the `Count` property, converts it to a string, and assigns the string to the <xref:System.Web.UI.WebControls.Label.Text%2A> property of a <xref:System.Web.UI.WebControls.Label> Web server control, `Label1`.  \n  \n [!code-vb[System.Web.Caching.Cache.Count#1](~/add/codesnippet/visualbasic/p-system.web.caching.cac_3_1.aspx)]\n [!code-cs[System.Web.Caching.Cache.Count#1](~/add/codesnippet/csharp/p-system.web.caching.cac_3_1.aspx)]"
   syntax:
     content: public int Count { get; }
     return:
       type: System.Int32
-      description: "The number of items stored in the cache."
+      description: "在缓存中存储的项的数目。"
   overload: System.Web.Caching.Cache.Count*
   exceptions: []
   platform:
@@ -152,13 +152,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Gets the percentage of physical memory that can be consumed by an application before ASP.NET starts removing items from the cache."
-  remarks: "The EffectivePercentagePhysicalMemoryLimit property returns the percentage of physical memory that is available to the application. When the available percentage becomes low, the cache algorithm begins removing items from the cache.       The EffectivePercentagePhysicalMemoryLimit property can be set with the `percentagePhysicalMemoryUsedLimit` attribute of the [cache Element for caching (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/68fa0040-5abf-4c73-93fc-17e3c6af3299) element in the application&quot;s configuration file. If the `percentagePhysicalMemoryUsedLimit` attribute is not set, the cache algorithm determines the maximum size of the cache, and the EffectivePercentagePhysicalMemoryLimit property is calculated.       EffectivePercentagePhysicalMemoryLimit is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取 ASP.NET 开始从缓存中删除项之前可以由应用程序使用的物理内存的百分比。"
+  remarks: "EffectivePercentagePhysicalMemoryLimit 属性返回对应用程序可用的物理内存的百分比。 当可用百分比变得较低时，缓存算法将开始从缓存中移除项。       该 EffectivePercentagePhysicalMemoryLimit 属性可以设置与`percentagePhysicalMemoryUsedLimit`属性[缓存元素的缓存 （ASP.NET 设置架构）](http://msdn.microsoft.com/en-us/68fa0040-5abf-4c73-93fc-17e3c6af3299)应用程序的配置文件中的元素。 如果`percentagePhysicalMemoryUsedLimit`特性未设置，缓存算法确定的最大大小的缓存，并计算 EffectivePercentagePhysicalMemoryLimit 属性。       EffectivePercentagePhysicalMemoryLimit 是.NET Framework 3.5 版中引入的。  有关详细信息，请参阅[版本和依赖关系](~/add/includes/ajax-current-ext-md.md)。"
   syntax:
     content: public long EffectivePercentagePhysicalMemoryLimit { get; }
     return:
       type: System.Int64
-      description: "The percentage of physical memory available to the application."
+      description: "应用程序的物理内存的百分比。"
   overload: System.Web.Caching.Cache.EffectivePercentagePhysicalMemoryLimit*
   exceptions: []
   platform:
@@ -175,15 +175,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Gets the number of bytes available for the cache."
-  remarks: "The EffectivePrivateBytesLimit property returns the number of bytes that can be used by the application process. Once this limit is reached, the cache algorithm begins aggressively scavenging the cache.       The EffectivePrivateBytesLimit property can be set with the `privateBytesLimit` attribute of the [cache Element for caching (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/68fa0040-5abf-4c73-93fc-17e3c6af3299) element in the application&quot;s configuration file. When the `privateBytesLimit` attribute is not set, the cache algorithm determines the maximum size of the cache, and the EffectivePrivateBytesLimit property contains the size chosen by the algorithm."
+  summary: "获取用于缓存的可用字节数。"
+  remarks: "EffectivePrivateBytesLimit 属性返回可由应用程序进程的字节的数。 一旦达到此限制，缓存算法开始积极清理缓存。       该 EffectivePrivateBytesLimit 属性可以设置与`privateBytesLimit`属性[缓存元素的缓存 （ASP.NET 设置架构）](http://msdn.microsoft.com/en-us/68fa0040-5abf-4c73-93fc-17e3c6af3299)应用程序的配置文件中的元素。 当`privateBytesLimit`未设置属性、 缓存算法确定缓存中，最大大小和 EffectivePrivateBytesLimit 属性包含所选算法的大小。"
   example:
   - <xref:System.Web.Caching.Cache.EffectivePercentagePhysicalMemoryLimit%2A>
   syntax:
     content: public long EffectivePrivateBytesLimit { get; }
     return:
       type: System.Int64
-      description: "The number of bytes available for the cache."
+      description: "可用于缓存的字节数。"
   overload: System.Web.Caching.Cache.EffectivePrivateBytesLimit*
   exceptions: []
   platform:
@@ -200,7 +200,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Retrieves the specified item from the <xref href=&quot;System.Web.Caching.Cache&quot;></xref> object."
+  summary: "检索指定的项目的<xref href=&quot;System.Web.Caching.Cache&quot;></xref>对象。"
   remarks: ''
   example:
   - "The following example demonstrates how to retrieve the value cached for an ASP.NET text box server control.  \n  \n [!code-vb[Classic Cache.Get Example#1](~/add/codesnippet/visualbasic/m-system.web.caching.cac_4_1.vb)]\n [!code-cs[Classic Cache.Get Example#1](~/add/codesnippet/csharp/m-system.web.caching.cac_4_1.cs)]"
@@ -209,10 +209,10 @@ items:
     parameters:
     - id: key
       type: System.String
-      description: "The identifier for the cache item to retrieve."
+      description: "要检索的缓存项标识符。"
     return:
       type: System.Object
-      description: "The retrieved cache item, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the key is not found."
+      description: "检索到的缓存项，或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果未找到此项。"
   overload: System.Web.Caching.Cache.Get*
   exceptions: []
   platform:
@@ -229,8 +229,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Retrieves a dictionary enumerator used to iterate through the key settings and their values contained in the cache."
-  remarks: "Items can be added to or removed from the cache while this method is enumerating through the items."
+  summary: "检索用于循环访问密钥设置的字典枚举数和缓存中包含其值。"
+  remarks: "可以添加到或从缓存中时此方法枚举完成的项目移除项。"
   example:
   - "The following example creates an <xref:System.Collections.IDictionaryEnumerator> object, `CacheEnum`, using the `GetEnumerator` method. The enumerator moves through the cache, converts the value of each cached item to a string, and then writes the values to a Web Forms page.  \n  \n [!code-vb[Cache.GetEnumerator#1](~/add/codesnippet/visualbasic/m-system.web.caching.cac_3_1.aspx)]\n [!code-cs[Cache.GetEnumerator#1](~/add/codesnippet/csharp/m-system.web.caching.cac_3_1.aspx)]"
   syntax:
@@ -238,7 +238,7 @@ items:
     parameters: []
     return:
       type: System.Collections.IDictionaryEnumerator
-      description: "An enumerator to iterate through the <xref href=&quot;System.Web.Caching.Cache&quot;></xref> object."
+      description: "要循环访问的枚举数<xref href=&quot;System.Web.Caching.Cache&quot;></xref>对象。"
   overload: System.Web.Caching.Cache.GetEnumerator*
   exceptions: []
   platform:
@@ -255,8 +255,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Inserts an item into the <xref href=&quot;System.Web.Caching.Cache&quot;></xref> object with a cache key to reference its location, using default values provided by the <xref href=&quot;System.Web.Caching.CacheItemPriority&quot;></xref> enumeration."
-  remarks: "This method will overwrite an existing cache item whose key matches the `key` parameter. The object added to the cache using this overload of the `Insert` method is inserted with no file or cache dependencies, a priority of <xref:System.Web.Caching.CacheItemPriority>, a sliding expiration value of <xref:System.Web.Caching.Cache.NoSlidingExpiration>, and an absolute expiration value of <xref:System.Web.Caching.Cache.NoAbsoluteExpiration>."
+  summary: "将一项插入<xref href=&quot;System.Web.Caching.Cache&quot;></xref>缓存键来引用其位置，并使用默认值由提供<xref href=&quot;System.Web.Caching.CacheItemPriority&quot;></xref>枚举。"
+  remarks: "此方法将覆盖现有的缓存项其键与匹配`key`参数。 对象添加到缓存中使用的此重载`Insert`方法插入没有文件或缓存依赖项，优先级<xref:System.Web.Caching.CacheItemPriority>，滑动过期值<xref:System.Web.Caching.Cache.NoSlidingExpiration>，和<xref:System.Web.Caching.Cache.NoAbsoluteExpiration>.</xref:System.Web.Caching.Cache.NoAbsoluteExpiration>绝对过期值</xref:System.Web.Caching.Cache.NoSlidingExpiration></xref:System.Web.Caching.CacheItemPriority>"
   example:
   - "The following example demonstrates how to insert an item into an application's cache.  \n  \n [!code-cs[Classic Cache.Insert Example#1](~/add/codesnippet/csharp/m-system.web.caching.cac_8_1.cs)]\n [!code-vb[Classic Cache.Insert Example#1](~/add/codesnippet/visualbasic/m-system.web.caching.cac_8_1.vb)]"
   syntax:
@@ -264,10 +264,10 @@ items:
     parameters:
     - id: key
       type: System.String
-      description: "The cache key used to reference the item."
+      description: "用于引用该项的缓存密钥。"
     - id: value
       type: System.Object
-      description: "The object to be inserted into the cache."
+      description: "要插入到缓存的对象。"
   overload: System.Web.Caching.Cache.Insert*
   exceptions:
   - type: System.ArgumentNullException
@@ -287,8 +287,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Inserts an object into the <xref href=&quot;System.Web.Caching.Cache&quot;></xref> that has file or key dependencies."
-  remarks: "This method will overwrite an existing cache item whose key matches the `key` parameter. The object added to the cache using this overload of the `Insert` method is inserted with no file or cache dependencies, a priority of <xref:System.Web.Caching.CacheItemPriority>, a sliding expiration value of <xref:System.Web.Caching.Cache.NoSlidingExpiration>, and an absolute expiration value of <xref:System.Web.Caching.Cache.NoAbsoluteExpiration>."
+  summary: "将对象插入<xref href=&quot;System.Web.Caching.Cache&quot;> </xref> ，其文件或密钥依赖关系。"
+  remarks: "此方法将覆盖现有的缓存项其键与匹配`key`参数。 对象添加到缓存中使用的此重载`Insert`方法插入没有文件或缓存依赖项，优先级<xref:System.Web.Caching.CacheItemPriority>，滑动过期值<xref:System.Web.Caching.Cache.NoSlidingExpiration>，和<xref:System.Web.Caching.Cache.NoAbsoluteExpiration>.</xref:System.Web.Caching.Cache.NoAbsoluteExpiration>绝对过期值</xref:System.Web.Caching.Cache.NoSlidingExpiration></xref:System.Web.Caching.CacheItemPriority>"
   example:
   - "The following example demonstrates how to insert an item into an application's cache with a cache dependency on an XML configuration file.  \n  \n [!code-cs[Classic Cache.Insert1 Example#1](~/add/codesnippet/csharp/1f70e8db-a9cf-4467-9e9a-_1.cs)]\n [!code-vb[Classic Cache.Insert1 Example#1](~/add/codesnippet/visualbasic/1f70e8db-a9cf-4467-9e9a-_1.vb)]"
   syntax:
@@ -296,13 +296,13 @@ items:
     parameters:
     - id: key
       type: System.String
-      description: "The cache key used to identify the item."
+      description: "用于标识的项的缓存密钥。"
     - id: value
       type: System.Object
-      description: "The object to be inserted in the cache."
+      description: "要将其插入缓存中的对象。"
     - id: dependencies
       type: System.Web.Caching.CacheDependency
-      description: "The file or cache key dependencies for the inserted object. When any dependency changes, the object becomes invalid and is removed from the cache. If there are no dependencies, this parameter contains <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "文件或缓存关键的依存关系所插入对象。 当任何依赖项更改时，对象将变为无效，并且从缓存中删除。 如果没有依赖关系，此参数将包含<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.Caching.Cache.Insert*
   exceptions:
   - type: System.ArgumentNullException
@@ -322,8 +322,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Inserts an object into the <xref href=&quot;System.Web.Caching.Cache&quot;></xref> with dependencies and expiration policies."
-  remarks: "This method will overwrite an existing `Cache` item with the same `key` parameter.       If the `slidingExpiration` parameter is set to <xref:System.Web.Caching.Cache.NoSlidingExpiration>, sliding expiration is disabled. If you set the `slidingExpiration` parameter to greater than <xref:System.TimeSpan.Zero>, the `absoluteExpiration` parameter is set to <xref:System.DateTime.Now%2A> plus the value contained in the `slidingExpiration` parameter. If the item is requested from the cache before the amount of time specified by the `absoluteExpiration` parameter, the item will be placed in the cache again, and `absoluteExpiration` will again be set to `DateTime.Now` plus the value contained in the `slidingExpiration` parameter. If the item is not requested from the cache before the date in the `absoluteExpiration` parameter, the item is removed from the cache. . The item added to the cache using this overload of the insert method is inserted with a priority of <xref:System.Web.Caching.CacheItemPriority>."
+  summary: "将对象插入<xref href=&quot;System.Web.Caching.Cache&quot;></xref>与依赖关系和过期策略。"
+  remarks: "此方法将覆盖现有`Cache`项具有相同`key`参数。       如果`slidingExpiration`参数设置为<xref:System.Web.Caching.Cache.NoSlidingExpiration>，滑动过期已禁用。</xref:System.Web.Caching.Cache.NoSlidingExpiration> 如果你设置`slidingExpiration`参数为大于<xref:System.TimeSpan.Zero>、`absoluteExpiration`参数设置为<xref:System.DateTime.Now%2A>中包含的值加`slidingExpiration`参数。</xref:System.DateTime.Now%2A> </xref:System.TimeSpan.Zero> 如果在指定的时间量之前从缓存请求的内容项`absoluteExpiration`参数，该项将被放在缓存中同样，和`absoluteExpiration`再次将设置为`DateTime.Now`中包含的值加`slidingExpiration`参数。 如果请求的内容项是不从缓存中的日期以前`absoluteExpiration`从缓存中删除参数，该项目。 。 添加到缓存中使用 insert 方法的此重载的项插入<xref:System.Web.Caching.CacheItemPriority>.</xref:System.Web.Caching.CacheItemPriority>优先级"
   example:
   - "The following example demonstrates how to insert an item into an application's cache with an absolute expiration.  \n  \n> [!NOTE]\n>  Since this form of the `Insert` method supports cache dependencies, if the item has no dependencies, you must declare the `dependency` parameter as `null` (`Nothing` in Visual Basic) in the comma-delimited list of parameters.  \n  \n [!code-vb[Classic Cache.Insert2 Example#1](~/add/codesnippet/visualbasic/2de893fb-f78f-4325-b8b1-_1.vb)]\n [!code-cs[Classic Cache.Insert2 Example#1](~/add/codesnippet/csharp/2de893fb-f78f-4325-b8b1-_1.cs)]  \n  \n The following example demonstrates how to insert an item into the cache with a sliding expiration.  \n  \n [!code-vb[Classic Cache.Insert2 Example#2](~/add/codesnippet/visualbasic/2de893fb-f78f-4325-b8b1-_2.vb)]\n [!code-cs[Classic Cache.Insert2 Example#2](~/add/codesnippet/csharp/2de893fb-f78f-4325-b8b1-_2.cs)]"
   syntax:
@@ -331,19 +331,19 @@ items:
     parameters:
     - id: key
       type: System.String
-      description: "The cache key used to reference the object."
+      description: "用来引用该对象的缓存密钥。"
     - id: value
       type: System.Object
-      description: "The object to be inserted in the cache."
+      description: "要将其插入缓存中的对象。"
     - id: dependencies
       type: System.Web.Caching.CacheDependency
-      description: "The file or cache key dependencies for the inserted object. When any dependency changes, the object becomes invalid and is removed from the cache. If there are no dependencies, this parameter contains <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "文件或缓存关键的依存关系所插入对象。 当任何依赖项更改时，对象将变为无效，并且从缓存中删除。 如果没有依赖关系，此参数将包含<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
     - id: absoluteExpiration
       type: System.DateTime
-      description: "The time at which the inserted object expires and is removed from the cache. To avoid possible issues with local time such as changes from standard time to daylight saving time, use <xref:System.DateTime.UtcNow*> rather than <xref:System.DateTime.Now*> for this parameter value. If you are using absolute expiration, the `slidingExpiration` parameter must be <xref href=&quot;System.Web.Caching.Cache.NoSlidingExpiration&quot;></xref>."
+      description: "插入的对象到期，从缓存中删除时间。 若要避免如将从标准时间更改为夏时制的本地时间可能存在的问题，请使用<> *1> 而非<> *1> 作为此参数值。 如果你使用的绝对过期`slidingExpiration`参数必须是<xref href=&quot;System.Web.Caching.Cache.NoSlidingExpiration&quot;> </xref>。"
     - id: slidingExpiration
       type: System.TimeSpan
-      description: "The interval between the time the inserted object is last accessed and the time at which that object expires. If this value is the equivalent of 20 minutes, the object will expire and be removed from the cache 20 minutes after it was last accessed. If you are using sliding expiration, the `absoluteExpiration` parameter must be <xref href=&quot;System.Web.Caching.Cache.NoAbsoluteExpiration&quot;></xref>."
+      description: "上次访问所插入的对象的时间和该对象的到期的时间之间的间隔。 如果此值为 20 分钟的等效项，该对象将过期，并从缓存 20 分钟上次访问后被删除。 如果使用滑动过期`absoluteExpiration`参数必须是<xref href=&quot;System.Web.Caching.Cache.NoAbsoluteExpiration&quot;> </xref>。"
   overload: System.Web.Caching.Cache.Insert*
   exceptions:
   - type: System.ArgumentNullException
@@ -351,10 +351,10 @@ items:
     description: "The <code>key</code> or <code>value</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "You set the <code>slidingExpiration</code> parameter to less than <xref uid=&quot;langword_csharp_TimeSpan.Zero&quot; name=&quot;TimeSpan.Zero&quot; href=&quot;&quot;></xref> or the equivalent of more than one year."
+    description: "你设置<code> slidingExpiration </code>参数小于<xref uid=&quot;langword_csharp_TimeSpan.Zero&quot; name=&quot;TimeSpan.Zero&quot; href=&quot;&quot;></xref>或超过一年的等效项。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>absoluteExpiration</code> and <code>slidingExpiration</code> parameters are both set for the item you are trying to add to the <xref uid=&quot;langword_csharp_Cache&quot; name=&quot;Cache&quot; href=&quot;&quot;></xref>."
+    description: "<code> absoluteExpiration </code>和<code> slidingExpiration </code>参数都设置为您尝试将添加到项目<xref uid=&quot;langword_csharp_Cache&quot; name=&quot;Cache&quot; href=&quot;&quot;> </xref>。"
   platform:
   - net462
 - uid: System.Web.Caching.Cache.Insert(System.String,System.Object,System.Web.Caching.CacheDependency,System.DateTime,System.TimeSpan,System.Web.Caching.CacheItemUpdateCallback)
@@ -369,29 +369,29 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Inserts an object into the <xref href=&quot;System.Web.Caching.Cache&quot;></xref> object together with dependencies, expiration policies, and a delegate that you can use to notify the application before the item is removed from the cache."
-  remarks: "The Insert method enables you to insert a new item in the cache and provide a delegate that is called before the item is removed from the cache. In the delegate, you can update the cached item and thereby prevent it from being removed from the cache.       This method will overwrite an existing `Cache` item with the same `key` parameter.       You cannot set both the `absoluteExpiration` and `slidingExpiration` parameters. If you intend the cache item to expire at a specific time, you set the `absoluteExpiration` parameter to the specific time, and the `slidingExpiration` parameter to <xref:System.Web.Caching.Cache.NoSlidingExpiration>.       If you intend the cache item to expire after a set period of time since the item was last accessed, you set the `slidingExpiration` parameter to the expiration interval, and you set the `absoluteExpiration` parameter to <xref:System.Web.Caching.Cache.NoAbsoluteExpiration>."
+  summary: "将对象插入<xref href=&quot;System.Web.Caching.Cache&quot;></xref>对象与依赖关系、 过期策略和一个委托，你可以使用通知应用程序之前从缓存中移除的项。"
+  remarks: "Insert 方法，可在缓存中插入一个新项，并提供在从缓存中移除的项之前调用的委托。 在委托中，你可以更新的缓存的项，从而导致无法从缓存中删除。       此方法将覆盖现有`Cache`项具有相同`key`参数。       不能同时设置`absoluteExpiration`和`slidingExpiration`参数。 如果你想要在特定时间过期的缓存项，则设置`absoluteExpiration`到特定的时间，参数和`slidingExpiration`到<xref:System.Web.Caching.Cache.NoSlidingExpiration>。</xref:System.Web.Caching.Cache.NoSlidingExpiration>参数       如果你想的缓存项过期后设置的一段时间以后项上次访问，你将设置`slidingExpiration`到过期时间间隔，并且您的参数设置`absoluteExpiration`到<xref:System.Web.Caching.Cache.NoAbsoluteExpiration>。</xref:System.Web.Caching.Cache.NoAbsoluteExpiration>参数"
   syntax:
     content: public void Insert (string key, object value, System.Web.Caching.CacheDependency dependencies, DateTime absoluteExpiration, TimeSpan slidingExpiration, System.Web.Caching.CacheItemUpdateCallback onUpdateCallback);
     parameters:
     - id: key
       type: System.String
-      description: "The cache key that is used to reference the object."
+      description: "用来引用的对象的缓存密钥。"
     - id: value
       type: System.Object
-      description: "The object to insert into the cache."
+      description: "要插入到缓存的对象。"
     - id: dependencies
       type: System.Web.Caching.CacheDependency
-      description: "The file or cache key dependencies for the item. When any dependency changes, the object becomes invalid and is removed from the cache. If there are no dependencies, this parameter contains <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "文件或缓存关键的依存关系项。 当任何依赖项更改时，对象将变为无效，并且从缓存中删除。 如果没有依赖关系，此参数将包含<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
     - id: absoluteExpiration
       type: System.DateTime
-      description: "The time at which the inserted object expires and is removed from the cache. To avoid possible issues with local time such as changes from standard time to daylight saving time, use <xref:System.DateTime.UtcNow*> instead of <xref:System.DateTime.Now*> for this parameter value. If you are using absolute expiration, the `slidingExpiration` parameter must be set to <xref href=&quot;System.Web.Caching.Cache.NoSlidingExpiration&quot;></xref>."
+      description: "插入的对象到期，从缓存中删除时间。 若要避免如将从标准时间更改为夏时制的本地时间可能存在的问题，请使用<> *1> 而不是<> *1> 作为此参数值。 如果你使用的绝对过期`slidingExpiration`参数必须设置为<xref href=&quot;System.Web.Caching.Cache.NoSlidingExpiration&quot;> </xref>。"
     - id: slidingExpiration
       type: System.TimeSpan
-      description: "The interval between the time that the cached object was last accessed and the time at which that object expires. If this value is the equivalent of 20 minutes, the object will expire and be removed from the cache 20 minutes after it was last accessed. If you are using sliding expiration, the `absoluteExpiration` parameter must be set to <xref href=&quot;System.Web.Caching.Cache.NoAbsoluteExpiration&quot;></xref>."
+      description: "对象的到期时间和上次访问缓存的对象的时间之间的间隔。 如果此值为 20 分钟的等效项，该对象将过期，并从缓存 20 分钟上次访问后被删除。 如果使用滑动过期`absoluteExpiration`参数必须设置为<xref href=&quot;System.Web.Caching.Cache.NoAbsoluteExpiration&quot;> </xref>。"
     - id: onUpdateCallback
       type: System.Web.Caching.CacheItemUpdateCallback
-      description: "A delegate that will be called before the object is removed from the cache. You can use this to update the cached item and ensure that it is not removed from the cache."
+      description: "从缓存中删除该对象之前将调用委托。 你可以使用此更新的缓存的项，并确保它不删除从缓存。"
   overload: System.Web.Caching.Cache.Insert*
   exceptions:
   - type: System.ArgumentNullException
@@ -399,10 +399,10 @@ items:
     description: "The <code>key</code>, <code>value</code>, or <code>onUpdateCallback</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "You set the <code>slidingExpiration</code> parameter to less than <xref uid=&quot;langword_csharp_TimeSpan.Zero&quot; name=&quot;TimeSpan.Zero&quot; href=&quot;&quot;></xref> or the equivalent of more than one year."
+    description: "你设置<code> slidingExpiration </code>参数小于<xref uid=&quot;langword_csharp_TimeSpan.Zero&quot; name=&quot;TimeSpan.Zero&quot; href=&quot;&quot;></xref>或超过一年的等效项。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>absoluteExpiration</code> and <code>slidingExpiration</code> parameters are both set for the item you are trying to add to the <xref uid=&quot;langword_csharp_Cache&quot; name=&quot;Cache&quot; href=&quot;&quot;></xref>.       -or-       The <code>dependencies</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, and the <code>absoluteExpiration</code> parameter is set to <xref href=&quot;System.Web.Caching.Cache.NoAbsoluteExpiration&quot;></xref>, and the <code>slidingExpiration</code> parameter is set to <xref href=&quot;System.Web.Caching.Cache.NoSlidingExpiration&quot;></xref>."
+    description: "<code> absoluteExpiration </code>和<code> slidingExpiration </code>参数都设置为您尝试将添加到项目<xref uid=&quot;langword_csharp_Cache&quot; name=&quot;Cache&quot; href=&quot;&quot;> </xref>。       -or-       The <code>dependencies</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, and the <code>absoluteExpiration</code> parameter is set to <xref href=&quot;System.Web.Caching.Cache.NoAbsoluteExpiration&quot;></xref>, and the <code>slidingExpiration</code> parameter is set to <xref href=&quot;System.Web.Caching.Cache.NoSlidingExpiration&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.Caching.Cache.Insert(System.String,System.Object,System.Web.Caching.CacheDependency,System.DateTime,System.TimeSpan,System.Web.Caching.CacheItemPriority,System.Web.Caching.CacheItemRemovedCallback)
@@ -417,8 +417,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Inserts an object into the <xref href=&quot;System.Web.Caching.Cache&quot;></xref> object with dependencies, expiration and priority policies, and a delegate you can use to notify your application when the inserted item is removed from the <xref uid=&quot;langword_csharp_Cache&quot; name=&quot;Cache&quot; href=&quot;&quot;></xref>."
-  remarks: "This method will overwrite an existing `Cache` item with the same `key` parameter.       You cannot set both the `absoluteExpiration` and `slidingExpiration` parameters. If you intend the cache item to expire at a specific time, you set the `absoluteExpiration` parameter to the specific time, and the `slidingExpiration` parameter to <xref:System.Web.Caching.Cache.NoSlidingExpiration>.       If you intend the cache item to expire after a certain amount of time has passed since the last access to the item, you set the `slidingExpiration` parameter to the expiration interval, and the `absoluteExpiration` parameter to <xref:System.Web.Caching.Cache.NoAbsoluteExpiration>."
+  summary: "将对象插入<xref href=&quot;System.Web.Caching.Cache&quot;></xref>对象具有依赖关系、 过期和优先级策略，以及你可以使用从删除插入的项时通知你的应用程序一个委托<xref uid=&quot;langword_csharp_Cache&quot; name=&quot;Cache&quot; href=&quot;&quot;> </xref>。"
+  remarks: "此方法将覆盖现有`Cache`项具有相同`key`参数。       不能同时设置`absoluteExpiration`和`slidingExpiration`参数。 如果你想要在特定时间过期的缓存项，则设置`absoluteExpiration`到特定的时间，参数和`slidingExpiration`到<xref:System.Web.Caching.Cache.NoSlidingExpiration>。</xref:System.Web.Caching.Cache.NoSlidingExpiration>参数       如果你想的缓存项在一段时间后过期传递自上次访问该项，则设置`slidingExpiration`过期时间间隔，参数和`absoluteExpiration`到<xref:System.Web.Caching.Cache.NoAbsoluteExpiration>。</xref:System.Web.Caching.Cache.NoAbsoluteExpiration>参数"
   example:
   - "The following example demonstrates how to assign an item high priority when you insert it into your application's `Cache` object.  \n  \n> [!NOTE]\n>  For more information about how to use this method with the <xref:System.Web.Caching.CacheItemRemovedCallback> delegate, see [How to: Notify an Application When an Item Is Removed from the Cache](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[Classic Cache.Insert3 Example#1](~/add/codesnippet/csharp/50cb7857-3a5b-41d1-859e-_1.cs)]\n [!code-vb[Classic Cache.Insert3 Example#1](~/add/codesnippet/visualbasic/50cb7857-3a5b-41d1-859e-_1.vb)]"
   syntax:
@@ -426,25 +426,25 @@ items:
     parameters:
     - id: key
       type: System.String
-      description: "The cache key used to reference the object."
+      description: "用来引用该对象的缓存密钥。"
     - id: value
       type: System.Object
-      description: "The object to be inserted in the cache."
+      description: "要将其插入缓存中的对象。"
     - id: dependencies
       type: System.Web.Caching.CacheDependency
-      description: "The file or cache key dependencies for the item. When any dependency changes, the object becomes invalid and is removed from the cache. If there are no dependencies, this parameter contains <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "文件或缓存关键的依存关系项。 当任何依赖项更改时，对象将变为无效，并且从缓存中删除。 如果没有依赖关系，此参数将包含<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
     - id: absoluteExpiration
       type: System.DateTime
-      description: "The time at which the inserted object expires and is removed from the cache. To avoid possible issues with local time such as changes from standard time to daylight saving time, use <xref:System.DateTime.UtcNow*> rather than <xref:System.DateTime.Now*> for this parameter value. If you are using absolute expiration, the `slidingExpiration` parameter must be <xref href=&quot;System.Web.Caching.Cache.NoSlidingExpiration&quot;></xref>."
+      description: "插入的对象到期，从缓存中删除时间。 若要避免如将从标准时间更改为夏时制的本地时间可能存在的问题，请使用<> *1> 而非<> *1> 作为此参数值。 如果你使用的绝对过期`slidingExpiration`参数必须是<xref href=&quot;System.Web.Caching.Cache.NoSlidingExpiration&quot;> </xref>。"
     - id: slidingExpiration
       type: System.TimeSpan
-      description: "The interval between the time the inserted object was last accessed and the time at which that object expires. If this value is the equivalent of 20 minutes, the object will expire and be removed from the cache 20 minutes after it was last accessed. If you are using sliding expiration, the `absoluteExpiration` parameter must be <xref href=&quot;System.Web.Caching.Cache.NoAbsoluteExpiration&quot;></xref>."
+      description: "对象的到期时间和上次访问所插入的对象的时间之间的间隔。 如果此值为 20 分钟的等效项，该对象将过期，并从缓存 20 分钟上次访问后被删除。 如果使用滑动过期`absoluteExpiration`参数必须是<xref href=&quot;System.Web.Caching.Cache.NoAbsoluteExpiration&quot;> </xref>。"
     - id: priority
       type: System.Web.Caching.CacheItemPriority
-      description: "The cost of the object relative to other items stored in the cache, as expressed by the <xref href=&quot;System.Web.Caching.CacheItemPriority&quot;></xref> enumeration. This value is used by the cache when it evicts objects; objects with a lower cost are removed from the cache before objects with a higher cost."
+      description: "相对于存储在缓存中，为表示由其他项的对象的成本<xref href=&quot;System.Web.Caching.CacheItemPriority&quot;></xref>枚举。 它逐出对象; 时，缓存使用此值从成本较高的对象之前缓存中删除开销较低的对象。"
     - id: onRemoveCallback
       type: System.Web.Caching.CacheItemRemovedCallback
-      description: "A delegate that, if provided, will be called when an object is removed from the cache. You can use this to notify applications when their objects are deleted from the cache."
+      description: "调用的委托，如果提供，将从缓存中移除对象时。 你可以使用此通知应用程序，从缓存删除其对象时。"
   overload: System.Web.Caching.Cache.Insert*
   exceptions:
   - type: System.ArgumentNullException
@@ -452,10 +452,10 @@ items:
     description: "The <code>key</code> or <code>value</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "You set the <code>slidingExpiration</code> parameter to less than <xref uid=&quot;langword_csharp_TimeSpan.Zero&quot; name=&quot;TimeSpan.Zero&quot; href=&quot;&quot;></xref> or the equivalent of more than one year."
+    description: "你设置<code> slidingExpiration </code>参数小于<xref uid=&quot;langword_csharp_TimeSpan.Zero&quot; name=&quot;TimeSpan.Zero&quot; href=&quot;&quot;></xref>或超过一年的等效项。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>absoluteExpiration</code> and <code>slidingExpiration</code> parameters are both set for the item you are trying to add to the <xref uid=&quot;langword_csharp_Cache&quot; name=&quot;Cache&quot; href=&quot;&quot;></xref>."
+    description: "<code> absoluteExpiration </code>和<code> slidingExpiration </code>参数都设置为您尝试将添加到项目<xref uid=&quot;langword_csharp_Cache&quot; name=&quot;Cache&quot; href=&quot;&quot;> </xref>。"
   platform:
   - net462
 - uid: System.Web.Caching.Cache.Item(System.String)
@@ -470,8 +470,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Gets or sets the cache item at the specified key."
-  remarks: "You can use this property to retrieve the value of a specified cache item, or to add an item and a key for it to the cache. Adding a cache item using the Item property is equivalent to calling the <xref:System.Web.Caching.Cache.Insert%2A?displayProperty=fullName> method."
+  summary: "获取或设置指定键处的缓存项。"
+  remarks: "若要检索的值指定的缓存项，或将注册表项和密钥为其添加到缓存，你可以使用此属性。 添加缓存项使用 Item 属性等效于调用<xref:System.Web.Caching.Cache.Insert%2A?displayProperty=fullName>方法。</xref:System.Web.Caching.Cache.Insert%2A?displayProperty=fullName>"
   example:
   - "The following example uses the `Item` property to retrieve the value of a cached object associated with the `Key1` key. It then uses the <xref:System.Web.HttpResponse.Write%2A?displayProperty=fullName> method to write the value and introductory text and the B HTML element to a Web Forms page.  \n  \n [!code-cs[System.Web.Caching Examples#5](~/add/codesnippet/csharp/p-system.web.caching.cac_2_1.aspx)]\n [!code-vb[System.Web.Caching Examples#5](~/add/codesnippet/visualbasic/p-system.web.caching.cac_2_1.aspx)]  \n  \n The following example demonstrates using this property to insert the value of a text box into the cache.  \n  \n [!code-vb[Classic Cache.this Example#2](~/add/codesnippet/visualbasic/p-system.web.caching.cac_2_2.vb)]\n [!code-cs[Classic Cache.this Example#2](~/add/codesnippet/csharp/p-system.web.caching.cac_2_2.cs)]"
   syntax:
@@ -479,10 +479,10 @@ items:
     parameters:
     - id: key
       type: System.String
-      description: "A <xref:System.String> object that represents the key for the cache item."
+      description: "A<xref:System.String>表示缓存项的键的对象。</xref:System.String>"
     return:
       type: System.Object
-      description: "The specified cache item."
+      description: "指定的缓存项中。"
   overload: System.Web.Caching.Cache.Item*
   exceptions: []
   platform:
@@ -499,15 +499,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Used in the <code>absoluteExpiration</code> parameter in an <xref:System.Web.Caching.Cache.Insert*> method call to indicate the item should never expire. This field is read-only."
-  remarks: "When used, this field sets the `absoluteExpiration` parameter equal to <xref:System.DateTime>, which is a constant representing the largest possible `DateTime` value, 12/31/9999 11:59:59 PM."
+  summary: "在中使用<code> absoluteExpiration </code>中的参数<xref:System.Web.Caching.Cache.Insert*>方法调用，以指示项应永远不会过期。</xref:System.Web.Caching.Cache.Insert*> 此字段为只读的。"
+  remarks: "使用时，此字段设置`absoluteExpiration`参数等于<xref:System.DateTime>，后者是一个常量，表示最大可能`DateTime`值，12/31/9999 11:59:59 PM.</xref:System.DateTime>"
   example:
   - "The following example demonstrates how to use the `NoAbsoluteExpiration` field to disable absolute expirations when inserting an item in the `Cache`.  \n  \n [!code-vb[Classic Cache.NoAbsoluteExpiration Example#1](~/add/codesnippet/visualbasic/f-system.web.caching.cac_1_1.vb)]\n [!code-cs[Classic Cache.NoAbsoluteExpiration Example#1](~/add/codesnippet/csharp/f-system.web.caching.cac_1_1.cs)]"
   syntax:
     content: public static readonly DateTime NoAbsoluteExpiration;
     return:
       type: System.DateTime
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -523,15 +523,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Used as the <code>slidingExpiration</code> parameter in an <xref:System.Web.Caching.Cache.Insert*> or <xref:System.Web.Caching.Cache.Add*> method call to disable sliding expirations. This field is read-only."
-  remarks: "When used, this field sets the `slidingExpiration` parameter to the <xref:System.TimeSpan?displayProperty=fullName> field, which has a constant value of zero. The cached item expires in accordance with the `absoluteExpiration` parameter associated with the `Insert` or `Add` method call."
+  summary: "用作<code> slidingExpiration </code>中的参数<> *1> 或<> *1> 方法调用，以禁用滑动过期时间。 此字段为只读的。"
+  remarks: "使用时，此字段设置`slidingExpiration`参数<xref:System.TimeSpan?displayProperty=fullName>字段，常量值为零。</xref:System.TimeSpan?displayProperty=fullName> 根据过期的缓存的项`absoluteExpiration`与关联参数`Insert`或`Add`方法调用。"
   example:
   - "The following example demonstrates how to use the Insert method to add an item to the <xref:System.Web.Caching.Cache> object using the `NoSlidingExpiration` field.  \n  \n [!code-vb[Classic Cache.NoSlidingExpiration Example#1](~/add/codesnippet/visualbasic/f-system.web.caching.cac_0_1.vb)]\n [!code-cs[Classic Cache.NoSlidingExpiration Example#1](~/add/codesnippet/csharp/f-system.web.caching.cac_0_1.cs)]"
   syntax:
     content: public static readonly TimeSpan NoSlidingExpiration;
     return:
       type: System.TimeSpan
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -547,7 +547,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Removes the specified item from the application&quot;s <xref href=&quot;System.Web.Caching.Cache&quot;></xref> object."
+  summary: "从应用程序的中移除指定的项<xref href=&quot;System.Web.Caching.Cache&quot;></xref>对象。"
   remarks: ''
   example:
   - "The following example creates a `RemoveItemFromCache` method. When this method is called, it uses the <xref:System.Web.Caching.Cache.Item%2A> property to check whether the cache contains an object that is associated with a `Key1` key value. If it does, the `Remove` method is called to remove the object.  \n  \n [!code-cs[System.Web.Caching Examples#4](~/add/codesnippet/csharp/m-system.web.caching.cac_9_1.aspx)]\n [!code-vb[System.Web.Caching Examples#4](~/add/codesnippet/visualbasic/m-system.web.caching.cac_9_1.aspx)]"
@@ -556,10 +556,10 @@ items:
     parameters:
     - id: key
       type: System.String
-      description: "A <xref:System.String> identifier for the cache item to remove."
+      description: "A<xref:System.String>要移除的缓存项的标识符。</xref:System.String>"
     return:
       type: System.Object
-      description: "The item removed from the <xref uid=&quot;langword_csharp_Cache&quot; name=&quot;Cache&quot; href=&quot;&quot;></xref>. If the value in the key parameter is not found, returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "从其中移除的项<xref uid=&quot;langword_csharp_Cache&quot; name=&quot;Cache&quot; href=&quot;&quot;> </xref>。 如果未找到键参数中的值，返回<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.Caching.Cache.Remove*
   exceptions: []
   platform:
@@ -577,13 +577,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Returns an enumerator that can iterate through the <xref href=&quot;System.Web.Caching.Cache&quot;></xref> object collection."
+  summary: "返回可循环访问的枚举<xref href=&quot;System.Web.Caching.Cache&quot;></xref>对象集合。"
   syntax:
     content: System.Collections.IEnumerator IEnumerable.GetEnumerator ();
     parameters: []
     return:
       type: System.Collections.IEnumerator
-      description: "An enumerator that can iterate through the <xref href=&quot;System.Web.Caching.Cache&quot;></xref> object collection."
+      description: "可循环访问的枚举<xref href=&quot;System.Web.Caching.Cache&quot;></xref>对象集合。"
   overload: System.Web.Caching.Cache.System#Collections#IEnumerable#GetEnumerator*
   exceptions: []
   platform:
