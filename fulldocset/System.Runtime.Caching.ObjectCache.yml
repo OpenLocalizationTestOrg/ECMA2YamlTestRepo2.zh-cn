@@ -36,8 +36,8 @@ items:
   nameWithType: ObjectCache
   fullName: System.Runtime.Caching.ObjectCache
   type: Class
-  summary: "Represents an object cache and provides the base methods and properties for accessing the object cache."
-  remarks: "The ObjectCache type is the primary type for the in-memory object cache. To develop a custom cache implementation, you derive from the ObjectCache class.      > [!NOTE] >  The ObjectCache class is new as of the [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)].       The built-in <xref:System.Runtime.Caching.MemoryCache> class derives from the ObjectCache class. The <xref:System.Runtime.Caching.MemoryCache> class is the only concrete object cache implementation in the [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)] that derives from the ObjectCache class."
+  summary: "表示对象缓存并提供用于访问对象缓存基方法和属性。"
+  remarks: "ObjectCache 类型是内存中对象缓存的主类型。 若要开发的自定义缓存实现，可以从 ObjectCache 类派生。      1> [!NOTE]&1;> ObjectCache 类是在新[!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)]。       内置<xref:System.Runtime.Caching.MemoryCache>类派生自 ObjectCache 类。</xref:System.Runtime.Caching.MemoryCache> <xref:System.Runtime.Caching.MemoryCache>类是在仅具体对象缓存实现[!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)]派生自 ObjectCache 类</xref:System.Runtime.Caching.MemoryCache>"
   syntax:
     content: 'public abstract class ObjectCache : System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string,object>>'
   inheritance:
@@ -59,7 +59,7 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "Called from constructors in derived classes in order to initialize the <xref href=&quot;System.Runtime.Caching.ObjectCache&quot;></xref> class."
+  summary: "从派生类中的构造函数调用以初始化<xref href=&quot;System.Runtime.Caching.ObjectCache&quot;></xref>类。"
   syntax:
     content: protected ObjectCache ();
     parameters: []
@@ -79,20 +79,20 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "When overridden in a derived class, tries to insert a cache entry into the cache as a <xref href=&quot;System.Runtime.Caching.CacheItem&quot;></xref> instance, and adds details about how the entry should be evicted."
-  remarks: "The <xref:System.Runtime.Caching.ObjectCache.Add%2A> method overloads are virtual (not abstract) on the <xref:System.Runtime.Caching.ObjectCache> class, because the <xref:System.Runtime.Caching.ObjectCache.Add%2A> method internally calls <xref:System.Runtime.Caching.ObjectCache.AddOrGetExisting%2A>. This reduces the number of method overloads that a cache implementer has to provide. If a cache implementation does not require any special behavior for the <xref:System.Runtime.Caching.ObjectCache.Add%2A> method, it can just implement the <xref:System.Runtime.Caching.ObjectCache.AddOrGetExisting%2A> method overloads."
+  summary: "当在派生类中重写，尝试插入某个缓存项插入缓存作为<xref href=&quot;System.Runtime.Caching.CacheItem&quot;></xref>实例，并添加有关如何逐出该项的详细信息。"
+  remarks: "<xref:System.Runtime.Caching.ObjectCache.Add%2A>方法重载都是虚拟的 （不是抽象的） 上<xref:System.Runtime.Caching.ObjectCache>类，因为<xref:System.Runtime.Caching.ObjectCache.Add%2A>方法内部调用<xref:System.Runtime.Caching.ObjectCache.AddOrGetExisting%2A>.</xref:System.Runtime.Caching.ObjectCache.AddOrGetExisting%2A> </xref:System.Runtime.Caching.ObjectCache.Add%2A> </xref:System.Runtime.Caching.ObjectCache> </xref:System.Runtime.Caching.ObjectCache.Add%2A> 这样可以减少缓存实施者必须提供的方法重载。 如果缓存实现不需要任何特殊行为<xref:System.Runtime.Caching.ObjectCache.Add%2A>方法，则可以只实现<xref:System.Runtime.Caching.ObjectCache.AddOrGetExisting%2A>方法重载。</xref:System.Runtime.Caching.ObjectCache.AddOrGetExisting%2A> </xref:System.Runtime.Caching.ObjectCache.Add%2A>"
   syntax:
     content: public virtual bool Add (System.Runtime.Caching.CacheItem item, System.Runtime.Caching.CacheItemPolicy policy);
     parameters:
     - id: item
       type: System.Runtime.Caching.CacheItem
-      description: "The object to add."
+      description: "要添加的对象。"
     - id: policy
       type: System.Runtime.Caching.CacheItemPolicy
-      description: "An object that contains eviction details for the cache entry. This object provides more options for eviction than a simple absolute expiration."
+      description: "包含的缓存项的逐出详细信息的对象。 此对象提供比简单绝对过期的逐出的更多选项。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if insertion succeeded, or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if there is an already an entry in the cache that has the same key as <code>item</code>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果插入成功，或<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>如果没有已缓存中具有与相同的密钥中的条目<code> item </code>。"
   overload: System.Runtime.Caching.ObjectCache.Add*
   exceptions: []
   platform:
@@ -109,26 +109,26 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "When overridden in a derived class, inserts a cache entry into the cache without overwriting any existing cache entry."
-  remarks: "The <xref:System.Runtime.Caching.ObjectCache.Add%2A> method overloads are virtual (not abstract) on the <xref:System.Runtime.Caching.ObjectCache> class, because the <xref:System.Runtime.Caching.ObjectCache.Add%2A> method internally calls <xref:System.Runtime.Caching.ObjectCache.AddOrGetExisting%2A>. This reduces the number of method overloads that a cache implementer has to provide. If a cache implementation does not require any special behavior for the <xref:System.Runtime.Caching.ObjectCache.Add%2A> method, it can just implement the <xref:System.Runtime.Caching.ObjectCache.AddOrGetExisting%2A> method overloads."
+  summary: "当在派生类中重写，而不会覆盖任何现有的缓存项插入缓存项插入缓存。"
+  remarks: "<xref:System.Runtime.Caching.ObjectCache.Add%2A>方法重载都是虚拟的 （不是抽象的） 上<xref:System.Runtime.Caching.ObjectCache>类，因为<xref:System.Runtime.Caching.ObjectCache.Add%2A>方法内部调用<xref:System.Runtime.Caching.ObjectCache.AddOrGetExisting%2A>.</xref:System.Runtime.Caching.ObjectCache.AddOrGetExisting%2A> </xref:System.Runtime.Caching.ObjectCache.Add%2A> </xref:System.Runtime.Caching.ObjectCache> </xref:System.Runtime.Caching.ObjectCache.Add%2A> 这样可以减少缓存实施者必须提供的方法重载。 如果缓存实现不需要任何特殊行为<xref:System.Runtime.Caching.ObjectCache.Add%2A>方法，则可以只实现<xref:System.Runtime.Caching.ObjectCache.AddOrGetExisting%2A>方法重载。</xref:System.Runtime.Caching.ObjectCache.AddOrGetExisting%2A> </xref:System.Runtime.Caching.ObjectCache.Add%2A>"
   syntax:
     content: public virtual bool Add (string key, object value, DateTimeOffset absoluteExpiration, string regionName = null);
     parameters:
     - id: key
       type: System.String
-      description: "A unique identifier for the cache entry."
+      description: "缓存项的唯一标识符。"
     - id: value
       type: System.Object
-      description: "The object to insert."
+      description: "要插入的对象。"
     - id: absoluteExpiration
       type: System.DateTimeOffset
-      description: "The fixed date and time at which the cache entry will expire. This parameter is required when the <xref:System.Runtime.Caching.ObjectCache.Add*> method is called."
+      description: "固定的日期和时间将过期的缓存项。 时，此参数是必需<xref:System.Runtime.Caching.ObjectCache.Add*>调用方法。</xref:System.Runtime.Caching.ObjectCache.Add*>"
     - id: regionName
       type: System.String
-      description: "Optional. A named region in the cache to which the cache entry can be added, if regions are implemented. Because regions are not implemented in [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)], the default value is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "可选。 缓存的缓存可以添加条目，如果实现了区域中的命名的区域。 因为未实现区域[!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)]，默认值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if insertion succeeded, or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if there is an already an entry in the cache that has the same key as <code>key</code>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果插入成功，或<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>如果没有已缓存中具有与相同的密钥中的条目<code> key </code>。"
   overload: System.Runtime.Caching.ObjectCache.Add*
   exceptions: []
   platform:
@@ -145,26 +145,26 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "When overridden in a derived class, inserts a cache entry into the cache, specifying information about how the entry will be evicted."
-  remarks: "The <xref:System.Runtime.Caching.ObjectCache.Add%2A> method overloads are virtual (not abstract) on the <xref:System.Runtime.Caching.ObjectCache> class, because the <xref:System.Runtime.Caching.ObjectCache.Add%2A> method internally calls <xref:System.Runtime.Caching.ObjectCache.AddOrGetExisting%2A>. This reduces the number of method overloads that a cache implementer has to provide. If a cache implementation does not require any special behavior for the <xref:System.Runtime.Caching.ObjectCache.Add%2A> method, it can just implement the <xref:System.Runtime.Caching.ObjectCache.AddOrGetExisting%2A> method overloads."
+  summary: "当在派生类中重写，将插入到缓存中，某个缓存项，指定有关如何逐出项的信息。"
+  remarks: "<xref:System.Runtime.Caching.ObjectCache.Add%2A>方法重载都是虚拟的 （不是抽象的） 上<xref:System.Runtime.Caching.ObjectCache>类，因为<xref:System.Runtime.Caching.ObjectCache.Add%2A>方法内部调用<xref:System.Runtime.Caching.ObjectCache.AddOrGetExisting%2A>.</xref:System.Runtime.Caching.ObjectCache.AddOrGetExisting%2A> </xref:System.Runtime.Caching.ObjectCache.Add%2A> </xref:System.Runtime.Caching.ObjectCache> </xref:System.Runtime.Caching.ObjectCache.Add%2A> 这样可以减少缓存实施者必须提供的方法重载。 如果缓存实现不需要任何特殊行为<xref:System.Runtime.Caching.ObjectCache.Add%2A>方法，则可以只实现<xref:System.Runtime.Caching.ObjectCache.AddOrGetExisting%2A>方法重载。</xref:System.Runtime.Caching.ObjectCache.AddOrGetExisting%2A> </xref:System.Runtime.Caching.ObjectCache.Add%2A>"
   syntax:
     content: public virtual bool Add (string key, object value, System.Runtime.Caching.CacheItemPolicy policy, string regionName = null);
     parameters:
     - id: key
       type: System.String
-      description: "A unique identifier for the cache entry."
+      description: "缓存项的唯一标识符。"
     - id: value
       type: System.Object
-      description: "The object to insert."
+      description: "要插入的对象。"
     - id: policy
       type: System.Runtime.Caching.CacheItemPolicy
-      description: "An object that contains eviction details for the cache entry. This object provides more options for eviction than a simple absolute expiration."
+      description: "包含的缓存项的逐出详细信息的对象。 此对象提供比简单绝对过期的逐出的更多选项。"
     - id: regionName
       type: System.String
-      description: "Optional. A named region in the cache to which the cache entry can be added, if regions are implemented. The default value for the optional parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "可选。 缓存的缓存可以添加条目，如果实现了区域中的命名的区域。 可选参数的默认值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the insertion try succeeds, or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if there is an already an entry in the cache with the same key as <code>key</code>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果尝试插入成功，或<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>如果没有已缓存的与相同的密钥中的条目<code> key </code>。"
   overload: System.Runtime.Caching.ObjectCache.Add*
   exceptions: []
   platform:
@@ -181,19 +181,19 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "When overridden in a derived class, inserts the specified <xref href=&quot;System.Runtime.Caching.CacheItem&quot;></xref> object into the cache, specifying information about how the entry will be evicted."
+  summary: "当在派生类中重写，将指定<xref href=&quot;System.Runtime.Caching.CacheItem&quot;></xref>到缓存中，指定有关如何逐出项信息的对象。"
   syntax:
     content: public abstract System.Runtime.Caching.CacheItem AddOrGetExisting (System.Runtime.Caching.CacheItem value, System.Runtime.Caching.CacheItemPolicy policy);
     parameters:
     - id: value
       type: System.Runtime.Caching.CacheItem
-      description: "The object to insert."
+      description: "要插入的对象。"
     - id: policy
       type: System.Runtime.Caching.CacheItemPolicy
-      description: "An object that contains eviction details for the cache entry. This object provides more options for eviction than a simple absolute expiration."
+      description: "包含的缓存项的逐出详细信息的对象。 此对象提供比简单绝对过期的逐出的更多选项。"
     return:
       type: System.Runtime.Caching.CacheItem
-      description: "If a cache entry with the same key exists, the specified cache entry; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "如果已存在具有相同键的缓存项，则为指定的缓存项;否则为<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.Runtime.Caching.ObjectCache.AddOrGetExisting*
   exceptions: []
   platform:
@@ -210,26 +210,26 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "When overridden in a derived class, inserts a cache entry into the cache, by using a key, an object for the cache entry, an absolute expiration value, and an optional region to add the cache into."
-  remarks: "This AddOrGetExisting method overload returns an object value, not a <xref:System.Runtime.Caching.CacheItem> object."
+  summary: "当在派生类中重写，缓存将某个项插入到缓存中，使用密钥、 缓存条目、 绝对过期值和一个可选的区域的对象添加到缓存。"
+  remarks: "此 AddOrGetExisting 方法重载返回一个对象值，而不<xref:System.Runtime.Caching.CacheItem>对象。</xref:System.Runtime.Caching.CacheItem>"
   syntax:
     content: public abstract object AddOrGetExisting (string key, object value, DateTimeOffset absoluteExpiration, string regionName = null);
     parameters:
     - id: key
       type: System.String
-      description: "A unique identifier for the cache entry."
+      description: "缓存项的唯一标识符。"
     - id: value
       type: System.Object
-      description: "The object to insert."
+      description: "要插入的对象。"
     - id: absoluteExpiration
       type: System.DateTimeOffset
-      description: "The fixed date and time at which the cache entry will expire."
+      description: "固定的日期和时间将过期的缓存项。"
     - id: regionName
       type: System.String
-      description: "Optional. A named region in the cache to which the cache entry can be added, if regions are implemented. The default value for the optional parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "可选。 缓存的缓存可以添加条目，如果实现了区域中的命名的区域。 可选参数的默认值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
     return:
       type: System.Object
-      description: "If a cache entry with the same key exists, the specified cache entry&quot;s value; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "如果已存在具有相同键的缓存项，指定的缓存条目的值;否则为<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.Runtime.Caching.ObjectCache.AddOrGetExisting*
   exceptions: []
   platform:
@@ -246,26 +246,26 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "When overridden in a derived class, inserts a cache entry into the cache, specifying a key and a value for the cache entry, and information about how the entry will be evicted."
-  remarks: "The AddOrGetExisting method returns an object value, not a <xref:System.Runtime.Caching.CacheItem> object."
+  summary: "当在派生类中重写，将插入缓存项，同时指定一个键和值的缓存项，以及有关如何逐出项信息。"
+  remarks: "AddOrGetExisting 方法返回一个对象值，而不<xref:System.Runtime.Caching.CacheItem>对象。</xref:System.Runtime.Caching.CacheItem>"
   syntax:
     content: public abstract object AddOrGetExisting (string key, object value, System.Runtime.Caching.CacheItemPolicy policy, string regionName = null);
     parameters:
     - id: key
       type: System.String
-      description: "A unique identifier for the cache entry."
+      description: "缓存项的唯一标识符。"
     - id: value
       type: System.Object
-      description: "The object to insert."
+      description: "要插入的对象。"
     - id: policy
       type: System.Runtime.Caching.CacheItemPolicy
-      description: "An object that contains eviction details for the cache entry. This object provides more options for eviction than a simple absolute expiration."
+      description: "包含的缓存项的逐出详细信息的对象。 此对象提供比简单绝对过期的逐出的更多选项。"
     - id: regionName
       type: System.String
-      description: "Optional. A named region in the cache to which the cache entry can be added, if regions are implemented. The default value for the optional parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "可选。 缓存的缓存可以添加条目，如果实现了区域中的命名的区域。 可选参数的默认值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
     return:
       type: System.Object
-      description: "If a cache entry with the same key exists, the specified cache entry&quot;s value; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "如果已存在具有相同键的缓存项，指定的缓存条目的值;否则为<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.Runtime.Caching.ObjectCache.AddOrGetExisting*
   exceptions: []
   platform:
@@ -282,19 +282,19 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "When overridden in a derived class, checks whether the cache entry already exists in the cache."
+  summary: "当在派生类中重写，检查是否已缓存项将在缓存中存在。"
   syntax:
     content: public abstract bool Contains (string key, string regionName = null);
     parameters:
     - id: key
       type: System.String
-      description: "A unique identifier for the cache entry."
+      description: "缓存项的唯一标识符。"
     - id: regionName
       type: System.String
-      description: "Optional. A named region in the cache where the cache can be found, if regions are implemented. The default value for the optional parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "可选。 缓存可找到的位置，如果实现了区域缓存中的命名的区域。 可选参数的默认值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the cache contains a cache entry with the same key value as <code>key</code>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果缓存中包含具有相同的密钥值的缓存项<code> key </code>; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Runtime.Caching.ObjectCache.Contains*
   exceptions: []
   platform:
@@ -311,20 +311,20 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "When overridden in a derived class, creates a <xref href=&quot;System.Runtime.Caching.CacheEntryChangeMonitor&quot;></xref> object that can trigger events in response to changes to specified cache entries."
-  remarks: "When a derived <xref:System.Runtime.Caching.ObjectCache> class overrides the base CreateCacheEntryChangeMonitor method, the cache implementation must create a <xref:System.Runtime.Caching.CacheEntryChangeMonitor> object. This specialized change monitor notifies callers when there are changes to the cache entries that are specified in the `keys` parameter. For example, if a monitored item in the `keys` parameter is updated or removed from the cache, the change monitor created by this method triggers an event.       If a cache implementation supports named cache regions, a string value can be specified as the `regionName` parameter. Otherwise, the parameter defaults to `null`.      > [!NOTE] >  Not all cache implementations support cache-entry change monitors. To determine whether your cache implementation supports <xref:System.Runtime.Caching.CacheEntryChangeMonitor> objects, see the documentation for the specific cache implementation."
+  summary: "当在派生类中重写，将创建<xref href=&quot;System.Runtime.Caching.CacheEntryChangeMonitor&quot;></xref>指定可触发事件以响应更改的对象的缓存条目。"
+  remarks: "当派生<xref:System.Runtime.Caching.ObjectCache>类重写基 CreateCacheEntryChangeMonitor 方法，必须创建的缓存实现<xref:System.Runtime.Caching.CacheEntryChangeMonitor>对象。</xref:System.Runtime.Caching.CacheEntryChangeMonitor> </xref:System.Runtime.Caching.ObjectCache> 此专用的更改监视器中指定的缓存项更改时通知调用方`keys`参数。 例如，如果在受监视项目`keys`更新或从缓存中删除参数时，通过此方法创建的更改监视器触发的事件。       一个字符串值，如果缓存实现支持命名的缓存区域，可以指定为`regionName`参数。 否则，该参数默认为`null`。      1> [!NOTE]&1;> 并非所有的缓存实现支持缓存条目更改监视器。 若要确定是否支持你的缓存实现<xref:System.Runtime.Caching.CacheEntryChangeMonitor>对象，请参阅特定的缓存实现的文档。</xref:System.Runtime.Caching.CacheEntryChangeMonitor>"
   syntax:
     content: public abstract System.Runtime.Caching.CacheEntryChangeMonitor CreateCacheEntryChangeMonitor (System.Collections.Generic.IEnumerable<string> keys, string regionName = null);
     parameters:
     - id: keys
       type: System.Collections.Generic.IEnumerable{System.String}
-      description: "The unique identifiers for cache entries to monitor."
+      description: "要监视缓存项的唯一标识符。"
     - id: regionName
       type: System.String
-      description: "Optional. A named region in the cache where the cache keys in the `keys` parameter exist, if regions are implemented. The default value for the optional parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "可选。 在其中缓存密钥存储在缓存中的命名的区域`keys`参数存在，如果实现了区域。 可选参数的默认值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
     return:
       type: System.Runtime.Caching.CacheEntryChangeMonitor
-      description: "A change monitor that monitors cache entries in the cache."
+      description: "用于监视缓存中的缓存条目的更改监视器。"
   overload: System.Runtime.Caching.ObjectCache.CreateCacheEntryChangeMonitor*
   exceptions: []
   platform:
@@ -341,12 +341,12 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "When overridden in a derived class, gets a description of the features that a cache implementation provides."
+  summary: "当在派生类中重写，获取的缓存实现所提供的功能的说明。"
   syntax:
     content: public abstract System.Runtime.Caching.DefaultCacheCapabilities DefaultCacheCapabilities { get; }
     return:
       type: System.Runtime.Caching.DefaultCacheCapabilities
-      description: "A bitwise combination of flags that indicate the default capabilities of a cache implementation."
+      description: "按位组合，这些标志指示缓存实现的默认功能。"
   overload: System.Runtime.Caching.ObjectCache.DefaultCacheCapabilities*
   exceptions: []
   platform:
@@ -363,19 +363,19 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "When overridden in a derived class, gets the specified cache entry from the cache as an object."
+  summary: "当在派生类中重写，可指定的缓存条目获取从缓存，作为对象。"
   syntax:
     content: public abstract object Get (string key, string regionName = null);
     parameters:
     - id: key
       type: System.String
-      description: "A unique identifier for the cache entry to get."
+      description: "要获取的缓存项唯一标识符。"
     - id: regionName
       type: System.String
-      description: "Optional. A named region in the cache to which the cache entry was added, if regions are implemented. The default value for the optional parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "可选。 缓存的缓存项添加，如果实现了区域中的命名的区域。 可选参数的默认值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
     return:
       type: System.Object
-      description: "The cache entry that is identified by <code>key</code>."
+      description: "由标识的缓存项<code> key </code>。"
   overload: System.Runtime.Caching.ObjectCache.Get*
   exceptions: []
   platform:
@@ -392,20 +392,20 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "When overridden in a derived class, gets the specified cache entry from the cache as a <xref href=&quot;System.Runtime.Caching.CacheItem&quot;></xref> instance."
-  remarks: "This method overload exists because some cache implementations might extend the <xref:System.Runtime.Caching.CacheItem> class. In that case, the <xref:System.Runtime.Caching.ObjectCache.Get%28System.String%2CSystem.String%29> method overload will not necessarily return all the information about cached data. However, the GetCacheItem method overload enables custom caches to return more than just the cache value.       The GetCacheItem method is like the <xref:System.Runtime.Caching.ObjectCache.Get%28System.String%2CSystem.String%29> method, except that the GetCacheItem method returns return the cache entry as a <xref:System.Runtime.Caching.CacheItem> instance."
+  summary: "当在派生类中重写，获取指定的缓存条目从作为缓存<xref href=&quot;System.Runtime.Caching.CacheItem&quot;></xref>实例。"
+  remarks: "此方法重载存在由于某些缓存实现可能会延长<xref:System.Runtime.Caching.CacheItem>类。</xref:System.Runtime.Caching.CacheItem> 在这种情况下，<xref:System.Runtime.Caching.ObjectCache.Get%28System.String%2CSystem.String%29>方法重载将不一定返回缓存的数据有关的所有信息。</xref:System.Runtime.Caching.ObjectCache.Get%28System.String%2CSystem.String%29> 但是，GetCacheItem 方法重载，可以返回多个仅缓存值的自定义缓存。       GetCacheItem 方法就像是<xref:System.Runtime.Caching.ObjectCache.Get%28System.String%2CSystem.String%29>方法，只不过 GetCacheItem 方法返回缓存项作为返回<xref:System.Runtime.Caching.CacheItem>实例。</xref:System.Runtime.Caching.CacheItem> </xref:System.Runtime.Caching.ObjectCache.Get%28System.String%2CSystem.String%29>"
   syntax:
     content: public abstract System.Runtime.Caching.CacheItem GetCacheItem (string key, string regionName = null);
     parameters:
     - id: key
       type: System.String
-      description: "A unique identifier for the cache entry to get."
+      description: "要获取的缓存项唯一标识符。"
     - id: regionName
       type: System.String
-      description: "Optional. A named region in the cache to which the cache was added, if regions are implemented. Because regions are not implemented in [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)], the default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "可选。 缓存到已添加的缓存，如果实现了区域中的命名的区域。 因为未实现区域[!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)]，默认值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
     return:
       type: System.Runtime.Caching.CacheItem
-      description: "The cache entry that is identified by <code>key</code>."
+      description: "由标识的缓存项<code> key </code>。"
   overload: System.Runtime.Caching.ObjectCache.GetCacheItem*
   exceptions: []
   platform:
@@ -422,16 +422,16 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "When overridden in a derived class, gets the total number of cache entries in the cache."
+  summary: "当在派生类中重写，则在缓存中获取的缓存条目的总数。"
   syntax:
     content: public abstract long GetCount (string regionName = null);
     parameters:
     - id: regionName
       type: System.String
-      description: "Optional. A named region in the cache for which the cache entry count should be computed, if regions are implemented. The default value for the optional parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "可选。 缓存应计算缓存条目计数数值的数据类型，如果实现了区域中的命名的区域。 可选参数的默认值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
     return:
       type: System.Int64
-      description: "The number of cache entries in the cache. If <code>regionName</code> is not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, the count indicates the number of entries that are in the specified cache region."
+      description: "在缓存中的缓存条目数。 如果<code> regionName </code>不<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>，计数指示不在指定的缓存区域中的条目数。"
   overload: System.Runtime.Caching.ObjectCache.GetCount*
   exceptions: []
   platform:
@@ -448,14 +448,14 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "When overridden in a derived class, creates an enumerator that can be used to iterate through a collection of cache entries."
-  remarks: "Cache implementers can override and extend this method to provide a custom means of iterating through a collection of cache entries.      > [!NOTE] >  Returning an enumerator is typically a more expensive operation than returning the entire cache entry.       This method is called by the explicit interface implementations that the <xref:System.Runtime.Caching.ObjectCache> class has for the <xref:System.Collections.IEnumerable.GetEnumerator%2A> and <xref:System.Collections.Generic.IEnumerable%601.GetEnumerator%2A> methods."
+  summary: "当在派生类中重写，创建可用于循环访问集合的缓存条目的枚举。"
+  remarks: "缓存实施者可以重写，并扩展此方法以提供自定义方法来循环访问缓存项的集合。      1> [!NOTE]&1;> 返回一个枚举器通常是比返回整个缓存条目的开销更大的操作。       调用此方法是显式接口实现，<xref:System.Runtime.Caching.ObjectCache>类具有的<xref:System.Collections.IEnumerable.GetEnumerator%2A>和<xref:System.Collections.Generic.IEnumerable%601.GetEnumerator%2A>方法。</xref:System.Collections.Generic.IEnumerable%601.GetEnumerator%2A> </xref:System.Collections.IEnumerable.GetEnumerator%2A> </xref:System.Runtime.Caching.ObjectCache>"
   syntax:
     content: protected abstract System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<string,object>> GetEnumerator ();
     parameters: []
     return:
       type: System.Collections.Generic.IEnumerator{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
-      description: "The enumerator object that provides access to the cache entries in the cache."
+      description: "提供对缓存中的缓存项的访问的枚举器对象。"
   overload: System.Runtime.Caching.ObjectCache.GetEnumerator*
   exceptions: []
   platform:
@@ -472,20 +472,20 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "When overridden in a derived class, gets a set of cache entries that correspond to the specified keys."
-  remarks: "The GetValues method overload is a performance optimization for distributed caches that support fetching multiple cache entries from the cache during a single network call.       Although a caller can pass one or more keys to the method, there is no guarantee that all keys represent entries in the cache. Therefore, the returned dictionary might contain fewer items than the number of keys that were passed to the method."
+  summary: "当在派生类中重写，获取与指定的键相对应的缓存项的一组。"
+  remarks: "GetValues 方法重载是一种性能优化的分布式缓存，支持的单个网络调用期间从缓存提取多个缓存项。       尽管调用方可以将一个或多个密钥传递给方法，但是没有所有键都表示缓存中的条目能保证。 因此，返回的字典可能包含比传递给方法的密钥数较少的项目。"
   syntax:
     content: public abstract System.Collections.Generic.IDictionary<string,object> GetValues (System.Collections.Generic.IEnumerable<string> keys, string regionName = null);
     parameters:
     - id: keys
       type: System.Collections.Generic.IEnumerable{System.String}
-      description: "A collection of unique identifiers for the cache entries to get."
+      description: "若要获取的缓存项的唯一标识符的集合。"
     - id: regionName
       type: System.String
-      description: "Optional. A named region in the cache to which the cache entry or entries were added, if regions are implemented. The default value for the optional parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "可选。 一个或多个缓存条目已添加到，如果实现了区域缓存中的命名的区域。 可选参数的默认值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
     return:
       type: System.Collections.Generic.IDictionary{System.String,System.Object}
-      description: "A dictionary of key/value pairs that represent cache entries."
+      description: "表示缓存条目的键/值对的字典。"
   overload: System.Runtime.Caching.ObjectCache.GetValues*
   exceptions: []
   platform:
@@ -502,20 +502,20 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "Gets a set of cache entries that correspond to the specified keys."
-  remarks: "The GetValues method overload is like the <xref:System.Runtime.Caching.ObjectCache.GetValues%28System.Collections.Generic.IEnumerable%7BSystem.String%7D%2CSystem.String%29> method overload, but lets you pass the named region by using optional parameter syntax that is supported by managed languages such as C#.       This method is a virtual method because the <xref:System.Runtime.Caching.ObjectCache> class provides a default implementation that passes the `params` array to the <xref:System.Runtime.Caching.ObjectCache.GetValues%28System.Collections.Generic.IEnumerable%7BSystem.String%7D%2CSystem.String%29> method overload."
+  summary: "获取与指定的键相对应的缓存项的一组。"
+  remarks: "GetValues 方法重载就像<xref:System.Runtime.Caching.ObjectCache.GetValues%28System.Collections.Generic.IEnumerable%7BSystem.String%7D%2CSystem.String%29>方法重载中，但允许使用 C# 等的托管语言支持的可选参数语法传递的命名的区域。</xref:System.Runtime.Caching.ObjectCache.GetValues%28System.Collections.Generic.IEnumerable%7BSystem.String%7D%2CSystem.String%29>       此方法是一个虚拟方法，因为<xref:System.Runtime.Caching.ObjectCache>类提供一个默认实现，将传递`params`数组到<xref:System.Runtime.Caching.ObjectCache.GetValues%28System.Collections.Generic.IEnumerable%7BSystem.String%7D%2CSystem.String%29>方法重载。</xref:System.Runtime.Caching.ObjectCache.GetValues%28System.Collections.Generic.IEnumerable%7BSystem.String%7D%2CSystem.String%29> </xref:System.Runtime.Caching.ObjectCache>"
   syntax:
     content: public virtual System.Collections.Generic.IDictionary<string,object> GetValues (string regionName, string[] keys);
     parameters:
     - id: regionName
       type: System.String
-      description: "Optional. A named region in the cache to which the cache entry or entries were added, if regions are implemented. Because regions are not implemented in [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)], the default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "可选。 一个或多个缓存条目已添加到，如果实现了区域缓存中的命名的区域。 因为未实现区域[!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)]，默认值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
     - id: keys
       type: System.String[]
-      description: "A collection of unique identifiers for the cache entries to get."
+      description: "若要获取的缓存项的唯一标识符的集合。"
     return:
       type: System.Collections.Generic.IDictionary{System.String,System.Object}
-      description: "A dictionary of key/value pairs that represent cache entries."
+      description: "表示缓存条目的键/值对的字典。"
   overload: System.Runtime.Caching.ObjectCache.GetValues*
   exceptions: []
   platform:
@@ -532,21 +532,21 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "Gets or set a reference to a managed hosting environment that is available to <xref href=&quot;System.Runtime.Caching.ObjectCache&quot;></xref> implementations and that can provide host-specific services to <xref href=&quot;System.Runtime.Caching.ObjectCache&quot;></xref> implementations."
-  remarks: "The Host property is intended for use by [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] host environments and by cache implementations that implement behavior that depends on the .NET Framework host environment.       The following table lists the set of host environment services that might be available from a managed hosting environment and that are available to <xref:System.Runtime.Caching.ObjectCache> implementations through the Host property:      |Service|Description|   |-------------|-----------------|   |<xref:System.Runtime.Caching.Hosting.IApplicationIdentifier>|Lets host environments provide application domain identifiers that might be needed by a cache implementation for features such as identifying performance counters.|   |<xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem>|Lets host environments provide a custom file-change notification system, instead of using the one provided in the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)].|   |<xref:System.Runtime.Caching.Hosting.IMemoryCacheManager>|Lets cache implementations report cache memory consumption to the host environment. This enables host environments to centrally manage memory consumption across multiple cache implementations.|      > [!NOTE] >  Callers of this property value require unrestricted code access security permissions."
+  summary: "获取或设置对可供的托管宿主环境的引用<xref href=&quot;System.Runtime.Caching.ObjectCache&quot;></xref>实现，可以提供特定于宿主的服务添加到<xref href=&quot;System.Runtime.Caching.ObjectCache&quot;></xref>实现。"
+  remarks: "主机属性旨在供[!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)]托管环境并由实现依赖于.NET Framework 的行为的缓存实现托管环境。       下表列出的主机环境服务，可能还会从的托管宿主环境可用且可供<xref:System.Runtime.Caching.ObjectCache>实现通过主机属性集: |服务 |说明 |  |-------------|-----------------|  |<xref:System.Runtime.Caching.Hosting.IApplicationIdentifier>|允许宿主环境提供程序可能需要的功能，例如标识性能计数器的缓存实现应用程序域标识符。 |  |<xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem>|允许宿主环境提供自定义的文件更改通知系统，而不是使用中提供[!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)]。 |  |<xref:System.Runtime.Caching.Hosting.IMemoryCacheManager>|允许向主机环境的缓存实现报表缓存内存消耗。</xref:System.Runtime.Caching.Hosting.IMemoryCacheManager> </xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem> </xref:System.Runtime.Caching.Hosting.IApplicationIdentifier> </xref:System.Runtime.Caching.ObjectCache> 这使宿主环境可以跨多个缓存实现集中管理内存消耗。 |    &1;> [!NOTE]&1;> 的此属性的值调用方需要不受限制的代码访问安全性权限。"
   syntax:
     content: public static IServiceProvider Host { get; set; }
     return:
       type: System.IServiceProvider
-      description: "A reference to a cache-aware managed hosting environment."
+      description: "对缓存感知的托管宿主环境的引用。"
   overload: System.Runtime.Caching.ObjectCache.Host*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The value being assigned to the property is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "分配给属性的值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt was made to set the property value more than one time."
+    description: "尝试设置属性值不止一次。"
   platform:
   - net462
 - uid: System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration
@@ -561,13 +561,13 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "Gets a value that indicates that a cache entry has no absolute expiration."
-  remarks: "A cache entry that is inserted into the cache with the InfiniteAbsoluteExpiration field value set as the expiration value should never expire based on an absolute point in time. However, a cache entry with this setting can be evicted from the cache for other reasons that are determined by a particular cache implementation, such as a change-monitor event eviction caused by memory pressure."
+  summary: "获取一个值，该值指示某个缓存项具有绝对不会过期。"
+  remarks: "会随着应永不过期的到期值插入到缓存的设置的 InfiniteAbsoluteExpiration 字段值的缓存项的时间基于绝对点。 但是，具有此设置的缓存项可以是从缓存中逐出的其他原因，由一个特定的缓存实现，如引起的内存压力更改监视器事件逐出。"
   syntax:
     content: public static readonly DateTimeOffset InfiniteAbsoluteExpiration;
     return:
       type: System.DateTimeOffset
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -583,17 +583,17 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "Gets or sets the default indexer for the <xref href=&quot;System.Runtime.Caching.ObjectCache&quot;></xref> class."
-  remarks: "The behavior of the set accessor of this property is like the <xref:System.Runtime.Caching.MemoryCache.Set%28System.String%2CSystem.Object%2CSystem.DateTimeOffset%2CSystem.String%29> method. Internally, a cache implementation could set the absolute expiration of the specified value to the <xref:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration> method. However this behavior is ultimately up to the cache implementation.       The behavior of get accessor is like calling the <xref:System.Collections.Specialized.NameValueCollection.Get%28System.String%29> method and using `null` for the region name."
+  summary: "获取或设置的默认索引器<xref href=&quot;System.Runtime.Caching.ObjectCache&quot;></xref>类。"
+  remarks: "此属性的 set 访问器的行为就像是<xref:System.Runtime.Caching.MemoryCache.Set%28System.String%2CSystem.Object%2CSystem.DateTimeOffset%2CSystem.String%29>方法。</xref:System.Runtime.Caching.MemoryCache.Set%28System.String%2CSystem.Object%2CSystem.DateTimeOffset%2CSystem.String%29> 缓存实现内部，无法设置指定的值与绝对过期<xref:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration>方法。</xref:System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration> 但是此行为是最终取决于缓存实现。       Get 访问器的行为就像调用<xref:System.Collections.Specialized.NameValueCollection.Get%28System.String%29>方法和使用`null`区域名称。</xref:System.Collections.Specialized.NameValueCollection.Get%28System.String%29>"
   syntax:
     content: public abstract object this[string key] { get; set; }
     parameters:
     - id: key
       type: System.String
-      description: "A unique identifier for a cache entry in the cache."
+      description: "在缓存中缓存项的唯一标识符。"
     return:
       type: System.Object
-      description: "A key that serves as an indexer into the cache instance."
+      description: "一个用于充当一个索引器，缓存实例键。"
   overload: System.Runtime.Caching.ObjectCache.Item*
   exceptions: []
   platform:
@@ -610,13 +610,13 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "Gets the name of a specific <xref href=&quot;System.Runtime.Caching.ObjectCache&quot;></xref> instance."
-  remarks: "Some cache implementations might support multiple instances of the cache that is running in a single application. This property lets cache implementers return a name that identifies a specific cache instance."
+  summary: "获取特定的名称<xref href=&quot;System.Runtime.Caching.ObjectCache&quot;></xref>实例。"
+  remarks: "某些缓存实现可能支持在单个应用程序中运行的缓存的多个实例。 此属性，允许缓存实施者返回用于标识特定的缓存实例的名称。"
   syntax:
     content: public abstract string Name { get; }
     return:
       type: System.String
-      description: "The name of a specific cache instance."
+      description: "特定的缓存实例的名称。"
   overload: System.Runtime.Caching.ObjectCache.Name*
   exceptions: []
   platform:
@@ -633,13 +633,13 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "Indicates that a cache entry has no sliding expiration time."
-  remarks: "Expiration that is based on duration or a defined window of time is also referred to as sliding expiration. Normally, a cache implementation that evicts items that are based on sliding expiration will remove an item that has not been accessed in the specified window of time.       A cache entry that is inserted into the cache with the NoSlidingExpiration field value set as the expiration value should never be evicted because of non-activity in a sliding time window. However, a cache item can be evicted if it has an absolute expiration, or if some other eviction event occurs, such a change monitor or memory pressure."
+  summary: "指示某个缓存项具有任何滑动过期时间。"
+  remarks: "基于持续时间或一定义的时间窗口过期也被称为相对过期机制。 通常情况下，逐出基于滑动过期的项的缓存实现将删除在指定的时间段未被访问的项。       使用设置为过期值的 NoSlidingExpiration 字段值插入到缓存的缓存项应永远不会收回由于滑动时间窗口中的非活动中。 但是，如果它具有绝对过期时间，或某些其他逐出事件发生时，此类更改监视器或内存压力，可以逐出缓存项。"
   syntax:
     content: public static readonly TimeSpan NoSlidingExpiration;
     return:
       type: System.TimeSpan
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -655,20 +655,20 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "When overridden in a derived class, removes the cache entry from the cache."
-  remarks: "If you override this method in a custom cache implementation, if there is a cache entry in the cache that corresponds to `key`, the value of the removed item should be returned. If nothing was removed from the cache, the method should return `null`.      > [!NOTE] >  Some distributed cache implementations might not support the ability to return the value that was removed from the cache. This might be because the cache implementation does not support returning the value of a removed cache item. It might also be because marshaling the object as a return value is too expensive. In such cases, cache implementations can return `null`."
+  summary: "当在派生类中重写，从缓存中删除缓存项。"
+  remarks: "如果你重写此方法在自定义缓存实现中，如果对应于缓存中没有某个缓存项`key`，应返回已移除的项的值。 如果执行任何操作已从缓存中删除，则该方法应返回`null`。      1> [!NOTE]&1;> 某些分布式的缓存实现可能不支持返回已从缓存中删除的值的功能。 这可能是因为缓存实现不支持返回已移除的缓存项的值。 这也可能是因为封送的对象，因为返回值是过于昂贵。 在这种情况下，缓存实现可返回`null`。"
   syntax:
     content: public abstract object Remove (string key, string regionName = null);
     parameters:
     - id: key
       type: System.String
-      description: "A unique identifier for the cache entry."
+      description: "缓存项的唯一标识符。"
     - id: regionName
       type: System.String
-      description: "Optional. A named region in the cache to which the cache entry was added, if regions are implemented. The default value for the optional parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "可选。 缓存的缓存项添加，如果实现了区域中的命名的区域。 可选参数的默认值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
     return:
       type: System.Object
-      description: "An object that represents the value of the removed cache entry that was specified by the key, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the specified entry was not found."
+      description: "一个对象，表示指定的键，已移除的缓存条目的值或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果找不到指定的项。"
   overload: System.Runtime.Caching.ObjectCache.Remove*
   exceptions: []
   platform:
@@ -685,17 +685,17 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "When overridden in a derived class, inserts the cache entry into the cache as a <xref href=&quot;System.Runtime.Caching.CacheItem&quot;></xref> instance, specifying information about how the entry will be evicted."
-  remarks: "If the key for `item` does not exist, `item` is inserted as a new cache entry. If an item with a key that matches `item` exists, the value from `item` is used to update or overwrite the value of the existing cache entry."
+  summary: "当在派生类中重写时，将缓存作为缓存项插入<xref href=&quot;System.Runtime.Caching.CacheItem&quot;></xref>实例，它指定有关如何逐出项的信息。"
+  remarks: "如果密钥`item`不存在，`item`为新的缓存项插入。 如果具有匹配键的项`item`存在，从值`item`用于更新或覆盖现有缓存条目的值。"
   syntax:
     content: public abstract void Set (System.Runtime.Caching.CacheItem item, System.Runtime.Caching.CacheItemPolicy policy);
     parameters:
     - id: item
       type: System.Runtime.Caching.CacheItem
-      description: "The cache item to add."
+      description: "要添加的缓存项。"
     - id: policy
       type: System.Runtime.Caching.CacheItemPolicy
-      description: "An object that contains eviction details for the cache entry. This object provides more options for eviction than a simple absolute expiration."
+      description: "包含的缓存项的逐出详细信息的对象。 此对象提供比简单绝对过期的逐出的更多选项。"
   overload: System.Runtime.Caching.ObjectCache.Set*
   exceptions: []
   platform:
@@ -712,23 +712,23 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "When overridden in a derived class, inserts a cache entry into the cache, specifying time-based expiration details."
-  remarks: "If an item that matches `key` does not exist in the cache, `value` and `key` are used to insert as a new cache entry. If an item with a key that matches `item` exists, the cache entry is updated or overwritten by using `value`."
+  summary: "当在派生类中重写，将插入缓存项，同时指定基于时间的过期详细信息。"
+  remarks: "如果与匹配的项`key`不在缓存中，存在`value`和`key`用于为新的缓存项插入。 如果具有匹配键的项`item`存在，更新或通过使用覆盖缓存条目`value`。"
   syntax:
     content: public abstract void Set (string key, object value, DateTimeOffset absoluteExpiration, string regionName = null);
     parameters:
     - id: key
       type: System.String
-      description: "A unique identifier for the cache entry."
+      description: "缓存项的唯一标识符。"
     - id: value
       type: System.Object
-      description: "The object to insert."
+      description: "要插入的对象。"
     - id: absoluteExpiration
       type: System.DateTimeOffset
-      description: "The fixed date and time at which the cache entry will expire."
+      description: "固定的日期和时间将过期的缓存项。"
     - id: regionName
       type: System.String
-      description: "Optional. A named region in the cache to which the cache entry can be added, if regions are implemented. The default value for the optional parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "可选。 缓存的缓存可以添加条目，如果实现了区域中的命名的区域。 可选参数的默认值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.Runtime.Caching.ObjectCache.Set*
   exceptions: []
   platform:
@@ -745,23 +745,23 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "When overridden in a derived class, inserts a cache entry into the cache."
-  remarks: "This method overload lets you provide more eviction or expiration details than those that are available in time-based absolute expiration.       If an item that matches `key` does not exist in the cache, `value` and `key` are used to insert as a new cache entry. If an item with a key that matches `item` exists, the cache entry is updated or overwritten by using `value`."
+  summary: "当在派生类中重写，将插入某个缓存项插入缓存。"
+  remarks: "此方法重载，可以提供比位于基于时间的绝对过期更多的逐出或过期详细。       如果与匹配的项`key`不在缓存中，存在`value`和`key`用于为新的缓存项插入。 如果具有匹配键的项`item`存在，更新或通过使用覆盖缓存条目`value`。"
   syntax:
     content: public abstract void Set (string key, object value, System.Runtime.Caching.CacheItemPolicy policy, string regionName = null);
     parameters:
     - id: key
       type: System.String
-      description: "A unique identifier for the cache entry."
+      description: "缓存项的唯一标识符。"
     - id: value
       type: System.Object
-      description: "The object to insert."
+      description: "要插入的对象。"
     - id: policy
       type: System.Runtime.Caching.CacheItemPolicy
-      description: "An object that contains eviction details for the cache entry. This object provides more options for eviction than a simple absolute expiration."
+      description: "包含的缓存项的逐出详细信息的对象。 此对象提供比简单绝对过期的逐出的更多选项。"
     - id: regionName
       type: System.String
-      description: "Optional. A named region in the cache to which the cache entry can be added, if regions are implemented. The default value for the optional parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "可选。 缓存的缓存可以添加条目，如果实现了区域中的命名的区域。 可选参数的默认值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.Runtime.Caching.ObjectCache.Set*
   exceptions: []
   platform:
@@ -784,7 +784,7 @@ items:
     parameters: []
     return:
       type: System.Collections.Generic.IEnumerator{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
-      description: "To be added."
+      description: "要添加。"
   overload: System.Runtime.Caching.ObjectCache.System#Collections#Generic#IEnumerable<System#Collections#Generic#KeyValuePair<System#String,System#Object>>#GetEnumerator*
   exceptions: []
   platform:
@@ -802,14 +802,14 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "Supports iteration over a generic collection."
-  remarks: "This member is an explicit interface member implementation. It can be used only when a derived <xref:System.Runtime.Caching.ObjectCache> instance is cast to an <xref:System.Collections.IEnumerable> interface.       Developers can use this method to iterate through a generic collection of cache entries.       This is the default <xref:System.Collections.IEnumerable.GetEnumerator%2A> implementation that internally calls the <xref:System.Runtime.Caching.ObjectCache.GetEnumerator%2A> method."
+  summary: "支持对泛型集合迭代。"
+  remarks: "此成员是显式接口成员的实现。 仅当派生时，可以使用它<xref:System.Runtime.Caching.ObjectCache>实例被强制转换为<xref:System.Collections.IEnumerable>接口。</xref:System.Collections.IEnumerable> </xref:System.Runtime.Caching.ObjectCache>       开发人员可以使用此方法循环访问泛型集合的缓存条目。       这是默认<xref:System.Collections.IEnumerable.GetEnumerator%2A>内部调用的实现<xref:System.Runtime.Caching.ObjectCache.GetEnumerator%2A>方法。</xref:System.Runtime.Caching.ObjectCache.GetEnumerator%2A> </xref:System.Collections.IEnumerable.GetEnumerator%2A>"
   syntax:
     content: System.Collections.IEnumerator IEnumerable.GetEnumerator ();
     parameters: []
     return:
       type: System.Collections.IEnumerator
-      description: "The enumerator object that provides access to the items in the cache."
+      description: "提供对缓存中项的访问的枚举器对象。"
   overload: System.Runtime.Caching.ObjectCache.System#Collections#IEnumerable#GetEnumerator*
   exceptions: []
   platform:
