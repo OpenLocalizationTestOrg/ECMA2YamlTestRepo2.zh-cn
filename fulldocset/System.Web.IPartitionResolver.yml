@@ -11,8 +11,8 @@ items:
   nameWithType: IPartitionResolver
   fullName: System.Web.IPartitionResolver
   type: Interface
-  summary: "Defines methods that must be implemented for custom session-state partition resolution."
-  remarks: "Implement the IPartitionResolver interface and the <xref:System.Web.IPartitionResolver.Initialize%2A> and <xref:System.Web.IPartitionResolver.ResolvePartition%2A> methods, if you are providing custom partition resolution for session-state data across multiple backend nodes when in SQL or state-server mode.       The session-state management information can be configured in the [sessionState Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/bda6fb8c-0076-43e3-9ce2-8cf1f8bdaa7d) of the configuration file with the `partitionResolverType` attribute. If a value is specified for the `partitionResolverType` attribute, the `sqlConnectionString` and `stateConnectionString` attributes are ignored.       The partition resolution configuration can also be set programmatically using the <xref:System.Web.Configuration.SessionStateSection.PartitionResolverType%2A> property. If the <xref:System.Web.Configuration.SessionStateSection.PartitionResolverType%2A> property is specified, the <xref:System.Web.Configuration.SessionStateSection.SqlConnectionString%2A> and <xref:System.Web.Configuration.SessionStateSection.StateConnectionString%2A> properties are ignored."
+  summary: "定义必须实现自定义会话状态分区解析的方法。"
+  remarks: "实现 IPartitionResolver 接口和<xref:System.Web.IPartitionResolver.Initialize%2A>和<xref:System.Web.IPartitionResolver.ResolvePartition%2A>方法，如果你要提供自定义分区解析用于会话状态数据跨多个后端节点时在 SQL 或状态服务器模式。</xref:System.Web.IPartitionResolver.ResolvePartition%2A> </xref:System.Web.IPartitionResolver.Initialize%2A>       可以在中配置的会话状态管理信息[sessionState 元素 （ASP.NET 设置架构）](http://msdn.microsoft.com/en-us/bda6fb8c-0076-43e3-9ce2-8cf1f8bdaa7d)具有的配置文件的`partitionResolverType`属性。 如果为指定值`partitionResolverType`属性，`sqlConnectionString`和`stateConnectionString`属性将被忽略。       此外可以使用以编程方式设置分区解析配置<xref:System.Web.Configuration.SessionStateSection.PartitionResolverType%2A>属性。</xref:System.Web.Configuration.SessionStateSection.PartitionResolverType%2A> 如果<xref:System.Web.Configuration.SessionStateSection.PartitionResolverType%2A>指定属性，则<xref:System.Web.Configuration.SessionStateSection.SqlConnectionString%2A>和<xref:System.Web.Configuration.SessionStateSection.StateConnectionString%2A>属性会被忽略。</xref:System.Web.Configuration.SessionStateSection.StateConnectionString%2A> </xref:System.Web.Configuration.SessionStateSection.SqlConnectionString%2A> </xref:System.Web.Configuration.SessionStateSection.PartitionResolverType%2A>"
   syntax:
     content: public interface IPartitionResolver
   implements: []
@@ -30,8 +30,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Initializes the custom partition resolver."
-  remarks: "Use the Initialize method to provide any initialization code that is needed for your custom partition resolution. The <xref:System.Web.SessionState.SessionStateModule> creates the type implementing the <xref:System.Web.IPartitionResolver> interface, calls the Initialize method to initialize it (once per instance), and then indicates to the ASP.NET state service or SQL Server provider that partitioning is being used and passes a resolver instance to the provider."
+  summary: "初始化自定义分区解析程序。"
+  remarks: "使用 Initialize 方法提供任何你自定义分区解析为所需的初始化代码。 <xref:System.Web.SessionState.SessionStateModule>创建类型实现<xref:System.Web.IPartitionResolver>接口，调用初始化方法对其进行初始化 （一次每个实例），并且然后指示 ASP.NET 状态服务或 SQL Server 提供程序，分区正在使用，并将解析程序实例传递给提供程序。</xref:System.Web.IPartitionResolver> </xref:System.Web.SessionState.SessionStateModule>"
   syntax:
     content: public void Initialize ();
     parameters: []
@@ -51,17 +51,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Resolves the partition based on a key parameter."
-  remarks: "The `key` parameter of the ResolvePartition method is the <xref:System.Web.SessionState.HttpSessionState.SessionID%2A> property. The <xref:System.Web.SessionState.HttpSessionState.SessionID%2A> property uniquely identifies a browser with session data on the server."
+  summary: "解析分区基于密钥的参数。"
+  remarks: "`key` ResolvePartition 方法参数是<xref:System.Web.SessionState.HttpSessionState.SessionID%2A>属性。</xref:System.Web.SessionState.HttpSessionState.SessionID%2A> <xref:System.Web.SessionState.HttpSessionState.SessionID%2A>属性唯一地标识浏览器与服务器上的会话数据。</xref:System.Web.SessionState.HttpSessionState.SessionID%2A>"
   syntax:
     content: public string ResolvePartition (object key);
     parameters:
     - id: key
       type: System.Object
-      description: "An identifier used to determine which partition to use for the current session state."
+      description: "用于确定要为当前会话状态使用的分区的标识符。"
     return:
       type: System.String
-      description: "A string with connection information."
+      description: "带有连接信息的字符串。"
   overload: System.Web.IPartitionResolver.ResolvePartition*
   exceptions: []
   platform:

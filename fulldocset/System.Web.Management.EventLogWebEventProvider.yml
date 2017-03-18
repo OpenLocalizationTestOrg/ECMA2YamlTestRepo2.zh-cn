@@ -13,8 +13,8 @@ items:
   nameWithType: EventLogWebEventProvider
   fullName: System.Web.Management.EventLogWebEventProvider
   type: Class
-  summary: "Implements an event provider that logs ASP.NET health-monitoring events into the Windows Application Event Log."
-  remarks: "ASP.NET health monitoring allows production and operations staff to manage deployed Web applications. The <xref:System.Web.Management> namespace contains the health-event types responsible for packaging application health-status data and the provider types responsible for processing this data. It also contains supporting types that help during the management of health events.       The EventLogWebEventProvider, the failure audit, and the error health-monitoring events are configured (enabled) by default. This means that the failure audit and the error health-monitoring events are logged in the Windows Application Event Log by default.      > [!NOTE] >  In most cases you will be able to use the ASP.NET health-monitoring types as implemented, and you will control the health-monitoring system by specifying values in the `healthMonitoring` configuration section. You can also derive from the health-monitoring types to create your own custom events and providers. For an example of creating a custom provider, see [How to: Implement the Health Monitoring Custom Provider Example](~/add/includes/ajax-current-ext-md.md)."
+  summary: "实现记录到 Windows 应用程序事件日志中的 ASP.NET 运行状况监视事件的事件提供程序。"
+  remarks: "ASP.NET 运行状况监视，用于管理已部署的 Web 应用程序的生产和操作人员。 <xref:System.Web.Management>命名空间包含负责打包应用程序运行状况状态数据和负责处理此数据提供程序类型的运行状况事件类型。</xref:System.Web.Management> 它还包含在管理运行状况事件期间帮助的支持类型。       （启用） 默认情况下配置 EventLogWebEventProvider、 失败审核和错误运行状况监视事件。 这意味着，失败审核和默认运行状况监视事件会记录在 Windows 应用程序事件日志中的错误。      1> [!NOTE]&1;> 在大多数情况下，你将是一种能够使用 ASP.NET 运行状况监视类型，因为实现，并且将通过指定中的值控制运行状况监视系统`healthMonitoring`配置节。 你还可以从要创建你自己的自定义事件和提供程序的运行状况监视类型派生。 有关创建自定义提供程序的示例，请参阅[如何︰ 实现运行状况监视自定义提供程序示例](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following configuration file excerpt shows how to specify a provider of type EventLogWebEventProvider to handle success audit events. The EventLogWebEventProvider and the failure audit health-event types to monitor are configured by default. To monitor the success audits, you need to configure them, as shown in the example code.  \n  \n```  \n<healthMonitoring   \n  enabled=\"true\" heartbeatInterval=\"10\">  \n  \n  <rule>  \n    <add name=\"Success Audits Default\"  \n      eventName=\"Success Audits\"  \n      provider=\"EventLogProvider\"  \n      profile=\"Default\"  \n      minInterval=\"00:01:00\" />  \n  </rule>  \n  \n</healthMonitoring>  \n```"
   syntax:
@@ -41,8 +41,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Moves events from the provider&quot;s buffer into the event log."
-  remarks: "When this method is called, all the events in the provider&quot;s buffer are immediately written to the Windows Application Event Log, regardless of how much time has elapsed since last write or how many events are in the buffer. The time of the last write is reset to the time of the flushing action. If the buffering mechanism is not enabled, calling this method does not have any effect."
+  summary: "将事件从提供程序的缓冲区移到事件日志。"
+  remarks: "当调用此方法时，所有提供程序的缓冲区中的事件会立即被写入到 Windows 应用程序事件日志，而无论多少时间已过自最后一次写入或多少事件是缓冲区中。 最后一次写入时将重置为刷新操作的时间。 如果未启用缓冲机制，调用此方法没有任何效果。"
   syntax:
     content: public override void Flush ();
     parameters: []
@@ -62,17 +62,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Sets the initial values for this object."
-  remarks: "This method is called to initialize the <xref:System.Web.Management.EventLogWebEventProvider> with the configuration settings and name as specified in the configuration file."
+  summary: "设置此对象的初始值。"
+  remarks: "调用此方法以初始化<xref:System.Web.Management.EventLogWebEventProvider>的配置设置和配置文件中指定的名称。</xref:System.Web.Management.EventLogWebEventProvider>"
   syntax:
     content: public override void Initialize (string name, System.Collections.Specialized.NameValueCollection config);
     parameters:
     - id: name
       type: System.String
-      description: "The name used in the configuration file to identify this provider."
+      description: "在配置文件中用于标识此提供程序的名称。"
     - id: config
       type: System.Collections.Specialized.NameValueCollection
-      description: "A <xref href=&quot;System.Collections.Specialized.NameValueCollection&quot;></xref> that specifies the attributes assigned for this provider in the configuration file."
+      description: "A <xref href=&quot;System.Collections.Specialized.NameValueCollection&quot;> </xref> ，它指定为此提供程序配置文件中分配的特性。"
   overload: System.Web.Management.EventLogWebEventProvider.Initialize*
   exceptions: []
   platform:
@@ -89,14 +89,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Processes the event passed to the provider."
-  remarks: "This is the method that ASP.NET health monitoring calls to start the processing of the event."
+  summary: "处理传递给提供的事件。"
+  remarks: "这是，ASP.NET 运行状况监视功能可调用以启动事件的处理方法。"
   syntax:
     content: public override void ProcessEvent (System.Web.Management.WebBaseEvent eventRaised);
     parameters:
     - id: eventRaised
       type: System.Web.Management.WebBaseEvent
-      description: "The <xref href=&quot;System.Web.Management.WebBaseEvent&quot;></xref> object to process."
+      description: "<xref href=&quot;System.Web.Management.WebBaseEvent&quot;> </xref>对象传递给过程。"
   overload: System.Web.Management.EventLogWebEventProvider.ProcessEvent*
   exceptions: []
   platform:
@@ -113,8 +113,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Performs tasks associated with shutting down the provider."
-  remarks: "ASP.NET calls the Shutdown method when the application domain hosting the Web application terminates. The method is called to perform tasks that will allow the application to end gracefully."
+  summary: "执行与关闭提供程序关联的任务。"
+  remarks: "当托管 Web 应用程序的应用程序域终止时，ASP.NET 将调用 Shutdown 方法。 该方法调用以执行将允许应用程序正常结束的任务。"
   syntax:
     content: public override void Shutdown ();
     parameters: []

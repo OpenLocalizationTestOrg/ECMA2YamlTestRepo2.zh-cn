@@ -13,8 +13,8 @@ items:
   nameWithType: WebRequestEvent
   fullName: System.Web.Management.WebRequestEvent
   type: Class
-  summary: "Defines the base class for events providing Web-request information."
-  remarks: "The WebRequestEvent is raised at every Web request.       It uses the <xref:System.Web.Management.WebRequestInformation> class to obtain request information.      > [!NOTE] >  In most cases you will use the standard ASP.NET health-monitoring types and control their behavior by setting the `healthMonitoring` configuration section. You can also create custom types, as shown in the next example. If you create your custom event type and you need to add your own information, customize the <xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A> method. This will avoid overwriting or tampering with sensitive system information."
+  summary: "定义事件提供 Web 请求信息的基类。"
+  remarks: "WebRequestEvent 引发在每个 Web 请求。       它使用<xref:System.Web.Management.WebRequestInformation>类来获取请求信息。</xref:System.Web.Management.WebRequestInformation>      1> [!NOTE]&1;> 在大多数情况下将使用标准 ASP.NET 运行状况监视类型，并通过设置来控制其行为`healthMonitoring`配置节。 下一个示例中所示，你还可以创建自定义类型。 如果你创建自定义事件类型，你需要添加您自己的信息，请自定义<xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A>方法。</xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A> 这将避免覆盖或篡改敏感的系统信息。"
   example:
   - "The following code example shows how to derive from the WebRequestEvent class to create a custom event.  \n  \n [!code-vb[System.Web.Management.WebRequestEvent#1](~/add/codesnippet/visualbasic/t-system.web.management._5_1.vb)]\n [!code-cs[System.Web.Management.WebRequestEvent#1](~/add/codesnippet/csharp/t-system.web.management._5_1.cs)]  \n  \n The following is an excerpt of the configuration file that enables ASP.NET to use the custom event.  \n  \n```  \n<healthMonitoring   \n  enabled=\"true\" heartBeatInterval=\"0\">  \n  <providers>  \n    <!-- Define the custom provider that   \n         processes custom Web request events. -->  \n    <add name=\"SampleWebEventProvider\"   \ntype=\"SamplesAspNet.SampleEventProvider,webeventprovider,Version=1.0.1573.18094, Culture=neutral, PublicKeyToken=b5a57a9a9d487cf4, processorArchitecture=MSIL\"/>  \n  </providers>  \n  \n  <eventMappings>  \n    <!--  Define the event source that   \n         issues custom events.   -->  \n    <add  name=\"SampleWebRequestEvent\"   \ntype=\"SamplesAspNet.SampleWebRequestEvent,webrequestevent,Version=1.0.1573.23947, Culture=neutral, PublicKeyToken=e717d983a78c8ddb, processorArchitecture=MSIL\"/>  \n    </eventMappings>  \n  \n  <rules>  \n        <!-- Associate custom event with   \n        related custom provider -->  \n    <add   \n      name=\"CustomWebRequestEvent\"  \n      eventName=\"SampleWebRequestEvent\"   \n      provider=\"SampleWebEventProvider\"   \n      profile=\"Critical\"/>  \n  </rules>  \n</healthMonitoring>  \n```"
   syntax:
@@ -55,8 +55,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Initializes the <xref href=&quot;System.Web.Management.WebRequestEvent&quot;></xref> class with specified event parameters."
-  remarks: "The constructor WebRequestEvent allows specifying the event message, the source of the event, and the code or identifier associated with the event."
+  summary: "初始化<xref href=&quot;System.Web.Management.WebRequestEvent&quot;></xref>使用指定的事件参数类。"
+  remarks: "构造函数 WebRequestEvent 允许指定事件消息的源的事件的代码或与事件关联的标识符。"
   example:
   - "The following code example shows how to customize this constructor.  \n  \n> [!NOTE]\n>  The value you use to define your event code or identifier must be greater than <xref:System.Web.Management.WebEventCodes.WebExtendedBase>.  \n  \n [!code-vb[System.Web.Management.WebRequestEvent#2](~/add/codesnippet/visualbasic/3544ae82-e0d1-4dd2-b070-_1.vb)]\n [!code-cs[System.Web.Management.WebRequestEvent#2](~/add/codesnippet/csharp/3544ae82-e0d1-4dd2-b070-_1.cs)]"
   syntax:
@@ -64,13 +64,13 @@ items:
     parameters:
     - id: message
       type: System.String
-      description: "The message associated with the event."
+      description: "与事件关联的消息。"
     - id: eventSource
       type: System.Object
-      description: "The object that is the source of the event."
+      description: "事件源对象。"
     - id: eventCode
       type: System.Int32
-      description: "The <xref href=&quot;System.Web.Management.WebEventCodes&quot;></xref> code associated with the event. It must be greater than <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;></xref>."
+      description: "<xref href=&quot;System.Web.Management.WebEventCodes&quot;> </xref>与事件关联的代码。 它必须是大于<xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;> </xref>。"
   overload: System.Web.Management.WebRequestEvent.#ctor*
   exceptions: []
   platform:
@@ -87,8 +87,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Initializes the <xref href=&quot;System.Web.Management.WebRequestEvent&quot;></xref> class with specified event parameters."
-  remarks: "The constructor WebRequestEvent allows specifying the event message, the source of the event, the code or identifier associated with the event, and the detailed code."
+  summary: "初始化<xref href=&quot;System.Web.Management.WebRequestEvent&quot;></xref>使用指定的事件参数类。"
+  remarks: "构造函数 WebRequestEvent 允许指定事件消息、 事件、 代码或与该事件，然后详细的代码关联的标识符的源。"
   example:
   - "The following code example shows how to customize this constructor.  \n  \n> [!NOTE]\n>  The value you use to define your event code or identifier must be greater than <xref:System.Web.Management.WebEventCodes.WebExtendedBase>  \n  \n [!code-vb[System.Web.Management.WebRequestEvent#3](~/add/codesnippet/visualbasic/7570cf44-aeea-49b6-a5bc-_1.vb)]\n [!code-cs[System.Web.Management.WebRequestEvent#3](~/add/codesnippet/csharp/7570cf44-aeea-49b6-a5bc-_1.cs)]"
   syntax:
@@ -96,16 +96,16 @@ items:
     parameters:
     - id: message
       type: System.String
-      description: "The message associated with the event."
+      description: "与事件关联的消息。"
     - id: eventSource
       type: System.Object
-      description: "The object that is the source of the event."
+      description: "事件源对象。"
     - id: eventCode
       type: System.Int32
-      description: "The <xref href=&quot;System.Web.Management.WebEventCodes&quot;></xref> code associated with the event. It must be greater than <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;></xref>."
+      description: "<xref href=&quot;System.Web.Management.WebEventCodes&quot;> </xref>与事件关联的代码。 它必须是大于<xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;> </xref>。"
     - id: eventDetailCode
       type: System.Int32
-      description: "The <xref href=&quot;System.Web.Management.WebEventCodes&quot;></xref> detail code associated with the event."
+      description: "<xref href=&quot;System.Web.Management.WebEventCodes&quot;> </xref>详细信息与事件关联的代码。"
   overload: System.Web.Management.WebRequestEvent.#ctor*
   exceptions: []
   platform:
@@ -122,7 +122,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Used internally to increment the performance counters."
+  summary: "在内部用于递增的性能计数器。"
   syntax:
     content: protected override void IncrementPerfCounters ();
     parameters: []
@@ -142,15 +142,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the information associated with the Web-application request."
-  remarks: "The standard request information is defined by the <xref:System.Web.Management.WebRequestInformation> class."
+  summary: "获取与 Web 应用程序请求有关的信息。"
+  remarks: "由<xref:System.Web.Management.WebRequestInformation>类</xref:System.Web.Management.WebRequestInformation>定义的标准请求信息"
   example:
   - "The following code example shows how to obtain the Web-request information.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
     content: public System.Web.Management.WebRequestInformation RequestInformation { get; }
     return:
       type: System.Web.Management.WebRequestInformation
-      description: "The information associated with the Web-application request."
+      description: "与 Web 应用程序请求有关的信息。"
   overload: System.Web.Management.WebRequestEvent.RequestInformation*
   exceptions: []
   platform:
