@@ -15,8 +15,8 @@ items:
   nameWithType: MobileCapabilities
   fullName: System.Web.Mobile.MobileCapabilities
   type: Class
-  summary: "Provides a single source for accessing capability information about a client device and for performing queries against device capabilities. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site."
-  remarks: "The MobileCapabilities class extends the <xref:System.Web.HttpBrowserCapabilities> class. The MobileCapabilities class offers a large number of read-only properties that provide type-safe access to the Browser object&quot;s capabilities dictionary.       You can use the Browser property of the <xref:System.Web.HttpRequest> object to point to an instance of a MobileCapabilities object, which can then be used to read the capabilities of the requesting browser and device."
+  summary: "访问有关客户端设备功能信息并执行针对设备功能的查询，请提供单个源。 了解如何开发 ASP.NET 移动应用程序的信息，请参阅[www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web 站点。"
+  remarks: "MobileCapabilities 类扩展<xref:System.Web.HttpBrowserCapabilities>类。</xref:System.Web.HttpBrowserCapabilities> MobileCapabilities 类提供了大量提供对浏览器对象的功能字典类型安全的访问的只读属性。       你可以使用的浏览器属性<xref:System.Web.HttpRequest>对象为指向一个 MobileCapabilities 对象，然后用于读取请求的浏览器和设备的功能，该对象的实例。</xref:System.Web.HttpRequest>"
   example:
   - "During the page load, the MobileCapabilities object obtains the capabilities through the <xref:System.Web.Configuration.HttpCapabilitiesBase.Browser%2A> property as previously discussed. The <xref:System.Web.Configuration.HttpCapabilitiesBase.PreferredRenderingMime%2A> and the <xref:System.Web.Configuration.HttpCapabilitiesBase.ScreenCharactersWidth%2A> properties of the MobileCapabilities object report back to the browser by setting properties on the <xref:System.Web.HttpResponse> object and also by programmatically setting the `Text` property of certain controls on the page.  \n  \n```c#  \n<%@ Page Inherits=\"System.Web.UI.MobileControls.MobilePage\"   \n    Language=\"c#\" %>  \n<script language=\"c#\" runat=\"server\">  \npublic void Page_Load(Object sender, EventArgs e)  \n{  \n    System.Web.Mobile.MobileCapabilities currentCapabilities;  \n    MobileCapabilities currentCapabilities =   \n        (MobileCapabilities)Request.Browser;  \n    // Programatically find the mobile capabilities without using   \n    // DeviceSpecific Filters.  \n    if(currentCapabilities.PreferredRenderingMIME==\"text/html\")  \n    {  \n        Label2.Text = \"You are using an html supported device.\";  \n    }  \n    else if(currentCapabilities.PreferredRenderingMIME ==   \n        \"text/vnd.wap.wml\")  \n    {  \n        Label2.Text = \"You are using a wml supported device.\";  \n    }  \n    Label1.Text = \"Screen Width (chars): \" +   \n        currentCapabilities.ScreenCharactersWidth;  \n }  \n </script>  \n <Mobile:Form runat=\"server\" id=frmTemplate >  \n      <mobile:label ID=\"Label1\" runat=\"server\" />  \n      <mobile:label ID=\"Label2\" runat=\"server\" />  \n </Mobile:Form>  \n```"
   syntax:
@@ -168,7 +168,7 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.Mobile
-  summary: "Creates an instance of the <xref href=&quot;System.Web.Mobile.MobileCapabilities&quot;></xref> class. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site."
+  summary: "创建的实例<xref href=&quot;System.Web.Mobile.MobileCapabilities&quot;></xref>类。 此 API 已废弃不用。 了解如何开发 ASP.NET 移动应用程序的信息，请参阅[www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web 站点。"
   syntax:
     content: public MobileCapabilities ();
     parameters: []
@@ -188,28 +188,28 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.Mobile
-  summary: "Provides a uniform way to evaluate device capabilities. This method is used internally by ASP.NET to implement various device-selection criteria expressed in the syntax of the controls. For example, this method is used to choose among [&lt;Choice&gt; Element (.NET Framework Developer&quot;s Guide)](http://msdn.microsoft.com/en-us/c81bee77-bb45-4211-be0f-e13a040b3c2d) elements in a DeviceSpecific/Choice construct. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site."
-  remarks: "Applications can use the HasCapability method programmatically when they gather device-specific information. If the `capabilityName` parameter specifies a device evaluation method, the `optionalArgument` parameter is passed to this method. If the `capabilityName` parameter specifies a property name or item in the capabilities dictionary, the HasCapability method checks whether the property or item is equal to the `optionalArgument` parameter."
+  summary: "提供统一的方式来评估设备功能。 此方法用于内部 asp.net 实现控件的语法中表示的各种设备选择条件。 例如，使用此方法之间进行选择[&lt;选择&gt;元素 （.NET Framework 开发指南）](http://msdn.microsoft.com/en-us/c81bee77-bb45-4211-be0f-e13a040b3c2d)设备特定/选择的元素构造。 此 API 已废弃不用。 了解如何开发 ASP.NET 移动应用程序的信息，请参阅[www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web 站点。"
+  remarks: "应用程序可以以编程方式使用 HasCapability 方法，当它们收集特定于设备的信息。 如果`capabilityName`参数指定的设备评估方法，`optionalArgument`参数传递给此方法。 如果`capabilityName`参数指定的属性名称或项目功能字典中，HasCapability 方法检查此属性或项是否等于`optionalArgument`参数。"
   syntax:
     content: public bool HasCapability (string delegateName, string optionalParameter);
     parameters:
     - id: delegateName
       type: System.String
-      description: "The device evaluation method, property name, or item in the capabilities collection."
+      description: "设备评估方法、 属性名称或功能集合中的项。"
     - id: optionalParameter
       type: System.String
-      description: "The optional argument."
+      description: "可选自变量。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the device has the specified capability; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果该设备具有指定的功能;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.Mobile.MobileCapabilities.HasCapability*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "A <code>capabilityName</code> parameter is not found as a device-filter name specified in the configuration file, as a <xref href=&quot;System.Web.Mobile.MobileCapabilities&quot;></xref> property, or as an item in the <xref href=&quot;System.Web.Mobile.MobileCapabilities&quot;></xref> Item collection."
+    description: "A <code> capabilityName </code>参数找不到用作设备筛选器名称在配置文件中，指定为<xref href=&quot;System.Web.Mobile.MobileCapabilities&quot;></xref>属性，或作为中的项<xref href=&quot;System.Web.Mobile.MobileCapabilities&quot;></xref>项集合。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>delegateName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
+    description: "<code>delegateName</code>是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>或为空。"
   platform:
   - net462
 - uid: System.Web.Mobile.MobileCapabilities.PreferredRenderingTypeChtml10
@@ -224,13 +224,13 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.Mobile
-  summary: "Returns the source identifier to use for compact HTML 1.0. This field is read-only. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site."
-  remarks: "Used by an adapter to assign the rendering type for the device."
+  summary: "返回要用于 compact HTML 1.0 的源标识符。 此字段为只读的。 此 API 已废弃不用。 了解如何开发 ASP.NET 移动应用程序的信息，请参阅[www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web 站点。"
+  remarks: "使用由适配器分配设备的呈现类型。"
   syntax:
     content: public static readonly string PreferredRenderingTypeChtml10;
     return:
       type: System.String
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -246,13 +246,13 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.Mobile
-  summary: "Returns the source identifier to use for HTML 3.2. This field is read-only. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site."
-  remarks: "Used by the adapter to assign the rendering type for the device."
+  summary: "返回要用于 HTML 3.2 的源标识符。 此字段为只读的。 此 API 已废弃不用。 了解如何开发 ASP.NET 移动应用程序的信息，请参阅[www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web 站点。"
+  remarks: "使用由适配器分配设备的呈现类型。"
   syntax:
     content: public static readonly string PreferredRenderingTypeHtml32;
     return:
       type: System.String
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -268,13 +268,13 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.Mobile
-  summary: "Returns the source identifier to use for WML 1.1. This field is read-only. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site."
-  remarks: "Used by the adapter to assign the rendering type for the device."
+  summary: "返回要用于 WML 1.1 的源标识符。 此字段为只读的。 此 API 已废弃不用。 了解如何开发 ASP.NET 移动应用程序的信息，请参阅[www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web 站点。"
+  remarks: "使用由适配器分配设备的呈现类型。"
   syntax:
     content: public static readonly string PreferredRenderingTypeWml11;
     return:
       type: System.String
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -290,13 +290,13 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.Mobile
-  summary: "Returns the source identifier to use for WML 1.2. This field is read-only. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site."
-  remarks: "Used by the adapter to assign the rendering type for the device."
+  summary: "返回要用于 WML 1.2 的源标识符。 此字段为只读的。 此 API 已废弃不用。 了解如何开发 ASP.NET 移动应用程序的信息，请参阅[www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web 站点。"
+  remarks: "使用由适配器分配设备的呈现类型。"
   syntax:
     content: public static readonly string PreferredRenderingTypeWml12;
     return:
       type: System.String
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462

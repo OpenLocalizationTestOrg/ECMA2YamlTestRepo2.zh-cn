@@ -15,8 +15,8 @@ items:
   nameWithType: MemberRelationshipService
   fullName: System.ComponentModel.Design.Serialization.MemberRelationshipService
   type: Class
-  summary: "Provides the base class for relating one member to another."
-  remarks: "Designers serialize themselves to code through an engine that searches through the live property values of objects and generates those values as code. So, for example, the text of a button is generated in the following format.      ```c#   this.okButton.Text = &quot;OK&quot;;   ```       One of the limitations of this scheme is that it is difficult to retrieve a property from another location. For example, it is very difficult to emit code in the following format, because the only thing the code generator can rely on is the value in the property.      ```c#   this.titleLabel.Text = this.Text;   ```"
+  summary: "一个成员与另一个提供基类。"
+  remarks: "设计器它们自己序列化为代码通过搜索对象的实时属性值，并为代码生成这些值的引擎。 例如，因此，一个按钮的文本将采用以下格式生成。      ```c#   this.okButton.Text = &quot;OK&quot;;   ```此方案的局限性之一是很难从其他位置检索的属性。 例如，它很难发出以下格式的代码，因为只能代码生成器可以依赖于是属性中的值。      ```c#   this.titleLabel.Text = this.Text;   ```"
   example:
   - "The MemberRelationshipService simplifies retrieval of a property value from another location. A designer can access this service to dictate that one member is assigned the value of another. The code generator searches for such relationships when generating code, and if a relationship between two members is found the code generator, it emits code for the relationship rather than searching for the property value. Using the previous text assignment as an example, the following code example shows design time code used to establish a relationship.  \n  \n```c#  \nobject titleLabel, form;  \nPropertyDescriptor titleLabelText = TypeDescriptor.GetProperties(titleLabel)[\"Text\"];  \nPropertyDescriptor formText = TypeDescriptor.GetProperties(form)[\"Text\"];  \nMemberRelationshipService ms = GetService(typeof(MemberRelationshipService);  \nms[titleLabel, titleLabelText] = new MemberRelationship(form, formText);  \n```"
   syntax:
@@ -39,7 +39,7 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Design.Serialization.MemberRelationshipService&quot;></xref> class."
+  summary: "初始化的新实例<xref href=&quot;System.ComponentModel.Design.Serialization.MemberRelationshipService&quot;></xref>类。"
   syntax:
     content: protected MemberRelationshipService ();
     parameters: []
@@ -59,17 +59,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Gets a relationship to the given source relationship."
-  remarks: "The default implementation stores relationships in a dictionary using weak references, so the relationship table does not keep objects alive."
+  summary: "获取与给定的源关系的关系。"
+  remarks: "默认实现将存储在字典使用弱引用，因此关系表不会保留对象保持活动状态的关系。"
   syntax:
     content: protected virtual System.ComponentModel.Design.Serialization.MemberRelationship GetRelationship (System.ComponentModel.Design.Serialization.MemberRelationship source);
     parameters:
     - id: source
       type: System.ComponentModel.Design.Serialization.MemberRelationship
-      description: "The source relationship."
+      description: "源的关系。"
     return:
       type: System.ComponentModel.Design.Serialization.MemberRelationship
-      description: "A relationship to <code>source</code>, or <xref href=&quot;System.ComponentModel.Design.Serialization.MemberRelationship&quot;></xref> if no relationship exists."
+      description: "与关系<code> source </code>，或<xref href=&quot;System.ComponentModel.Design.Serialization.MemberRelationship&quot;></xref>如果不存在关系。"
   overload: System.ComponentModel.Design.Serialization.MemberRelationshipService.GetRelationship*
   exceptions: []
   platform:
@@ -86,25 +86,25 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Establishes a relationship between a source and target object."
-  remarks: "If <xref:System.ComponentModel.Design.Serialization.MemberRelationship> is assigned to the source, any existing relationship is removed."
+  summary: "建立源和目标对象之间的关系。"
+  remarks: "如果<xref:System.ComponentModel.Design.Serialization.MemberRelationship>分配到源，删除任何现有的关系。</xref:System.ComponentModel.Design.Serialization.MemberRelationship>"
   syntax:
     content: public System.ComponentModel.Design.Serialization.MemberRelationship this[System.ComponentModel.Design.Serialization.MemberRelationship source] { get; set; }
     parameters:
     - id: source
       type: System.ComponentModel.Design.Serialization.MemberRelationship
-      description: "The source relationship. This is the left-hand side of a relationship assignment."
+      description: "源的关系。 这是一种关系赋值的左侧。"
     return:
       type: System.ComponentModel.Design.Serialization.MemberRelationship
-      description: "The current relationship associated with <code>source</code>, or <xref href=&quot;System.ComponentModel.Design.Serialization.MemberRelationship&quot;></xref> if there is no relationship."
+      description: "与关联的当前关系<code> source </code>，或<xref href=&quot;System.ComponentModel.Design.Serialization.MemberRelationship&quot;></xref>如果没有任何关系。"
   overload: System.ComponentModel.Design.Serialization.MemberRelationshipService.Item*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>source</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>source</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>source</code> is empty, or the relationship is not supported by the service."
+    description: "<code>source</code>为空，或该服务不支持关系。"
   platform:
   - net462
 - uid: System.ComponentModel.Design.Serialization.MemberRelationshipService.Item(System.Object,System.ComponentModel.MemberDescriptor)
@@ -119,27 +119,27 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Establishes a relationship between a source and target object."
+  summary: "建立源和目标对象之间的关系。"
   syntax:
     content: public System.ComponentModel.Design.Serialization.MemberRelationship this[object sourceOwner, System.ComponentModel.MemberDescriptor sourceMember] { get; set; }
     parameters:
     - id: sourceOwner
       type: System.Object
-      description: "The owner of a source relationship."
+      description: "源关系的所有者。"
     - id: sourceMember
       type: System.ComponentModel.MemberDescriptor
-      description: "The member of a source relationship."
+      description: "源关系的成员。"
     return:
       type: System.ComponentModel.Design.Serialization.MemberRelationship
-      description: "A <xref href=&quot;System.ComponentModel.Design.Serialization.MemberRelationship&quot;></xref> structure encapsulating the relationship between a source and target object, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there is no relationship."
+      description: "A <xref href=&quot;System.ComponentModel.Design.Serialization.MemberRelationship&quot;> </xref>封装源和目标对象之间的关系的结构或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果没有任何关系。"
   overload: System.ComponentModel.Design.Serialization.MemberRelationshipService.Item*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>sourceOwner</code> or <code>sourceMember</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>sourceOwner</code>or <code>sourceMember</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>sourceOwner</code> or <code>sourceMember</code> is empty, or the relationship is not supported by the service."
+    description: "<code>sourceOwner</code>或<code>sourceMember</code>为空，或该服务不支持关系。"
   platform:
   - net462
 - uid: System.ComponentModel.Design.Serialization.MemberRelationshipService.SetRelationship(System.ComponentModel.Design.Serialization.MemberRelationship,System.ComponentModel.Design.Serialization.MemberRelationship)
@@ -154,22 +154,22 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Creates a relationship between the source object and target relationship."
-  remarks: "The SetRelationship method clears any existing relationship if the relationship parameter is <xref:System.ComponentModel.Design.Serialization.MemberRelationship>. The default implementation stores relationships in a dictionary using weak references so the relationship table does not keep objects alive."
+  summary: "创建源对象和目标关系之间的关系。"
+  remarks: "SetRelationship 方法清除任何现有的关系，如果关系参数是<xref:System.ComponentModel.Design.Serialization.MemberRelationship>.</xref:System.ComponentModel.Design.Serialization.MemberRelationship> 默认实现将存储在字典使用弱引用，因此关系表不会保留对象保持活动状态的关系。"
   syntax:
     content: protected virtual void SetRelationship (System.ComponentModel.Design.Serialization.MemberRelationship source, System.ComponentModel.Design.Serialization.MemberRelationship relationship);
     parameters:
     - id: source
       type: System.ComponentModel.Design.Serialization.MemberRelationship
-      description: "The source relationship."
+      description: "源的关系。"
     - id: relationship
       type: System.ComponentModel.Design.Serialization.MemberRelationship
-      description: "The relationship to set into the source."
+      description: "要设置到的源的关系。"
   overload: System.ComponentModel.Design.Serialization.MemberRelationshipService.SetRelationship*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The relationship is not supported by the service."
+    description: "服务不支持关系。"
   platform:
   - net462
 - uid: System.ComponentModel.Design.Serialization.MemberRelationshipService.SupportsRelationship(System.ComponentModel.Design.Serialization.MemberRelationship,System.ComponentModel.Design.Serialization.MemberRelationship)
@@ -184,19 +184,19 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Gets a value indicating whether the given relationship is supported."
+  summary: "获取一个值，该值指示是否支持给定的关系。"
   syntax:
     content: public abstract bool SupportsRelationship (System.ComponentModel.Design.Serialization.MemberRelationship source, System.ComponentModel.Design.Serialization.MemberRelationship relationship);
     parameters:
     - id: source
       type: System.ComponentModel.Design.Serialization.MemberRelationship
-      description: "The source relationship."
+      description: "源的关系。"
     - id: relationship
       type: System.ComponentModel.Design.Serialization.MemberRelationship
-      description: "The relationship to set into the source."
+      description: "要设置到的源的关系。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a relationship between the given two objects is supported; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果支持给定的两个对象之间的关系;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.ComponentModel.Design.Serialization.MemberRelationshipService.SupportsRelationship*
   exceptions: []
   platform:
