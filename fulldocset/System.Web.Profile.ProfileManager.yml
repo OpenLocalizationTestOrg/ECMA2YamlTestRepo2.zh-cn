@@ -29,8 +29,8 @@ items:
   nameWithType: ProfileManager
   fullName: System.Web.Profile.ProfileManager
   type: Class
-  summary: "Manages user profile data and settings."
-  remarks: "The ASP.NET profile is used to store and retrieve user settings in a data source such as a database. The user profile is accessed using the <xref:System.Web.HttpContext.Profile%2A> property of the current <xref:System.Web.HttpContext>. Profile information and property values are managed using a profile provider.       The ProfileManager class is used to manage profile settings, search for user profiles, and delete user profiles that are no longer in use. The ProfileManager class provides static methods and properties that can be accessed by referencing the ProfileManager class in your application code. For an example, see the Example section in this topic and additional examples in the topics for members of the ProfileManager class.       By default, the user profile is disabled for all ASP.NET applications. To enable the user profile, set the `enabled` attribute of the  configuration element to true, as shown in the following example.      ```   <configuration>     <system.web>       <profile enabled=&quot;true&quot; />     </system.web>   </configuration>   ```       For more information about the user profile, see [ASP.NET Profile Properties Overview](~/add/includes/ajax-current-ext-md.md).       A profile provider is used to store and retrieve properties in the user profile. The .NET Framework includes a <xref:System.Web.Profile.SqlProfileProvider> class that stores user profile properties in a SQL Server database. A <xref:System.Web.Profile.SqlProfileProvider> instance named `AspNetSqlProvider` is specified in the machine configuration as the default profile provider. The `AspNetSqlProvider` instance connects to the SQL Server database on the local Web server. You can specify a <xref:System.Web.Profile.SqlProfileProvider> that connects to another SQL Server as the default profile provider by using the  configuration element and the `defaultProvider` attribute of the  configuration element, as shown in the following example.      ```   <configuration>     <connectionStrings>       <add name=&quot;SqlServices&quot; connectionString=         &quot;Data Source=MySqlServer;Integrated Security=SSPI;Initial Catalog=aspnetdb;&quot; />     </connectionStrings>     <system.web>       <profile defaultProvider=&quot;SqlProvider&quot;>         <providers>           <clear />           <add name=&quot;SqlProvider&quot;             type=&quot;System.Web.Profile.SqlProfileProvider&quot;             connectionStringName=&quot;SqlServices&quot;             applicationName=&quot;MyApplication&quot; />         </providers>       </profile>     </system.web>   </configuration>   ```"
+  summary: "管理用户配置文件数据和设置。"
+  remarks: "ASP.NET 配置文件用于存储和检索数据源，如数据库中的用户设置。 使用<xref:System.Web.HttpContext.Profile%2A>属性的当前<xref:System.Web.HttpContext>.</xref:System.Web.HttpContext></xref:System.Web.HttpContext.Profile%2A>访问用户配置文件 使用配置文件提供程序管理配置文件信息和属性值。       ProfileManager 类用于管理配置文件设置、 用户配置文件，搜索和删除不再使用的用户配置文件。 ProfileManager 类提供静态方法和属性，可以通过引用应用程序代码中的 ProfileManager 类进行访问。 有关示例，请参阅有关 ProfileManager 类的成员的本主题中的示例部分和主题中的其他示例。       默认情况下，所有 ASP.NET 应用程序禁用的用户配置文件。 若要启用的用户配置文件，设置`enabled`为 true，如下面的示例中所示的配置元素的属性。      ```   <configuration>     <system.web>       <profile enabled=&quot;true&quot; />     </system.web>   </configuration>   ```有关用户配置文件的详细信息，请参阅[ASP.NET 配置文件属性概述](~/add/includes/ajax-current-ext-md.md)。       配置文件提供程序用于存储和检索用户配置文件中的属性。 .NET Framework 包括<xref:System.Web.Profile.SqlProfileProvider>为 SQL Server 数据库中存储用户配置文件属性的类。</xref:System.Web.Profile.SqlProfileProvider> A<xref:System.Web.Profile.SqlProfileProvider>实例名为`AspNetSqlProvider`作为默认配置文件提供程序的计算机配置中指定。</xref:System.Web.Profile.SqlProfileProvider> `AspNetSqlProvider`实例连接到本地的 Web 服务器上的 SQL Server 数据库。 你可以指定<xref:System.Web.Profile.SqlProfileProvider>，将连接到其他 SQL Server 作为默认配置文件提供程序使用的配置元素和`defaultProvider`配置元素，如下面的示例中所示的属性。</xref:System.Web.Profile.SqlProfileProvider>      ```   <configuration>     <connectionStrings>       <add name=&quot;SqlServices&quot; connectionString=         &quot;Data Source=MySqlServer;Integrated Security=SSPI;Initial Catalog=aspnetdb;&quot; />     </connectionStrings>     <system.web>       <profile defaultProvider=&quot;SqlProvider&quot;>         <providers>           <clear />           <add name=&quot;SqlProvider&quot;             type=&quot;System.Web.Profile.SqlProfileProvider&quot;             connectionStringName=&quot;SqlServices&quot;             applicationName=&quot;MyApplication&quot; />         </providers>       </profile>     </system.web>   </configuration>   ```"
   example:
   - "The following code example shows an ASP.NET page that uses the ProfileManager class to manage inactive profiles.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Profile.ProfileManager#4](~/add/codesnippet/csharp/t-system.web.profile.pro_1_1.aspx)]\n [!code-vb[System.Web.Profile.ProfileManager#4](~/add/codesnippet/visualbasic/t-system.web.profile.pro_1_1.aspx)]"
   syntax:
@@ -53,14 +53,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Adds a profile property programmatically."
-  remarks: "This method is functionally equivalent to adding the property to the `profile` section of the configuration file. To call this method to add the profile property, you must make the call in a method that is marked with the <xref:System.Web.PreApplicationStartMethodAttribute> attribute."
+  summary: "以编程方式添加的配置文件属性。"
+  remarks: "此方法在功能上等效于添加到属性`profile`配置文件节。 要调用此方法以添加配置文件属性，必须进行调用的方法将标有中<xref:System.Web.PreApplicationStartMethodAttribute>属性。</xref:System.Web.PreApplicationStartMethodAttribute>"
   syntax:
     content: public static void AddDynamicProfileProperty (System.Web.Configuration.ProfilePropertySettings property);
     parameters:
     - id: property
       type: System.Web.Configuration.ProfilePropertySettings
-      description: "The property settings to be added."
+      description: "要添加的属性设置。"
   overload: System.Web.Profile.ProfileManager.AddDynamicProfileProperty*
   exceptions: []
   platform:
@@ -77,15 +77,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Gets or sets the name of the application for which to store and retrieve profile information."
-  remarks: "The <xref:System.Web.Profile.ProfileManager> uses the ApplicationName property to associate profile information with different applications. This enables multiple applications to use the same database to store user information without running into conflicts between duplicate users. Multiple ASP.NET applications can use the same user database by specifying the same value in the ApplicationName property. The ApplicationName property can be set programmatically, or it can be set declaratively in the configuration file for the Web application by using the `applicationName` attribute.       If a value is not specified for the `applicationName` attribute in the configuration file for the Web application, then the profile providers included with the .NET Framework use the <xref:System.Web.Hosting.HostingEnvironment.ApplicationVirtualPath%2A> property value for ASP.NET applications. For non-ASP.NET applications, the default value is the <xref:System.Diagnostics.ProcessModule.ModuleName%2A> property value, without the file extension.       The ApplicationName property exposes the <xref:System.Configuration.SettingsProvider.ApplicationName%2A?displayProperty=fullName> property of the default profile provider. The default profile provider is specified using the `defaultProvider` attribute of the  configuration element. If the user profile contains properties that are managed by a profile provider other than the default provider, they may be configured with a different application name. To access the application name of a profile provider other than the default provider, obtain a reference to the profile provider using the <xref:System.Web.Profile.ProfileManager.Providers%2A> property and access the <xref:System.Configuration.SettingsProvider.ApplicationName%2A> property of the provider directly.      > [!CAUTION] >  Because a single default profile provider instance is used for all of the requests served by an <xref:System.Web.HttpApplication> object, you can have multiple requests executing concurrently and attempting to set the ApplicationName property value. The ApplicationName property is not thread safe for multiple writes, and changing the ApplicationName property value can result in unexpected behavior for multiple users of an application. It is recommended that you avoid writing code that allows users to set the ApplicationName property unless you require it. An example of an application where setting the ApplicationName property may be required is an administrative application that manages profile data for multiple applications. Such an application should be a single-user application and not a Web application."
+  summary: "获取或设置其来存储和检索配置文件信息的应用程序的名称。"
+  remarks: "<xref:System.Web.Profile.ProfileManager>ApplicationName 属性用于将配置文件信息与不同的应用程序相关联。</xref:System.Web.Profile.ProfileManager> 这使多个应用程序能够使用相同的数据库来存储用户信息而不会遇到重复的用户之间的冲突。 多个 ASP.NET 应用程序可以通过在应用程序名称属性中指定相同的值使用相同的用户数据库。 可以以编程方式，设置应用程序名称属性也可以在其进行设置以声明方式的 Web 应用程序的配置文件使用`applicationName`属性。       如果没有为指定值`applicationName`属性在 Web 应用的配置文件，则.NET Framework 附带的配置文件提供程序使用<xref:System.Web.Hosting.HostingEnvironment.ApplicationVirtualPath%2A>ASP.NET 应用程序的属性值。</xref:System.Web.Hosting.HostingEnvironment.ApplicationVirtualPath%2A> 对于非 ASP.NET 应用程序，默认值是<xref:System.Diagnostics.ProcessModule.ModuleName%2A>属性值，不含文件扩展名。</xref:System.Diagnostics.ProcessModule.ModuleName%2A>       应用程序名称属性可公开<xref:System.Configuration.SettingsProvider.ApplicationName%2A?displayProperty=fullName>的默认配置文件提供程序的属性。</xref:System.Configuration.SettingsProvider.ApplicationName%2A?displayProperty=fullName> 使用指定的默认配置文件提供`defaultProvider`配置元素的属性。 如果用户配置文件包含管理的配置文件提供者不是默认的提供程序的属性，它们可能配置一个不同的应用程序名称。 若要访问配置文件提供者不是默认的提供程序的应用程序名称，获取对使用配置文件提供程序的引用<xref:System.Web.Profile.ProfileManager.Providers%2A>属性和访问<xref:System.Configuration.SettingsProvider.ApplicationName%2A>直接的提供程序的属性。</xref:System.Configuration.SettingsProvider.ApplicationName%2A> </xref:System.Web.Profile.ProfileManager.Providers%2A>      1> [!CAUTION]&1;> 由于一个默认配置文件提供程序实例用于所有服务的请求<xref:System.Web.HttpApplication>对象，您可以有多个请求并发执行，并尝试设置的应用程序名称属性值。</xref:System.Web.HttpApplication> 应用程序名称属性不是线程安全的多个写操作，并更改应用程序名称属性值可能导致多个用户的应用程序的意外行为。 建议你避免编写代码，用户可设置的应用程序名称属性，除非需要它。 应用程序可能需要设置应用程序名称属性的示例是管理应用程序管理多个应用程序的配置文件数据。 此类应用程序应为单用户应用程序和不是 Web 应用程序。"
   example:
   - "The following configuration file excerpt shows the  element in the  section of the Web.config file for an ASP.NET application. It sets the application's default profile provider to a <xref:System.Web.Profile.SqlProfileProvider> instance and sets the ApplicationName to `MyApplication`.  \n  \n```  \n<profile enabled=\"true\" defaultProvider=\"SqlProvider\">  \n  <providers>  \n  <add name=\"SqlProvider\"  \n    type=\"System.Web.Profile.SqlProfileProvider\"  \n    connectionStringName=\"SqlServices\"  \n    applicationName=\"MyApplication\" />  \n  </providers>  \n</profile>  \n```"
   syntax:
     content: public static string ApplicationName { get; set; }
     return:
       type: System.String
-      description: "The name of the application for which to store and retrieve profile information."
+      description: "其来存储和检索配置文件信息的应用程序的名称。"
   overload: System.Web.Profile.ProfileManager.ApplicationName*
   exceptions: []
   platform:
@@ -102,20 +102,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Gets a value indicating whether the user profile will be automatically saved at the end of the execution of an ASP.NET page."
-  remarks: "The AutomaticSaveEnabled property indicates whether automatic saving of the user profile is enabled for the application. If automatic saving is enabled, the <xref:System.Web.Profile.ProfileModule> object raises the <xref:System.Web.Profile.ProfileModule.ProfileAutoSaving> event and calls the <xref:System.Web.Profile.ProfileBase.Save%2A> method during the <xref:System.Web.HttpApplication.EndRequest> event at the end of the execution of an ASP.NET page.       The AutomaticSaveEnabled property is set using the `automaticSaveEnabled` attribute of the  element in the Web.config file for an ASP.NET application."
+  summary: "获取一个值，该值指示是否将 ASP.NET 页的执行结束时自动保存的用户配置文件。"
+  remarks: "AutomaticSaveEnabled 属性指示是否为应用程序启用的用户配置文件的自动保存。 如果启用了自动保存，<xref:System.Web.Profile.ProfileModule>对象引发<xref:System.Web.Profile.ProfileModule.ProfileAutoSaving>事件并调用<xref:System.Web.Profile.ProfileBase.Save%2A>方法期间<xref:System.Web.HttpApplication.EndRequest>末尾的 ASP.NET 页执行的事件。</xref:System.Web.HttpApplication.EndRequest> </xref:System.Web.Profile.ProfileBase.Save%2A> </xref:System.Web.Profile.ProfileModule.ProfileAutoSaving> </xref:System.Web.Profile.ProfileModule>       使用设置 AutomaticSaveEnabled 属性`automaticSaveEnabled`的 ASP.NET 应用程序的 Web.config 文件中的元素的属性。"
   example:
   - "The following configuration file excerpt shows the  element in the  section of the Web.config file for an ASP.NET application. It specifies the application's default profile provider to a <xref:System.Web.Profile.SqlProfileProvider> instance and sets the `automaticSaveEnabled` attribute to `true`.  \n  \n```  \n<profile enabled=\"true\"  \n  automaticSaveEnabled=\"true\"  \n  defaultProvider=\"SqlProvider\">  \n  <providers>  \n    <add name=\"SqlProvider\"  \n      type=\"System.Web.Profile.SqlProfileProvider\"  \n      connectionStringName=\"SqlServices\"  \n      applicationName=\"MyApplication\" />  \n  </providers>  \n</profile>  \n```"
   syntax:
     content: public static bool AutomaticSaveEnabled { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the user profile will be automatically saved at the end of the execution of an ASP.NET page; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果将 ASP.NET 页; 的执行结束时自动保存的用户配置文件否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.Profile.ProfileManager.AutomaticSaveEnabled*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "An attempt was made to get the AutomaticSaveEnabled property value without at least <xref href=&quot;System.Web.AspNetHostingPermissionLevel&quot;></xref> permission."
+    description: "尝试至少获取 AutomaticSaveEnabled 属性值，但无<xref href=&quot;System.Web.AspNetHostingPermissionLevel&quot;></xref>权限。"
   platform:
   - net462
 - uid: System.Web.Profile.ProfileManager.DeleteInactiveProfiles(System.Web.Profile.ProfileAuthenticationOption,System.DateTime)
@@ -130,8 +130,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Deletes user profile data for which the last activity date and time occurred before the specified date and time."
-  remarks: "The DeleteInactiveProfiles method is used to remove unused profile data from the data source for the application specified by the `applicationName` attribute in the configuration file. Use the `authenticationOption` parameter to specify whether you want only anonymous profiles, only authenticated profiles, or all profiles to be searched. Of the searched profiles, any profile with a <xref:System.Web.Profile.ProfileInfo.LastActivityDate%2A> that occurs on or before the specified `userInactiveSinceDate` parameter value is deleted.       The DeleteInactiveProfiles method calls the <xref:System.Web.Profile.ProfileProvider.DeleteInactiveProfiles%2A> method of the default profile provider. The default profile provider is specified using the `defaultProvider` attribute of the  configuration element. If the user profile contains properties that are managed by a profile provider other than the default provider, the profile information in the other data source is not deleted. To delete inactive profiles that are managed by a profile provider other than the default provider, obtain a reference to the profile provider using the <xref:System.Web.Profile.ProfileManager.Providers%2A> property and call the <xref:System.Web.Profile.ProfileProvider.DeleteInactiveProfiles%2A> method of the provider directly."
+  summary: "删除上次活动日期和时间发生的指定的日期和时间之前的用户配置文件数据。"
+  remarks: "DeleteInactiveProfiles 方法用于从指定的应用程序的数据源中删除未使用的配置文件数据`applicationName`配置文件中的属性。 使用`authenticationOption`参数来指定是否希望仅匿名配置文件，仅当身份验证配置文件或要搜索的所有配置文件。 搜索的配置文件，所有与配置文件<xref:System.Web.Profile.ProfileInfo.LastActivityDate%2A>发生这种情况是日期或之前指定`userInactiveSinceDate`删除参数值。</xref:System.Web.Profile.ProfileInfo.LastActivityDate%2A>       DeleteInactiveProfiles 方法调用<xref:System.Web.Profile.ProfileProvider.DeleteInactiveProfiles%2A>的默认配置文件提供程序的方法。</xref:System.Web.Profile.ProfileProvider.DeleteInactiveProfiles%2A> 使用指定的默认配置文件提供`defaultProvider`配置元素的属性。 如果用户配置文件包含管理的配置文件提供者不是默认的提供程序的属性，不会删除其他数据源中的配置文件信息。 若要删除非活动管理的配置文件提供者不是默认的提供程序的配置文件，获取对使用配置文件提供程序的引用<xref:System.Web.Profile.ProfileManager.Providers%2A>属性并调用<xref:System.Web.Profile.ProfileProvider.DeleteInactiveProfiles%2A>的提供程序直接的方法。</xref:System.Web.Profile.ProfileProvider.DeleteInactiveProfiles%2A> </xref:System.Web.Profile.ProfileManager.Providers%2A>"
   example:
   - "The following code example shows an ASP.NET page that manages inactive profiles. A button is provided to delete all profiles that have been unused for the specified number of days and are therefore considered inactive.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Profile.ProfileManager#4](~/add/codesnippet/csharp/32807c48-d028-41c4-938b-_1.aspx)]\n [!code-vb[System.Web.Profile.ProfileManager#4](~/add/codesnippet/visualbasic/32807c48-d028-41c4-938b-_1.aspx)]"
   syntax:
@@ -139,13 +139,13 @@ items:
     parameters:
     - id: authenticationOption
       type: System.Web.Profile.ProfileAuthenticationOption
-      description: "One of the <xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref> enumeration values, specifying whether anonymous, authenticated, or both types of profiles are deleted."
+      description: "之一<xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref>枚举值，指定是否匿名，身份验证，或者两种类型的配置文件被删除。"
     - id: userInactiveSinceDate
       type: System.DateTime
-      description: "A <xref:System.DateTime> that identifies which user profiles are considered inactive. If the <xref:System.Web.Profile.ProfileInfo.LastActivityDate*> of a user profile occurs on or before this date and time, the profile is considered inactive."
+      description: "A <xref:System.DateTime>，标识哪些用户配置文件被视为处于非活动状态。</xref:System.DateTime> 如果<xref:System.Web.Profile.ProfileInfo.LastActivityDate*>的用户配置文件之前或在此日期和时间，该配置文件被视为处于非活动状态。</xref:System.Web.Profile.ProfileInfo.LastActivityDate*>"
     return:
       type: System.Int32
-      description: "The number of profiles deleted from the data source."
+      description: "从数据源中删除的配置文件数。"
   overload: System.Web.Profile.ProfileManager.DeleteInactiveProfiles*
   exceptions: []
   platform:
@@ -162,8 +162,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Deletes the profile for the specified user name from the data source."
-  remarks: "The DeleteProfile method deletes all profile information and properties for the user profile for the specified `username` from the data source for the specified <xref:System.Web.Profile.ProfileManager.ApplicationName%2A>.       The DeleteProfile method calls the <xref:System.Web.Profile.ProfileProvider.DeleteProfiles%2A> method of the default profile provider to perform the delete operation. The default profile provider is specified using the `defaultProvider` attribute of the  configuration element. If the user profile contains properties that are managed by a profile provider other than the default provider, they are not deleted. To delete profile properties that are managed by a profile provider other than the default provider, obtain a reference to the profile provider using the <xref:System.Web.Profile.ProfileManager.Providers%2A> property and call the <xref:System.Web.Profile.ProfileProvider.DeleteProfiles%2A> method of the provider directly."
+  summary: "从数据源中删除指定的用户名称的配置文件。"
+  remarks: "DeleteProfile 方法将删除所有配置文件信息和对指定的用户配置文件的属性`username`从指定的<xref:System.Web.Profile.ProfileManager.ApplicationName%2A>.</xref:System.Web.Profile.ProfileManager.ApplicationName%2A>的数据源       DeleteProfile 方法调用<xref:System.Web.Profile.ProfileProvider.DeleteProfiles%2A>要执行删除操作的默认配置文件提供程序的方法。</xref:System.Web.Profile.ProfileProvider.DeleteProfiles%2A> 使用指定的默认配置文件提供`defaultProvider`配置元素的属性。 如果用户配置文件包含管理的配置文件提供者不是默认的提供程序的属性，则它们不会删除。 若要删除由配置文件提供者不是默认的提供程序的配置文件属性，获取对使用配置文件提供程序的引用<xref:System.Web.Profile.ProfileManager.Providers%2A>属性并调用<xref:System.Web.Profile.ProfileProvider.DeleteProfiles%2A>的提供程序直接的方法。</xref:System.Web.Profile.ProfileProvider.DeleteProfiles%2A> </xref:System.Web.Profile.ProfileManager.Providers%2A>"
   example:
   - "The following code example shows an ASP.NET page that manages inactive profiles. The DeleteProfile method is called when a single profile is selected to be deleted. Whether a profile is considered inactive is based on the date specified for the `userInactiveSinceDate` parameter value passed to the <xref:System.Web.Profile.ProfileManager.GetAllInactiveProfiles%2A> method.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Profile.ProfileManager#10](~/add/codesnippet/csharp/m-system.web.profile.pro_0_1.aspx)]\n [!code-vb[System.Web.Profile.ProfileManager#10](~/add/codesnippet/visualbasic/m-system.web.profile.pro_0_1.aspx)]"
   syntax:
@@ -171,18 +171,18 @@ items:
     parameters:
     - id: username
       type: System.String
-      description: "The user name for the profile to be deleted."
+      description: "要删除的配置文件的用户名。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the user profile was found and deleted; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果找到并删除; 用户配置文件否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.Profile.ProfileManager.DeleteProfile*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>username</code> is an empty string (&quot;&quot;) or contains a comma."
+    description: "<code>username</code>为空字符串 (&quot;&quot;) 或包含逗号。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>username</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>username</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.Profile.ProfileManager.DeleteProfiles(System.String[])
@@ -197,8 +197,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Deletes profile properties and information for the supplied list of user names."
-  remarks: "The DeleteProfiles method deletes all profile information and properties for the specified profiles from the data source for the application specified by the <xref:System.Web.Profile.ProfileManager.ApplicationName%2A> property. The list of profiles to delete is specified as a string array of user names. If profile properties and information exist in the data source for a user name in the `usernames` parameter, they are deleted.       The return value may differ from the length of the specified array of `usernames`. This indicates that some of the profiles in the specified array of `usernames` were already deleted from the data store.       The DeleteProfiles method calls the <xref:System.Web.Profile.ProfileProvider.DeleteProfiles%2A> method of the default profile provider. The default profile provider is specified using the `defaultProvider` attribute of the  configuration element. If the user profile contains properties that are managed by a profile provider other than the default provider, they are not deleted. To delete profile properties that are managed by a profile provider other than the default provider, obtain a reference to the profile provider using the <xref:System.Web.Profile.ProfileManager.Providers%2A> property and call the <xref:System.Web.Profile.ProfileProvider.DeleteProfiles%2A> method of the provider directly."
+  summary: "删除配置文件属性和提供的一系列的用户名的信息。"
+  remarks: "DeleteProfiles 方法指定的应用程序的数据源中删除所有配置文件信息和属性指定配置文件的<xref:System.Web.Profile.ProfileManager.ApplicationName%2A>属性。</xref:System.Web.Profile.ProfileManager.ApplicationName%2A> 若要删除的配置文件列表指定为的用户名称的字符串数组。 如果配置文件属性和信息中的用户名称的数据源中存在`usernames`参数，它们在被删除。       返回值可能与指定的数组的长度不同`usernames`。 这指示指定的数组中的配置文件的一些`usernames`了已从数据存储区中删除。       DeleteProfiles 方法调用<xref:System.Web.Profile.ProfileProvider.DeleteProfiles%2A>的默认配置文件提供程序的方法。</xref:System.Web.Profile.ProfileProvider.DeleteProfiles%2A> 使用指定的默认配置文件提供`defaultProvider`配置元素的属性。 如果用户配置文件包含管理的配置文件提供者不是默认的提供程序的属性，则它们不会删除。 若要删除由配置文件提供者不是默认的提供程序的配置文件属性，获取对使用配置文件提供程序的引用<xref:System.Web.Profile.ProfileManager.Providers%2A>属性并调用<xref:System.Web.Profile.ProfileProvider.DeleteProfiles%2A>的提供程序直接的方法。</xref:System.Web.Profile.ProfileProvider.DeleteProfiles%2A> </xref:System.Web.Profile.ProfileManager.Providers%2A>"
   example:
   - "The following code example shows an ASP.NET page that manages inactive profiles. A <xref:System.Web.UI.WebControls.GridView> control displays the inactive profiles returned. Each row of the <xref:System.Web.UI.WebControls.GridView> control includes a button that deletes the profile for that row from the data source with a call to the DeleteProfiles method.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Profile.ProfileManager#4](~/add/codesnippet/csharp/m-system.web.profile.pro_4_1.aspx)]\n [!code-vb[System.Web.Profile.ProfileManager#4](~/add/codesnippet/visualbasic/m-system.web.profile.pro_4_1.aspx)]"
   syntax:
@@ -206,10 +206,10 @@ items:
     parameters:
     - id: usernames
       type: System.String[]
-      description: "A string array of user names for profiles to be deleted."
+      description: "要删除的配置文件的用户名称的字符串数组。"
     return:
       type: System.Int32
-      description: "The number of profiles deleted from the data source."
+      description: "从数据源中删除的配置文件数。"
   overload: System.Web.Profile.ProfileManager.DeleteProfiles*
   exceptions:
   - type: System.ArgumentException
@@ -232,8 +232,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Deletes profile properties and information from the data source for the supplied list of profiles."
-  remarks: "The DeleteProfiles method deletes all profile information and properties for the specified profiles from the data source for the application specified by the <xref:System.Web.Profile.ProfileManager.ApplicationName%2A> property. The list of profiles to delete is specified using a <xref:System.Web.Profile.ProfileInfoCollection> that is passed as the `profiles` parameter. A <xref:System.Web.Profile.ProfileInfoCollection> can be returned from the <xref:System.Web.Profile.ProfileManager.GetAllProfiles%2A>, <xref:System.Web.Profile.ProfileManager.GetAllInactiveProfiles%2A>, <xref:System.Web.Profile.ProfileManager.FindProfilesByUserName%2A>, and <xref:System.Web.Profile.ProfileManager.FindInactiveProfilesByUserName%2A> methods.       Note that the return value may differ from the <xref:System.Web.Profile.ProfileInfoCollection.Count%2A> value for the supplied <xref:System.Web.Profile.ProfileInfoCollection>. This indicates that some of the profiles in the specified <xref:System.Web.Profile.ProfileInfoCollection> were already deleted from the data store.       The DeleteProfiles method calls the <xref:System.Web.Profile.ProfileProvider.DeleteProfiles%2A?displayProperty=fullName> method of the default profile provider. The default profile provider is specified using the `defaultProvider` attribute of the  configuration element. If the user profile contains properties that are managed by a profile provider other than the default provider, they are not deleted. To delete profile properties that are managed by a profile provider other than the default provider, obtain a reference to the profile provider using the <xref:System.Web.Profile.ProfileManager.Providers%2A> property and call the <xref:System.Web.Profile.ProfileProvider.DeleteProfiles%2A> method of the provider directly."
+  summary: "提供的配置文件列表的数据源中删除配置文件属性和信息。"
+  remarks: "DeleteProfiles 方法指定的应用程序的数据源中删除所有配置文件信息和属性指定配置文件的<xref:System.Web.Profile.ProfileManager.ApplicationName%2A>属性。</xref:System.Web.Profile.ProfileManager.ApplicationName%2A> 使用指定的配置文件，以删除列表<xref:System.Web.Profile.ProfileInfoCollection>作为传递`profiles`参数。</xref:System.Web.Profile.ProfileInfoCollection> A<xref:System.Web.Profile.ProfileInfoCollection>可以从返回<xref:System.Web.Profile.ProfileManager.GetAllProfiles%2A>， <xref:System.Web.Profile.ProfileManager.GetAllInactiveProfiles%2A>， <xref:System.Web.Profile.ProfileManager.FindProfilesByUserName%2A>，和<xref:System.Web.Profile.ProfileManager.FindInactiveProfilesByUserName%2A>方法。</xref:System.Web.Profile.ProfileManager.FindInactiveProfilesByUserName%2A> </xref:System.Web.Profile.ProfileManager.FindProfilesByUserName%2A> </xref:System.Web.Profile.ProfileManager.GetAllInactiveProfiles%2A> </xref:System.Web.Profile.ProfileManager.GetAllProfiles%2A> </xref:System.Web.Profile.ProfileInfoCollection>       请注意，返回的值可能不同于<xref:System.Web.Profile.ProfileInfoCollection.Count%2A>提供<xref:System.Web.Profile.ProfileInfoCollection>.</xref:System.Web.Profile.ProfileInfoCollection>值</xref:System.Web.Profile.ProfileInfoCollection.Count%2A> 这指示在指定的配置文件的一些<xref:System.Web.Profile.ProfileInfoCollection>了已从数据存储区中删除。</xref:System.Web.Profile.ProfileInfoCollection>       DeleteProfiles 方法调用<xref:System.Web.Profile.ProfileProvider.DeleteProfiles%2A?displayProperty=fullName>的默认配置文件提供程序的方法。</xref:System.Web.Profile.ProfileProvider.DeleteProfiles%2A?displayProperty=fullName> 使用指定的默认配置文件提供`defaultProvider`配置元素的属性。 如果用户配置文件包含管理的配置文件提供者不是默认的提供程序的属性，则它们不会删除。 若要删除由配置文件提供者不是默认的提供程序的配置文件属性，获取对使用配置文件提供程序的引用<xref:System.Web.Profile.ProfileManager.Providers%2A>属性并调用<xref:System.Web.Profile.ProfileProvider.DeleteProfiles%2A>的提供程序直接的方法。</xref:System.Web.Profile.ProfileProvider.DeleteProfiles%2A> </xref:System.Web.Profile.ProfileManager.Providers%2A>"
   example:
   - "The following code example allows a user to search for profiles using the <xref:System.Web.Profile.ProfileManager.FindProfilesByUserName%2A> and <xref:System.Web.Profile.ProfileManager.FindInactiveProfilesByUserName%2A> methods. The user can then delete the returned profiles with a call to the DeleteProfiles method.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[System.Web.Profile.ProfileManager#5](~/add/codesnippet/visualbasic/dbbefae3-6297-4bf8-9680-_1.aspx)]\n [!code-cs[System.Web.Profile.ProfileManager#5](~/add/codesnippet/csharp/dbbefae3-6297-4bf8-9680-_1.aspx)]"
   syntax:
@@ -241,10 +241,10 @@ items:
     parameters:
     - id: profiles
       type: System.Web.Profile.ProfileInfoCollection
-      description: "A <xref href=&quot;System.Web.Profile.ProfileInfoCollection&quot;></xref> that contains profile information for profiles to be deleted."
+      description: "A <xref href=&quot;System.Web.Profile.ProfileInfoCollection&quot;> </xref> ，其中包含要删除的配置文件的配置文件信息。"
     return:
       type: System.Int32
-      description: "The number of profiles deleted from the data source."
+      description: "从数据源中删除的配置文件数。"
   overload: System.Web.Profile.ProfileManager.DeleteProfiles*
   exceptions:
   - type: System.ArgumentException
@@ -267,15 +267,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Gets a value indicating whether the user profile is enabled for the application."
-  remarks: "The user profile is enabled for an application using the `enabled` attribute of the  configuration element."
+  summary: "获取一个值，该值指示是否为应用程序启用的用户配置文件。"
+  remarks: "为应用程序中使用启用的用户配置文件`enabled`配置元素的属性。"
   example:
   - "The following code example shows the  element in the  section of the Web.config file for an ASP.NET application where the user profile has been enabled.  \n  \n```  \n<profile enabled=\"true\" defaultProvider=\"SqlProvider\">  \n  <providers>  \n    <add name=\"SqlProvider\"  \n      type=\"System.Web.Profile.SqlProfileProvider\"  \n      connectionStringName=\"SqlServices\"  \n      applicationName=\"MyApplication\" />  \n  </providers>  \n</profile>  \n```"
   syntax:
     content: public static bool Enabled { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the user profile is enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果启用用户配置文件;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.Profile.ProfileManager.Enabled*
   exceptions: []
   platform:
@@ -292,8 +292,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Retrieves profile information for all profiles in which the last activity date occurred on or before the specified date and time and the user name for the profile matches the specified name."
-  remarks: "The FindInactiveProfilesByUserName method is used to retrieve profile information for all unused user profiles for the application specified by the `applicationName` attribute in the configuration file. This method will only retrieve profiles for which the profile user name matches the supplied `usernameToMatch` parameter value. Use the `authenticationOption` parameter to specify whether you want only anonymous profiles, only authenticated profiles, or all profiles to be searched. Of the searched profiles, any profile with a <xref:System.Web.Profile.ProfileInfo.LastActivityDate%2A> that occurs on or before the specified `userInactiveSinceDate` parameter value is returned.       You can retrieve this information in pages of data using the overload for the <xref:System.Web.Profile.ProfileManager.FindInactiveProfilesByUserName%28System.Web.Profile.ProfileAuthenticationOption%2CSystem.String%2CSystem.DateTime%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%40%29> method that takes additional `pageIndex` and `pageSize` parameters.      > [!NOTE] >  Your profile provider may support wildcard characters in the `usernameToMatch` parameter. For example, the <xref:System.Web.Profile.SqlProfileProvider.FindInactiveProfilesByUserName%2A> method of the <xref:System.Web.Profile.SqlProfileProvider> class supports wildcard characters in the `usernameToMatch` parameter.       The FindInactiveProfilesByUserName method calls the <xref:System.Web.Profile.ProfileProvider.FindInactiveProfilesByUserName%2A?displayProperty=fullName> method of the default profile provider. The default profile provider is specified using the `defaultProvider` attribute of the  configuration element. If the user profile contains properties that are managed by a profile provider other than the default provider, the data source for the other profile provider is not searched. To find inactive profiles that are managed by a profile provider other than the default provider, obtain a reference to the profile provider using the <xref:System.Web.Profile.ProfileManager.Providers%2A> property and call the <xref:System.Web.Profile.ProfileProvider.FindInactiveProfilesByUserName%2A> method of the provider directly."
+  summary: "检索在其中指定日期或早于指定日期发生的上一次活动日期和时间和配置文件的用户名称匹配的指定的名称的所有配置文件的配置文件信息。"
+  remarks: "FindInactiveProfilesByUserName 方法用于检索指定的应用程序的所有未使用的用户配置文件的配置文件信息`applicationName`配置文件中的属性。 此方法将仅检索为其配置文件的用户名匹配所提供的配置文件`usernameToMatch`参数值。 使用`authenticationOption`参数来指定是否希望仅匿名配置文件，仅当身份验证配置文件或要搜索的所有配置文件。 搜索的配置文件，所有与配置文件<xref:System.Web.Profile.ProfileInfo.LastActivityDate%2A>发生这种情况是日期或之前指定`userInactiveSinceDate`返回参数值。</xref:System.Web.Profile.ProfileInfo.LastActivityDate%2A>       你可以检索此信息使用的重载，以数据页<xref:System.Web.Profile.ProfileManager.FindInactiveProfilesByUserName%28System.Web.Profile.ProfileAuthenticationOption%2CSystem.String%2CSystem.DateTime%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%40%29>采用其他方法`pageIndex`和`pageSize`参数。</xref:System.Web.Profile.ProfileManager.FindInactiveProfilesByUserName%28System.Web.Profile.ProfileAuthenticationOption%2CSystem.String%2CSystem.DateTime%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%40%29>      1> [!NOTE]&1;> 配置文件提供程序可能支持的通配符字符`usernameToMatch`参数。 例如，<xref:System.Web.Profile.SqlProfileProvider.FindInactiveProfilesByUserName%2A>方法<xref:System.Web.Profile.SqlProfileProvider>类支持的通配符字符`usernameToMatch`参数。</xref:System.Web.Profile.SqlProfileProvider> </xref:System.Web.Profile.SqlProfileProvider.FindInactiveProfilesByUserName%2A>       FindInactiveProfilesByUserName 方法调用<xref:System.Web.Profile.ProfileProvider.FindInactiveProfilesByUserName%2A?displayProperty=fullName>的默认配置文件提供程序的方法。</xref:System.Web.Profile.ProfileProvider.FindInactiveProfilesByUserName%2A?displayProperty=fullName> 使用指定的默认配置文件提供`defaultProvider`配置元素的属性。 如果用户配置文件包含管理的配置文件提供者不是默认的提供程序的属性，则不会搜索其他配置文件提供程序的数据源。 若要查找由配置文件提供者不是默认的提供程序管理的非活动配置文件，获取对使用配置文件提供程序的引用<xref:System.Web.Profile.ProfileManager.Providers%2A>属性并调用<xref:System.Web.Profile.ProfileProvider.FindInactiveProfilesByUserName%2A>的提供程序直接的方法。</xref:System.Web.Profile.ProfileProvider.FindInactiveProfilesByUserName%2A> </xref:System.Web.Profile.ProfileManager.Providers%2A>"
   example:
   - "The following code example allows a user to supply a `usernameToMatch` value and a <xref:System.Web.Profile.ProfileAuthenticationOption> enumeration value and retrieves profile information for any matching profiles. The sample allows the user to specify whether to return only inactive profiles. If the user specifies only inactive profiles, the FindInactiveProfilesByUserName method is called; otherwise, the <xref:System.Web.Profile.ProfileManager.FindProfilesByUserName%2A> method is called.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Profile.ProfileManager#8](~/add/codesnippet/csharp/02c1131d-855c-4e58-af67-_1.aspx)]\n [!code-vb[System.Web.Profile.ProfileManager#8](~/add/codesnippet/visualbasic/02c1131d-855c-4e58-af67-_1.aspx)]"
   syntax:
@@ -301,24 +301,24 @@ items:
     parameters:
     - id: authenticationOption
       type: System.Web.Profile.ProfileAuthenticationOption
-      description: "One of the <xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref> enumeration values, specifying whether anonymous, authenticated, or both types of profiles are returned."
+      description: "之一<xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref>枚举值，指定是否匿名的经过身份验证，或返回这两种类型的配置文件。"
     - id: usernameToMatch
       type: System.String
-      description: "The user name for which to search."
+      description: "要搜索的用户名。"
     - id: userInactiveSinceDate
       type: System.DateTime
-      description: "A <xref:System.DateTime> that identifies which user profiles are considered inactive. If the <xref:System.Web.Profile.ProfileInfo.LastActivityDate*> of a user profile occurs on or before this date and time, the profile is considered inactive."
+      description: "A <xref:System.DateTime>，标识哪些用户配置文件被视为处于非活动状态。</xref:System.DateTime> 如果<xref:System.Web.Profile.ProfileInfo.LastActivityDate*>的用户配置文件之前或在此日期和时间，该配置文件被视为处于非活动状态。</xref:System.Web.Profile.ProfileInfo.LastActivityDate*>"
     return:
       type: System.Web.Profile.ProfileInfoCollection
-      description: "A <xref href=&quot;System.Web.Profile.ProfileInfoCollection&quot;></xref> containing user profile information for inactive profiles in which the user name matches the supplied <code>usernameToMatch</code> parameter."
+      description: "A <xref href=&quot;System.Web.Profile.ProfileInfoCollection&quot;> </xref>包含不活动的配置文件中的用户名与匹配所提供的用户配置文件信息<code> usernameToMatch </code>参数。"
   overload: System.Web.Profile.ProfileManager.FindInactiveProfilesByUserName*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>usernameToMatch</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>usernameToMatch</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>usernameToMatch</code> is an empty string (&quot;&quot;)."
+    description: "<code>usernameToMatch</code>为空字符串 (&quot;&quot;)。"
   platform:
   - net462
 - uid: System.Web.Profile.ProfileManager.FindInactiveProfilesByUserName(System.Web.Profile.ProfileAuthenticationOption,System.String,System.DateTime,System.Int32,System.Int32,System.Int32@)
@@ -333,8 +333,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Retrieves profile information in pages of data for profiles in which the last activity date occurred on or before the specified date and time and the user name for the profile matches the specified name."
-  remarks: "The FindInactiveProfilesByUserName method is used to retrieve profile information for unused user profiles for the application specified by the `applicationName` attribute in the configuration file. This method will only retrieve profiles for which the user name matches the supplied `usernameToMatch` parameter value. Use the `authenticationOption` parameter to specify whether you want only anonymous profiles, only authenticated profiles, or all profiles to be searched. Of the searched profiles, any profile is returned that has a <xref:System.Web.Profile.ProfileInfo.LastActivityDate%2A> that occurs on or before the specified `userInactiveSinceDate` parameter value.       The results returned by FindInactiveProfilesByUserName are constrained by the `pageIndex` and `pageSize` parameters. The `pageSize` parameter identifies the maximum number of <xref:System.Web.Profile.ProfileInfo> objects to return in the <xref:System.Web.Profile.ProfileInfoCollection> collection. The `pageIndex` parameter identifies which page of results to return; 0 identifies the first page. The `totalRecords` parameter is an `out` parameter that is set to the total number of inactive user profiles for the configured `applicationName`, based on the `authenticationOption` and `userInactiveSinceDate` parameters. For example, if there are 13 users for the configured `applicationName`, and the `pageIndex` value is 1 with a `pageSize` of 5, the <xref:System.Web.Profile.ProfileInfoCollection> returned will contain the sixth through the tenth inactive profiles. The `totalRecords` parameter will be set to 13.       Note that your profile provider may support wildcard characters in the `usernameToMatch` parameter. For example, the <xref:System.Web.Profile.SqlProfileProvider.FindInactiveProfilesByUserName%2A> method of the <xref:System.Web.Profile.SqlProfileProvider> class supports wildcard characters in the `usernameToMatch` parameter.       The FindInactiveProfilesByUserName method calls the <xref:System.Web.Profile.ProfileProvider.FindInactiveProfilesByUserName%2A> method of the default profile provider. The default profile provider is specified using the `defaultProvider` attribute of the  configuration element. If the user profile contains properties that are managed by a profile provider other than the default provider, the data source for the other profile provider is not searched. To find inactive profiles that are managed by a profile provider other than the default provider, obtain a reference to the profile provider using the <xref:System.Web.Profile.ProfileManager.Providers%2A> property and call the <xref:System.Web.Profile.ProfileProvider.FindInactiveProfilesByUserName%2A> method of the provider directly."
+  summary: "检索配置文件在其中指定日期或早于指定日期发生的上一次活动日期和时间和配置文件的用户名称匹配的指定的名称的数据页的配置文件信息。"
+  remarks: "FindInactiveProfilesByUserName 方法用于检索由指定的应用程序的未使用的用户配置文件的配置文件信息`applicationName`配置文件中的属性。 此方法将仅检索为其在用户名与匹配所提供的配置文件`usernameToMatch`参数值。 使用`authenticationOption`参数来指定是否希望仅匿名配置文件，仅当身份验证配置文件或要搜索的所有配置文件。 搜索配置文件中，任何配置文件返回具有<xref:System.Web.Profile.ProfileInfo.LastActivityDate%2A>发生这种情况是日期或之前指定`userInactiveSinceDate`参数值。</xref:System.Web.Profile.ProfileInfo.LastActivityDate%2A>       FindInactiveProfilesByUserName 返回的结果都受`pageIndex`和`pageSize`参数。 `pageSize`参数标识的最大数<xref:System.Web.Profile.ProfileInfo>对象中返回<xref:System.Web.Profile.ProfileInfoCollection>集合。</xref:System.Web.Profile.ProfileInfoCollection> </xref:System.Web.Profile.ProfileInfo> `pageIndex`参数标识要返回的结果页; 0 标识的第一页。 `totalRecords`参数是`out`参数设置为已配置的非活动状态的用户配置文件的总数`applicationName`，具体取决`authenticationOption`和`userInactiveSinceDate`参数。 例如，如果有 13 个用户配置的`applicationName`，和`pageIndex`值为 1`pageSize`为 5，<xref:System.Web.Profile.ProfileInfoCollection>返回将包含通过第 10 个非活动状态的配置文件的第六个。</xref:System.Web.Profile.ProfileInfoCollection> `totalRecords`参数将设置为 13。       请注意，配置文件提供程序可能支持的通配符字符`usernameToMatch`参数。 例如，<xref:System.Web.Profile.SqlProfileProvider.FindInactiveProfilesByUserName%2A>方法<xref:System.Web.Profile.SqlProfileProvider>类支持的通配符字符`usernameToMatch`参数。</xref:System.Web.Profile.SqlProfileProvider> </xref:System.Web.Profile.SqlProfileProvider.FindInactiveProfilesByUserName%2A>       FindInactiveProfilesByUserName 方法调用<xref:System.Web.Profile.ProfileProvider.FindInactiveProfilesByUserName%2A>的默认配置文件提供程序的方法。</xref:System.Web.Profile.ProfileProvider.FindInactiveProfilesByUserName%2A> 使用指定的默认配置文件提供`defaultProvider`配置元素的属性。 如果用户配置文件包含管理的配置文件提供者不是默认的提供程序的属性，则不会搜索其他配置文件提供程序的数据源。 若要查找由配置文件提供者不是默认的提供程序管理的非活动配置文件，获取对使用配置文件提供程序的引用<xref:System.Web.Profile.ProfileManager.Providers%2A>属性并调用<xref:System.Web.Profile.ProfileProvider.FindInactiveProfilesByUserName%2A>的提供程序直接的方法。</xref:System.Web.Profile.ProfileProvider.FindInactiveProfilesByUserName%2A> </xref:System.Web.Profile.ProfileManager.Providers%2A>"
   example:
   - "The following code example allows a user to supply a `usernameToMatch` value and a <xref:System.Web.Profile.ProfileAuthenticationOption> value and retrieves profile information for any matching profiles. The example allows the user to specify whether to return inactive profiles exclusively. If the user specifies only inactive profiles, the FindInactiveProfilesByUserName method is called; otherwise, the <xref:System.Web.Profile.ProfileManager.FindProfilesByUserName%2A> method is called.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[System.Web.Profile.ProfileManager#5](~/add/codesnippet/visualbasic/8901892e-7654-4efd-b373-_1.aspx)]\n [!code-cs[System.Web.Profile.ProfileManager#5](~/add/codesnippet/csharp/8901892e-7654-4efd-b373-_1.aspx)]"
   syntax:
@@ -342,30 +342,30 @@ items:
     parameters:
     - id: authenticationOption
       type: System.Web.Profile.ProfileAuthenticationOption
-      description: "One of the <xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref> values, specifying whether anonymous, authenticated, or both types of profiles are returned."
+      description: "之一<xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref>值，指定是否匿名的经过身份验证，或返回这两种类型的配置文件。"
     - id: usernameToMatch
       type: System.String
-      description: "The user name for which to search."
+      description: "要搜索的用户名。"
     - id: userInactiveSinceDate
       type: System.DateTime
-      description: "A <xref:System.DateTime> that identifies which user profiles are considered inactive. If the <xref:System.Web.Profile.ProfileInfo.LastActivityDate*> of a user profile occurs on or before this date and time, the profile is considered inactive."
+      description: "A <xref:System.DateTime>，标识哪些用户配置文件被视为处于非活动状态。</xref:System.DateTime> 如果<xref:System.Web.Profile.ProfileInfo.LastActivityDate*>的用户配置文件之前或在此日期和时间，该配置文件被视为处于非活动状态。</xref:System.Web.Profile.ProfileInfo.LastActivityDate*>"
     - id: pageIndex
       type: System.Int32
-      description: "The index of the page of results to return. `pageIndex` is zero-based."
+      description: "要返回的结果页的索引。 `pageIndex`是从零开始。"
     - id: pageSize
       type: System.Int32
-      description: "The size of the page of results to return."
+      description: "要返回的结果页的大小。"
     - id: totalRecords
       type: System.Int32
-      description: "When this method returns, contains an integer that identifies the total number of profiles. This parameter is passed uninitialized."
+      description: "此方法返回时，包含一个整数，标识配置文件的总数。 此参数传递时未经初始化。"
     return:
       type: System.Web.Profile.ProfileInfoCollection
-      description: "A <xref href=&quot;System.Web.Profile.ProfileInfoCollection&quot;></xref> containing user profile information for inactive profiles where the user name matches the supplied <code>usernameToMatch</code> parameter."
+      description: "A <xref href=&quot;System.Web.Profile.ProfileInfoCollection&quot;> </xref>包含在用户名与匹配所提供的不活动配置文件的用户配置文件信息<code> usernameToMatch </code>参数。"
   overload: System.Web.Profile.ProfileManager.FindInactiveProfilesByUserName*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>usernameToMatch</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>usernameToMatch</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>usernameToMatch</code> is an empty string (\"\").  \n  \n \\- or -  \n  \n <code>pageIndex</code> is less than zero.  \n  \n \\- or -  \n  \n <code>pageSize</code> is less than 1.  \n  \n \\- or -  \n  \n <code>pageIndex</code> multiplied by <code>pageSize</code> is larger than <xref:System.Int32.MaxValue>."
@@ -383,8 +383,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Retrieves all profile information for profiles in which the user name matches the specified name."
-  remarks: "The FindProfilesByUserName method returns a list of all profile information for which the user name matches the supplied `usernameToMatch` parameter value for the configured <xref:System.Web.Profile.ProfileManager.ApplicationName%2A> property value. Use the `authenticationOption` parameter to specify whether you want only anonymous profiles, only authenticated profiles, or all profiles to be searched.       You can retrieve profile information for user profiles in pages of data using the overload for the <xref:System.Web.Profile.ProfileManager.FindProfilesByUserName%2A> method that takes additional `pageIndex` and `pageSize` parameters.       Note that your profile provider may support wildcard characters in the `usernameToMatch` parameter. For example, the <xref:System.Web.Profile.SqlProfileProvider.FindProfilesByUserName%2A> method of the <xref:System.Web.Profile.SqlProfileProvider> class supports wildcard characters in the `usernameToMatch` parameter.       The FindProfilesByUserName method calls the <xref:System.Web.Profile.ProfileProvider.FindProfilesByUserName%2A> method of the default profile provider. The default profile provider is specified using the `defaultProvider` attribute of the  configuration element. If the user profile contains properties that are managed by a profile provider other than the default provider, the data source for the other profile provider is not searched. To find profiles that are managed by a profile provider other than the default provider, obtain a reference to the profile provider using the <xref:System.Web.Profile.ProfileManager.Providers%2A> property and call the <xref:System.Web.Profile.ProfileProvider.FindProfilesByUserName%2A> method of the provider directly."
+  summary: "检索用户名与匹配的指定的名称的配置文件的所有配置文件的信息。"
+  remarks: "FindProfilesByUserName 方法返回的所有配置文件信息为其在用户名与匹配所提供的列表`usernameToMatch`已配置的参数值<xref:System.Web.Profile.ProfileManager.ApplicationName%2A>属性值。</xref:System.Web.Profile.ProfileManager.ApplicationName%2A> 使用`authenticationOption`参数来指定是否希望仅匿名配置文件，仅当身份验证配置文件或要搜索的所有配置文件。       你可以检索的数据使用的重载，以页中的用户配置文件的配置文件信息<xref:System.Web.Profile.ProfileManager.FindProfilesByUserName%2A>采用其他方法`pageIndex`和`pageSize`参数。</xref:System.Web.Profile.ProfileManager.FindProfilesByUserName%2A>       请注意，配置文件提供程序可能支持的通配符字符`usernameToMatch`参数。 例如，<xref:System.Web.Profile.SqlProfileProvider.FindProfilesByUserName%2A>方法<xref:System.Web.Profile.SqlProfileProvider>类支持的通配符字符`usernameToMatch`参数。</xref:System.Web.Profile.SqlProfileProvider> </xref:System.Web.Profile.SqlProfileProvider.FindProfilesByUserName%2A>       FindProfilesByUserName 方法调用<xref:System.Web.Profile.ProfileProvider.FindProfilesByUserName%2A>的默认配置文件提供程序的方法。</xref:System.Web.Profile.ProfileProvider.FindProfilesByUserName%2A> 使用指定的默认配置文件提供`defaultProvider`配置元素的属性。 如果用户配置文件包含管理的配置文件提供者不是默认的提供程序的属性，则不会搜索其他配置文件提供程序的数据源。 若要查找由配置文件提供者不是默认的提供程序的配置文件，获取对使用配置文件提供程序的引用<xref:System.Web.Profile.ProfileManager.Providers%2A>属性并调用<xref:System.Web.Profile.ProfileProvider.FindProfilesByUserName%2A>的提供程序直接的方法。</xref:System.Web.Profile.ProfileProvider.FindProfilesByUserName%2A> </xref:System.Web.Profile.ProfileManager.Providers%2A>"
   example:
   - "The following code example allows a user to supply a `usernameToMatch` value and a <xref:System.Web.Profile.ProfileAuthenticationOption> enumeration value and retrieves profile information for any matching profiles. The example allows the user to specify whether to return inactive profiles exclusively. If the user specifies only inactive profiles, the <xref:System.Web.Profile.ProfileManager.FindInactiveProfilesByUserName%2A> method is called; otherwise, the FindProfilesByUserName method is called.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Profile.ProfileManager#8](~/add/codesnippet/csharp/31ac7eb6-b35d-45af-a76d-_1.aspx)]\n [!code-vb[System.Web.Profile.ProfileManager#8](~/add/codesnippet/visualbasic/31ac7eb6-b35d-45af-a76d-_1.aspx)]"
   syntax:
@@ -392,21 +392,21 @@ items:
     parameters:
     - id: authenticationOption
       type: System.Web.Profile.ProfileAuthenticationOption
-      description: "One of the <xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref> enumeration values, specifying whether anonymous, authenticated, or both types of profiles are returned."
+      description: "之一<xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref>枚举值，指定是否匿名的经过身份验证，或返回这两种类型的配置文件。"
     - id: usernameToMatch
       type: System.String
-      description: "The user name for which to search."
+      description: "要搜索的用户名。"
     return:
       type: System.Web.Profile.ProfileInfoCollection
-      description: "A <xref href=&quot;System.Web.Profile.ProfileInfoCollection&quot;></xref> containing user profile information for profiles where the user name matches the supplied <code>usernameToMatch</code> parameter."
+      description: "A <xref href=&quot;System.Web.Profile.ProfileInfoCollection&quot;> </xref>包含在用户名与匹配所提供的配置文件的用户配置文件信息<code> usernameToMatch </code>参数。"
   overload: System.Web.Profile.ProfileManager.FindProfilesByUserName*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>usernameToMatch</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>usernameToMatch</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>usernameToMatch</code> is an empty string (&quot;&quot;)."
+    description: "<code>usernameToMatch</code>为空字符串 (&quot;&quot;)。"
   platform:
   - net462
 - uid: System.Web.Profile.ProfileManager.FindProfilesByUserName(System.Web.Profile.ProfileAuthenticationOption,System.String,System.Int32,System.Int32,System.Int32@)
@@ -421,8 +421,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Retrieves profile information in pages of data for profiles in which the user name matches the specified name."
-  remarks: "The <xref:System.Web.Profile.ProfileManager.FindInactiveProfilesByUserName%2A> method returns a list of profile information for which the profile user name matches the supplied `usernameToMatch` parameter value of the configured <xref:System.Web.Profile.ProfileManager.ApplicationName%2A>. Use the `authenticationOption` parameter to specify whether you want only anonymous profiles, only authenticated profiles, or all profiles to be searched.       Note that your profile provider may support wildcard characters in the `usernameToMatch` parameter. For example, the <xref:System.Web.Profile.SqlProfileProvider.FindProfilesByUserName%2A> method of the <xref:System.Web.Profile.SqlProfileProvider> class supports wildcard characters in the `usernameToMatch` parameter.       The results returned by FindProfilesByUserName are constrained by the `pageIndex` and `pageSize` parameters. The `pageSize` parameter identifies the maximum number of <xref:System.Web.Profile.ProfileInfo> objects to return in the <xref:System.Web.Profile.ProfileInfoCollection>. The `pageIndex` parameter identifies which page of results to return; zero identifies the first page. The `totalRecords` parameter is an `out` parameter that is set to the total number of inactive user profiles for the application specified by the `applicationName` attribute in the configuration file, based on the supplied `authenticationOption`. For example, if there are 13 users for the configured `applicationName`, and the `pageIndex` value is 1 with a `pageSize` of 5, the <xref:System.Web.Profile.ProfileInfoCollection> returned will contain the sixth through the tenth profiles. The `totalRecords` parameter will be set to 13.       The <xref:System.Web.Profile.ProfileManager.FindInactiveProfilesByUserName%2A> method calls the <xref:System.Web.Profile.ProfileProvider.FindInactiveProfilesByUserName%2A> method of the default profile provider. The default profile provider is specified using the `defaultProvider` attribute of the  configuration element. If the user profile contains properties that are managed by a profile provider other than the default provider, the data source for the other profile provider is not searched. To find profiles that are managed by a profile provider other than the default provider, obtain a reference to the profile provider using the <xref:System.Web.Profile.ProfileManager.Providers%2A> property and call the <xref:System.Web.Profile.ProfileProvider.FindInactiveProfilesByUserName%2A> method of the provider directly."
+  summary: "检索在用户名与匹配的指定的名称的配置文件的数据页的配置文件信息。"
+  remarks: "<xref:System.Web.Profile.ProfileManager.FindInactiveProfilesByUserName%2A>方法返回为其配置文件的用户名匹配所提供的配置文件信息的列表`usernameToMatch`参数值的配置<xref:System.Web.Profile.ProfileManager.ApplicationName%2A>。</xref:System.Web.Profile.ProfileManager.ApplicationName%2A> </xref:System.Web.Profile.ProfileManager.FindInactiveProfilesByUserName%2A> 使用`authenticationOption`参数来指定是否希望仅匿名配置文件，仅当身份验证配置文件或要搜索的所有配置文件。       请注意，配置文件提供程序可能支持的通配符字符`usernameToMatch`参数。 例如，<xref:System.Web.Profile.SqlProfileProvider.FindProfilesByUserName%2A>方法<xref:System.Web.Profile.SqlProfileProvider>类支持的通配符字符`usernameToMatch`参数。</xref:System.Web.Profile.SqlProfileProvider> </xref:System.Web.Profile.SqlProfileProvider.FindProfilesByUserName%2A>       FindProfilesByUserName 返回的结果都受`pageIndex`和`pageSize`参数。 `pageSize`参数标识<xref:System.Web.Profile.ProfileInfo>对象以返回处于<xref:System.Web.Profile.ProfileInfoCollection>.</xref:System.Web.Profile.ProfileInfoCollection></xref:System.Web.Profile.ProfileInfo>的最大数目 `pageIndex`参数标识要返回; 的结果页零标识的第一页。 `totalRecords`参数是`out`参数设置为用于通过指定的应用程序处于非活动状态的用户配置文件的总数`applicationName`特性在配置文件中，根据所提供`authenticationOption`。 例如，如果有 13 个用户配置的`applicationName`，和`pageIndex`值为 1`pageSize`为 5，<xref:System.Web.Profile.ProfileInfoCollection>返回将包含通过第 10 个配置文件的第六个。</xref:System.Web.Profile.ProfileInfoCollection> `totalRecords`参数将设置为 13。       <xref:System.Web.Profile.ProfileManager.FindInactiveProfilesByUserName%2A>方法调用<xref:System.Web.Profile.ProfileProvider.FindInactiveProfilesByUserName%2A>的默认配置文件提供程序的方法。</xref:System.Web.Profile.ProfileProvider.FindInactiveProfilesByUserName%2A> </xref:System.Web.Profile.ProfileManager.FindInactiveProfilesByUserName%2A> 使用指定的默认配置文件提供`defaultProvider`配置元素的属性。 如果用户配置文件包含管理的配置文件提供者不是默认的提供程序的属性，则不会搜索其他配置文件提供程序的数据源。 若要查找由配置文件提供者不是默认的提供程序的配置文件，获取对使用配置文件提供程序的引用<xref:System.Web.Profile.ProfileManager.Providers%2A>属性并调用<xref:System.Web.Profile.ProfileProvider.FindInactiveProfilesByUserName%2A>的提供程序直接的方法。</xref:System.Web.Profile.ProfileProvider.FindInactiveProfilesByUserName%2A> </xref:System.Web.Profile.ProfileManager.Providers%2A>"
   example:
   - "The following code example allows a user to supply a `usernameToMatch` value and a <xref:System.Web.Profile.ProfileAuthenticationOption> and retrieves profile information for any matching profiles. The example allows the user to specify whether to return inactive profiles exclusively. If the user specifies only inactive profiles, the <xref:System.Web.Profile.ProfileManager.FindInactiveProfilesByUserName%2A> method is called; otherwise, the FindProfilesByUserName method is called.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[System.Web.Profile.ProfileManager#5](~/add/codesnippet/visualbasic/3375ceaa-fae5-498d-b74c-_1.aspx)]\n [!code-cs[System.Web.Profile.ProfileManager#5](~/add/codesnippet/csharp/3375ceaa-fae5-498d-b74c-_1.aspx)]"
   syntax:
@@ -430,27 +430,27 @@ items:
     parameters:
     - id: authenticationOption
       type: System.Web.Profile.ProfileAuthenticationOption
-      description: "One of the <xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref> enumeration values, specifying whether anonymous, authenticated, or both types of profiles are returned."
+      description: "之一<xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref>枚举值，指定是否匿名的经过身份验证，或返回这两种类型的配置文件。"
     - id: usernameToMatch
       type: System.String
-      description: "The user name for which to search."
+      description: "要搜索的用户名。"
     - id: pageIndex
       type: System.Int32
-      description: "The index of the page of results to return. `pageIndex` is zero-based."
+      description: "要返回的结果页的索引。 `pageIndex`是从零开始。"
     - id: pageSize
       type: System.Int32
-      description: "The size of the page of results to return."
+      description: "要返回的结果页的大小。"
     - id: totalRecords
       type: System.Int32
-      description: "When this method returns, contains an integer that identifies the total number of profiles. This parameter is passed uninitialized."
+      description: "此方法返回时，包含一个整数，标识配置文件的总数。 此参数传递时未经初始化。"
     return:
       type: System.Web.Profile.ProfileInfoCollection
-      description: "A <xref href=&quot;System.Web.Profile.ProfileInfoCollection&quot;></xref> containing user profile information for profiles where the user name matches the supplied <code>usernameToMatch</code> parameter."
+      description: "A <xref href=&quot;System.Web.Profile.ProfileInfoCollection&quot;> </xref>包含在用户名与匹配所提供的配置文件的用户配置文件信息<code> usernameToMatch </code>参数。"
   overload: System.Web.Profile.ProfileManager.FindProfilesByUserName*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>usernameToMatch</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>usernameToMatch</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "<code>usernameToMatch</code> is an empty string (\"\").  \n  \n \\- or -  \n  \n <code>pageIndex</code> is less than zero.  \n  \n \\- or -  \n  \n <code>pageSize</code> is less than 1.  \n  \n \\- or -  \n  \n <code>pageIndex</code> multiplied by <code>pageSize</code> is larger than <xref:System.Int32.MaxValue>."
@@ -468,8 +468,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Retrieves all user profile data for profiles in which the last activity date occurred on or before the specified date and time."
-  remarks: "The GetAllInactiveProfiles method is used to retrieve profile information from the data source for all unused user profiles for the application specified by the `applicationName` attribute in the configuration file. Use the `authenticationOption` parameter to specify whether you want only anonymous profiles, only authenticated profiles, or all profiles to be searched. Of the searched profiles, any profile is returned that has a <xref:System.Web.Profile.ProfileInfo.LastActivityDate%2A> that occurs on or before the specified `userInactiveSinceDate` parameter value.       You can retrieve profile information for inactive user profiles in pages of data using the overload for the <xref:System.Web.Profile.ProfileManager.GetAllInactiveProfiles%2A> method that takes additional `pageIndex` and `pageSize` parameters.       The GetAllInactiveProfiles method calls the <xref:System.Web.Profile.ProfileProvider.GetAllInactiveProfiles%2A> method of the default profile provider. The default profile provider is specified using the `defaultProvider` attribute of the  configuration element. If the user profile contains properties that are managed by a profile provider other than the default provider, the data source for the other profile provider is not searched. To find unused profiles that are managed by a profile provider other than the default provider, obtain a reference to the profile provider using the <xref:System.Web.Profile.ProfileManager.Providers%2A> property and call the <xref:System.Web.Profile.ProfileProvider.GetAllInactiveProfiles%2A> method of the provider directly."
+  summary: "检索最后一次活动日期或之前的指定的日期和时间发生的配置文件的所有用户配置文件数据。"
+  remarks: "GetAllInactiveProfiles 方法用于从指定的应用程序的所有未使用的用户配置文件的数据源中检索配置文件信息`applicationName`配置文件中的属性。 使用`authenticationOption`参数来指定是否希望仅匿名配置文件，仅当身份验证配置文件或要搜索的所有配置文件。 搜索配置文件中，任何配置文件返回具有<xref:System.Web.Profile.ProfileInfo.LastActivityDate%2A>发生这种情况是日期或之前指定`userInactiveSinceDate`参数值。</xref:System.Web.Profile.ProfileInfo.LastActivityDate%2A>       你可以检索处于非活动状态的用户配置文件使用的重载，以数据页的配置文件信息<xref:System.Web.Profile.ProfileManager.GetAllInactiveProfiles%2A>采用其他方法`pageIndex`和`pageSize`参数。</xref:System.Web.Profile.ProfileManager.GetAllInactiveProfiles%2A>       GetAllInactiveProfiles 方法调用<xref:System.Web.Profile.ProfileProvider.GetAllInactiveProfiles%2A>的默认配置文件提供程序的方法。</xref:System.Web.Profile.ProfileProvider.GetAllInactiveProfiles%2A> 使用指定的默认配置文件提供`defaultProvider`配置元素的属性。 如果用户配置文件包含管理的配置文件提供者不是默认的提供程序的属性，则不会搜索其他配置文件提供程序的数据源。 若要查找由配置文件提供者不是默认的提供程序管理的未使用配置文件，获取对使用配置文件提供程序的引用<xref:System.Web.Profile.ProfileManager.Providers%2A>属性并调用<xref:System.Web.Profile.ProfileProvider.GetAllInactiveProfiles%2A>的提供程序直接的方法。</xref:System.Web.Profile.ProfileProvider.GetAllInactiveProfiles%2A> </xref:System.Web.Profile.ProfileManager.Providers%2A>"
   example:
   - "The following code example shows an ASP.NET page that manages inactive profiles. A button is provided to delete all inactive profiles. Whether a profile is considered inactive is based on the date specified for the `userInactiveSinceDate` parameter.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Profile.ProfileManager#7](~/add/codesnippet/csharp/12596197-85de-46bb-89a0-_1.aspx)]\n [!code-vb[System.Web.Profile.ProfileManager#7](~/add/codesnippet/visualbasic/12596197-85de-46bb-89a0-_1.aspx)]"
   syntax:
@@ -477,13 +477,13 @@ items:
     parameters:
     - id: authenticationOption
       type: System.Web.Profile.ProfileAuthenticationOption
-      description: "One of the <xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref> enumeration values, specifying whether anonymous, authenticated, or both types of profiles are returned."
+      description: "之一<xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref>枚举值，指定是否匿名的经过身份验证，或返回这两种类型的配置文件。"
     - id: userInactiveSinceDate
       type: System.DateTime
-      description: "A <xref:System.DateTime> that identifies which user profiles are considered inactive. If the <xref:System.Web.Profile.ProfileInfo.LastActivityDate*> of a user profile occurs on or before this date and time, the profile is considered inactive."
+      description: "A <xref:System.DateTime>，标识哪些用户配置文件被视为处于非活动状态。</xref:System.DateTime> 如果<xref:System.Web.Profile.ProfileInfo.LastActivityDate*>的用户配置文件之前或在此日期和时间，该配置文件被视为处于非活动状态。</xref:System.Web.Profile.ProfileInfo.LastActivityDate*>"
     return:
       type: System.Web.Profile.ProfileInfoCollection
-      description: "A <xref href=&quot;System.Web.Profile.ProfileInfoCollection&quot;></xref> containing user profile information about the inactive profiles."
+      description: "A <xref href=&quot;System.Web.Profile.ProfileInfoCollection&quot;> </xref>包含有关处于非活动状态的配置文件的用户配置文件信息。"
   overload: System.Web.Profile.ProfileManager.GetAllInactiveProfiles*
   exceptions: []
   platform:
@@ -500,8 +500,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Retrieves a page of <xref href=&quot;System.Web.Profile.ProfileInfo&quot;></xref> objects for user profiles in which the last activity date occurred on or before the specified date and time."
-  remarks: "The GetAllInactiveProfiles method is used to retrieve profile information from the data source for unused user profiles for the application specified by the `applicationName` attribute in the configuration file. Use the `authenticationOption` parameter to specify whether you want only anonymous profiles, only authenticated profiles, or all profiles to be searched. Of the searched profiles, any profile is returned that has a <xref:System.Web.Profile.ProfileInfo.LastActivityDate%2A> that occurs before the specified `userInactiveSinceDate` parameter value.       The results returned by GetAllInactiveProfiles are constrained by the `pageIndex` and `pageSize` parameters. The `pageSize` parameter identifies the maximum number of <xref:System.Web.Profile.ProfileInfo> objects to return in the <xref:System.Web.Profile.ProfileInfoCollection>. The `pageIndex` parameter identifies which page of results to return; zero identifies the first page. The `totalRecords` parameter is an `out` parameter that is set to the total number of inactive user profiles for the configured `applicationName`, based on the `authenticationOption` and `userInactiveSinceDate` parameters. For example, if there are 13 users for the configured `applicationName`, and the `pageIndex` value is one with a `pageSize` of 5, the <xref:System.Web.Profile.ProfileInfoCollection> returned will contain the sixth through the tenth inactive profiles. The `totalRecords` parameter will be set to 13.       The GetAllInactiveProfiles method calls the <xref:System.Web.Profile.ProfileProvider.GetAllInactiveProfiles%2A> method of the default profile provider. The default profile provider is specified using the `defaultProvider` attribute of the  configuration element. If the user profile contains properties that are managed by a profile provider other than the default provider, the data source for the other profile provider is not searched. To find profiles that are managed by a profile provider other than the default provider, obtain a reference to the profile provider using the <xref:System.Web.Profile.ProfileManager.Providers%2A> property and call the <xref:System.Web.Profile.ProfileProvider.GetAllInactiveProfiles%2A> method of the provider directly."
+  summary: "检索的页<xref href=&quot;System.Web.Profile.ProfileInfo&quot;></xref>最后一次活动日期或之前的指定的日期和时间发生的用户配置文件的对象。"
+  remarks: "GetAllInactiveProfiles 方法用于通过指定的应用程序的未使用的用户配置文件的数据源中检索配置文件信息`applicationName`配置文件中的属性。 使用`authenticationOption`参数来指定是否希望仅匿名配置文件，仅当身份验证配置文件或要搜索的所有配置文件。 搜索配置文件中，任何配置文件返回具有<xref:System.Web.Profile.ProfileInfo.LastActivityDate%2A>发生这种情况之前指定`userInactiveSinceDate`参数值。</xref:System.Web.Profile.ProfileInfo.LastActivityDate%2A>       GetAllInactiveProfiles 返回的结果都受`pageIndex`和`pageSize`参数。 `pageSize`参数标识<xref:System.Web.Profile.ProfileInfo>对象以返回处于<xref:System.Web.Profile.ProfileInfoCollection>.</xref:System.Web.Profile.ProfileInfoCollection></xref:System.Web.Profile.ProfileInfo>的最大数目 `pageIndex`参数标识要返回; 的结果页零标识的第一页。 `totalRecords`参数是`out`参数设置为已配置的非活动状态的用户配置文件的总数`applicationName`，具体取决`authenticationOption`和`userInactiveSinceDate`参数。 例如，如果有 13 个用户配置的`applicationName`，和`pageIndex`值是指具有`pageSize`为 5，<xref:System.Web.Profile.ProfileInfoCollection>返回将包含通过第 10 个非活动状态的配置文件的第六个。</xref:System.Web.Profile.ProfileInfoCollection> `totalRecords`参数将设置为 13。       GetAllInactiveProfiles 方法调用<xref:System.Web.Profile.ProfileProvider.GetAllInactiveProfiles%2A>的默认配置文件提供程序的方法。</xref:System.Web.Profile.ProfileProvider.GetAllInactiveProfiles%2A> 使用指定的默认配置文件提供`defaultProvider`配置元素的属性。 如果用户配置文件包含管理的配置文件提供者不是默认的提供程序的属性，则不会搜索其他配置文件提供程序的数据源。 若要查找由配置文件提供者不是默认的提供程序的配置文件，获取对使用配置文件提供程序的引用<xref:System.Web.Profile.ProfileManager.Providers%2A>属性并调用<xref:System.Web.Profile.ProfileProvider.GetAllInactiveProfiles%2A>的提供程序直接的方法。</xref:System.Web.Profile.ProfileProvider.GetAllInactiveProfiles%2A> </xref:System.Web.Profile.ProfileManager.Providers%2A>"
   example:
   - "The following code example shows an ASP.NET Web page that manages inactive profiles. A button is provided to delete all inactive profiles. Whether a profile is considered inactive is based on the date specified for the `userInactiveSinceDate` parameter.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Profile.ProfileManager#4](~/add/codesnippet/csharp/40315987-b58d-4459-883e-_1.aspx)]\n [!code-vb[System.Web.Profile.ProfileManager#4](~/add/codesnippet/visualbasic/40315987-b58d-4459-883e-_1.aspx)]"
   syntax:
@@ -509,22 +509,22 @@ items:
     parameters:
     - id: authenticationOption
       type: System.Web.Profile.ProfileAuthenticationOption
-      description: "One of the <xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref> enumeration values, specifying whether anonymous, authenticated, or both types of profiles are returned."
+      description: "之一<xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref>枚举值，指定是否匿名的经过身份验证，或返回这两种类型的配置文件。"
     - id: userInactiveSinceDate
       type: System.DateTime
-      description: "A <xref:System.DateTime> that identifies which user profiles are considered inactive. If the <xref:System.Web.Profile.ProfileInfo.LastActivityDate*> of a user profile occurs on or before this date and time, the profile is considered inactive."
+      description: "A <xref:System.DateTime>，标识哪些用户配置文件被视为处于非活动状态。</xref:System.DateTime> 如果<xref:System.Web.Profile.ProfileInfo.LastActivityDate*>的用户配置文件之前或在此日期和时间，该配置文件被视为处于非活动状态。</xref:System.Web.Profile.ProfileInfo.LastActivityDate*>"
     - id: pageIndex
       type: System.Int32
-      description: "The index of the page of results to return. `pageIndex` is zero-based."
+      description: "要返回的结果页的索引。 `pageIndex`是从零开始。"
     - id: pageSize
       type: System.Int32
-      description: "The size of the page of results to return."
+      description: "要返回的结果页的大小。"
     - id: totalRecords
       type: System.Int32
-      description: "When this method returns, contains an integer that identifies the total number of profiles. This parameter is passed uninitialized."
+      description: "此方法返回时，包含一个整数，标识配置文件的总数。 此参数传递时未经初始化。"
     return:
       type: System.Web.Profile.ProfileInfoCollection
-      description: "A <xref href=&quot;System.Web.Profile.ProfileInfoCollection&quot;></xref> containing user profile information about the inactive profiles."
+      description: "A <xref href=&quot;System.Web.Profile.ProfileInfoCollection&quot;> </xref>包含有关处于非活动状态的配置文件的用户配置文件信息。"
   overload: System.Web.Profile.ProfileManager.GetAllInactiveProfiles*
   exceptions: []
   platform:
@@ -541,8 +541,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Retrieves user profile data for profiles in the data source."
-  remarks: "The GetAllProfiles method is used to retrieve profile information from the data source for the application specified by the `applicationName` attribute in the configuration file. Use the `authenticationOption` parameter to specify whether you want only anonymous profiles, only authenticated profiles, or all profiles to be searched.       You can retrieve pages of <xref:System.Web.Profile.ProfileInfo> objects for user profiles using the overload for the <xref:System.Web.Profile.ProfileManager.GetAllProfiles%2A> method that takes additional `pageIndex` and `pageSize` parameters.       The GetAllProfiles method calls the <xref:System.Web.Profile.ProfileProvider.GetAllProfiles%2A> method of the default profile provider. The default profile provider is specified using the `defaultProvider` attribute of the  configuration element. If the user profile contains properties that are managed by a profile provider other than the default provider, the data source for the other profile provider is not searched. To find profiles that are managed by a profile provider other than the default provider, obtain a reference to the profile provider using the <xref:System.Web.Profile.ProfileManager.Providers%2A> property and call the <xref:System.Web.Profile.ProfileProvider.GetAllProfiles%2A> method of the provider directly."
+  summary: "检索数据源中的配置文件的用户配置文件数据。"
+  remarks: "GetAllProfiles 方法用于从指定的应用程序的数据源中检索配置文件信息`applicationName`配置文件中的属性。 使用`authenticationOption`参数来指定是否希望仅匿名配置文件，仅当身份验证配置文件或要搜索的所有配置文件。       你可以检索的页面<xref:System.Web.Profile.ProfileInfo>为用户配置文件使用的重载，以对象<xref:System.Web.Profile.ProfileManager.GetAllProfiles%2A>采用其他方法`pageIndex`和`pageSize`参数。</xref:System.Web.Profile.ProfileManager.GetAllProfiles%2A> </xref:System.Web.Profile.ProfileInfo>       GetAllProfiles 方法调用<xref:System.Web.Profile.ProfileProvider.GetAllProfiles%2A>的默认配置文件提供程序的方法。</xref:System.Web.Profile.ProfileProvider.GetAllProfiles%2A> 使用指定的默认配置文件提供`defaultProvider`配置元素的属性。 如果用户配置文件包含管理的配置文件提供者不是默认的提供程序的属性，则不会搜索其他配置文件提供程序的数据源。 若要查找由配置文件提供者不是默认的提供程序的配置文件，获取对使用配置文件提供程序的引用<xref:System.Web.Profile.ProfileManager.Providers%2A>属性并调用<xref:System.Web.Profile.ProfileProvider.GetAllProfiles%2A>的提供程序直接的方法。</xref:System.Web.Profile.ProfileProvider.GetAllProfiles%2A> </xref:System.Web.Profile.ProfileManager.Providers%2A>"
   example:
   - "The following code example displays profile information for all of the profiles for the configured `applicationName`.  \n  \n [!code-cs[System.Web.Profile.ProfileManager#6](~/add/codesnippet/csharp/14cc8f0b-52b7-434e-bc19-_1.aspx)]\n [!code-vb[System.Web.Profile.ProfileManager#6](~/add/codesnippet/visualbasic/14cc8f0b-52b7-434e-bc19-_1.aspx)]"
   syntax:
@@ -550,10 +550,10 @@ items:
     parameters:
     - id: authenticationOption
       type: System.Web.Profile.ProfileAuthenticationOption
-      description: "One of the <xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref> enumeration values, specifying whether anonymous, authenticated, or both types of profiles are returned."
+      description: "之一<xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref>枚举值，指定是否匿名的经过身份验证，或返回这两种类型的配置文件。"
     return:
       type: System.Web.Profile.ProfileInfoCollection
-      description: "A <xref href=&quot;System.Web.Profile.ProfileInfoCollection&quot;></xref> containing user profile information for all of the profiles in the data source."
+      description: "A <xref href=&quot;System.Web.Profile.ProfileInfoCollection&quot;> </xref>包含所有数据源中的配置文件的用户配置文件信息。"
   overload: System.Web.Profile.ProfileManager.GetAllProfiles*
   exceptions: []
   platform:
@@ -570,8 +570,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Retrieves pages of user profile data."
-  remarks: "The GetAllProfiles method is used to retrieve profile information from the data source for the application specified by the `applicationName` attribute in the configuration file. Use the `authenticationOption` parameter to specify whether you want only anonymous profiles, only authenticated profiles, or all profiles to be searched.       The results returned by <xref:System.Web.Profile.ProfileManager.GetAllInactiveProfiles%2A> are constrained by the `pageIndex` and `pageSize` parameters. The `pageSize` parameter identifies the maximum number of <xref:System.Web.Profile.ProfileInfo> objects to return in the <xref:System.Web.Profile.ProfileInfoCollection>. The `pageIndex` parameter identifies which page of results to return; zero identifies the first page. The `totalRecords` parameter is an `out` parameter that is set to the total number of inactive user profiles for the configured `applicationName`, based on the supplied `authenticationOption`. For example, if there are 13 users for the configured `applicationName`, and the `pageIndex` value is one with a `pageSize` of 5, the <xref:System.Web.Profile.ProfileInfoCollection> returned will contain the sixth through the tenth profiles. The `totalRecords` parameter will be set to 13.       The GetAllProfiles method calls the <xref:System.Web.Profile.ProfileProvider.GetAllProfiles%2A> method of the default profile provider. The default profile provider is specified using the `defaultProvider` attribute of the  configuration element. If the user profile contains properties that are managed by a profile provider other than the default provider, the data source for the other profile provider is not searched. To find profiles that are managed by a profile provider other than the default provider, obtain a reference to the profile provider using the <xref:System.Web.Profile.ProfileManager.Providers%2A> property and call the <xref:System.Web.Profile.ProfileProvider.GetAllProfiles%2A> method of the provider directly."
+  summary: "检索用户配置文件数据的页面。"
+  remarks: "GetAllProfiles 方法用于从指定的应用程序的数据源中检索配置文件信息`applicationName`配置文件中的属性。 使用`authenticationOption`参数来指定是否希望仅匿名配置文件，仅当身份验证配置文件或要搜索的所有配置文件。       返回的结果<xref:System.Web.Profile.ProfileManager.GetAllInactiveProfiles%2A>受到`pageIndex`和`pageSize`参数。</xref:System.Web.Profile.ProfileManager.GetAllInactiveProfiles%2A> `pageSize`参数标识<xref:System.Web.Profile.ProfileInfo>对象以返回处于<xref:System.Web.Profile.ProfileInfoCollection>.</xref:System.Web.Profile.ProfileInfoCollection></xref:System.Web.Profile.ProfileInfo>的最大数目 `pageIndex`参数标识要返回; 的结果页零标识的第一页。 `totalRecords`参数是`out`参数设置为已配置的非活动状态的用户配置文件的总数`applicationName`，将根据所提供`authenticationOption`。 例如，如果有 13 个用户配置的`applicationName`，和`pageIndex`值是指具有`pageSize`为 5，<xref:System.Web.Profile.ProfileInfoCollection>返回将包含通过第 10 个配置文件的第六个。</xref:System.Web.Profile.ProfileInfoCollection> `totalRecords`参数将设置为 13。       GetAllProfiles 方法调用<xref:System.Web.Profile.ProfileProvider.GetAllProfiles%2A>的默认配置文件提供程序的方法。</xref:System.Web.Profile.ProfileProvider.GetAllProfiles%2A> 使用指定的默认配置文件提供`defaultProvider`配置元素的属性。 如果用户配置文件包含管理的配置文件提供者不是默认的提供程序的属性，则不会搜索其他配置文件提供程序的数据源。 若要查找由配置文件提供者不是默认的提供程序的配置文件，获取对使用配置文件提供程序的引用<xref:System.Web.Profile.ProfileManager.Providers%2A>属性并调用<xref:System.Web.Profile.ProfileProvider.GetAllProfiles%2A>的提供程序直接的方法。</xref:System.Web.Profile.ProfileProvider.GetAllProfiles%2A> </xref:System.Web.Profile.ProfileManager.Providers%2A>"
   example:
   - "The following code example displays profile information for all of the profiles for the configured `applicationName` in pages of data.  \n  \n [!code-cs[System.Web.Profile.ProfileManager#3](~/add/codesnippet/csharp/3142f281-fd51-44c5-967b-_1.aspx)]\n [!code-vb[System.Web.Profile.ProfileManager#3](~/add/codesnippet/visualbasic/3142f281-fd51-44c5-967b-_1.aspx)]"
   syntax:
@@ -579,19 +579,19 @@ items:
     parameters:
     - id: authenticationOption
       type: System.Web.Profile.ProfileAuthenticationOption
-      description: "One of the <xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref> enumeration values, specifying whether anonymous, authenticated, or both types of profiles are returned."
+      description: "之一<xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref>枚举值，指定是否匿名的经过身份验证，或返回这两种类型的配置文件。"
     - id: pageIndex
       type: System.Int32
-      description: "The index of the page of results to return. `pageIndex` is zero-based."
+      description: "要返回的结果页的索引。 `pageIndex`是从零开始。"
     - id: pageSize
       type: System.Int32
-      description: "The size of the page of results to return."
+      description: "要返回的结果页的大小。"
     - id: totalRecords
       type: System.Int32
-      description: "When this method returns, contains an integer that identifies the total number of profiles. This parameter is passed uninitialized."
+      description: "此方法返回时，包含一个整数，标识配置文件的总数。 此参数传递时未经初始化。"
     return:
       type: System.Web.Profile.ProfileInfoCollection
-      description: "A <xref href=&quot;System.Web.Profile.ProfileInfoCollection&quot;></xref> containing user profile information for all of the profiles in the data source."
+      description: "A <xref href=&quot;System.Web.Profile.ProfileInfoCollection&quot;> </xref>包含所有数据源中的配置文件的用户配置文件信息。"
   overload: System.Web.Profile.ProfileManager.GetAllProfiles*
   exceptions: []
   platform:
@@ -608,8 +608,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Gets the number of profiles in which the last activity date occurred on or before the specified date."
-  remarks: "The GetNumberOfInactiveProfiles method is used to retrieve a count of all of the unused user profiles from the data source for the application specified by the `applicationName` attribute in the configuration file. Use the `authenticationOption` parameter to specify whether you want only anonymous profiles, only authenticated profiles, or all profiles to be searched. Of the searched profiles, all profiles are counted that have a <xref:System.Web.Profile.ProfileInfo.LastActivityDate%2A> that occurs on or before the specified `userInactiveSinceDate` parameter value."
+  summary: "指定的日期或之前，请获取上一次活动日期发生的配置文件数。"
+  remarks: "GetNumberOfInactiveProfiles 方法用于从指定的应用程序的数据源检索的所有未使用的用户配置文件计数`applicationName`配置文件中的属性。 使用`authenticationOption`参数来指定是否希望仅匿名配置文件，仅当身份验证配置文件或要搜索的所有配置文件。 搜索的配置文件，所有配置文件将计算具有<xref:System.Web.Profile.ProfileInfo.LastActivityDate%2A>发生这种情况是日期或之前指定`userInactiveSinceDate`参数值。</xref:System.Web.Profile.ProfileInfo.LastActivityDate%2A>"
   example:
   - "The following code example allows a user to view and delete information for active and inactive profiles based on search criteria. A count of inactive profiles is displayed using the results of the GetNumberOfInactiveProfiles method.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[System.Web.Profile.ProfileManager#5](~/add/codesnippet/visualbasic/456bb4d7-dc47-48d9-b96d-_1.aspx)]\n [!code-cs[System.Web.Profile.ProfileManager#5](~/add/codesnippet/csharp/456bb4d7-dc47-48d9-b96d-_1.aspx)]"
   syntax:
@@ -617,13 +617,13 @@ items:
     parameters:
     - id: authenticationOption
       type: System.Web.Profile.ProfileAuthenticationOption
-      description: "One of the <xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref> enumeration values, specifying whether anonymous, authenticated, or both types of profiles are returned."
+      description: "之一<xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref>枚举值，指定是否匿名的经过身份验证，或返回这两种类型的配置文件。"
     - id: userInactiveSinceDate
       type: System.DateTime
-      description: "A <xref:System.DateTime> object that identifies which user profiles are considered inactive. If the <xref:System.Web.Profile.ProfileInfo.LastActivityDate*> of a user profile occurs on or before this date and time, the profile is considered inactive."
+      description: "A<xref:System.DateTime>标识哪些用户配置文件被视为处于非活动状态的对象。</xref:System.DateTime> 如果<xref:System.Web.Profile.ProfileInfo.LastActivityDate*>的用户配置文件之前或在此日期和时间，该配置文件被视为处于非活动状态。</xref:System.Web.Profile.ProfileInfo.LastActivityDate*>"
     return:
       type: System.Int32
-      description: "The number of profiles in the data source for which the last activity date occurred before the specified date and time."
+      description: "在指定的日期和时间之前发生的最后一个活动日期的数据源中的配置文件数。"
   overload: System.Web.Profile.ProfileManager.GetNumberOfInactiveProfiles*
   exceptions: []
   platform:
@@ -640,8 +640,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Gets the number of profiles in the data source."
-  remarks: "The GetNumberOfProfiles method is used to retrieve a count of all of the user profiles from the data source for the application specified by the `applicationName` attribute in the configuration file. Use the `authenticationOption` parameter to specify whether you want only anonymous profiles, only authenticated profiles, or all profiles to be searched."
+  summary: "在数据源中获取配置文件的数。"
+  remarks: "GetNumberOfProfiles 方法用于从指定的应用程序的数据源检索的所有用户配置文件计数`applicationName`配置文件中的属性。 使用`authenticationOption`参数来指定是否希望仅匿名配置文件，仅当身份验证配置文件或要搜索的所有配置文件。"
   example:
   - "The following code example displays profile information for all of the profiles for the configured `applicationName` and also returns the number of profiles.  \n  \n [!code-cs[System.Web.Profile.ProfileManager#6](~/add/codesnippet/csharp/754e4c9f-e8cb-4da5-b2cc-_1.aspx)]\n [!code-vb[System.Web.Profile.ProfileManager#6](~/add/codesnippet/visualbasic/754e4c9f-e8cb-4da5-b2cc-_1.aspx)]"
   syntax:
@@ -649,10 +649,10 @@ items:
     parameters:
     - id: authenticationOption
       type: System.Web.Profile.ProfileAuthenticationOption
-      description: "One of the <xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref> enumeration values, specifying whether anonymous, authenticated, or both types of profiles are returned."
+      description: "之一<xref href=&quot;System.Web.Profile.ProfileAuthenticationOption&quot;></xref>枚举值，指定是否匿名的经过身份验证，或返回这两种类型的配置文件。"
     return:
       type: System.Int32
-      description: "The number of profiles in the data source."
+      description: "数据源中的配置文件数。"
   overload: System.Web.Profile.ProfileManager.GetNumberOfProfiles*
   exceptions: []
   platform:
@@ -669,20 +669,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Gets a reference to the default profile provider for the application."
-  remarks: "The Provider property enables you to reference the default profile provider for an application directly. This is commonly used to access custom members of the profile provider that are not part of the <xref:System.Web.Profile.ProfileProvider> abstract base class."
+  summary: "获取应用程序默认配置文件提供程序的引用。"
+  remarks: "提供程序属性使您能够直接引用应用程序的默认配置文件提供程序。 这通常用于访问自定义配置文件提供程序的成员，它们不属于<xref:System.Web.Profile.ProfileProvider>抽象基的类。</xref:System.Web.Profile.ProfileProvider>"
   example:
   - "The following code example lists properties of the default profile provider.  \n  \n [!code-vb[System.Web.Profile.ProfileManager#2](~/add/codesnippet/visualbasic/p-system.web.profile.pro_6_1.aspx)]\n [!code-cs[System.Web.Profile.ProfileManager#2](~/add/codesnippet/csharp/p-system.web.profile.pro_6_1.aspx)]"
   syntax:
     content: public static System.Web.Profile.ProfileProvider Provider { get; }
     return:
       type: System.Web.Profile.ProfileProvider
-      description: "The default profile provider for the application."
+      description: "应用程序默认配置文件提供程序。"
   overload: System.Web.Profile.ProfileManager.Provider*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "An attempt was made to get the Provider property value without at least <xref href=&quot;System.Web.AspNetHostingPermissionLevel&quot;></xref> permission."
+    description: "尝试至少获取提供程序属性值，但无<xref href=&quot;System.Web.AspNetHostingPermissionLevel&quot;></xref>权限。"
   platform:
   - net462
 - uid: System.Web.Profile.ProfileManager.Providers
@@ -697,20 +697,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Gets a collection of the profile providers for the ASP.NET application."
-  remarks: "The Providers property references all of the profile providers enabled for an application, including providers added in the machine configuration and providers added in all Web.config files. You can control which profile providers are available for an application using the  element of the  section in the configuration file. For example, the following Web.config file removes the profile providers specified in parent configuration files and adds a <xref:System.Web.Profile.SqlProfileProvider> instance as the profile provider for the application.      ```   <configuration>     <connectionStrings>       <add name=&quot;SqlServices&quot; connectionString=         &quot;Data Source=MySqlServer;Integrated Security=SSPI;Initial Catalog=aspnetdb;&quot; />     </connectionStrings>     <system.web>       <profile enabled=&quot;true&quot; defaultProvider=&quot;SqlProvider&quot;>         <providers>           <clear />           <add name=&quot;SqlProvider&quot;             type=&quot;System.Web.Profile.SqlProfileProvider&quot;             connectionStringName=&quot;SqlServices&quot;             applicationName=&quot;MyApplication&quot; />         </providers>       </profile>     </system.web>   </configuration>   ```       When specifying the  section, you must specify a default provider by setting the `defaultProvider` attribute. If you do not specify a  section in your Web.config file, the values from the machine configuration are used and the <xref:System.Web.Profile.SqlProfileProvider> instance named AspNetSqlProvider is established as the default provider.       You can obtain a strongly typed reference to a provider from the Providers collection by indexing the profile provider by name and casting it as the desired type."
+  summary: "获取 ASP.NET 应用程序配置文件提供程序的集合。"
+  remarks: "提供程序属性引用所有启用应用程序的配置文件提供程序，包括提供程序中的计算机配置和提供程序添加到所有的 Web.config 文件中添加。 你可以控制哪些配置文件提供程序可用于在配置文件中使用部分中的元素的应用程序。 例如，下面的 Web.config 文件中删除父配置文件中指定的配置文件提供程序，并将添加<xref:System.Web.Profile.SqlProfileProvider>为应用程序配置文件提供程序的实例。</xref:System.Web.Profile.SqlProfileProvider>      ```   <configuration>     <connectionStrings>       <add name=&quot;SqlServices&quot; connectionString=         &quot;Data Source=MySqlServer;Integrated Security=SSPI;Initial Catalog=aspnetdb;&quot; />     </connectionStrings>     <system.web>       <profile enabled=&quot;true&quot; defaultProvider=&quot;SqlProvider&quot;>         <providers>           <clear />           <add name=&quot;SqlProvider&quot;             type=&quot;System.Web.Profile.SqlProfileProvider&quot;             connectionStringName=&quot;SqlServices&quot;             applicationName=&quot;MyApplication&quot; />         </providers>       </profile>     </system.web>   </configuration>   ```指定时部分中，你必须指定默认提供程序通过设置`defaultProvider`属性。 如果未在 Web.config 文件中指定一个部分，将使用计算机配置中的值与<xref:System.Web.Profile.SqlProfileProvider>名为 AspNetSqlProvider 实例则在建立作为默认的提供程序。</xref:System.Web.Profile.SqlProfileProvider>       可以通过配置文件提供程序编制索引的名称并将它强制转换为所需的类型来获取对提供程序提供程序集合中的强类型化的引用。"
   example:
   - "The following code example lists the providers enabled for an application and their respective types.  \n  \n [!code-vb[System.Web.Profile.ProfileManager#9](~/add/codesnippet/visualbasic/p-system.web.profile.pro_5_1.aspx)]\n [!code-cs[System.Web.Profile.ProfileManager#9](~/add/codesnippet/csharp/p-system.web.profile.pro_5_1.aspx)]"
   syntax:
     content: public static System.Web.Profile.ProfileProviderCollection Providers { get; }
     return:
       type: System.Web.Profile.ProfileProviderCollection
-      description: "A <xref href=&quot;System.Web.Profile.ProfileProviderCollection&quot;></xref> of the profile providers configured for the ASP.NET application."
+      description: "A <xref href=&quot;System.Web.Profile.ProfileProviderCollection&quot;> </xref>的 ASP.NET 应用程序配置的配置文件提供程序。"
   overload: System.Web.Profile.ProfileManager.Providers*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "An attempt was made to get the Providers property value without at least <xref href=&quot;System.Web.AspNetHostingPermissionLevel&quot;></xref> permission."
+    description: "尝试至少获取提供程序属性值，但无<xref href=&quot;System.Web.AspNetHostingPermissionLevel&quot;></xref>权限。"
   platform:
   - net462
 references:
