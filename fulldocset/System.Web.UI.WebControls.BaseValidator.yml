@@ -39,8 +39,8 @@ items:
   nameWithType: BaseValidator
   fullName: System.Web.UI.WebControls.BaseValidator
   type: Class
-  summary: "Serves as the abstract base class for validation controls."
-  remarks: "The BaseValidator class provides the core implementation for all validation controls. Validation controls are used to validate user input in an associated input control. When the user enters a value that fails validation, the validation control displays an error message. Because a validation control is separated from the input control, you can position the error message anywhere on the page relative to the input control. ASP.NET provides several validation controls that perform specific types of validation. The following table describes these controls.      |Validation control|Description|   |------------------------|-----------------|   |<xref:System.Web.UI.WebControls.CompareValidator>|Validates a value against the value entered into another input control, against a constant value, or against a proper data type by setting the <xref:System.Web.UI.WebControls.CompareValidator.Operator%2A?displayProperty=fullName> property to <xref:System.Web.UI.WebControls.ValidationCompareOperator?displayProperty=fullName>.|   |<xref:System.Web.UI.WebControls.CustomValidator>|Validates a value using a user-provided custom validation routine.|   |<xref:System.Web.UI.WebControls.RangeValidator>|Validates whether a value is within a range of values.|   |<xref:System.Web.UI.WebControls.RegularExpressionValidator>|Validates a value using a regular expression.|   |<xref:System.Web.UI.WebControls.RequiredFieldValidator>|Validates that a value was entered in a required field.|       Validation controls always validate the associated input control on the server. Validation controls also have complete client-side implementation that allows script-enabled browsers (such as Microsoft Internet Explorer version 4.0 and later) to perform validation on the client. Client-side validation enhances the validation process by checking user input before it is sent to the server. This allows errors to be detected on the client before the form is submitted, avoiding the round trip of information necessary for server-side validation.       Multiple validation controls can be used with an individual input control to validate different criteria. For example, you can apply multiple validation controls on a <xref:System.Web.UI.WebControls.TextBox> control. You can use a <xref:System.Web.UI.WebControls.RangeValidator> control to ensure that the value entered in the <xref:System.Web.UI.WebControls.TextBox> control is within a set range, and a <xref:System.Web.UI.WebControls.RequiredFieldValidator> control to ensure that the user enters a value.       ASP.NET provides many controls that have the ability to post back to the server. When one of these controls has its `CausesValidation` property set to `true`, validation is performed when the control posts back to the server. The following controls have the ability to post back to the server:      -   <xref:System.Web.UI.WebControls.BulletedList?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.Button?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.CheckBox?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.CheckBoxList?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.DropDownList?displayProperty=fullName>      -   <xref:System.Web.UI.HtmlControls.HtmlButton?displayProperty=fullName>      -   <xref:System.Web.UI.HtmlControls.HtmlInputButton?displayProperty=fullName>      -   <xref:System.Web.UI.HtmlControls.HtmlInputImage?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.ImageButton?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.LinkButton?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.ListBox?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.RadioButtonList?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.TextBox?displayProperty=fullName>      > [!NOTE] >  Some of these controls post back to the server only when the `AutoPostBack` property is set to `true`.       These controls each have a `ValidationGroup` property that, when set, validates only the validation controls within the specified group when the control triggers a post back to the server. To group validation controls, set the <xref:System.Web.UI.WebControls.BaseValidator.ValidationGroup%2A> property of each validation control to the same value.       To associate an input control with a validation control, use the <xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A> property. To specify the text to display in a validation control when validation fails, use the <xref:System.Web.UI.WebControls.BaseValidator.Text%2A> property. You can also display a summary of all controls that fail validation in the page by using a <xref:System.Web.UI.WebControls.ValidationSummary> control. To specify the text to display in a <xref:System.Web.UI.WebControls.ValidationSummary> control, use the <xref:System.Web.UI.WebControls.BaseValidator.ErrorMessage%2A> property.      > [!NOTE] >  If you set the <xref:System.Web.UI.WebControls.BaseValidator.ErrorMessage%2A> property without setting the <xref:System.Web.UI.WebControls.BaseValidator.Text%2A> property, the value of the <xref:System.Web.UI.WebControls.BaseValidator.ErrorMessage%2A> property is also displayed in the validation control.       When using validator controls, you should always check the results of server-side validation before performing any processing. After a postback but before your event methods are called, the page calls the validator controls and aggregates their results into the <xref:System.Web.UI.Page.IsValid%2A?displayProperty=fullName> property. (You can also call the validator controls explicitly using the `Validate` method.) In your own code, you should check that the <xref:System.Web.UI.Page.IsValid%2A?displayProperty=fullName> property returns `true` before processing input. Even though script-enabled browsers might prevent a postback from occurring on the client if a validation check has failed, you should always also check <xref:System.Web.UI.Page.IsValid%2A?displayProperty=fullName> in server code before processing validated data.       You can also manually perform validation. To validate all validation controls on the page, use the <xref:System.Web.UI.Page.Validate%2A?displayProperty=fullName> method. Individual validation controls can be validated by using the <xref:System.Web.UI.WebControls.BaseValidator.Validate%2A> method of the control.      > [!NOTE] >  If you use the <xref:System.Web.UI.Page.IsValid%2A?displayProperty=fullName> property in a `Page_Load` method, you must first explicitly call the <xref:System.Web.UI.Page.Validate%2A?displayProperty=fullName> method. Because validation occurs after the <xref:System.Web.UI.Control.Load?displayProperty=fullName> event for the page, but before the event handler for the `Click` or `Command` events, the <xref:System.Web.UI.Page.IsValid%2A?displayProperty=fullName> property is not updated until the <xref:System.Web.UI.Page.Validate%2A?displayProperty=fullName> method is called. As an alternative, you can place your code in the event handler for the `Click` or `Command` event instead of the `Page_Load` method.       Not all Web server controls support validation controls. The standard controls that can be validated with a validation control are:      -   <xref:System.Web.UI.WebControls.DropDownList?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.FileUpload?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.ListBox?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.RadioButtonList?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.TextBox?displayProperty=fullName>      -   <xref:System.Web.UI.HtmlControls.HtmlInputFile?displayProperty=fullName>      -   <xref:System.Web.UI.HtmlControls.HtmlInputPassword?displayProperty=fullName>      -   <xref:System.Web.UI.HtmlControls.HtmlInputText?displayProperty=fullName>      -   <xref:System.Web.UI.HtmlControls.HtmlSelect?displayProperty=fullName>      -   <xref:System.Web.UI.HtmlControls.HtmlTextArea?displayProperty=fullName>      > [!NOTE] >  For an input control to be validated, the <xref:System.Web.UI.ValidationPropertyAttribute?displayProperty=fullName> attribute must be applied to the control.      > [!NOTE] >  When you use validator controls that derive from BaseValidator inside an <xref:System.Web.UI.UpdatePanel> control, make sure that the validator control and the control it is associated with are in the same panel. For more information about using the <xref:System.Web.UI.UpdatePanel> control for partial-page updates, see [Partial-Page Rendering Overview](~/add/includes/ajax-current-ext-md.md).       When validation fails, you can set the focus on the associated input control by setting the <xref:System.Web.UI.WebControls.BaseValidator.SetFocusOnError%2A> property to `true`.       For a list of initial property values for an instance of BaseValidator, see the <xref:System.Web.UI.WebControls.BaseValidator.%23ctor%2A> constructor.      ## Accessibility    For information about how to configure this control so that it generates markup that conforms to accessibility standards, see [Accessibility in Visual Studio and ASP.NET](~/add/includes/ajax-current-ext-md.md) and [ASP.NET Controls and Accessibility](~/add/includes/ajax-current-ext-md.md)."
+  summary: "用作验证控件的抽象基类。"
+  remarks: "BaseValidator 类提供所有验证控件的核心的实现。 验证控件用于验证相关输入控件中的用户输入。 当用户输入的值未通过验证时，验证控件将显示一条错误消息。 由于验证控件分开的输入控件，可以相对于输入控件在页面上任意位置放置错误消息。 ASP.NET 提供了多个执行特定类型的验证的验证控件。 下表描述了这些控件。      |验证控件 |说明 |  |------------------------|-----------------|  |<xref:System.Web.UI.WebControls.CompareValidator>|通过设置<xref:System.Web.UI.WebControls.ValidationCompareOperator?displayProperty=fullName><xref:System.Web.UI.WebControls.CompareValidator.Operator%2A?displayProperty=fullName>属性来验证值针对另一个输入控件中输入的值、 一个常量值，或针对正确的数据类型。 |  |<xref:System.Web.UI.WebControls.CustomValidator>|使用用户提供的自定义验证例程来验证值。 |  |<xref:System.Web.UI.WebControls.RangeValidator>|验证该值是否值的范围之内。 |  |<xref:System.Web.UI.WebControls.RegularExpressionValidator>|使用正则表达式来验证值。 |  |<xref:System.Web.UI.WebControls.RequiredFieldValidator>|验证确认必填字段中输入一个值。 |      验证控件始终验证服务器上关联的输入的控件。</xref:System.Web.UI.WebControls.RequiredFieldValidator> </xref:System.Web.UI.WebControls.RegularExpressionValidator> </xref:System.Web.UI.WebControls.RangeValidator> </xref:System.Web.UI.WebControls.CustomValidator>  </xref:System.Web.UI.WebControls.CompareValidator.Operator%2A?displayProperty=fullName></xref:System.Web.UI.WebControls.ValidationCompareOperator?displayProperty=fullName> </xref:System.Web.UI.WebControls.CompareValidator> 验证控件还具有完整的客户端实现，它允许启用脚本的 （如 Microsoft Internet Explorer 4.0 及更高版本) 的浏览器客户端上执行验证。 客户端验证发送到服务器之前检查用户输入，从而增强了验证过程。 这使得在提交表单时，避免往返行程的服务器端验证所需信息之前客户端上检测到的错误。       多个验证控件可以与单个输入控件，用于验证不同的条件。 例如，你可以将多个验证控件应用上<xref:System.Web.UI.WebControls.TextBox>控件。</xref:System.Web.UI.WebControls.TextBox> 你可以使用<xref:System.Web.UI.WebControls.RangeValidator>控件以确保输入中的值<xref:System.Web.UI.WebControls.TextBox>控件位于内设置的范围，和一个<xref:System.Web.UI.WebControls.RequiredFieldValidator>控件以确保用户输入的值。</xref:System.Web.UI.WebControls.RequiredFieldValidator> </xref:System.Web.UI.WebControls.TextBox> </xref:System.Web.UI.WebControls.RangeValidator>       ASP.NET 提供了很多能够回发到服务器的控件。 当这些控件之一具有其`CausesValidation`属性设置为`true`，该控件回发到服务器时是否执行验证。 以下控件能够回发到服务器:- <xref:System.Web.UI.WebControls.BulletedList?displayProperty=fullName>- <xref:System.Web.UI.WebControls.Button?displayProperty=fullName>- <xref:System.Web.UI.WebControls.CheckBox?displayProperty=fullName>- <xref:System.Web.UI.WebControls.CheckBoxList?displayProperty=fullName>- <xref:System.Web.UI.WebControls.DropDownList?displayProperty=fullName>- <xref:System.Web.UI.HtmlControls.HtmlButton?displayProperty=fullName>- <xref:System.Web.UI.HtmlControls.HtmlInputButton?displayProperty=fullName>- <xref:System.Web.UI.HtmlControls.HtmlInputImage?displayProperty=fullName>- <xref:System.Web.UI.WebControls.ImageButton?displayProperty=fullName>- <xref:System.Web.UI.WebControls.LinkButton?displayProperty=fullName>- <xref:System.Web.UI.WebControls.ListBox?displayProperty=fullName>- <xref:System.Web.UI.WebControls.RadioButtonList?displayProperty=fullName>- <xref:System.Web.UI.WebControls.TextBox?displayProperty=fullName>1> [!NOTE]&1;> 其中一些控件回发到服务器时，才`AutoPostBack`属性设置为`true`。</xref:System.Web.UI.WebControls.TextBox?displayProperty=fullName> </xref:System.Web.UI.WebControls.RadioButtonList?displayProperty=fullName> </xref:System.Web.UI.WebControls.ListBox?displayProperty=fullName> </xref:System.Web.UI.WebControls.LinkButton?displayProperty=fullName> </xref:System.Web.UI.WebControls.ImageButton?displayProperty=fullName> </xref:System.Web.UI.HtmlControls.HtmlInputImage?displayProperty=fullName> </xref:System.Web.UI.HtmlControls.HtmlInputButton?displayProperty=fullName> </xref:System.Web.UI.HtmlControls.HtmlButton?displayProperty=fullName> </xref:System.Web.UI.WebControls.DropDownList?displayProperty=fullName> </xref:System.Web.UI.WebControls.CheckBoxList?displayProperty=fullName> </xref:System.Web.UI.WebControls.CheckBox?displayProperty=fullName> </xref:System.Web.UI.WebControls.Button?displayProperty=fullName> </xref:System.Web.UI.WebControls.BulletedList?displayProperty=fullName>       这些控件各有`ValidationGroup`属性，设置时，验证仅验证指定的组中的控件时控件触发回发到服务器。 若要验证对控件进行分组，请设置<xref:System.Web.UI.WebControls.BaseValidator.ValidationGroup%2A>为相同的值的每个验证控件的属性。</xref:System.Web.UI.WebControls.BaseValidator.ValidationGroup%2A>       若要将与验证控件关联的输入的控件，使用<xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A>属性。</xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A> 若要指定要验证失败时，在验证控件中显示的文本，请使用<xref:System.Web.UI.WebControls.BaseValidator.Text%2A>属性。</xref:System.Web.UI.WebControls.BaseValidator.Text%2A> 你也可以显示通过使用未通过验证页中的所有控件的摘要<xref:System.Web.UI.WebControls.ValidationSummary>控件。</xref:System.Web.UI.WebControls.ValidationSummary> 若要指定要在中显示的文本<xref:System.Web.UI.WebControls.ValidationSummary>控制，请使用<xref:System.Web.UI.WebControls.BaseValidator.ErrorMessage%2A>属性。</xref:System.Web.UI.WebControls.BaseValidator.ErrorMessage%2A> </xref:System.Web.UI.WebControls.ValidationSummary>      1> [!NOTE]&1;> 如果你设置<xref:System.Web.UI.WebControls.BaseValidator.ErrorMessage%2A>属性但没有设置<xref:System.Web.UI.WebControls.BaseValidator.Text%2A>属性、 的值<xref:System.Web.UI.WebControls.BaseValidator.ErrorMessage%2A>属性还验证控件中显示。</xref:System.Web.UI.WebControls.BaseValidator.ErrorMessage%2A> </xref:System.Web.UI.WebControls.BaseValidator.Text%2A> </xref:System.Web.UI.WebControls.BaseValidator.ErrorMessage%2A>       在使用验证程序控件时，应始终检查服务器端验证在执行任何处理之前的结果。 回发但之后调用事件方法之前，页调用验证程序控件和聚合到其结果<xref:System.Web.UI.Page.IsValid%2A?displayProperty=fullName>属性。</xref:System.Web.UI.Page.IsValid%2A?displayProperty=fullName> (你还可以调用使用显式的验证程序控件`Validate`方法。)在你自己的代码中，应检查<xref:System.Web.UI.Page.IsValid%2A?displayProperty=fullName>属性返回`true`之前处理输入。</xref:System.Web.UI.Page.IsValid%2A?displayProperty=fullName> 即使启用脚本的浏览器可能会阻止回发发生客户端上，如果验证检查失败，始终还应检查<xref:System.Web.UI.Page.IsValid%2A?displayProperty=fullName>服务器在处理经验证的数据之前的代码中。</xref:System.Web.UI.Page.IsValid%2A?displayProperty=fullName>       你可以手动执行验证。 若要验证页上的所有验证控件，使用<xref:System.Web.UI.Page.Validate%2A?displayProperty=fullName>方法。</xref:System.Web.UI.Page.Validate%2A?displayProperty=fullName> 可以通过使用验证各个验证控件<xref:System.Web.UI.WebControls.BaseValidator.Validate%2A>的控件的方法。</xref:System.Web.UI.WebControls.BaseValidator.Validate%2A>      1> [!NOTE]&1;> 如果你使用<xref:System.Web.UI.Page.IsValid%2A?displayProperty=fullName>中的属性`Page_Load`方法时，你必须首先显式调用<xref:System.Web.UI.Page.Validate%2A?displayProperty=fullName>方法。</xref:System.Web.UI.Page.Validate%2A?displayProperty=fullName> </xref:System.Web.UI.Page.IsValid%2A?displayProperty=fullName> 因为验证发生之后<xref:System.Web.UI.Control.Load?displayProperty=fullName>页，但之前的事件处理程序的事件`Click`或`Command`事件，<xref:System.Web.UI.Page.IsValid%2A?displayProperty=fullName>直到属性会被更新<xref:System.Web.UI.Page.Validate%2A?displayProperty=fullName>调用方法。</xref:System.Web.UI.Page.Validate%2A?displayProperty=fullName> </xref:System.Web.UI.Page.IsValid%2A?displayProperty=fullName> </xref:System.Web.UI.Control.Load?displayProperty=fullName> 作为替代方法，可以在事件处理程序中放置你的代码`Click`或`Command`事件而不是`Page_Load`方法。       不是所有 Web 服务器控件都支持验证的控件。 与验证控件可以验证的标准控件包括:- <xref:System.Web.UI.WebControls.DropDownList?displayProperty=fullName>- <xref:System.Web.UI.WebControls.FileUpload?displayProperty=fullName>- <xref:System.Web.UI.WebControls.ListBox?displayProperty=fullName>- <xref:System.Web.UI.WebControls.RadioButtonList?displayProperty=fullName>- <xref:System.Web.UI.WebControls.TextBox?displayProperty=fullName>- <xref:System.Web.UI.HtmlControls.HtmlInputFile?displayProperty=fullName>- <xref:System.Web.UI.HtmlControls.HtmlInputPassword?displayProperty=fullName>- <xref:System.Web.UI.HtmlControls.HtmlInputText?displayProperty=fullName>- <xref:System.Web.UI.HtmlControls.HtmlSelect?displayProperty=fullName>- <xref:System.Web.UI.HtmlControls.HtmlTextArea?displayProperty=fullName>1> [!NOTE]&1;> 的输入控件进行验证，<xref:System.Web.UI.ValidationPropertyAttribute?displayProperty=fullName>属性必须应用于控件。</xref:System.Web.UI.ValidationPropertyAttribute?displayProperty=fullName> </xref:System.Web.UI.HtmlControls.HtmlTextArea?displayProperty=fullName> </xref:System.Web.UI.HtmlControls.HtmlSelect?displayProperty=fullName> </xref:System.Web.UI.HtmlControls.HtmlInputText?displayProperty=fullName> </xref:System.Web.UI.HtmlControls.HtmlInputPassword?displayProperty=fullName> </xref:System.Web.UI.HtmlControls.HtmlInputFile?displayProperty=fullName> </xref:System.Web.UI.WebControls.TextBox?displayProperty=fullName> </xref:System.Web.UI.WebControls.RadioButtonList?displayProperty=fullName> </xref:System.Web.UI.WebControls.ListBox?displayProperty=fullName> </xref:System.Web.UI.WebControls.FileUpload?displayProperty=fullName> </xref:System.Web.UI.WebControls.DropDownList?displayProperty=fullName>      1> [!NOTE]&1;> 当你使用派生自 BaseValidator 内的验证程序控件<xref:System.Web.UI.UpdatePanel>控制，请确保该验证程序控件与之关联的控件位于同一面板。</xref:System.Web.UI.UpdatePanel> 有关使用<xref:System.Web.UI.UpdatePanel>，控制为部分页面更新，请参阅[局部页面呈现概述](~/add/includes/ajax-current-ext-md.md)。</xref:System.Web.UI.UpdatePanel>       当验证失败时，你可以将焦点设置在关联的输入控件上设置<xref:System.Web.UI.WebControls.BaseValidator.SetFocusOnError%2A>属性`true`。</xref:System.Web.UI.WebControls.BaseValidator.SetFocusOnError%2A>       BaseValidator 实例的初始属性值的列表，请参阅<xref:System.Web.UI.WebControls.BaseValidator.%23ctor%2A>构造函数。</xref:System.Web.UI.WebControls.BaseValidator.%23ctor%2A>      ## 有关如何配置此控件，以使其生成符合辅助功能标准的标记可访问性的信息，请参阅[Visual Studio 和 ASP.NET 中的辅助功能](~/add/includes/ajax-current-ext-md.md)和[ASP.NET 控件和可访问性](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example demonstrates how to use multiple validation controls to verify that the user enters a valid value in a <xref:System.Web.UI.WebControls.TextBox> control.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[Classic BaseValidator Example#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_332_1.aspx)]\n [!code-cs[Classic BaseValidator Example#1](~/add/codesnippet/csharp/t-system.web.ui.webcontr_332_1.aspx)]"
   syntax:
@@ -207,8 +207,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.BaseValidator&quot;></xref> class."
-  remarks: "This constructor is not called directly. Validation controls that inherit from this class can call this constructor from their own constructors to initialize the base properties.       The following table shows initial property values for an instance of <xref:System.Web.UI.WebControls.BaseValidator>.      |Property|Initial value|   |--------------|-------------------|   |<xref:System.Web.UI.WebControls.BaseValidator.IsValid%2A>|`true`|   |<xref:System.Web.UI.WebControls.BaseValidator.ForeColor%2A>|<xref:System.Drawing.Color.Red%2A?displayProperty=fullName>|   |<xref:System.Web.UI.WebControls.BaseValidator.PropertiesValid%2A>|`true`|   |<xref:System.Web.UI.WebControls.BaseValidator.RenderUplevel%2A>|`false`|"
+  summary: "初始化的新实例<xref href=&quot;System.Web.UI.WebControls.BaseValidator&quot;></xref>类。"
+  remarks: "不直接调用此构造函数。 从此类继承的验证控件可以从其自己的构造函数来初始化基属性调用此构造函数。       下表显示<xref:System.Web.UI.WebControls.BaseValidator>.</xref:System.Web.UI.WebControls.BaseValidator>实例的初始属性的值      |属性 |初始值 |  |--------------|-------------------|  |<xref:System.Web.UI.WebControls.BaseValidator.IsValid%2A>|`true`|  |<xref:System.Web.UI.WebControls.BaseValidator.ForeColor%2A>|<xref:System.Drawing.Color.Red%2A?displayProperty=fullName>|  |<xref:System.Web.UI.WebControls.BaseValidator.PropertiesValid%2A>|`true`|  |<xref:System.Web.UI.WebControls.BaseValidator.RenderUplevel%2A>|`false`|</xref:System.Web.UI.WebControls.BaseValidator.RenderUplevel%2A></xref:System.Web.UI.WebControls.BaseValidator.PropertiesValid%2A></xref:System.Drawing.Color.Red%2A?displayProperty=fullName></xref:System.Web.UI.WebControls.BaseValidator.ForeColor%2A></xref:System.Web.UI.WebControls.BaseValidator.IsValid%2A>"
   syntax:
     content: protected BaseValidator ();
     parameters: []
@@ -228,14 +228,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Adds the HTML attributes and styles that need to be rendered for the control to the specified <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> object."
-  remarks: "The AddAttributesToRender method is used to render the attributes of the control in the HTML tag for the control. This method is typically overridden by control developers in derived classes to insert the appropriate attributes and styles to the <xref:System.Web.UI.HtmlTextWriter> output stream for a control."
+  summary: "将 HTML 特性和需要呈现到指定控件的样式添加<xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref>对象。"
+  remarks: "AddAttributesToRender 方法用于呈现控件的 HTML 标记中控件的属性。 此方法通常重写由控件开发人员在派生类中，若要将适当的特性和样式<xref:System.Web.UI.HtmlTextWriter>控件的输出流。</xref:System.Web.UI.HtmlTextWriter>"
   syntax:
     content: protected override void AddAttributesToRender (System.Web.UI.HtmlTextWriter writer);
     parameters:
     - id: writer
       type: System.Web.UI.HtmlTextWriter
-      description: "An <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> that represents the output stream to render HTML content on the client."
+      description: "<xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> ，它表示要在客户端呈现 HTML 内容的输出流。"
   overload: System.Web.UI.WebControls.BaseValidator.AddAttributesToRender*
   exceptions: []
   platform:
@@ -252,18 +252,18 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "This property is not supported."
-  remarks: "This property is not supported. This property is supported only on the base <xref:System.Web.UI.WebControls.Label> class."
+  summary: "不支持此属性。"
+  remarks: "不支持此属性。 此属性仅支持基本的<xref:System.Web.UI.WebControls.Label>类。</xref:System.Web.UI.WebControls.Label>"
   syntax:
     content: public override string AssociatedControlID { get; set; }
     return:
       type: System.String
-      description: "This property is not supported and always throws a <xref:System.NotSupportedException>."
+      description: "此属性不支持，并且总是引发一种<xref:System.NotSupportedException>。</xref:System.NotSupportedException>"
   overload: System.Web.UI.WebControls.BaseValidator.AssociatedControlID*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "An attempt was made to set this property."
+    description: "尝试设置此属性。"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.BaseValidator.CheckControlValidationProperty(System.String,System.String)
@@ -278,17 +278,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Verifies whether the specified control is on the page and contains validation properties."
-  remarks: "The CheckControlValidationProperty method is a helper method used primarily by the <xref:System.Web.UI.WebControls.BaseValidator.ControlPropertiesValid%2A> method to verify whether the specified control is on the page and contains validation properties. This method does not return a value to report the result. Instead, it throws an exception when verification fails.      > [!NOTE] >  This method is used primarily by control developers."
+  summary: "验证是否指定的控件在页上，包含验证属性。"
+  remarks: "CheckControlValidationProperty 方法是主要由帮助器方法<xref:System.Web.UI.WebControls.BaseValidator.ControlPropertiesValid%2A>方法以验证是否指定的控件在页上，并包含验证属性。</xref:System.Web.UI.WebControls.BaseValidator.ControlPropertiesValid%2A> 此方法不返回一个值，以报告结果。 相反，验证失败时引发了异常。      1> [!NOTE]&1;> 主要由控件开发人员使用此方法。"
   syntax:
     content: protected void CheckControlValidationProperty (string name, string propertyName);
     parameters:
     - id: name
       type: System.String
-      description: "The control to verify."
+      description: "要验证的控件。"
     - id: propertyName
       type: System.String
-      description: "Additional text to describe the source of the exception, if an exception is thrown from using this method."
+      description: "其他文本以描述此异常的根源，如果从使用此方法将引发异常。"
   overload: System.Web.UI.WebControls.BaseValidator.CheckControlValidationProperty*
   exceptions:
   - type: System.Web.HttpException
@@ -308,14 +308,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Determines whether the control specified by the <xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate*> property is a valid control."
-  remarks: "The ControlPropertiesValid method is a helper method used primarily by the <xref:System.Web.UI.WebControls.BaseValidator.PropertiesValid%2A> property to determine whether the <xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A> property contains a valid input control. To be a valid input control, the <xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A> property must be set to some value and that value must be a control on the page that supports validation.      > [!NOTE] >  This method is used primarily by control developers."
+  summary: "确定指定的控件是否<xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate*>属性是有效的控制。</xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate*>"
+  remarks: "ControlPropertiesValid 方法是主要由帮助器方法<xref:System.Web.UI.WebControls.BaseValidator.PropertiesValid%2A>属性来确定是否<xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A>属性包含有效的输入的控件。</xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A> </xref:System.Web.UI.WebControls.BaseValidator.PropertiesValid%2A> 要成为有效的输入的控件，<xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A>属性必须设置为某个值，该值必须是支持验证页上的控件。</xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A>      1> [!NOTE]&1;> 主要由控件开发人员使用此方法。"
   syntax:
     content: protected virtual bool ControlPropertiesValid ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the control specified by <xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate*> is a valid control; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果滑块控件指定通过<xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate*>是一个有效的控件; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。</xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate*>"
   overload: System.Web.UI.WebControls.BaseValidator.ControlPropertiesValid*
   exceptions:
   - type: System.Web.HttpException
@@ -335,15 +335,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the input control to validate."
-  remarks: "Use the ControlToValidate property to specify the input control to validate. This property must be set to the ID of an input control for all validation controls except the <xref:System.Web.UI.WebControls.CustomValidator> control, which can be left blank. If you do not specify a valid input control, an exception will be thrown when the page is rendered. The ID must refer to a control within the same container as the validation control. It must be in the same page or user control, or it must be in the same template of a templated control.       The standard controls that can be validated are:      -   <xref:System.Web.UI.WebControls.DropDownList?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.FileUpload?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.ListBox?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.RadioButtonList?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.TextBox?displayProperty=fullName>      -   <xref:System.Web.UI.HtmlControls.HtmlInputFile?displayProperty=fullName>      -   <xref:System.Web.UI.HtmlControls.HtmlInputPassword?displayProperty=fullName>      -   <xref:System.Web.UI.HtmlControls.HtmlInputText?displayProperty=fullName>      -   <xref:System.Web.UI.HtmlControls.HtmlSelect?displayProperty=fullName>      -   <xref:System.Web.UI.HtmlControls.HtmlTextArea?displayProperty=fullName>      > [!NOTE] >  For an input control to be validated, the <xref:System.Web.UI.ValidationPropertyAttribute?displayProperty=fullName> attribute must be applied to the control.       All validation controls, except the <xref:System.Web.UI.WebControls.RequiredFieldValidator> control, will pass validation if the input control specified by the ControlToValidate property contains no text. If you are using a <xref:System.Web.UI.WebControls.CustomValidator> control, the client-side and server-side validation functions are not called either.       This property cannot be set by themes or style sheet themes. For more information, see <xref:System.Web.UI.ThemeableAttribute> and [ASP.NET Themes and Skins](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置要验证的输入的控件。"
+  remarks: "ControlToValidate 属性用于指定的输入的控件进行验证。 此属性必须设置为除之外的所有验证控件的输入控件的 ID<xref:System.Web.UI.WebControls.CustomValidator>控件，可以为空。</xref:System.Web.UI.WebControls.CustomValidator> 如果未指定有效的输入的控件，在呈现页时，将引发异常。 ID 必须引用同一容器用作验证控件中的控件。 它必须在同一页上或用户控件，或它必须在同一模板的模板化控件。       可验证的标准控件包括:- <xref:System.Web.UI.WebControls.DropDownList?displayProperty=fullName>- <xref:System.Web.UI.WebControls.FileUpload?displayProperty=fullName>- <xref:System.Web.UI.WebControls.ListBox?displayProperty=fullName>- <xref:System.Web.UI.WebControls.RadioButtonList?displayProperty=fullName>- <xref:System.Web.UI.WebControls.TextBox?displayProperty=fullName>- <xref:System.Web.UI.HtmlControls.HtmlInputFile?displayProperty=fullName>- <xref:System.Web.UI.HtmlControls.HtmlInputPassword?displayProperty=fullName>- <xref:System.Web.UI.HtmlControls.HtmlInputText?displayProperty=fullName>- <xref:System.Web.UI.HtmlControls.HtmlSelect?displayProperty=fullName>- <xref:System.Web.UI.HtmlControls.HtmlTextArea?displayProperty=fullName>1> [!NOTE]&1;> 的输入控件进行验证，<xref:System.Web.UI.ValidationPropertyAttribute?displayProperty=fullName>属性必须应用于控件。</xref:System.Web.UI.ValidationPropertyAttribute?displayProperty=fullName> </xref:System.Web.UI.HtmlControls.HtmlTextArea?displayProperty=fullName> </xref:System.Web.UI.HtmlControls.HtmlSelect?displayProperty=fullName> </xref:System.Web.UI.HtmlControls.HtmlInputText?displayProperty=fullName> </xref:System.Web.UI.HtmlControls.HtmlInputPassword?displayProperty=fullName> </xref:System.Web.UI.HtmlControls.HtmlInputFile?displayProperty=fullName> </xref:System.Web.UI.WebControls.TextBox?displayProperty=fullName> </xref:System.Web.UI.WebControls.RadioButtonList?displayProperty=fullName> </xref:System.Web.UI.WebControls.ListBox?displayProperty=fullName> </xref:System.Web.UI.WebControls.FileUpload?displayProperty=fullName> </xref:System.Web.UI.WebControls.DropDownList?displayProperty=fullName>       所有验证控件，除了<xref:System.Web.UI.WebControls.RequiredFieldValidator>控制，如果 ControlToValidate 属性指定的输入的控件不包含文本，将通过验证。</xref:System.Web.UI.WebControls.RequiredFieldValidator> 如果你使用<xref:System.Web.UI.WebControls.CustomValidator>控制、 客户端和服务器端验证函数不会调用。</xref:System.Web.UI.WebControls.CustomValidator>       此属性不能通过主题或样式表主题设置。 有关详细信息，请参阅<xref:System.Web.UI.ThemeableAttribute>和[ASP.NET 主题和皮肤](~/add/includes/ajax-current-ext-md.md)。</xref:System.Web.UI.ThemeableAttribute>"
   example:
   - "The following code example demonstrates how to use the ControlToValidate property to specify the input control to validate.  \n  \n [!code-vb[Classic BaseValidator Example#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_361_1.aspx)]\n [!code-cs[Classic BaseValidator Example#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_361_1.aspx)]"
   syntax:
     content: public string ControlToValidate { get; set; }
     return:
       type: System.String
-      description: "The input control to validate. The default value is &lt;xref:System.String?displayProperty=fullName&gt;, which indicates that this property is not set."
+      description: "要验证的输入的控件。 默认值是&lt;xref:System.String?displayProperty=fullName&gt;，指示未设置此属性。"
   overload: System.Web.UI.WebControls.BaseValidator.ControlToValidate*
   exceptions: []
   platform:
@@ -360,14 +360,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Determines whether the validation control can perform client-side validation."
-  remarks: "The DetermineRenderUplevel method is a helper function that is used primarily by the <xref:System.Web.UI.WebControls.BaseValidator.RenderUplevel%2A> property to determine whether the client&quot;s browser supports client script. For this property to return `true`, the following conditions must be true:      -   The browser has client script enabled.      -   The <xref:System.Web.HttpBrowserCapabilitiesBase.W3CDomVersion%2A> property of the <xref:System.Web.HttpBrowserCapabilitiesBase> object that is stored in the <xref:System.Web.HttpRequest.Browser%2A?displayProperty=fullName> property is 1 or later.      -   The <xref:System.Web.Configuration.HttpCapabilitiesBase.EcmaScriptVersion%2A> property of the <xref:System.Web.HttpBrowserCapabilitiesBase> object that is stored in the <xref:System.Web.HttpRequest.Browser%2A?displayProperty=fullName> property is 1.2 or later.          > [!NOTE]     >  This method is used primarily by control developers."
+  summary: "确定验证控件是否可以执行客户端验证。"
+  remarks: "DetermineRenderUplevel 方法是主要由一个帮助器函数<xref:System.Web.UI.WebControls.BaseValidator.RenderUplevel%2A>属性来确定客户端的浏览器是否支持客户端脚本。</xref:System.Web.UI.WebControls.BaseValidator.RenderUplevel%2A> 此属性返回`true`，必须满足以下条件:-浏览器具有启用的客户端脚本。      -<xref:System.Web.HttpBrowserCapabilitiesBase.W3CDomVersion%2A>属性<xref:System.Web.HttpBrowserCapabilitiesBase>对象存储在<xref:System.Web.HttpRequest.Browser%2A?displayProperty=fullName>属性为 1 或更高版本。</xref:System.Web.HttpRequest.Browser%2A?displayProperty=fullName> </xref:System.Web.HttpBrowserCapabilitiesBase> </xref:System.Web.HttpBrowserCapabilitiesBase.W3CDomVersion%2A>      -<xref:System.Web.Configuration.HttpCapabilitiesBase.EcmaScriptVersion%2A>属性<xref:System.Web.HttpBrowserCapabilitiesBase>对象存储在<xref:System.Web.HttpRequest.Browser%2A?displayProperty=fullName>属性为 1.2 或更高版本。</xref:System.Web.HttpRequest.Browser%2A?displayProperty=fullName> </xref:System.Web.HttpBrowserCapabilitiesBase> </xref:System.Web.Configuration.HttpCapabilitiesBase.EcmaScriptVersion%2A>          1> [!NOTE]&1;> 主要由控件开发人员使用此方法。"
   syntax:
     content: protected virtual bool DetermineRenderUplevel ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the validation control can perform client-side validation; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果验证控件可以执行客户端验证，则为否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.BaseValidator.DetermineRenderUplevel*
   exceptions: []
   platform:
@@ -384,20 +384,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the display behavior of the error message in a validation control."
-  remarks: "Use the Display property to specify the display behavior of the error message in the validation control. The following table lists the different values that can be used.      |Display behavior|Description|   |----------------------|-----------------|   |`None`|The validation message is never displayed inline.|   |`Static`|Space for the validation message is allocated in the page layout.|   |`Dynamic`|Space for the validation message is dynamically added to the page if validation fails.|      > [!NOTE] >  The display behavior depends on whether client-side validation is performed. If client-side validation is not active (because the browser does not support it or because it has been disabled by using the <xref:System.Web.UI.Page.ClientTarget%2A?displayProperty=fullName> page directive or <xref:System.Web.UI.WebControls.BaseValidator.EnableClientScript%2A> property), `ValidatorDisplay.Static` and `ValidatorDisplay.Dynamic` behave the same way: the error message takes up space only if it is displayed. The ability to dynamically allocate space for the message when it is not being displayed (`ValidatorDisplay.Dynamic`) only works with client-side validation.       This property cannot be set by themes or style sheet themes. For more information, see <xref:System.Web.UI.ThemeableAttribute> and [ASP.NET Themes and Skins](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置在验证控件中的错误消息的显示行为。"
+  remarks: "显示属性用于指定验证控件中的错误消息的显示行为。 下表列出可用的不同值。      |显示行为 |说明 |  |----------------------|-----------------|  |`None`|验证消息永远不会是以内联方式显示。 |  |`Static`|空间的验证消息分配的页面布局中。 |  |`Dynamic`|空间的验证消息动态添加到页面，如果验证失败。 |    &1;> [!NOTE]&1;> 显示行为取决于是否使用了客户端验证。 如果客户端验证未处于活动状态 (因为浏览器不支持它或者因为已禁用通过使用<xref:System.Web.UI.Page.ClientTarget%2A?displayProperty=fullName>页指令或<xref:System.Web.UI.WebControls.BaseValidator.EnableClientScript%2A>属性)，`ValidatorDisplay.Static`和`ValidatorDisplay.Dynamic`的行为方式相同︰ 仅当它将显示错误消息所占的空间。</xref:System.Web.UI.WebControls.BaseValidator.EnableClientScript%2A> </xref:System.Web.UI.Page.ClientTarget%2A?displayProperty=fullName> 动态分配空间的消息时不显示的功能 (`ValidatorDisplay.Dynamic`) 仅适用于客户端验证。       此属性不能通过主题或样式表主题设置。 有关详细信息，请参阅<xref:System.Web.UI.ThemeableAttribute>和[ASP.NET 主题和皮肤](~/add/includes/ajax-current-ext-md.md)。</xref:System.Web.UI.ThemeableAttribute>"
   example:
   - "The following code example demonstrates how to use the Display property to specify that space for the validation message is added to the Web page dynamically when validation fails.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[Classic BaseValidator Example#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1044_1.aspx)]\n [!code-cs[Classic BaseValidator Example#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1044_1.aspx)]"
   syntax:
     content: public System.Web.UI.WebControls.ValidatorDisplay Display { get; set; }
     return:
       type: System.Web.UI.WebControls.ValidatorDisplay
-      description: "One of the <xref href=&quot;System.Web.UI.WebControls.ValidatorDisplay&quot;></xref> values. The default value is <xref uid=&quot;langword_csharp_Static&quot; name=&quot;Static&quot; href=&quot;&quot;></xref>."
+      description: "之一<xref href=&quot;System.Web.UI.WebControls.ValidatorDisplay&quot;></xref>值。 默认值是<xref uid=&quot;langword_csharp_Static&quot; name=&quot;Static&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.BaseValidator.Display*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The specified value is not one of the <xref href=&quot;System.Web.UI.WebControls.ValidatorDisplay&quot;></xref> values."
+    description: "指定的值不是之一<xref href=&quot;System.Web.UI.WebControls.ValidatorDisplay&quot;></xref>值。"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.BaseValidator.EnableClientScript
@@ -412,15 +412,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets a value indicating whether client-side validation is enabled."
-  remarks: "Use the EnableClientScript property to specify whether client-side validation is enabled.       Validation controls always perform validation on the server. They also have complete client-side implementation that allows DHTML-supported browsers (such as Microsoft Internet Explorer 4.0 and later) to perform validation on the client. Client-side validation enhances the validation process by checking user input before it is sent to the server. This allows errors to be detected on the client before the form is submitted, avoiding the round trip of information necessary for server-side validation.       By default, this value is set to `true`, which enables client-side validation if the browser supports it. You can disable client-side validation on a control-by-control basis. This is useful if dynamic updating on the client creates problems with the layout of the page, or if you want to execute some server code before validation takes place.       This property cannot be set by themes or style sheet themes. For more information, see <xref:System.Web.UI.ThemeableAttribute> and [ASP.NET Themes and Skins](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置一个值，该值指示是否启用客户端验证。"
+  remarks: "EnableClientScript 属性用于指定是否启用客户端验证。       验证控件始终在服务器上执行验证。 它们还具有完整的客户端实现，它允许 DHTML 支持浏览器 （如 Microsoft Internet Explorer 4.0 及更高版本） 客户端上执行验证。 客户端验证发送到服务器之前检查用户输入，从而增强了验证过程。 这使得在提交表单时，避免往返行程的服务器端验证所需信息之前客户端上检测到的错误。       默认情况下，此值设置为`true`，从而使客户端验证如果浏览器支持它。 你可以禁用客户端验证基于控件的控件。 如果动态更新客户端上创建的页上，布局出现问题，或如果你想要验证发生之前执行一些服务器代码，这非常有用。       此属性不能通过主题或样式表主题设置。 有关详细信息，请参阅<xref:System.Web.UI.ThemeableAttribute>和[ASP.NET 主题和皮肤](~/add/includes/ajax-current-ext-md.md)。</xref:System.Web.UI.ThemeableAttribute>"
   example:
   - "The following code example demonstrates how to use the EnableClientScript property to disable client-side validation so that the random numbers can be generated on the server.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[Classic BaseValidator Example#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_809_1.aspx)]\n [!code-cs[Classic BaseValidator Example#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_809_1.aspx)]"
   syntax:
     content: public bool EnableClientScript { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if client-side validation is enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default value is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果客户端验证已启用;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.BaseValidator.EnableClientScript*
   exceptions: []
   platform:
@@ -437,15 +437,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets a value that indicates whether the validation control is enabled."
-  remarks: "Use the Enabled property to specify whether the validation control is enabled. You can disable the validation control by setting this property to `false`.       Setting either the <xref:System.Web.UI.Control.Visible%2A?displayProperty=fullName> or the Enabled property to `false` will prevent validation from being performed. This causes the <xref:System.Web.UI.WebControls.BaseValidator.IsValid%2A> property to always evaluate to `true`.       The Enabled property is slightly different from the <xref:System.Web.UI.Control.Visible%2A?displayProperty=fullName> property. If the <xref:System.Web.UI.Control.Visible%2A?displayProperty=fullName> property for a validation control is set to `true`, but the Enabled property is set to `false`, the validation control is still rendered for client-side validation, but in a disabled state. You can then re-enable the validation control on the client by using DHTML script."
+  summary: "获取或设置一个值，该值指示是否启用验证控件。"
+  remarks: "Enabled 属性用于指定是否已启用验证控件。 你可以通过将此属性设置为禁用验证控件`false`。       设置<xref:System.Web.UI.Control.Visible%2A?displayProperty=fullName>或将已启用属性设为`false`将阻止从正在执行的验证。</xref:System.Web.UI.Control.Visible%2A?displayProperty=fullName> 这将导致<xref:System.Web.UI.WebControls.BaseValidator.IsValid%2A>属性计算结果始终为`true`。</xref:System.Web.UI.WebControls.BaseValidator.IsValid%2A>       Enabled 属性是与略有不同<xref:System.Web.UI.Control.Visible%2A?displayProperty=fullName>属性。</xref:System.Web.UI.Control.Visible%2A?displayProperty=fullName> 如果<xref:System.Web.UI.Control.Visible%2A?displayProperty=fullName>验证控件的属性设置为`true`，但的 Enabled 属性设置为`false`，对于客户端的验证，但处于禁用状态，仍将呈现验证控件。</xref:System.Web.UI.Control.Visible%2A?displayProperty=fullName> 然后可以重新使用 DHTML 脚本中启用客户端上的验证控件。"
   example:
   - "The following code example demonstrates how to use the Enabled property to enable or disable the validation controls on the Web page using server-side code.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[Classic BaseValidator.Enabled Example#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_938_1.aspx)]\n [!code-vb[Classic BaseValidator.Enabled Example#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_938_1.aspx)]  \n  \n The following code example demonstrates how to use the Enabled property to enable or disable the validation controls on the Web page using client-side code.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
     content: public override bool Enabled { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the validation control is enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果启用验证控件，则否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.BaseValidator.Enabled*
   exceptions: []
   platform:
@@ -462,15 +462,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the text for the error message displayed in a <xref href=&quot;System.Web.UI.WebControls.ValidationSummary&quot;></xref> control when validation fails."
-  remarks: "When using a <xref:System.Web.UI.WebControls.ValidationSummary> control, use the ErrorMessage property to specify the text to display in the <xref:System.Web.UI.WebControls.ValidationSummary> control when validation fails for the current validation control. To specify the text to display in the validation control itself, use the <xref:System.Web.UI.WebControls.BaseValidator.Text%2A> property.      > [!NOTE] >  If you set the ErrorMessage property without setting the <xref:System.Web.UI.WebControls.BaseValidator.Text%2A> property, the value of the ErrorMessage property is also displayed in the validation control.       The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [ASP.NET Globalization and Localization](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置文本的错误消息显示在<xref href=&quot;System.Web.UI.WebControls.ValidationSummary&quot;></xref>控制验证失败时。"
+  remarks: "使用时<xref:System.Web.UI.WebControls.ValidationSummary>控制，请使用 ErrorMessage 属性来指定要在中显示的文本<xref:System.Web.UI.WebControls.ValidationSummary>控制当前的验证控件的验证失败时。</xref:System.Web.UI.WebControls.ValidationSummary> </xref:System.Web.UI.WebControls.ValidationSummary> 若要指定要显示在验证控件本身的文本，请使用<xref:System.Web.UI.WebControls.BaseValidator.Text%2A>属性。</xref:System.Web.UI.WebControls.BaseValidator.Text%2A>      1> [!NOTE]&1;> 如果设置 ErrorMessage 属性但没有设置<xref:System.Web.UI.WebControls.BaseValidator.Text%2A>属性、 ErrorMessage 属性还验证控件中显示的值。</xref:System.Web.UI.WebControls.BaseValidator.Text%2A>       此属性的值设置时，可以自动保存到的资源文件通过使用设计器工具。 有关详细信息，请参阅<xref:System.ComponentModel.LocalizableAttribute>和[ASP.NET 全球化和本地化](~/add/includes/ajax-current-ext-md.md)。</xref:System.ComponentModel.LocalizableAttribute>"
   example:
   - "The following code example demonstrates how to use the ErrorMessage property to specify different messages for the <xref:System.Web.UI.WebControls.ValidationSummary> control and the <xref:System.Web.UI.WebControls.RequiredFieldValidator> and <xref:System.Web.UI.WebControls.CompareValidator> controls.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[Classic BaseValidator Example#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1088_1.aspx)]\n [!code-cs[Classic BaseValidator Example#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1088_1.aspx)]"
   syntax:
     content: public string ErrorMessage { get; set; }
     return:
       type: System.String
-      description: "The error message displayed in a <xref href=&quot;System.Web.UI.WebControls.ValidationSummary&quot;></xref> control when validation fails. The default value is an empty string (&quot;&quot;), which indicates that this property is not set."
+      description: "中显示的错误消息<xref href=&quot;System.Web.UI.WebControls.ValidationSummary&quot;></xref>控制验证失败时。 默认值为空字符串 (&quot;&quot;)，指示未设置此属性。"
   overload: System.Web.UI.WebControls.BaseValidator.ErrorMessage*
   exceptions: []
   platform:
@@ -487,14 +487,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "When overridden in a derived class, this method contains the code to determine whether the value in the input control is valid."
-  remarks: "Use the EvaluateIsValid method to determine whether the value in the input control specified by the <xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A> property is valid.      > [!NOTE] >  This method is used primarily by control developers."
+  summary: "当在派生类中重写此方法包含代码，以确定输入控件中的值是否有效。"
+  remarks: "使用 EvaluateIsValid 方法来确定是否在输入控件中的值指定<xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A>属性才有效。</xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A>      1> [!NOTE]&1;> 主要由控件开发人员使用此方法。"
   syntax:
     content: protected abstract bool EvaluateIsValid ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the value in the input control is valid; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果输入控件中的值是有效，则为否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.BaseValidator.EvaluateIsValid*
   exceptions: []
   platform:
@@ -511,15 +511,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the color of the message displayed when validation fails."
-  remarks: "Use the ForeColor property to specify a custom text color for the message displayed in the validation control when validation fails."
+  summary: "获取或设置验证失败时所显示的消息的颜色。"
+  remarks: "验证失败时，使用要指定消息的自定义的文本颜色的前景色属性验证控件中显示。"
   example:
   - "The following code example demonstrates how to use the ForeColor property to display the validation message in blue.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[Classic BaseValidator.ForeColor Example#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_692_1.aspx)]\n [!code-vb[Classic BaseValidator.ForeColor Example#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_692_1.aspx)]"
   syntax:
     content: public override System.Drawing.Color ForeColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "A <xref href=&quot;System.Drawing.Color&quot;></xref> that represents the color of the message displayed when validation fails. The default is &lt;xref:System.Drawing.Color.Red%2A?displayProperty=fullName&gt;."
+      description: "A <xref href=&quot;System.Drawing.Color&quot;> </xref>表示验证失败时所显示的消息的颜色。 默认值是&lt;xref:System.Drawing.Color.Red%2A?displayProperty=fullName&gt;。"
   overload: System.Web.UI.WebControls.BaseValidator.ForeColor*
   exceptions: []
   platform:
@@ -536,17 +536,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets the client ID of the specified control."
-  remarks: "Use the GetControlRenderID method to get the client ID of the specified control. For more information, see <xref:System.Web.UI.Control.ClientID%2A>.      > [!NOTE] >  This method is used primarily by control developers."
+  summary: "获取指定的控件的客户端 ID。"
+  remarks: "GetControlRenderID 方法用于获取指定的控件的客户端 ID。 有关详细信息，请参阅<xref:System.Web.UI.Control.ClientID%2A>。</xref:System.Web.UI.Control.ClientID%2A>      1> [!NOTE]&1;> 主要由控件开发人员使用此方法。"
   syntax:
     content: protected string GetControlRenderID (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the control to get the client ID from."
+      description: "要获取的客户端 ID 的控件的名称。"
     return:
       type: System.String
-      description: "The client ID of the specified control."
+      description: "指定控件的客户端 ID。"
   overload: System.Web.UI.WebControls.BaseValidator.GetControlRenderID*
   exceptions: []
   platform:
@@ -563,17 +563,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets the value associated with the specified input control."
-  remarks: "Use the GetControlValidationValue method to get the value associated with the specified input control, regardless of the control type. For example, you can use this method to get the value in a <xref:System.Web.UI.WebControls.TextBox> control, as well as the value of the selected item from a <xref:System.Web.UI.WebControls.ListBox> control. If the specified control cannot be found, `null` is returned.      > [!NOTE] >  This method is used primarily by control developers."
+  summary: "获取与指定的输入控件关联的值。"
+  remarks: "GetControlValidationValue 方法用于获取与指定的输入控件，无论控件类型关联的值。 例如，你可以使用此方法来获取的值<xref:System.Web.UI.WebControls.TextBox>控件，以及从所选的项的值<xref:System.Web.UI.WebControls.ListBox>控件。</xref:System.Web.UI.WebControls.ListBox> </xref:System.Web.UI.WebControls.TextBox> 如果找不到指定的控件，`null`返回。      1> [!NOTE]&1;> 主要由控件开发人员使用此方法。"
   syntax:
     content: protected string GetControlValidationValue (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the input control to get the value from."
+      description: "若要获取的值的输入控件的名称。"
     return:
       type: System.String
-      description: "The value associated with the specified input control."
+      description: "与指定的输入控件关联的值。"
   overload: System.Web.UI.WebControls.BaseValidator.GetControlValidationValue*
   exceptions: []
   platform:
@@ -590,17 +590,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Determines the validation property of a control (if it exists)."
-  remarks: "The GetValidationProperty method is a helper function that gets the validation property of the specified input control.      > [!NOTE] >  This method is used primarily by control developers."
+  summary: "（如果存在），请确定控件的验证属性。"
+  remarks: "GetValidationProperty 方法是获取指定的输入控件的验证属性的帮助器函数。      1> [!NOTE]&1;> 主要由控件开发人员使用此方法。"
   syntax:
     content: public static System.ComponentModel.PropertyDescriptor GetValidationProperty (object component);
     parameters:
     - id: component
       type: System.Object
-      description: "A &lt;xref:System.Object?displayProperty=fullName&gt; that represents the control to get the validation property of."
+      description: "A &lt;xref:System.Object?displayProperty=fullName&gt; ，表示要获取的验证属性的控件。"
     return:
       type: System.ComponentModel.PropertyDescriptor
-      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;></xref> that contains the validation property of the control."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;> </xref>包含控件的验证属性。"
   overload: System.Web.UI.WebControls.BaseValidator.GetValidationProperty*
   exceptions: []
   platform:
@@ -617,13 +617,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets a value that indicates whether the control generates unobtrusive JavaScript."
-  remarks: "This property returns `false` if the <xref:System.Web.UI.Page.UnobtrusiveValidationMode%2A> property value is <xref:System.Web.UI.UnobtrusiveValidationMode>; otherwise this property returns `true` ."
+  summary: "获取一个值，该值指示控件是否生成非介入式 JavaScript。"
+  remarks: "此属性返回`false`如果<xref:System.Web.UI.Page.UnobtrusiveValidationMode%2A>属性值是<xref:System.Web.UI.UnobtrusiveValidationMode>; 否则此属性返回`true`。</xref:System.Web.UI.UnobtrusiveValidationMode> </xref:System.Web.UI.Page.UnobtrusiveValidationMode%2A>"
   syntax:
     content: protected bool IsUnobtrusive { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the control generates unobtrusive JavaScript; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果该控件生成非介入式 JavaScript;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.BaseValidator.IsUnobtrusive*
   exceptions: []
   platform:
@@ -640,15 +640,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets a value that indicates whether the associated input control passes validation."
-  remarks: "Use the IsValid property to determine whether the associated input control passes validation.      > [!CAUTION] >  Because the default value of this property is `true`, it will return `true` if you query this property before validation is performed. For example, this might occur if you attempt to use this property in the <xref:System.Web.UI.Control.Load?displayProperty=fullName> event of a page.       The IsValid property is evaluated only when the <xref:System.Web.UI.WebControls.BaseValidator.Validate%2A> method is called. You can call the <xref:System.Web.UI.WebControls.BaseValidator.Validate%2A> method for each validation control on the page individually, or call all of them at once by using the <xref:System.Web.UI.Page.Validate%2A?displayProperty=fullName> method. Button controls with their `CausesValidation` property set to `true` will also call the <xref:System.Web.UI.Page.Validate%2A?displayProperty=fullName> method.      > [!NOTE] >  It is possible to change the value of this property manually after validation has taken place. This allows you to override the validation result, if necessary.       The <xref:System.Web.UI.Page.IsValid%2A?displayProperty=fullName> property for the page is set to `true` only if the IsValid property for each validation control on the page is also set to `true`.       This property cannot be set by themes or style sheet themes. For more information, see <xref:System.Web.UI.ThemeableAttribute> and [ASP.NET Themes and Skins](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置一个值，该值指示相关输入的控件是否通过验证。"
+  remarks: "IsValid 属性用于确定关联的输入的控件是否通过验证。      1> [!CAUTION]&1;> 由于此属性默认值为`true`，它将返回`true`如果之前验证查询此属性。 例如，这可能是如果你尝试中使用此属性<xref:System.Web.UI.Control.Load?displayProperty=fullName>的单页的事件。</xref:System.Web.UI.Control.Load?displayProperty=fullName>       计算 IsValid 属性仅当<xref:System.Web.UI.WebControls.BaseValidator.Validate%2A>调用方法。</xref:System.Web.UI.WebControls.BaseValidator.Validate%2A> 你可以调用<xref:System.Web.UI.WebControls.BaseValidator.Validate%2A>每个验证方法分别，控制在页上或通过使用一次调用所有这些<xref:System.Web.UI.Page.Validate%2A?displayProperty=fullName>方法。</xref:System.Web.UI.Page.Validate%2A?displayProperty=fullName> </xref:System.Web.UI.WebControls.BaseValidator.Validate%2A> 按钮控件使用其`CausesValidation`属性设置为`true`还将调用<xref:System.Web.UI.Page.Validate%2A?displayProperty=fullName>方法。</xref:System.Web.UI.Page.Validate%2A?displayProperty=fullName>      1> [!NOTE]&1;> 可以验证发生之后手动更改此属性的值。 这允许你重写验证结果，如有必要。       <xref:System.Web.UI.Page.IsValid%2A?displayProperty=fullName>页的属性设置为`true`只有当页面上的每个验证控件的 IsValid 属性也设置为`true`。</xref:System.Web.UI.Page.IsValid%2A?displayProperty=fullName>       此属性不能通过主题或样式表主题设置。 有关详细信息，请参阅<xref:System.Web.UI.ThemeableAttribute>和[ASP.NET 主题和皮肤](~/add/includes/ajax-current-ext-md.md)。</xref:System.Web.UI.ThemeableAttribute>"
   example:
   - "The following code example demonstrates how to use the IsValid property to determine whether the associated input control passes validation.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[BaseValidatorIsValid#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_561_1.aspx)]\n [!code-cs[BaseValidatorIsValid#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_561_1.aspx)]"
   syntax:
     content: public bool IsValid { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the associated input control passes validation; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default value is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果关联的输入的控件通过验证，则为否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.BaseValidator.IsValid*
   exceptions: []
   platform:
@@ -665,14 +665,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Raises the <xref href=&quot;System.Web.UI.Control.Init&quot;></xref> event."
-  remarks: "After this method calls the base control&quot;s <xref:System.Web.UI.Control.OnInit%2A> method, it sets the <xref:System.Web.UI.WebControls.WebControl.ForeColor%2A> property to <xref:System.Drawing.Color.Red%2A> if the following conditions are true:      -   The <xref:System.Web.UI.WebControls.WebControl.ForeColor%2A> property is not already set.      -   The <xref:System.Web.UI.Control.RenderingCompatibility%2A> property indicates an ASP.NET version earlier than `4.0`. By default, validator controls in ASP.NET 4 and later versions do not display errors in red. For information about how to control the visual appearance of validator controls, see [Validating User Input in ASP.NET Web Pages](~/add/includes/ajax-current-ext-md.md).       This method also registers the validation control on the page."
+  summary: "引发<xref href=&quot;System.Web.UI.Control.Init&quot;></xref>事件。"
+  remarks: "此方法调用基控件后<xref:System.Web.UI.Control.OnInit%2A>方法，它会设置<xref:System.Web.UI.WebControls.WebControl.ForeColor%2A>属性<xref:System.Drawing.Color.Red%2A>如果满足以下条件:-<xref:System.Web.UI.WebControls.WebControl.ForeColor%2A>属性尚未设置。</xref:System.Web.UI.WebControls.WebControl.ForeColor%2A> </xref:System.Drawing.Color.Red%2A> </xref:System.Web.UI.WebControls.WebControl.ForeColor%2A> </xref:System.Web.UI.Control.OnInit%2A>      -<xref:System.Web.UI.Control.RenderingCompatibility%2A>属性指示 ASP.NET 版本早于`4.0`。</xref:System.Web.UI.Control.RenderingCompatibility%2A> 默认情况下，ASP.NET 4 和更高版本中的验证程序控件未显示为红色的错误。 有关如何控制验证程序控件的可视外观的信息，请参阅[验证用户输入中的 ASP.NET Web Pages](~/add/includes/ajax-current-ext-md.md)。       此方法还会注册页面上的验证控件。"
   syntax:
     content: protected override void OnInit (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "A &lt;xref:System.EventArgs?displayProperty=fullName&gt; that contains the event data."
+      description: "A &lt;xref:System.EventArgs?displayProperty=fullName&gt;包含事件数据。"
   overload: System.Web.UI.WebControls.BaseValidator.OnInit*
   exceptions: []
   platform:
@@ -689,14 +689,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Raises the <xref href=&quot;System.Web.UI.Control.PreRender&quot;></xref> event."
-  remarks: "This method has been overridden to check the client browser and configure the validation control for compatibility prior to rendering.       Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnPreRender method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Web.UI.Control.PreRender&quot;></xref>事件。"
+  remarks: "重写此方法，以检查客户端浏览器并配置在呈现之前的兼容性的验证控件。       引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnPreRender 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected override void OnPreRender (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "A &lt;xref:System.EventArgs?displayProperty=fullName&gt; that contains the event data."
+      description: "A &lt;xref:System.EventArgs?displayProperty=fullName&gt;包含事件数据。"
   overload: System.Web.UI.WebControls.BaseValidator.OnPreRender*
   exceptions: []
   platform:
@@ -713,14 +713,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Raises the <xref href=&quot;System.Web.UI.Control.Unload&quot;></xref> event."
-  remarks: "This method has been overridden to unregister the validation control on the page.       Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnUnload method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Web.UI.Control.Unload&quot;></xref>事件。"
+  remarks: "重写此方法，以注销页面上的验证控件。       引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnUnload 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected override void OnUnload (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "A &lt;xref:System.EventArgs?displayProperty=fullName&gt; that contains the event data."
+      description: "A &lt;xref:System.EventArgs?displayProperty=fullName&gt;包含事件数据。"
   overload: System.Web.UI.WebControls.BaseValidator.OnUnload*
   exceptions: []
   platform:
@@ -737,13 +737,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets a value that indicates whether the control specified by the <xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate*> property is a valid control."
-  remarks: "Use the PropertiesValid property to determine whether the <xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A> property contains a valid input control. To be a valid input control, the <xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A> property must be set to a control on the page.      > [!NOTE] >  This property is used primarily by control developers."
+  summary: "获取一个值，该值指示指定的控件是否<xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate*>属性是有效的控制。</xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate*>"
+  remarks: "使用 PropertiesValid 属性来确定是否<xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A>属性包含有效的输入的控件。</xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A> 要成为有效的输入的控件，<xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A>属性必须设置为页上的控件。</xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A>      1> [!NOTE]&1;> 主要由控件开发人员使用此属性。"
   syntax:
     content: protected bool PropertiesValid { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the control specified by <xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate*> is a valid control; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果滑块控件指定通过<xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate*>是一个有效的控件; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。</xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate*>"
   overload: System.Web.UI.WebControls.BaseValidator.PropertiesValid*
   exceptions:
   - type: System.Web.HttpException
@@ -763,8 +763,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Registers code on the page for client-side validation."
-  remarks: "Use the RegisterValidatorCommonScript method to register code on the page to perform client-side validation.      > [!NOTE] >  This method is used primarily by control developers."
+  summary: "注册客户端验证的页上的代码。"
+  remarks: "使用 RegisterValidatorCommonScript 方法注册代码页后，可以执行客户端验证。      1> [!NOTE]&1;> 主要由控件开发人员使用此方法。"
   syntax:
     content: protected void RegisterValidatorCommonScript ();
     parameters: []
@@ -784,8 +784,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Registers an ECMAScript array declaration using the array name <xref uid=&quot;langword_csharp_Page_Validators&quot; name=&quot;Page_Validators&quot; href=&quot;&quot;></xref>."
-  remarks: "Use the RegisterValidatorDeclaration method to register an ECMAScript array declaration using the array name `Page_Validators`.      > [!NOTE] >  This method is used primarily by control developers."
+  summary: "注册一个 ECMAScript 数组声明以使用阵列名称<xref uid=&quot;langword_csharp_Page_Validators&quot; name=&quot;Page_Validators&quot; href=&quot;&quot;> </xref>。"
+  remarks: "使用 RegisterValidatorDeclaration 方法以注册一个 ECMAScript 数组声明以使用阵列名称`Page_Validators`。      1> [!NOTE]&1;> 主要由控件开发人员使用此方法。"
   syntax:
     content: protected virtual void RegisterValidatorDeclaration ();
     parameters: []
@@ -805,14 +805,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Displays the control on the client."
-  remarks: "The Render method is used to generate the HTML markup for a validation control."
+  summary: "显示客户端上的控件。"
+  remarks: "Render 方法用于生成验证控件的 HTML 标记。"
   syntax:
     content: protected override void Render (System.Web.UI.HtmlTextWriter writer);
     parameters:
     - id: writer
       type: System.Web.UI.HtmlTextWriter
-      description: "A <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> that contains the output stream for rendering on the client."
+      description: "A <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref>包含在客户端上呈现的输出流。"
   overload: System.Web.UI.WebControls.BaseValidator.Render*
   exceptions: []
   platform:
@@ -829,13 +829,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets a value that indicates whether the client&quot;s browser supports &quot;uplevel&quot; rendering."
-  remarks: "Use the RenderUplevel property to determine whether the client&quot;s browser supports &quot;uplevel&quot; rendering. For a browser to support &quot;uplevel&quot; rendering, it must support Microsoft Internet Explorer Document Object Model (DOM) version 4 or later and ECMAScript version 1.2 or later.      > [!NOTE] >  This property is used primarily by control developers."
+  summary: "获取一个值，该值指示客户端的浏览器是否支持&quot;上一级&quot;呈现。"
+  remarks: "RenderUplevel 属性用于确定客户端的浏览器是否支持&quot;上一级&quot;呈现。 若要支持&quot;上一级&quot;呈现的浏览器，它必须支持 Microsoft Internet 资源管理器文档对象模型 (DOM) 版本 4 或更高版本和 ECMAScript 版本 1.2 或更高版本。      1> [!NOTE]&1;> 主要由控件开发人员使用此属性。"
   syntax:
     content: protected bool RenderUplevel { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the browser supports &quot;uplevel&quot; rendering; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果浏览器支持&quot;上一级&quot;呈现;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.BaseValidator.RenderUplevel*
   exceptions: []
   platform:
@@ -852,13 +852,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets a value that indicates whether focus is set to the control specified by the <xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate*> property when validation fails."
-  remarks: "Use the SetFocusOnError property to specify whether focus is automatically set to the control specified by the <xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A> property when this validation control fails. This allows the user to quickly update the appropriate control.       If multiple validation controls fail and this property is set to `true`, the control specified in the <xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A> property for the first validation control receives focus.       This property cannot be set by themes or style sheet themes. For more information, see <xref:System.Web.UI.ThemeableAttribute> and [ASP.NET Themes and Skins](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置一个值，该值指示是否将焦点设置到指定的控件<xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate*>属性验证失败时。</xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate*>"
+  remarks: "SetFocusOnError 属性用于指定是否将自动将焦点设置为指定的控件<xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A>此验证控件失败时的属性。</xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A> 这允许用户快速更新相应的控件。       如果多个验证控件失败，此属性设置为`true`中, 指定的控件<xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A>属性的第一个验证控件接收焦点。</xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate%2A>       此属性不能通过主题或样式表主题设置。 有关详细信息，请参阅<xref:System.Web.UI.ThemeableAttribute>和[ASP.NET 主题和皮肤](~/add/includes/ajax-current-ext-md.md)。</xref:System.Web.UI.ThemeableAttribute>"
   syntax:
     content: public bool SetFocusOnError { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to set focus on the control specified by <xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate*> when validation fails; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>指定的控件上设置焦点<xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate*>时验证失败; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。</xref:System.Web.UI.WebControls.BaseValidator.ControlToValidate*> 默认值是<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.BaseValidator.SetFocusOnError*
   exceptions: []
   platform:
@@ -875,13 +875,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the text displayed in the validation control when validation fails."
-  remarks: "Use the Text property to specify the text to display in a validation control when validation fails. You can also display a summary of all controls that fail validation in the page by using a <xref:System.Web.UI.WebControls.ValidationSummary> control. To specify the text to display in a <xref:System.Web.UI.WebControls.ValidationSummary> control, use the <xref:System.Web.UI.WebControls.BaseValidator.ErrorMessage%2A> property.      > [!NOTE] >  If you set the <xref:System.Web.UI.WebControls.BaseValidator.ErrorMessage%2A> property without setting the Text property, the value of the <xref:System.Web.UI.WebControls.BaseValidator.ErrorMessage%2A> property is also displayed in the validation control."
+  summary: "获取或设置验证失败时，在验证控件中显示的文本。"
+  remarks: "Text 属性用于指定要验证失败时，在验证控件中显示的文本。 你也可以显示通过使用未通过验证页中的所有控件的摘要<xref:System.Web.UI.WebControls.ValidationSummary>控件。</xref:System.Web.UI.WebControls.ValidationSummary> 若要指定要在中显示的文本<xref:System.Web.UI.WebControls.ValidationSummary>控制，请使用<xref:System.Web.UI.WebControls.BaseValidator.ErrorMessage%2A>属性。</xref:System.Web.UI.WebControls.BaseValidator.ErrorMessage%2A> </xref:System.Web.UI.WebControls.ValidationSummary>      1> [!NOTE]&1;> 如果你设置<xref:System.Web.UI.WebControls.BaseValidator.ErrorMessage%2A>而无需设置的值的文本属性的属性<xref:System.Web.UI.WebControls.BaseValidator.ErrorMessage%2A>属性还验证控件中显示。</xref:System.Web.UI.WebControls.BaseValidator.ErrorMessage%2A> </xref:System.Web.UI.WebControls.BaseValidator.ErrorMessage%2A>"
   syntax:
     content: public override string Text { get; set; }
     return:
       type: System.String
-      description: "The text displayed in the validation control when validation fails. The default is an empty string (&quot;&quot;), which indicates that this property is not set."
+      description: "验证失败时，在验证控件中显示的文本。 默认值为空字符串 (&quot;&quot;)，指示未设置此属性。"
   overload: System.Web.UI.WebControls.BaseValidator.Text*
   exceptions: []
   platform:
@@ -898,8 +898,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Performs validation on the associated input control and updates the <xref:System.Web.UI.WebControls.BaseValidator.IsValid*> property."
-  remarks: "Use the Validate method to perform validation on the associated input control. This method allows you to programmatically perform validation on the input control. The <xref:System.Web.UI.WebControls.BaseValidator.IsValid%2A> property is automatically updated with the validation results."
+  summary: "执行验证相关输入的控件和更新<xref:System.Web.UI.WebControls.BaseValidator.IsValid*>属性。</xref:System.Web.UI.WebControls.BaseValidator.IsValid*>"
+  remarks: "Validate 方法用于对关联的输入控件执行验证。 此方法允许你以编程方式对输入控件执行验证。 <xref:System.Web.UI.WebControls.BaseValidator.IsValid%2A>属性自动更新带有验证结果。</xref:System.Web.UI.WebControls.BaseValidator.IsValid%2A>"
   example:
   - For an example of the Validate method used in a derived class, see the <xref:System.Web.UI.WebControls.CompareValidator> class overview.
   syntax:
@@ -921,15 +921,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the name of the validation group to which this validation control belongs."
-  remarks: "ASP.NET provides many controls that have the ability to post back to the server. When one of these controls has its `CausesValidation` property set to `true`, validation is performed when the control posts back to server. The following controls have the ability to post back to the server:      -   <xref:System.Web.UI.WebControls.BulletedList?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.Button?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.CheckBox?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.CheckBoxList?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.DropDownList?displayProperty=fullName>      -   <xref:System.Web.UI.HtmlControls.HtmlButton?displayProperty=fullName>      -   <xref:System.Web.UI.HtmlControls.HtmlInputButton?displayProperty=fullName>      -   <xref:System.Web.UI.HtmlControls.HtmlInputImage?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.ImageButton?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.LinkButton?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.ListBox?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.RadioButtonList?displayProperty=fullName>      -   <xref:System.Web.UI.WebControls.TextBox?displayProperty=fullName>      > [!NOTE] >  Some of these controls post back to the server only when the `AutoPostBack` property is set to `true`.       These controls each have a `ValidationGroup` property that, when set, validates only the validation controls within the specified group when the control triggers a post back to the server. Use the ValidationGroup property to assign a validation control to a validation group. The <xref:System.Web.UI.Page> class also exposes a <xref:System.Web.UI.Page.GetValidators%2A> method and a <xref:System.Web.UI.Page.Validate%2A> method that accept a ValidationGroup input parameter.       This property cannot be set by themes or style sheet themes. For more information, see <xref:System.Web.UI.ThemeableAttribute> and [ASP.NET Themes and Skins](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置此验证控件所属的验证组的名称。"
+  remarks: "ASP.NET 提供了很多能够回发到服务器的控件。 当这些控件之一具有其`CausesValidation`属性设置为`true`，该控件回发到服务器时是否执行验证。 以下控件能够回发到服务器:- <xref:System.Web.UI.WebControls.BulletedList?displayProperty=fullName>- <xref:System.Web.UI.WebControls.Button?displayProperty=fullName>- <xref:System.Web.UI.WebControls.CheckBox?displayProperty=fullName>- <xref:System.Web.UI.WebControls.CheckBoxList?displayProperty=fullName>- <xref:System.Web.UI.WebControls.DropDownList?displayProperty=fullName>- <xref:System.Web.UI.HtmlControls.HtmlButton?displayProperty=fullName>- <xref:System.Web.UI.HtmlControls.HtmlInputButton?displayProperty=fullName>- <xref:System.Web.UI.HtmlControls.HtmlInputImage?displayProperty=fullName>- <xref:System.Web.UI.WebControls.ImageButton?displayProperty=fullName>- <xref:System.Web.UI.WebControls.LinkButton?displayProperty=fullName>- <xref:System.Web.UI.WebControls.ListBox?displayProperty=fullName>- <xref:System.Web.UI.WebControls.RadioButtonList?displayProperty=fullName>- <xref:System.Web.UI.WebControls.TextBox?displayProperty=fullName>1> [!NOTE]&1;> 其中一些控件回发到服务器时，才`AutoPostBack`属性设置为`true`。</xref:System.Web.UI.WebControls.TextBox?displayProperty=fullName> </xref:System.Web.UI.WebControls.RadioButtonList?displayProperty=fullName> </xref:System.Web.UI.WebControls.ListBox?displayProperty=fullName> </xref:System.Web.UI.WebControls.LinkButton?displayProperty=fullName> </xref:System.Web.UI.WebControls.ImageButton?displayProperty=fullName> </xref:System.Web.UI.HtmlControls.HtmlInputImage?displayProperty=fullName> </xref:System.Web.UI.HtmlControls.HtmlInputButton?displayProperty=fullName> </xref:System.Web.UI.HtmlControls.HtmlButton?displayProperty=fullName> </xref:System.Web.UI.WebControls.DropDownList?displayProperty=fullName> </xref:System.Web.UI.WebControls.CheckBoxList?displayProperty=fullName> </xref:System.Web.UI.WebControls.CheckBox?displayProperty=fullName> </xref:System.Web.UI.WebControls.Button?displayProperty=fullName> </xref:System.Web.UI.WebControls.BulletedList?displayProperty=fullName>       这些控件各有`ValidationGroup`属性，设置时，验证仅验证指定的组中的控件时控件触发回发到服务器。 使用 ValidationGroup 属性分配给验证组的验证控件。 <xref:System.Web.UI.Page>类还公开<xref:System.Web.UI.Page.GetValidators%2A>方法和一个<xref:System.Web.UI.Page.Validate%2A>接受 ValidationGroup 输入的参数的方法。</xref:System.Web.UI.Page.Validate%2A> </xref:System.Web.UI.Page.GetValidators%2A> </xref:System.Web.UI.Page>       此属性不能通过主题或样式表主题设置。 有关详细信息，请参阅<xref:System.Web.UI.ThemeableAttribute>和[ASP.NET 主题和皮肤](~/add/includes/ajax-current-ext-md.md)。</xref:System.Web.UI.ThemeableAttribute>"
   example:
   - "The following code example demonstrates how to use the ValidationGroup property to assign a validation control to a group.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[BaseValidatorValidationGroup#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_401_1.aspx)]\n [!code-cs[BaseValidatorValidationGroup#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_401_1.aspx)]"
   syntax:
     content: public virtual string ValidationGroup { get; set; }
     return:
       type: System.String
-      description: "The name of the validation group to which this validation control belongs. The default is an empty string (&quot;&quot;), which indicates that this property is not set."
+      description: "此验证控件所属的验证组名称。 默认值为空字符串 (&quot;&quot;)，指示未设置此属性。"
   overload: System.Web.UI.WebControls.BaseValidator.ValidationGroup*
   exceptions: []
   platform:

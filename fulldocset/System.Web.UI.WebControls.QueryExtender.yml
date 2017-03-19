@@ -17,8 +17,8 @@ items:
   nameWithType: QueryExtender
   fullName: System.Web.UI.WebControls.QueryExtender
   type: Class
-  summary: "Enables data from a data source to be filtered without an explicit <xref uid=&quot;langword_csharp_Where&quot; name=&quot;Where&quot; href=&quot;&quot;></xref> clause in the data source."
-  remarks: "In this topic:      -   [Introduction](#Introduction)      -   [Background](#background)      -   [Filter Options](#filter_options)      -   [Tasks](#Tasks)      -   [Declarative Syntax](#declarative_syntax)      <a name=&quot;Introduction&quot;></a>    ## Introduction    The QueryExtender control is used to create filters for data that is retrieved from a data source, without using an explicit `Where` clause in the data source. The QueryExtender control can be used to specify filtering by using declarative syntax.      <a name=&quot;background&quot;></a>    ## Background    Filtering excludes data from a data source by displaying only the records that meet specified criteria. Filtering enables you to present different views of the data that is in a data set without affecting the data in the data set.       Filtering typically requires that you create a `Where` clause to apply to the command that queries the data source. However, the `Where` property of the data source control might not expose the full functionality that is available. For example, the QueryExtender control enables you to query a table by searching for strings at the beginning, end or anywhere in .data field.       To expose the full functionality that is available in LINQ and to make filtering data easier, [!INCLUDE[vstecasp](~/add/includes/vstecasp-md.md)] provides the QueryExtender control. The QueryExtender control has the following benefits:      -   It provides a richer filtering experience than writing a `Where` clause. For example, you can search a Products table for Boolean values by using the <xref:System.Web.UI.WebControls.Expressions.PropertyExpression> filter without writing a query.      -   It lets you specify filters by using the same syntax for the <xref:System.Web.UI.WebControls.LinqDataSource> and <xref:System.Web.UI.WebControls.EntityDataSource> controls and for any other data source controls that you might use.      -   It can be used with <xref:System.Web.UI.WebControls.LinqDataSource> control, with a <xref:System.Web.UI.WebControls.EntityDataSource> control, or with third-party data sources.      <a name=&quot;filter_options&quot;></a>    ## Filter Options    The QueryExtender control supports a variety of options that you can use to filter data. The control lets you search strings, search numeric values in a specified range, and compare a property value in a table to a specified value. The control also lets you sort the data and provide custom queries.       These options are provided as LINQ expressions in the QueryExtender control. The QueryExtender control also supports expressions that are specific to [!INCLUDE[vstecasp](~/add/includes/vstecasp-md.md)] Dynamic Data applications.       The following table lists the options that you can use to filter data in the QueryExtender control.      |Expression|Description|   |----------------|-----------------|   |<xref:System.Web.DynamicData.ControlFilterExpression>|(Dynamic Data only) Builds a database query by using the data key that is selected in a source data-bound control.<br /><br /> For information about how to use this filter option, see [How to: Filter Table Rows Using Values from a Parent Table in Dynamic Data](http://msdn.microsoft.com/en-us/a5566986-7c30-4e71-b4a4-81cd16095749).|   |<xref:System.Web.UI.WebControls.Expressions.CustomExpression>|Specifies a user-defined expression for a data source. The custom LINQ expression can be invoked in an event handler.|   |<xref:System.Web.DynamicData.DynamicFilterExpression>|(Dynamic Data only) Builds a database query by using the specified <xref:System.Web.DynamicData.DynamicFilter> control.<br /><br /> For information about how to use this filter option, see [How to: Filter Table Rows Using Foreign Key in Dynamic Data](http://msdn.microsoft.com/en-us/b774e56a-a5b9-41b7-b114-699313ef2056).|   |<xref:System.Web.UI.WebControls.Expressions.MethodExpression>|Specifies a user-defined LINQ expression for a data source. The expression is invoked in a method.|   |<xref:System.Web.UI.WebControls.Expressions.OrderByExpression>|Applies a sort expression to an <xref:System.Linq.IQueryable> data source object. After you apply the <xref:System.Web.UI.WebControls.Expressions.OrderByExpression> value, you can apply additional sort operations by specifying a <xref:System.Web.UI.WebControls.Expressions.OrderByExpression.ThenByExpressions%2A> value.|   |<xref:System.Web.UI.WebControls.Expressions.PropertyExpression>|Compares the properties the data field and property values that are specified in the <xref:System.Web.UI.WebControls.LinqDataSource.WhereParameters%2A> collection.|   |<xref:System.Web.UI.WebControls.Expressions.RangeExpression>|Determines whether a value is greater than or less than a specified value, or whether a value is between two values.|   |<xref:System.Web.UI.WebControls.Expressions.SearchExpression>|Compares values in a field or fields to a specified string value.|       You can use these QueryExtender options individually or you can combine them to provide complex filtering in a Web page. For more information, see [QueryExtender Web Server Control Overview](~/add/includes/ajax-current-ext-md.md). [Walkthrough: Filtering Data in a Web Page Using Declarative Syntax](http://msdn.microsoft.com/en-us/b305ae31-1a1b-4d07-a678-51457c17614f)      <a name=&quot;Tasks&quot;></a>    ## Tasks    The following table lists tasks that show how to use the QueryExtender control to filter data.      |Document|Task|   |--------------|----------|   |[Walkthrough: Filtering Data in a Web Page Using Declarative Syntax](http://msdn.microsoft.com/en-us/b305ae31-1a1b-4d07-a678-51457c17614f)|Shows how to use the filter options that the QueryExtender control provides.|      <a name=&quot;declarative_syntax&quot;></a>    ## Declarative Syntax      ```   <asp:QueryExtender        EnableViewState=&quot;True|False&quot;       ID=&quot;string&quot;       OnDataBinding=&quot;DataBiding event handler&quot;       OnDisposed=&quot;Disposed event handler&quot;       OnInit=&quot;Init event handler       OnLoad=&quot;Load event handler&quot;       OnPreRender=&quot;PreRender event handler&quot;       OnUnload=&quot;UnLoad event hadler&quot;       Runat=&quot;server&quot;       TargetControlID=&quot;string&quot;       Visible=&quot;True|False&quot;   >           <asp:ControlFilterExpression                ControlD=&quot;string&quot;               Column=&quot;string&quot;>            </asp:ControlFilterExpression>           <asp:DynamicFilterExpression               ControlD=&quot;string&quot;           </asp:DynamicFilterExpression>           <asp:CustomExpression=&quot;string&quot;               OnQuerying=&quot;OnQerying event handler&quot;>           </asp:CustomExpression>           <asp:OrderByExpression=&quot;string&quot;               DataField=&quot;string&quot;               Direction=&quot;string&quot;>               <asp:ThenByExpression                    DataField=&quot;string&quot;                    Direction=&quot;string&quot;               </asp:ThenBy>           </asp:OrderByExpression>           <asp:PropertyExpression=&quot;string&quot;>                   <!-- child controls -->           </asp:PropertyExpression           >           <asp:RangeExpression=&quot;integer&quot;               Datafield=&quot;string&quot;               MaxType=&quot;Exclusive|Inclusive|None&quot;               MinType=&quot;Exclusive|Inclusive|None&quot;>                   <!--child controls-->           </asp:RangeExpression>           <asp:SearchExpression=&quot;string&quot;               ComparisonType=&quot;CurrentCulture|CurrentCultureIgnoreCase|                   InavariantCulture|InvariantCultureIgnoreCase|                   Ordinal|OrdinalIgnoreCase&quot;               DataField=&quot;string&quot;               SearchType=&quot;Contains|EndsWith|StartsWith&quot;>                   <!--child controls-->           </asp:SearchExpression>   </asp:QueryExtender>   ```"
+  summary: "启用数据从数据源以进行筛选，而无需显式<xref uid=&quot;langword_csharp_Where&quot; name=&quot;Where&quot; href=&quot;&quot;></xref>数据源中的子句。"
+  remarks: "本主题中:-[简介](#Introduction)      -   [后台](#background)      -   [筛选器选项](#filter_options)      -   [任务](#Tasks)      -   [声明性语法](#declarative_syntax)<a name=&quot;Introduction&quot;> </a> # # 简介 QueryExtender 控件用于创建筛选器检索到的数据从数据源，而无需使用显式的`Where`数据源中的子句。       QueryExtender 控件可以用于指定通过使用声明性语法筛选。      <a name=&quot;background&quot;></a># # 后台筛选从数据源中排除数据，通过显示只有满足指定的条件的记录。 筛选，你可以提供而不会影响在数据集中的数据是在数据集中的数据的不同视图。       筛选通常要求你创建`Where`子句应用于查询数据源的命令。 但是，`Where`数据源控件的属性可能不公开可用的完整功能。 例如，QueryExtender 控制，你可以通过搜索的字符串开始时，结束或.data 字段中的任何位置查询表。       公开在 LINQ 中可用的完整功能以及进行筛选的数据变得简单，[!INCLUDE[vstecasp](~/add/includes/vstecasp-md.md)]提供 QueryExtender 控件。 QueryExtender 控制具有以下优点:-它提供了更丰富的筛选体验比写`Where`子句。 例如，可以通过使用搜索产品表中的布尔值<xref:System.Web.UI.WebControls.Expressions.PropertyExpression>而无需编写查询的筛选器。</xref:System.Web.UI.WebControls.Expressions.PropertyExpression>      -它可以通过使用的相同语法指定筛选器<xref:System.Web.UI.WebControls.LinqDataSource>和<xref:System.Web.UI.WebControls.EntityDataSource>控件对于任何其他数据源控件可能会使用。</xref:System.Web.UI.WebControls.EntityDataSource> </xref:System.Web.UI.WebControls.LinqDataSource>      -它可以用于<xref:System.Web.UI.WebControls.LinqDataSource>控件，与<xref:System.Web.UI.WebControls.EntityDataSource>控件，或与第三方数据源。</xref:System.Web.UI.WebControls.EntityDataSource> </xref:System.Web.UI.WebControls.LinqDataSource>      <a name=&quot;filter_options&quot;></a># # 筛选器选项 QueryExtender 控件支持各种选项，可用于筛选数据。 该控件允许您搜索字符串、 搜索在指定的范围中的数字值和比较中到指定的值的表的属性值。 该控件还允许你对数据进行排序，并提供自定义查询。       这些选项都会提供为 QueryExtender 控件中的 LINQ 表达式。 QueryExtender 控件还支持特定于的表达式[!INCLUDE[vstecasp](~/add/includes/vstecasp-md.md)]动态数据应用程序。       下表列出可用于筛选 QueryExtender 控件中的数据的选项。      |表达式 |说明 |  |----------------|-----------------|  |<xref:System.Web.DynamicData.ControlFilterExpression>|（仅限动态数据）通过使用源数据绑定控件中选择的数据密钥生成的数据库查询。</xref:System.Web.DynamicData.ControlFilterExpression><br /><br /> 有关如何使用此筛选器选项的信息，请参阅[如何︰ 从父表中动态数据筛选器表行使用值](http://msdn.microsoft.com/en-us/a5566986-7c30-4e71-b4a4-81cd16095749)。 |  |<xref:System.Web.UI.WebControls.Expressions.CustomExpression>|指定用户定义的表达式的数据源。</xref:System.Web.UI.WebControls.Expressions.CustomExpression> 可以在事件处理程序中调用的自定义的 LINQ 表达式。 |  |<xref:System.Web.DynamicData.DynamicFilterExpression>|（仅限动态数据）使用指定的生成的数据库查询<xref:System.Web.DynamicData.DynamicFilter>控件。</xref:System.Web.DynamicData.DynamicFilter> </xref:System.Web.DynamicData.DynamicFilterExpression><br /><br /> 有关如何使用此筛选器选项的信息，请参阅[如何︰ 筛选器表行使用外键中动态数据](http://msdn.microsoft.com/en-us/b774e56a-a5b9-41b7-b114-699313ef2056)。 |  |<xref:System.Web.UI.WebControls.Expressions.MethodExpression>|指定用户定义的 LINQ 表达式的数据源。</xref:System.Web.UI.WebControls.Expressions.MethodExpression> 在方法调用表达式。 |  |<xref:System.Web.UI.WebControls.Expressions.OrderByExpression>|排序表达式应用于<xref:System.Linq.IQueryable>数据源对象。</xref:System.Linq.IQueryable> </xref:System.Web.UI.WebControls.Expressions.OrderByExpression> 应用<xref:System.Web.UI.WebControls.Expressions.OrderByExpression>值后，你可以通过指定<xref:System.Web.UI.WebControls.Expressions.OrderByExpression.ThenByExpressions%2A>值应用其他排序操作。 |  |<xref:System.Web.UI.WebControls.Expressions.PropertyExpression>|将属性<xref:System.Web.UI.WebControls.LinqDataSource.WhereParameters%2A>集合中指定的数据字段和属性值进行比较。 |  |<xref:System.Web.UI.WebControls.Expressions.RangeExpression>|确定一个值是否大于或小于指定值，或者值是否在两个值之间。 |  |<xref:System.Web.UI.WebControls.Expressions.SearchExpression>|将中的字段或字段添加到指定的字符串值的值进行比较。 |      你可以单独使用这些 QueryExtender 选项或你可以组合使用它们来提供在网页中的复杂筛选。</xref:System.Web.UI.WebControls.Expressions.SearchExpression> </xref:System.Web.UI.WebControls.Expressions.RangeExpression> </xref:System.Web.UI.WebControls.LinqDataSource.WhereParameters%2A> </xref:System.Web.UI.WebControls.Expressions.PropertyExpression> </xref:System.Web.UI.WebControls.Expressions.OrderByExpression.ThenByExpressions%2A> </xref:System.Web.UI.WebControls.Expressions.OrderByExpression> 有关详细信息，请参阅[QueryExtender Web 服务器控件概述](~/add/includes/ajax-current-ext-md.md)。 [演练︰ 筛选数据的网页使用声明性语法](http://msdn.microsoft.com/en-us/b305ae31-1a1b-4d07-a678-51457c17614f)<a name=&quot;Tasks&quot;> </a> # # 任务以下演示如何使用 QueryExtender 控件来筛选数据的表列表任务。            |文档 |任务 |  |--------------|----------|  |[演练︰ 在使用声明性语法的网页中筛选数据](http://msdn.microsoft.com/en-us/b305ae31-1a1b-4d07-a678-51457c17614f)|演示如何使用 QueryExtender 控件提供的筛选器选项。 |     <a name=&quot;declarative_syntax&quot;> </a> # # 声明性语法```   <asp:QueryExtender        EnableViewState=&quot;True|False&quot;       ID=&quot;string&quot;       OnDataBinding=&quot;DataBiding event handler&quot;       OnDisposed=&quot;Disposed event handler&quot;       OnInit=&quot;Init event handler       OnLoad=&quot;Load event handler&quot;       OnPreRender=&quot;PreRender event handler&quot;       OnUnload=&quot;UnLoad event hadler&quot;       Runat=&quot;server&quot;       TargetControlID=&quot;string&quot;       Visible=&quot;True|False&quot;   >           <asp:ControlFilterExpression                ControlD=&quot;string&quot;               Column=&quot;string&quot;>            </asp:ControlFilterExpression>           <asp:DynamicFilterExpression               ControlD=&quot;string&quot;           </asp:DynamicFilterExpression>           <asp:CustomExpression=&quot;string&quot;               OnQuerying=&quot;OnQerying event handler&quot;>           </asp:CustomExpression>           <asp:OrderByExpression=&quot;string&quot;               DataField=&quot;string&quot;               Direction=&quot;string&quot;>               <asp:ThenByExpression                    DataField=&quot;string&quot;                    Direction=&quot;string&quot;               </asp:ThenBy>           </asp:OrderByExpression>           <asp:PropertyExpression=&quot;string&quot;>                   <!-- child controls -->           </asp:PropertyExpression           >           <asp:RangeExpression=&quot;integer&quot;               Datafield=&quot;string&quot;               MaxType=&quot;Exclusive|Inclusive|None&quot;               MinType=&quot;Exclusive|Inclusive|None&quot;>                   <!--child controls-->           </asp:RangeExpression>           <asp:SearchExpression=&quot;string&quot;               ComparisonType=&quot;CurrentCulture|CurrentCultureIgnoreCase|                   InavariantCulture|InvariantCultureIgnoreCase|                   Ordinal|OrdinalIgnoreCase&quot;               DataField=&quot;string&quot;               SearchType=&quot;Contains|EndsWith|StartsWith&quot;>                   <!--child controls-->           </asp:SearchExpression>   </asp:QueryExtender>   ```"
   example:
   - "The following example shows how to use the QueryExtender control to provide a search function in a Web page. The QueryExtender control uses the text that is entered in the `TextBoxSearch` control to search for contents in the ProductName and Supplier.CompanyName columns of a Products table in the data that is returned from the <xref:System.Web.UI.WebControls.LinqDataSource> control. The <xref:System.Web.UI.WebControls.Expressions.SearchExpression> object is used to perform the search. The <xref:System.Web.UI.WebControls.Expressions.SearchExpression.DataFields%2A> property specifies the data fields to search. The <xref:System.Web.UI.WebControls.Expressions.SearchExpression.SearchType%2A> property specifies the type of search to perform. The <xref:System.Web.UI.WebControls.ControlParameter> element specifies the control that contains the text to use for the search. This code example is part of a larger example that is provided in [Walkthrough: Filtering Data in a Web Page Using Declarative Syntax](http://msdn.microsoft.com/en-us/b305ae31-1a1b-4d07-a678-51457c17614f).  \n  \n```  \n<asp:LinqDataSource ID=\"dataSource\" runat=\"server\"   \n    TableName=\"Products\">  \n</asp:LinqDataSource>  \n<asp:QueryExtender TargetControlID=\"dataSource\" runat=\"server\">  \n  <asp:SearchExpression DataFields=\"ProductName, Supplier.CompanyName\"   \n        SearchType=\"StartsWith\">  \n    <asp:ControlParameter ControlID=\"TextBoxSearch\" />  \n  </asp:SearchExpression>  \n</asp:QueryExtender>  \n```  \n  \n The following example shows how to use the QueryExtender control to search a Web page for values in a specified range. The QueryExtender control uses the values that are entered in the `TextBoxFrom` and `TextBoxTo` controls to search for values in the ProductName and Supplier.CompanyName columns of a Products table in the data that is returned from the <xref:System.Web.UI.WebControls.LinqDataSource> control. The <xref:System.Web.UI.WebControls.ControlParameter> element specifies the text box controls that contain the minimum and maximum values to use for searching the range. The <xref:System.Web.UI.WebControls.Expressions.RangeExpression.MinType%2A> and <xref:System.Web.UI.WebControls.Expressions.RangeExpression.MaxType%2A> properties specify that the minimum and maximum values must be included in the data that is returned. This code example is part of a larger example provided in [Walkthrough: Filtering Data in a Web Page Using Declarative Syntax](http://msdn.microsoft.com/en-us/b305ae31-1a1b-4d07-a678-51457c17614f).  \n  \n```  \n<asp:LinqDataSource ID=\"dataSource\" runat=\"server\"   \n    TableName=\"Products\">  \n</asp:LinqDataSource>  \n<asp:QueryExtender TargetControlID=\"dataSource\" runat=\"server\">  \n  <asp:RangeExpression DataField=\"UnitPrice\" MinType=\"Inclusive\"   \n        MaxType=\"Inclusive\">  \n    <asp:ControlParameter ControlID=\"TextBoxFrom\" />  \n    <asp:ControlParameter ControlID=\"TexBoxTo\" />  \n  </asp:RangeExpression>  \n</asp:QueryExtender>  \n```"
   syntax:
@@ -162,7 +162,7 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI.WebControls
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.QueryExtender&quot;></xref> Class."
+  summary: "初始化的新实例<xref href=&quot;System.Web.UI.WebControls.QueryExtender&quot;></xref>类。"
   syntax:
     content: public QueryExtender ();
     parameters: []
@@ -182,18 +182,18 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI.WebControls
-  summary: "Gets the data source control (<xref href=&quot;System.Web.UI.IDataSource&quot;></xref> object) to use for the query."
-  remarks: "The <xref:System.Web.UI.WebControls.QueryExtender> control supports the <xref:System.Web.UI.WebControls.LinqDataSource> and <xref:System.Web.UI.WebControls.EntityDataSource> controls."
+  summary: "获取数据源控件 (<xref href=&quot;System.Web.UI.IDataSource&quot;> </xref>对象) 要用于查询。"
+  remarks: "<xref:System.Web.UI.WebControls.QueryExtender>控件支持<xref:System.Web.UI.WebControls.LinqDataSource>和<xref:System.Web.UI.WebControls.EntityDataSource>控件。</xref:System.Web.UI.WebControls.EntityDataSource> </xref:System.Web.UI.WebControls.LinqDataSource> </xref:System.Web.UI.WebControls.QueryExtender>"
   syntax:
     content: public virtual System.Web.UI.WebControls.IQueryableDataSource DataSource { get; }
     return:
       type: System.Web.UI.WebControls.IQueryableDataSource
-      description: "The data source control to use for the query."
+      description: "要用于查询的数据源控件。"
   overload: System.Web.UI.WebControls.QueryExtender.DataSource*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The DataSource property is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "数据源属性是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.QueryExtender.Expressions
@@ -208,12 +208,12 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI.WebControls
-  summary: "Gets the collection of expressions that are applied to the <xref href=&quot;System.Web.UI.IDataSource&quot;></xref> control."
+  summary: "获取应用于的表达式的集合<xref href=&quot;System.Web.UI.IDataSource&quot;></xref>控件。"
   syntax:
     content: public System.Web.UI.WebControls.Expressions.DataSourceExpressionCollection Expressions { get; }
     return:
       type: System.Web.UI.WebControls.Expressions.DataSourceExpressionCollection
-      description: "The collection of expressions that are applied to the data source control."
+      description: "这些表达式应用于数据源控件的集合。"
   overload: System.Web.UI.WebControls.QueryExtender.Expressions*
   exceptions: []
   platform:
@@ -230,13 +230,13 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI.WebControls
-  summary: "Loads the state of the values in the <xref href=&quot;System.Web.UI.WebControls.QueryExtender&quot;></xref> control that must be persisted."
+  summary: "加载中的值的状态<xref href=&quot;System.Web.UI.WebControls.QueryExtender&quot;></xref>必须存在的控件。"
   syntax:
     content: protected override void LoadViewState (object savedState);
     parameters:
     - id: savedState
       type: System.Object
-      description: "An object that represents the state of the <xref href=&quot;System.Web.UI.WebControls.QueryExtender&quot;></xref> control."
+      description: "一个对象，表示的状态<xref href=&quot;System.Web.UI.WebControls.QueryExtender&quot;></xref>控件。"
   overload: System.Web.UI.WebControls.QueryExtender.LoadViewState*
   exceptions: []
   platform:
@@ -253,13 +253,13 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI.WebControls
-  summary: "Occurs when a new instance of the <xref href=&quot;System.Web.UI.WebControls.QueryExtender&quot;></xref> class is initialized."
+  summary: "时发生的新实例<xref href=&quot;System.Web.UI.WebControls.QueryExtender&quot;></xref>类初始化。"
   syntax:
     content: protected override void OnInit (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "The event data."
+      description: "事件数据。"
   overload: System.Web.UI.WebControls.QueryExtender.OnInit*
   exceptions: []
   platform:
@@ -276,13 +276,13 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI.WebControls
-  summary: "Saves the current view state of the <xref href=&quot;System.Web.UI.WebControls.QueryExtender&quot;></xref> control."
+  summary: "将当前视图状态保存<xref href=&quot;System.Web.UI.WebControls.QueryExtender&quot;></xref>控件。"
   syntax:
     content: protected override object SaveViewState ();
     parameters: []
     return:
       type: System.Object
-      description: "An object that contains the saved state of the <xref href=&quot;System.Web.UI.WebControls.QueryExtender&quot;></xref> control."
+      description: "包含的已保存的状态的对象<xref href=&quot;System.Web.UI.WebControls.QueryExtender&quot;></xref>控件。"
   overload: System.Web.UI.WebControls.QueryExtender.SaveViewState*
   exceptions: []
   platform:
@@ -299,12 +299,12 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the ID of the <xref href=&quot;System.Web.UI.IDataSource&quot;></xref> control to use for the query."
+  summary: "获取或设置的 ID <xref href=&quot;System.Web.UI.IDataSource&quot;> </xref>控制要用于查询。"
   syntax:
     content: public virtual string TargetControlID { get; set; }
     return:
       type: System.String
-      description: "The ID of the data source control to use for the query."
+      description: "ID 的数据源控件用于查询。"
   overload: System.Web.UI.WebControls.QueryExtender.TargetControlID*
   exceptions: []
   platform:
@@ -321,7 +321,7 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI.WebControls
-  summary: "Tracks view-state changes of the <xref href=&quot;System.Web.UI.WebControls.QueryExtender&quot;></xref> control so that the changes can be stored in the <xref href=&quot;System.Web.UI.StateBag&quot;></xref> object for the control."
+  summary: "跟踪视图状态更改的<xref href=&quot;System.Web.UI.WebControls.QueryExtender&quot;></xref>控制，以便这些更改可以存储在<xref href=&quot;System.Web.UI.StateBag&quot;></xref>控件的对象。"
   syntax:
     content: protected override void TrackViewState ();
     parameters: []

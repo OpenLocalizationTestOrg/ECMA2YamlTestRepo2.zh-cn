@@ -48,7 +48,7 @@ items:
   nameWithType: Domain
   fullName: System.DirectoryServices.ActiveDirectory.Domain
   type: Class
-  summary: "The Domain class represents an Active Directory domain."
+  summary: "域类表示 Active Directory 域。"
   syntax:
     content: 'public class Domain : System.DirectoryServices.ActiveDirectory.ActiveDirectoryPartition'
   inheritance:
@@ -74,17 +74,17 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Gets the domains that are children of this domain."
+  summary: "获取此域的子域的域。"
   syntax:
     content: public System.DirectoryServices.ActiveDirectory.DomainCollection Children { get; }
     return:
       type: System.DirectoryServices.ActiveDirectory.DomainCollection
-      description: "An <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainCollection&quot;></xref> object that contains the child domains."
+      description: "<xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainCollection&quot;> </xref>包含子域的对象。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.Children*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.CreateLocalSideOfTrustRelationship(System.String,System.DirectoryServices.ActiveDirectory.TrustDirection,System.String)
@@ -99,46 +99,46 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Creates the local side of a trust relationship with the specified domain."
-  remarks: "This method creates one side of a trust relationship. The trust is not established until both sides of the trust have been created.       The `trustPassword` parameter associates a password with the created trust. When the other side of the trust is created, the same password is provided and the two local trusts are then bound to each other.       To programmatically create both sides of a trust relationship in a single method call, use the <xref:System.DirectoryServices.ActiveDirectory.Domain.CreateTrustRelationship%2A?displayProperty=fullName> method."
+  summary: "使用指定的域创建信任关系的本地方。"
+  remarks: "此方法创建信任关系的一侧。 在创建信任的双方之前，不建立了信任。       `trustPassword`参数将密码与创建信任相关联。 创建信任关系的另一端时，提供相同的密码，然后，两个本地信任绑定到每个其他。       若要在单个方法调用，以编程方式创建信任关系的双方，使用<xref:System.DirectoryServices.ActiveDirectory.Domain.CreateTrustRelationship%2A?displayProperty=fullName>方法。</xref:System.DirectoryServices.ActiveDirectory.Domain.CreateTrustRelationship%2A?displayProperty=fullName>"
   syntax:
     content: public void CreateLocalSideOfTrustRelationship (string targetDomainName, System.DirectoryServices.ActiveDirectory.TrustDirection direction, string trustPassword);
     parameters:
     - id: targetDomainName
       type: System.String
-      description: "The DNS name of the domain that the trust is created with."
+      description: "与创建信任域的 DNS 名称。"
     - id: direction
       type: System.DirectoryServices.ActiveDirectory.TrustDirection
-      description: "One of the <xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustDirection&quot;></xref> members that determines the direction of the trust, relative to this domain."
+      description: "之一<xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustDirection&quot;></xref>成员确定相对于此域的信任方向。"
     - id: trustPassword
       type: System.String
-      description: "The password for the trust. See remarks below."
+      description: "信任密码。 请参阅下面的备注。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.CreateLocalSideOfTrustRelationship*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectExistsException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectExistsException
-    description: "The trust relationship already exists."
+    description: "信任关系已存在。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "A call to the underlying directory service resulted in an error."
+    description: "对基础目录服务的调用导致了错误。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target server is either busy or unavailable."
+    description: "目标服务器是忙或不可用。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>targetDomainName</code> or <code>trustPassword</code> is empty."
+    description: "<code>targetDomainName</code>或<code>trustPassword</code>为空。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>targetDomainName</code> or <code>trustPassword</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>targetDomainName</code>or <code>trustPassword</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>direction</code> is not a valid <xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustDirection&quot;></xref> value."
+    description: "<code>direction</code>不是有效<xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustDirection&quot;></xref>值。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The specified account does not have permission to perform this operation."
+    description: "指定的帐户没有权限执行此操作。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.CreateTrustRelationship(System.DirectoryServices.ActiveDirectory.Domain,System.DirectoryServices.ActiveDirectory.TrustDirection)
@@ -153,40 +153,40 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Creates both sides of a trust relationship with the specified domain."
-  remarks: "This method creates both sides of a trust relationship with a single method call. The <xref:System.DirectoryServices.ActiveDirectory.Domain.CreateLocalSideOfTrustRelationship%2A?displayProperty=fullName> method is used to create only one side of a trust."
+  summary: "使用指定的域创建信任关系的双方。"
+  remarks: "此方法创建信任关系的双方使用单个方法调用。 <xref:System.DirectoryServices.ActiveDirectory.Domain.CreateLocalSideOfTrustRelationship%2A?displayProperty=fullName>方法用于创建的信任仅一侧。</xref:System.DirectoryServices.ActiveDirectory.Domain.CreateLocalSideOfTrustRelationship%2A?displayProperty=fullName>"
   syntax:
     content: public void CreateTrustRelationship (System.DirectoryServices.ActiveDirectory.Domain targetDomain, System.DirectoryServices.ActiveDirectory.TrustDirection direction);
     parameters:
     - id: targetDomain
       type: System.DirectoryServices.ActiveDirectory.Domain
-      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;></xref> object that represents the domain that the trust is being created with."
+      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;> </xref>表示要用来创建信任的域的对象。"
     - id: direction
       type: System.DirectoryServices.ActiveDirectory.TrustDirection
-      description: "One of the <xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustDirection&quot;></xref> members that determines the direction of the trust, relative to this domain."
+      description: "之一<xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustDirection&quot;></xref>成员确定相对于此域的信任方向。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.CreateTrustRelationship*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectExistsException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectExistsException
-    description: "The trust relationship already exists."
+    description: "信任关系已存在。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "A call to the underlying directory service resulted in an error."
+    description: "对基础目录服务的调用导致了错误。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target server is either busy or unavailable."
+    description: "目标服务器是忙或不可用。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>targetDomain</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>targetDomain</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>direction</code> is not a valid <xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustDirection&quot;></xref> value."
+    description: "<code>direction</code>不是有效<xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustDirection&quot;></xref>值。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The specified account does not have permission to perform this operation."
+    description: "指定的帐户没有权限执行此操作。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.DeleteLocalSideOfTrustRelationship(System.String)
@@ -201,37 +201,37 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Deletes the local side of a trust relationship."
-  remarks: "When one side of a trust relationship is deleted, the trust longer exists.       To delete both sides of a trust relationship with one method call, use the <xref:System.DirectoryServices.ActiveDirectory.Domain.DeleteTrustRelationship%2A?displayProperty=fullName> method."
+  summary: "删除信任关系的本地方。"
+  remarks: "当删除信任关系的一侧时，信任将不再存在。       若要删除与一种方法调用的信任关系的双方，请使用<xref:System.DirectoryServices.ActiveDirectory.Domain.DeleteTrustRelationship%2A?displayProperty=fullName>方法。</xref:System.DirectoryServices.ActiveDirectory.Domain.DeleteTrustRelationship%2A?displayProperty=fullName>"
   syntax:
     content: public void DeleteLocalSideOfTrustRelationship (string targetDomainName);
     parameters:
     - id: targetDomainName
       type: System.String
-      description: "The DNS name of the domain that the trust exists with."
+      description: "与其存在信任关系的域 DNS 名称。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.DeleteLocalSideOfTrustRelationship*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
-    description: "There is no trust relationship with the <xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;></xref> that is specified by the <code>targetDomainName</code> parameter."
+    description: "不没有与任何信任关系<xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;></xref>指定<code> targetDomainName </code>参数。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "A call to the underlying directory service resulted in an error."
+    description: "对基础目录服务的调用导致了错误。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target server is either busy or unavailable."
+    description: "目标服务器是忙或不可用。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>targetDomainName</code> is an empty string."
+    description: "<code>targetDomainName</code>为一个空字符串。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>targetDomainName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>targetDomainName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The specified account does not have permission to perform this operation."
+    description: "指定的帐户没有权限执行此操作。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.DeleteTrustRelationship(System.DirectoryServices.ActiveDirectory.Domain)
@@ -246,34 +246,34 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Deletes both sides of a trust relationship."
-  remarks: "To delete only one side of a trust relationship, use the <xref:System.DirectoryServices.ActiveDirectory.Domain.DeleteLocalSideOfTrustRelationship%2A?displayProperty=fullName> method."
+  summary: "删除信任关系的双方。"
+  remarks: "若要删除的信任关系仅一侧，使用<xref:System.DirectoryServices.ActiveDirectory.Domain.DeleteLocalSideOfTrustRelationship%2A?displayProperty=fullName>方法。</xref:System.DirectoryServices.ActiveDirectory.Domain.DeleteLocalSideOfTrustRelationship%2A?displayProperty=fullName>"
   syntax:
     content: public void DeleteTrustRelationship (System.DirectoryServices.ActiveDirectory.Domain targetDomain);
     parameters:
     - id: targetDomain
       type: System.DirectoryServices.ActiveDirectory.Domain
-      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;></xref> object that represents the domain that the trust exists with."
+      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;> </xref>表示与其存在信任关系的域的对象。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.DeleteTrustRelationship*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
-    description: "There is no trust relationship with the specified <xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;></xref>."
+    description: "使用指定没有信任关系<xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;> </xref>。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "A call to the underlying directory service resulted in an error."
+    description: "对基础目录服务的调用导致了错误。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target server is either busy or unavailable."
+    description: "目标服务器是忙或不可用。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>targetDomain</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>targetDomain</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The specified account does not have permission to perform this operation."
+    description: "指定的帐户没有权限执行此操作。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.DomainControllers
@@ -288,17 +288,17 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Gets the domain controllers in this domain."
+  summary: "获取此域中域控制器。"
   syntax:
     content: public System.DirectoryServices.ActiveDirectory.DomainControllerCollection DomainControllers { get; }
     return:
       type: System.DirectoryServices.ActiveDirectory.DomainControllerCollection
-      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainControllerCollection&quot;></xref> object that contains the domain controllers in this domain."
+      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainControllerCollection&quot;> </xref>对象，其中包含此域中的域控制器。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.DomainControllers*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.DomainMode
@@ -313,17 +313,17 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Gets the mode that this domain is operating in."
+  summary: "获取此域正在运行的模式。"
   syntax:
     content: public System.DirectoryServices.ActiveDirectory.DomainMode DomainMode { get; }
     return:
       type: System.DirectoryServices.ActiveDirectory.DomainMode
-      description: "One of the <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainMode&quot;></xref> values that indicates the mode that this domain is operating in."
+      description: "之一<xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainMode&quot;></xref>值，该值指示此域正在运行的模式。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.DomainMode*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.DomainModeLevel
@@ -338,12 +338,12 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Gets the mode level that this domain is operating in."
+  summary: "获取此域正在运行的模式级别。"
   syntax:
     content: public int DomainModeLevel { get; }
     return:
       type: System.Int32
-      description: "The domain mode level."
+      description: "域模式级别。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.DomainModeLevel*
   exceptions: []
   platform:
@@ -360,22 +360,22 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Finds all of the discoverable domain controllers in this domain."
-  remarks: "You can find discoverable domain controllers by querying DNS SRV records. Only those domain controllers that register the generic, non-site-specific, domain controller SRV record will be returned by this method."
+  summary: "查找此域中所有可发现域控制器。"
+  remarks: "您可以通过查询 DNS SRV 记录发现可发现域控制器。 只有注册通用，非特定于站点的域控制器 SRV 记录的那些域控制器将返回此方法。"
   syntax:
     content: public System.DirectoryServices.ActiveDirectory.DomainControllerCollection FindAllDiscoverableDomainControllers ();
     parameters: []
     return:
       type: System.DirectoryServices.ActiveDirectory.DomainControllerCollection
-      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainControllerCollection&quot;></xref> that contains the domain controller objects that were found by this method."
+      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainControllerCollection&quot;> </xref> ，其中包含此方法找到的域控制器对象。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.FindAllDiscoverableDomainControllers*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target server is either busy or unavailable."
+    description: "目标服务器是忙或不可用。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.FindAllDiscoverableDomainControllers(System.String)
@@ -390,31 +390,31 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Finds all of the discoverable domain controllers in this domain that are also in the specified site."
-  remarks: "You can find discoverable domain controllers by querying DNS SRV records.  If a domain controller does not register an SRV record for the specified site, it will not be returned by this method, even if the domain controller is physically located within that site.       All domain controllers that register an SRV record for the specified site will be returned by this method, even if they are not physically located within that site."
+  summary: "查找此域，它们也在指定的站点中所有可发现域控制器。"
+  remarks: "您可以通过查询 DNS SRV 记录发现可发现域控制器。  如果域控制器未注册指定的站点的 SRV 记录，它将不会返回此方法，即使域控制器是以物理方式位于该站点内。       即使它们不以物理方式位于该站点内，此方法，将返回所有注册指定的站点的 SRV 记录的域控制器。"
   syntax:
     content: public System.DirectoryServices.ActiveDirectory.DomainControllerCollection FindAllDiscoverableDomainControllers (string siteName);
     parameters:
     - id: siteName
       type: System.String
-      description: "The name of the site to search for the domain controllers."
+      description: "要搜索的域控制器的站点名称。"
     return:
       type: System.DirectoryServices.ActiveDirectory.DomainControllerCollection
-      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainControllerCollection&quot;></xref> that contains the domain controller objects that were found by this method."
+      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainControllerCollection&quot;> </xref> ，其中包含此方法找到的域控制器对象。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.FindAllDiscoverableDomainControllers*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target server is either busy or unavailable."
+    description: "目标服务器是忙或不可用。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>siteName</code> is an empty string."
+    description: "<code>siteName</code>为一个空字符串。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>siteName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>siteName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.FindAllDomainControllers
@@ -429,21 +429,21 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Finds all of the domain controllers in this domain."
+  summary: "查找此域中的所有域控制器。"
   syntax:
     content: public System.DirectoryServices.ActiveDirectory.DomainControllerCollection FindAllDomainControllers ();
     parameters: []
     return:
       type: System.DirectoryServices.ActiveDirectory.DomainControllerCollection
-      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainControllerCollection&quot;></xref> that contains the domain controller objects that were found by this method."
+      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainControllerCollection&quot;> </xref> ，其中包含此方法找到的域控制器对象。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.FindAllDomainControllers*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target server is either busy or unavailable."
+    description: "目标服务器是忙或不可用。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.FindAllDomainControllers(System.String)
@@ -458,30 +458,30 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Finds all of the domain controllers in this domain that are also in the specified site."
+  summary: "查找此域，它们也在指定的站点中所有域控制器。"
   syntax:
     content: public System.DirectoryServices.ActiveDirectory.DomainControllerCollection FindAllDomainControllers (string siteName);
     parameters:
     - id: siteName
       type: System.String
-      description: "The name of the site to search for the domain controllers."
+      description: "要搜索的域控制器的站点名称。"
     return:
       type: System.DirectoryServices.ActiveDirectory.DomainControllerCollection
-      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainControllerCollection&quot;></xref> that contains the domain controller objects that were found by this method."
+      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainControllerCollection&quot;> </xref> ，其中包含此方法找到的域控制器对象。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.FindAllDomainControllers*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target server is either busy or unavailable."
+    description: "目标服务器是忙或不可用。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>siteName</code> is an empty string."
+    description: "<code>siteName</code>为一个空字符串。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>siteName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>siteName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.FindDomainController
@@ -496,25 +496,25 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Finds any domain controller in this domain."
-  remarks: "This method finds any domain controller in the domain. There is no guarantee that the same domain controller will be found by another call to this method."
+  summary: "在此域中查找任何域控制器。"
+  remarks: "此方法在域中查找任何域控制器。 没有相同的域控制器将查找另一个调用此方法能保证。"
   syntax:
     content: public System.DirectoryServices.ActiveDirectory.DomainController FindDomainController ();
     parameters: []
     return:
       type: System.DirectoryServices.ActiveDirectory.DomainController
-      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainController&quot;></xref> that represents the domain controller that is found by this method."
+      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainController&quot;> </xref>表示通过此方法找到的域控制器。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.FindDomainController*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
-    description: "A domain controller cannot be located."
+    description: "找不到域控制器。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "A call to the underlying directory service resulted in an error."
+    description: "对基础目录服务的调用导致了错误。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.FindDomainController(System.DirectoryServices.ActiveDirectory.LocatorOptions)
@@ -529,30 +529,30 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Finds a domain controller in this domain that meets the specified criteria."
+  summary: "在满足指定的条件此域中查找域控制器。"
   syntax:
     content: public System.DirectoryServices.ActiveDirectory.DomainController FindDomainController (System.DirectoryServices.ActiveDirectory.LocatorOptions flag);
     parameters:
     - id: flag
       type: System.DirectoryServices.ActiveDirectory.LocatorOptions
-      description: "A combination of one or more of the <xref href=&quot;System.DirectoryServices.ActiveDirectory.LocatorOptions&quot;></xref> members that defines the type of domain controller to find."
+      description: "一个或多个组合<xref href=&quot;System.DirectoryServices.ActiveDirectory.LocatorOptions&quot;></xref>定义的域控制器，若要查找类型的成员。"
     return:
       type: System.DirectoryServices.ActiveDirectory.DomainController
-      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainController&quot;></xref> that represents the domain controller that is found by this method."
+      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainController&quot;> </xref>表示通过此方法找到的域控制器。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.FindDomainController*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
-    description: "A domain controller cannot be located."
+    description: "找不到域控制器。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "A call to the underlying directory service resulted in an error."
+    description: "对基础目录服务的调用导致了错误。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>flag</code> parameter contains an invalid value."
+    description: "<code> flag </code>参数包含无效值。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.FindDomainController(System.String)
@@ -567,33 +567,33 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Finds a domain controller in this domain and in the specified site."
+  summary: "在此域和指定的站点中查找域控制器。"
   syntax:
     content: public System.DirectoryServices.ActiveDirectory.DomainController FindDomainController (string siteName);
     parameters:
     - id: siteName
       type: System.String
-      description: "The name of the site to search for the domain controller."
+      description: "要搜索的域控制器的站点名称。"
     return:
       type: System.DirectoryServices.ActiveDirectory.DomainController
-      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainController&quot;></xref> object that represents the domain controller that is found by this method."
+      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainController&quot;> </xref>表示通过此方法找到的域控制器的对象。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.FindDomainController*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
-    description: "A domain controller cannot be located."
+    description: "找不到域控制器。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "A call to the underlying directory service resulted in an error."
+    description: "对基础目录服务的调用导致了错误。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>siteName</code> is an empty string."
+    description: "<code>siteName</code>为一个空字符串。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>siteName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>siteName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.FindDomainController(System.String,System.DirectoryServices.ActiveDirectory.LocatorOptions)
@@ -608,36 +608,36 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Finds a domain controller in this domain and in the specified site that meets the specified criteria."
+  summary: "在此域和指定符合指定的条件的站点，请查找域控制器。"
   syntax:
     content: public System.DirectoryServices.ActiveDirectory.DomainController FindDomainController (string siteName, System.DirectoryServices.ActiveDirectory.LocatorOptions flag);
     parameters:
     - id: siteName
       type: System.String
-      description: "The name of the site to search for the domain controller."
+      description: "要搜索的域控制器的站点名称。"
     - id: flag
       type: System.DirectoryServices.ActiveDirectory.LocatorOptions
-      description: "A combination of one or more of the <xref href=&quot;System.DirectoryServices.ActiveDirectory.LocatorOptions&quot;></xref> members that defines the type of domain controller to find."
+      description: "一个或多个组合<xref href=&quot;System.DirectoryServices.ActiveDirectory.LocatorOptions&quot;></xref>定义的域控制器，若要查找类型的成员。"
     return:
       type: System.DirectoryServices.ActiveDirectory.DomainController
-      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainController&quot;></xref> object that represents the domain controller that is found by this method."
+      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainController&quot;> </xref>表示通过此方法找到的域控制器的对象。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.FindDomainController*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
-    description: "A domain controller cannot be located."
+    description: "找不到域控制器。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "A call to the underlying directory service resulted in an error."
+    description: "对基础目录服务的调用导致了错误。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "This exception will occur for any of the following reasons.      -   <code>siteName</code> is an empty string.      -   <code>flag</code> contains an invalid value."
+    description: "由于以下原因导致将发生此异常。      - <code> siteName </code>为空字符串。      - <code> flag </code>包含无效值。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>siteName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>siteName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.Forest
@@ -652,17 +652,17 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Gets the forest that this domain is a member of."
+  summary: "获取此域的成员林。"
   syntax:
     content: public System.DirectoryServices.ActiveDirectory.Forest Forest { get; }
     return:
       type: System.DirectoryServices.ActiveDirectory.Forest
-      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.Forest&quot;></xref> object that represents the forest that this domain is a member of."
+      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.Forest&quot;> </xref>对象，表示此域的成员林。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.Forest*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.GetAllTrustRelationships
@@ -677,27 +677,27 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Retrieves all of the trust relationships for this domain."
+  summary: "检索所有此域的信任关系。"
   syntax:
     content: public System.DirectoryServices.ActiveDirectory.TrustRelationshipInformationCollection GetAllTrustRelationships ();
     parameters: []
     return:
       type: System.DirectoryServices.ActiveDirectory.TrustRelationshipInformationCollection
-      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustRelationshipInformationCollection&quot;></xref> object that contains all of the trust relationships for this domain."
+      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustRelationshipInformationCollection&quot;> </xref>包含此域的信任关系的所有对象。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.GetAllTrustRelationships*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "A call to the underlying directory service resulted in an error."
+    description: "对基础目录服务的调用导致了错误。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target server is either busy or unavailable."
+    description: "目标服务器是忙或不可用。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The specified account does not have permission to perform this operation."
+    description: "指定的帐户没有权限执行此操作。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.GetComputerDomain
@@ -712,19 +712,19 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Gets the <xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;></xref> object that represents the domain to which the local computer is joined."
-  remarks: "The return value of the GetComputerDomain method is a <xref:System.DirectoryServices.ActiveDirectory.Domain> object representing the domain to which the computer running the application is joined.  This return value is independent of the domain credentials under which the application is run. This method will retrieve the computer&quot;s domain regardless of the trusted account domain credentials it is run under.  To retrieve the <xref:System.DirectoryServices.ActiveDirectory.Domain> object that represents the domain corresponding to the user credentials in effect for the security context under which the application is running, use the <xref:System.DirectoryServices.ActiveDirectory.Domain.GetCurrentDomain%2A> method instead."
+  summary: "获取<xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;></xref>表示本地计算机所加入的域的对象。"
+  remarks: "GetComputerDomain 方法的返回值是<xref:System.DirectoryServices.ActiveDirectory.Domain>表示运行应用程序的计算机所加入的域的对象。</xref:System.DirectoryServices.ActiveDirectory.Domain>  此返回值是独立于在其下运行应用程序的域凭据。 此方法将检索而不考虑下运行的受信任的帐户域凭据的计算机的域。  若要检索<xref:System.DirectoryServices.ActiveDirectory.Domain>向用户表示相对应的域的对象实际上凭据在其下运行应用程序的安全上下文，请使用<xref:System.DirectoryServices.ActiveDirectory.Domain.GetCurrentDomain%2A>方法相反。</xref:System.DirectoryServices.ActiveDirectory.Domain.GetCurrentDomain%2A> </xref:System.DirectoryServices.ActiveDirectory.Domain>"
   syntax:
     content: public static System.DirectoryServices.ActiveDirectory.Domain GetComputerDomain ();
     parameters: []
     return:
       type: System.DirectoryServices.ActiveDirectory.Domain
-      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;></xref> object that represents the domain to which the local machine is joined."
+      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;> </xref>表示本地计算机所加入的域的对象。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.GetComputerDomain*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
-    description: "A connection to the domain could not be made."
+    description: "无法连接到域。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.GetCurrentDomain
@@ -739,19 +739,19 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Gets the <xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;></xref> object for the current user credentials in effect for the security context under which the application is running."
-  remarks: "GetCurrentDomain method is determined by the domain credentials under which the application is running.  To retrieve the <xref:System.DirectoryServices.ActiveDirectory.Domain> object representing the domain to which the computer running the application is joined, regardless of the credentials associated with that application, use the <xref:System.DirectoryServices.ActiveDirectory.Domain.GetComputerDomain%2A> method instead.      ## See Also    <xref:System.DirectoryServices.ActiveDirectory.Domain.GetComputerDomain%2A>"
+  summary: "获取<xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;></xref>实际上对在其下运行应用程序的安全上下文的当前用户凭据的对象。"
+  remarks: "GetCurrentDomain 方法是通过在其下运行应用程序的域凭据确定的。  若要检索<xref:System.DirectoryServices.ActiveDirectory.Domain>运行应用程序的计算机向其表示的域的对象联接，而不考虑该应用程序与关联的凭据，请使用<xref:System.DirectoryServices.ActiveDirectory.Domain.GetComputerDomain%2A>方法相反。</xref:System.DirectoryServices.ActiveDirectory.Domain.GetComputerDomain%2A> </xref:System.DirectoryServices.ActiveDirectory.Domain>      ## 另请参阅<xref:System.DirectoryServices.ActiveDirectory.Domain.GetComputerDomain%2A></xref:System.DirectoryServices.ActiveDirectory.Domain.GetComputerDomain%2A>"
   syntax:
     content: public static System.DirectoryServices.ActiveDirectory.Domain GetCurrentDomain ();
     parameters: []
     return:
       type: System.DirectoryServices.ActiveDirectory.Domain
-      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;></xref> object that represents the domain for the specified user credentials in effect for the security context under which the application is running."
+      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;> </xref>对象，表示指定的用户域凭据实际上在其下运行应用程序的安全上下文。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.GetCurrentDomain*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
-    description: "A connection to the current context could not be made."
+    description: "无法建立与当前上下文的连接。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.GetDirectoryEntry
@@ -766,18 +766,18 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Retrieves a <xref href=&quot;System.DirectoryServices.DirectoryEntry&quot;></xref> object that represents the default naming context of the domain."
+  summary: "检索<xref href=&quot;System.DirectoryServices.DirectoryEntry&quot;></xref>表示域的默认命名上下文的对象。"
   syntax:
     content: public override System.DirectoryServices.DirectoryEntry GetDirectoryEntry ();
     parameters: []
     return:
       type: System.DirectoryServices.DirectoryEntry
-      description: "A <xref href=&quot;System.DirectoryServices.DirectoryEntry&quot;></xref> object that represents the domain."
+      description: "A <xref href=&quot;System.DirectoryServices.DirectoryEntry&quot;> </xref>表示的域的对象。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.GetDirectoryEntry*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The current object has been disposed."
+    description: "已释放当前对象。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.GetDomain(System.DirectoryServices.ActiveDirectory.DirectoryContext)
@@ -792,27 +792,27 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Gets the <xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;></xref> object for the specified context."
+  summary: "获取<xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;></xref>指定上下文的对象。"
   syntax:
     content: public static System.DirectoryServices.ActiveDirectory.Domain GetDomain (System.DirectoryServices.ActiveDirectory.DirectoryContext context);
     parameters:
     - id: context
       type: System.DirectoryServices.ActiveDirectory.DirectoryContext
-      description: "An <xref href=&quot;System.DirectoryServices.ActiveDirectory.DirectoryContext&quot;></xref> object that contains the target and credentials to use to retrieve the object. The type of the context must be a domain or directory server."
+      description: "<xref href=&quot;System.DirectoryServices.ActiveDirectory.DirectoryContext&quot;> </xref>包含目标和凭据以用来检索对象的对象。 上下文的类型必须是域或目录的服务器。"
     return:
       type: System.DirectoryServices.ActiveDirectory.Domain
-      description: "An <xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;></xref> object that represents the domain for the specified context."
+      description: "<xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;> </xref>表示指定上下文的域的对象。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.GetDomain*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
-    description: "A connection to the target specified in <code>context</code> could not be made."
+    description: "中指定的目标的连接<code> context </code>无法建立。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>context</code> is not valid."
+    description: "<code>context</code>不是有效的。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>context</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>context</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.GetSelectiveAuthenticationStatus(System.String)
@@ -827,39 +827,39 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Determines the authentication type of an inbound trust."
+  summary: "确定入站信任的身份验证类型。"
   syntax:
     content: public bool GetSelectiveAuthenticationStatus (string targetDomainName);
     parameters:
     - id: targetDomainName
       type: System.String
-      description: "The DNS name of the domain which with the trust exists."
+      description: "存在与信任的域的 DNS 名称。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the authentication of the trust is selective; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the authentication is domain-wide."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果身份验证信任的选择性;<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>全域性身份验证的情况。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.GetSelectiveAuthenticationStatus*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
-    description: "There is no trust relationship with the <xref href=&quot;System.DirectoryServices.ActiveDirectory.Forest&quot;></xref> that is specified by the <code>targetForestName</code> parameter."
+    description: "不没有与任何信任关系<xref href=&quot;System.DirectoryServices.ActiveDirectory.Forest&quot;></xref>指定<code> targetForestName </code>参数。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "The call to LsaQueryTrustedDomainInfoByName failed. For more information, see the topic [LsaQueryTrustedDomainInfoByName](http://msdn.microsoft.com/library/default.asp?url=/library/en-us/secmgmt/security/lsaquerytrusteddomaininfobyname.asp) in the MSDN Library at [http://msdn.microsoft.com/library](http://msdn.microsoft.com/library)."
+    description: "对 LsaQueryTrustedDomainInfoByName 的调用失败。 有关详细信息，请参阅主题[LsaQueryTrustedDomainInfoByName](http://msdn.microsoft.com/library/default.asp?url=/library/en-us/secmgmt/security/lsaquerytrusteddomaininfobyname.asp)在 MSDN 库中[http://msdn.microsoft.com/library](http://msdn.microsoft.com/library)。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target server is either busy or unavailable."
+    description: "目标服务器是忙或不可用。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>targetDomainName</code> is an empty string."
+    description: "<code>targetDomainName</code>为一个空字符串。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>targetDomainName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>targetDomainName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The current object has been disposed."
+    description: "已释放当前对象。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The specified account does not have permission to perform this operation."
+    description: "指定的帐户没有权限执行此操作。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.GetSidFilteringStatus(System.String)
@@ -874,39 +874,39 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Determines the SID filtering status of a trust."
+  summary: "确定的 SID 筛选的信任关系的状态。"
   syntax:
     content: public bool GetSidFilteringStatus (string targetDomainName);
     parameters:
     - id: targetDomainName
       type: System.String
-      description: "The DNS name of the domain which with the trust relationship exists."
+      description: "存在的域具有信任关系的 DNS 名称。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if SID filtering is enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果启用 SID 筛选功能;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.GetSidFilteringStatus*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
-    description: "There is no trust relationship with the <xref href=&quot;System.DirectoryServices.ActiveDirectory.Forest&quot;></xref> that is specified by the <code>targetForestName</code> parameter."
+    description: "不没有与任何信任关系<xref href=&quot;System.DirectoryServices.ActiveDirectory.Forest&quot;></xref>指定<code> targetForestName </code>参数。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "A call to the underlying directory service resulted in an error."
+    description: "对基础目录服务的调用导致了错误。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target server is either busy or unavailable."
+    description: "目标服务器是忙或不可用。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>targetDomainName</code> is an empty string."
+    description: "<code>targetDomainName</code>为一个空字符串。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>targetDomainName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>targetDomainName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The current object has been disposed."
+    description: "已释放当前对象。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The specified account does not have permission to perform this operation."
+    description: "指定的帐户没有权限执行此操作。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.GetTrustRelationship(System.String)
@@ -921,39 +921,39 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Gets the trust relationship between this domain and the specified domain."
+  summary: "获取此域和指定的域之间的信任关系。"
   syntax:
     content: public System.DirectoryServices.ActiveDirectory.TrustRelationshipInformation GetTrustRelationship (string targetDomainName);
     parameters:
     - id: targetDomainName
       type: System.String
-      description: "The DNS name of the domain with which the trust relationship exists."
+      description: "与其存在信任关系的域 DNS 名称。"
     return:
       type: System.DirectoryServices.ActiveDirectory.TrustRelationshipInformation
-      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustRelationshipInformation&quot;></xref> object that represents the trust relationship between this domain and the specified domain."
+      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustRelationshipInformation&quot;> </xref>表示此域和指定的域之间的信任关系的对象。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.GetTrustRelationship*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
-    description: "There is no trust relationship with the <xref href=&quot;System.DirectoryServices.ActiveDirectory.Forest&quot;></xref> that is specified by the <code>targetForestName</code> parameter."
+    description: "不没有与任何信任关系<xref href=&quot;System.DirectoryServices.ActiveDirectory.Forest&quot;></xref>指定<code> targetForestName </code>参数。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "A call to the underlying directory service resulted in an error."
+    description: "对基础目录服务的调用导致了错误。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target server is either busy or unavailable."
+    description: "目标服务器是忙或不可用。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>targetDomainName</code> is an empty string."
+    description: "<code>targetDomainName</code>为一个空字符串。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>targetDomainName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>targetDomainName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The current object has been disposed."
+    description: "已释放当前对象。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The specified account does not have permission to perform this operation."
+    description: "指定的帐户没有权限执行此操作。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.InfrastructureRoleOwner
@@ -968,17 +968,17 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Gets the infrastructure role owner for this domain."
+  summary: "获取此域的基础结构角色所有者。"
   syntax:
     content: public System.DirectoryServices.ActiveDirectory.DomainController InfrastructureRoleOwner { get; }
     return:
       type: System.DirectoryServices.ActiveDirectory.DomainController
-      description: "An <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainController&quot;></xref> object that represents the domain controller that holds the infrastructure owner role."
+      description: "<xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainController&quot;> </xref>表示保留基础结构所有者角色的域控制器的对象。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.InfrastructureRoleOwner*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.Parent
@@ -993,17 +993,17 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Gets the parent domain of this domain."
+  summary: "获取此域的父域。"
   syntax:
     content: public System.DirectoryServices.ActiveDirectory.Domain Parent { get; }
     return:
       type: System.DirectoryServices.ActiveDirectory.Domain
-      description: "An <xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;></xref> object that represents the parent domain of this domain. <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if this domain has no parent domain."
+      description: "<xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;> </xref>表示此域的父域的对象。 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果此域没有父域。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.Parent*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.PdcRoleOwner
@@ -1018,17 +1018,17 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Gets the <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainController&quot;></xref> object that holds the primary domain controller (PDC) for this domain."
+  summary: "获取<xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainController&quot;></xref>对象，其中包含此域的主域控制器 (PDC)。"
   syntax:
     content: public System.DirectoryServices.ActiveDirectory.DomainController PdcRoleOwner { get; }
     return:
       type: System.DirectoryServices.ActiveDirectory.DomainController
-      description: "An <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainController&quot;></xref> object that represents the domain controller that holds the PDC emulator role for this domain."
+      description: "<xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainController&quot;> </xref>表示保存此域的 PDC 模拟器角色的域控制器的对象。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.PdcRoleOwner*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.RaiseDomainFunctionality(System.DirectoryServices.ActiveDirectory.DomainMode)
@@ -1043,34 +1043,34 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Raises the mode of operation for the domain."
-  remarks: "The <xref:System.DirectoryServices.ActiveDirectory.DomainMode> value can be raised but not lowered. This means that raising the functionality level of the domain is not reversible and the decision to do this should be made carefully.       For more information about domain operational modes, see [Domain and forest functionality](http://www.microsoft.com/resources/documentation/WindowsServ/2003/standard/proddocs/en-us/sag_levels.asp).       The following table defines the valid values for `domainMode` based on the current operating mode of the domain.      |Current mode|Mode can be raised to|   |------------------|---------------------------|   |<xref:System.DirectoryServices.ActiveDirectory.DomainMode>|<xref:System.DirectoryServices.ActiveDirectory.DomainMode><br /><br /> <xref:System.DirectoryServices.ActiveDirectory.DomainMode><br /><br /> <xref:System.DirectoryServices.ActiveDirectory.DomainMode>|   |<xref:System.DirectoryServices.ActiveDirectory.DomainMode>|<xref:System.DirectoryServices.ActiveDirectory.DomainMode>|   |<xref:System.DirectoryServices.ActiveDirectory.DomainMode>|<xref:System.DirectoryServices.ActiveDirectory.DomainMode>|   |<xref:System.DirectoryServices.ActiveDirectory.DomainMode>|None|"
+  summary: "提升域操作模式。"
+  remarks: "<xref:System.DirectoryServices.ActiveDirectory.DomainMode>值可以增大，但不能减小。</xref:System.DirectoryServices.ActiveDirectory.DomainMode> 这意味着提升域功能级别是不可逆，并且应仔细做的决策后，若要这样做。       有关域操作模式的详细信息，请参阅[域和林功能](http://www.microsoft.com/resources/documentation/WindowsServ/2003/standard/proddocs/en-us/sag_levels.asp)。       下表定义的有效值`domainMode`基于域的当前操作模式。      |当前模式 |可以将模式提升到 |  |------------------|---------------------------|  |<xref:System.DirectoryServices.ActiveDirectory.DomainMode>|<xref:System.DirectoryServices.ActiveDirectory.DomainMode></xref:System.DirectoryServices.ActiveDirectory.DomainMode></xref:System.DirectoryServices.ActiveDirectory.DomainMode><br /><br /> <xref:System.DirectoryServices.ActiveDirectory.DomainMode></xref:System.DirectoryServices.ActiveDirectory.DomainMode><br /><br /> <xref:System.DirectoryServices.ActiveDirectory.DomainMode>|  |<xref:System.DirectoryServices.ActiveDirectory.DomainMode>|<xref:System.DirectoryServices.ActiveDirectory.DomainMode>|  |<xref:System.DirectoryServices.ActiveDirectory.DomainMode>|<xref:System.DirectoryServices.ActiveDirectory.DomainMode>|  |<xref:System.DirectoryServices.ActiveDirectory.DomainMode>|None|</xref:System.DirectoryServices.ActiveDirectory.DomainMode></xref:System.DirectoryServices.ActiveDirectory.DomainMode></xref:System.DirectoryServices.ActiveDirectory.DomainMode></xref:System.DirectoryServices.ActiveDirectory.DomainMode></xref:System.DirectoryServices.ActiveDirectory.DomainMode></xref:System.DirectoryServices.ActiveDirectory.DomainMode>"
   syntax:
     content: public void RaiseDomainFunctionality (System.DirectoryServices.ActiveDirectory.DomainMode domainMode);
     parameters:
     - id: domainMode
       type: System.DirectoryServices.ActiveDirectory.DomainMode
-      description: "An <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainMode&quot;></xref> enumeration value that specifies the new operation level for the domain."
+      description: "<xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainMode&quot;> </xref>枚举值，指定域的新操作级别。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.RaiseDomainFunctionality*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "A call to the underlying directory service resulted in an error."
+    description: "对基础目录服务的调用导致了错误。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target server is either busy or unavailable."
+    description: "目标服务器是忙或不可用。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "Based on the current operating mode of the domain, the value specified for <code>domainMode</code> is not valid."
+    description: "基于域的当前操作模式，为指定的值<code> domainMode </code>无效。"
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>domainMode</code> is not a valid <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainMode&quot;></xref> enumeration value."
+    description: "<code>domainMode</code>不是有效<xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainMode&quot;></xref>枚举值。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The specified account does not have permission to perform this operation."
+    description: "指定的帐户没有权限执行此操作。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.RaiseDomainFunctionalityLevel(System.Int32)
@@ -1085,13 +1085,13 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Raises the functionality level for the domain."
+  summary: "提升域功能级别。"
   syntax:
     content: public void RaiseDomainFunctionalityLevel (int domainMode);
     parameters:
     - id: domainMode
       type: System.Int32
-      description: "A value representing the new level."
+      description: "表示新级别的值。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.RaiseDomainFunctionalityLevel*
   exceptions: []
   platform:
@@ -1108,34 +1108,34 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Repairs a trust relationship."
-  remarks: "This method repairs the trust by resetting the secure channel for the trust. If the operation fails to reset the secure channel, then it will also reset the trust password."
+  summary: "修复信任关系。"
+  remarks: "此方法通过重置信任的安全通道修复信任关系。 如果该操作无法重置安全通道，然后它还将重置信任密码。"
   syntax:
     content: public void RepairTrustRelationship (System.DirectoryServices.ActiveDirectory.Domain targetDomain);
     parameters:
     - id: targetDomain
       type: System.DirectoryServices.ActiveDirectory.Domain
-      description: "An <xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;></xref> object that represents the domain with which the trust exists."
+      description: "<xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;> </xref>表示与其存在信任关系的域的对象。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.RepairTrustRelationship*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
-    description: "There is no trust relationship with the <xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;></xref> that is specified by <code>targetDomain</code>."
+    description: "不没有与任何信任关系<xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;></xref>指定<code> targetDomain </code>。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "A call to the underlying directory service resulted in an error."
+    description: "对基础目录服务的调用导致了错误。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target or source server is either busy or unavailable."
+    description: "目标或源服务器是忙或不可用。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>targetDomain</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>targetDomain</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The specified account does not have permission to perform this operation."
+    description: "指定的帐户没有权限执行此操作。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.RidRoleOwner
@@ -1150,17 +1150,17 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Gets the RID master role holder for this domain."
+  summary: "获取此域的 RID 主机角色拥有者。"
   syntax:
     content: public System.DirectoryServices.ActiveDirectory.DomainController RidRoleOwner { get; }
     return:
       type: System.DirectoryServices.ActiveDirectory.DomainController
-      description: "An <xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainController&quot;></xref> object that represents the domain controller that holds the relative identifier (RID) master role for this domain."
+      description: "<xref href=&quot;System.DirectoryServices.ActiveDirectory.DomainController&quot;> </xref>表示保存此域的相对标识符 (RID) 主机角色的域控制器的对象。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.RidRoleOwner*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.SetSelectiveAuthenticationStatus(System.String,System.Boolean)
@@ -1175,39 +1175,39 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Enables or disables selective authentication for an inbound trust."
+  summary: "启用或禁用入站信任的选择性身份验证。"
   syntax:
     content: public void SetSelectiveAuthenticationStatus (string targetDomainName, bool enable);
     parameters:
     - id: targetDomainName
       type: System.String
-      description: "The DNS name of the domain with which the inbound trust exists."
+      description: "与其存在入站的信任域的 DNS 名称。"
     - id: enable
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if selective authentication is enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果启用了选择性身份验证;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.SetSelectiveAuthenticationStatus*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
-    description: "There is no trust relationship with the domain controller that is specified by <code>targetDomainName</code>."
+    description: "与指定的域控制器没有信任关系<code> targetDomainName </code>。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "A call to the underlying directory service resulted in an error."
+    description: "对基础目录服务的调用导致了错误。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target server is either busy or unavailable."
+    description: "目标服务器是忙或不可用。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>targetDomainName</code> is an empty string."
+    description: "<code>targetDomainName</code>为一个空字符串。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>targetDomainName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>targetDomainName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The current object has been disposed."
+    description: "已释放当前对象。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The specified account does not have permission to perform this operation."
+    description: "指定的帐户没有权限执行此操作。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.SetSidFilteringStatus(System.String,System.Boolean)
@@ -1222,36 +1222,36 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Sets the SID filtering state for the specified domain."
+  summary: "设置 SID 筛选状态为指定的域。"
   syntax:
     content: public void SetSidFilteringStatus (string targetDomainName, bool enable);
     parameters:
     - id: targetDomainName
       type: System.String
-      description: "The DNS name of the domain with which the trust exists."
+      description: "与其存在信任关系的域 DNS 名称。"
     - id: enable
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if SID filtering must be enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果必须启用 SID 筛选;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.SetSidFilteringStatus*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
-    description: "There is no trust relationship with the domain that is specified by <code>targetDomainName</code>."
+    description: "通过指定的域没有信任关系<code> targetDomainName </code>。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "A call to the underlying directory service resulted in an error."
+    description: "对基础目录服务的调用导致了错误。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target server is either busy or unavailable."
+    description: "目标服务器是忙或不可用。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>targetDomainName</code> is an empty string."
+    description: "<code>targetDomainName</code>为一个空字符串。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>targetDomainName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>targetDomainName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The current object has been disposed."
+    description: "已释放当前对象。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.UpdateLocalSideOfTrustRelationship(System.String,System.String)
@@ -1266,40 +1266,40 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Updates the password for the local side of a trust relationship."
-  remarks: "To re-establish the trust, both sides of the trust must be updated with the same password."
+  summary: "更新信任关系的本地方的密码。"
+  remarks: "若要重新建立信任关系，必须使用相同的密码更新信任的双方。"
   syntax:
     content: public void UpdateLocalSideOfTrustRelationship (string targetDomainName, string newTrustPassword);
     parameters:
     - id: targetDomainName
       type: System.String
-      description: "The DNS name of the domain with which a trust exists."
+      description: "与其存在信任域的 DNS 名称。"
     - id: newTrustPassword
       type: System.String
-      description: "The new password for the trust."
+      description: "信任新密码。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.UpdateLocalSideOfTrustRelationship*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
-    description: "There is no trust relationship with the domain that is specified by <code>targetDomainName</code>."
+    description: "通过指定的域没有信任关系<code> targetDomainName </code>。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "A call to the underlying directory service resulted in an error."
+    description: "对基础目录服务的调用导致了错误。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target server is either busy or unavailable."
+    description: "目标服务器是忙或不可用。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>targetDomainName</code> or <code>newTrustPassword</code> is an empty string."
+    description: "<code>targetDomainName</code>或<code>newTrustPassword</code>为空字符串。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>targetDomainName</code> or <code>newTrustPassword</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>targetDomainName</code>or <code>newTrustPassword</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The specified account does not have permission to perform this operation."
+    description: "指定的帐户没有权限执行此操作。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.UpdateLocalSideOfTrustRelationship(System.String,System.DirectoryServices.ActiveDirectory.TrustDirection,System.String)
@@ -1314,45 +1314,45 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Updates the password and trust direction for the local side of a trust relationship."
+  summary: "更新密码和信任方向的本地方的信任关系。"
   syntax:
     content: public void UpdateLocalSideOfTrustRelationship (string targetDomainName, System.DirectoryServices.ActiveDirectory.TrustDirection newTrustDirection, string newTrustPassword);
     parameters:
     - id: targetDomainName
       type: System.String
-      description: "The DNS name of the domain with which a trust exists."
+      description: "与其存在信任域的 DNS 名称。"
     - id: newTrustDirection
       type: System.DirectoryServices.ActiveDirectory.TrustDirection
-      description: "An <xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustDirection&quot;></xref> value for the new trust direction for the trust relationship."
+      description: "<xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustDirection&quot;> </xref>信任关系的新信任方向的值。"
     - id: newTrustPassword
       type: System.String
-      description: "The new password for the trust."
+      description: "信任新密码。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.UpdateLocalSideOfTrustRelationship*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
-    description: "There is no trust relationship with the domain that is specified by the <code>targetDomainName</code> parameter."
+    description: "通过指定的域没有信任关系<code> targetDomainName </code>参数。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "A call to the underlying directory service resulted in an error."
+    description: "对基础目录服务的调用导致了错误。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target server is either busy or unavailable."
+    description: "目标服务器是忙或不可用。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>targetDomainName</code> or <code>newTrustPassword</code> is an empty string."
+    description: "<code>targetDomainName</code>或<code>newTrustPassword</code>为空字符串。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>targetDomainName</code> or <code>newTrustPassword</code> are <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>targetDomainName</code>or <code>newTrustPassword</code> are <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>newTrustDirection</code> is not a valid <xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustDirection&quot;></xref> value."
+    description: "<code>newTrustDirection</code>不是有效<xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustDirection&quot;></xref>值。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The specified account does not have permission to perform this operation."
+    description: "指定的帐户没有权限执行此操作。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.UpdateTrustRelationship(System.DirectoryServices.ActiveDirectory.Domain,System.DirectoryServices.ActiveDirectory.TrustDirection)
@@ -1367,39 +1367,39 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Updates the trust direction for an existing trust relationship. The trust directions are updated on both sides of the trust."
+  summary: "更新现有信任关系的信任方向。 信任的双方更新信任方向。"
   syntax:
     content: public void UpdateTrustRelationship (System.DirectoryServices.ActiveDirectory.Domain targetDomain, System.DirectoryServices.ActiveDirectory.TrustDirection newTrustDirection);
     parameters:
     - id: targetDomain
       type: System.DirectoryServices.ActiveDirectory.Domain
-      description: "An <xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;></xref> object that represents the domain with which the trust exists."
+      description: "<xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;> </xref>表示与其存在信任关系的域的对象。"
     - id: newTrustDirection
       type: System.DirectoryServices.ActiveDirectory.TrustDirection
-      description: "An <xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustDirection&quot;></xref> value that specifies the new trust direction for the trust relationship."
+      description: "<xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustDirection&quot;> </xref>值，该值指定信任关系的新信任方向。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.UpdateTrustRelationship*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
-    description: "There is no trust relationship with the domain that is specified by the <code>targetDomain</code> parameter."
+    description: "通过指定的域没有信任关系<code> targetDomain </code>参数。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "A call to the underlying directory service resulted in an error."
+    description: "对基础目录服务的调用导致了错误。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target server is either busy or unavailable."
+    description: "目标服务器是忙或不可用。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>targetDomain</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>targetDomain</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>newTrustDirection</code> is not a valid <xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustDirection&quot;></xref> value."
+    description: "<code>newTrustDirection</code>不是有效<xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustDirection&quot;></xref>值。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The specified account does not have permission to perform this operation."
+    description: "指定的帐户没有权限执行此操作。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.VerifyOutboundTrustRelationship(System.String)
@@ -1414,37 +1414,37 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Verifies that a previously established outbound trust with the specified domain is valid."
-  remarks: "This method is used to verify that a trust relationship has been fully established. The trust is not established until both sides of the trust have been created."
+  summary: "验证与指定域以前建立的出站信任关系有效。"
+  remarks: "此方法用于验证已完全建立的信任关系。 在创建信任的双方之前，不建立了信任。"
   syntax:
     content: public void VerifyOutboundTrustRelationship (string targetDomainName);
     parameters:
     - id: targetDomainName
       type: System.String
-      description: "The DNS name of the domain with which the trust exists."
+      description: "与其存在信任关系的域 DNS 名称。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.VerifyOutboundTrustRelationship*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
-    description: "There is no outbound trust relationship with the domain that is specified by <code>targetDomainName</code>."
+    description: "没有与由指定的域中任何出站信任关系<code> targetDomainName </code>。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "A call to the underlying directory service resulted in an error."
+    description: "对基础目录服务的调用导致了错误。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target server is either busy or unavailable."
+    description: "目标服务器是忙或不可用。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>targetDomainName</code> is an empty string."
+    description: "<code>targetDomainName</code>为一个空字符串。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>targetDomainName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>targetDomainName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The specified account does not have permission to perform this operation."
+    description: "指定的帐户没有权限执行此操作。"
   platform:
   - net462
 - uid: System.DirectoryServices.ActiveDirectory.Domain.VerifyTrustRelationship(System.DirectoryServices.ActiveDirectory.Domain,System.DirectoryServices.ActiveDirectory.TrustDirection)
@@ -1459,40 +1459,40 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices.ActiveDirectory
-  summary: "Verifies that a previously established trust with the specified domain is valid."
-  remarks: "This method verifies that a trust relationship has been fully established. The trust is not established until both sides of the trust have been created."
+  summary: "验证以前建立的与指定的域的信任有效。"
+  remarks: "此方法验证已完全建立的信任关系。 在创建信任的双方之前，不建立了信任。"
   syntax:
     content: public void VerifyTrustRelationship (System.DirectoryServices.ActiveDirectory.Domain targetDomain, System.DirectoryServices.ActiveDirectory.TrustDirection direction);
     parameters:
     - id: targetDomain
       type: System.DirectoryServices.ActiveDirectory.Domain
-      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;></xref> object that represents the domain with which the trust exists."
+      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.Domain&quot;> </xref>表示与其存在信任关系的域的对象。"
     - id: direction
       type: System.DirectoryServices.ActiveDirectory.TrustDirection
-      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustDirection&quot;></xref> value that specifies the direction, relative to this domain, of the trust."
+      description: "A <xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustDirection&quot;> </xref>值，该值指定的信任方向，相对于此域。"
   overload: System.DirectoryServices.ActiveDirectory.Domain.VerifyTrustRelationship*
   exceptions:
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryObjectNotFoundException
-    description: "There is no trust relationship with the domain that is specified by the <code>targetDomain</code> parameter, or the target domain does not have the trust direction that is specified by the <code>direction</code> parameter."
+    description: "通过指定的域没有信任关系<code> targetDomain </code>参数或目标域不具有由指定的信任方向<code> direction </code>参数。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryOperationException
-    description: "A call to the underlying directory service resulted in an error."
+    description: "对基础目录服务的调用导致了错误。"
   - type: System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
     commentId: T:System.DirectoryServices.ActiveDirectory.ActiveDirectoryServerDownException
-    description: "The target server is either busy or unavailable."
+    description: "目标服务器是忙或不可用。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>targetDomain</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>targetDomain</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>direction</code> is not a valid <xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustDirection&quot;></xref> value."
+    description: "<code>direction</code>不是有效<xref href=&quot;System.DirectoryServices.ActiveDirectory.TrustDirection&quot;></xref>值。"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object has been disposed."
+    description: "已释放此对象。"
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The specified account does not have permission to perform this operation."
+    description: "指定的帐户没有权限执行此操作。"
   platform:
   - net462
 references:

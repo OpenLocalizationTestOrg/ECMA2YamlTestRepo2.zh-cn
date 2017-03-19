@@ -10,8 +10,8 @@ items:
   nameWithType: IVersioningPersonalizable
   fullName: System.Web.UI.WebControls.WebParts.IVersioningPersonalizable
   type: Interface
-  summary: "Represents an interface that can manage personalization data belonging to a previous version of a Web Parts control."
-  remarks: "When you upgrade a Web Parts control to a newer version, there might be changes to the personalizable properties on the upgraded class. For example, an upgraded version of a Web Parts control might no longer support properties that were available in previous versions. In such a scenario, the Web Parts control set might load personalization data from the underlying data store, but have no properties against which to apply this data. If a control implements the IVersioningPersonalizable interface, the Web Parts control is passed the orphaned personalization data. The application can then use this data to update properties in the newer version, or use the data in some other manner. Note that if orphaned properties are detected when importing Web Parts controls, the <xref:System.Web.UI.WebControls.WebParts.IVersioningPersonalizable.Load%2A> method is also called."
+  summary: "表示可以管理属于 Web 部件控件的早期版本的个性化数据的接口。"
+  remarks: "当你升级到较新版本的 Web 部件控件时，则表明可能存在对升级后的类可个性化设置的属性的更改。 例如，Web 部件控件的升级的版本可能不再支持在以前版本中提供的属性。 在此类方案中，Web 部件控件集可能从基础数据存储区，加载个性化数据，但没有针对所应用于此数据的属性。 如果控件实现 IVersioningPersonalizable 接口时，Web 部件控件将传递孤立的个性化数据。 然后，应用程序可以使用此数据来更新的更新版本中的属性，或以某种其他方式使用的数据。 请注意，如果导入 Web 部件控件时检测到孤立的属性<xref:System.Web.UI.WebControls.WebParts.IVersioningPersonalizable.Load%2A>也会调用方法。</xref:System.Web.UI.WebControls.WebParts.IVersioningPersonalizable.Load%2A>"
   syntax:
     content: public interface IVersioningPersonalizable
   implements: []
@@ -29,14 +29,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Loads personalization data to a Web Parts control that does not have a corresponding personalized property for the data due to a version change."
-  remarks: "The `unknownProperties` parameter contains a merged representation of unknown personalization data, of both &quot;User&quot; and &quot;Shared&quot; scope, that could not be applied to the control. When a page is running in user scope, the unknown user-scope values are supplied (if available) rather than unknown shared-scope values. This information is stored as a series of name/value pairs where each name is the string name of a property that was not found on the control and each value contains the property value. It is the responsibility of the control to cast or convert the value to the appropriate type and carry out further processing (such as mapping data from an old property to a new property).       If a control&quot;s state changes, it should call <xref:System.Web.UI.WebControls.WebParts.WebPart.SetPersonalizationDirty%2A> (either the inherited method, or the public static method in the case of a control that does not derive from <xref:System.Web.UI.WebControls.WebParts.WebPart>). If a control marks itself as &quot;dirty&quot;, the Web Parts control set will extract personalization data from the control, regardless of the control&quot;s &quot;dirty&quot; state, and save it back to the underlying data store later in the personalization life cycle. A control should mark itself as &quot;dirty&quot; if, as a result of processing the values in the `unknownProperties` parameter, the control&quot;s state has changed.       Note that if orphaned properties are detected when importing Web Parts controls, this method is automatically called."
+  summary: "个性化设置将数据加载到不具有由于版本发生了更改的数据的相应个性化设置的属性的 Web 部件控件。"
+  remarks: "`unknownProperties`参数包含未知的个性化数据的&quot;User&quot;和&quot;Shared&quot;作用域，无法应用到控件的合并表示形式。 当用户作用域中运行页面时，未知的用户作用域值提供 （如果可用） 而不是未知的共享范围值。 此信息存储为一系列名称/值对，其中每个名称是找不到控件的属性的字符串名称，每个值包含的属性值。 它负责要强制转换或将值转换为适当的类型和执行进一步的处理 （如映射数据从旧的属性复制到新的属性） 的控件。       如果控件的状态发生更改，则应调用<xref:System.Web.UI.WebControls.WebParts.WebPart.SetPersonalizationDirty%2A>(继承的方法或在不是派生的控件的情况下的公共静态方法<xref:System.Web.UI.WebControls.WebParts.WebPart>)。</xref:System.Web.UI.WebControls.WebParts.WebPart> </xref:System.Web.UI.WebControls.WebParts.WebPart.SetPersonalizationDirty%2A> 如果控件将其本身标记为&quot;脏&quot;，将提取该控件，而不考虑控件的&quot;脏&quot;状态中的个性化数据 Web 部件控件集并将其更高版本在个性化生命周期中将其保存回基础数据存储区。 控件应将自身标记为&quot;脏&quot;如果，作为处理中的值`unknownProperties`参数，该控件的状态已更改。       请注意，是否导入 Web 部件控件时检测到孤立的属性，将自动调用此方法。"
   syntax:
     content: public void Load (System.Collections.IDictionary unknownProperties);
     parameters:
     - id: unknownProperties
       type: System.Collections.IDictionary
-      description: "A dictionary of personalization data that could not be applied to a control."
+      description: "无法应用到控件的个性化设置数据的字典。"
   overload: System.Web.UI.WebControls.WebParts.IVersioningPersonalizable.Load*
   exceptions: []
   platform:

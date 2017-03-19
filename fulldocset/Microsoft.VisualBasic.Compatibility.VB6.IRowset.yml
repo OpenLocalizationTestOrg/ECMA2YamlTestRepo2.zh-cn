@@ -14,7 +14,7 @@ items:
   nameWithType: IRowset
   fullName: Microsoft.VisualBasic.Compatibility.VB6.IRowset
   type: Interface
-  summary: "Provides an implementation of the OLE DB <xref uid=&quot;langword_csharp_IRowset&quot; name=&quot;IRowset&quot; href=&quot;&quot;></xref> interface for use by applications upgraded from Visual Basic 6.0."
+  summary: "提供的 OLE DB 实现<xref uid=&quot;langword_csharp_IRowset&quot; name=&quot;IRowset&quot; href=&quot;&quot;></xref>供从 Visual Basic 6.0 升级的应用程序使用的接口。"
   remarks: '[!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]'
   syntax:
     content: >-
@@ -40,23 +40,23 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility.Data
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: "Adds a reference count to an existing row handle."
+  summary: "将引用计数添加到现有行句柄。"
   remarks: '[!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]'
   syntax:
     content: public void AddRefRows (int cRows, int[] hRows, out int[] refCounts, out int[] rowStatus);
     parameters:
     - id: cRows
       type: System.Int32
-      description: "The number of rows for which to increment the reference count."
+      description: "要递增引用计数的行数。"
     - id: hRows
       type: System.Int32[]
-      description: "An array of row handles for which to increment the reference count. The reference count of row handles is incremented by one for each time they appear in the array."
+      description: "要递增引用计数的行句柄数组。 行句柄的引用计数就会递增&1; 的每个数组中出现一次。"
     - id: refCounts
       type: System.Int32[]
-      description: "An array with `cRows` elements in which to return the new reference count for each row handle. The consumer allocates memory for this array. If `refCounts` is a null pointer, no reference counts are returned."
+      description: "具有数组`cRows`中要返回的每个行句柄的新引用计数的元素。 使用者为此数组分配内存。 如果`refCounts`是 null 指针，不返回计数的引用。"
     - id: rowStatus
       type: System.Int32[]
-      description: "An array with `cRows` elements in which to return values indicating the status of each row specified in `hRows`."
+      description: "具有数组`cRows`中其返回值指示的状态的每个行中指定的元素`hRows`。"
   overload: Microsoft.VisualBasic.Compatibility.VB6.IRowset.AddRefRows*
   exceptions: []
   platform:
@@ -73,20 +73,20 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility.Data
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: "Retrieves data from the rowset&quot;s copy of the row."
+  summary: "从行的行集的副本检索数据。"
   remarks: '[!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]'
   syntax:
     content: public void GetData (int hRow, int hAccessor, IntPtr pData);
     parameters:
     - id: hRow
       type: System.Int32
-      description: "The handle of the row from which to get the data."
+      description: "从中获取数据行的句柄。"
     - id: hAccessor
       type: System.Int32
-      description: "The handle of the accessor to use."
+      description: "要使用的访问器句柄。"
     - id: pData
       type: System.IntPtr
-      description: "A pointer to a buffer in which to return the data."
+      description: "指向在其中以返回数据的缓冲区的指针。"
   overload: Microsoft.VisualBasic.Compatibility.VB6.IRowset.GetData*
   exceptions: []
   platform:
@@ -103,26 +103,26 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility.Data
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: "Fetches rows sequentially, remembering the previous position."
+  summary: "记住的以前的位置按顺序，提取行。"
   remarks: '[!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]'
   syntax:
     content: public void GetNextRows (int hChapter, int lRowsOffset, int cRows, out int cRowsObtained, out int[] hRows);
     parameters:
     - id: hChapter
       type: System.Int32
-      description: "The chapter handle designating the rows to fetch."
+      description: "指定要提取的行章句柄。"
     - id: lRowsOffset
       type: System.Int32
-      description: "The signed count of rows to skip before fetching rows. Deleted rows that the provider has removed from the rowset are not counted in the skip."
+      description: "提取行前要跳过的行的有符号的计数。 在行集中已删除的提供程序的已删除的行中跳过不将计入。"
     - id: cRows
       type: System.Int32
-      description: "The number of rows to fetch. A negative number means to fetch backward."
+      description: "要提取的行数。 为负数意味着向后获取。"
     - id: cRowsObtained
       type: System.Int32
-      description: "A pointer to memory in which to return the actual number of fetched rows."
+      description: "指向内存中用于返回实际读取的行数的指针。"
     - id: hRows
       type: System.Int32[]
-      description: "A pointer to memory in which to return an array of handles of the fetched rows."
+      description: "指向内存中用于返回获取行的句柄数组的指针。"
   overload: Microsoft.VisualBasic.Compatibility.VB6.IRowset.GetNextRows*
   exceptions: []
   platform:
@@ -139,29 +139,29 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility.Data
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: "Releases rows."
+  summary: "释放行。"
   remarks: '[!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]'
   syntax:
     content: public int ReleaseRows (int cRows, int[] hRows, IntPtr rowOptions, IntPtr rowRefCounts, IntPtr rgRowStatus);
     parameters:
     - id: cRows
       type: System.Int32
-      description: "The number of rows to release."
+      description: "要释放的行数。"
     - id: hRows
       type: System.Int32[]
-      description: "An array of handles of the rows to be released. The row handles do not need to form a logical cluster; they may have been obtained at separate times and need not be for contiguous underlying rows. Row handles are decremented by one reference count for each time they appear in the array."
+      description: "要释放的行的句柄数组。 不需要的行句柄来形成逻辑的群集;它们可能在单独的时间获取，并且不需要是连续的基础行。 为每个数组中出现一次将行控点会通过一个引用计数减少。"
     - id: rowOptions
       type: System.IntPtr
-      description: "An array of `cRows` elements containing bitmasks indicating additional options to be specified when a row is released."
+      description: "数组`cRows`释放行时指定的元素包含位掩码，该值指示要的其他选项。"
     - id: rowRefCounts
       type: System.IntPtr
-      description: "An array with `cRows` elements in which to return the new reference count of each row."
+      description: "具有数组`cRows`中要返回的每一行的新引用计数的元素。"
     - id: rgRowStatus
       type: System.IntPtr
-      description: "An array with `cRows` elements in which to return values indicating the status of each row specified in `hRows`."
+      description: "具有数组`cRows`中其返回值指示的状态的每个行中指定的元素`hRows`。"
     return:
       type: System.Int32
-      description: "An <xref uid=&quot;langword_csharp_Integer&quot; name=&quot;Integer&quot; href=&quot;&quot;></xref> representing the result."
+      description: "<xref uid=&quot;langword_csharp_Integer&quot; name=&quot;Integer&quot; href=&quot;&quot;> </xref>表示结果。"
   overload: Microsoft.VisualBasic.Compatibility.VB6.IRowset.ReleaseRows*
   exceptions: []
   platform:
@@ -178,17 +178,17 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility.Data
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: "Repositions the next fetch position to its initial position."
+  summary: "将下次提取位置重新定位到其初始位置。"
   remarks: '[!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]'
   syntax:
     content: public int RestartPosition (int hChapter);
     parameters:
     - id: hChapter
       type: System.Int32
-      description: "The chapter handle designating the rows on which to reposition."
+      description: "章节句柄，用于指定对其重新定位行。"
     return:
       type: System.Int32
-      description: "An <xref uid=&quot;langword_csharp_Integer&quot; name=&quot;Integer&quot; href=&quot;&quot;></xref> representing the result."
+      description: "<xref uid=&quot;langword_csharp_Integer&quot; name=&quot;Integer&quot; href=&quot;&quot;> </xref>表示结果。"
   overload: Microsoft.VisualBasic.Compatibility.VB6.IRowset.RestartPosition*
   exceptions: []
   platform:

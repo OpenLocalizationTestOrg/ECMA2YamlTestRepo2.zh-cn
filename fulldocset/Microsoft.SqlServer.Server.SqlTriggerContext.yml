@@ -13,8 +13,8 @@ items:
   nameWithType: SqlTriggerContext
   fullName: Microsoft.SqlServer.Server.SqlTriggerContext
   type: Class
-  summary: "Provides contextual information about the trigger that was fired."
-  remarks: "The contextual information provided includes the type of action that caused the trigger to fire, which columns were modified in an UPDATE operation, and, in the case of a data definition language (DDL) trigger, an XML EventData structure (see &quot;Transact-SQL Reference&quot; in SQL Server Books Online) that describes the triggering operation.       An instance of SqlTriggerContext is available from the <xref:Microsoft.SqlServer.Server.SqlContext> class, when the code is running inside a trigger through the <xref:Microsoft.SqlServer.Server.SqlContext.TriggerContext%2A> property."
+  summary: "提供有关已激发的触发器的上下文信息。"
+  remarks: "提供的上下文信息包含在更新操作中修改了哪些列，导致触发器激发，操作的类型，并且，对于数据定义语言 (DDL) 触发器，XML EventData 结构 （请联机参阅 SQL Server 丛书中的&quot;TRANSACT-SQL 参考&quot;） 描述触发操作。       SqlTriggerContext 实例是可从<xref:Microsoft.SqlServer.Server.SqlContext>类，当代码运行时通过触发器内部<xref:Microsoft.SqlServer.Server.SqlContext.TriggerContext%2A>属性。</xref:Microsoft.SqlServer.Server.SqlContext.TriggerContext%2A> </xref:Microsoft.SqlServer.Server.SqlContext>"
   example:
   - "The following example shows a SqlTriggerContext object being used to determine if an <xref:Microsoft.SqlServer.Server.TriggerAction> action occurred. If a row was inserted into the `user`'s table, the user name and real name are retrieved from the inserted row and then added to the **UserNameAudit** table.  \n  \n [!code-cs[DataWorks SqlTriggerContext Sample#1](~/add/codesnippet/csharp/t-microsoft.sqlserver.se_7_1.cs)]\n [!code-vb[DataWorks SqlTriggerContext Sample#1](~/add/codesnippet/visualbasic/t-microsoft.sqlserver.se_7_1.vb)]"
   syntax:
@@ -37,13 +37,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Gets the number of columns contained by the data table bound to the trigger. This property is read-only."
-  remarks: "ColumnCount property is useful to determine the maximum ordinal that <xref:Microsoft.SqlServer.Server.SqlTriggerContext.IsUpdatedColumn%2A> allows for a given trigger invocation."
+  summary: "获取绑定到触发器数据表中所含列数。 此属性是只读的。"
+  remarks: "列数属性可用于确定的最大的序号，<xref:Microsoft.SqlServer.Server.SqlTriggerContext.IsUpdatedColumn%2A>给定的触发器调用允许。</xref:Microsoft.SqlServer.Server.SqlTriggerContext.IsUpdatedColumn%2A>"
   syntax:
     content: public int ColumnCount { get; }
     return:
       type: System.Int32
-      description: "The number of columns contained by the data table bound to the trigger, as an integer."
+      description: "绑定到该触发器，数值类型为整数数据表中所含列数。"
   overload: Microsoft.SqlServer.Server.SqlTriggerContext.ColumnCount*
   exceptions: []
   platform:
@@ -60,13 +60,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Gets the event data specific to the action that fired the trigger."
-  remarks: "This information is available for data definition language (DDL) triggers. No information is available through this property for data manipulation language (DML) triggers."
+  summary: "获取事件数据的特定于激发触发器的操作。"
+  remarks: "此信息仅供数据定义语言 (DDL) 触发器。 通过此属性对于数据操作语言 (DML) 触发器提供不了任何信息。"
   syntax:
     content: public System.Data.SqlTypes.SqlXml EventData { get; }
     return:
       type: System.Data.SqlTypes.SqlXml
-      description: "The event data specific to the action that fired the trigger as a <xref href=&quot;System.Data.SqlTypes.SqlXml&quot;></xref> if more information is available; <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> otherwise."
+      description: "特定于激发作为触发器的操作的事件数据<xref href=&quot;System.Data.SqlTypes.SqlXml&quot;></xref>是否可用，则详细信息<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>否则为。"
   overload: Microsoft.SqlServer.Server.SqlTriggerContext.EventData*
   exceptions: []
   platform:
@@ -83,21 +83,21 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a column was affected by an INSERT or UPDATE statement."
+  summary: "返回<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果列受 INSERT 或 UPDATE 语句。"
   syntax:
     content: public bool IsUpdatedColumn (int columnOrdinal);
     parameters:
     - id: columnOrdinal
       type: System.Int32
-      description: "The zero-based ordinal of the column."
+      description: "列的从零开始的序号。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the column was affected by an INSERT or UPDATE operation."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果列受插入或更新操作。"
   overload: Microsoft.SqlServer.Server.SqlTriggerContext.IsUpdatedColumn*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "Called in the context of a trigger where the value of the <xref:Microsoft.SqlServer.Server.SqlTriggerContext.TriggerAction*> property is not <xref uid=&quot;langword_csharp_Insert&quot; name=&quot;Insert&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_Update&quot; name=&quot;Update&quot; href=&quot;&quot;></xref>."
+    description: "在触发器的上下文中调用其中的值<xref:Microsoft.SqlServer.Server.SqlTriggerContext.TriggerAction*>属性不是<xref uid=&quot;langword_csharp_Insert&quot; name=&quot;Insert&quot; href=&quot;&quot;></xref>或<xref uid=&quot;langword_csharp_Update&quot; name=&quot;Update&quot; href=&quot;&quot;> </xref>。</xref:Microsoft.SqlServer.Server.SqlTriggerContext.TriggerAction*>"
   platform:
   - net462
 - uid: Microsoft.SqlServer.Server.SqlTriggerContext.TriggerAction
@@ -112,7 +112,7 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates what action fired the trigger."
+  summary: "指示激发触发器的操作。"
   remarks: ''
   example:
   - "The following example shows an auditing trigger. If an <xref:Microsoft.SqlServer.Server.TriggerAction> or <xref:Microsoft.SqlServer.Server.TriggerAction> action occurred, the affected rows are retrieved from the INSERTED and DELETED tables.  \n  \n [!code-cs[DataWorks SqlTriggerContext Sample#2](~/add/codesnippet/csharp/p-microsoft.sqlserver.se_1_1.cs)]\n [!code-vb[DataWorks SqlTriggerContext Sample#2](~/add/codesnippet/visualbasic/p-microsoft.sqlserver.se_1_1.vb)]"
@@ -120,7 +120,7 @@ items:
     content: public Microsoft.SqlServer.Server.TriggerAction TriggerAction { get; }
     return:
       type: Microsoft.SqlServer.Server.TriggerAction
-      description: "The action that fired the trigger as a <xref href=&quot;Microsoft.SqlServer.Server.TriggerAction&quot;></xref>."
+      description: "激发作为触发器的操作<xref href=&quot;Microsoft.SqlServer.Server.TriggerAction&quot;> </xref>。"
   overload: Microsoft.SqlServer.Server.SqlTriggerContext.TriggerAction*
   exceptions: []
   platform:

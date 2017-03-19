@@ -46,8 +46,8 @@ items:
   nameWithType: Visual
   fullName: System.Windows.Media.Visual
   type: Class
-  summary: "Provides rendering support in [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], which includes hit testing, coordinate transformation, and bounding box calculations."
-  remarks: "The Visual class is the basic abstraction from which every <xref:System.Windows.FrameworkElement> object derives. It also serves as the entry point for writing new controls in [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], and in many ways can be thought of as an equivalent of a window handle (HWND) in the [!INCLUDE[TLA#tla_win32](~/add/includes/tlasharptla-win32-md.md)] application model.       The Visual object is a core [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] object, whose primary role is to provide rendering support. User interface controls, such as <xref:System.Windows.Controls.Button> and <xref:System.Windows.Controls.TextBox>, derive from the Visual class, and use the Visual defined properties for persisting their rendering data. The Visual object provides support for the following:      -   Output display: Rendering the persisted, serialized drawing content of a visual.      -   Transformations: Performing transformations on a visual.      -   Clipping: Providing clipping region support for a visual.      -   Hit testing: Determining whether a specified coordinate (point) or geometry is contained within the bounds of a visual.      -   Bounding box calculations: Determining the bounding rectangle of a visual.       Architecturally, the Visual object does not include support for other application development requirements / [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] features that are not immediately related to its rendering, such as the following:      -   Event handling      -   Layout      -   Styles      -   Data binding      -   Globalization       Visual is provided as a public abstract class from which further classes can be derived. The following illustration shows the hierarchy of the existing visual objects that are defined in the [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] architecture.       ![Diagram of classes derived from the Visual object](~/add/media/visualclass01.png &quot;Diagram of classes derived from the Visual object&quot;)   Visual class hierarchy       In some cases, members that are defined as protected in Visual are exposed as more readily accessible members with similar names in the derived <xref:System.Windows.UIElement> class.       For more information, see [WPF Graphics Rendering Overview](~/add/includes/ajax-current-ext-md.md).       A Visual has a limited number of levels. In previous versions of the .NET Framework, this maximum depth was 255. This limit is inadequate for some layouts that have many levels in the visual tree.       In [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)], the maximum depth of a Visual is 2047, which enables much deeper visual trees. In most applications, there is not enough stack space to traverse so many levels, and the result is a <xref:System.StackOverflowException> during layout. For the default stack size, this exception is usually thrown when the tree depth is approximately 800, which corresponds to about 190 nested <xref:System.Windows.Controls.TreeViewItem> objects.       If this exception is thrown by your application and you need to have a deeper visual tree, you can increase the application&quot;s stack size. You can increase the size of the stack by using the /STACK option at compile time or by using the EDITBIN utility. Increasing the stack size may affect your application&quot;s performance. For more information, see [Stack Allocations](http://go.microsoft.com/fwlink/?LinkId=165510) and [EDITBIN Options](http://go.microsoft.com/fwlink/?LinkId=165511)."
+  summary: "提供在呈现支持[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]，其中包括命中测试、 坐标转换和边界框计算。"
+  remarks: "Visual 类是从其基本提取每个<xref:System.Windows.FrameworkElement>对象派生。</xref:System.Windows.FrameworkElement> 它还可以在编写新控件的入口点作为[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]，并采用多种方法可以被想象成等效的窗口句柄 (HWND) 中[!INCLUDE[TLA#tla_win32](~/add/includes/tlasharptla-win32-md.md)]应用程序模型。       视觉对象是一项核心[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]对象，它的主要角色是提供呈现支持。 用户界面控件，如<xref:System.Windows.Controls.Button>和<xref:System.Windows.Controls.TextBox>，派生自 Visual 类，以及使用 Visual 定义的属性的持久保存其呈现数据。</xref:System.Windows.Controls.TextBox> </xref:System.Windows.Controls.Button> 视觉对象提供以下支持:-输出显示︰ 呈现持久化，序列化的视觉对象的绘制内容。      -转换︰ 视觉对象上执行转换。      -剪辑︰ 提供视觉对象的剪辑区域支持。      的命中测试︰ 确定是否在视觉对象的边界内包含的指定的坐标 （点） 或几何图形。      -边界框计算︰ 确定视觉对象的绑定矩形。       体系结构上，视觉对象不包括支持其他应用程序的开发要求 /[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]密切相关的其呈现，如下所示的功能:-事件处理的布局的样式的数据绑定的全球化 Visual 提供作为进一步可以派生自公共抽象类。 下图显示了现有的视觉对象中定义的层次结构[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]体系结构。       ![从 Visual 对象派生的类的示意图](~/add/media/visualclass01.png &quot;从 Visual 对象派生的类的示意图&quot;)Visual 类在某些情况下，为受保护视觉对象中定义的成员的层次结构公开为更易于访问的成员具有类似名称中派生的<xref:System.Windows.UIElement>类。</xref:System.Windows.UIElement>       有关详细信息，请参阅[WPF 图形呈现概述](~/add/includes/ajax-current-ext-md.md)。       视觉对象具有有限的数量的级别。 在.NET framework 的早期版本，此最大深度为 255。 此限制不足的某些布局，有很多层中的可视化树。       在[!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)]，视觉对象的最大深度为 2047，以便在更深的可视化树。 在大多数应用程序，没有不堆栈空间不足，无法遍历如此多的级别，并且结果是<xref:System.StackOverflowException>布局过程。</xref:System.StackOverflowException> 对于默认堆栈大小，此异常通常时引发的树深度大约为 800，对应于大约 190 个嵌套<xref:System.Windows.Controls.TreeViewItem>对象。</xref:System.Windows.Controls.TreeViewItem>       如果你的应用程序将引发此异常，并且你需要更深入的可视化树，你可以增加应用程序的堆栈大小。 通过使用在编译时 /STACK 选项或通过使用 EDITBIN 实用程序，你可以增加堆栈的大小。 增加的堆栈大小可能会影响应用程序的性能。 有关详细信息，请参阅[堆栈分配](http://go.microsoft.com/fwlink/?LinkId=165510)和[EDITBIN 选项](http://go.microsoft.com/fwlink/?LinkId=165511)。"
   syntax:
     content: 'public abstract class Visual : System.Windows.DependencyObject'
   inheritance:
@@ -89,7 +89,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Provides the base initialization for objects derived from the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> class."
+  summary: "基本初始化派生的对象提供从<xref href=&quot;System.Windows.Media.Visual&quot;></xref>类。"
   syntax:
     content: protected Visual ();
     parameters: []
@@ -109,8 +109,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Defines the parent-child relationship between two visuals."
-  remarks: "The AddVisualChild method sets up the parent-child relationship between two visual objects. This method must be used when you need greater low-level control over the underlying storage implementation of visual child objects. <xref:System.Windows.Media.VisualCollection> can be used as a default implementation for storing child objects."
+  summary: "定义两个视觉对象之间的父-子关系。"
+  remarks: "AddVisualChild 方法设置了两个视觉对象之间的父-子关系。 当你需要更好地控制低级别的可视子对象的基础存储实现时，必须使用此方法。 <xref:System.Windows.Media.VisualCollection>可以用于存储子对象使用作为默认实现。</xref:System.Windows.Media.VisualCollection>"
   example:
   - "The following example shows how to define custom storage requirements for a visual child. The example uses the AddVisualChild and <xref:System.Windows.Media.Visual.RemoveVisualChild%2A> methods to sets up the parent-child relationship between the parent visual and `child`. In order for the visual tree to be enumerated correctly, the example provides overridden implementations of the <xref:System.Windows.Media.Visual.GetVisualChild%2A> method and <xref:System.Windows.Media.Visual.VisualChildrenCount%2A> property.  \n  \n> [!NOTE]\n>  Although it is possible to use <xref:System.Windows.Media.VisualCollection> to create parent-child relationships between visual objects, it is more efficient to provide your own custom storage implementation when only one child is linked to a parent.  \n  \n [!code-cs[AddVisualChild#AddVisualChild01](~/add/codesnippet/csharp/AddVisualChild/Window1.xaml.cs#addvisualchild01)]\n [!code-vb[AddVisualChild#AddVisualChild01](~/add/codesnippet/visualbasic/addvisualchild/window1.xaml.vb#addvisualchild01)]"
   syntax:
@@ -118,7 +118,7 @@ items:
     parameters:
     - id: child
       type: System.Windows.Media.Visual
-      description: "The child visual object to add to parent visual."
+      description: "若要添加到父可视子视觉对象。"
   overload: System.Windows.Media.Visual.AddVisualChild*
   exceptions: []
   platform:
@@ -135,17 +135,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Returns the common ancestor of two visual objects."
-  remarks: "2D and 3D objects can have common visual ancestors, so it is possible to pass a <xref:System.Windows.Media.Media3D.Visual3D> for `otherVisual`."
+  summary: "返回两个可见对象的共同祖先。"
+  remarks: "二维和三维对象可以具有公共可视上级，因此可以传递<xref:System.Windows.Media.Media3D.Visual3D>为`otherVisual`。</xref:System.Windows.Media.Media3D.Visual3D>"
   syntax:
     content: public System.Windows.DependencyObject FindCommonVisualAncestor (System.Windows.DependencyObject otherVisual);
     parameters:
     - id: otherVisual
       type: System.Windows.DependencyObject
-      description: "A visual object of type <xref href=&quot;System.Windows.DependencyObject&quot;></xref>."
+      description: "类型的视觉对象<xref href=&quot;System.Windows.DependencyObject&quot;> </xref>。"
     return:
       type: System.Windows.DependencyObject
-      description: "The common ancestor of the visual object and <code>otherVisual</code> if one exists; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "视觉对象的共同祖先和<code> otherVisual </code>如果存在; 否则为<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Media.Visual.FindCommonVisualAncestor*
   exceptions: []
   platform:
@@ -162,8 +162,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Returns the specified <xref href=&quot;System.Windows.Media.Visual&quot;></xref> in the parent <xref href=&quot;System.Windows.Media.VisualCollection&quot;></xref>."
-  remarks: "By default, a <xref:System.Windows.Media.Visual> has no children. Therefore, the default implementation always throws an <xref:System.ArgumentOutOfRangeException>."
+  summary: "返回指定<xref href=&quot;System.Windows.Media.Visual&quot;></xref>的父代中<xref href=&quot;System.Windows.Media.VisualCollection&quot;> </xref>。"
+  remarks: "默认情况下，<xref:System.Windows.Media.Visual>没有任何子级。</xref:System.Windows.Media.Visual> 因此，默认实现始终引发<xref:System.ArgumentOutOfRangeException>.</xref:System.ArgumentOutOfRangeException>"
   example:
   - "The following example defines an overridden implementation of GetVisualChild.  \n  \n [!code-cs[DrawingVisualSample#102b](~/add/codesnippet/csharp/DrawingVisual/Window1.xaml.cs#102b)]\n [!code-vb[DrawingVisualSample#102b](~/add/codesnippet/visualbasic/drawingvisual/window1.xaml.vb#102b)]"
   syntax:
@@ -171,10 +171,10 @@ items:
     parameters:
     - id: index
       type: System.Int32
-      description: "The index of the visual object in the <xref href=&quot;System.Windows.Media.VisualCollection&quot;></xref>."
+      description: "中的视觉对象的索引<xref href=&quot;System.Windows.Media.VisualCollection&quot;> </xref>。"
     return:
       type: System.Windows.Media.Visual
-      description: "The child in the <xref href=&quot;System.Windows.Media.VisualCollection&quot;></xref> at the specified <code>index</code> value."
+      description: "中的子<xref href=&quot;System.Windows.Media.VisualCollection&quot;></xref>位于指定<code> index </code>值。"
   overload: System.Windows.Media.Visual.GetVisualChild*
   exceptions: []
   platform:
@@ -191,8 +191,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Determines whether a geometry value is within the bounds of the visual object."
-  remarks: "You can override default hit testing support for a visual object by overriding the <xref:System.Windows.Media.Visual.HitTestCore%2A> method. This means that when you invoke the <xref:System.Windows.Media.VisualTreeHelper.HitTest%2A> method, your overridden implementation of <xref:System.Windows.Media.Visual.HitTestCore%2A> is called. Your overridden method is called when a hit test falls within the bounding rectangle of the visual object, even if the coordinate falls outside the geometry of the visual object."
+  summary: "确定几何图形值是否的视觉对象的边界内。"
+  remarks: "您可以重写默认命中测试可视对象的支持通过重写<xref:System.Windows.Media.Visual.HitTestCore%2A>方法。</xref:System.Windows.Media.Visual.HitTestCore%2A> 这意味着，当你调用<xref:System.Windows.Media.VisualTreeHelper.HitTest%2A>方法，重写的实现<xref:System.Windows.Media.Visual.HitTestCore%2A>称为。</xref:System.Windows.Media.Visual.HitTestCore%2A> </xref:System.Windows.Media.VisualTreeHelper.HitTest%2A> 重写的方法位于时将调用命中的测试的视觉对象的边框内即使坐标位于之外的视觉对象的几何图形。"
   example:
   - "The following example shows how to override the HitTestCore method. One reason you might want to override this method is to provide additional functionality during the hit testing process.  \n  \n [!code-vb[HitTestingOverview#HitTestingOverviewSnippet13](~/add/codesnippet/visualbasic/hittestingoverview/geometryhittest.vb#hittestingoverviewsnippet13)]\n [!code-cs[HitTestingOverview#HitTestingOverviewSnippet13](~/add/codesnippet/csharp/HitTestingOverview/GeometryHitTest.cs#hittestingoverviewsnippet13)]"
   syntax:
@@ -200,10 +200,10 @@ items:
     parameters:
     - id: hitTestParameters
       type: System.Windows.Media.GeometryHitTestParameters
-      description: "A <xref href=&quot;System.Windows.Media.GeometryHitTestParameters&quot;></xref> object that specifies the <xref href=&quot;System.Windows.Media.Geometry&quot;></xref> to hit test against."
+      description: "A <xref href=&quot;System.Windows.Media.GeometryHitTestParameters&quot;> </xref>对象，它指定<xref href=&quot;System.Windows.Media.Geometry&quot;></xref>进行命中测试。"
     return:
       type: System.Windows.Media.GeometryHitTestResult
-      description: "A <xref href=&quot;System.Windows.Media.GeometryHitTestResult&quot;></xref> that represents the result of the hit test."
+      description: "A <xref href=&quot;System.Windows.Media.GeometryHitTestResult&quot;> </xref> ，它表示命中测试的结果。"
   overload: System.Windows.Media.Visual.HitTestCore*
   exceptions: []
   platform:
@@ -220,8 +220,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Determines whether a point coordinate value is within the bounds of the visual object."
-  remarks: "You can override the default hit testing support on visual objects by overriding the <xref:System.Windows.Media.Visual.HitTestCore%2A> method. This means that when you invoke the <xref:System.Windows.Media.VisualTreeHelper.HitTest%2A> method, your overridden implementation of <xref:System.Windows.Media.Visual.HitTestCore%2A> is called. Your overridden method is called when a hit test falls within the bounding rectangle of the visual object, even if the coordinate falls outside the geometry of the visual object."
+  summary: "确定点坐标值是否的视觉对象的边界内。"
+  remarks: "您可以重写的默认命中测试视觉对象上的支持通过重写<xref:System.Windows.Media.Visual.HitTestCore%2A>方法。</xref:System.Windows.Media.Visual.HitTestCore%2A> 这意味着，当你调用<xref:System.Windows.Media.VisualTreeHelper.HitTest%2A>方法，重写的实现<xref:System.Windows.Media.Visual.HitTestCore%2A>称为。</xref:System.Windows.Media.Visual.HitTestCore%2A> </xref:System.Windows.Media.VisualTreeHelper.HitTest%2A> 重写的方法位于时将调用命中的测试的视觉对象的边框内即使坐标位于之外的视觉对象的几何图形。"
   example:
   - "The following example shows how to override the HitTestCore method. One reason you might want to override this method is to provide additional functionality during the hit testing process.  \n  \n [!code-cs[HitTestingOverview#107](~/add/codesnippet/csharp/HitTestingOverview/Window1.xaml.cs#107)]\n [!code-vb[HitTestingOverview#107](~/add/codesnippet/visualbasic/hittestingoverview/window1.xaml.vb#107)]"
   syntax:
@@ -229,10 +229,10 @@ items:
     parameters:
     - id: hitTestParameters
       type: System.Windows.Media.PointHitTestParameters
-      description: "A <xref href=&quot;System.Windows.Media.PointHitTestParameters&quot;></xref> object that specifies the <xref href=&quot;System.Windows.Point&quot;></xref> to hit test against."
+      description: "A <xref href=&quot;System.Windows.Media.PointHitTestParameters&quot;> </xref>对象，它指定<xref href=&quot;System.Windows.Point&quot;></xref>进行命中测试。"
     return:
       type: System.Windows.Media.HitTestResult
-      description: "A <xref href=&quot;System.Windows.Media.HitTestResult&quot;></xref> that represents the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> that is returned from a hit test."
+      description: "A <xref href=&quot;System.Windows.Media.HitTestResult&quot;> </xref>表示<xref href=&quot;System.Windows.Media.Visual&quot;></xref>从命中测试返回。"
   overload: System.Windows.Media.Visual.HitTestCore*
   exceptions: []
   platform:
@@ -249,16 +249,16 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Determines whether the visual object is an ancestor of the descendant visual object."
+  summary: "确定的视觉对象是否为的子代的视觉对象的祖先。"
   syntax:
     content: public bool IsAncestorOf (System.Windows.DependencyObject descendant);
     parameters:
     - id: descendant
       type: System.Windows.DependencyObject
-      description: "A value of type <xref href=&quot;System.Windows.DependencyObject&quot;></xref>."
+      description: "类型的值<xref href=&quot;System.Windows.DependencyObject&quot;> </xref>。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the visual object is an ancestor of <code>descendant</code>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果的视觉对象的祖先<code> descendant </code>; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Media.Visual.IsAncestorOf*
   exceptions: []
   platform:
@@ -275,16 +275,16 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Determines whether the visual object is a descendant of the ancestor visual object."
+  summary: "确定的视觉对象是否为上级 visual 对象的后代。"
   syntax:
     content: public bool IsDescendantOf (System.Windows.DependencyObject ancestor);
     parameters:
     - id: ancestor
       type: System.Windows.DependencyObject
-      description: "A value of type <xref href=&quot;System.Windows.DependencyObject&quot;></xref>."
+      description: "类型的值<xref href=&quot;System.Windows.DependencyObject&quot;> </xref>。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the visual object is a descendant of <code>ancestor</code>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果的视觉对象的子代<code> ancestor </code>; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Media.Visual.IsDescendantOf*
   exceptions: []
   platform:
@@ -301,16 +301,16 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Called when the DPI at which this View is rendered changes."
+  summary: "时调用此视图呈现更改 DPI。"
   syntax:
     content: protected virtual void OnDpiChanged (System.Windows.DpiScale oldDpi, System.Windows.DpiScale newDpi);
     parameters:
     - id: oldDpi
       type: System.Windows.DpiScale
-      description: "The previous DPI scale setting."
+      description: "以前的 DPI 缩放设置。"
     - id: newDpi
       type: System.Windows.DpiScale
-      description: "The new DPI scale setting."
+      description: "新的 DPI 缩放设置。"
   overload: System.Windows.Media.Visual.OnDpiChanged*
   exceptions: []
   platform:
@@ -327,16 +327,16 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Called when the <xref href=&quot;System.Windows.Media.VisualCollection&quot;></xref> of the visual object is modified."
+  summary: "时调用<xref href=&quot;System.Windows.Media.VisualCollection&quot;></xref>的视觉对象的修改。"
   syntax:
     content: protected virtual void OnVisualChildrenChanged (System.Windows.DependencyObject visualAdded, System.Windows.DependencyObject visualRemoved);
     parameters:
     - id: visualAdded
       type: System.Windows.DependencyObject
-      description: "The <xref href=&quot;System.Windows.Media.Visual&quot;></xref> that was added to the collection"
+      description: "<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>已添加到集合"
     - id: visualRemoved
       type: System.Windows.DependencyObject
-      description: "The <xref href=&quot;System.Windows.Media.Visual&quot;></xref> that was removed from the collection"
+      description: "<xref href=&quot;System.Windows.Media.Visual&quot;> </xref> ，已从集合中移除"
   overload: System.Windows.Media.Visual.OnVisualChildrenChanged*
   exceptions: []
   platform:
@@ -353,8 +353,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Called when the parent of the visual object is changed."
-  remarks: "A class that derives from <xref:System.Windows.Media.Visual> can choose to override this method.       There is no &quot;VisualParentChanged&quot; event provided that reports this change to instances. Therefore, you must override this method to handle notification scenarios and provide an instance version of the notification if that is part of your scenario."
+  summary: "更改视觉对象的父级时调用。"
+  remarks: "派生自的类<xref:System.Windows.Media.Visual>可以选择重写此方法。</xref:System.Windows.Media.Visual>       提供此更改将报告到实例上没有&quot;没有&quot;事件。 因此，你必须重写此方法以处理通知方案并提供通知的实例版本，如果它是你的方案的一部分。"
   example:
   - "The following example defines an overridden implementation of OnVisualParentChanged.  \n  \n [!code-vb[VisualSnippets#VisualSnippet10](~/add/codesnippet/visualbasic/visualsnippets/window1.xaml.vb#visualsnippet10)]\n [!code-cs[VisualSnippets#VisualSnippet10](~/add/codesnippet/csharp/VisualSnippets/Window1.xaml.cs#visualsnippet10)]"
   syntax:
@@ -362,7 +362,7 @@ items:
     parameters:
     - id: oldParent
       type: System.Windows.DependencyObject
-      description: "A value of type <xref href=&quot;System.Windows.DependencyObject&quot;></xref> that represents the previous parent of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> object. If the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> object did not have a previous parent, the value of the parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "类型的值<xref href=&quot;System.Windows.DependencyObject&quot;></xref>表示以前的父项<xref href=&quot;System.Windows.Media.Visual&quot;></xref>对象。 如果<xref href=&quot;System.Windows.Media.Visual&quot;></xref>对象没有以前的父级，参数的值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Media.Visual.OnVisualParentChanged*
   exceptions: []
   platform:
@@ -379,17 +379,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Converts a <xref href=&quot;System.Windows.Point&quot;></xref> in screen coordinates into a <xref href=&quot;System.Windows.Point&quot;></xref> that represents the current coordinate system of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
-  remarks: "Use the <xref:System.Windows.Media.Visual.PointToScreen%2A> method to convert a <xref:System.Windows.Point> that represents the current coordinate system of the <xref:System.Windows.Media.Visual> into a <xref:System.Windows.Point> in screen coordinates."
+  summary: "将转换<xref href=&quot;System.Windows.Point&quot;></xref>屏幕坐标中<xref href=&quot;System.Windows.Point&quot;> </xref> ，它表示当前坐标系统的<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>。"
+  remarks: "使用<xref:System.Windows.Media.Visual.PointToScreen%2A>方法将转换<xref:System.Windows.Point>，它表示当前坐标系统的<xref:System.Windows.Media.Visual>到<xref:System.Windows.Point>以屏幕坐标。</xref:System.Windows.Point> </xref:System.Windows.Media.Visual> </xref:System.Windows.Point> </xref:System.Windows.Media.Visual.PointToScreen%2A>"
   syntax:
     content: public System.Windows.Point PointFromScreen (System.Windows.Point point);
     parameters:
     - id: point
       type: System.Windows.Point
-      description: "The <xref href=&quot;System.Windows.Point&quot;></xref> value in screen coordinates."
+      description: "<xref href=&quot;System.Windows.Point&quot;> </xref>以屏幕坐标表示的值。"
     return:
       type: System.Windows.Point
-      description: "The converted <xref href=&quot;System.Windows.Point&quot;></xref> value that represents the current coordinate system of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+      description: "转换后<xref href=&quot;System.Windows.Point&quot;></xref>值，该值表示当前坐标系统的<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>。"
   overload: System.Windows.Media.Visual.PointFromScreen*
   exceptions: []
   platform:
@@ -406,17 +406,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Converts a <xref href=&quot;System.Windows.Point&quot;></xref> that represents the current coordinate system of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> into a <xref href=&quot;System.Windows.Point&quot;></xref> in screen coordinates."
-  remarks: "Use the <xref:System.Windows.Media.Visual.PointFromScreen%2A> method to convert a <xref:System.Windows.Point> in screen coordinates into a <xref:System.Windows.Point> that represents the current coordinate system of the <xref:System.Windows.Media.Visual>."
+  summary: "将转换<xref href=&quot;System.Windows.Point&quot;> </xref> ，它表示当前坐标系统的<xref href=&quot;System.Windows.Media.Visual&quot;></xref>到<xref href=&quot;System.Windows.Point&quot;></xref>以屏幕坐标。"
+  remarks: "使用<xref:System.Windows.Media.Visual.PointFromScreen%2A>转换<xref:System.Windows.Point><xref:System.Windows.Point>，它表示当前坐标系统的<xref:System.Windows.Media.Visual>。</xref:System.Windows.Media.Visual></xref:System.Windows.Point>屏幕坐标中</xref:System.Windows.Point>的方法</xref:System.Windows.Media.Visual.PointFromScreen%2A>"
   syntax:
     content: public System.Windows.Point PointToScreen (System.Windows.Point point);
     parameters:
     - id: point
       type: System.Windows.Point
-      description: "The <xref href=&quot;System.Windows.Point&quot;></xref> value that represents the current coordinate system of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+      description: "<xref href=&quot;System.Windows.Point&quot;> </xref>值，该值表示当前坐标系统的<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>。"
     return:
       type: System.Windows.Point
-      description: "The converted <xref href=&quot;System.Windows.Point&quot;></xref> value in screen coordinates."
+      description: "转换后<xref href=&quot;System.Windows.Point&quot;></xref>以屏幕坐标表示的值。"
   overload: System.Windows.Media.Visual.PointToScreen*
   exceptions: []
   platform:
@@ -433,8 +433,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Removes the parent-child relationship between two visuals."
-  remarks: "The RemoveVisualChild method removes the parent-child relationship between two visuals. This method, along with the <xref:System.Windows.Media.Visual.AddVisualChild%2A> method, must be used when you need greater low-level control over the underlying storage implementation of visual child objects. <xref:System.Windows.Media.VisualCollection> can be used as a default implementation for storing child objects."
+  summary: "删除两个视觉对象之间的父-子关系。"
+  remarks: "RemoveVisualChild 方法删除两个视觉对象之间的父-子关系。 此方法，以及<xref:System.Windows.Media.Visual.AddVisualChild%2A>方法，必须时需要更好地控制低级别的可视子对象的基础存储实现使用。</xref:System.Windows.Media.Visual.AddVisualChild%2A> <xref:System.Windows.Media.VisualCollection>可以用于存储子对象使用作为默认实现。</xref:System.Windows.Media.VisualCollection>"
   example:
   - "The following example shows how to define custom storage requirements for a visual child. The example uses the <xref:System.Windows.Media.Visual.AddVisualChild%2A> and RemoveVisualChild methods to sets up the parent-child relationship between the parent visual and `child`. In order for the visual tree to be enumerated correctly, the example provides overridden implementations of the <xref:System.Windows.Media.Visual.GetVisualChild%2A> method and <xref:System.Windows.Media.Visual.VisualChildrenCount%2A> property.  \n  \n> [!NOTE]\n>  Although it is possible to use <xref:System.Windows.Media.VisualCollection> to create parent-child relationships between visual objects, it is more efficient to provide your own custom storage implementation when only one child is linked to a parent.  \n  \n [!code-cs[AddVisualChild#AddVisualChild01](~/add/codesnippet/csharp/AddVisualChild/Window1.xaml.cs#addvisualchild01)]\n [!code-vb[AddVisualChild#AddVisualChild01](~/add/codesnippet/visualbasic/addvisualchild/window1.xaml.vb#addvisualchild01)]"
   syntax:
@@ -442,7 +442,7 @@ items:
     parameters:
     - id: child
       type: System.Windows.Media.Visual
-      description: "The child visual object to remove from the parent visual."
+      description: "要从父可视对象中删除的子 visual 对象。"
   overload: System.Windows.Media.Visual.RemoveVisualChild*
   exceptions: []
   platform:
@@ -459,16 +459,16 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Returns a transform that can be used to transform coordinates from the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> to the specified <xref href=&quot;System.Windows.Media.Media3D.Visual3D&quot;></xref> ancestor of the visual object."
+  summary: "返回一个可用于转换中的坐标的转换<xref href=&quot;System.Windows.Media.Visual&quot;></xref>到指定<xref href=&quot;System.Windows.Media.Media3D.Visual3D&quot;></xref>的视觉对象的祖先。"
   syntax:
     content: public System.Windows.Media.Media3D.GeneralTransform2DTo3D TransformToAncestor (System.Windows.Media.Media3D.Visual3D ancestor);
     parameters:
     - id: ancestor
       type: System.Windows.Media.Media3D.Visual3D
-      description: "The <xref href=&quot;System.Windows.Media.Media3D.Visual3D&quot;></xref> to which the coordinates are transformed."
+      description: "<xref href=&quot;System.Windows.Media.Media3D.Visual3D&quot;> </xref>到将坐标进行转换。"
     return:
       type: System.Windows.Media.Media3D.GeneralTransform2DTo3D
-      description: "A transform that can be used to transform coordinates from the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> to the specified <xref href=&quot;System.Windows.Media.Media3D.Visual3D&quot;></xref> ancestor of the visual object."
+      description: "一种可用于转换中的坐标的转换<xref href=&quot;System.Windows.Media.Visual&quot;></xref>到指定<xref href=&quot;System.Windows.Media.Media3D.Visual3D&quot;></xref>的视觉对象的祖先。"
   overload: System.Windows.Media.Visual.TransformToAncestor*
   exceptions: []
   platform:
@@ -485,8 +485,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Returns a transform that can be used to transform coordinates from the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> to the specified <xref href=&quot;System.Windows.Media.Visual&quot;></xref> ancestor of the visual object."
-  remarks: "Alternatively, you can use the <xref:System.Windows.Media.VisualTreeHelper.GetOffset%2A?displayProperty=fullName> method to retrieve the offset of a visual object relative to its parent. The offset values are contained within the returned <xref:System.Windows.Vector> value.       [!code-vb[VisualSnippets#VisualSnippet2](~/add/codesnippet/visualbasic/visualsnippets/window1.xaml.vb#visualsnippet2)]  [!code-cs[VisualSnippets#VisualSnippet2](~/add/codesnippet/csharp/VisualSnippets/Window1.xaml.cs#visualsnippet2)]"
+  summary: "返回一个可用于转换中的坐标的转换<xref href=&quot;System.Windows.Media.Visual&quot;></xref>到指定<xref href=&quot;System.Windows.Media.Visual&quot;></xref>的视觉对象的祖先。"
+  remarks: "或者，可以使用<xref:System.Windows.Media.VisualTreeHelper.GetOffset%2A?displayProperty=fullName>方法来检索相对于其父级的视觉对象的偏移量。</xref:System.Windows.Media.VisualTreeHelper.GetOffset%2A?displayProperty=fullName> 包含偏移的值在返回<xref:System.Windows.Vector>值。</xref:System.Windows.Vector>       [!code-vb[VisualSnippets #VisualSnippet2](~/add/codesnippet/visualbasic/visualsnippets/window1.xaml.vb#visualsnippet2)][!code-cs[VisualSnippets #VisualSnippet2  ](~/add/codesnippet/csharp/VisualSnippets/Window1.xaml.cs#visualsnippet2)]"
   example:
   - "The following markup example shows a <xref:System.Windows.Controls.TextBlock> that is nested within two <xref:System.Windows.Controls.StackPanel> objects.  \n  \n [!code-xml[VisualSnippets#VisualSnippet7](~/add/codesnippet/xaml/VisualSnippets/Window2.xaml#visualsnippet7)]  \n  \n The following code example shows how to use the TransformToAncestor method to retrieve the offset of the <xref:System.Windows.Controls.TextBlock> relative to the containing <xref:System.Windows.Window>. The offset values are contained in the returned <xref:System.Windows.Media.GeneralTransform>.  \n  \n [!code-vb[VisualSnippets#VisualSnippet5](~/add/codesnippet/visualbasic/visualsnippets/window1.xaml.vb#visualsnippet5)]\n [!code-cs[VisualSnippets#VisualSnippet5](~/add/codesnippet/csharp/VisualSnippets/Window1.xaml.cs#visualsnippet5)]  \n  \n The offset takes into account the <xref:System.Windows.FrameworkElement.Margin%2A> values for all objects within the containing <xref:System.Windows.Window>. In this case, <xref:System.Windows.Vector.X%2A> is 28, and <xref:System.Windows.Vector.Y%2A> is 28."
   syntax:
@@ -494,21 +494,21 @@ items:
     parameters:
     - id: ancestor
       type: System.Windows.Media.Visual
-      description: "The <xref href=&quot;System.Windows.Media.Visual&quot;></xref> to which the coordinates are transformed."
+      description: "<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>到将坐标进行转换。"
     return:
       type: System.Windows.Media.GeneralTransform
-      description: "A value of type <xref href=&quot;System.Windows.Media.GeneralTransform&quot;></xref>."
+      description: "类型的值<xref href=&quot;System.Windows.Media.GeneralTransform&quot;> </xref>。"
   overload: System.Windows.Media.Visual.TransformToAncestor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>ancestor</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>ancestor</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>ancestor</code> is not an ancestor of the visual."
+    description: "<code>ancestor</code>不是视觉对象的祖先。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The visual objects are not related."
+    description: "视觉对象无关。"
   platform:
   - net462
 - uid: System.Windows.Media.Visual.TransformToDescendant(System.Windows.Media.Visual)
@@ -523,7 +523,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Returns a transform that can be used to transform coordinates from the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> to the specified visual object descendant."
+  summary: "返回一个可用于转换中的坐标的转换<xref href=&quot;System.Windows.Media.Visual&quot;></xref>到指定的可视对象后代。"
   remarks: ''
   example:
   - "The following markup example shows a <xref:System.Windows.Controls.TextBlock> that is contained within a <xref:System.Windows.Controls.StackPanel> object.  \n  \n [!code-xml[VisualSnippets#VisualSnippet4](~/add/codesnippet/xaml/VisualSnippets/Window1.xaml#visualsnippet4)]  \n  \n The following code example shows how to use the TransformToDescendant method to retrieve the offset of the <xref:System.Windows.Controls.StackPanel> relative to its child <xref:System.Windows.Controls.TextBlock>. The offset values are contained within the returned <xref:System.Windows.Media.GeneralTransform> value.  \n  \n [!code-vb[VisualSnippets#VisualSnippet9](~/add/codesnippet/visualbasic/visualsnippets/window1.xaml.vb#visualsnippet9)]\n [!code-cs[VisualSnippets#VisualSnippet9](~/add/codesnippet/csharp/VisualSnippets/Window1.xaml.cs#visualsnippet9)]  \n  \n The offset takes into account the <xref:System.Windows.FrameworkElement.Margin%2A> values for all objects. In this case, <xref:System.Windows.Vector.X%2A> is -4, and <xref:System.Windows.Vector.Y%2A> is -4. The offset values are negative values because the parent object is negatively offset relative to its child object."
@@ -532,21 +532,21 @@ items:
     parameters:
     - id: descendant
       type: System.Windows.Media.Visual
-      description: "The <xref href=&quot;System.Windows.Media.Visual&quot;></xref> to which the coordinates are transformed."
+      description: "<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>到将坐标进行转换。"
     return:
       type: System.Windows.Media.GeneralTransform
-      description: "A value of type <xref href=&quot;System.Windows.Media.GeneralTransform&quot;></xref>."
+      description: "类型的值<xref href=&quot;System.Windows.Media.GeneralTransform&quot;> </xref>。"
   overload: System.Windows.Media.Visual.TransformToDescendant*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>descendant</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>descendant</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The visual is not an ancestor of the <code>descendant</code> visual."
+    description: "视觉对象不是对象的上级<code> descendant </code> visual。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The visual objects are not related."
+    description: "视觉对象无关。"
   platform:
   - net462
 - uid: System.Windows.Media.Visual.TransformToVisual(System.Windows.Media.Visual)
@@ -561,8 +561,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Returns a transform that can be used to transform coordinates from the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> to the specified visual object."
-  remarks: "The <xref:System.Windows.Media.Visual.TransformToAncestor%2A> and <xref:System.Windows.Media.Visual.TransformToDescendant%2A> methods can also be used to return a transform for a visual object."
+  summary: "返回一个可用于转换中的坐标的转换<xref href=&quot;System.Windows.Media.Visual&quot;></xref>到指定的可视对象。"
+  remarks: "<xref:System.Windows.Media.Visual.TransformToAncestor%2A>和<xref:System.Windows.Media.Visual.TransformToDescendant%2A>方法还可以用于返回的视觉对象的转换。</xref:System.Windows.Media.Visual.TransformToDescendant%2A> </xref:System.Windows.Media.Visual.TransformToAncestor%2A>"
   example:
   - "The following markup example shows a <xref:System.Windows.Controls.TextBlock> that is contained within a <xref:System.Windows.Controls.StackPanel> object.  \n  \n [!code-xml[VisualSnippets#VisualSnippet4](~/add/codesnippet/xaml/VisualSnippets/Window1.xaml#visualsnippet4)]  \n  \n The following code example shows how to use the TransformToVisual method to retrieve the offset of the <xref:System.Windows.Controls.StackPanel> relative to its child <xref:System.Windows.Controls.TextBlock>. The offset values are contained within the returned <xref:System.Windows.Media.GeneralTransform> value.  \n  \n [!code-vb[VisualSnippets#VisualSnippet8](~/add/codesnippet/visualbasic/visualsnippets/window1.xaml.vb#visualsnippet8)]\n [!code-cs[VisualSnippets#VisualSnippet8](~/add/codesnippet/csharp/VisualSnippets/Window1.xaml.cs#visualsnippet8)]  \n  \n The offset takes into account the <xref:System.Windows.FrameworkElement.Margin%2A> values for all objects. In this case, <xref:System.Windows.Vector.X%2A> is -4, and <xref:System.Windows.Vector.Y%2A> is -4. The offset values are negative values because the parent object is negatively offset relative to its child object."
   syntax:
@@ -570,18 +570,18 @@ items:
     parameters:
     - id: visual
       type: System.Windows.Media.Visual
-      description: "The <xref href=&quot;System.Windows.Media.Visual&quot;></xref> to which the coordinates are transformed."
+      description: "<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>到将坐标进行转换。"
     return:
       type: System.Windows.Media.GeneralTransform
-      description: "A value of type <xref href=&quot;System.Windows.Media.GeneralTransform&quot;></xref>."
+      description: "类型的值<xref href=&quot;System.Windows.Media.GeneralTransform&quot;> </xref>。"
   overload: System.Windows.Media.Visual.TransformToVisual*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>visual</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>visual</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The visual objects are not related."
+    description: "视觉对象无关。"
   platform:
   - net462
 - uid: System.Windows.Media.Visual.VisualBitmapEffect
@@ -596,12 +596,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the <xref href=&quot;System.Windows.Media.Effects.BitmapEffect&quot;></xref> value for the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+  summary: "获取或设置<xref href=&quot;System.Windows.Media.Effects.BitmapEffect&quot;></xref>值<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>。"
   syntax:
     content: protected System.Windows.Media.Effects.BitmapEffect VisualBitmapEffect { get; set; }
     return:
       type: System.Windows.Media.Effects.BitmapEffect
-      description: "The bitmap effect for this visual object."
+      description: "此视觉对象位图效果。"
   overload: System.Windows.Media.Visual.VisualBitmapEffect*
   exceptions: []
   platform:
@@ -618,12 +618,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the <xref href=&quot;System.Windows.Media.Effects.BitmapEffectInput&quot;></xref> value for the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+  summary: "获取或设置<xref href=&quot;System.Windows.Media.Effects.BitmapEffectInput&quot;></xref>值<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>。"
   syntax:
     content: protected System.Windows.Media.Effects.BitmapEffectInput VisualBitmapEffectInput { get; set; }
     return:
       type: System.Windows.Media.Effects.BitmapEffectInput
-      description: "The bitmap effect input value for this visual object."
+      description: "位图效果输入此视觉对象的值。"
   overload: System.Windows.Media.Visual.VisualBitmapEffectInput*
   exceptions: []
   platform:
@@ -640,7 +640,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the <xref href=&quot;System.Windows.Media.BitmapScalingMode&quot;></xref> for the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+  summary: "获取或设置<xref href=&quot;System.Windows.Media.BitmapScalingMode&quot;></xref>为<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>。"
   syntax:
     content: protected System.Windows.Media.BitmapScalingMode VisualBitmapScalingMode { get; set; }
     return:
@@ -662,13 +662,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets a cached representation of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
-  remarks: "Set the VisualCacheMode property when you need to increase performance for content that is time-consuming to render. For more information, see <xref:System.Windows.Media.BitmapCache>."
+  summary: "获取或设置缓存的表示形式<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>。"
+  remarks: "当你需要以提高性能很长时间才能呈现的内容时，请设置 VisualCacheMode 属性。 有关详细信息，请参阅<xref:System.Windows.Media.BitmapCache>。</xref:System.Windows.Media.BitmapCache>"
   syntax:
     content: protected System.Windows.Media.CacheMode VisualCacheMode { get; set; }
     return:
       type: System.Windows.Media.CacheMode
-      description: "A <xref href=&quot;System.Windows.Media.CacheMode&quot;></xref> that holds a cached representation of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+      description: "A <xref href=&quot;System.Windows.Media.CacheMode&quot;> </xref> ，用于保存缓存的表示形式<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>。"
   overload: System.Windows.Media.Visual.VisualCacheMode*
   exceptions: []
   platform:
@@ -685,15 +685,15 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets the number of child elements for the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
-  remarks: "By default, a <xref:System.Windows.Media.Visual> has no children. Therefore, the default implementation always returns 0."
+  summary: "获取子元素的数目<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>。"
+  remarks: "默认情况下，<xref:System.Windows.Media.Visual>没有任何子级。</xref:System.Windows.Media.Visual> 因此，默认实现始终返回 0。"
   example:
   - "The following example defines an overridden implementation of VisualChildrenCount.  \n  \n [!code-cs[DrawingVisualSample#102a](~/add/codesnippet/csharp/DrawingVisual/Window1.xaml.cs#102a)]\n [!code-vb[DrawingVisualSample#102a](~/add/codesnippet/visualbasic/drawingvisual/window1.xaml.vb#102a)]"
   syntax:
     content: protected virtual int VisualChildrenCount { get; }
     return:
       type: System.Int32
-      description: "The number of child elements."
+      description: "子元素的数目。"
   overload: System.Windows.Media.Visual.VisualChildrenCount*
   exceptions: []
   platform:
@@ -710,7 +710,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the <xref href=&quot;System.Windows.Media.ClearTypeHint&quot;></xref> that determines how ClearType is rendered in the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+  summary: "获取或设置<xref href=&quot;System.Windows.Media.ClearTypeHint&quot;> </xref> ，它确定 ClearType 中的呈现方式<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>。"
   syntax:
     content: protected System.Windows.Media.ClearTypeHint VisualClearTypeHint { get; set; }
     return:
@@ -732,12 +732,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the clip region of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> as a <xref href=&quot;System.Windows.Media.Geometry&quot;></xref> value."
+  summary: "获取或设置的剪辑区域<xref href=&quot;System.Windows.Media.Visual&quot;></xref>作为<xref href=&quot;System.Windows.Media.Geometry&quot;></xref>值。"
   syntax:
     content: protected System.Windows.Media.Geometry VisualClip { get; set; }
     return:
       type: System.Windows.Media.Geometry
-      description: "The clip region value of the visual as a <xref href=&quot;System.Windows.Media.Geometry&quot;></xref> type."
+      description: "为视觉对象的剪辑区域值<xref href=&quot;System.Windows.Media.Geometry&quot;></xref>类型。"
   overload: System.Windows.Media.Visual.VisualClip*
   exceptions: []
   platform:
@@ -754,12 +754,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the edge mode of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> as an <xref href=&quot;System.Windows.Media.EdgeMode&quot;></xref> value."
+  summary: "获取或设置的边缘模式下<xref href=&quot;System.Windows.Media.Visual&quot;></xref>作为<xref href=&quot;System.Windows.Media.EdgeMode&quot;></xref>值。"
   syntax:
     content: protected System.Windows.Media.EdgeMode VisualEdgeMode { get; set; }
     return:
       type: System.Windows.Media.EdgeMode
-      description: "The <xref href=&quot;System.Windows.Media.EdgeMode&quot;></xref> value of the visual."
+      description: "<xref href=&quot;System.Windows.Media.EdgeMode&quot;> </xref>视觉对象的值。"
   overload: System.Windows.Media.Visual.VisualEdgeMode*
   exceptions: []
   platform:
@@ -776,12 +776,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the bitmap effect to apply to the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+  summary: "获取或设置要应用到的位图效果<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>。"
   syntax:
     content: protected System.Windows.Media.Effects.Effect VisualEffect { get; set; }
     return:
       type: System.Windows.Media.Effects.Effect
-      description: "An <xref href=&quot;System.Windows.Media.Effects.Effect&quot;></xref> that represents the bitmap effect."
+      description: "<xref href=&quot;System.Windows.Media.Effects.Effect&quot;> </xref>表示位图效果。"
   overload: System.Windows.Media.Visual.VisualEffect*
   exceptions: []
   platform:
@@ -798,12 +798,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the offset value of the visual object."
+  summary: "获取或设置的视觉对象的偏移量的值。"
   syntax:
     content: protected System.Windows.Vector VisualOffset { get; set; }
     return:
       type: System.Windows.Vector
-      description: "A <xref href=&quot;System.Windows.Vector&quot;></xref> that specifies the offset value."
+      description: "A <xref href=&quot;System.Windows.Vector&quot;> </xref> ，它指定的偏移量的值。"
   overload: System.Windows.Media.Visual.VisualOffset*
   exceptions: []
   platform:
@@ -820,13 +820,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the opacity of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
-  remarks: "The value of the opacity of the <xref:System.Windows.Media.Visual> is expressed as a value between 0 and 1. A value of 0 indicates that the element is completely transparent, whereas a value of 1 indicates that the element is completely opaque. A value of 0.5 indicates that the element is 50 percent opaque. Values that are less than 0 are treated as 0; values that are greater than 1 are treated as 1."
+  summary: "获取或设置的不透明度<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>。"
+  remarks: "不透明度值<xref:System.Windows.Media.Visual>表示为介于 0 和 1 之间的值。</xref:System.Windows.Media.Visual> 值为 0 指示该元素是完全透明，而值为 1 指示元素是完全不透明。 如果值为 0.5 表示该元素为 50%不透明。 小于 0 的值将被视为 0;大于 1 的值将被视为 1。"
   syntax:
     content: protected double VisualOpacity { get; set; }
     return:
       type: System.Double
-      description: "The opacity value of the visual."
+      description: "视觉对象不透明度值。"
   overload: System.Windows.Media.Visual.VisualOpacity*
   exceptions: []
   platform:
@@ -843,13 +843,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the <xref href=&quot;System.Windows.Media.Brush&quot;></xref> value that represents the opacity mask of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
-  remarks: "The opacity mask is a <xref:System.Windows.Media.Brush> that is applied to any alpha-channel masking for the rendered content of this visual."
+  summary: "获取或设置<xref href=&quot;System.Windows.Media.Brush&quot;></xref>值，该值表示的不透明蒙<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>。"
+  remarks: "不透明蒙板是<xref:System.Windows.Media.Brush>，应用于所呈现内容的此视觉对象任何 alpha 通道蒙。</xref:System.Windows.Media.Brush>"
   syntax:
     content: protected System.Windows.Media.Brush VisualOpacityMask { get; set; }
     return:
       type: System.Windows.Media.Brush
-      description: "A <xref href=&quot;System.Windows.Media.Brush&quot;></xref> that represents the opacity mask value of the visual."
+      description: "A <xref href=&quot;System.Windows.Media.Brush&quot;> </xref>表示的视觉对象的不透明度掩码值。"
   overload: System.Windows.Media.Visual.VisualOpacityMask*
   exceptions: []
   platform:
@@ -866,12 +866,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets the visual tree parent of the visual object."
+  summary: "获取的视觉对象的可视化树父级。"
   syntax:
     content: protected System.Windows.DependencyObject VisualParent { get; }
     return:
       type: System.Windows.DependencyObject
-      description: "The <xref href=&quot;System.Windows.Media.Visual&quot;></xref> parent."
+      description: "<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>父。"
   overload: System.Windows.Media.Visual.VisualParent*
   exceptions: []
   platform:
@@ -888,13 +888,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets a clipped scrollable area for the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
-  remarks: "Set the VisualScrollableAreaClip property to enable accelerated scrolling when rendering in software. This is useful in remote rendering scenarios, such as running over Remote Desktop or running in a virtual machine. Set this property on the parent element whose children will be scrolled. Setting the VisualScrollableAreaClip property has no effect when rendering is hardware accelerated.       The VisualScrollableAreaClip property enables specific, advanced scenarios. The following list shows the caveats that apply when you use the VisualScrollableAreaClip property.      -   The background of the scrolled area must be opaque, or scrolling artifacts will occur.      -   The VisualScrollableAreaClip property accelerates scrolling only when WPF is rendering in software. For example, this situation occurs when the application is running over Remote Desktop or running locally in a virtual machine.      -   The scrolling behavior is unchanged when rendering in hardware. To prevent differences in scrolling behavior, you should keep the VisualScrollableAreaClip property enabled for both hardware and software.      -   Rotate and skew transforms disable accelerated scrolling. Scale transforms and horizontal or vertical translations above the scrolled region work correctly and do not disable scrolling acceleration.      -   Changing the subtree or triggering parts of the scrollable area to redraw via animation behave as expected, but lose the benefit of accelerated scrolling for the redrawn area. Any animation that invalidates the scrolled area during the same frame in which scrolling occurs eliminates the benefit of this optimization.      -   The VisualScrollableAreaClip rectangle snaps inward to pixels. Therefore, the snapped size of the scrolling rectangle is always less than or equal to the size you have set.      -   Offsets snap downward. This means that the difference of the previous snapped offset and current snapped offset is always an integer number of pixels.      -   Hit tests can be off by up to a pixel.      -   Layout rounding should be turned on, because it ensures that the edges of scrollable areas and the boundary window client area are snapped to pixel boundaries, resulting in correct alignment.      -   Scrolling acceleration does not work on layered windows. This means windows in which AllowTransparency == true, window.windowstyle == none, and so on.      -   Scrolling acceleration does not occur during full-window rendering.      -   Scrolling acceleration does not work when the window straddles two monitors.      -   Scrolling acceleration does not work in the presence of intermediate render targets in the parent chain of the scrolled element. The following list shows some of these intermediate render targets.          -   Clips          -   Effects          -   DrawingBrushes          -   VisualBrushes          -   OpacityMasks          -   Opacity      -   Only one accelerated scroll can happen per frame. There can be multiple accelerated scroll areas, but only one of them can perform an accelerated scroll during a frame. Which area is scrolled is indeterminate.      -   Scrolling acceleration supports content above the scrolling region (in z-order) that is not scrolled with the rest of the content. The system calculates all necessary dirty regions and completes the accelerated scroll, but it sends several additional bitmaps over the wire to move the unintentionally scrolled portion back to its correct position on screen."
+  summary: "获取或设置有关的剪切可滚动区域<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>。"
+  remarks: "设置要启用加速滚动，在软件中呈现时的 VisualScrollableAreaClip 属性。 这可在远程呈现的情况下，例如，运行通过远程桌面或虚拟机中运行。 将滚动的子级的父元素上设置此属性。 设置 VisualScrollableAreaClip 属性时不起呈现进行硬件加速。       VisualScrollableAreaClip 属性使特定的高级方案。 以下列表显示适用使用 VisualScrollableAreaClip 属性时的注意事项。      -滚动区域的背景必须是不透明的否则滚动项目将出现。      -VisualScrollableAreaClip 属性加速滚动仅 WPF 呈现在软件中。 例如，运行通过远程桌面或虚拟机中本地运行应用程序时，将发生这种情况。      的在硬件中呈现时保持不变滚动行为。 若要防止在滚动行为的差异，你应该保留已启用的硬件和软件的 VisualScrollableAreaClip 属性。      -旋转和扭曲变换禁用加速滚动。 缩放转换和滚动区域上方的水平或垂直翻译正常工作，并且不会禁用滚动加速。      -更改子树或触发要通过动画重绘的可滚动区域的部分行为按预期方式运行，但会丢失加速滚动重绘的区域的优势。 使滚动的区域无效，在同一范围内的任何动画中哪些滚动时发生消除这种优化的好处。      -VisualScrollableAreaClip 矩形向内对齐到像素为单位。 因此，滚动矩形的对齐的大小始终小于或等于设置的大小。      的对齐的向下偏移量。 这意味着的上一个差异对齐偏移量和当前对齐的偏移量始终为整数个数的像素为单位。      的命中测试可以是禁用的最多一个像素。      -布局舍入应打开，因为它可以确保的可滚动区域和边界窗口工作区边缘会对齐到像素边界，从而导致正确对齐。      在分层窗口不工作滚动加速。 这意味着 windows 中哪些 AllowTransparency = = true，window.windowstyle = = 无，依次类推。      完整窗口呈现期间未出现滚动加速。      滚动加速不工作时窗口跨两个监视器。      滚动加速不适出现情况下，滚动元素的父链中的中间呈现器目标。 以下列表显示其中一些中间呈现器目标。          -裁剪的效果-DrawingBrushes-VisualBrushes-OpacityMasks 的不透明度-一个加速的滚动可以发生这种情况每帧。 可以有多个加速的滚动区域，但仅有一种可以在范围内执行加速的滚动。 滚动哪个区域是不确定的。      滚动加速支持 （以 z 顺序） 不滚动内容的其余部分一起滚动的区域上方的内容。 系统计算所有必要的更新区域，并完成加速的滚动，但它将发送其他的多个位图，在网络上移动的无意中滚动的部分在屏幕上回其正确的位置。"
   syntax:
     content: protected Nullable<System.Windows.Rect> VisualScrollableAreaClip { get; set; }
     return:
       type: System.Nullable{System.Windows.Rect}
-      description: "A <xref href=&quot;System.Windows.Rect&quot;></xref> that represents the scrollable clipping area, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if no clipping area is assigned."
+      description: "A <xref href=&quot;System.Windows.Rect&quot;> </xref> ，它表示可滚动的剪辑区域，或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果分配没有剪辑区域。"
   overload: System.Windows.Media.Visual.VisualScrollableAreaClip*
   exceptions: []
   platform:
@@ -911,7 +911,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the <xref href=&quot;System.Windows.Media.TextHintingMode&quot;></xref> of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+  summary: "获取或设置<xref href=&quot;System.Windows.Media.TextHintingMode&quot;></xref>的<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>。"
   syntax:
     content: protected System.Windows.Media.TextHintingMode VisualTextHintingMode { get; set; }
     return:
@@ -933,7 +933,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the <xref href=&quot;System.Windows.Media.TextRenderingMode&quot;></xref> of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+  summary: "获取或设置<xref href=&quot;System.Windows.Media.TextRenderingMode&quot;></xref>的<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>。"
   syntax:
     content: protected System.Windows.Media.TextRenderingMode VisualTextRenderingMode { get; set; }
     return:
@@ -955,12 +955,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the <xref href=&quot;System.Windows.Media.Transform&quot;></xref> value for the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+  summary: "获取或设置<xref href=&quot;System.Windows.Media.Transform&quot;></xref>值<xref href=&quot;System.Windows.Media.Visual&quot;> </xref>。"
   syntax:
     content: protected System.Windows.Media.Transform VisualTransform { get; set; }
     return:
       type: System.Windows.Media.Transform
-      description: "The transform value of the visual."
+      description: "视觉对象转换值。"
   overload: System.Windows.Media.Visual.VisualTransform*
   exceptions: []
   platform:
@@ -977,13 +977,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the x-coordinate (vertical) guideline collection."
-  remarks: "Pixel snapping is the process in which content layout is fixed so that object edges are rendered on device-specific pixels. The [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] graphics system uses device-independent units to enable resolution and device independence. Each device independent pixel automatically scales with the system&quot;s [!INCLUDE[TLA#tla_dpi](~/add/includes/ajax-current-ext-md.md)] setting. This provides [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] applications proper scaling for different [!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)] settings and makes the application automatically [!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)]-aware.       However, this [!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)] independence can create irregular edge rendering due to anti-aliasing. These artifacts, commonly seen as blurry or &quot;soft&quot; edges, can occur when the location of an edge falls in the middle of a device pixel rather than between device pixels. To address this issue, [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] provides a way for object edges in a visual tree to &quot;snap&quot; to device pixels, eliminating the soft edges produced by anti-aliasing."
+  summary: "获取或设置 x 坐标 （垂直） 准线集合。"
+  remarks: "像素对齐是内容的布局固定，以便对象边缘呈现特定于设备的像素的过程。 [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]图形系统使用独立于设备的单位来启用分辨率和设备独立。 使用系统的自动缩放每个设备无关的像素[!INCLUDE[TLA#tla_dpi](~/add/includes/ajax-current-ext-md.md)]设置。 这提供了[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]应用程序正确缩放为不同[!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)]设置并自动使应用程序[!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)]-感知。       但是，这[!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)]独立性可能会由于抗锯齿的不规则的边缘呈现出。 当边缘的位置位于中间设备像素，而不是设备像素之间，会发生这些项目，通常被视为模糊或&quot;软&quot;边缘。 若要解决此问题， [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] &quot;对齐&quot;与设备像素，从而消除了软边缘生成抗锯齿的可视化树中的对象边缘提供一种。"
   syntax:
     content: protected System.Windows.Media.DoubleCollection VisualXSnappingGuidelines { get; set; }
     return:
       type: System.Windows.Media.DoubleCollection
-      description: "The x-coordinate guideline collection of the visual."
+      description: "视觉对象的 x 坐标准线集合。"
   overload: System.Windows.Media.Visual.VisualXSnappingGuidelines*
   exceptions: []
   platform:
@@ -1000,13 +1000,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the y-coordinate (horizontal) guideline collection."
-  remarks: "Pixel snapping is the process in which content layout is fixed so that object edges are rendered on device-specific pixels. The [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] graphics system uses device-independent units to enable resolution and device independence. Each device independent pixel automatically scales with the system&quot;s [!INCLUDE[TLA#tla_dpi](~/add/includes/ajax-current-ext-md.md)] setting. This provides [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] applications proper scaling for different [!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)] settings and makes the application automatically [!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)]-aware.       However, this [!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)] independence can create irregular edge rendering due to anti-aliasing. These artifacts, commonly seen as blurry, or &quot;soft&quot; edges, can occur when the location of an edge falls in the middle of a device pixel rather than between device pixels. To address this issue, [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] provides a way for object edges in a visual tree to &quot;snap&quot; to device pixels, eliminating the soft edges produced by anti-aliasing."
+  summary: "获取或设置 y 坐标 （水平） 准线集合。"
+  remarks: "像素对齐是内容的布局固定，以便对象边缘呈现特定于设备的像素的过程。 [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]图形系统使用独立于设备的单位来启用分辨率和设备独立。 使用系统的自动缩放每个设备无关的像素[!INCLUDE[TLA#tla_dpi](~/add/includes/ajax-current-ext-md.md)]设置。 这提供了[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]应用程序正确缩放为不同[!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)]设置并自动使应用程序[!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)]-感知。       但是，这[!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)]独立性可能会由于抗锯齿的不规则的边缘呈现出。 当边缘的位置位于中间设备像素，而不是设备像素之间，会发生这些项目，通常被视为分明，还是&quot;软&quot;边缘。 若要解决此问题， [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] &quot;对齐&quot;与设备像素，从而消除了软边缘生成抗锯齿的可视化树中的对象边缘提供一种。"
   syntax:
     content: protected System.Windows.Media.DoubleCollection VisualYSnappingGuidelines { get; set; }
     return:
       type: System.Windows.Media.DoubleCollection
-      description: "The y-coordinate guideline collection of the visual."
+      description: "视觉对象的 y 坐标准线集合。"
   overload: System.Windows.Media.Visual.VisualYSnappingGuidelines*
   exceptions: []
   platform:

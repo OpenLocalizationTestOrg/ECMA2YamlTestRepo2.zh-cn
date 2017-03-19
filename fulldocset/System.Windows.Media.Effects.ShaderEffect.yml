@@ -30,8 +30,8 @@ items:
   nameWithType: ShaderEffect
   fullName: System.Windows.Media.Effects.ShaderEffect
   type: Class
-  summary: "Provides a custom bitmap effect by using a <xref href=&quot;System.Windows.Media.Effects.PixelShader&quot;></xref>."
-  remarks: "Derive from the ShaderEffect class to implement a custom effect based on a single pixel shader.       The following steps show how to create a custom effect.      1.  Load a <xref:System.Windows.Media.Effects.PixelShader> from precompiled High Level Shading Language (HLSL) bytecode.      2.  Define dependency properties that represent the parameters of the effect and the <xref:System.Windows.Media.Brush>-based surface inputs. Use one of the <xref:System.Windows.Media.Effects.ShaderEffect.RegisterPixelShaderSamplerProperty%2A> overloads to associate these inputs with register numbers that are referenced in the HLSL bytecode.       The number of samplers is limited to 4.       The following restrictions apply when using a PS 3.0 shader.      -   When a PS 3.0 shader is assigned, the number of samplers increases to 8. Assign the PS 3.0 shader before other shaders to enable registering 8 samplers.      -   The full shader constant register limit of 224 for floats is used. For more information, see [ps_3_0](http://go.microsoft.com/fwlink/?LinkId=166292).      -   The following data types are supported in PS 3.0 shaders only. An exception is thrown if these are used in lower shader versions.          -   `int` and types convertible to `int`: `uint`, `byte`, `sbyte`, `long`, `ulong`, `short`, `ushort`, `char`          -   `bool`      -   If a valid PS 3.0 shader is loaded on a computer that does not have hardware support for PS 3.0, the shader is ignored. If the shader is invalid, no exception is thrown.      -   If a computer has more than one video card, the behavior is defined by the least capable video card. For example, if the computer has two video cards, one of which supports PS 3.0 and one of which does not, the behavior is the same as if the computer does not support PS 3.0.      -   If a computer supports rendering PS 3.0 in hardware, but an invalid PS 3.0 shader is assigned, the <xref:System.Windows.Media.Effects.PixelShader.InvalidPixelShaderEncountered> event is raised. An example of an invalid PS 3.0 shader is one compiled with the `ps_3_sw` flag. The ShaderEffect class accepts only PS 3.0 shaders that are compiled with the `ps_3_0` flag passed to fxc.exe. For more information, see [Effect-Compiler Tool](http://go.microsoft.com/fwlink/?LinkId=166293).      > [!NOTE] >  PS 2.0 shaders run when rendering in software. However, even if PS 3.0 is supported by the system&quot;s hardware, PS 3.0 shaders do not run during software rendering."
+  summary: "通过使用提供自定义位图效果<xref href=&quot;System.Windows.Media.Effects.PixelShader&quot;> </xref>。"
+  remarks: "派生自 ShaderEffect 类，以实现自定义效果基于单个像素着色器。       以下步骤演示如何创建自定义效果。      1.  负载<xref:System.Windows.Media.Effects.PixelShader>从预编译的高级别明暗度语言 (HLSL) 字节码。</xref:System.Windows.Media.Effects.PixelShader>      2.  定义表示的参数的效果的依赖项属性与<xref:System.Windows.Media.Brush>-基于图面输入。</xref:System.Windows.Media.Brush> 使用之一<xref:System.Windows.Media.Effects.ShaderEffect.RegisterPixelShaderSamplerProperty%2A>重载关联这些输入与在 HLSL 字节码中注册引用的数字。</xref:System.Windows.Media.Effects.ShaderEffect.RegisterPixelShaderSamplerProperty%2A>       取样器数被限制为 4。       使用 PS 3.0 着色器时，将应用以下限制。      -当分配 PS 3.0 着色器，取样器数增加至 8。 将分配其他着色器以启用注册 8 个取样器之前的 PS 3.0 着色器。      的使用为 224 对于浮点型值完整着色器常量寄存器限制。 有关详细信息，请参阅[ps_3_0](http://go.microsoft.com/fwlink/?LinkId=166292)。      的 PS 3.0 着色器支持以下数据类型。 如果这些在较低的着色器版本中使用，将引发异常。          -`int`和类型转换为`int`: `uint`， `byte`， `sbyte`， `long`， `ulong`， `short`， `ushort`， `char`           -    `bool` -如果在没有 PS 3.0，着色器的硬件支持的计算机加载着色器有效 PS 3.0 将被忽略。 如果着色器无效，不引发异常。      -如果计算机具有多个视频卡，由至少支持的视频卡定义行为。 例如，如果计算机上有两个视频卡，其中一个支持 PS 3.0 且其中一个没有，则行为是相同就像计算机不支持 PS 3.0。      -如果计算机支持呈现 PS 3.0 中硬件，但为其分配的无效的 PS 3.0 着色器，<xref:System.Windows.Media.Effects.PixelShader.InvalidPixelShaderEncountered>引发事件。</xref:System.Windows.Media.Effects.PixelShader.InvalidPixelShaderEncountered> 无效的 PS 3.0 着色器的一个示例是一个使用编译`ps_3_sw`标志。 ShaderEffect 类接受仅 PS 3.0 着色器使用编译`ps_3_0`标志传递给 fxc.exe。 有关详细信息，请参阅[效果编译器工具](http://go.microsoft.com/fwlink/?LinkId=166293)。      1> [!NOTE] 1> PS 2.0 着色器运行在软件中呈现时。 但是，如果即使系统的硬件支持 PS 3.0，则 PS 3.0 着色器不能运行在软件呈现过程。"
   example:
   - "The following code example shows how to derive from the ShaderEffect class.  \n  \n [!code-cs[System.Windows.Media.Effects.ShaderEffect#1](~/add/codesnippet/csharp/ShaderEffectDemo/ThresholdEffect.cs#1)]  \n  \n The following code example shows a shader that corresponds to the previous ShaderEffect class.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]  \n  \n The following XAML shows how to use the custom shader effect.  \n  \n [!code-xml[System.Windows.Media.Effects.ShaderEffect#1000](~/add/codesnippet/xaml/ShaderEffectDemo/Window1.xaml#1000)]"
   syntax:
@@ -102,7 +102,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Media.Effects.ShaderEffect&quot;></xref> class."
+  summary: "初始化的新实例<xref href=&quot;System.Windows.Media.Effects.ShaderEffect&quot;></xref>类。"
   syntax:
     content: protected ShaderEffect ();
     parameters: []
@@ -122,14 +122,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Creates a modifiable clone of this <xref href=&quot;System.Windows.Media.Effects.ShaderEffect&quot;></xref> object, making deep copies of this object&quot;s values. When copying this object&quot;s dependency properties, this method copies resource references and data bindings (which may no longer resolve), but not animations or their current values."
-  remarks: "The Clone method can be used to produce modifiable copies of frozen <xref:System.Windows.Freezable> objects. For convenience, this method shadows the inherited <xref:System.Windows.Freezable.Clone%2A> method to provide a strongly typed implementation."
+  summary: "创建的可修改复本<xref href=&quot;System.Windows.Media.Effects.ShaderEffect&quot;></xref>对象，从而深度复制此对象的值。 在复制此对象的依赖项属性时，此方法会复制资源引用和数据绑定 （可能不再解析），但不是动画或其当前值。"
+  remarks: "Clone 方法可以用于生成的可修改副本冻结<xref:System.Windows.Freezable>对象。</xref:System.Windows.Freezable> 为方便起见，此方法将隐藏继承<xref:System.Windows.Freezable.Clone%2A>方法以提供强类型的实现。</xref:System.Windows.Freezable.Clone%2A>"
   syntax:
     content: public System.Windows.Media.Effects.ShaderEffect Clone ();
     parameters: []
     return:
       type: System.Windows.Media.Effects.ShaderEffect
-      description: "A modifiable clone of this instance. The returned clone is effectively a deep copy of the current object. The clone&quot;s <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "此实例可修改复本。 返回的复本实际上是当前对象的深层副本。 克隆的<xref:System.Windows.Freezable.IsFrozen*>属性是<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。</xref:System.Windows.Freezable.IsFrozen*>"
   overload: System.Windows.Media.Effects.ShaderEffect.Clone*
   exceptions: []
   platform:
@@ -146,13 +146,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Makes the instance a clone (deep copy) of the specified <xref href=&quot;System.Windows.Freezable&quot;></xref> using base (non-animated) property values."
+  summary: "使该实例成为指定的克隆 （深层复制） <xref href=&quot;System.Windows.Freezable&quot;> </xref>使用基 （非经过动画处理的） 属性值。"
   syntax:
     content: protected override void CloneCore (System.Windows.Freezable sourceFreezable);
     parameters:
     - id: sourceFreezable
       type: System.Windows.Freezable
-      description: "The object to clone."
+      description: "要克隆的对象。"
   overload: System.Windows.Media.Effects.ShaderEffect.CloneCore*
   exceptions: []
   platform:
@@ -169,14 +169,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Creates a modifiable clone of this <xref href=&quot;System.Windows.Media.Effects.ShaderEffect&quot;></xref> object, making deep copies of this object&quot;s current values. Resource references, data bindings, and animations are not copied, but their current values are copied."
-  remarks: "This method is used to produce modifiable copies of frozen <xref:System.Windows.Freezable> objects (or any <xref:System.Windows.Freezable> object). For convenience, this method shadows the inherited version with a strongly typed implementation.       For more information, see <xref:System.Windows.Freezable.CloneCurrentValue%2A?displayProperty=fullName>."
+  summary: "创建的可修改复本<xref href=&quot;System.Windows.Media.Effects.ShaderEffect&quot;></xref>对象，从而深度复制此对象的当前值。 不复制资源引用、 数据绑定和动画，而复制其当前值。"
+  remarks: "此方法用于生成的可修改副本冻结<xref:System.Windows.Freezable>对象 (或任何<xref:System.Windows.Freezable>对象)。</xref:System.Windows.Freezable> </xref:System.Windows.Freezable> 为方便起见，此方法将隐藏继承的强类型实现的版本。       有关详细信息，请参阅<xref:System.Windows.Freezable.CloneCurrentValue%2A?displayProperty=fullName>。</xref:System.Windows.Freezable.CloneCurrentValue%2A?displayProperty=fullName>"
   syntax:
     content: public System.Windows.Media.Effects.ShaderEffect CloneCurrentValue ();
     parameters: []
     return:
       type: System.Windows.Media.Effects.ShaderEffect
-      description: "A modifiable clone of the current object. The cloned object&quot;s <xref:System.Windows.Freezable.IsFrozen*> property will be <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> even if the source&quot;s <xref:System.Windows.Freezable.IsFrozen*> property was <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "当前对象的可修改复本。 克隆的对象<> *1> 属性将为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>即使源的<> *1> 属性<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Media.Effects.ShaderEffect.CloneCurrentValue*
   exceptions: []
   platform:
@@ -193,13 +193,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Makes the instance a modifiable clone (deep copy) of the specified <xref href=&quot;System.Windows.Freezable&quot;></xref> using current property values."
+  summary: "使该实例成为指定的可修改克隆 （深层复制） <xref href=&quot;System.Windows.Freezable&quot;> </xref>使用当前的属性值。"
   syntax:
     content: protected override void CloneCurrentValueCore (System.Windows.Freezable sourceFreezable);
     parameters:
     - id: sourceFreezable
       type: System.Windows.Freezable
-      description: "The <xref href=&quot;System.Windows.Freezable&quot;></xref> to be cloned."
+      description: "<xref href=&quot;System.Windows.Freezable&quot;> </xref>克隆。"
   overload: System.Windows.Media.Effects.ShaderEffect.CloneCurrentValueCore*
   exceptions: []
   platform:
@@ -216,13 +216,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Creates a new instance of the <xref href=&quot;System.Windows.Freezable&quot;></xref> derived class."
+  summary: "创建的新实例<xref href=&quot;System.Windows.Freezable&quot;></xref>派生类。"
   syntax:
     content: protected override System.Windows.Freezable CreateInstanceCore ();
     parameters: []
     return:
       type: System.Windows.Freezable
-      description: "The new instance."
+      description: "新实例。"
   overload: System.Windows.Media.Effects.ShaderEffect.CreateInstanceCore*
   exceptions: []
   platform:
@@ -239,18 +239,18 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Gets or sets a value that indicates the shader register to use for the partial derivatives of the texture coordinates with respect to screen space."
-  remarks: "Use the DdxUvDdyUvRegisterIndex property to specify the shader register that contains the partial derivatives of the texture coordinates with respect to screen space. For example, if DdxUvDdyUvRegisterIndex is set to 4, the shader register c4 is used. Register c4 contains four float fields. The following High Level Shading Language (HLSL) code shows how this register is used. The `nextPixelUV` value represents the next pixel to the right.      ```   float4 ddxUvDdyUv : register(c4);   SamplerState  sampler : register(S0);   ...   float2 nextPixelUV;   nextPixelUV.u = ddxUvDdyUv.x + u;   nextPixelUV.v = ddxUvDdyUv.y + v;      tex2D(sampler, nextPixelUV);   ```       The following table shows how the register specified for DdxUvDdyUvRegisterIndex is filled.      |Register Constant|Derivative Value|   |-----------------------|----------------------|   |x component|ddx(u)|   |y component|ddx(v)|   |z component|ddy(u)|   |w component|ddy(v)|       Texture coordinates are denoted as `(u, v)`. `ddx(u)` is the constant partial derivative of the texture coordinate component `u` with respect to the screen-space x-coordinate. `ddy(u)` is the partial derivative of the texture coordinate `u` with respect to the screen-space y-coordinate. Similarly, `ddx(v)` and `ddy(v)` are the corresponding screen-space derivatives for the texture coordinate component `v`.      > [!NOTE] >  HLSL has the ddx and ddy instructions to calculate these values, but these instructions are not available on all PixelShader 2.0 hardware.       You may think of these constants in the following way. If you step 1 pixel to the right in screen space (in the x direction), then `ddx(u)` is the amount that `u` changes in texture space, and `ddx(v)` is the amount that `v` changes in texture space. If the effect is axis-aligned when it is rendered, then `ddx(v)` is 0. If the effect is rotated when it is rendered, then `ddx(v)` is non-zero."
+  summary: "获取或设置一个值，指示要用于纹理坐标对屏幕空间的偏导数的着色器寄存器。"
+  remarks: "DdxUvDdyUvRegisterIndex 属性指定的着色器注册包含偏导数的纹理坐标对屏幕空间的使用。 例如，如果 DdxUvDdyUvRegisterIndex 设置为 4，则使用着色器寄存器 c4。 寄存器 c4 包含四个浮点字段。 下面的高级别明暗度语言 (HLSL) 代码演示如何使用此注册。 `nextPixelUV`值向右表示下一个像素。      ```   float4 ddxUvDdyUv : register(c4);   SamplerState  sampler : register(S0);   ...   float2 nextPixelUV;   nextPixelUV.u = ddxUvDdyUv.x + u;   nextPixelUV.v = ddxUvDdyUv.y + v;      tex2D(sampler, nextPixelUV);   ```下表显示填充 DdxUvDdyUvRegisterIndex 为指定的寄存器的方式。      |注册常量 |派生值 |  |-----------------------|----------------------|  | x component|ddx(u) |  | y component|ddx(v) |  | z component|ddy(u) |  | w component|ddy(v) |      纹理坐标被表示为`(u, v)`。 `ddx(u)`是纹理坐标组件的常量偏导数`u`对屏幕空间 x 坐标。 `ddy(u)`是纹理坐标的偏导数`u`对屏幕空间 y 坐标。 同样，`ddx(v)`和`ddy(v)`是纹理坐标组件对应的屏幕空间衍生产品`v`。      1> [!NOTE] 1> HLSL 的 ddx 和 ddy 说明来计算这些值，但这些说明不均可在所有 PixelShader 2.0 硬件上。       你可能按以下方式将这些常量。 如果你单步执行 1 个像素屏幕空间 （在 x 方向），在右侧然后`ddx(u)`是量，`u`纹理空间中的更改和`ddx(v)`是量，`v`纹理空间中的更改。 如果效果为轴对齐呈现时，然后`ddx(v)`为 0。 如果效果为旋转呈现时，然后`ddx(v)`为非零。"
   syntax:
     content: protected int DdxUvDdyUvRegisterIndex { get; set; }
     return:
       type: System.Int32
-      description: "The index of the register that contains the partial derivatives."
+      description: "包含偏导数的寄存器的索引。"
   overload: System.Windows.Media.Effects.ShaderEffect.DdxUvDdyUvRegisterIndex*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt was made to set the DdxUvDdyUvRegisterIndex property more than one time or after initial processing of the effect."
+    description: "尝试将 DdxUvDdyUvRegisterIndex 属性比一次或之后所带来的影响的初始处理更多设置。"
   platform:
   - net462
 - uid: System.Windows.Media.Effects.ShaderEffect.GetAsFrozenCore(System.Windows.Freezable)
@@ -265,13 +265,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Makes the instance a frozen clone of the specified <xref href=&quot;System.Windows.Freezable&quot;></xref> using base (non-animated) property values."
+  summary: "使该实例成为指定的冻结的克隆<xref href=&quot;System.Windows.Freezable&quot;></xref>使用基 （非经过动画处理的） 属性值。"
   syntax:
     content: protected override void GetAsFrozenCore (System.Windows.Freezable sourceFreezable);
     parameters:
     - id: sourceFreezable
       type: System.Windows.Freezable
-      description: "The instance to copy."
+      description: "要复制的实例。"
   overload: System.Windows.Media.Effects.ShaderEffect.GetAsFrozenCore*
   exceptions: []
   platform:
@@ -288,13 +288,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Makes the current instance a frozen clone of the specified <xref href=&quot;System.Windows.Freezable&quot;></xref>. If the object has animated dependency properties, their current animated values are copied."
+  summary: "使当前实例指定的冻结的克隆<xref href=&quot;System.Windows.Freezable&quot;> </xref>。 如果该对象具有动画的依赖属性，被复制其当前的动画的值。"
   syntax:
     content: protected override void GetCurrentValueAsFrozenCore (System.Windows.Freezable sourceFreezable);
     parameters:
     - id: sourceFreezable
       type: System.Windows.Freezable
-      description: "The <xref href=&quot;System.Windows.Freezable&quot;></xref> to copy and freeze."
+      description: "<xref href=&quot;System.Windows.Freezable&quot;> </xref>要复制和冻结。"
   overload: System.Windows.Media.Effects.ShaderEffect.GetCurrentValueAsFrozenCore*
   exceptions: []
   platform:
@@ -311,17 +311,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Gets or sets a value indicating that the effect&quot;s output texture is larger than its input texture along the bottom edge."
+  summary: "获取或设置一个值，该值指示效果的输出纹理大于其输入纹理沿下边缘。"
   syntax:
     content: protected double PaddingBottom { get; set; }
     return:
       type: System.Double
-      description: "The padding along the bottom edge of the effect."
+      description: "沿效果下边缘的填充。"
   overload: System.Windows.Media.Effects.ShaderEffect.PaddingBottom*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The provided value is less than 0."
+    description: "提供的值小于 0。"
   platform:
   - net462
 - uid: System.Windows.Media.Effects.ShaderEffect.PaddingLeft
@@ -336,17 +336,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Gets or sets a value indicating that the effect&quot;s output texture is larger than its input texture along the left edge."
+  summary: "获取或设置一个值，该值指示效果的输出纹理大于其输入纹理沿左边缘。"
   syntax:
     content: protected double PaddingLeft { get; set; }
     return:
       type: System.Double
-      description: "The padding along the left edge of the effect."
+      description: "沿效果左边缘的填充。"
   overload: System.Windows.Media.Effects.ShaderEffect.PaddingLeft*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The provided value is less than 0."
+    description: "提供的值小于 0。"
   platform:
   - net462
 - uid: System.Windows.Media.Effects.ShaderEffect.PaddingRight
@@ -361,17 +361,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Gets or sets a value indicating that the effect&quot;s output texture is larger than its input texture along the right edge."
+  summary: "获取或设置一个值，该值指示效果的输出纹理大于其输入纹理沿右边缘。"
   syntax:
     content: protected double PaddingRight { get; set; }
     return:
       type: System.Double
-      description: "The padding along the right edge of the effect."
+      description: "沿效果右边缘的填充。"
   overload: System.Windows.Media.Effects.ShaderEffect.PaddingRight*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The provided value is less than 0."
+    description: "提供的值小于 0。"
   platform:
   - net462
 - uid: System.Windows.Media.Effects.ShaderEffect.PaddingTop
@@ -386,17 +386,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Gets or sets a value indicating that the effect&quot;s output texture is larger than its input texture along the top edge."
+  summary: "获取或设置一个值，该值指示效果的输出纹理大于其输入纹理沿上边缘。"
   syntax:
     content: protected double PaddingTop { get; set; }
     return:
       type: System.Double
-      description: "The padding along the top edge of the effect."
+      description: "沿效果上边缘的填充。"
   overload: System.Windows.Media.Effects.ShaderEffect.PaddingTop*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The provided value is less than 0."
+    description: "提供的值小于 0。"
   platform:
   - net462
 - uid: System.Windows.Media.Effects.ShaderEffect.PixelShader
@@ -411,13 +411,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Gets or sets the <xref href=&quot;System.Windows.Media.Effects.PixelShader&quot;></xref> to use for the effect."
-  remarks: "<a name=&quot;dependencyPropertyInfo_PixelShader&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Media.Effects.ShaderEffect.PixelShaderProperty>|   |Metadata properties set to `true`|None|"
+  summary: "获取或设置<xref href=&quot;System.Windows.Media.Effects.PixelShader&quot;></xref>要用于该效果。"
+  remarks: "<a name=&quot;dependencyPropertyInfo_PixelShader&quot;></a># # 依赖项属性信息 | | |  |-|-|  |标识符字段 |<xref:System.Windows.Media.Effects.ShaderEffect.PixelShaderProperty>|  |元数据属性设置为`true`|None |</xref:System.Windows.Media.Effects.ShaderEffect.PixelShaderProperty>"
   syntax:
     content: protected System.Windows.Media.Effects.PixelShader PixelShader { get; set; }
     return:
       type: System.Windows.Media.Effects.PixelShader
-      description: "The <xref href=&quot;System.Windows.Media.Effects.PixelShader&quot;></xref> for the effect."
+      description: "<xref href=&quot;System.Windows.Media.Effects.PixelShader&quot;> </xref>效果。"
   overload: System.Windows.Media.Effects.ShaderEffect.PixelShader*
   exceptions: []
   platform:
@@ -434,25 +434,25 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Associates a dependency property value with a pixel shader&quot;s float constant register."
-  remarks: "Use the PixelShaderConstantCallback method when you register a dependency property for a shader constant. The PixelShaderConstantCallback method constructs a <xref:System.Windows.PropertyChangedCallback> delegate that, when invoked, creates an association between the dependency property and the shader constant register specified by `floatRegisterIndex`."
+  summary: "将依赖项属性值与像素着色器的浮点常量寄存器相关联。"
+  remarks: "当你注册着色器常量的依赖项属性时，请使用 PixelShaderConstantCallback 方法。 PixelShaderConstantCallback 方法构造<xref:System.Windows.PropertyChangedCallback>委托，调用时，依赖项属性与指定的着色器常量寄存器之间创建关联`floatRegisterIndex`。</xref:System.Windows.PropertyChangedCallback>"
   syntax:
     content: protected static System.Windows.PropertyChangedCallback PixelShaderConstantCallback (int floatRegisterIndex);
     parameters:
     - id: floatRegisterIndex
       type: System.Int32
-      description: "The index of the shader register associated with the dependency property."
+      description: "与依赖属性关联的着色器寄存器的索引。"
     return:
       type: System.Windows.PropertyChangedCallback
-      description: "A <xref href=&quot;System.Windows.PropertyChangedCallback&quot;></xref> delegate that associates a dependency property and the shader constant register specified by <code>floatRegisterIndex</code>."
+      description: "A <xref href=&quot;System.Windows.PropertyChangedCallback&quot;> </xref>将依赖项属性以及指定的着色器常量寄存器相关联的委托<code> floatRegisterIndex </code>。"
   overload: System.Windows.Media.Effects.ShaderEffect.PixelShaderConstantCallback*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The dependency property is an unknown type."
+    description: "依赖项属性是未知的类型。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>floatRegisterIndex</code> is greater than or equal to 32, or <code>floatRegisterIndex</code> is less than 0."
+    description: "<code>floatRegisterIndex</code>大于或等于 32，或<code>floatRegisterIndex</code>小于 0。"
   platform:
   - net462
 - uid: System.Windows.Media.Effects.ShaderEffect.PixelShaderProperty
@@ -467,12 +467,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Identifies the <xref:System.Windows.Media.Effects.ShaderEffect.PixelShader*> dependency property."
+  summary: "标识<xref:System.Windows.Media.Effects.ShaderEffect.PixelShader*>依赖项属性。</xref:System.Windows.Media.Effects.ShaderEffect.PixelShader*>"
   syntax:
     content: protected static readonly System.Windows.DependencyProperty PixelShaderProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -488,17 +488,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Associates a dependency property value with a pixel shader&quot;s sampler register."
-  remarks: "Use the PixelShaderSamplerCallback method when you register a <xref:System.Windows.Media.Brush>-valued dependency property for a shader sampler. The PixelShaderSamplerCallback method constructs a <xref:System.Windows.PropertyChangedCallback> delegate that, when invoked, creates an association between the dependency property and the shader sampler register specified by `samplerRegisterIndex`."
+  summary: "将依赖项属性值与像素着色器的采样器寄存器相关联。"
+  remarks: "当你注册使用 PixelShaderSamplerCallback 方法<xref:System.Windows.Media.Brush>-依赖项属性值的着色器采样器。</xref:System.Windows.Media.Brush> PixelShaderSamplerCallback 方法构造<xref:System.Windows.PropertyChangedCallback>委托，调用时，依赖项属性与指定的着色器采样器寄存器之间创建关联`samplerRegisterIndex`。</xref:System.Windows.PropertyChangedCallback>"
   syntax:
     content: protected static System.Windows.PropertyChangedCallback PixelShaderSamplerCallback (int samplerRegisterIndex);
     parameters:
     - id: samplerRegisterIndex
       type: System.Int32
-      description: "The index of the shader sampler associated with the dependency property."
+      description: "与依赖属性关联的着色器采样器的索引。"
     return:
       type: System.Windows.PropertyChangedCallback
-      description: "A <xref href=&quot;System.Windows.PropertyChangedCallback&quot;></xref> delegate that associates a dependency property and the shader sampler register specified by <code>samplerRegisterIndex</code>."
+      description: "A <xref href=&quot;System.Windows.PropertyChangedCallback&quot;> </xref>将依赖项属性以及指定的着色器采样器寄存器相关联的委托<code> samplerRegisterIndex </code>。"
   overload: System.Windows.Media.Effects.ShaderEffect.PixelShaderSamplerCallback*
   exceptions: []
   platform:
@@ -515,20 +515,20 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Associates a dependency property value with a pixel shader&quot;s sampler register and a <xref href=&quot;System.Windows.Media.Effects.SamplingMode&quot;></xref>."
-  remarks: "Use the <xref:System.Windows.Media.Effects.ShaderEffect.RegisterPixelShaderSamplerProperty%2A> method when you register a <xref:System.Windows.Media.Brush>-valued dependency property for a shader sampler. The <xref:System.Windows.Media.Effects.ShaderEffect.RegisterPixelShaderSamplerProperty%2A> method constructs a <xref:System.Windows.PropertyChangedCallback> delegate that, when invoked, creates an association between the dependency property and the shader sampler register specified by `samplerRegisterIndex`."
+  summary: "将依赖项属性值与像素着色器的采样器寄存器相关联和<xref href=&quot;System.Windows.Media.Effects.SamplingMode&quot;> </xref>。"
+  remarks: "使用<xref:System.Windows.Media.Effects.ShaderEffect.RegisterPixelShaderSamplerProperty%2A>方法注册时<xref:System.Windows.Media.Brush>-依赖项属性值的着色器采样器。</xref:System.Windows.Media.Brush> </xref:System.Windows.Media.Effects.ShaderEffect.RegisterPixelShaderSamplerProperty%2A> <xref:System.Windows.Media.Effects.ShaderEffect.RegisterPixelShaderSamplerProperty%2A>方法构造<xref:System.Windows.PropertyChangedCallback>委托，调用时，依赖项属性与指定的着色器采样器寄存器之间创建关联`samplerRegisterIndex`。</xref:System.Windows.PropertyChangedCallback> </xref:System.Windows.Media.Effects.ShaderEffect.RegisterPixelShaderSamplerProperty%2A>"
   syntax:
     content: protected static System.Windows.PropertyChangedCallback PixelShaderSamplerCallback (int samplerRegisterIndex, System.Windows.Media.Effects.SamplingMode samplingMode);
     parameters:
     - id: samplerRegisterIndex
       type: System.Int32
-      description: "The index of the shader sampler associated with the dependency property."
+      description: "与依赖属性关联的着色器采样器的索引。"
     - id: samplingMode
       type: System.Windows.Media.Effects.SamplingMode
-      description: "The <xref href=&quot;System.Windows.Media.Effects.SamplingMode&quot;></xref> for the shader sampler."
+      description: "<xref href=&quot;System.Windows.Media.Effects.SamplingMode&quot;> </xref>的着色器采样器。"
     return:
       type: System.Windows.PropertyChangedCallback
-      description: "A <xref href=&quot;System.Windows.PropertyChangedCallback&quot;></xref> delegate that associates a dependency property and the shader sampler register specified by <code>samplerRegisterIndex</code>."
+      description: "A <xref href=&quot;System.Windows.PropertyChangedCallback&quot;> </xref>将依赖项属性以及指定的着色器采样器寄存器相关联的委托<code> samplerRegisterIndex </code>。"
   overload: System.Windows.Media.Effects.ShaderEffect.PixelShaderSamplerCallback*
   exceptions: []
   platform:
@@ -545,22 +545,22 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Associates a dependency property with a shader sampler register."
+  summary: "将依赖项属性与着色器采样器寄存器相关联。"
   syntax:
     content: protected static System.Windows.DependencyProperty RegisterPixelShaderSamplerProperty (string dpName, Type ownerType, int samplerRegisterIndex);
     parameters:
     - id: dpName
       type: System.String
-      description: "The name of the dependency property."
+      description: "依赖项属性的名称。"
     - id: ownerType
       type: System.Type
-      description: "The type of the effect that has the dependency property."
+      description: "依赖项属性的影响的类型。"
     - id: samplerRegisterIndex
       type: System.Int32
-      description: "The index of the shader sampler associated with the dependency property."
+      description: "与依赖属性关联的着色器采样器的索引。"
     return:
       type: System.Windows.DependencyProperty
-      description: "A dependency property associated with the shader sampler specified by <code>samplerRegisterIndex</code>."
+      description: "与指定的着色器采样器关联的依赖项属性<code> samplerRegisterIndex </code>。"
   overload: System.Windows.Media.Effects.ShaderEffect.RegisterPixelShaderSamplerProperty*
   exceptions: []
   platform:
@@ -577,25 +577,25 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Associates a dependency property with a shader sampler register and a <xref href=&quot;System.Windows.Media.Effects.SamplingMode&quot;></xref>."
+  summary: "将依赖项属性与着色器采样器寄存器相关联和<xref href=&quot;System.Windows.Media.Effects.SamplingMode&quot;> </xref>。"
   syntax:
     content: protected static System.Windows.DependencyProperty RegisterPixelShaderSamplerProperty (string dpName, Type ownerType, int samplerRegisterIndex, System.Windows.Media.Effects.SamplingMode samplingMode);
     parameters:
     - id: dpName
       type: System.String
-      description: "The name of the dependency property."
+      description: "依赖项属性的名称。"
     - id: ownerType
       type: System.Type
-      description: "The type of the effect that has the dependency property."
+      description: "依赖项属性的影响的类型。"
     - id: samplerRegisterIndex
       type: System.Int32
-      description: "The index of the shader sampler associated with the dependency property."
+      description: "与依赖属性关联的着色器采样器的索引。"
     - id: samplingMode
       type: System.Windows.Media.Effects.SamplingMode
-      description: "The <xref href=&quot;System.Windows.Media.Effects.SamplingMode&quot;></xref> for the shader sampler."
+      description: "<xref href=&quot;System.Windows.Media.Effects.SamplingMode&quot;> </xref>的着色器采样器。"
     return:
       type: System.Windows.DependencyProperty
-      description: "A dependency property associated with the shader sampler specified by <code>samplerRegisterIndex</code>."
+      description: "与指定的着色器采样器关联的依赖项属性<code> samplerRegisterIndex </code>。"
   overload: System.Windows.Media.Effects.ShaderEffect.RegisterPixelShaderSamplerProperty*
   exceptions: []
   platform:
@@ -612,13 +612,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Effects
-  summary: "Notifies the effect that the shader constant or sampler corresponding to the specified dependency property should be updated."
+  summary: "通知效果，应更新的着色器常量或采样器对应于指定的依赖属性。"
   syntax:
     content: protected void UpdateShaderValue (System.Windows.DependencyProperty dp);
     parameters:
     - id: dp
       type: System.Windows.DependencyProperty
-      description: "The dependency property to be updated."
+      description: "要更新的依赖项属性。"
   overload: System.Windows.Media.Effects.ShaderEffect.UpdateShaderValue*
   exceptions: []
   platform:
