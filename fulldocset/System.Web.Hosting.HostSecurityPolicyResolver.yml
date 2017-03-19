@@ -11,8 +11,8 @@ items:
   nameWithType: HostSecurityPolicyResolver
   fullName: System.Web.Hosting.HostSecurityPolicyResolver
   type: Class
-  summary: "Provides a way to customize ASP.NET behavior at run time that overrides the ASP.NET code access security policy."
-  remarks: "In complex Web hosting environments such as SharePoint and Web farms, you might have to extend the ASP.NET code access security policy. By extending the HostSecurityPolicyResolver type, you can implement custom security policy behavior that overrides the ASP.NET code access security policy.      ## Configuring a HostSecurityPolicyResolver Class    In the configuration files, you can configure a custom HostSecurityPolicyResolver instance by adding the <xref:System.Web.Configuration.TrustSection.HostSecurityPolicyResolverType%2A> attribute to the  element. The <xref:System.Web.Configuration.TrustSection.HostSecurityPolicyResolverType%2A> attribute can be set to the name of the custom HostSecurityPolicyResolver type that will be loaded by ASP.NET. The attribute value contains the fully qualified name of the derived type. By default, [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)] does not set this attribute.       The following syntax shows how to configure the attribute:      ```   <trust      Level = &quot;[Full|High|Medium|Low|Minimal]&quot;     permissionSetName = &quot;name of the permission set&quot;     hostSecurityPolicyResolverType = &quot;security policy resolution type&quot;   />   ```       The <xref:System.Web.Configuration.TrustSection.PermissionSetName%2A> attribute in the `trust` element can be set to a string value that indicates which named permission set in a partial trust configuration file should be used. By default, ASP.NET 4 sets this attribute to &quot;ASP.Net&quot;.       The <xref:System.Web.Configuration.TrustSection.HostSecurityPolicyResolverType%2A> attribute in the `trust` element indicates the custom HostSecurityPolicyResolver object that will be loaded by ASP.NET. If the attribute is set to an empty string, the application uses the ASP.NET default logic for determining the permissions for the assembly. The HostSecurityPolicyResolver type attribute cannot be set to a null value.      > [!IMPORTANT] >  The assembly that contains a derived HostSecurityPolicyResolver type must run with full trust, because the custom type provides information that ASP.NET can use to elevate assemblies to full trust. In general, you should deploy a custom policy resolver type in the global assembly cache, where it will run with full trust.       When you implement this class, you must override the <xref:System.Web.Hosting.HostSecurityPolicyResolver.ResolvePolicy%2A> method. Depending on the <xref:System.Security.Policy.Evidence> instance that is passed as a parameter, the method returns an enumeration value that indicates the security policy to apply to the assembly. The set of available security policies is determined by the <xref:System.Web.Hosting.HostSecurityPolicyResults> enumeration."
+  summary: "使您能够在重写的 ASP.NET 代码访问安全策略的运行时自定义 ASP.NET 行为。"
+  remarks: "在复杂的 Web 宿主如 SharePoint 和 Web 场环境中，你可能需要将 ASP.NET 代码访问安全策略扩展。 通过扩展 HostSecurityPolicyResolver 类型，你可以实现重写的 ASP.NET 代码访问安全策略的自定义安全策略行为。      ## 配置 HostSecurityPolicyResolver 类中的配置文件，你可以通过添加配置自定义的 HostSecurityPolicyResolver 实例<xref:System.Web.Configuration.TrustSection.HostSecurityPolicyResolverType%2A>属性的元素。</xref:System.Web.Configuration.TrustSection.HostSecurityPolicyResolverType%2A> <xref:System.Web.Configuration.TrustSection.HostSecurityPolicyResolverType%2A>属性可以设置为将加载的 ASP.NET 的自定义 HostSecurityPolicyResolver 类型的名称。</xref:System.Web.Configuration.TrustSection.HostSecurityPolicyResolverType%2A> 属性值包含派生类型的完全限定的名称。 默认情况下，[!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)]未设置此属性。       下面的语法演示如何配置属性︰ ```   <trust      Level = &quot;[Full|High|Medium|Low|Minimal]&quot;     permissionSetName = &quot;name of the permission set&quot;     hostSecurityPolicyResolverType = &quot;security policy resolution type&quot;   />   ``` <xref:System.Web.Configuration.TrustSection.PermissionSetName%2A>属性中`trust`元素可以设置为字符串值，该值指示应使用在部分信任配置文件中设置的命名的权限。</xref:System.Web.Configuration.TrustSection.PermissionSetName%2A> 默认情况下，ASP.NET 4 中设置此属性与&quot;ASP.Net&quot;。       <xref:System.Web.Configuration.TrustSection.HostSecurityPolicyResolverType%2A>属性中`trust`元素指示将加载的 ASP.NET 的自定义 HostSecurityPolicyResolver 对象。</xref:System.Web.Configuration.TrustSection.HostSecurityPolicyResolverType%2A> 如果该属性设置为一个空字符串，应用程序将使用 ASP.NET 的默认逻辑来确定程序集的权限。 HostSecurityPolicyResolver 类型属性不能设置为 null 值。      1> [!IMPORTANT]&1;> 包含派生的 HostSecurityPolicyResolver 类型必须运行完全信任，因为自定义类型提供信息该 ASP.NET 的程序集可以使用提升为完全信任程序集。 一般情况下，你应该部署中的全局程序集缓存，其中它将在其中运行以完全信任的自定义策略冲突解决程序类型。       当您实现此类时，必须重写<xref:System.Web.Hosting.HostSecurityPolicyResolver.ResolvePolicy%2A>方法。</xref:System.Web.Hosting.HostSecurityPolicyResolver.ResolvePolicy%2A> 具体取决于<xref:System.Security.Policy.Evidence>实例，它是作为参数传递，该方法返回一个枚举值，该值指示要应用于程序集的安全策略。</xref:System.Security.Policy.Evidence> 可用的安全策略集由<xref:System.Web.Hosting.HostSecurityPolicyResults>枚举。</xref:System.Web.Hosting.HostSecurityPolicyResults>"
   syntax:
     content: public class HostSecurityPolicyResolver
   inheritance:
@@ -33,7 +33,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Hosting.HostSecurityPolicyResolver&quot;></xref> class."
+  summary: "初始化的新实例<xref href=&quot;System.Web.Hosting.HostSecurityPolicyResolver&quot;></xref>类。"
   syntax:
     content: public HostSecurityPolicyResolver ();
     parameters: []
@@ -53,17 +53,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Hosting
-  summary: "Gets a value that indicates the security policy that should be applied to an assembly."
-  remarks: "If you inherit from the <xref:System.Web.Hosting.HostSecurityPolicyResolver> class, you must implement the ResolvePolicy method. Based on the information that is provided in the `evidence` parameter, the method should return one of the security policies that are defined in the <xref:System.Web.Hosting.HostSecurityPolicyResults> enumeration."
+  summary: "获取一个值，该值指示应应用于程序集的安全策略。"
+  remarks: "如果从继承<xref:System.Web.Hosting.HostSecurityPolicyResolver>类，则必须实现 ResolvePolicy 方法。</xref:System.Web.Hosting.HostSecurityPolicyResolver> 中提供的信息基于`evidence`参数，该方法应返回中定义的安全策略之一<xref:System.Web.Hosting.HostSecurityPolicyResults>枚举。</xref:System.Web.Hosting.HostSecurityPolicyResults>"
   syntax:
     content: public virtual System.Web.Hosting.HostSecurityPolicyResults ResolvePolicy (System.Security.Policy.Evidence evidence);
     parameters:
     - id: evidence
       type: System.Security.Policy.Evidence
-      description: "A collection of evidence about an assembly and a host, which is used as an input to security policy."
+      description: "有关程序集和工作宿主，后者使用输入到安全策略的证据的集合。"
     return:
       type: System.Web.Hosting.HostSecurityPolicyResults
-      description: "A value that indicates the type of security permissions should be applied to an assembly."
+      description: "一个值，该值指示安全权限的类型应应用于程序集。"
   overload: System.Web.Hosting.HostSecurityPolicyResolver.ResolvePolicy*
   exceptions: []
   platform:
