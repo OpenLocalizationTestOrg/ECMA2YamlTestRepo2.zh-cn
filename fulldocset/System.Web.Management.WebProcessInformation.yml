@@ -13,8 +13,8 @@ items:
   nameWithType: WebProcessInformation
   fullName: System.Web.Management.WebProcessInformation
   type: Class
-  summary: "Provides information about the worker process that hosts ASP.NET."
-  remarks: "ASP.NET health monitoring allows production and operations staff to manage deployed Web applications. The <xref:System.Web.Management> namespace contains the health-event types responsible for packaging application health-status data, and the provider types responsible for processing this data. It also contains supporting types that help during the management of health events.       Instances of the WebProcessInformation class contain information that is obtained using any of the types derived from the <xref:System.Web.Management.WebManagementEvent> type.       Your application needs the appropriate permissions to access protected information provided by this type.       The following example is an excerpt of the configuration file you could use to enable ASP.NET to log error events that contain process information.      ```   <healthMonitoring      enabled=&quot;true&quot; heartBeatInterval=&quot;0&quot;>          <rules>        <add           name=&quot;All Errors Default&quot;          eventName=&quot;All Errors&quot;          provider=&quot;EventLogProvider&quot;          profile=&quot;Default&quot;          minInterval=&quot;00:01:00&quot; />       </rules>      </healthMonitoring>   ```      > [!NOTE] >  In most cases you will be able to use the ASP.NET health-monitoring types as implemented, and you will control the health-monitoring system by specifying values in the `healthMonitoring` configuration section. You can also derive from the health-monitoring types to create your own custom events and providers. For an example of creating a custom event class, see the Example section."
+  summary: "提供有关工作进程信息承载 ASP.NET。"
+  remarks: "ASP.NET 运行状况监视，用于管理已部署的 Web 应用程序的生产和操作人员。 <xref:System.Web.Management>命名空间包含负责打包应用程序运行状况状态数据的运行状况事件类型和提供程序类型负责处理此数据。</xref:System.Web.Management> 它还包含在管理运行状况事件期间帮助的支持类型。       WebProcessInformation 类的实例包含通过任何派生自的类型获取信息<xref:System.Web.Management.WebManagementEvent>类型。</xref:System.Web.Management.WebManagementEvent>       你的应用程序需要访问受保护的信息，此类型提供的适当权限。       下面的示例摘自配置文件可以使用以启用 ASP.NET 包含进程信息的日志错误事件。      ```   <healthMonitoring      enabled=&quot;true&quot; heartBeatInterval=&quot;0&quot;>          <rules>        <add           name=&quot;All Errors Default&quot;          eventName=&quot;All Errors&quot;          provider=&quot;EventLogProvider&quot;          profile=&quot;Default&quot;          minInterval=&quot;00:01:00&quot; />       </rules>      </healthMonitoring>   ```      > [!NOTE]1> 在大多数情况下，你将是一种能够使用 ASP.NET 运行状况监视类型，因为实现，并且将通过指定中的值控制运行状况监视系统`healthMonitoring`配置节。 你还可以从要创建你自己的自定义事件和提供程序的运行状况监视类型派生。 有关创建自定义的事件类的示例，请参阅示例部分。"
   example:
   - "The following example has two parts. The first is an excerpt of a configuration file that enables ASP.NET to use a custom event that uses the WebProcessInformation type.  \n  \n The second shows how to implement the custom event.  \n  \n Ensure that your custom event is raised at the proper time, that is, when the equivalent system health event it replaces would be raised.  \n  \n```  \n<healthMonitoring   \n  enabled=\"true\" heartBeatInterval=\"0\">  \n  \n    <eventMappings>  \n      <add    \n        name=\"SampleProcessInformation\"   \n        type=\"SamplesAspNet.SampleWebProcessInformation, webprocessinformation, Version=1.0.1585.27289, Culture=neutral, PublicKeyToken=3648e5c763a8239f, processorArchitecture=MSIL\"/>  \n    </eventMappings>  \n  \n    <rules>  \n      <add   \n        name=\"Custom Process Information\"  \n        eventName=\"SampleProcessInformation\"   \n        provider=\"EventLogProvider\"  \n        profile=\"Default\"/>  \n    </rules>  \n  \n</healthMonitoring>  \n  \n```  \n  \n The following example shows how to implement a custom event that uses the WebProcessInformation type.  \n  \n [!code-cs[System.Web.Management.WebProcessInformation#1](~/add/codesnippet/csharp/t-system.web.management._13_1.cs)]\n [!code-vb[System.Web.Management.WebProcessInformation#1](~/add/codesnippet/visualbasic/t-system.web.management._13_1.vb)]"
   syntax:
@@ -37,15 +37,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the account name for the worker process."
-  remarks: "Your application needs the appropriate permissions to access the information provided by this property."
+  summary: "获取工作进程的帐户名称。"
+  remarks: "你的应用程序需要访问此属性提供的信息的相应权限。"
   example:
   - "The following example shows how to obtain the process account name.  \n  \n [!code-cs[System.Web.Management.WebProcessInformation#4](~/add/codesnippet/csharp/p-system.web.management._38_1.cs)]\n [!code-vb[System.Web.Management.WebProcessInformation#4](~/add/codesnippet/visualbasic/p-system.web.management._38_1.vb)]"
   syntax:
     content: public string AccountName { get; }
     return:
       type: System.String
-      description: "The worker process account name."
+      description: "辅助进程帐户名称。"
   overload: System.Web.Management.WebProcessInformation.AccountName*
   exceptions: []
   platform:
@@ -62,8 +62,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Formats the application information."
-  remarks: "The FormatToString method provides a uniform format for event information, which is useful if the event data must be logged and later presented to the user. The method is called internally when the provider invokes one of the <xref:System.Web.Management.WebBaseEvent.ToString%2A> methods."
+  summary: "设置应用程序信息的格式。"
+  remarks: "FormatToString 方法为事件信息，这很有用，如果必须记录事件数据，并将其更高版本提供给用户提供统一的格式。 提供程序调用之一时，内部调用该方法<xref:System.Web.Management.WebBaseEvent.ToString%2A>方法。</xref:System.Web.Management.WebBaseEvent.ToString%2A>"
   example:
   - "The following example shows how to format custom information.  \n  \n [!code-cs[System.Web.Management.WebProcessInformation#7](~/add/codesnippet/csharp/f15874b7-315f-41fa-b773-_1.cs)]\n [!code-vb[System.Web.Management.WebProcessInformation#7](~/add/codesnippet/visualbasic/f15874b7-315f-41fa-b773-_1.vb)]"
   syntax:
@@ -71,7 +71,7 @@ items:
     parameters:
     - id: formatter
       type: System.Web.Management.WebEventFormatter
-      description: "The <xref href=&quot;System.Web.Management.WebEventFormatter&quot;></xref> that contains the tab and indentation settings used to format the Web health event information."
+      description: "<xref href=&quot;System.Web.Management.WebEventFormatter&quot;> </xref>包含制表符和缩进设置用于格式化 Web 运行状况事件信息。"
   overload: System.Web.Management.WebProcessInformation.FormatToString*
   exceptions: []
   platform:
@@ -88,15 +88,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the process identifier."
-  remarks: "This is the identifier of the worker process that hosts ASP.NET."
+  summary: "获取进程标识符。"
+  remarks: "这是承载 ASP.NET 的工作进程的标识符。"
   example:
   - "The following example shows how to obtain the process identifier.  \n  \n [!code-cs[System.Web.Management.WebProcessInformation#5](~/add/codesnippet/csharp/p-system.web.management._19_1.cs)]\n [!code-vb[System.Web.Management.WebProcessInformation#5](~/add/codesnippet/visualbasic/p-system.web.management._19_1.vb)]"
   syntax:
     content: public int ProcessID { get; }
     return:
       type: System.Int32
-      description: "The process identifier."
+      description: "进程标识符。"
   overload: System.Web.Management.WebProcessInformation.ProcessID*
   exceptions: []
   platform:
@@ -113,15 +113,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the name of the process."
-  remarks: "This is the name of the worker process that hosts ASP.NET."
+  summary: "获取该进程的名称。"
+  remarks: "这是承载 ASP.NET 的工作进程的名称。"
   example:
   - "The following example shows how to obtain the process name.  \n  \n [!code-cs[System.Web.Management.WebProcessInformation#6](~/add/codesnippet/csharp/p-system.web.management._6_1.cs)]\n [!code-vb[System.Web.Management.WebProcessInformation#6](~/add/codesnippet/visualbasic/p-system.web.management._6_1.vb)]"
   syntax:
     content: public string ProcessName { get; }
     return:
       type: System.String
-      description: "The name of the process."
+      description: "进程的名称。"
   overload: System.Web.Management.WebProcessInformation.ProcessName*
   exceptions: []
   platform:
