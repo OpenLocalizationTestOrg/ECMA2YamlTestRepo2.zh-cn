@@ -21,7 +21,7 @@ items:
   nameWithType: JavaScriptSerializer
   fullName: System.Web.Script.Serialization.JavaScriptSerializer
   type: Class
-  summary: '[Json.NET](http://www.newtonsoft.com/json) should be used serialization and deserialization. Provides serialization and deserialization functionality for AJAX-enabled applications.'
+  summary: '[Json.NET](http://www.newtonsoft.com/json)应使用序列化和反序列化。 为启用 AJAX 的应用程序提供序列化和反序列化功能。'
   remarks: "The JavaScriptSerializer class is used internally by the asynchronous communication layer to serialize and deserialize the data that is passed between the browser and the Web server. You cannot access that instance of the serializer. However, this class exposes a public API. Therefore, you can use the class when you want to work with JavaScript Object Notation (JSON) in managed code.  \n  \n To serialize an object, use the <xref:System.Web.Script.Serialization.JavaScriptSerializer.Serialize%2A> method. To deserialize a JSON string, use the <xref:System.Web.Script.Serialization.JavaScriptSerializer.Deserialize%2A> or <xref:System.Web.Script.Serialization.JavaScriptSerializer.DeserializeObject%2A> methods. To serialize and deserialize types that are not natively supported by JavaScriptSerializer, implement custom converters by using the <xref:System.Web.Script.Serialization.JavaScriptConverter> class. Then register the converters by using the <xref:System.Web.Script.Serialization.JavaScriptSerializer.RegisterConverters%2A> method.  \n  \n## Mapping Between Managed Types and JSON  \n The following table shows the mapping between managed types and JSON for the serialization process. These managed types are natively supported by JavaScriptSerializer. When you are deserializing from a JSON string to a managed type, the same mapping applies. However, deserialization can be asymmetric; not all serializable managed types can be deserialized from JSON.  \n  \n> [!NOTE]\n>  A multidimensional array is serialized as a one-dimensional array, and you should use it as a flat array.  \n  \n|Managed type|JSON equivalent|  \n|------------------|---------------------|  \n|<xref:System.String> (UTF-8 encoding only).|String|  \n|<xref:System.Char>|String|  \n|Single null char (such as, \\0 )|Null|  \n|<xref:System.Boolean>|Boolean. Represented in JSON as `true` or `false`|  \n|`null` (`null` object references and <xref:System.Nullable> value types).|A string value of null|  \n|<xref:System.DBNull>|A string value of null|  \n|Primitive numeric (or numeric-compatible) types: <xref:System.Byte>, <xref:System.SByte>, <xref:System.Int16>, <xref:System.Int32>, <xref:System.Int64>, <xref:System.UInt16>, <xref:System.UInt32>, <xref:System.UInt64>, <xref:System.Double>, and <xref:System.Single>. The culture-invariant string representation is used.|Number|  \n|<xref:System.DateTime>|Date object, represented in JSON as \"\\\\/Date(number of ticks)\\\\/\". The number of ticks is a positive or negative long value that indicates the number of ticks (milliseconds) that have elapsed since midnight 01 January, 1970 UTC.<br /><br /> The maximum supported date value is <xref:System.DateTime.MaxValue> (12/31/9999 11:59:59 PM) and the minimum supported date value is <xref:System.DateTime.MinValue> (1/1/0001 12:00:00 AM).|  \n|Enumerations of integer type|Integer equivalent of the enumeration value|  \n|Types that implement <xref:System.Collections.IEnumerable> or <xref:System.Collections.Generic.IEnumerable%601?displayProperty=fullName> that are not also implementations of <xref:System.Collections.IDictionary> or <xref:System.Collections.Generic.IDictionary%602?displayProperty=fullName>. This includes types such as <xref:System.Array>, <xref:System.Collections.ArrayList>, and <xref:System.Collections.Generic.List%601>.|Array that uses JSON array syntax|  \n|Types that implement <xref:System.Collections.IDictionary> or <xref:System.Collections.Generic.IDictionary%602?displayProperty=fullName>. This includes types such as <xref:System.Collections.Generic.Dictionary%602> and <xref:System.Collections.Hashtable>.|JavaScript object that uses JSON dictionary syntax|  \n|Custom concrete (non-abstract) types that have public instance properties that have get accessors or public instance fields.<br /><br /> Note that public write-only properties, public property or public field attributes marked with <xref:System.Web.Script.Serialization.ScriptIgnoreAttribute>, and public indexed properties in these types are ignored.|JavaScript object that uses JSON dictionary syntax. A special metadata property named \"__type\" is included to ensure correct deserialization. Make sure that public instance properties have get and set accessors to ensure correct deserialization.|  \n|<xref:System.Guid>|String representation of a GUID|  \n|<xref:System.Uri>|String representation of the return value of <xref:System.Uri.GetComponents%2A>|"
   example:
   - "The first example provides a simple illustration of how to serialize and deserialize data objects. It requires a class names Person which is shown below.  \n  \n [!code-cs[System.Web.Script.Serialization.JavaScriptSerializer#1](~/add/codesnippet/csharp/t-system.web.script.seri_1_1.cs)]\n [!code-vb[System.Web.Script.Serialization.JavaScriptSerializer#1](~/add/codesnippet/visualbasic/t-system.web.script.seri_1_1.vb)]  \n  \n [!code-cs[System.Web.Script.Serialization.JavaScriptSerializer#2](~/add/codesnippet/csharp/t-system.web.script.seri_1_2.cs)]\n [!code-vb[System.Web.Script.Serialization.JavaScriptSerializer#2](~/add/codesnippet/visualbasic/t-system.web.script.seri_1_2.vb)]  \n  \n The next example shows a more complicated and complete project that uses the JavaScriptSerializer class to save and restore the state of an object by using JSON serialization. This code uses a custom converter that is provided for the <xref:System.Web.Script.Serialization.JavaScriptConverter> class.  \n  \n [!code-vb[System.Web.Script.Serialization#4](~/add/codesnippet/visualbasic/t-system.web.script.seri_1_3.aspx)]\n [!code-cs[System.Web.Script.Serialization#4](~/add/codesnippet/csharp/t-system.web.script.seri_1_3.aspx)]"
@@ -45,8 +45,8 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.Script.Serialization
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Script.Serialization.JavaScriptSerializer&quot;></xref> class that has no type resolver."
-  remarks: "An instance of the <xref:System.Web.Script.Serialization.JavaScriptSerializer> class without a type resolver does not include type metadata properties (named &quot;__type&quot;) in the serialized JSON string. A type metadata property is used by the <xref:System.Web.Script.Serialization.JavaScriptSerializer.Deserialize%2A> and <xref:System.Web.Script.Serialization.JavaScriptSerializer.DeserializeObject%2A> methods to determine the appropriate managed type to which the JSON string will be converted. For information about type resolvers, see the <xref:System.Web.Script.Serialization.JavaScriptTypeResolver> class."
+  summary: "初始化的新实例<xref href=&quot;System.Web.Script.Serialization.JavaScriptSerializer&quot;></xref>不具有任何类型解析程序的类。"
+  remarks: "实例<xref:System.Web.Script.Serialization.JavaScriptSerializer>类没有类型解析程序不包含序列化的 JSON 字符串中的类型元数据属性 （名为&quot;__type&quot;）。</xref:System.Web.Script.Serialization.JavaScriptSerializer> 类型元数据属性由<xref:System.Web.Script.Serialization.JavaScriptSerializer.Deserialize%2A>和<xref:System.Web.Script.Serialization.JavaScriptSerializer.DeserializeObject%2A>方法，以确定相应的托管类型转换为 JSON 字符串转换。</xref:System.Web.Script.Serialization.JavaScriptSerializer.DeserializeObject%2A> </xref:System.Web.Script.Serialization.JavaScriptSerializer.Deserialize%2A> 有关类型解析程序的信息，请参阅<xref:System.Web.Script.Serialization.JavaScriptTypeResolver>类。</xref:System.Web.Script.Serialization.JavaScriptTypeResolver>"
   syntax:
     content: public JavaScriptSerializer ();
     parameters: []
@@ -66,14 +66,14 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.Script.Serialization
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Script.Serialization.JavaScriptSerializer&quot;></xref> class that has a custom type resolver."
-  remarks: "When it is serializing an object, the <xref:System.Web.Script.Serialization.JavaScriptSerializer> class uses the `resolver` parameter to determine the appropriate value to include in the serialized JSON string for the type metadata property (&quot;__type&quot;). Similarly, when the <xref:System.Web.Script.Serialization.JavaScriptSerializer> class  is deserializing a JSON string, it resolves the type metadata property value to the appropriate managed type by using the resolver instance.       You can set the `resolver` parameter to `null`, which is equivalent to calling the <xref:System.Web.Script.Serialization.JavaScriptSerializer.%23ctor%2A> constructor.       The instance of <xref:System.Web.Script.Serialization.JavaScriptSerializer> that is used by the asynchronous communication layer for invoking Web services from client script uses a special type resolver. This type resolver restricts the types that can be deserialized to those defined in the Web service’s method signature, or the ones that have the <xref:System.Web.Script.Services.GenerateScriptTypeAttribute> applied. You cannot modify this built-in type resolver programmatically.      > [!IMPORTANT] >  Using an instance of this object initialized with a custom type-resolver can present a security risk. Use this object only with trusted data. For more information, see [Untrusted Data Security Risks](http://go.microsoft.com/fwlink/?LinkId=330378)."
+  summary: "初始化的新实例<xref href=&quot;System.Web.Script.Serialization.JavaScriptSerializer&quot;></xref>具有自定义类型解析程序的类。"
+  remarks: "它序列化对象时<xref:System.Web.Script.Serialization.JavaScriptSerializer>类使用`resolver`参数来确定要包括的类型元数据属性 (&quot;__type&quot;) 的序列化 JSON 字符串中的相应值。</xref:System.Web.Script.Serialization.JavaScriptSerializer> 同样，当<xref:System.Web.Script.Serialization.JavaScriptSerializer>类反序列化的 JSON 字符串，它解析为相应的托管类型通过使用的解析程序实例的类型元数据属性值。</xref:System.Web.Script.Serialization.JavaScriptSerializer>       你可以设置`resolver`参数`null`，这是等效于调用<xref:System.Web.Script.Serialization.JavaScriptSerializer.%23ctor%2A>构造函数。</xref:System.Web.Script.Serialization.JavaScriptSerializer.%23ctor%2A>       实例<xref:System.Web.Script.Serialization.JavaScriptSerializer>调用从客户端脚本的 Web 服务使用的特殊类型冲突解决程序所使用的异步通信层。</xref:System.Web.Script.Serialization.JavaScriptSerializer> 此类型解析程序将可以反序列化的类型限制为在 Web 服务的方法签名或具有那些中定义<xref:System.Web.Script.Services.GenerateScriptTypeAttribute>应用。</xref:System.Web.Script.Services.GenerateScriptTypeAttribute> 不能以编程方式修改此内置类型解析程序。      1> [!IMPORTANT]&1;> 使用使用自定义的类型解析器初始化此对象的实例可以存在安全风险。 此对象仅使用受信任的数据。 有关详细信息，请参阅[不受信任的数据安全风险](http://go.microsoft.com/fwlink/?LinkId=330378)。"
   syntax:
     content: public JavaScriptSerializer (System.Web.Script.Serialization.JavaScriptTypeResolver resolver);
     parameters:
     - id: resolver
       type: System.Web.Script.Serialization.JavaScriptTypeResolver
-      description: "The custom type-resolver object."
+      description: "自定义的类型解析程序对象中。"
   overload: System.Web.Script.Serialization.JavaScriptSerializer.#ctor*
   exceptions: []
   platform:
@@ -90,28 +90,28 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.Script.Serialization
-  summary: "Converts the specified object to the specified type."
-  remarks: "When the <xref:System.Web.Script.Serialization.JavaScriptSerializer> instance is serializing a type for which a custom converter is registered, the serializer calls the <xref:System.Web.Script.Serialization.JavaScriptConverter.Serialize%2A> method to obtain the dictionary of name/value pairs that will be converted to a JSON-formatted string.       The <xref:System.Web.Script.Serialization.JavaScriptSerializer.Serialize%2A> method can also throw exceptions if the object graph is too complex, or if registered instances of <xref:System.Web.Script.Serialization.JavaScriptConverter> have caused converter recursion."
+  summary: "将指定的对象转换为指定的类型。"
+  remarks: "当<xref:System.Web.Script.Serialization.JavaScriptSerializer>实例序列化一个类型为其注册的自定义转换器，序列化程序调用<xref:System.Web.Script.Serialization.JavaScriptConverter.Serialize%2A>方法以获取将转换为 JSON 格式的字符串的名称/值对的字典。</xref:System.Web.Script.Serialization.JavaScriptConverter.Serialize%2A> </xref:System.Web.Script.Serialization.JavaScriptSerializer>       <xref:System.Web.Script.Serialization.JavaScriptSerializer.Serialize%2A>方法可能还会引发异常，如果对象图太过复杂，或如果注册的实例<xref:System.Web.Script.Serialization.JavaScriptConverter>导致转换器递归。</xref:System.Web.Script.Serialization.JavaScriptConverter> </xref:System.Web.Script.Serialization.JavaScriptSerializer.Serialize%2A>"
   syntax:
     content: public object ConvertToType (object obj, Type targetType);
     parameters:
     - id: obj
       type: System.Object
-      description: "The object to convert."
+      description: "要转换的对象。"
     - id: targetType
       type: System.Type
-      description: "The type to convert the object to."
+      description: "要转换到的对象的类型。"
     return:
       type: System.Object
-      description: "The serialized JSON string."
+      description: "序列化的 JSON 字符串。"
   overload: System.Web.Script.Serialization.JavaScriptSerializer.ConvertToType*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The resulting JSON-formatted string exceeds the value of <xref:System.Web.Script.Serialization.JavaScriptSerializer.MaxJsonLength*>.       -or-       <code>obj</code> contains a circular reference. A circular reference occurs when a child object has a reference to a parent object, and the parent object has a reference to the child object."
+    description: "所生成的 JSON 格式的字符串超出<xref:System.Web.Script.Serialization.JavaScriptSerializer.MaxJsonLength*>.</xref:System.Web.Script.Serialization.JavaScriptSerializer.MaxJsonLength*>的值       - <code> obj </code>包含循环引用。 当对子对象的引用的父对象上的子对象具有对父对象的引用时发生循环引用。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The recursion limit defined by <xref:System.Web.Script.Serialization.JavaScriptSerializer.RecursionLimit*> was exceeded."
+    description: "定义的递归限制<xref:System.Web.Script.Serialization.JavaScriptSerializer.RecursionLimit*>超出了。</xref:System.Web.Script.Serialization.JavaScriptSerializer.RecursionLimit*>"
   platform:
   - net462
 - uid: System.Web.Script.Serialization.JavaScriptSerializer.ConvertToType``1(System.Object)
@@ -131,10 +131,10 @@ items:
     parameters:
     - id: obj
       type: System.Object
-      description: "To be added."
+      description: "要添加。"
     return:
       type: T
-      description: "To be added."
+      description: "要添加。"
   overload: System.Web.Script.Serialization.JavaScriptSerializer.ConvertToType<T>*
   exceptions: []
   platform:
@@ -151,31 +151,31 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.Script.Serialization
-  summary: "Converts a JSON-formatted string to an object of the specified type."
-  remarks: "This deserialization method does not try to cast the root of the object graph to a specific type, the way that the <xref:System.Web.Script.Serialization.JavaScriptSerializer.Deserialize%2A> method does."
+  summary: "将 JSON 格式的字符串转换为指定类型的对象。"
+  remarks: "此反序列化方法不会尝试强制转换为特定类型，方法的对象关系图的根，<xref:System.Web.Script.Serialization.JavaScriptSerializer.Deserialize%2A>方法执行。</xref:System.Web.Script.Serialization.JavaScriptSerializer.Deserialize%2A>"
   syntax:
     content: public object Deserialize (string input, Type targetType);
     parameters:
     - id: input
       type: System.String
-      description: "The JSON string to deserialize."
+      description: "要反序列化的 JSON 字符串。"
     - id: targetType
       type: System.Type
-      description: "The type of the resulting object."
+      description: "生成的对象的类型。"
     return:
       type: System.Object
-      description: "The deserialized object."
+      description: "反序列化的对象。"
   overload: System.Web.Script.Serialization.JavaScriptSerializer.Deserialize*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>input</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>input</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The length of <code>input</code> exceeds the value of <xref:System.Web.Script.Serialization.JavaScriptSerializer.MaxJsonLength*>.       -or-       The recursion limit defined by <xref:System.Web.Script.Serialization.JavaScriptSerializer.RecursionLimit*> was exceeded.       -or-       <code>input</code> contains an unexpected character sequence.       -or-       <code>input</code> is a dictionary type and a non-string key value was encountered.       -or-       <code>input</code> includes member definitions that are not available on the target type."
+    description: "长度<code> input </code>超过的值<> *1>。      -定义的递归限制<> *1> 超出了。       - <code> input </code>包含意外的字符序列。       - <code> input </code>是字典类型，但遇到了非字符串密钥值。       - <code> input </code>包括不可用的目标类型上的成员定义。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "<code>input</code> contains a &quot;__type&quot; property that indicates a custom type, but the type resolver that is currently associated with the serializer cannot find a corresponding managed type.       -or-       <code>input</code> contains a &quot;__type&quot; property that indicates a custom type, but the result of deserializing the corresponding JSON string cannot be assigned to the expected target type.       -or-       <code>input</code> contains a &quot;__type&quot; property that indicates either <xref:System.Object> or a non-instantiable type (for example, an abstract type or an interface).       -or-       An attempt was made to convert a JSON array to an array-like managed type that is not supported for use as a JSON deserialization target.       -or-       It is not possible to convert <code>input</code> to the target type."
+    description: "<code>input</code>包含&quot;__type&quot;属性，该值指示自定义类型，但当前序列化程序与关联的类型解析程序找不到相应的托管的类型。       -或-<code>input</code>包含&quot;__type&quot;属性，该值指示自定义类型，但相应的 JSON 字符串反序列化的结果不能分配给预期的目标类型。       -<code>input</code>包含&quot;__type&quot;属性指示<xref:System.Object>或非可实例化类型 （例如，抽象类型或接口）。       -或者-尝试将 JSON 数组转换为将用作 JSON 反序列化目标不支持类似于数组的托管类型。       -或-不能转换<code>input</code>为目标类型。"
   platform:
   - net462
 - uid: System.Web.Script.Serialization.JavaScriptSerializer.Deserialize``1(System.String)
@@ -195,10 +195,10 @@ items:
     parameters:
     - id: input
       type: System.String
-      description: "To be added."
+      description: "要添加。"
     return:
       type: T
-      description: "To be added."
+      description: "要添加。"
   overload: System.Web.Script.Serialization.JavaScriptSerializer.Deserialize<T>*
   exceptions: []
   platform:
@@ -215,28 +215,28 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.Script.Serialization
-  summary: "Converts the specified JSON string to an object graph."
-  remarks: "This deserialization method does not try to cast the root of the object graph to a specific type, as with the <xref:System.Web.Script.Serialization.JavaScriptSerializer.Deserialize%2A> method."
+  summary: "将指定的 JSON 字符串转换为对象图。"
+  remarks: "此反序列化方法不会尝试强制转换为特定类型的对象关系图的根与<xref:System.Web.Script.Serialization.JavaScriptSerializer.Deserialize%2A>方法。</xref:System.Web.Script.Serialization.JavaScriptSerializer.Deserialize%2A>"
   syntax:
     content: public object DeserializeObject (string input);
     parameters:
     - id: input
       type: System.String
-      description: "The JSON string to be deserialized."
+      description: "要反序列化的 JSON 字符串。"
     return:
       type: System.Object
-      description: "The deserialized object."
+      description: "反序列化的对象。"
   overload: System.Web.Script.Serialization.JavaScriptSerializer.DeserializeObject*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>input</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>input</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>input</code> length exceeds the value of <xref:System.Web.Script.Serialization.JavaScriptSerializer.MaxJsonLength*>.       -or-       The recursion limit defined by <xref:System.Web.Script.Serialization.JavaScriptSerializer.RecursionLimit*> was exceeded.       -or-       <code>input</code> contains an unexpected character sequence.       -or-       <code>input</code> is a dictionary type and a non-string key value was encountered.       -or-       <code>input</code> includes member definitions that are not available on the target type."
+    description: "<code> input </code>长度超过的值<> *1>。      -定义的递归限制<> *1> 超出了。       - <code> input </code>包含意外的字符序列。       - <code> input </code>是字典类型，但遇到了非字符串密钥值。       - <code> input </code>包括不可用的目标类型上的成员定义。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "<code>input</code> contains a &quot;__type&quot; property that indicates a custom type, but the type resolver that is currently associated with the serializer cannot find a corresponding managed type.       -or-       <code>input</code> contains a &quot;__type&quot; property that indicates a custom type, but the result of deserializing the corresponding JSON string cannot be assigned to the expected target type.       -or-       <code>input</code> contains a &quot;__type&quot; property that indicates either <xref:System.Object> or a non-instantiable type (for example, an abstract type or an interface).       -or-       An attempt was made to convert a JSON array to an array-like managed type that is not supported for use as a JSON deserialization target.       -or-       It is not possible to convert <code>input</code> to the target type."
+    description: "<code>input</code>包含&quot;__type&quot;属性，该值指示自定义类型，但当前序列化程序与关联的类型解析程序找不到相应的托管的类型。       -或-<code>input</code>包含&quot;__type&quot;属性，该值指示自定义类型，但相应的 JSON 字符串反序列化的结果不能分配给预期的目标类型。       -<code>input</code>包含&quot;__type&quot;属性指示<xref:System.Object>或非可实例化类型 （例如，抽象类型或接口）。       -或者-尝试将 JSON 数组转换为将用作 JSON 反序列化目标不支持类似于数组的托管类型。       -或-不能转换<code>input</code>为目标类型。"
   platform:
   - net462
 - uid: System.Web.Script.Serialization.JavaScriptSerializer.MaxJsonLength
@@ -251,18 +251,18 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.Script.Serialization
-  summary: "Gets or sets the maximum length of JSON strings that are accepted by the <xref href=&quot;System.Web.Script.Serialization.JavaScriptSerializer&quot;></xref> class."
-  remarks: 'The value of the MaxJsonLength property applies only when you explicitly create an instance of the <xref:System.Web.Script.Serialization.JavaScriptSerializer> class. Use the `jsonSerialization` element of the configuration file to set the maximum length for the internal serializer instance that is used by the asynchronous communication layer. For more information about the configuration elements for serialization, see [How to: Configure ASP.NET Services in Microsoft Ajax](~/add/includes/ajax-current-ext-md.md).'
+  summary: "获取或设置由接受的 JSON 字符串的最大长度<xref href=&quot;System.Web.Script.Serialization.JavaScriptSerializer&quot;></xref>类。"
+  remarks: '仅在显式创建<xref:System.Web.Script.Serialization.JavaScriptSerializer>类</xref:System.Web.Script.Serialization.JavaScriptSerializer>的实例时，将应用 MaxJsonLength 属性的值 使用`jsonSerialization`元素的配置文件设置的异步通信层使用的内部序列化程序实例的最大长度。 有关序列化的配置元素的详细信息，请参阅[如何︰ 配置 Microsoft Ajax 中的 ASP.NET 服务](~/add/includes/ajax-current-ext-md.md)。'
   syntax:
     content: public int MaxJsonLength { get; set; }
     return:
       type: System.Int32
-      description: "The maximum length of JSON strings. The default is 2097152 characters, which is equivalent to 4 MB of Unicode string data."
+      description: "JSON 字符串的最大长度。 默认值为 2097152 个字符，这等同于 4 MB 的 Unicode 字符串数据。"
   overload: System.Web.Script.Serialization.JavaScriptSerializer.MaxJsonLength*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The property is set to a value that is less than one."
+    description: "属性设置为一个小于&1; 的值。"
   platform:
   - net462
 - uid: System.Web.Script.Serialization.JavaScriptSerializer.RecursionLimit
@@ -277,18 +277,18 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.Script.Serialization
-  summary: "Gets or sets the limit for constraining the number of object levels to process."
-  remarks: "The RecursionLimit property refers to the number of levels in the object hierarchy that <xref:System.Web.Script.Serialization.JavaScriptSerializer> will process in the following cases:      -   When the <xref:System.Web.Script.Serialization.JavaScriptSerializer> class is deserializing a JSON string.      -   When the <xref:System.Web.Script.Serialization.JavaScriptSerializer> class is walking an object graph during serialization.       The value of RecursionLimit applies only when you explicitly create an instance of the <xref:System.Web.Script.Serialization.JavaScriptSerializer> class. Use the `jsonSerialization` element of the configuration file to set the number of object levels to process for the internal serializer instance that is used by the asynchronous communication layer. For more information about the configuration elements for serialization, see [How to: Configure ASP.NET Services in Microsoft Ajax](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置用于约束要处理的对象级别的数量限制。"
+  remarks: "RecursionLimit 属性引用的对象层次结构中的级别数，<xref:System.Web.Script.Serialization.JavaScriptSerializer>将处理在以下情况:-当<xref:System.Web.Script.Serialization.JavaScriptSerializer>类反序列化的 JSON 字符串。</xref:System.Web.Script.Serialization.JavaScriptSerializer> </xref:System.Web.Script.Serialization.JavaScriptSerializer>      -如果<xref:System.Web.Script.Serialization.JavaScriptSerializer>类在序列化过程中遍历对象图。</xref:System.Web.Script.Serialization.JavaScriptSerializer>       仅在显式创建<xref:System.Web.Script.Serialization.JavaScriptSerializer>类</xref:System.Web.Script.Serialization.JavaScriptSerializer>的实例时，将应用 RecursionLimit 的值 使用`jsonSerialization`的配置文件设置的对象级别，要处理的异步通信层使用的内部序列化程序实例的数量的元素。 有关序列化的配置元素的详细信息，请参阅[如何︰ 配置 Microsoft Ajax 中的 ASP.NET 服务](~/add/includes/ajax-current-ext-md.md)。"
   syntax:
     content: public int RecursionLimit { get; set; }
     return:
       type: System.Int32
-      description: "The number of object levels. The default is 100."
+      description: "对象级别数。 默认值为 100。"
   overload: System.Web.Script.Serialization.JavaScriptSerializer.RecursionLimit*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The property is set to a value that is less than one."
+    description: "属性设置为一个小于&1; 的值。"
   platform:
   - net462
 - uid: System.Web.Script.Serialization.JavaScriptSerializer.RegisterConverters(System.Collections.Generic.IEnumerable{System.Web.Script.Serialization.JavaScriptConverter})
@@ -303,8 +303,8 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.Script.Serialization
-  summary: "Registers a custom converter with the <xref href=&quot;System.Web.Script.Serialization.JavaScriptSerializer&quot;></xref> instance."
-  remarks: "You can register one or more custom converters with a <xref:System.Web.Script.Serialization.JavaScriptSerializer> instance by using the RegisterConverters method. When custom converters are registered, <xref:System.Web.Script.Serialization.JavaScriptSerializer> uses the converters both to serialize managed types and to deserialize JSON strings to managed types.       Multiple converters can be registered with the same <xref:System.Web.Script.Serialization.JavaScriptSerializer> instance, and these converters can indicate support for the same type. As a result, the last converter that is registered for a specific type is the one that will be used by <xref:System.Web.Script.Serialization.JavaScriptSerializer> to serialize the type.       For more information about custom converters, see the <xref:System.Web.Script.Serialization.JavaScriptConverter> class."
+  summary: "注册自定义转换器<xref href=&quot;System.Web.Script.Serialization.JavaScriptSerializer&quot;></xref>实例。"
+  remarks: "你可以注册一个或多个自定义转换器<xref:System.Web.Script.Serialization.JavaScriptSerializer>使用 RegisterConverters 方法的实例。</xref:System.Web.Script.Serialization.JavaScriptSerializer> 当注册自定义转换器时，<xref:System.Web.Script.Serialization.JavaScriptSerializer>使用托管的类型序列化和反序列化 JSON 字符串转换为托管类型转换器。</xref:System.Web.Script.Serialization.JavaScriptSerializer>       有多个转换器可以注册具有相同<xref:System.Web.Script.Serialization.JavaScriptSerializer>实例，并且这些转换器可以指示为同一类型的支持。</xref:System.Web.Script.Serialization.JavaScriptSerializer> 因此，为特定类型注册的最后一个转换器是将使用的一个<xref:System.Web.Script.Serialization.JavaScriptSerializer>以序列化的类型。</xref:System.Web.Script.Serialization.JavaScriptSerializer>       有关自定义转换器的详细信息，请参阅<xref:System.Web.Script.Serialization.JavaScriptConverter>类。</xref:System.Web.Script.Serialization.JavaScriptConverter>"
   example:
   - "The following example shows how to register a custom converter with a <xref:System.Web.Script.Serialization.JavaScriptSerializer> instance. This code example is part of a larger example provided for the <xref:System.Web.Script.Serialization.JavaScriptSerializer>class.  \n  \n [!code-vb[System.Web.Script.Serialization#1](~/add/codesnippet/visualbasic/0b038c1f-1fc5-4957-9daf-_1.aspx)]\n [!code-cs[System.Web.Script.Serialization#1](~/add/codesnippet/csharp/0b038c1f-1fc5-4957-9daf-_1.aspx)]"
   syntax:
@@ -312,12 +312,12 @@ items:
     parameters:
     - id: converters
       type: System.Collections.Generic.IEnumerable{System.Web.Script.Serialization.JavaScriptConverter}
-      description: "An array that contains the custom converters to be registered."
+      description: "包含要注册的自定义转换器的数组。"
   overload: System.Web.Script.Serialization.JavaScriptSerializer.RegisterConverters*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>converters</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>converters</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.Script.Serialization.JavaScriptSerializer.Serialize(System.Object)
@@ -332,8 +332,8 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.Script.Serialization
-  summary: "Converts an object to a JSON string."
-  remarks: "When the <xref:System.Web.Script.Serialization.JavaScriptSerializer> instance is serializing a type for which a custom converter is registered, the serializer calls the <xref:System.Web.Script.Serialization.JavaScriptConverter.Serialize%2A> method to obtain the dictionary of name/value pairs that will be converted to a JSON string.       The Serialize method can also throw exceptions if the object graph is too complex, or if registered instances of <xref:System.Web.Script.Serialization.JavaScriptConverter> have caused converter recursion."
+  summary: "将对象转换为 JSON 字符串。"
+  remarks: "当<xref:System.Web.Script.Serialization.JavaScriptSerializer>实例序列化一个类型为其注册的自定义转换器，序列化程序调用<xref:System.Web.Script.Serialization.JavaScriptConverter.Serialize%2A>方法以获取将转换为 JSON 字符串的名称/值对的字典。</xref:System.Web.Script.Serialization.JavaScriptConverter.Serialize%2A> </xref:System.Web.Script.Serialization.JavaScriptSerializer>       如果对象图太过复杂，或如果注册的实例，序列化方法还会引发异常<xref:System.Web.Script.Serialization.JavaScriptConverter>导致转换器递归。</xref:System.Web.Script.Serialization.JavaScriptConverter>"
   example:
   - "The following example provides a simple illustration of how to serialize and deserialize data objects. It requires a class names Person which is shown below.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
@@ -341,18 +341,18 @@ items:
     parameters:
     - id: obj
       type: System.Object
-      description: "The object to serialize."
+      description: "要序列化的对象。"
     return:
       type: System.String
-      description: "The serialized JSON string."
+      description: "序列化的 JSON 字符串。"
   overload: System.Web.Script.Serialization.JavaScriptSerializer.Serialize*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The resulting JSON string exceeds the value of <xref:System.Web.Script.Serialization.JavaScriptSerializer.MaxJsonLength*>.       -or-       <code>obj</code> contains a circular reference. A circular reference occurs when a child object has a reference to a parent object, and the parent object has a reference to the child object."
+    description: "生成的 JSON 字符串超过<xref:System.Web.Script.Serialization.JavaScriptSerializer.MaxJsonLength*>.</xref:System.Web.Script.Serialization.JavaScriptSerializer.MaxJsonLength*>的值       - <code> obj </code>包含循环引用。 当对子对象的引用的父对象上的子对象具有对父对象的引用时发生循环引用。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The recursion limit defined by <xref:System.Web.Script.Serialization.JavaScriptSerializer.RecursionLimit*> was exceeded."
+    description: "定义的递归限制<xref:System.Web.Script.Serialization.JavaScriptSerializer.RecursionLimit*>超出了。</xref:System.Web.Script.Serialization.JavaScriptSerializer.RecursionLimit*>"
   platform:
   - net462
 - uid: System.Web.Script.Serialization.JavaScriptSerializer.Serialize(System.Object,System.Text.StringBuilder)
@@ -367,25 +367,25 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.Script.Serialization
-  summary: "Serializes an object and writes the resulting JSON string to the specified <xref:System.Text.StringBuilder> object."
-  remarks: "When the <xref:System.Web.Script.Serialization.JavaScriptSerializer> instance is serializing a type for which a custom converter is registered, the serializer calls the <xref:System.Web.Script.Serialization.JavaScriptConverter.Serialize%2A> method to obtain the dictionary of name/value pairs that will be converted to a JSON string.       The <xref:System.Web.Script.Serialization.JavaScriptSerializer.Serialize%2A> method can also throw exceptions if the object graph is too complex, or if registered instances of <xref:System.Web.Script.Serialization.JavaScriptConverter> have caused converter recursion."
+  summary: "序列化对象并将生成的 JSON 字符串写入指定<xref:System.Text.StringBuilder>对象。</xref:System.Text.StringBuilder>"
+  remarks: "当<xref:System.Web.Script.Serialization.JavaScriptSerializer>实例序列化一个类型为其注册的自定义转换器，序列化程序调用<xref:System.Web.Script.Serialization.JavaScriptConverter.Serialize%2A>方法以获取将转换为 JSON 字符串的名称/值对的字典。</xref:System.Web.Script.Serialization.JavaScriptConverter.Serialize%2A> </xref:System.Web.Script.Serialization.JavaScriptSerializer>       <xref:System.Web.Script.Serialization.JavaScriptSerializer.Serialize%2A>方法可能还会引发异常，如果对象图太过复杂，或如果注册的实例<xref:System.Web.Script.Serialization.JavaScriptConverter>导致转换器递归。</xref:System.Web.Script.Serialization.JavaScriptConverter> </xref:System.Web.Script.Serialization.JavaScriptSerializer.Serialize%2A>"
   syntax:
     content: public void Serialize (object obj, System.Text.StringBuilder output);
     parameters:
     - id: obj
       type: System.Object
-      description: "The object to serialize."
+      description: "要序列化的对象。"
     - id: output
       type: System.Text.StringBuilder
-      description: "The <xref:System.Text.StringBuilder> object that is used to write the JSON string."
+      description: "<xref:System.Text.StringBuilder>用于写入 JSON 字符串的对象。</xref:System.Text.StringBuilder>"
   overload: System.Web.Script.Serialization.JavaScriptSerializer.Serialize*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The resulting JSON string exceeds the value of <xref:System.Web.Script.Serialization.JavaScriptSerializer.MaxJsonLength*>.       -or-       <code>obj</code> contains a circular reference. A circular reference occurs when a child object has a reference to a parent object, and the parent object has a reference to the child object."
+    description: "生成的 JSON 字符串超过<xref:System.Web.Script.Serialization.JavaScriptSerializer.MaxJsonLength*>.</xref:System.Web.Script.Serialization.JavaScriptSerializer.MaxJsonLength*>的值       - <code> obj </code>包含循环引用。 当对子对象的引用的父对象上的子对象具有对父对象的引用时发生循环引用。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The recursion limit defined by <xref:System.Web.Script.Serialization.JavaScriptSerializer.RecursionLimit*> was exceeded."
+    description: "定义的递归限制<xref:System.Web.Script.Serialization.JavaScriptSerializer.RecursionLimit*>超出了。</xref:System.Web.Script.Serialization.JavaScriptSerializer.RecursionLimit*>"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "<code>output</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
