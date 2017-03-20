@@ -14,8 +14,8 @@ items:
   nameWithType: ExceptionHandler
   fullName: System.ServiceModel.Dispatcher.ExceptionHandler
   type: Class
-  summary: "Extend the ExceptionHandler class to create an exception handler for unhandled exceptions that occur within the [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] runtime."
-  remarks: "Extend the ExceptionHandler class and override the <xref:System.ServiceModel.Dispatcher.ExceptionHandler.HandleException%2A> method to determine whether an exception should terminate the application. Then create a new instance of your custom ExceptionHandler class and assign it to the static <xref:System.ServiceModel.Dispatcher.ExceptionHandler.AsynchronousThreadExceptionHandler%2A> or <xref:System.ServiceModel.Dispatcher.ExceptionHandler.TransportExceptionHandler%2A> property prior to creating [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] clients or services."
+  summary: "扩展要创建的异常处理程序内发生的未经处理的异常的 ExceptionHandler 类[!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)]运行时。"
+  remarks: "扩展 ExceptionHandler 类，并重写<xref:System.ServiceModel.Dispatcher.ExceptionHandler.HandleException%2A>方法来确定异常是否应终止应用程序。</xref:System.ServiceModel.Dispatcher.ExceptionHandler.HandleException%2A> 然后创建自定义的 ExceptionHandler 类的新实例并将其分配给静态<xref:System.ServiceModel.Dispatcher.ExceptionHandler.AsynchronousThreadExceptionHandler%2A>或<xref:System.ServiceModel.Dispatcher.ExceptionHandler.TransportExceptionHandler%2A>属性，然后创建[!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)]客户端或服务。</xref:System.ServiceModel.Dispatcher.ExceptionHandler.TransportExceptionHandler%2A> </xref:System.ServiceModel.Dispatcher.ExceptionHandler.AsynchronousThreadExceptionHandler%2A>"
   example:
   - "The following code example shows an implementation of the ExceptionHandler abstract class that overrides the <xref:System.ServiceModel.Dispatcher.ExceptionHandler.HandleException%2A> method.  \n  \n [!code-cs[S_UEExceptionHandler#0](~/add/codesnippet/csharp/s_ueexceptionhandler.cs/program.cs#0)]\n [!code-vb[S_UEExceptionHandler#0](~/add/codesnippet/visualbasic/s_ueexceptionhandler.cs/module1.vb#0)]  \n  \n The following code example shows how to enable the custom `MyExceptionHandler` for unhandled exceptions that occur within the [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] runtime.  \n  \n [!code-cs[S_UEExceptionHandler#1](~/add/codesnippet/csharp/s_ueexceptionhandler.cs/program.cs#1)]\n [!code-vb[S_UEExceptionHandler#1](~/add/codesnippet/visualbasic/s_ueexceptionhandler.cs/module1.vb#1)]"
   syntax:
@@ -38,7 +38,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;></xref> class."
+  summary: "初始化的新实例<xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;></xref>类。"
   syntax:
     content: protected ExceptionHandler ();
     parameters: []
@@ -58,12 +58,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Gets an instance of <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;></xref> that handles all exceptions."
+  summary: "获取实例<xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;></xref>处理所有异常。"
   syntax:
     content: public static System.ServiceModel.Dispatcher.ExceptionHandler AlwaysHandle { get; }
     return:
       type: System.ServiceModel.Dispatcher.ExceptionHandler
-      description: "An <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;></xref> object that returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> for all exceptions."
+      description: "<xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;> </xref>返回的对象<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>的所有异常。"
   overload: System.ServiceModel.Dispatcher.ExceptionHandler.AlwaysHandle*
   exceptions: []
   platform:
@@ -80,13 +80,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Gets or sets the current <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;></xref> implementation for the application domain."
-  remarks: "By default, the AsynchronousThreadExceptionHandler property is `null`, and unhandled exceptions on asynchronous [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] threads terminate the application.  Set this property to an <xref:System.ServiceModel.Dispatcher.ExceptionHandler> object to receive and react to these exceptions.       If an unhandled exception occurs on an asynchronous [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] thread and reaches this handler, the state of the application domain may be compromised.  <xref:System.ServiceModel.Dispatcher.ExceptionHandler.HandleException%2A> should not return `true` for these exceptions."
+  summary: "获取或设置当前<xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;></xref>实现应用程序域。"
+  remarks: "默认情况下，AsynchronousThreadExceptionHandler 属性是`null`，和未经处理的异常上异步[!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)]线程终止应用程序。  将此属性设置为<xref:System.ServiceModel.Dispatcher.ExceptionHandler>对象，用于接收并响应这些异常。</xref:System.ServiceModel.Dispatcher.ExceptionHandler>       如果未经处理的异常发生在异步[!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)]线程和到达此处理程序，应用程序域的状态可能已泄露。  <xref:System.ServiceModel.Dispatcher.ExceptionHandler.HandleException%2A>不应返回`true`为这些例外。</xref:System.ServiceModel.Dispatcher.ExceptionHandler.HandleException%2A>"
   syntax:
     content: public static System.ServiceModel.Dispatcher.ExceptionHandler AsynchronousThreadExceptionHandler { get; set; }
     return:
       type: System.ServiceModel.Dispatcher.ExceptionHandler
-      description: "Assign a custom <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;></xref> object that receives unhandled exceptions that occur on asynchronous [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] threads."
+      description: "分配一个自定义<xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;></xref>接收的对象未经处理的异常上异步发生[!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)]线程。"
   overload: System.ServiceModel.Dispatcher.ExceptionHandler.AsynchronousThreadExceptionHandler*
   exceptions: []
   platform:
@@ -103,8 +103,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "When overridden in a derived class, returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the exception has been handled, or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the exception should be rethrown and the application terminated."
-  remarks: "The HandleException property returns `true` if the exception has been handled. If it returns `false` or throws a different exception, the original exception is rethrown."
+  summary: "当在派生类中重写，则返回<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果异常已处理，或<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>如果应重新引发异常并且应用程序终止。"
+  remarks: "HandleException 属性返回`true`如果处理异常。 如果它返回`false`或引发其他异常，原始的异常将重新引发。"
   example:
   - "The following code example shows an implementation of the <xref:System.ServiceModel.Dispatcher.ExceptionHandler> abstract class that overrides the HandleException method.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]  \n  \n The following code example shows how to enable the custom `MyExceptionHandler` for unhandled exceptions that occur within the [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] runtime.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
@@ -112,10 +112,10 @@ items:
     parameters:
     - id: exception
       type: System.Exception
-      description: "The exception the occurred within the [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] runtime and which may terminate the application."
+      description: "发生的异常中[!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)]运行时和可能终止应用程序。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the exception has been handled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果已处理的异常;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.ServiceModel.Dispatcher.ExceptionHandler.HandleException*
   exceptions: []
   platform:
@@ -132,13 +132,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Gets or sets the current transport <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;></xref> implementation for the application domain."
-  remarks: "By default, the TransportExceptionHandler property is set to the value of <xref:System.ServiceModel.Dispatcher.ExceptionHandler.AlwaysHandle%2A>, causing unhandled exceptions within [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] transports to be ignored.  Set this property to an instance of <xref:System.ServiceModel.Dispatcher.ExceptionHandler> to receive and react to these exceptions.       If an unhandled exception occurs within a global [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] transport and reaches this handler, there is a possibility that the state of the application domain is compromised. <xref:System.ServiceModel.Dispatcher.ExceptionHandler.HandleException%2A> can return `false` for these exceptions to cause the application to be terminated."
+  summary: "获取或设置的当前传输<xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;></xref>实现应用程序域。"
+  remarks: "默认情况下，TransportExceptionHandler 属性设置为值<xref:System.ServiceModel.Dispatcher.ExceptionHandler.AlwaysHandle%2A>，导致未经处理的异常中[!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)]被忽略的传输。</xref:System.ServiceModel.Dispatcher.ExceptionHandler.AlwaysHandle%2A>  将此属性设置为实例<xref:System.ServiceModel.Dispatcher.ExceptionHandler>用于接收和响应这些异常。</xref:System.ServiceModel.Dispatcher.ExceptionHandler>       如果未经处理的异常中全局发生[!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)]传输和到达此处理程序，则可能被泄露的应用程序域的状态。 <xref:System.ServiceModel.Dispatcher.ExceptionHandler.HandleException%2A>可以返回`false`为这些例外，以使应用程序将被终止。</xref:System.ServiceModel.Dispatcher.ExceptionHandler.HandleException%2A>"
   syntax:
     content: public static System.ServiceModel.Dispatcher.ExceptionHandler TransportExceptionHandler { get; set; }
     return:
       type: System.ServiceModel.Dispatcher.ExceptionHandler
-      description: "A custom <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;></xref> object that receives unhandled exceptions that occur within the global [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] transports."
+      description: "自定义<xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;></xref>接收的对象未经处理的异常发生在全局[!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)]传输。"
   overload: System.ServiceModel.Dispatcher.ExceptionHandler.TransportExceptionHandler*
   exceptions: []
   platform:
