@@ -11,8 +11,8 @@ items:
   nameWithType: IBinarySerialize
   fullName: Microsoft.SqlServer.Server.IBinarySerialize
   type: Interface
-  summary: "Provides custom implementation for user-defined type (UDT) and user-defined aggregate serialization and deserialization."
-  remarks: "User-defined types (UDTs) and user-defined aggregates are required to define a storage format, which can be either <xref:Microsoft.SqlServer.Server.Format>.`Native` or <xref:Microsoft.SqlServer.Server.Format>.`UserDefined`.       <xref:Microsoft.SqlServer.Server.Format>.`Native` allows SQL Server to handle serialization and deserialization automatically, but the format has restrictions on the kind of types it can handle. <xref:Microsoft.SqlServer.Server.Format>.`UserDefined` allows user-defined types and aggregates to handle their own serialization. User-defined types and aggregates must be marked with <xref:Microsoft.SqlServer.Server.Format>.`UserDefined` in the `SqlUserDefinedType` or `SqlUserDefinedAggregate` attribute, and must implement the IBinarySerialize interface.       Note that even with custom serialization, the total size of each instance must be under the maximum allowed limit, currently 8000 bytes."
+  summary: "提供自定义实现用户定义类型 (UDT) 和用户定义聚合的序列化和反序列化。"
+  remarks: "用户定义的类型 (Udt) 和用户定义聚合所需定义一种存储格式，可以是<xref:Microsoft.SqlServer.Server.Format>。`Native` </xref:Microsoft.SqlServer.Server.Format> or <xref:Microsoft.SqlServer.Server.Format>.`UserDefined`.</xref:Microsoft.SqlServer.Server.Format>       <xref:Microsoft.SqlServer.Server.Format>.`Native`</xref:Microsoft.SqlServer.Server.Format> 允许 SQL Server 处理序列化和反序列化自动，但该格式具有它可以处理的类型的类型的限制。 <xref:Microsoft.SqlServer.Server.Format>.`UserDefined`</xref:Microsoft.SqlServer.Server.Format> 允许用户定义的类型和聚合处理它们自己的序列化。 用户定义的类型和聚合都必须标记为<xref:Microsoft.SqlServer.Server.Format>。`UserDefined` </xref:Microsoft.SqlServer.Server.Format> 在`SqlUserDefinedType`或`SqlUserDefinedAggregate`特性，而必须实现 IBinarySerialize 接口。       请注意，即使使用自定义序列化，每个实例的总大小必须低于允许的限制，当前 8000 个字节最高。"
   syntax:
     content: public interface IBinarySerialize
   implements: []
@@ -30,8 +30,8 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Generates a user-defined type (UDT) or user-defined aggregate from its binary form."
-  remarks: "The Read method must reconstitute your object using the information written by the <xref:Microsoft.SqlServer.Server.IBinarySerialize.Write%2A> method."
+  summary: "生成的二进制格式的用户定义类型 (UDT) 或用户定义聚合。"
+  remarks: "Read 方法必须重建你使用由编写的信息的对象<xref:Microsoft.SqlServer.Server.IBinarySerialize.Write%2A>方法。</xref:Microsoft.SqlServer.Server.IBinarySerialize.Write%2A>"
   example:
   - "The following example shows the implementation of the Read method of a UDT, which uses a <xref:System.IO.BinaryReader> to de-serialize a previously persisted UDT. This example assumes that the UDT has two data properties: `StringValue` and `DoubleValue`.  \n  \n [!code-cs[DataWorks IBinarySerialize Samples#1](~/add/codesnippet/csharp/m-microsoft.sqlserver.se_1_1.cs)]\n [!code-vb[DataWorks IBinarySerialize Samples#1](~/add/codesnippet/visualbasic/m-microsoft.sqlserver.se_1_1.vb)]"
   syntax:
@@ -39,7 +39,7 @@ items:
     parameters:
     - id: r
       type: System.IO.BinaryReader
-      description: "The <xref:System.IO.BinaryReader> stream from which the object is deserialized."
+      description: "<xref:System.IO.BinaryReader>从中反序列化对象流式传输。</xref:System.IO.BinaryReader>"
   overload: Microsoft.SqlServer.Server.IBinarySerialize.Read*
   exceptions: []
   platform:
@@ -56,8 +56,8 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Converts a user-defined type (UDT) or user-defined aggregate into its binary format so that it may be persisted."
-  remarks: "Write sufficient information to the binary stream to allow the <xref:Microsoft.SqlServer.Server.IBinarySerialize.Read%2A> method to reconstitute your UDT or user-defined aggregate."
+  summary: "将用户定义类型 (UDT) 或用户定义聚合转换为其二进制格式，以便它可能需要保存。"
+  remarks: "足够的信息写入二进制流以允许<xref:Microsoft.SqlServer.Server.IBinarySerialize.Read%2A>方法，以便重建 UDT 或用户定义聚合。</xref:Microsoft.SqlServer.Server.IBinarySerialize.Read%2A>"
   example:
   - "The following example shows the implementation of the Writemethod of a UDT, which uses a <xref:System.IO.BinaryWriter> to serialize the UDT in the user-defined binary format. The purpose of the null character padding is to ensure that the string value is completely separated from the double value, so that one UDT is compared to another in Transact-SQL code, string bytes are compared to string bytes and double bytes are compared to double bytes.  \n  \n [!code-cs[DataWorks IBinarySerialize Samples#2](~/add/codesnippet/csharp/m-microsoft.sqlserver.se_0_1.cs)]\n [!code-vb[DataWorks IBinarySerialize Samples#2](~/add/codesnippet/visualbasic/m-microsoft.sqlserver.se_0_1.vb)]"
   syntax:
@@ -65,7 +65,7 @@ items:
     parameters:
     - id: w
       type: System.IO.BinaryWriter
-      description: "The <xref:System.IO.BinaryWriter> stream to which the UDT or user-defined aggregate is serialized."
+      description: "<xref:System.IO.BinaryWriter>UDT 或用户定义聚合序列化到流。</xref:System.IO.BinaryWriter>"
   overload: Microsoft.SqlServer.Server.IBinarySerialize.Write*
   exceptions: []
   platform:

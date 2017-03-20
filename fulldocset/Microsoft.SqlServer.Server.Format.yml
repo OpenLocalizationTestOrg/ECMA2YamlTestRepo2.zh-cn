@@ -12,8 +12,8 @@ items:
   nameWithType: Format
   fullName: Microsoft.SqlServer.Server.Format
   type: Enum
-  summary: "Used by <xref href=&quot;Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute&quot;></xref> and <xref href=&quot;Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute&quot;></xref> to indicate the serialization format of a user-defined type (UDT) or aggregate."
-  remarks: "Used by <xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute> and <xref:Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute> to indicate the serialization format of a user-defined type (UDT) or aggregate."
+  summary: "使用<xref href=&quot;Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute&quot;></xref>和<xref href=&quot;Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute&quot;></xref>以指示用户定义类型 (UDT) 或聚合的序列化格式。"
+  remarks: "使用<xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute>和<xref:Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute>以指示用户定义类型 (UDT) 或聚合的序列化格式。</xref:Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute> </xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute>"
   example:
   - "The following example shows the `UserDefinedType` attribute of the Point UDT.  The UDT is byte-ordered, is named \"Point\", has a validation method named \"ValidatePoint\", and uses the native serialization format.  \n  \n [!code-cs[DataWorks SqlUserDefinedTypeAttribute Example#1](~/add/codesnippet/csharp/t-microsoft.sqlserver.se_6_1.cs)]\n [!code-vb[DataWorks SqlUserDefinedTypeAttribute Example#1](~/add/codesnippet/visualbasic/t-microsoft.sqlserver.se_6_1.vb)]"
   syntax:
@@ -34,13 +34,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The <xref uid=&quot;langword_csharp_Native&quot; name=&quot;Native&quot; href=&quot;&quot;></xref> serialization format uses a very simple algorithm that enables SQL Server to store an efficient representation of the UDT on disk. Types marked for <xref uid=&quot;langword_csharp_Native&quot; name=&quot;Native&quot; href=&quot;&quot;></xref> serialization can only have value types (structs in Microsoft Visual C# and structures in Microsoft Visual Basic .NET) as members. Members of reference types (such as classes in Visual C# and Visual Basic), either user-defined or those existing in the framework (such as <xref:System.String>), are not supported."
-  remarks: "The requirements for this format are:      -   The `StructLayout.LayoutKindSequential` attribute must be applied to the aggregate or UDT if it is defined in a class and not a structure. This controls the physical layout of the data fields, and is used to force the members to be laid out sequentially in the order they appear. SQL Server uses this attribute to determine the field order for UDTs with multiple fields.      -   The type must contain at least one member (serialized values cannot be zero bytes in size).      -   All the fields of the aggregate must be *blittable*, that is, they must have a common representation in both managed and unmanaged memory and not require special handling by the interop marshaler.      -   All the fields of the UDT should be of one of the following types that can be serialized: `bool`, `byte`,`sbyte`,`short`,`ushort`, `int`, `uint`, `long`, `ulong`, `float`, `double`, <xref:System.Data.SqlTypes.SqlByte>, <xref:System.Data.SqlTypes.SqlInt16>, <xref:System.Data.SqlTypes.SqlInt32>, <xref:System.Data.SqlTypes.SqlInt64>, <xref:System.Data.SqlTypes.SqlDateTime>, <xref:System.Data.SqlTypes.SqlSingle>, <xref:System.Data.SqlTypes.SqlDouble>, <xref:System.Data.SqlTypes.SqlMoney>, or other value types defined by the user that contain fields of one of these types.      -   The aggregate must not specify a value for `MaxByteSize`.      -   The aggregate must not have any [NonSerialized] fields.      -   Fields must not be marked as an explicit layout (<xref:System.Runtime.InteropServices.StructLayoutAttribute>)."
+  summary: "<xref uid=&quot;langword_csharp_Native&quot; name=&quot;Native&quot; href=&quot;&quot;> </xref>序列化格式使用非常简单的算法，它支持 SQL Server 在磁盘上存储用户定义的类型的有效表示。 类型标记为<xref uid=&quot;langword_csharp_Native&quot; name=&quot;Native&quot; href=&quot;&quot;></xref>序列化可以仅具有值类型 （结构 Microsoft Visual C# 中） 和 Microsoft Visual Basic.NET 中的结构作为成员。 引用的成员类型 （如类 Visual C# 和 Visual Basic 中），用户定义，也不存在于 framework 中的那些 (如<xref:System.String>)，不支持。</xref:System.String>"
+  remarks: "此格式的要求如下:-`StructLayout.LayoutKindSequential`属性必须应用于聚合或 UDT 如果一个类和不是在结构中定义。 这样的数据字段中，物理布局进行控制，用于强制要按照它们出现的顺序依次布局的成员。 SQL Server 使用此属性以确定 Udt 的与多个字段的字段顺序。      -该类型必须包含至少一个成员 （序列化的值不能为零字节的大小）。      的聚合所有字段必须都是*本机结构中*，也就是说，它们必须在托管和非托管内存中具有公共的表示形式，并不需要特殊处理的互操作封送处理程序。      的用户定义的类型所有字段都应为都可序列化的以下类型之一︰ `bool`， `byte`，`sbyte`，`short`，`ushort`， `int`， `uint`， `long`， `ulong`， `float`， `double`， <xref:System.Data.SqlTypes.SqlByte>， <xref:System.Data.SqlTypes.SqlInt16>， <xref:System.Data.SqlTypes.SqlInt32>， <xref:System.Data.SqlTypes.SqlInt64>， <xref:System.Data.SqlTypes.SqlDateTime>， <xref:System.Data.SqlTypes.SqlSingle>， <xref:System.Data.SqlTypes.SqlDouble>， <xref:System.Data.SqlTypes.SqlMoney>，或用户定义的其他值类型，包含的其中一种类型的字段。</xref:System.Data.SqlTypes.SqlMoney> </xref:System.Data.SqlTypes.SqlDouble> </xref:System.Data.SqlTypes.SqlSingle> </xref:System.Data.SqlTypes.SqlDateTime> </xref:System.Data.SqlTypes.SqlInt64> </xref:System.Data.SqlTypes.SqlInt32> </xref:System.Data.SqlTypes.SqlInt16> </xref:System.Data.SqlTypes.SqlByte>      -聚合必须指定的值`MaxByteSize`。      -聚合不能有任何 [所以] 字段。      -字段不能标记为显式布局 (<xref:System.Runtime.InteropServices.StructLayoutAttribute>)。</xref:System.Runtime.InteropServices.StructLayoutAttribute>"
   syntax:
     content: Native
     return:
       type: Microsoft.SqlServer.Server.Format
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -56,12 +56,12 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The serialization format is unknown."
+  summary: "序列化格式是未知的。"
   syntax:
     content: Unknown
     return:
       type: Microsoft.SqlServer.Server.Format
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -77,13 +77,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The <xref uid=&quot;langword_csharp_UserDefined&quot; name=&quot;UserDefined&quot; href=&quot;&quot;></xref> serialization format gives the developer full control over the binary format through the <xref href=&quot;Microsoft.SqlServer.Server.IBinarySerialize&quot;></xref><xref uid=&quot;langword_csharp_.Write&quot; name=&quot;.Write&quot; href=&quot;&quot;></xref> and <xref href=&quot;Microsoft.SqlServer.Server.IBinarySerialize&quot;></xref><xref uid=&quot;langword_csharp_.Read&quot; name=&quot;.Read&quot; href=&quot;&quot;></xref> methods."
-  remarks: "The aggregate must specify a value for `MaxByteSize`.       Specify the <xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.IsByteOrdered%2A> attribute property. The default value is false.       If you omit any field in the <xref:Microsoft.SqlServer.Server.IBinarySerialize.Read%2A> or <xref:Microsoft.SqlServer.Server.IBinarySerialize.Write%2A> methods, the state of that field is not serialized."
+  summary: "<xref uid=&quot;langword_csharp_UserDefined&quot; name=&quot;UserDefined&quot; href=&quot;&quot;> </xref>开发人员完全控制通过该二进制格式的序列化格式提供<xref href=&quot;Microsoft.SqlServer.Server.IBinarySerialize&quot;> </xref> <xref uid=&quot;langword_csharp_.Write&quot; name=&quot;.Write&quot; href=&quot;&quot;> </xref>和<xref href=&quot;Microsoft.SqlServer.Server.IBinarySerialize&quot;> </xref> <xref uid=&quot;langword_csharp_.Read&quot; name=&quot;.Read&quot; href=&quot;&quot;> </xref>方法。"
+  remarks: "聚合必须指定的值`MaxByteSize`。       指定<xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.IsByteOrdered%2A>特性属性。</xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.IsByteOrdered%2A> 默认值为 false。       如果省略中的任何字段<xref:Microsoft.SqlServer.Server.IBinarySerialize.Read%2A>或<xref:Microsoft.SqlServer.Server.IBinarySerialize.Write%2A>方法，该字段的状态不会序列化。</xref:Microsoft.SqlServer.Server.IBinarySerialize.Write%2A> </xref:Microsoft.SqlServer.Server.IBinarySerialize.Read%2A>"
   syntax:
     content: UserDefined
     return:
       type: Microsoft.SqlServer.Server.Format
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462

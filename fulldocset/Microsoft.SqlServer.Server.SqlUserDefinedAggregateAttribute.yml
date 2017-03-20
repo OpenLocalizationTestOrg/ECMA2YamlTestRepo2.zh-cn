@@ -18,8 +18,8 @@ items:
   nameWithType: SqlUserDefinedAggregateAttribute
   fullName: Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute
   type: Class
-  summary: "Indicates that the type should be registered as a user-defined aggregate. The properties on the attribute reflect the physical attributes used when the type is registered with SQL Server. This class cannot be inherited."
-  remarks: "SQL Server creates a user-defined aggregate that is bound to the class definition that has the SqlUserDefinedAggregateAttribute custom attribute. Every user-defined aggregate must be annotated with this attribute.       See &quot;CLR User-Defined Aggregates&quot; in SQL Server 2005 Books Online for more information on user-defined aggregates and examples."
+  summary: "指示应将类型注册为用户定义聚合。 在特性上的属性反映在该类型注册使用 SQL Server 时使用的物理属性。 此类不能被继承。"
+  remarks: "SQL Server 创建一个绑定到具有 SqlUserDefinedAggregateAttribute 自定义属性的类定义的用户定义聚合。 每个用户定义聚合都必须使用此属性进行批注。       用户定义聚合和示例的详细信息，请参阅 SQL Server 2005 联机丛书中的&quot;CLR 用户定义聚合&quot;。"
   example:
   - "The following example shows the SqlUserDefinedAggregateAttribute attribute for a user-defined aggregate.  The aggregate uses custom serialization, has a maximum size of 8000 bytes when serialized, and is invariant to nulls, duplicates, and order.  \n  \n [!code-vb[DataWorks SqlUserDefinedAggregateAttribute Sample#1](~/add/codesnippet/visualbasic/t-microsoft.sqlserver.se_5_1.vb)]\n [!code-cs[DataWorks SqlUserDefinedAggregateAttribute Sample#1](~/add/codesnippet/csharp/t-microsoft.sqlserver.se_5_1.cs)]"
   syntax:
@@ -45,13 +45,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "A required attribute on a user-defined aggregate, used to indicate that the given type is a user-defined aggregate and the storage format of the user-defined aggregate."
+  summary: "用户定义的聚合，必需的特性用于指示给定的类型是用户定义聚合和用户定义聚合的存储格式。"
   syntax:
     content: public SqlUserDefinedAggregateAttribute (Microsoft.SqlServer.Server.Format format);
     parameters:
     - id: format
       type: Microsoft.SqlServer.Server.Format
-      description: "One of the <xref href=&quot;Microsoft.SqlServer.Server.Format&quot;></xref> values representing the serialization format of the aggregate."
+      description: "之一<xref href=&quot;Microsoft.SqlServer.Server.Format&quot;></xref>表示聚合的序列化格式的值。"
   overload: Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.#ctor*
   exceptions: []
   platform:
@@ -68,7 +68,7 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The serialization format as a <xref href=&quot;Microsoft.SqlServer.Server.Format&quot;></xref>."
+  summary: "序列化格式为<xref href=&quot;Microsoft.SqlServer.Server.Format&quot;> </xref>。"
   remarks: ''
   example:
   - >-
@@ -78,7 +78,7 @@ items:
     content: public Microsoft.SqlServer.Server.Format Format { get; }
     return:
       type: Microsoft.SqlServer.Server.Format
-      description: "A <xref href=&quot;Microsoft.SqlServer.Server.Format&quot;></xref> representing the serialization format."
+      description: "A <xref href=&quot;Microsoft.SqlServer.Server.Format&quot;> </xref>表示的序列化格式。"
   overload: Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.Format*
   exceptions: []
   platform:
@@ -95,13 +95,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether the aggregate is invariant to duplicates."
-  remarks: "Used by the query processor, this property is `true` if the aggregate is invariant to duplicates. That is, the aggregate of S, {X} is the same as aggregate of S when X is already in S. For example, aggregate functions such as MIN and MAX satisfy this property, while SUM does not.       Incorrectly setting this property can result in incorrect query results. This property is not an optimizer hint; it affects both the plan selected and the results returned by the query."
+  summary: "指示聚合是否与重复值无关。"
+  remarks: "使用查询处理器，此属性是`true`如果聚合是与重复值无关。 也就是说，S，聚合 {X} 等同于聚合 S X s。 中已存在时例如，聚合函数 MIN 和 MAX 如满足此属性，而总和不。       不正确地设置此属性可能导致不正确的查询结果。 此属性不是一个优化程序提示;它会影响所选择的计划和查询返回的结果。"
   syntax:
     content: public bool IsInvariantToDuplicates { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the aggregate is invariant to duplicates; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果聚合是固定到重复项;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.IsInvariantToDuplicates*
   exceptions: []
   platform:
@@ -118,13 +118,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether the aggregate is invariant to nulls."
-  remarks: "Used by the query processor, this property is `true` if the aggregate is invariant to nulls. That is, the aggregate of S, {NULL} is the same as aggregate of S. For example, aggregate functions such as MIN and MAX satisfy this property, while COUNT(*) does not.       Incorrectly setting this property can result in incorrect query results. This property is not an optimizer hint; it affects the plan selected and the results returned by the query."
+  summary: "指示聚合是否与空值无关。"
+  remarks: "使用查询处理器，此属性是`true`如果聚合是与空值无关。 也就是说，S，{NULL} 聚合等同于聚合的 s。例如，聚合函数 MIN 和 MAX 如满足此属性，而 COUNT(*) 不。       不正确地设置此属性可能导致不正确的查询结果。 此属性不是一个优化程序提示;它会影响所选择的计划和查询返回的结果。"
   syntax:
     content: public bool IsInvariantToNulls { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the aggregate is invariant to nulls; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果聚合是与空值无关;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.IsInvariantToNulls*
   exceptions: []
   platform:
@@ -141,13 +141,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether the aggregate is invariant to order."
-  remarks: "Reserved for future use. This property is not currently used by the query processor: order is currently not guaranteed.       Incorrectly setting this property can result in incorrect query results. This property is not an optimizer hint; it affects the plan selected and the results returned by the query.       The default value for this property is `false`."
+  summary: "指示聚合是否与顺序无关。"
+  remarks: "保留供将来使用。 查询处理器不当前使用此属性︰ 当前不能保证顺序。       不正确地设置此属性可能导致不正确的查询结果。 此属性不是一个优化程序提示;它会影响所选择的计划和查询返回的结果。       此属性的默认值是`false`。"
   syntax:
     content: public bool IsInvariantToOrder { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the aggregate is invariant to order; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果聚合是固定到订单;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.IsInvariantToOrder*
   exceptions: []
   platform:
@@ -164,13 +164,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether the aggregate returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if no values have been accumulated."
-  remarks: "Used by the query processor, this property is `true` if the aggregate returns `null` if no values have been accumulated.       Incorrectly setting this property can result in incorrect query results. This property is not an optimizer hint; it affects the plan selected and the results returned by the query."
+  summary: "指示聚合是否返回<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果任何值将不累积。"
+  remarks: "使用查询处理器，此属性是`true`如果聚合返回`null`如果任何值将不累积。       不正确地设置此属性可能导致不正确的查询结果。 此属性不是一个优化程序提示;它会影响所选择的计划和查询返回的结果。"
   syntax:
     content: public bool IsNullIfEmpty { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the aggregate returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if no values have been accumulated; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果聚合返回<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果任何值都不已累积的; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.IsNullIfEmpty*
   exceptions: []
   platform:
@@ -187,13 +187,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The maximum size, in bytes, of the aggregate instance."
-  remarks: "This property does not have to be specified for Native format serialization.       You must specify the MaxByteSize property with the UserDefined serialization <xref:Microsoft.SqlServer.Server.Format>.       The maximum allowed value for this property is specified by the <xref:Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.MaxByteSizeValue> field.       The maximum size allowed is 2 gigabytes (GB). You can specify a number from 1 to 8000 bytes, or -1 to represent a value larger than 8000 bytes, up to 2 gigabytes.       For an aggregate with user-defined serialization specified, MaxByteSize refers to the total size of the serialized data. Consider an aggregate serializing a string of 10 characters (<xref:System.Char>). When the string is serialized using a <xref:System.IO.BinaryWriter>, the total size of the serialized string is 22 bytes: 2 bytes per Unicode UTF-16 character, multiplied by the maximum number of characters, plus 2 control bytes of overhead incurred from serializing a binary stream. So, when determining the value of MaxByteSize, the total size of the serialized data must be considered: the size of the data serialized in binary form plus the overhead incurred by serialization."
+  summary: "以字节为单位，聚合实例的最大大小。"
+  remarks: "此属性没有指定用于本机格式序列化。       必须与用户定义序列化<xref:Microsoft.SqlServer.Server.Format>.</xref:Microsoft.SqlServer.Server.Format>指定了 MaxByteSize 属性       为此属性指定的允许值的最大<xref:Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.MaxByteSizeValue>字段。</xref:Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.MaxByteSizeValue>       允许的最大大小为 2 千兆字节 (GB)。 你可以指定介于 1 和 8000 个字节，则为-1 以表示大于 8000 个字节，最多为 2 千兆字节为单位的值。       与指定的用户定义的序列化聚合时，对于 MaxByteSize 是指序列化数据的总大小。 请考虑序列化的 10 个字符的字符串聚合 (<xref:System.Char>)。</xref:System.Char> 字符串使用序列化时<xref:System.IO.BinaryWriter>、 序列化的字符串的总大小是每个 Unicode utf-16 字符，最大字符数的乘积 22 字节︰ 2 字节以及 2 控件个字节的开销产生从序列化二进制流。</xref:System.IO.BinaryWriter> 因此，在确定 MaxByteSize 的值时，序列化数据的总大小必须考虑︰ 的大小以二进制格式序列化的数据加上序列化所需的开销。"
   syntax:
     content: public int MaxByteSize { get; set; }
     return:
       type: System.Int32
-      description: "An <xref:System.Int32> value representing the maximum size of the aggregate instance."
+      description: "<xref:System.Int32>值，该值表示聚合实例的最大大小。</xref:System.Int32>"
   overload: Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.MaxByteSize*
   exceptions: []
   platform:
@@ -210,13 +210,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The maximum size, in bytes, required to store the state of this aggregate instance during computation."
-  remarks: "An <xref:System.Int32> value representing the maximum size of the aggregate instance."
+  summary: "最大大小，以字节为单位，所需在计算过程中存储此聚合实例的状态。"
+  remarks: "<xref:System.Int32>值，该值表示聚合实例的最大大小。</xref:System.Int32>"
   syntax:
     content: public const int MaxByteSizeValue = 8000;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -232,12 +232,12 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The name of the aggregate."
+  summary: "聚合的名称。"
   syntax:
     content: public string Name { get; set; }
     return:
       type: System.String
-      description: "A <xref:System.String> value representing the name of the aggregate."
+      description: "A<xref:System.String>值，该值表示集合的名称。</xref:System.String>"
   overload: Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.Name*
   exceptions: []
   platform:

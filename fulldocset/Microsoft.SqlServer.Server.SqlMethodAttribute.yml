@@ -13,8 +13,8 @@ items:
   nameWithType: SqlMethodAttribute
   fullName: Microsoft.SqlServer.Server.SqlMethodAttribute
   type: Class
-  summary: "Indicates the determinism and data access properties of a method or property on a user-defined type (UDT). The properties on the attribute reflect the physical characteristics that are used when the type is registered with SQL Server."
-  remarks: "For a property, the SqlMethodAttribute should be used on the setter or the getter directly.       SqlMethodAttribute inherits from a <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute>, so SqlMethodAttribute inherits the `FillRowMethodName` and `TableDefinition` fields from <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute>. Note that it is not possible to write a table-valued method, although the names of these fields might suggest that it is possible."
+  summary: "指示方法的确定性和数据访问属性或属性上的用户定义的类型 (UDT)。 在特性上的属性反映在该类型注册使用 SQL Server 时使用的物理特征。"
+  remarks: "对于属性，应直接的 setter 或 getter 上使用 SqlMethodAttribute。       SqlMethodAttribute 继承自<xref:Microsoft.SqlServer.Server.SqlFunctionAttribute>，因此 SqlMethodAttribute 继承`FillRowMethodName`和`TableDefinition`字段从<xref:Microsoft.SqlServer.Server.SqlFunctionAttribute>.</xref:Microsoft.SqlServer.Server.SqlFunctionAttribute> </xref:Microsoft.SqlServer.Server.SqlFunctionAttribute> 请注意，它不可以用来编写表值的方法，但这些字段的名称可能会建议可能会。"
   example:
   - "The following example shows a UDT method that is attributed to indicate that the method will not be invoked on null instances of the type, that the method will not change the state of the type, and that the method will not be called when `null` parameters are supplied to the method invocation.  \n  \n [!code-cs[DataWorks SqlMethodAttribute Sample#1](~/add/codesnippet/csharp/t-microsoft.sqlserver.se_1_1.cs)]\n [!code-vb[DataWorks SqlMethodAttribute Sample#1](~/add/codesnippet/visualbasic/t-microsoft.sqlserver.se_1_1.vb)]"
   syntax:
@@ -48,7 +48,7 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "An attribute on a user-defined type (UDT), used to indicate the determinism and data access properties of a method or a property on a UDT."
+  summary: "用于指示方法的确定性和数据访问属性或 UDT 的属性上的用户定义的类型 (UDT) 属性。"
   syntax:
     content: public SqlMethodAttribute ();
     parameters: []
@@ -68,13 +68,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether SQL Server should invoke the method on null instances."
-  remarks: "The default value for the InvokeIfReceiverIsNull property is `false`.       That is, the method is not invoked on a null instance. If InvokeIfReceiverIsNull is true, the return value of the method depends upon its type. If the return type of the method is nullable, the distinguished null value for the type is returned. If the return type is non-nullable, the default CLR value for the type is returned. The default value for reference types is null. The default value for a value type is the value that is  returned when you call the default constructor for the type."
+  summary: "指示 SQL Server 是否应调用的 null 实例上的方法。"
+  remarks: "InvokeIfReceiverIsNull 属性的默认值是`false`。       也就是说，不为 null 实例上调用的方法。 如果 InvokeIfReceiverIsNull 为 true，该方法的返回值将取决于其类型。 如果该方法的返回类型可以为 null，则返回类型的可分辨 null 值。 如果返回类型是不可为 null，则返回类型的默认 CLR 值。 对于引用类型的默认值为 null。 值类型的默认值是在类型调用默认构造函数时返回的值。"
   syntax:
     content: public bool InvokeIfReceiverIsNull { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if SQL Server should invoke the method on null instances; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. If the method cannot be invoked (because of an attribute on the method), the [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)]<xref uid=&quot;langword_csharp_DbNull&quot; name=&quot;DbNull&quot; href=&quot;&quot;></xref> is returned."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果 SQL Server 应调用的 null 实例; 上的方法否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 如果不能调用的方法 （由于某一特性的方法上）， [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] <xref uid=&quot;langword_csharp_DbNull&quot; name=&quot;DbNull&quot; href=&quot;&quot;> </xref>返回。"
   overload: Microsoft.SqlServer.Server.SqlMethodAttribute.InvokeIfReceiverIsNull*
   exceptions: []
   platform:
@@ -91,13 +91,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether a method on a user-defined type (UDT) is a mutator."
-  remarks: "If the IsMutator property is set to `true` and the return type of the method is `void`, SQL Server marks the method as a mutator. A mutator method is one that causes a state change in the UDT instance. Mutator methods can be called in assignment statements or data modification statements, but cannot be used in queries. If a method is marked as a mutator but does not return void, then CREATE TYPE does not fail with an error. Even though a returned value other than `void` does not raise an error, the returned value is not accessible and cannot be used.       The default value of the IsMutator property is `false`.       A property can be a mutator if <xref:Microsoft.SqlServer.Server.SqlMethodAttribute> is used on the setter and IsMutator is set to `true`. However, a property setter is implicitly treated as a mutator, so it is not necessary to set the IsMutator property of the <xref:Microsoft.SqlServer.Server.SqlMethodAttribute> to `true`."
+  summary: "指示上的用户定义的类型 (UDT) 的方法是否为赋值函数。"
+  remarks: "如果 IsMutator 属性设置为`true`和方法的返回类型是`void`，SQL Server 将方法标记为赋值函数。 赋值函数方法是指导致 UDT 实例的状态更改。 赋值函数方法可以在赋值语句或数据修改语句中调用，但不能在查询中使用。 如果方法标记为赋值函数，但不返回 void，然后创建类型不会不失败并出错。 即使的返回值而非`void`执行引发错误，则返回的值无法访问，并且不能使用。       IsMutator 属性的默认值是`false`。       属性可以为赋值函数，如果<xref:Microsoft.SqlServer.Server.SqlMethodAttribute>setter 上使用和 IsMutator 设置为`true`。</xref:Microsoft.SqlServer.Server.SqlMethodAttribute> 但是，属性 setter 隐式视为赋值函数，因此不需要设置的 IsMutator 属性<xref:Microsoft.SqlServer.Server.SqlMethodAttribute>到`true`。</xref:Microsoft.SqlServer.Server.SqlMethodAttribute>"
   syntax:
     content: public bool IsMutator { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the method is a mutator; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果该方法是赋值函数;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: Microsoft.SqlServer.Server.SqlMethodAttribute.IsMutator*
   exceptions: []
   platform:
@@ -114,13 +114,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether the method on a user-defined type (UDT) is called when <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> input arguments are specified in the method invocation."
-  remarks: "The default value of the OnNullCall property is `true`."
+  summary: "该值指示用户定义类型 (UDT) 上的方法调用时<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>方法调用中指定输入自变量。"
+  remarks: "OnNullCall 属性的默认值是`true`。"
   syntax:
     content: public bool OnNullCall { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the method is called when <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> input arguments are specified in the method invocation; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the method returns a <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> value when any of its input parameters are <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. If the method cannot be invoked (because of an attribute on the method), the [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)]<xref uid=&quot;langword_csharp_DbNull&quot; name=&quot;DbNull&quot; href=&quot;&quot;></xref> is returned."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果此方法叫做时<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>中方法调用中; 指定的输入的参数<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>如果该方法返回<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>时有任一属性其输入参数的值<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。 如果不能调用的方法 （由于某一特性的方法上）， [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] <xref uid=&quot;langword_csharp_DbNull&quot; name=&quot;DbNull&quot; href=&quot;&quot;> </xref>返回。"
   overload: Microsoft.SqlServer.Server.SqlMethodAttribute.OnNullCall*
   exceptions: []
   platform:
