@@ -49,8 +49,8 @@ items:
   nameWithType: Timeline
   fullName: System.Windows.Media.Animation.Timeline
   type: Class
-  summary: "Defines a segment of time."
-  remarks: "A timeline represents a segment of time.  It provides properties that enable you to specify the length of that segment, when it should start, how many times it will repeat, how fast time progresses in that segment, and more.       Classes that inherit from the timeline class provide additional functionality, such as animation and media playback. The following are examples of some of the different types of specialized timelines available.      -   **Animations**: An <xref:System.Windows.Media.Animation.AnimationTimeline> is a type of timeline that produces output values. When you associate an animation with a property, the animation updates the property&quot;s value as it plays, thereby &quot;animating&quot; it. For an introduction to animations, see [Animation Overview](~/add/includes/ajax-current-ext-md.md). For information about the different ways to apply animations, see the [Property Animation Techniques Overview](~/add/includes/ajax-current-ext-md.md).      -   **MediaTimelines**: A <xref:System.Windows.Media.MediaTimeline> is a type of timeline that controls the playback of a media file.      -   **ParallelTimelines**: A <xref:System.Windows.Media.Animation.ParallelTimeline> is a type of timeline that groups other timelines.      -   **Storyboards**: A <xref:System.Windows.Media.Animation.Storyboard> is a special type of <xref:System.Windows.Media.Animation.ParallelTimeline> that provides object and property targeting information for the timelines it contains. For more information about <xref:System.Windows.Media.Animation.Storyboard> objects, see the [Storyboards Overview](~/add/includes/ajax-current-ext-md.md).       For more information about using timelines, see the [Animation Overview](../Topic/Animation%20Overview.md). For an introduction to the timing features of timelines, see the [Timing Behaviors Overview](~/add/includes/ajax-current-ext-md.md).      ## Data Binding and Animating Timelines    Most timeline properties can be data bound or animated; however, because of the way the timing system works, data bound or animated timelines do not behave like other data bound or animated objects. To understand their behavior, it helps to understand what it means to activate a timeline.       When a timeline is applied, copies are made of the timeline and its child timelines. These copies are frozen (made read-only) and <xref:System.Windows.Media.Animation.Clock> objects are created from them. It&quot;s these clocks that do the actual work of animating the targeted properties. If a timeline was data bound or animated, a snapshot of its current values was made when its clock was created. Even though the original timeline might continue to change, its clock does not.       For a timeline to reflect data binding or animation changes, its clock must be regenerated. Clocks are not regenerated for you automatically. The following are several ways to apply timeline changes:      -   If the timeline is or belongs to a <xref:System.Windows.Media.Animation.Storyboard>, you can make it reflect changes by reapplying its storyboard using a <xref:System.Windows.Media.Animation.BeginStoryboard> or the <xref:System.Windows.Media.Animation.Storyboard.Begin%2A> method. This has the side effect of also restarting the animation. In code, you can use the <xref:System.Windows.Media.Animation.Storyboard.Seek%2A> method to advance the storyboard back to its previous position.      -   If you applied an animation directly to a property using the <xref:System.Windows.Media.Animation.Animatable.BeginAnimation%2A> method, call the <xref:System.Windows.Media.Animation.Animatable.BeginAnimation%2A> method again and pass it the animation that&quot;s been modified.      -   If you are working directly at the clock level, create and apply a new set of clocks and use them to replace the previous set of generated clocks.       For an example of a data bound animation, see the [Key Spline Animation Sample](http://go.microsoft.com/fwlink/?LinkID=160011) .      ## Using a Timeline as a Timer    A timeline&quot;s clock will only progress when there&quot;s an event hander associated with it or (in the case of an <xref:System.Windows.Media.Animation.AnimationClock> object) it is associated with a property. For this reason (and others), it&quot;s not recommended that you use a Timeline as a timer."
+  summary: "定义时间的段。"
+  remarks: "时间线表示时间的段。  它提供了属性，您可以指定开始时间，它将重复的多少次时间内该段，以及更多时间的前进速度该片段的长度。       从时间线类继承的类提供附加功能，例如动画和媒体的播放。 以下是一些可用的专用时间线的不同类型的示例。      -**动画**:<xref:System.Windows.Media.Animation.AnimationTimeline>是一种生成输出值的时间线。</xref:System.Windows.Media.Animation.AnimationTimeline> 当你将与属性关联动画时，动画将更新属性的值，它播放时，从而&quot;进行动画处理&quot;。 动画的简介，请参阅[动画概述](~/add/includes/ajax-current-ext-md.md)。 有关应用动画的不同方法的信息，请参阅[属性动画技术概述](~/add/includes/ajax-current-ext-md.md)。      - **MediaTimelines**: A<xref:System.Windows.Media.MediaTimeline>是一种控制播放的媒体文件的时间线。</xref:System.Windows.Media.MediaTimeline>      - **ParallelTimelines**: A<xref:System.Windows.Media.Animation.ParallelTimeline>是一种分组其他时间线的时间线。</xref:System.Windows.Media.Animation.ParallelTimeline>      -**情节提要**: A<xref:System.Windows.Media.Animation.Storyboard>是一种特殊的<xref:System.Windows.Media.Animation.ParallelTimeline>提供对象和属性目标的时间线，它包含的信息。</xref:System.Windows.Media.Animation.ParallelTimeline> </xref:System.Windows.Media.Animation.Storyboard> 有关详细信息<xref:System.Windows.Media.Animation.Storyboard>对象，请参阅[情节提要概述](~/add/includes/ajax-current-ext-md.md)。</xref:System.Windows.Media.Animation.Storyboard>       有关使用时间线详细信息，请参阅[动画概述](../Topic/Animation%20Overview.md)。 时间线的时间的计时功能的介绍，请参阅[计时行为概述](~/add/includes/ajax-current-ext-md.md)。      ## 数据绑定和最动画时间线时间线属性可以是数据绑定，或进行动画处理;但是，由于计时系统的方法，不执行操作的绑定或动画时间线行为类似于其他数据的数据绑定，或进行动画处理的对象。 若要了解其行为，它有助于了解一下激活时间线的含义。       时间线应用时，将制作时间线及其子时间线的副本。 这些副本已冻结 （使其只读的） 和<xref:System.Windows.Media.Animation.Clock>从中创建对象。</xref:System.Windows.Media.Animation.Clock> 它是这些时钟将执行对目标的属性进行动画处理的实际工作。 如果时间线为数据绑定或进行动画处理，其当前值的快照已创建其时钟时。 即使原始时间线可能继续更改，其时钟却没有。       时间线以反映数据绑定或动画更改，必须重新生成其时钟。 时钟不会重新生成为你自动。 以下是应用时间线更改几种方法:-如果时间线或属于<xref:System.Windows.Media.Animation.Storyboard>，你可以通过重新应用其情节提要使用反映更改<xref:System.Windows.Media.Animation.BeginStoryboard>或<xref:System.Windows.Media.Animation.Storyboard.Begin%2A>方法。</xref:System.Windows.Media.Animation.Storyboard.Begin%2A> </xref:System.Windows.Media.Animation.BeginStoryboard> </xref:System.Windows.Media.Animation.Storyboard> 这具有还会重新启动动画的副作用。 在代码中，你可以使用<xref:System.Windows.Media.Animation.Storyboard.Seek%2A>方法向前移动情节提要重新为其以前的位置。</xref:System.Windows.Media.Animation.Storyboard.Seek%2A>      -如果将动画应用到属性使用直接<xref:System.Windows.Media.Animation.Animatable.BeginAnimation%2A>方法中，调用<xref:System.Windows.Media.Animation.Animatable.BeginAnimation%2A>再次方法并将其传递已修改的动画。</xref:System.Windows.Media.Animation.Animatable.BeginAnimation%2A> </xref:System.Windows.Media.Animation.Animatable.BeginAnimation%2A>      -如果你正在直接在时钟级别，创建和应用一组新的时钟和用它们来替换以前的生成时钟集。       有关数据的一个示例绑定动画，请参阅[密钥样条动画示例](http://go.microsoft.com/fwlink/?LinkID=160011)。      ## 使用时间线的事件处理程序时，将仅在计时器的时间线的时钟与之关联或 (对于<xref:System.Windows.Media.Animation.AnimationClock>对象) 是与属性相关联。</xref:System.Windows.Media.Animation.AnimationClock> 此原因 （和其他内容），不建议，使用时间线作为一个计时器。"
   syntax:
     content: >-
       [System.Windows.Localizability(System.Windows.LocalizationCategory.None, Readability=System.Windows.Readability.Unreadable)]
@@ -123,7 +123,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> class."
+  summary: "初始化的新实例<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>类。"
   syntax:
     content: protected Timeline ();
     parameters: []
@@ -143,13 +143,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> class with the specified <xref:System.Windows.Media.Animation.Timeline.BeginTime*>."
+  summary: "初始化的新实例<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>指定<xref:System.Windows.Media.Animation.Timeline.BeginTime*>.</xref:System.Windows.Media.Animation.Timeline.BeginTime*>类"
   syntax:
     content: protected Timeline (Nullable<TimeSpan> beginTime);
     parameters:
     - id: beginTime
       type: System.Nullable{System.TimeSpan}
-      description: "The time at which this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> should begin. See the <xref:System.Windows.Media.Animation.Timeline.BeginTime*> property for more information."
+      description: "在此时间<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>应开始。 请参阅<xref:System.Windows.Media.Animation.Timeline.BeginTime*>属性以获取详细信息。</xref:System.Windows.Media.Animation.Timeline.BeginTime*>"
   overload: System.Windows.Media.Animation.Timeline.#ctor*
   exceptions: []
   platform:
@@ -166,7 +166,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> class with the specified <xref:System.Windows.Media.Animation.Timeline.BeginTime*> and <xref:System.Windows.Media.Animation.Timeline.Duration*>."
+  summary: "初始化的新实例<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>使用指定的类<> *1> 和<> *1>。"
   remarks: ''
   example:
   - "<xref:System.Windows.Media.Animation.Timeline.BeginTime%2A>  \n  \n <xref:System.Windows.Media.Animation.Timeline.Duration%2A>"
@@ -175,10 +175,10 @@ items:
     parameters:
     - id: beginTime
       type: System.Nullable{System.TimeSpan}
-      description: "The time at which this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> should begin. See the <xref:System.Windows.Media.Animation.Timeline.BeginTime*> property for more information."
+      description: "在此时间<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>应开始。 请参阅<xref:System.Windows.Media.Animation.Timeline.BeginTime*>属性以获取详细信息。</xref:System.Windows.Media.Animation.Timeline.BeginTime*>"
     - id: duration
       type: System.Windows.Duration
-      description: "The length of time for which this timeline plays, not counting repetitions. See the <xref:System.Windows.Media.Animation.Timeline.Duration*> property for more information."
+      description: "为其此时间线播放，不计数重复的时间长度。 请参阅<xref:System.Windows.Media.Animation.Timeline.Duration*>属性以获取详细信息。</xref:System.Windows.Media.Animation.Timeline.Duration*>"
   overload: System.Windows.Media.Animation.Timeline.#ctor*
   exceptions: []
   platform:
@@ -195,7 +195,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> class with the specified <xref:System.Windows.Media.Animation.Timeline.BeginTime*>, <xref:System.Windows.Media.Animation.Timeline.Duration*>, and <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>."
+  summary: "初始化的新实例<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>使用指定的类<> *1>， <> </> *1>，和<xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>。</xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>"
   remarks: ''
   example:
   - "<xref:System.Windows.Media.Animation.Timeline.BeginTime%2A>  \n  \n <xref:System.Windows.Media.Animation.Timeline.Duration%2A>"
@@ -204,13 +204,13 @@ items:
     parameters:
     - id: beginTime
       type: System.Nullable{System.TimeSpan}
-      description: "The time at which this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> should begin. See the <xref:System.Windows.Media.Animation.Timeline.BeginTime*> property for more information."
+      description: "在此时间<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>应开始。 请参阅<xref:System.Windows.Media.Animation.Timeline.BeginTime*>属性以获取详细信息。</xref:System.Windows.Media.Animation.Timeline.BeginTime*>"
     - id: duration
       type: System.Windows.Duration
-      description: "The length of time for which this timeline plays, not counting repetitions. See the <xref:System.Windows.Media.Animation.Timeline.Duration*> property for more information."
+      description: "为其此时间线播放，不计数重复的时间长度。 请参阅<xref:System.Windows.Media.Animation.Timeline.Duration*>属性以获取详细信息。</xref:System.Windows.Media.Animation.Timeline.Duration*>"
     - id: repeatBehavior
       type: System.Windows.Media.Animation.RepeatBehavior
-      description: "The repeating behavior of this timeline, either as an iteration <xref:System.Windows.Media.Animation.RepeatBehavior.Count*> or a repeat <xref:System.Windows.Media.Animation.RepeatBehavior.Duration*>. See the <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*> property for more information."
+      description: "此时间线，作为迭代的重复行为<> *1> 或重复<> *1>。 请参阅<xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>属性以获取详细信息。</xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>"
   overload: System.Windows.Media.Animation.Timeline.#ctor*
   exceptions: []
   platform:
@@ -227,21 +227,21 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets a value specifying the percentage of the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.Duration*> spent accelerating the passage of time from zero to its maximum rate."
-  remarks: "Use the AccelerationRatio property to create animations that start slowly and then speed up as time progresses. The AccelerationRatio property is useful for creating ease-in effects or making movement seem more natural. Use the AccelerationRatio and <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A> properties together to create animations that that start slowly, speed up, and then slow down again before finishing.      <a name=&quot;dependencyPropertyInfo_AccelerationRatio&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Media.Animation.Timeline.AccelerationRatioProperty>|   |Metadata properties set to `true`|None|"
+  summary: "获取或设置一个值，指定的时间线的百分比<xref:System.Windows.Media.Animation.Timeline.Duration*>所用的时间消逝从零加速到其最大速率。</xref:System.Windows.Media.Animation.Timeline.Duration*>"
+  remarks: "AccelerationRatio 属性用于创建动画启动缓慢，然后随着时间的推移加快。 AccelerationRatio 属性可用于创建渐入效果或者使看上去更自然的移动。 使用 AccelerationRatio 和<xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A>属性在一起以创建开始缓慢、 动画，提高速度，然后在完成之前再次变慢。</xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A>      <a name=&quot;dependencyPropertyInfo_AccelerationRatio&quot;></a># # 依赖项属性信息 | | |  |-|-|  |标识符字段 |<xref:System.Windows.Media.Animation.Timeline.AccelerationRatioProperty>|  |元数据属性设置为`true`|None |</xref:System.Windows.Media.Animation.Timeline.AccelerationRatioProperty>"
   syntax:
     content: public double AccelerationRatio { get; set; }
     return:
       type: System.Double
-      description: "A value between 0 and 1, inclusive, that specifies the percentage of the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.Duration*> spent accelerating the passage of time from zero to its maximum rate. If the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*> property is also set, the sum of AccelerationRatio and <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*> must be less than or equal to 1. The default value is 0."
+      description: "一个介于 0 和 1，（含)，之间的值，指定的时间线的百分比<> *1> 所用的时间消逝从零加速到其最大速率。如果时间线的<> *1> 也设置属性，AccelerationRatio 总数和<xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*>必须小于或等于 1。</xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*> 默认值为 0"
   overload: System.Windows.Media.Animation.Timeline.AccelerationRatio*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "AccelerationRatio is less than 0 or greater than 1."
+    description: "AccelerationRatio 是小于 0 或大于 1。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The sum of AccelerationRatio and <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*> exceeds 1."
+    description: "AccelerationRatio 总数和<xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*>超过 1。</xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*>"
   platform:
   - net462
 - uid: System.Windows.Media.Animation.Timeline.AccelerationRatioProperty
@@ -256,12 +256,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*> dependency property."
+  summary: "标识<xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*>依赖项属性。</xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty AccelerationRatioProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -278,13 +278,13 @@ items:
   - PresentationCore
   namespace: System.Windows.Media.Animation
   summary: "Creates a <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> for this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
-  remarks: "This method is called by the <xref:System.Windows.Media.Animation.Timeline.CreateClock%2A> method and should not be called directly by your code."
+  remarks: "调用此方法<xref:System.Windows.Media.Animation.Timeline.CreateClock%2A>方法，不应直接由你的代码调用。</xref:System.Windows.Media.Animation.Timeline.CreateClock%2A>"
   syntax:
     content: protected virtual System.Windows.Media.Animation.Clock AllocateClock ();
     parameters: []
     return:
       type: System.Windows.Media.Animation.Clock
-      description: "A clock for this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
+      description: "此时钟<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>。"
   overload: System.Windows.Media.Animation.Timeline.AllocateClock*
   exceptions: []
   platform:
@@ -301,13 +301,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets a value that indicates whether the timeline plays in reverse after it completes a forward iteration."
-  remarks: "If the AutoReverse property is set to `true`, the timeline plays for twice the length of time specified by its <xref:System.Windows.Media.Animation.Timeline.Duration%2A> property.      ### AutoReverse and Repetitions    When a timeline&quot;s AutoReverse property is set to `true` and its <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior%2A> property causes it to repeat, each forward iteration is followed by a backward iteration. This makes one repetition. For example, a timeline with an AutoReverse value of `true` with an iteration <xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A> of 2 would play forward once, then backwards, then forwards again, and then backwards again.      <a name=&quot;dependencyPropertyInfo_AutoReverse&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Media.Animation.Timeline.AutoReverseProperty>|   |Metadata properties set to `true`|None|"
+  summary: "获取或设置一个值，该值指示是否在它完成向前迭代后，时间线在播放按相反的顺序。"
+  remarks: "如果 AutoReverse 属性设置为`true`，时间线播放指定的时间长度的两倍的其<xref:System.Windows.Media.Animation.Timeline.Duration%2A>属性。</xref:System.Windows.Media.Animation.Timeline.Duration%2A>      ### AutoReverse 和时间线的 AutoReverse 属性设置为时重复`true`及其<xref:System.Windows.Media.Animation.Timeline.RepeatBehavior%2A>属性使其重复播放，每个向前迭代后跟一个向后迭代。</xref:System.Windows.Media.Animation.Timeline.RepeatBehavior%2A> 这样一次重复。 例如，时间线以及 AutoReverse 值`true`与迭代<xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A>的 2 将向前播放一次，然后向后，再次，然后转发，然后再次向后。</xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A>      <a name=&quot;dependencyPropertyInfo_AutoReverse&quot;></a># # 依赖项属性信息 | | |  |-|-|  |标识符字段 |<xref:System.Windows.Media.Animation.Timeline.AutoReverseProperty>|  |元数据属性设置为`true`|None |</xref:System.Windows.Media.Animation.Timeline.AutoReverseProperty>"
   syntax:
     content: public bool AutoReverse { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the timeline plays in reverse at the end of each iteration; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default value is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果在每次迭代; 结束时按相反时间线播放否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Media.Animation.Timeline.AutoReverse*
   exceptions: []
   platform:
@@ -324,12 +324,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.AutoReverse*> dependency property."
+  summary: "标识<xref:System.Windows.Media.Animation.Timeline.AutoReverse*>依赖项属性。</xref:System.Windows.Media.Animation.Timeline.AutoReverse*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty AutoReverseProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -345,7 +345,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets the time at which this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> should begin."
+  summary: "获取或设置此时间<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>应开始。"
   remarks: "The BeginTime property is useful for creating timelines that play in a sequence: by increasing the BeginTime of successive timelines that share the same parent, you can stagger their play times.  \n  \n## Negative Values  \n A negative BeginTime value causes a <xref:System.Windows.Media.Animation.Timeline> to behave as though it started at some time in the past. For example, a <xref:System.Windows.Media.Animation.Timeline> with a BeginTime of negative 2.5 seconds and a <xref:System.Windows.Media.Animation.Timeline.Duration%2A> of 5 seconds will appear to be half-way finished when it starts.  \n  \n## BeginTime and SpeedRatio  \n The time described by the BeginTime property is measured in the timeline's parent's time. For example, a timeline with a BeginTime of 5 whose parent has a <xref:System.Windows.Media.Animation.Timeline.SpeedRatio%2A> of 2 actually starts after 2.5 seconds.  \n  \n A timeline's own <xref:System.Windows.Media.Animation.Timeline.SpeedRatio%2A> setting does not affect its BeginTime. For example, a timeline with a BeginTime of 5 seconds, a <xref:System.Windows.Media.Animation.Timeline.SpeedRatio%2A> of 2, and a parent timeline with a <xref:System.Windows.Media.Animation.Timeline.SpeedRatio%2A> of 1 starts after 5 seconds, not 2.5.  \n  \n<a name=\"dependencyPropertyInfo_BeginTime\"></a>   \n## Dependency Property Information  \n  \n|||  \n|-|-|  \n|Identifier field|<xref:System.Windows.Media.Animation.Timeline.BeginTimeProperty>|  \n|Metadata properties set to `true`|None|  \n  \n<a name=\"xamlAttributeUsage_BeginTime\"></a>   \n## XAML Attribute Usage  \n \\<*object* BeginTime=\"[-][*days*.]*hours*:*minutes*:*seconds*[.*fractionalSeconds*]\"/>  \n  \n \\- or -  \n  \n \\<*object* BeginTime=\"[-][*days*.]*hours*:*minutes*\"/>  \n  \n \\- or -  \n  \n \\<*object* BeginTime=\"[-]*days*\"/>  \n  \n \\- or -  \n  \n \\<*object* BeginTime=\"{[x:Null Markup Extension](~/add/includes/ajax-current-ext-md.md)}\"/>  \n  \n<a name=\"xamlValues_BeginTime\"></a>   \n## XAML Values  \n Items in square brackets (`[` and `]`) are optional.  \n  \n *days*  \n <xref:System.Int32?displayProperty=fullName>  \n  \n A value greater than or equal to 0 that describes the number of days spanned by this begin time.  \n  \n *hours*  \n <xref:System.Int32?displayProperty=fullName>  \n  \n A value between 0 and 23 that represents the number of hours spanned by this begin time.  \n  \n *minutes*  \n <xref:System.Int32?displayProperty=fullName>  \n  \n A value between 0 and 59 that represents the number of minutes spanned by this begin time.  \n  \n *seconds*  \n <xref:System.Int32?displayProperty=fullName>  \n  \n A value between 0 and 59 that represents the number of seconds spanned by this begin time.  \n  \n *fractionalSeconds*  \n <xref:System.Int32?displayProperty=fullName>  \n  \n A value consisting of 1 to 7 digits that represents fractional seconds.  \n  \n For the complete <xref:System.TimeSpan> syntax, see the Remarks section of the <xref:System.TimeSpan.Parse%2A> page."
   example:
   - "A timeline's BeginTime property determines the beginning of a timeline's active period. If the timeline has a parent timeline, the BeginTime property determines how long it takes the timeline to start after its parent starts. If the timeline is a root timeline (a <xref:System.Windows.Media.Animation.Storyboard>, for example), the BeginTime property determines how long the timeline takes to start playing after it is triggered.  \n  \n The following example shows several different timelines with different BeginTime settings.  \n  \n [!code-xml[timingbehaviors_snip#_graphicsmm_BeginTimeExampleWholePage](~/add/codesnippet/xaml/timingbehaviors_snip.project/BeginTimeExample.xaml#_graphicsmm_begintimeexamplewholepage)]"
@@ -353,7 +353,7 @@ items:
     content: public Nullable<TimeSpan> BeginTime { get; set; }
     return:
       type: System.Nullable{System.TimeSpan}
-      description: "The time at which this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> should begin, relative to its parent&quot;s BeginTime. If this timeline is a root timeline, the time is relative to its interactive begin time (the moment at which the timeline was triggered). This value may be positive, negative, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>; a <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> value means the timeline never plays. The default value is zero."
+      description: "在此时间<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>应开始，相对于其父级的 BeginTime。 如果此时间线为根时间线，则时间没有相对于其交互开始时间 （从该处触发时间线的时刻）。 此值可能为正数、 负数或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>; <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>值的表示时间线永远不会起到。 默认值为零。"
   overload: System.Windows.Media.Animation.Timeline.BeginTime*
   exceptions: []
   platform:
@@ -370,12 +370,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.BeginTime*> dependency property."
+  summary: "标识<xref:System.Windows.Media.Animation.Timeline.BeginTime*>依赖项属性。</xref:System.Windows.Media.Animation.Timeline.BeginTime*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty BeginTimeProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -391,14 +391,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Creates a modifiable clone of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>, making deep copies of this object&quot;s values."
-  remarks: "This method is used to produce modifiable copies of frozen <xref:System.Windows.Freezable> objects (or any <xref:System.Windows.Freezable> object). For convenience, this method shadows the inherited version with a strongly typed implementation.       For more information, see <xref:System.Windows.Freezable.Clone%2A?displayProperty=fullName>.       When copying dependency properties, this method copies resource references and data bindings (but they might no longer resolve) but not animations or their current values."
+  summary: "创建的可修改复本<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>，从而深度复制此对象的值。"
+  remarks: "此方法用于生成的可修改副本冻结<xref:System.Windows.Freezable>对象 (或任何<xref:System.Windows.Freezable>对象)。</xref:System.Windows.Freezable> </xref:System.Windows.Freezable> 为方便起见，此方法将隐藏继承的强类型实现的版本。       有关详细信息，请参阅<xref:System.Windows.Freezable.Clone%2A?displayProperty=fullName>。</xref:System.Windows.Freezable.Clone%2A?displayProperty=fullName>       在复制依赖项属性时，此方法会复制资源引用和数据绑定 （但可能不再解析），但不是动画或其当前值。"
   syntax:
     content: public System.Windows.Media.Animation.Timeline Clone ();
     parameters: []
     return:
       type: System.Windows.Media.Animation.Timeline
-      description: "A modifiable clone of the current object. The cloned object&quot;s <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> even if the source&quot;s <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid=&quot;langword_csharp_true.&quot; name=&quot;true.&quot; href=&quot;&quot;></xref>"
+      description: "当前对象的可修改复本。 克隆的对象<> *1> 属性是<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>即使源的<> *1> 属性是<xref uid=&quot;langword_csharp_true.&quot; name=&quot;true.&quot; href=&quot;&quot;></xref>"
   overload: System.Windows.Media.Animation.Timeline.Clone*
   exceptions: []
   platform:
@@ -415,14 +415,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Creates a modifiable clone of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> object, making deep copies of this object&quot;s current values."
-  remarks: "This method is used to produce modifiable copies of frozen <xref:System.Windows.Freezable> objects (or any <xref:System.Windows.Freezable> object). For convenience, this method shadows the inherited version with a strongly typed implementation.       For more information, see <xref:System.Windows.Freezable.CloneCurrentValue%2A?displayProperty=fullName>.       Resource references, data bindings, and animations are not copied, but their current values are."
+  summary: "创建的可修改复本<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>对象，从而深度复制此对象的当前值。"
+  remarks: "此方法用于生成的可修改副本冻结<xref:System.Windows.Freezable>对象 (或任何<xref:System.Windows.Freezable>对象)。</xref:System.Windows.Freezable> </xref:System.Windows.Freezable> 为方便起见，此方法将隐藏继承的强类型实现的版本。       有关详细信息，请参阅<xref:System.Windows.Freezable.CloneCurrentValue%2A?displayProperty=fullName>。</xref:System.Windows.Freezable.CloneCurrentValue%2A?displayProperty=fullName>       不复制资源引用、 数据绑定和动画，而其当前值。"
   syntax:
     content: public System.Windows.Media.Animation.Timeline CloneCurrentValue ();
     parameters: []
     return:
       type: System.Windows.Media.Animation.Timeline
-      description: "A modifiable clone of the current object. The cloned object&quot;s <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> even if the source&quot;s <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "当前对象的可修改复本。 克隆的对象<> *1> 属性是<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>即使源的<> *1> 属性是<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Media.Animation.Timeline.CloneCurrentValue*
   exceptions: []
   platform:
@@ -439,15 +439,15 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: 'Occurs when this timeline has completely finished playing: it will no longer enter its active period.'
-  remarks: "If this timeline is the root timeline of a timeline tree, it has completed playing after it reaches the end of its active period (which includes repeats) and all its children have reached the end of their active periods. If this timeline is a child timeline, it is considered to have completely finished playing when the root timeline of the timeline tree to which it belongs reaches the end of its active period and all its child timelines have finished playing.       Stopping a timeline does not trigger its completed event, but skipping it to its fill period does.       The <xref:System.Object> parameter of the <xref:System.EventHandler> event handler is the timeline&quot;s <xref:System.Windows.Media.Animation.Clock>.       Although this event handler appears to be associated with a timeline, it actually registers with the <xref:System.Windows.Media.Animation.Clock> created for this timeline.  For more information, see the [Timing Events Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: '当此时间线完全播放完毕时发生︰ 它不再将进入活动期。'
+  remarks: "如果此时间线的时间线树根时间线，它已完成播放后到达其有效期 （其中包括重复） 结尾，并且所有子项具有都达到其活动周期的结尾。 如果此时间线为子时间线，它被视为完全完成播放时其所属达到的时间线树的根时间线活动期和所有子时间线的末尾具有播放完毕的信息。       停止时间线不会触发其已完成的事件，但正在到其填充期间跳过它。       <xref:System.Object>参数的<xref:System.EventHandler>事件处理程序是时间线的<xref:System.Windows.Media.Animation.Clock>.</xref:System.Windows.Media.Animation.Clock> </xref:System.EventHandler> </xref:System.Object>       虽然此事件处理程序看起来与时间线关联，但它实际上注册<xref:System.Windows.Media.Animation.Clock>为此时间线创建。</xref:System.Windows.Media.Animation.Clock>  有关详细信息，请参阅[计时事件概述](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "In the following example, two <xref:System.Windows.Media.Animation.Storyboard> objects are used to create an animation transition between two images, stored using <xref:System.Windows.Media.ImageSource> objects and displayed using an <xref:System.Windows.Controls.Image> control. One storyboard shrinks the image control until it disappears. After it completes, the old <xref:System.Windows.Media.ImageSource> is swapped with the other <xref:System.Windows.Media.ImageSource>, and a second storyboard that expands the image control until it is full-sized again.  \n  \n [!code-xml[timingbehaviors_snip#TimelineCompletedExampleMarkupUsingWholePage](~/add/codesnippet/xaml/timingbehaviors_snip.project/TimelineCompletedExample.xaml#timelinecompletedexamplemarkupusingwholepage)]  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
     content: public event EventHandler Completed;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -463,14 +463,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Creates a new, controllable <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> from this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>. If this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> has children, a tree of clocks is created with this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> as the root."
-  remarks: 'Although this <xref:System.Windows.Media.Animation.Timeline> may be the child of one or more <xref:System.Windows.Media.Animation.TimelineGroup> objects, this information is ignored: this method treats the current <xref:System.Windows.Media.Animation.Timeline> as a root <xref:System.Windows.Media.Animation.Timeline>.'
+  summary: "创建一个新的控制<xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref>从此<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>。 如果此<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>含有子级，与此创建时钟树<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>作为根。"
+  remarks: '尽管这<xref:System.Windows.Media.Animation.Timeline>可能是一个或多个的子<xref:System.Windows.Media.Animation.TimelineGroup>对象，此信息将被忽略︰ 此方法将当前<xref:System.Windows.Media.Animation.Timeline>作为根<xref:System.Windows.Media.Animation.Timeline>.</xref:System.Windows.Media.Animation.Timeline> </xref:System.Windows.Media.Animation.Timeline> </xref:System.Windows.Media.Animation.TimelineGroup> </xref:System.Windows.Media.Animation.Timeline>'
   syntax:
     content: public System.Windows.Media.Animation.Clock CreateClock ();
     parameters: []
     return:
       type: System.Windows.Media.Animation.Clock
-      description: "A new, controllable <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> constructed from this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>. If this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> is a <xref href=&quot;System.Windows.Media.Animation.TimelineGroup&quot;></xref> that contains child timelines, a tree of <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> objects is created with a controllable <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> created from this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> as the root."
+      description: "一个新从此<xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref>构造从此<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>。 如果此<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>是<xref href=&quot;System.Windows.Media.Animation.TimelineGroup&quot;></xref>包含子时间线，树<xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref>对象创建从此<xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref>创建从此<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>作为根。"
   overload: System.Windows.Media.Animation.Timeline.CreateClock*
   exceptions: []
   platform:
@@ -487,17 +487,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Creates a new <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> from this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> and specifies whether the new <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> is controllable. If this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> has children, a tree of clocks is created with this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> as the root."
-  remarks: 'Although this <xref:System.Windows.Media.Animation.Timeline> may be the child of one or more <xref:System.Windows.Media.Animation.TimelineGroup> objects, this information is ignored: this method treats the current <xref:System.Windows.Media.Animation.Timeline> as a root <xref:System.Windows.Media.Animation.Timeline>.'
+  summary: "创建一个新<xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref>从此<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> ，并指定是否新<xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref>是控制的。 如果此<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>含有子级，与此创建时钟树<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>作为根。"
+  remarks: '尽管这<xref:System.Windows.Media.Animation.Timeline>可能是一个或多个的子<xref:System.Windows.Media.Animation.TimelineGroup>对象，此信息将被忽略︰ 此方法将当前<xref:System.Windows.Media.Animation.Timeline>作为根<xref:System.Windows.Media.Animation.Timeline>.</xref:System.Windows.Media.Animation.Timeline> </xref:System.Windows.Media.Animation.Timeline> </xref:System.Windows.Media.Animation.TimelineGroup> </xref:System.Windows.Media.Animation.Timeline>'
   syntax:
     content: public System.Windows.Media.Animation.Clock CreateClock (bool hasControllableRoot);
     parameters:
     - id: hasControllableRoot
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the root <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> returned should return a <xref href=&quot;System.Windows.Media.Animation.ClockController&quot;></xref> from its <xref:System.Windows.Media.Animation.Clock.Controller*> property so that the <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> tree can be interactively controlled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果根<xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref>返回应返回<xref href=&quot;System.Windows.Media.Animation.ClockController&quot;></xref>从其<xref:System.Windows.Media.Animation.Clock.Controller*>属性以便<xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref>树可以以交互方式受控; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。</xref:System.Windows.Media.Animation.Clock.Controller*>"
     return:
       type: System.Windows.Media.Animation.Clock
-      description: "A new <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> constructed from this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>. If this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> is a <xref href=&quot;System.Windows.Media.Animation.TimelineGroup&quot;></xref> that contains child timelines, a tree of <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> objects is created with a controllable <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> created from this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> as the root."
+      description: "一个新<xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref>构造从此<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>。 如果此<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>是<xref href=&quot;System.Windows.Media.Animation.TimelineGroup&quot;></xref>包含子时间线，树<xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref>对象创建从此<xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref>创建从此<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>作为根。"
   overload: System.Windows.Media.Animation.Timeline.CreateClock*
   exceptions: []
   platform:
@@ -514,15 +514,15 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Occurs when the rate at which time progresses for the timeline&quot;s clock changes."
-  remarks: "The current global speed of a timeline&quot;s clock changes in the following circumstances:      -   The clock changes direction because of its timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A> setting.      -   The clock accelerates or decelerates because of its timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A> or <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A> property settings.      -   The clock is paused or resumed.      -   The clock becomes inactive or reactivates.      -   The <xref:System.Windows.Media.Animation.Clock.CurrentGlobalSpeed%2A> of one of the clock&quot;s parent changes.       The CurrentGlobalSpeedInvalidated event is useful for tracking when a timeline&quot;s clock becomes paused; in your event handler, use your storyboard&quot;s <xref:System.Windows.Media.Animation.Storyboard.GetCurrentGlobalSpeed%2A> method or check the clock&quot;s <xref:System.Windows.Media.Animation.Clock.IsPaused%2A> property to determine whether its clock is paused; compare this against a previously cached value to determine whether it changed.       The <xref:System.Object> parameter of the <xref:System.EventHandler> event handler is the timeline&quot;s <xref:System.Windows.Media.Animation.Clock>.       Although this event handler appears to be associated with a timeline, it actually registers with the <xref:System.Windows.Media.Animation.Clock> created for this timeline.  For more information, see the [Timing Events Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: "在这段时间的速率前进时间线的时钟更改时发生。"
+  remarks: "在以下情况下更改时间线的时钟的当前全局速度:-时钟由于其时间线的更改方向<xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A>设置。</xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A>      -时钟而加速或由于其时间线的减速<xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A>或<xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A>属性设置。</xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A> </xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A>      -时钟连接而暂停或恢复。      -时钟变为非活动状态，或重新激活。      -<xref:System.Windows.Media.Animation.Clock.CurrentGlobalSpeed%2A>的时钟的父更改之一。</xref:System.Windows.Media.Animation.Clock.CurrentGlobalSpeed%2A>       CurrentGlobalSpeedInvalidated 事件可用于跟踪在时间线的时钟变为暂停; 时在事件处理程序，使用你的情节提要<xref:System.Windows.Media.Animation.Storyboard.GetCurrentGlobalSpeed%2A>方法或检查时钟<xref:System.Windows.Media.Animation.Clock.IsPaused%2A>属性来确定是否已暂停其时钟，则将此与以前缓存的值，以确定它是否更改比较。</xref:System.Windows.Media.Animation.Clock.IsPaused%2A> </xref:System.Windows.Media.Animation.Storyboard.GetCurrentGlobalSpeed%2A>       <xref:System.Object>参数的<xref:System.EventHandler>事件处理程序是时间线的<xref:System.Windows.Media.Animation.Clock>.</xref:System.Windows.Media.Animation.Clock> </xref:System.EventHandler> </xref:System.Object>       虽然此事件处理程序看起来与时间线关联，但它实际上注册<xref:System.Windows.Media.Animation.Clock>为此时间线创建。</xref:System.Windows.Media.Animation.Clock>  有关详细信息，请参阅[计时事件概述](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following example shows how to register for the CurrentGlobalSpeedInvalidated event.  \n  \n [!code-cs[timingbehaviors_procedural_snip#TimelineCurrentGlobalSpeedInvalidatedExampleWholePage](~/add/codesnippet/csharp/TimingBehavior_csharp/TimelineCurrentGlobalSpeedInvalidatedExample.cs#timelinecurrentglobalspeedinvalidatedexamplewholepage)]\n [!code-vb[timingbehaviors_procedural_snip#TimelineCurrentGlobalSpeedInvalidatedExampleWholePage](~/add/codesnippet/visualbasic/timingbehavior_vb/timelinecurrentglobalspeedinvalidatedexample.vb#timelinecurrentglobalspeedinvalidatedexamplewholepage)]"
   syntax:
     content: public event EventHandler CurrentGlobalSpeedInvalidated;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -538,13 +538,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Occurs when the <xref:System.Windows.Media.Animation.Clock.CurrentState*> property of the timeline&quot;s <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> is updated."
-  remarks: "Use the CurrentStateInvalidated event when you want to be notified  when a timeline&quot;s <xref:System.Windows.Media.Animation.Clock> starts, stops, or fills.       Pausing a <xref:System.Windows.Media.Animation.Clock> does not change its <xref:System.Windows.Media.Animation.Clock.CurrentState%2A>. To be notified when a clock becomes paused, use the <xref:System.Windows.Media.Animation.Timeline.CurrentGlobalSpeedInvalidated> event.       Although this event occurs when the <xref:System.Windows.Media.Animation.ClockState> becomes invalid, that doesn&quot;t necessarily mean the <xref:System.Windows.Media.Animation.ClockState> changed: a <xref:System.Windows.Media.Animation.Clock> that switches from <xref:System.Windows.Media.Animation.ClockState> to <xref:System.Windows.Media.Animation.ClockState> and then back to <xref:System.Windows.Media.Animation.ClockState> in the same tick will cause this event to fire, but its <xref:System.Windows.Media.Animation.Clock.CurrentState%2A> property won&quot;t actually change.       The <xref:System.Object> parameter of the <xref:System.EventHandler> event handler is the  <xref:System.Windows.Media.Animation.Clock> that was created for this timeline.       Although this event handler appears to be associated with a timeline, it actually registers with the <xref:System.Windows.Media.Animation.Clock> created for this timeline.  For more information, see the [Timing Events Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: "发生时<xref:System.Windows.Media.Animation.Clock.CurrentState*>属性的时间线的<xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref>更新。</xref:System.Windows.Media.Animation.Clock.CurrentState*>"
+  remarks: "使用 CurrentStateInvalidated 事件时想要被通知时时间线的<xref:System.Windows.Media.Animation.Clock>启动、 停止或填充。</xref:System.Windows.Media.Animation.Clock>       暂停<xref:System.Windows.Media.Animation.Clock>不会更改其<xref:System.Windows.Media.Animation.Clock.CurrentState%2A>.</xref:System.Windows.Media.Animation.Clock.CurrentState%2A> </xref:System.Windows.Media.Animation.Clock> 若要要得到通知时钟变为暂停时，使用<xref:System.Windows.Media.Animation.Timeline.CurrentGlobalSpeedInvalidated>事件。</xref:System.Windows.Media.Animation.Timeline.CurrentGlobalSpeedInvalidated>       虽然此事件发生时<xref:System.Windows.Media.Animation.ClockState>变为无效，并不一定意味着<xref:System.Windows.Media.Animation.ClockState>更改︰<xref:System.Windows.Media.Animation.Clock>用于从切换<xref:System.Windows.Media.Animation.ClockState>到<xref:System.Windows.Media.Animation.ClockState>和再转回<xref:System.Windows.Media.Animation.ClockState>在同一个计时周期将导致此事件激发，但其<xref:System.Windows.Media.Animation.Clock.CurrentState%2A>属性不会实际更改。</xref:System.Windows.Media.Animation.Clock.CurrentState%2A> </xref:System.Windows.Media.Animation.ClockState> </xref:System.Windows.Media.Animation.ClockState> </xref:System.Windows.Media.Animation.ClockState> </xref:System.Windows.Media.Animation.Clock> </xref:System.Windows.Media.Animation.ClockState> </xref:System.Windows.Media.Animation.ClockState>       <xref:System.Object>参数<xref:System.EventHandler>事件处理程序是<xref:System.Windows.Media.Animation.Clock>创建为此时间线。</xref:System.Windows.Media.Animation.Clock> </xref:System.EventHandler> </xref:System.Object>       虽然此事件处理程序看起来与时间线关联，但它实际上注册<xref:System.Windows.Media.Animation.Clock>为此时间线创建。</xref:System.Windows.Media.Animation.Clock>  有关详细信息，请参阅[计时事件概述](~/add/includes/ajax-current-ext-md.md)。"
   syntax:
     content: public event EventHandler CurrentStateInvalidated;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -560,15 +560,15 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Occurs when the <xref:System.Windows.Media.Animation.Clock.CurrentTime*> property of the timeline&quot;s <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> is updated."
-  remarks: "Use the <xref:System.Windows.Media.Animation.Timeline.CurrentStateInvalidated> event when you want to be notified when the <xref:System.Windows.Media.Animation.Clock.CurrentTime%2A> of a timeline&quot;s <xref:System.Windows.Media.Animation.Clock> is updated.       The <xref:System.Object> parameter of the <xref:System.EventHandler> event handler is the timeline&quot;s <xref:System.Windows.Media.Animation.Clock>.       Although this event handler appears to be associated with a timeline, it actually registers with the <xref:System.Windows.Media.Animation.Clock> created for this timeline.  For more information, see the [Timing Events Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: "发生时<xref:System.Windows.Media.Animation.Clock.CurrentTime*>属性的时间线的<xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref>更新。</xref:System.Windows.Media.Animation.Clock.CurrentTime*>"
+  remarks: "使用<xref:System.Windows.Media.Animation.Timeline.CurrentStateInvalidated>时你想要的事件时收到通知<xref:System.Windows.Media.Animation.Clock.CurrentTime%2A>时间线的<xref:System.Windows.Media.Animation.Clock>更新。</xref:System.Windows.Media.Animation.Clock> </xref:System.Windows.Media.Animation.Clock.CurrentTime%2A> </xref:System.Windows.Media.Animation.Timeline.CurrentStateInvalidated>       <xref:System.Object>参数的<xref:System.EventHandler>事件处理程序是时间线的<xref:System.Windows.Media.Animation.Clock>.</xref:System.Windows.Media.Animation.Clock> </xref:System.EventHandler> </xref:System.Object>       虽然此事件处理程序看起来与时间线关联，但它实际上注册<xref:System.Windows.Media.Animation.Clock>为此时间线创建。</xref:System.Windows.Media.Animation.Clock>  有关详细信息，请参阅[计时事件概述](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following example shows how to register for the CurrentTimeInvalidated event.  \n  \n [!code-cs[timingbehaviors_procedural_snip#TimelineCurrentTimeInvalidatedExampleWholePage](~/add/codesnippet/csharp/TimingBehavior_csharp/TimelineCurrentTimeInvalidatedExample.cs#timelinecurrenttimeinvalidatedexamplewholepage)]\n [!code-vb[timingbehaviors_procedural_snip#TimelineCurrentTimeInvalidatedExampleWholePage](~/add/codesnippet/visualbasic/timingbehavior_vb/timelinecurrenttimeinvalidatedexample.vb#timelinecurrenttimeinvalidatedexamplewholepage)]"
   syntax:
     content: public event EventHandler CurrentTimeInvalidated;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -584,21 +584,21 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets a value specifying the percentage of the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.Duration*> spent decelerating the passage of time from its maximum rate to zero."
-  remarks: "Use the DecelerationRatio property to create animations that slow down before stopping. The DecelerationRatio property is useful for creating ease-in effects or making movement seem more natural. Use the <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A> and DecelerationRatio properties together to create animations that that start slowly, speed up, and then slow down again before finishing.      <a name=&quot;dependencyPropertyInfo_DecelerationRatio&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Media.Animation.Timeline.DecelerationRatioProperty>|   |Metadata properties set to `true`|None|"
+  summary: "获取或设置一个值，指定的时间线的百分比<xref:System.Windows.Media.Animation.Timeline.Duration*>减速的时间消逝从其最大速率到零所。</xref:System.Windows.Media.Animation.Timeline.Duration*>"
+  remarks: "DecelerationRatio 属性用于创建该在停止前减速的动画。 DecelerationRatio 属性可用于创建渐入效果或者使看上去更自然的移动。 使用<xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A>和 DecelerationRatio 属性在一起以创建开始缓慢、 动画，提高速度，然后在完成之前再次变慢。</xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A>      <a name=&quot;dependencyPropertyInfo_DecelerationRatio&quot;></a># # 依赖项属性信息 | | |  |-|-|  |标识符字段 |<xref:System.Windows.Media.Animation.Timeline.DecelerationRatioProperty>|  |元数据属性设置为`true`|None |</xref:System.Windows.Media.Animation.Timeline.DecelerationRatioProperty>"
   syntax:
     content: public double DecelerationRatio { get; set; }
     return:
       type: System.Double
-      description: "A value between 0 and 1, inclusive, that specifies the percentage of the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.Duration*> spent decelerating the passage of time from its maximum rate to zero. If the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*> property is also set, the sum of DecelerationRatio and <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*> must be less than or equal to 1. The default value is 0."
+      description: "一个介于 0 和 1，（含)，之间的值，指定的时间线的百分比<> *1> 减速到所占用的时间消逝从其最大速率零。如果时间线的<> *1> 也设置属性，DecelerationRatio 总数和<xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*>必须小于或等于 1。</xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*> 默认值为 0"
   overload: System.Windows.Media.Animation.Timeline.DecelerationRatio*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "DecelerationRatio is less than 0 or greater than 1."
+    description: "DecelerationRatio 是小于 0 或大于 1。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The sum of <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*> and DecelerationRatio exceeds 1."
+    description: "总和<xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*>且 DecelerationRatio 超过 1。</xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*>"
   platform:
   - net462
 - uid: System.Windows.Media.Animation.Timeline.DecelerationRatioProperty
@@ -613,12 +613,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies for the <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*> dependency property."
+  summary: "标识<xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*>依赖项属性。</xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty DecelerationRatioProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -634,12 +634,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate*> attached property."
+  summary: "标识<xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate*>附加属性。</xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty DesiredFrameRateProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -655,7 +655,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets the length of time for which this timeline plays, not counting repetitions."
+  summary: "获取或设置用于此时间线播放，不计数重复的时间长度。"
   remarks: "A timeline's simple duration constitutes the time for a single forward iteration versus the total play time, which includes repetitions.  \n  \n## Default Duration Behavior  \n The behavior of a Duration structure with a value of <xref:System.Windows.Duration.Automatic%2A> depends on the type of timeline:  \n  \n|||  \n|-|-|  \n|**Timeline**|**Behavior**|  \n|<xref:System.Windows.Media.Animation.Timeline>|Undetermined (<xref:System.Windows.Media.Animation.Timeline> is abstract)|  \n|<xref:System.Windows.Media.Animation.ParallelTimeline>,<br /><br /> <xref:System.Windows.Media.Animation.Storyboard>,<br /><br /> <xref:System.Windows.Media.Animation.TimelineGroup>|Expands to fit child timelines|  \n|\\<*Type*>Animation (Known as a \"From/To/By\" or \"basic\" animations)|1 second|  \n|\\<*Type*>AnimationUsingKeyFrames (Known as key frame animations)|Sum of all key frame <xref:System.Windows.Media.Animation.KeyTime> values|  \n  \n<a name=\"dependencyPropertyInfo_Duration\"></a>   \n## Dependency Property Information  \n  \n|||  \n|-|-|  \n|Identifier field|<xref:System.Windows.Media.Animation.Timeline.DurationProperty>|  \n|Metadata properties set to `true`|None|"
   example:
   - "<xref:System.Windows.Media.Animation.ParallelTimeline> and <xref:System.Windows.Media.Animation.Storyboard> are types of <xref:System.Windows.Media.Animation.TimelineGroup> objects. The duration of a <xref:System.Windows.Media.Animation.TimelineGroup> is determined by the duration of its child timelines. For example, the <xref:System.Windows.Media.Animation.Storyboard> below will run for six seconds (duration of 6 seconds) because that is when its last child Timeline (<xref:System.Windows.Media.Animation.DoubleAnimation>) ends.  \n  \n> [!NOTE]\n>  Note: code has been omitted from the following examples, which are provided for illustrative purposed only.  \n  \n [xaml]  \n  \n```  \n...  \n  <Storyboard>  \n    <DoubleAnimation Duration=\"0:0:2\" …/>  \n    <DoubleAnimation Duration=\"0:0:4\" BeginTime=\"0:0:2\" …/>  \n  </Storyboard>   \n...  \n```  \n  \n Examples of \\<*Type*>Animations include <xref:System.Windows.Media.Animation.DoubleAnimation>, <xref:System.Windows.Media.Animation.PointAnimation>, <xref:System.Windows.Media.Animation.ColorAnimation>, etc. If no Duration is specified for these types of animations, they will run for one second.  \n  \n [xaml]  \n  \n```  \n...  \n  <!-- With no Duration specified, this animation will run for   \n       one second -->  \n  <DoubleAnimation .../>  \n...  \n```  \n  \n Examples of \\<*Type*>AnimationUsingKeyFrames include <xref:System.Windows.Media.Animation.DoubleAnimationUsingKeyFrames>, <xref:System.Windows.Media.Animation.PointAnimationUsingKeyFrames>, etc. If no Duration is specified for these types of animations they will run until all key frames are finished.  \n  \n [xaml]  \n  \n```  \n...  \n  <Storyboard>  \n  \n    <!-- This key frame animation will end at 4.5 seconds  \n         Because that is when its last KeyFrame KeyTime ends. -->  \n    <DoubleAnimationUsingKeyFrames ...>  \n      <LinearDoubleKeyFrame ... KeyTime=\"0:0:3\" />  \n      <DiscreteDoubleKeyFrame ... KeyTime=\"0:0:3.5\" />  \n      <DiscreteDoubleKeyFrame ... KeyTime=\"0:0:4\" />  \n      <DiscreteDoubleKeyFrame ... KeyTime=\"0:0:4.5\" />  \n    </DoubleAnimationUsingKeyFrames>  \n  </Storyboard>   \n...  \n```"
@@ -680,12 +680,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.Duration*> dependency property."
+  summary: "标识<xref:System.Windows.Media.Animation.Timeline.Duration*>依赖项属性。</xref:System.Windows.Media.Animation.Timeline.Duration*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty DurationProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -701,13 +701,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets a value that specifies how the <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> behaves after it reaches the end of its active period."
-  remarks: "Set an animations FillBehavior property to <xref:System.Windows.Media.Animation.FillBehavior> when you want the animation to hold its value after it reaches the end of its active period. An animation that has reached the end of its active period that has a FillBehavior setting of <xref:System.Windows.Media.Animation.FillBehavior> is said to be in its fill period. When you don&quot;t want an animation to hold its value after it reaches the end of its active period, set its       FillBehavior property to <xref:System.Windows.Media.Animation.FillBehavior>.       Because an animation in its fill period continues to override its target property&quot;s value, attempting to set the target property&quot;s value through other means might appear to have no effect. For an example showing how to set a property value after it has been animated, see [How to: Set a Property After Animating It with a Storyboard](~/add/includes/ajax-current-ext-md.md).       A child timeline stops playing and filling when its parent timeline stops; if you want a child timeline to fill, make sure its parent timeline has a FillBehavior of <xref:System.Windows.Media.Animation.FillBehavior>.      <a name=&quot;dependencyPropertyInfo_FillBehavior&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Media.Animation.Timeline.FillBehaviorProperty>|   |Metadata properties set to `true`|None|"
+  summary: "获取或设置一个值，指定如何<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>它到达其有效期末尾后的行为。"
+  remarks: "将动画 FillBehavior 属性设置为<xref:System.Windows.Media.Animation.FillBehavior>如果想要保留其值，它到达其有效期末尾后的动画。</xref:System.Windows.Media.Animation.FillBehavior> 已达到其有效期末尾的动画具有 FillBehavior 设置为<xref:System.Windows.Media.Animation.FillBehavior>被认为是在其填充期间。</xref:System.Windows.Media.Animation.FillBehavior> 如果你不想保留其值，它到达其有效期末尾后的动画，其 FillBehavior 将属性设置为<xref:System.Windows.Media.Animation.FillBehavior>.</xref:System.Windows.Media.Animation.FillBehavior>       因为动画在其填充期间继续重写其目标属性的值，尝试设置通过其他方式的目标属性的值可能会不产生任何影响。 有关演示如何设置属性值进行动画处理后的示例，请参阅[如何︰ 设置属性后进行动画处理其与情节提要](~/add/includes/ajax-current-ext-md.md)。       播放和填充其父时间线停止; 时，子时间线将停止如果你想子时间线，以填充，，请确保其父时间线具有<xref:System.Windows.Media.Animation.FillBehavior>.</xref:System.Windows.Media.Animation.FillBehavior> FillBehavior      <a name=&quot;dependencyPropertyInfo_FillBehavior&quot;></a># # 依赖项属性信息 | | |  |-|-|  |标识符字段 |<xref:System.Windows.Media.Animation.Timeline.FillBehaviorProperty>|  |元数据属性设置为`true`|None |</xref:System.Windows.Media.Animation.Timeline.FillBehaviorProperty>"
   syntax:
     content: public System.Windows.Media.Animation.FillBehavior FillBehavior { get; set; }
     return:
       type: System.Windows.Media.Animation.FillBehavior
-      description: "A value that specifies how the timeline behaves after it reaches the end of its active period but its parent is inside its active or fill period. The default value is <xref href=&quot;System.Windows.Media.Animation.FillBehavior&quot;></xref>."
+      description: "一个值，指定时间线后它到达其有效期末尾但其父级仍处于其有效期的行为或填充期。 默认值是<xref href=&quot;System.Windows.Media.Animation.FillBehavior&quot;> </xref>。"
   overload: System.Windows.Media.Animation.Timeline.FillBehavior*
   exceptions: []
   platform:
@@ -724,12 +724,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.FillBehavior*> dependency property."
+  summary: "标识<xref:System.Windows.Media.Animation.Timeline.FillBehavior*>依赖项属性。</xref:System.Windows.Media.Animation.Timeline.FillBehavior*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty FillBehaviorProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -745,17 +745,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Makes this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> unmodifiable or determines whether it can be made unmodifiable."
-  remarks: "Do not call this method directly (except when calling base in an implementation). This method is called internally by <xref:System.Windows.Freezable.Freeze%2A>."
+  summary: "使此<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>不可修改，或确定是否可使其成为不可修改。"
+  remarks: "请勿调用此方法，直接 （但调用基实现中）。 通过<xref:System.Windows.Freezable.Freeze%2A>.</xref:System.Windows.Freezable.Freeze%2A>内部调用此方法"
   syntax:
     content: protected override bool FreezeCore (bool isChecking);
     parameters:
     - id: isChecking
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to check if this instance can be frozen; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to freeze this instance."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>若要检查此实例是否可以冻结;<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>冻结此实例。"
     return:
       type: System.Boolean
-      description: "If <code>isChecking</code> is true, this method returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this instance can be made read-only, or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if it cannot be made read-only.       If <code>isChecking</code> is false, this method returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this instance is now read-only, or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if it cannot be made read-only, with the side effect of having begun to change the frozen status of this object."
+      description: "如果<code> isChecking </code>为 true，此方法返回<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果此实例可以成为只读的或<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>如果它不能成为只读的。       如果<code> isChecking </code>为 false，此方法将返回<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果此实例现在为只读的或<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>如果无法成为只读的并且具有已开始更改此对象冻结的状态的副作用。"
   overload: System.Windows.Media.Animation.Timeline.FreezeCore*
   exceptions: []
   platform:
@@ -772,14 +772,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Makes this instance a clone of the specified <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> object."
-  remarks: "When copying dependency properties, this method copies resource references and data bindings (but they might no longer resolve) but not animations or their current values. Note that if these properties contain resource references or data bindings, <xref:System.Windows.Freezable.GetAsFrozen%2A> will fail when trying to freeze the object and will throw an <xref:System.InvalidOperationException>.       This method is called by the <xref:System.Windows.Freezable.GetAsFrozen%2A> method and should not be called directly from your code, except when calling the base implementation while overriding this method. To create a frozen copy of the current object, call <xref:System.Windows.Freezable.GetAsFrozen%2A> instead of calling this method directly.       For more information, see <xref:System.Windows.Freezable.GetAsFrozenCore%2A?displayProperty=fullName>."
+  summary: "使此实例的指定克隆<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>对象。"
+  remarks: "在复制依赖项属性时，此方法会复制资源引用和数据绑定 （但可能不再解析），但不是动画或其当前值。 请注意，如果这些属性包含资源引用或数据绑定<xref:System.Windows.Freezable.GetAsFrozen%2A>将失败时尝试冻结该对象，并将引发<xref:System.InvalidOperationException>.</xref:System.InvalidOperationException> </xref:System.Windows.Freezable.GetAsFrozen%2A>       调用此方法<xref:System.Windows.Freezable.GetAsFrozen%2A>方法应不直接从代码中，除非调用时调用时重写此方法的基实现。</xref:System.Windows.Freezable.GetAsFrozen%2A> 若要创建当前对象的冻结的副本，请调用<xref:System.Windows.Freezable.GetAsFrozen%2A>而不是直接调用此方法。</xref:System.Windows.Freezable.GetAsFrozen%2A>       有关详细信息，请参阅<xref:System.Windows.Freezable.GetAsFrozenCore%2A?displayProperty=fullName>。</xref:System.Windows.Freezable.GetAsFrozenCore%2A?displayProperty=fullName>"
   syntax:
     content: protected override void GetAsFrozenCore (System.Windows.Freezable sourceFreezable);
     parameters:
     - id: sourceFreezable
       type: System.Windows.Freezable
-      description: "The <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> instance to clone."
+      description: "<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>要克隆的实例。"
   overload: System.Windows.Media.Animation.Timeline.GetAsFrozenCore*
   exceptions: []
   platform:
@@ -796,14 +796,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Makes this instance a frozen clone of the specified <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>. Resource references, data bindings, and animations are not copied, but their current values are."
-  remarks: "This method is called by the <xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A> method and should not be called directly from your code, except when calling the base implementation while overriding this method. To create a frozen copy of the current object, call <xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A> instead of calling this method directly.       For more information see <xref:System.Windows.Freezable.GetCurrentValueAsFrozenCore%2A?displayProperty=fullName>."
+  summary: "使此实例的指定的冻结的复本<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>。 不复制资源引用、 数据绑定和动画，而其当前值。"
+  remarks: "调用此方法<xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A>方法应不直接从代码中，除非调用时调用时重写此方法的基实现。</xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A> 若要创建当前对象的冻结的副本，请调用<xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A>而不是直接调用此方法。</xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A>       有关详细信息，请参阅<xref:System.Windows.Freezable.GetCurrentValueAsFrozenCore%2A?displayProperty=fullName>。</xref:System.Windows.Freezable.GetCurrentValueAsFrozenCore%2A?displayProperty=fullName>"
   syntax:
     content: protected override void GetCurrentValueAsFrozenCore (System.Windows.Freezable sourceFreezable);
     parameters:
     - id: sourceFreezable
       type: System.Windows.Freezable
-      description: "The <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> to copy and freeze."
+      description: "<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>要复制和冻结。"
   overload: System.Windows.Media.Animation.Timeline.GetCurrentValueAsFrozenCore*
   exceptions: []
   platform:
@@ -820,17 +820,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets the desired frame rate of the specified <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
-  remarks: "This method provides read access to the <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A> attached property. For more information, see the <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A> page."
+  summary: "获取指定的所需的帧速率<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>。"
+  remarks: "此方法提供读取访问权限<xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A>附加属性。</xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A> 有关详细信息，请参阅<xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A>页。</xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A>"
   syntax:
     content: public static Nullable<int> GetDesiredFrameRate (System.Windows.Media.Animation.Timeline timeline);
     parameters:
     - id: timeline
       type: System.Windows.Media.Animation.Timeline
-      description: "The timeline from which to retrieve the desired frame rate."
+      description: "要从中检索所需的帧速率时间线。"
     return:
       type: System.Nullable{System.Int32}
-      description: "The desired frame rate of this timeline. The default value is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "此时间线的所需的帧速率。 默认值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Media.Animation.Timeline.GetDesiredFrameRate*
   exceptions: []
   platform:
@@ -847,17 +847,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Returns the length of a single iteration of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
-  remarks: "This method should only be called when the <xref:System.Windows.Media.Animation.Timeline.Duration%2A> property is set to <xref:System.Windows.Duration.Automatic%2A>. If <xref:System.Windows.Media.Animation.Timeline.Duration%2A> is <xref:System.Windows.Duration.Automatic%2A>, the natural duration is determined by that particular class&quot;s implementation of <xref:System.Windows.Media.Animation.Timeline.GetNaturalDurationCore%2A>.       If GetNaturalDuration returns <xref:System.Windows.Duration.Automatic%2A>, it means that the natural duration is unknown, which implies a natural duration of <xref:System.Windows.Duration.Forever%2A>. Such is the case for streaming media.       Note that passing this method a clock other than the one that was created for this timeline is possible, but will provide unreliable results."
+  summary: "返回的这一次迭代长度<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>。"
+  remarks: "时，仅应调用此方法的<xref:System.Windows.Media.Animation.Timeline.Duration%2A>属性设置为<xref:System.Windows.Duration.Automatic%2A>。</xref:System.Windows.Duration.Automatic%2A> </xref:System.Windows.Media.Animation.Timeline.Duration%2A> 如果<xref:System.Windows.Media.Animation.Timeline.Duration%2A>是<xref:System.Windows.Duration.Automatic%2A>，自然持续时间将由<xref:System.Windows.Media.Animation.Timeline.GetNaturalDurationCore%2A>.</xref:System.Windows.Media.Animation.Timeline.GetNaturalDurationCore%2A>该特定类的实现</xref:System.Windows.Duration.Automatic%2A></xref:System.Windows.Media.Animation.Timeline.Duration%2A>       如果 GetNaturalDuration 返回<xref:System.Windows.Duration.Automatic%2A>时，即自然持续时间为的未知，这意味着<xref:System.Windows.Duration.Forever%2A>.</xref:System.Windows.Duration.Forever%2A>自然持续时间</xref:System.Windows.Duration.Automatic%2A> 此类是用于流式处理媒体这种情况。       请注意，传递此时间线创建以外的时钟的此方法是可行的但将提供不可靠的结果。"
   syntax:
     content: protected System.Windows.Duration GetNaturalDuration (System.Windows.Media.Animation.Clock clock);
     parameters:
     - id: clock
       type: System.Windows.Media.Animation.Clock
-      description: "The <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> that was created for this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
+      description: "<xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref>创建此<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>。"
     return:
       type: System.Windows.Duration
-      description: "The length of a single iteration of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>, or <xref:System.Windows.Duration.Automatic*> if the natural duration is unknown."
+      description: "这一次迭代的长度<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>，或<xref:System.Windows.Duration.Automatic*>如果自然持续时间未知。</xref:System.Windows.Duration.Automatic*>"
   overload: System.Windows.Media.Animation.Timeline.GetNaturalDuration*
   exceptions: []
   platform:
@@ -874,17 +874,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Returns the length of a single iteration of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>. This method provides the implementation for <xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration*>."
-  remarks: "This method provides the implementation for <xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration%2A> and should not be called directly from your code. Use <xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration%2A> instead."
+  summary: "返回的这一次迭代长度<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>。 此方法提供<xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration*>.</xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration*>的实现"
+  remarks: "此方法提供的实现<xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration%2A>且不应在代码中直接调用。</xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration%2A> 使用<xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration%2A>相反。</xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration%2A>"
   syntax:
     content: protected virtual System.Windows.Duration GetNaturalDurationCore (System.Windows.Media.Animation.Clock clock);
     parameters:
     - id: clock
       type: System.Windows.Media.Animation.Clock
-      description: "The <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> that was created for this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
+      description: "<xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref>创建此<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>。"
     return:
       type: System.Windows.Duration
-      description: "The length of a single iteration of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>, or <xref:System.Windows.Duration.Automatic*> if the natural duration is unknown."
+      description: "这一次迭代的长度<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>，或<xref:System.Windows.Duration.Automatic*>如果自然持续时间未知。</xref:System.Windows.Duration.Automatic*>"
   overload: System.Windows.Media.Animation.Timeline.GetNaturalDurationCore*
   exceptions: []
   platform:
@@ -901,12 +901,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets the name of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
+  summary: "获取或设置此名称<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>。"
   syntax:
     content: public string Name { get; set; }
     return:
       type: System.String
-      description: "The name of this timeline. The default value is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "此时间线的名称。 默认值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Media.Animation.Timeline.Name*
   exceptions: []
   platform:
@@ -923,12 +923,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.Name*> dependency property."
+  summary: "标识<xref:System.Windows.Media.Animation.Timeline.Name*>依赖项属性。</xref:System.Windows.Media.Animation.Timeline.Name*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty NameProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -944,13 +944,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Occurs when the clock created for this timeline or one of its parent timelines is removed."
-  remarks: "This event is raised by applying a <xref:System.Windows.Media.Animation.RemoveStoryboard> action to a storyboard, using a Storyboard&quot;s <xref:System.Windows.Media.Animation.Storyboard.Remove%2A> method, or (when working directly with clocks) calling the <xref:System.Windows.Media.Animation.ClockController.Remove%2A?displayProperty=fullName> method.       Although this event handler appears to be associated with a timeline, it actually registers with the <xref:System.Windows.Media.Animation.Clock> created for this timeline.  For more information, see the [Timing Events Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: "为此时间线创建时钟或删除了某个及其父时间线时发生。"
+  remarks: "通过应用引发此事件<xref:System.Windows.Media.Animation.RemoveStoryboard>操作到使用情节提要的情节提要<xref:System.Windows.Media.Animation.Storyboard.Remove%2A>方法，或 （当直接处理时钟） 调用<xref:System.Windows.Media.Animation.ClockController.Remove%2A?displayProperty=fullName>方法。</xref:System.Windows.Media.Animation.ClockController.Remove%2A?displayProperty=fullName> </xref:System.Windows.Media.Animation.Storyboard.Remove%2A> </xref:System.Windows.Media.Animation.RemoveStoryboard>       虽然此事件处理程序看起来与时间线关联，但它实际上注册<xref:System.Windows.Media.Animation.Clock>为此时间线创建。</xref:System.Windows.Media.Animation.Clock>  有关详细信息，请参阅[计时事件概述](~/add/includes/ajax-current-ext-md.md)。"
   syntax:
     content: public event EventHandler RemoveRequested;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -966,13 +966,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets the repeating behavior of this timeline."
-  remarks: "If an iteration <xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A> is specified and the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A> property is set to `true`, a single repetition consists of one forward iteration and one backward iteration. A timeline with an <xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A> property set to true an iteration <xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A> of 2 would play forwards, then backwards, then forwards again, and then backwards again.       Instead of specifying the number of times a timeline plays, you can also specify the total length of time you want the timeline to play. For a timeline to repeat, this <xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName> value should be greater than the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.Duration%2A>. For example, a timeline with a <xref:System.Windows.Media.Animation.Timeline.Duration%2A> of 2 seconds and a <xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName> of 4 seconds will play twice. If the <xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName> is less than the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.Duration%2A>, the timeline&quot;s active period is cut short.       For more information about repeating timelines, see [Animation Overview](~/add/includes/ajax-current-ext-md.md).      <a name=&quot;dependencyPropertyInfo_RepeatBehavior&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Media.Animation.Timeline.RepeatBehaviorProperty>|   |Metadata properties set to `true`|None|"
+  summary: "获取或设置此时间线的重复行为。"
+  remarks: "如果迭代<xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A>指定的时间线<xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A>属性设置为`true`，一次重复组成一个向前迭代和向后的一次迭代。</xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A> </xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A> 时间线<xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A>属性设置为 true 迭代<xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A>的 2 将播放向前，然后向后，再次，然后转发，然后再次向后。</xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A> </xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A>       而不是指定的时间线播放的次数，还可以指定时间线要播放的时间的总的长度。 若要重复，此<xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName>值应大于时间线的<xref:System.Windows.Media.Animation.Timeline.Duration%2A>.</xref:System.Windows.Media.Animation.Timeline.Duration%2A></xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName>时间线 例如，时间线与<xref:System.Windows.Media.Animation.Timeline.Duration%2A>的 2 秒和<xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName>的 4 秒，将播放一两次。</xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName> </xref:System.Windows.Media.Animation.Timeline.Duration%2A> 如果<xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName>小于时间线的<xref:System.Windows.Media.Animation.Timeline.Duration%2A>，时间线的活动期被中止。</xref:System.Windows.Media.Animation.Timeline.Duration%2A> </xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName>       有关重复时间线详细信息，请参阅[动画概述](~/add/includes/ajax-current-ext-md.md)。      <a name=&quot;dependencyPropertyInfo_RepeatBehavior&quot;></a># # 依赖项属性信息 | | |  |-|-|  |标识符字段 |<xref:System.Windows.Media.Animation.Timeline.RepeatBehaviorProperty>|  |元数据属性设置为`true`|None |</xref:System.Windows.Media.Animation.Timeline.RepeatBehaviorProperty>"
   syntax:
     content: public System.Windows.Media.Animation.RepeatBehavior RepeatBehavior { get; set; }
     return:
       type: System.Windows.Media.Animation.RepeatBehavior
-      description: "An iteration <xref:System.Windows.Media.Animation.RepeatBehavior.Count*> that specifies the number of times the timeline should play, a <xref:System.TimeSpan> value that specifies the total the length of this timeline&quot;s active period, or the special value <xref:System.Windows.Media.Animation.RepeatBehavior.Forever*>, which specifies that the timeline should repeat indefinitely. The default value is a <xref href=&quot;System.Windows.Media.Animation.RepeatBehavior&quot;></xref> with a <xref:System.Windows.Media.Animation.RepeatBehavior.Count*> of `1`, which indicates that the timeline plays once."
+      description: "迭代<> *1>，它指定的时间线应播放的次数<xref:System.TimeSpan>值，该值指定的总长度此时间线的活动期或特殊值<> *1>，它指定时间线应无限期地重复。</xref:System.TimeSpan> 默认值是<xref href=&quot;System.Windows.Media.Animation.RepeatBehavior&quot;></xref>与<xref:System.Windows.Media.Animation.RepeatBehavior.Count*>的`1`，指示时间线播放一次。</xref:System.Windows.Media.Animation.RepeatBehavior.Count*>"
   overload: System.Windows.Media.Animation.Timeline.RepeatBehavior*
   exceptions: []
   platform:
@@ -989,12 +989,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*> dependency property."
+  summary: "标识<xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>依赖项属性。</xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty RepeatBehaviorProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1010,17 +1010,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Sets the desired frame rate of the specified <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
-  remarks: "This method sets the <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A> attached property. For more information, see the <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A> page."
+  summary: "设置指定的所需的帧速率<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>。"
+  remarks: "此方法会设置<xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A>附加属性。</xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A> 有关详细信息，请参阅<xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A>页。</xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A>"
   syntax:
     content: public static void SetDesiredFrameRate (System.Windows.Media.Animation.Timeline timeline, Nullable<int> desiredFrameRate);
     parameters:
     - id: timeline
       type: System.Windows.Media.Animation.Timeline
-      description: "The <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> to which `desiredFrameRate` is assigned."
+      description: "<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>到`desiredFrameRate`分配。"
     - id: desiredFrameRate
       type: System.Nullable{System.Int32}
-      description: "The maximum number of frames this timeline should generate each second, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the system should control the number of frames."
+      description: "此时间线应生成每秒的帧的最大数目或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果系统应控制的帧的数目。"
   overload: System.Windows.Media.Animation.Timeline.SetDesiredFrameRate*
   exceptions: []
   platform:
@@ -1037,20 +1037,20 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets the rate, relative to its parent, at which time progresses for this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
-  remarks: "A timeline&quot;s SpeedRatio setting does not have an effect on its <xref:System.Windows.Media.Animation.Timeline.BeginTime%2A>; that time is relative to the timeline&quot;s parent or, if the timeline is a root timeline, the moment at which the timeline&quot;s clock was begun.       If <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A> or <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A> are specified, this SpeedRatio is the average ratio over the natural length of the timeline.      <a name=&quot;dependencyPropertyInfo_SpeedRatio&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Media.Animation.Timeline.SpeedRatioProperty>|   |Metadata properties set to `true`|None|"
+  summary: "获取或设置的速率，相对于其父级中，在此的时间的推移<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>。"
+  remarks: "时间线的 SpeedRatio 设置没有影响其<xref:System.Windows.Media.Animation.Timeline.BeginTime%2A>; 该时间是相对于时间线的父级或如果时间线为根时间线，从该处开始时间线的时钟时间。</xref:System.Windows.Media.Animation.Timeline.BeginTime%2A>       如果<xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A>或<xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A>指定，此 SpeedRatio 通过时间线的自然长度是平均的比率。</xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A> </xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A>      <a name=&quot;dependencyPropertyInfo_SpeedRatio&quot;></a># # 依赖项属性信息 | | |  |-|-|  |标识符字段 |<xref:System.Windows.Media.Animation.Timeline.SpeedRatioProperty>|  |元数据属性设置为`true`|None |</xref:System.Windows.Media.Animation.Timeline.SpeedRatioProperty>"
   example:
   - "A timeline's SpeedRatio property controls its rate of progress, relative to its parent. If the timeline is a root, its <xref:System.Windows.Media.MediaPlayer.SpeedRatio%2A> is relative to the default timeline speed. The following example shows several timelines with different SpeedRatio settings.  \n  \n [!code-xml[timingbehaviors_snip#_graphicsmm_SpeedExampleWholePage](~/add/codesnippet/xaml/timingbehaviors_snip.project/SpeedExample.xaml#_graphicsmm_speedexamplewholepage)]"
   syntax:
     content: public double SpeedRatio { get; set; }
     return:
       type: System.Double
-      description: "A finite value greater than 0 that describes the rate at which time progresses for this timeline, relative to the speed of the timeline&quot;s parent or, if this is a root timeline, the default timeline speed. The default value is 1."
+      description: "有限值大于 0 的描述用于此时间线，相对于其父级的速度时间前进速率或如果这是根时间线，默认时间线速度。 默认值为 1。"
   overload: System.Windows.Media.Animation.Timeline.SpeedRatio*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "SpeedRatio is less than 0 or is not a finite value."
+    description: "SpeedRatio 小于 0 或不是有限值。"
   platform:
   - net462
 - uid: System.Windows.Media.Animation.Timeline.SpeedRatioProperty
@@ -1065,12 +1065,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies for the <xref:System.Windows.Media.Animation.Timeline.SpeedRatio*> dependency property."
+  summary: "标识<xref:System.Windows.Media.Animation.Timeline.SpeedRatio*>依赖项属性。</xref:System.Windows.Media.Animation.Timeline.SpeedRatio*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty SpeedRatioProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
