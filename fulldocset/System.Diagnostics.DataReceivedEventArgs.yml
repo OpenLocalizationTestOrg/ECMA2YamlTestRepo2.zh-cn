@@ -10,8 +10,8 @@ items:
   nameWithType: DataReceivedEventArgs
   fullName: System.Diagnostics.DataReceivedEventArgs
   type: Class
-  summary: "Provides data for the <xref href=&quot;System.Diagnostics.Process.OutputDataReceived&quot;></xref> and <xref href=&quot;System.Diagnostics.Process.ErrorDataReceived&quot;></xref> events."
-  remarks: "To asynchronously collect the redirected <xref:System.Diagnostics.Process.StandardOutput%2A> or <xref:System.Diagnostics.Process.StandardError%2A> stream output of a process, you must create a method that handles the redirected stream output events. The event-handler method is called when the process writes to the redirected stream. The event delegate calls your event handler with an instance of DataReceivedEventArgs. The <xref:System.Diagnostics.DataReceivedEventArgs.Data%2A> property contains the text line that the process wrote to the redirected stream."
+  summary: "提供有关数据<xref href=&quot;System.Diagnostics.Process.OutputDataReceived&quot;></xref>和<xref href=&quot;System.Diagnostics.Process.ErrorDataReceived&quot;></xref>事件。"
+  remarks: "若要以异步方式收集的重定向<xref:System.Diagnostics.Process.StandardOutput%2A>或<xref:System.Diagnostics.Process.StandardError%2A>流输出的过程中，你必须创建处理重定向的流输出事件的方法的。</xref:System.Diagnostics.Process.StandardError%2A> </xref:System.Diagnostics.Process.StandardOutput%2A> 进程写入重定向流时调用事件处理程序方法。 事件委托调用事件处理程序与 DataReceivedEventArgs 的实例。 <xref:System.Diagnostics.DataReceivedEventArgs.Data%2A>属性包含进程已写入到重定向流的文本行。</xref:System.Diagnostics.DataReceivedEventArgs.Data%2A>"
   example:
   - "The following code example illustrates how to perform asynchronous read operations on the redirected <xref:System.Diagnostics.Process.StandardOutput%2A> stream of the `sort` command. The `sort` command is a console application that reads and sorts text input.  \n  \n The example creates an event delegate for the `SortOutputHandler` event handler and associates it with the <xref:System.Diagnostics.Process.OutputDataReceived> event. The event handler receives text lines from the redirected <xref:System.Diagnostics.Process.StandardOutput%2A> stream, formats the text, and writes the text to the screen.  \n  \n [!code-cpp[Process_AsyncStreams#1](~/add/codesnippet/cpp/t-system.diagnostics.dat_0_1.cpp)]\n [!code-vb[Process_AsyncStreams#1](~/add/codesnippet/visualbasic/t-system.diagnostics.dat_0_1.vb)]\n [!code-cs[Process_AsyncStreams#1](~/add/codesnippet/csharp/t-system.diagnostics.dat_0_1.cs)]"
   syntax:
@@ -34,7 +34,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the line of characters that was written to a redirected <xref href=&quot;System.Diagnostics.Process&quot;></xref> output stream."
+  summary: "获取的一行字符写入到重定向<xref href=&quot;System.Diagnostics.Process&quot;></xref>输出流。"
   remarks: "When you redirect the <xref:System.Diagnostics.Process.StandardOutput%2A> or <xref:System.Diagnostics.Process.StandardError%2A> stream of a <xref:System.Diagnostics.Process> to your event handler, an event is raised each time the process writes a line to the redirected stream. The Data property is the line that the <xref:System.Diagnostics.Process> wrote to the redirected output stream. Your event handler can use the Data property to filter process output or write output to an alternate location. For example, you might create an event handler that stores all error output lines into a designated error log file.  \n  \n A line is defined as a sequence of characters followed by a line feed (\"\\n\") or a carriage return immediately followed by a line feed (\"\\r\\n\"). The line characters are encoded using the default system ANSI code page. The Data property does not include the terminating carriage return or line feed.  \n  \n When the redirected stream is closed, a null line is sent to the event handler. Ensure your event handler checks the Data property appropriately before accessing it. For example, you can use the static method <xref:System.String.IsNullOrEmpty%2A?displayProperty=fullName> to validate the Data property in your event handler."
   example:
   - "The following code example illustrates a simple event handler associated with the <xref:System.Diagnostics.Process.OutputDataReceived> event. The event handler receives text lines from the redirected <xref:System.Diagnostics.Process.StandardOutput%2A> stream, formats the text, and writes the text to the screen.  \n  \n [!code-cpp[Process_AsyncStreams#4](~/add/codesnippet/cpp/p-system.diagnostics.dat_1.cpp)]\n [!code-cs[Process_AsyncStreams#4](~/add/codesnippet/csharp/p-system.diagnostics.dat_1.cs)]\n [!code-vb[Process_AsyncStreams#4](~/add/codesnippet/visualbasic/p-system.diagnostics.dat_1.vb)]"
@@ -42,7 +42,7 @@ items:
     content: public string Data { get; }
     return:
       type: System.String
-      description: "The line that was written by an associated <xref href=&quot;System.Diagnostics.Process&quot;></xref> to its redirected <xref:System.Diagnostics.Process.StandardOutput*> or <xref:System.Diagnostics.Process.StandardError*> stream."
+      description: "已写入的行的一个关联<xref href=&quot;System.Diagnostics.Process&quot;></xref>向其重定向<> *1> 或<> *1> 流。"
   overload: System.Diagnostics.DataReceivedEventArgs.Data*
   exceptions: []
   platform:

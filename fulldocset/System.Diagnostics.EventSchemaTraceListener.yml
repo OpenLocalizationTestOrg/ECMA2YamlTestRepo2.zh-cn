@@ -32,7 +32,7 @@ items:
   nameWithType: EventSchemaTraceListener
   fullName: System.Diagnostics.EventSchemaTraceListener
   type: Class
-  summary: "Directs tracing or debugging output of end-to-end events to an XML-encoded, schema-compliant log file."
+  summary: "将跟踪或调试输出的 XML 编码，但是符合架构的日志文件的端到端事件定向。"
   remarks: "The EventSchemaTraceListener class provides tracing of end-to-end schema-compliant events. You can use end-to-end tracing for a system that has heterogeneous components that cross thread, <xref:System.AppDomain>, process, and computer boundaries. A standardized event schema (see [Event Representation for Event Consumers](http://go.microsoft.com/fwlink/?LinkId=78955)) has been defined to enable tracing across these boundaries. The schema enables the addition of custom, schema-compliant elements. You can use the [Service Trace Viewer Tool (SvcTraceViewer.exe)](http://go.microsoft.com/fwlink/p/?LinkId=240129) to display the event data.  \n  \n EventSchemaTraceListener is tuned for logging performance with implicit support for lock-free tracing.  \n  \n The EventSchemaTraceListener class converts tracing and debugging information into an XML-encoded text stream. The description of the XML output is shown in the tables later in this section.  \n  \n You can enable or disable an EventSchemaTraceListener object through the application configuration file, and then use the configured EventSchemaTraceListener object in your application. Alternately, you can create an EventSchemaTraceListener object in your code. We recommend that you enable trace listeners through the application configuration file. For information about the use of configuration files for tracing and debugging, see [Trace and Debug Settings Schema](~/add/includes/ajax-current-ext-md.md).  \n  \n To configure an EventSchemaTraceListener object, modify the configuration file that corresponds to the name of your application. In this file, you can add, remove, or set the properties for a listener. The configuration file should be formatted as follows:  \n  \n```  \n<configuration>  \n    <system.diagnostics>  \n        <sources>  \n            <source name=\"TestSource\" >  \n                <listeners>  \n                    <!--Remove the default trace listener for better performance.-->  \n                    <remove name=\"Default\"/>  \n                    <!--Note: Removing the default trace listener prevents the dialog box   \n                    from being displayed for Debug.Fail or Debug.Assert commands that are   \n                    executed in user mode.-->  \n                    <add name=\"eventListener\"   \n                      type=\"System.Diagnostics.EventSchemaTraceListener,  system.core\"  \n                      initializeData=\"TraceOutput.xml\"   \n                      traceOutputOptions=\"ProcessId, DateTime, Timestamp\"   \n                      bufferSize=\"65536\"  \n                      maximumFileSize=\"20480000\"  \n                      logRetentionOption=\"LimitedCircularFiles\"  \n                      maximumNumberOfFiles=\"2\"/>  \n                </listeners>  \n            </source>  \n        </sources>  \n    </system.diagnostics>  \n```  \n  \n The EventSchemaTraceListener class inherits the <xref:System.Diagnostics.TraceListener.Filter%2A> property from the base class <xref:System.Diagnostics.TraceListener>. The <xref:System.Diagnostics.TraceListener.Filter%2A> property allows for an additional level of trace output filtering at the listener. If a filter is present, the `Trace` methods of the trace listener call the <xref:System.Diagnostics.TraceFilter.ShouldTrace%2A> method of the filter to determine whether to emit the trace.  \n  \n If an attempt is made to write to a file that is being used or is unavailable, a GUID suffix is automatically added to the file name.  \n  \n> [!NOTE]\n>  Listener methods are intended to be called by methods of the <xref:System.Diagnostics.Debug>, <xref:System.Diagnostics.Trace>, and <xref:System.Diagnostics.TraceSource> classes. Do not call the listener methods directly from application code. The EventSchemaTraceListener listener is primarily intended for use by the <xref:System.Diagnostics.TraceSource> class.  \n  \n The following table describes the elements and attributes of the XML output.  \n  \n|Element|Attributes|Output|Notes|  \n|-------------|----------------|------------|-----------|  \n|`CallStack`|None|Depends on the presence of the <xref:System.Diagnostics.TraceOptions> flag in the <xref:System.Diagnostics.TraceListener.TraceOutputOptions%2A> property.|Special characters such as > or < are replaced with escape sequences. See the escaped character translation table in the next table.|  \n|`Computer`|None|Always present.|This element represents the value of the <xref:System.Environment.MachineName%2A> property.|  \n|`Correlation`|`ActivityID`|Always present.|If `ActivityID` is not specified, the default is an empty GUID.|  \n||`RelatedActivityID`|Depends on the presence of the `relatedActivityId` parameter in the `Trace` method call.|The `RelatedActivityID` attribute corresponds to the `relatedActivityId` parameter of the <xref:System.Diagnostics.EventSchemaTraceListener.TraceTransfer%2A> method.|  \n|`Data`|None|Always present.|This element represents parameter input (`data`). One element is provided for each data object. In the case of event logs, the `Data` element contains escaped XML data. In the case of data logs, the `Data` element contains unescaped data. The data log output uses the `ToString` method of the passed-in data objects.|  \n|`Event`|None|Always present.|This element contains a trace event.|  \n|`EventData`|None|Present for event logs.|This element represents parameter input (`message`, `args`). It contains `Data` elements with escaped XML data that is created by calling the <xref:System.Diagnostics.EventSchemaTraceListener.TraceEvent%2A> method.|  \n|`EventID`|None|Always present.|This element represents parameter input (`id`).|  \n|`Execution`|`ProcessID`|Depends on the presence of the <xref:System.Diagnostics.TraceOptions> flag in the <xref:System.Diagnostics.TraceListener.TraceOutputOptions%2A> property.|The `ProcessID` attribute is specified in the <xref:System.Diagnostics.TraceEventCache>. On the Microsoft Windows 98 and Windows Millenium Edition operating systems, if `ProcessID` is larger than 2,147,483,647, it is a positive representation of a negative number and should be converted to obtain the correct process identifier.|  \n||`ThreadID`|Present when `ProcessID` is present.|The `ThreadID` attribute is specified in the <xref:System.Diagnostics.TraceEventCache>.|  \n|`Level`|None|Always present.|This element represents parameter input (the numeric value of `eventType`). Parameter values that are larger than 255 are output as a level 8, which represents <xref:System.Diagnostics.TraceEventType?displayProperty=fullName>. Trace event types <xref:System.Diagnostics.TraceEventType>, <xref:System.Diagnostics.TraceEventType>, <xref:System.Diagnostics.TraceEventType>, <xref:System.Diagnostics.TraceEventType>, and <xref:System.Diagnostics.TraceEventType> are output as levels 1, 2, 4, 8, and 10, respectively.|  \n|`LogicalOperationStack`|None|Depends on the presence of the <xref:System.Diagnostics.TraceOptions> flag in the <xref:System.Diagnostics.TraceListener.TraceOutputOptions%2A> property.|Only one logical operation can exist. Therefore, the values are written as `LogicalOperation` nodes under the `LogicalOperationStack` element.|  \n|`OpCode`|None|Present when `Level` is greater than 255.|This element represents Trace event types that have numeric values greater than 255. <xref:System.Diagnostics.TraceEventType>, <xref:System.Diagnostics.TraceEventType>, <xref:System.Diagnostics.TraceEventType>, <xref:System.Diagnostics.TraceEventType>, or <xref:System.Diagnostics.TraceEventType> are output as levels 1, 2, 4, 8, and 10, respectively.|  \n|`Provider`|`GUID`|Always present.|Always empty.|  \n|`RenderingInfo`|`Culture`|Always present.|This attribute represents a resource string for the event type. It is always \"en-EN\\\\\".|  \n|`System`|`Name`|Always present.||  \n|`TimeCreated`|`SystemTime`|Depends on the presence of the <xref:System.Diagnostics.TraceOptions> flag in the <xref:System.Diagnostics.TraceListener.TraceOutputOptions%2A> property.|The time is the value of the <xref:System.Diagnostics.TraceEventCache.DateTime%2A?displayProperty=fullName> property. This property is expressed as Coordinated Universal Time|  \n|`TimeStamp`|None|Depends on the presence of the <xref:System.Diagnostics.TraceOptions> flag in the <xref:System.Diagnostics.TraceListener.TraceOutputOptions%2A> property.|This element is specified in the <xref:System.Diagnostics.TraceEventCache>.|  \n|`UserData`|None|Present for data logs.|This element contains `Data` elements with unescaped, user-provided data from a <xref:System.Diagnostics.EventSchemaTraceListener.TraceData%2A> method.|  \n  \n The following table shows the characters that are escaped in the XML output. Escaping occurs in all the elements and attributes except for the `UserData` element, which contains user-provided, unescaped data. The `UserData` element is a result of calls to the <xref:System.Diagnostics.EventSchemaTraceListener.TraceData%2A> method.  \n  \n|Escaped character|Value|  \n|-----------------------|-----------|  \n|&|&amp;|  \n|\\<|&lt;|  \n|>|&gt;|  \n|\"|&quot;|  \n|\\|&apos;|  \n|0xD|&\\#xD;|  \n|0xA|&\\#xA;|"
   example:
   - "The following code example demonstrates how to use the EventSchemaTraceListener class.  \n  \n [!code-cs[System.Diagnostics.EventSchemaTraceListener#1](~/add/codesnippet/csharp/t-system.diagnostics.eve_1_1.cs)]\n [!code-cpp[System.Diagnostics.EventSchemaTraceListener#1](~/add/codesnippet/cpp/t-system.diagnostics.eve_1_1.cpp)]\n [!code-vb[System.Diagnostics.EventSchemaTraceListener#1](~/add/codesnippet/visualbasic/t-system.diagnostics.eve_1_1.vb)]"
@@ -81,8 +81,8 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Initializes a new instance of the <xref href=&quot;System.Diagnostics.EventSchemaTraceListener&quot;></xref> class, using the specified file as the recipient of debugging and tracing output."
-  remarks: "By default, one file of unrestricted size is logged."
+  summary: "初始化的新实例<xref href=&quot;System.Diagnostics.EventSchemaTraceListener&quot;></xref>类，通过指定的文件用作调试和跟踪输出的接收方。"
+  remarks: "默认情况下，记录一个文件的不受限制的大小。"
   example:
   - "The following code example demonstrates how to use the EventSchemaTraceListener constructor.  \n  \n [!code-vb[System.Diagnostics.EventSchemaTraceListener.Ctors#1](~/add/codesnippet/visualbasic/m-system.diagnostics.eve_19_1.vb)]\n [!code-cs[System.Diagnostics.EventSchemaTraceListener.Ctors#1](~/add/codesnippet/csharp/m-system.diagnostics.eve_19_1.cs)]"
   syntax:
@@ -90,7 +90,7 @@ items:
     parameters:
     - id: fileName
       type: System.String
-      description: "The path for the log file."
+      description: "日志文件的路径。"
   overload: System.Diagnostics.EventSchemaTraceListener.#ctor*
   exceptions: []
   platform:
@@ -107,7 +107,7 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Initializes a new instance of the <xref href=&quot;System.Diagnostics.EventSchemaTraceListener&quot;></xref> class with the specified name, using the specified file as the recipient of debugging and tracing output."
+  summary: "初始化的新实例<xref href=&quot;System.Diagnostics.EventSchemaTraceListener&quot;></xref>类具有指定名称，通过指定的文件用作调试和跟踪输出的接收方。"
   remarks: ''
   example:
   - "The following code example demonstrates how to use the <xref:System.Diagnostics.EventSchemaTraceListener.%23ctor%28System.String%2CSystem.String%2CSystem.Int32%29?displayProperty=fullName> constructor.  \n  \n [!code-vb[System.Diagnostics.EventSchemaTraceListener.Ctors#2](~/add/codesnippet/visualbasic/a9f0d11f-fcb5-4d13-a2ff-_1.vb)]\n [!code-cs[System.Diagnostics.EventSchemaTraceListener.Ctors#2](~/add/codesnippet/csharp/a9f0d11f-fcb5-4d13-a2ff-_1.cs)]"
@@ -116,10 +116,10 @@ items:
     parameters:
     - id: fileName
       type: System.String
-      description: "The path for the log file."
+      description: "日志文件的路径。"
     - id: name
       type: System.String
-      description: "The name of the listener."
+      description: "侦听器的名称。"
   overload: System.Diagnostics.EventSchemaTraceListener.#ctor*
   exceptions: []
   platform:
@@ -136,8 +136,8 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Initializes a new instance of the <xref href=&quot;System.Diagnostics.EventSchemaTraceListener&quot;></xref> class with the specified name and specified buffer size, using the specified file as the recipient of debugging and tracing output."
-  remarks: "For performance considerations, `bufferSize` should be a multiple of 1024 bytes."
+  summary: "初始化的新实例<xref href=&quot;System.Diagnostics.EventSchemaTraceListener&quot;></xref>类具有指定的名称和指定的缓冲区大小，通过指定的文件用作调试和跟踪输出的接收方。"
+  remarks: "出于性能考虑，`bufferSize`应是 1024 个字节的倍数。"
   example:
   - "The following code example demonstrates how to use the EventSchemaTraceListener constructor.  \n  \n [!code-vb[System.Diagnostics.EventSchemaTraceListener.Ctors#3](~/add/codesnippet/visualbasic/45371b18-279c-4de3-a88e-_1.vb)]\n [!code-cs[System.Diagnostics.EventSchemaTraceListener.Ctors#3](~/add/codesnippet/csharp/45371b18-279c-4de3-a88e-_1.cs)]"
   syntax:
@@ -145,13 +145,13 @@ items:
     parameters:
     - id: fileName
       type: System.String
-      description: "The path for the log file."
+      description: "日志文件的路径。"
     - id: name
       type: System.String
-      description: "The name of the listener."
+      description: "侦听器的名称。"
     - id: bufferSize
       type: System.Int32
-      description: "The size of the output buffer, in bytes."
+      description: "输出缓冲区，以字节为单位的大小。"
   overload: System.Diagnostics.EventSchemaTraceListener.#ctor*
   exceptions: []
   platform:
@@ -168,8 +168,8 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Initializes a new instance of the <xref href=&quot;System.Diagnostics.EventSchemaTraceListener&quot;></xref> class with the specified name and specified buffer size, using the specified file with the specified log retention policy as the recipient of the debugging and tracing output."
-  remarks: "For performance considerations, `bufferSize` should be a multiple of 1024 bytes."
+  summary: "初始化的新实例<xref href=&quot;System.Diagnostics.EventSchemaTraceListener&quot;></xref>类具有指定的名称和指定的缓冲区大小，使用指定的文件具有指定的日志保留策略为接收者的调试和跟踪输出。"
+  remarks: "出于性能考虑，`bufferSize`应是 1024 个字节的倍数。"
   example:
   - "The following code example demonstrates how to use the EventSchemaTraceListener constructor.  \n  \n [!code-vb[System.Diagnostics.EventSchemaTraceListener.Ctors#4](~/add/codesnippet/visualbasic/f126a0a2-b62d-45c7-8782-_1.vb)]\n [!code-cs[System.Diagnostics.EventSchemaTraceListener.Ctors#4](~/add/codesnippet/csharp/f126a0a2-b62d-45c7-8782-_1.cs)]"
   syntax:
@@ -177,16 +177,16 @@ items:
     parameters:
     - id: fileName
       type: System.String
-      description: "The path for the log file."
+      description: "日志文件的路径。"
     - id: name
       type: System.String
-      description: "The name of the listener."
+      description: "侦听器的名称。"
     - id: bufferSize
       type: System.Int32
-      description: "The size of the output buffer, in bytes."
+      description: "输出缓冲区，以字节为单位的大小。"
     - id: logRetentionOption
       type: System.Diagnostics.TraceLogRetentionOption
-      description: "One of the <xref href=&quot;System.Diagnostics.TraceLogRetentionOption&quot;></xref> values."
+      description: "之一<xref href=&quot;System.Diagnostics.TraceLogRetentionOption&quot;></xref>值。"
   overload: System.Diagnostics.EventSchemaTraceListener.#ctor*
   exceptions: []
   platform:
@@ -203,8 +203,8 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Initializes a new instance of the <xref href=&quot;System.Diagnostics.EventSchemaTraceListener&quot;></xref> class with the specified name and specified buffer size, using the specified file with the specified log retention policy and maximum size as the recipient of the debugging and tracing output."
-  remarks: "For performance considerations, `bufferSize` and `maximumFileSize` should be multiples of 1024 bytes. `maximumFileSize` is not an absolute value, it is a threshold which can be exceeded up to the size of the last message."
+  summary: "初始化的新实例<xref href=&quot;System.Diagnostics.EventSchemaTraceListener&quot;></xref>类具有指定的名称和指定的缓冲区大小，通过将具有指定的日志保留策略和最大大小指定的文件用作调试和跟踪输出的接收方。"
+  remarks: "出于性能考虑，`bufferSize`和`maximumFileSize`应为 1024 个字节的倍数。 `maximumFileSize`不是绝对值，它是一个阈值，它可能会超过直到达到最后一条消息的大小。"
   example:
   - "The following code example demonstrates how to use the EventSchemaTraceListener constructor.  \n  \n [!code-vb[System.Diagnostics.EventSchemaTraceListener.Ctors#5](~/add/codesnippet/visualbasic/5c1c3fa7-33f6-45a0-b6d2-_1.vb)]\n [!code-cs[System.Diagnostics.EventSchemaTraceListener.Ctors#5](~/add/codesnippet/csharp/5c1c3fa7-33f6-45a0-b6d2-_1.cs)]"
   syntax:
@@ -212,24 +212,24 @@ items:
     parameters:
     - id: fileName
       type: System.String
-      description: "The path for the log file."
+      description: "日志文件的路径。"
     - id: name
       type: System.String
-      description: "The name of the listener."
+      description: "侦听器的名称。"
     - id: bufferSize
       type: System.Int32
-      description: "The size of the output buffer, in bytes."
+      description: "输出缓冲区，以字节为单位的大小。"
     - id: logRetentionOption
       type: System.Diagnostics.TraceLogRetentionOption
-      description: "One of the <xref href=&quot;System.Diagnostics.TraceLogRetentionOption&quot;></xref> values."
+      description: "之一<xref href=&quot;System.Diagnostics.TraceLogRetentionOption&quot;></xref>值。"
     - id: maximumFileSize
       type: System.Int64
-      description: "The maximum file size, in bytes."
+      description: "最大文件大小，以字节为单位。"
   overload: System.Diagnostics.EventSchemaTraceListener.#ctor*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>maximumFileSize</code> is a negative number."
+    description: "<code>maximumFileSize</code>为负数。"
   platform:
   - net462
 - uid: System.Diagnostics.EventSchemaTraceListener.#ctor(System.String,System.String,System.Int32,System.Diagnostics.TraceLogRetentionOption,System.Int64,System.Int32)
@@ -244,8 +244,8 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Initializes a new instance of the <xref href=&quot;System.Diagnostics.EventSchemaTraceListener&quot;></xref> class with the specified name and specified buffer size, using the specified file with the specified log retention policy, maximum size, and file count as the recipient of the debugging and tracing output."
-  remarks: "For performance considerations, `bufferSize` and `maximumFileSize` should be multiples of 1024 bytes. `maximumFileSize` is not an absolute value; it is a threshold that can be exceeded up to the size of the last message."
+  summary: "初始化的新实例<xref href=&quot;System.Diagnostics.EventSchemaTraceListener&quot;></xref>类，该类具有指定的名称和指定的缓冲区大小，具有指定的日志保留策略，最大大小，使用指定的文件和文件用作调试和跟踪输出的接收方的计数。"
+  remarks: "出于性能考虑，`bufferSize`和`maximumFileSize`应为 1024 个字节的倍数。 `maximumFileSize`不是绝对值的数值;它是可以直到达到最后一条消息的大小超过了阈值。"
   example:
   - "The following code example demonstrates how to use the EventSchemaTraceListener constructor. This code example is part of a larger example that is provided for the <xref:System.Diagnostics.EventSchemaTraceListener> class.  \n  \n [!code-cs[System.Diagnostics.EventSchemaTraceListener#2](~/add/codesnippet/csharp/3c0ec067-fcc9-4608-a254-_1.cs)]\n [!code-vb[System.Diagnostics.EventSchemaTraceListener#2](~/add/codesnippet/visualbasic/3c0ec067-fcc9-4608-a254-_1.vb)]"
   syntax:
@@ -253,27 +253,27 @@ items:
     parameters:
     - id: fileName
       type: System.String
-      description: "The path for the log file."
+      description: "日志文件的路径。"
     - id: name
       type: System.String
-      description: "The name of the listener."
+      description: "侦听器的名称。"
     - id: bufferSize
       type: System.Int32
-      description: "The size of the output buffer, in bytes."
+      description: "输出缓冲区，以字节为单位的大小。"
     - id: logRetentionOption
       type: System.Diagnostics.TraceLogRetentionOption
-      description: "One of the <xref href=&quot;System.Diagnostics.TraceLogRetentionOption&quot;></xref> values."
+      description: "之一<xref href=&quot;System.Diagnostics.TraceLogRetentionOption&quot;></xref>值。"
     - id: maximumFileSize
       type: System.Int64
-      description: "The maximum file size, in bytes."
+      description: "最大文件大小，以字节为单位。"
     - id: maximumNumberOfFiles
       type: System.Int32
-      description: "The maximum number of output log files."
+      description: "输出日志文件的最大数量。"
   overload: System.Diagnostics.EventSchemaTraceListener.#ctor*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>maximumNumberOfFiles</code> is less than 2, and <code>logRetentionOption</code> is <xref href=&quot;System.Diagnostics.TraceLogRetentionOption&quot;></xref>."
+    description: "<code>maximumNumberOfFiles</code>为小于 2，和<code>logRetentionOption</code>是<xref href=&quot;System.Diagnostics.TraceLogRetentionOption&quot;> </xref>。"
   platform:
   - net462
 - uid: System.Diagnostics.EventSchemaTraceListener.BufferSize
@@ -288,15 +288,15 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Gets the size of the output buffer."
-  remarks: "The property value is set by the `bufferSize` parameter in the constructor. For performance reasons, the buffer size should be set to a multiple of 1024 bytes. We recommend either the default size of 32*1024 bytes or 64\\*1024 bytes for best performance."
+  summary: "获取输出缓冲区的大小。"
+  remarks: "通过设置属性值`bufferSize`构造函数中的参数。 出于性能原因，缓冲区大小应设置为 1024 字节的倍数。 我们建议 32 * 1024 字节的默认大小或 64\\*1024 个字节，以获得最佳性能。"
   example:
   - "The following code example demonstrates how to display the value of the BufferSize property. This code example is part of a larger example that is provided for the <xref:System.Diagnostics.EventSchemaTraceListener> class.  \n  \n [!code-cs[System.Diagnostics.EventSchemaTraceListener#5](~/add/codesnippet/csharp/p-system.diagnostics.eve_0_1.cs)]\n [!code-vb[System.Diagnostics.EventSchemaTraceListener#5](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_0_1.vb)]"
   syntax:
     content: public int BufferSize { get; }
     return:
       type: System.Int32
-      description: "The size of the output buffer, in bytes."
+      description: "输出缓冲区，以字节为单位的大小。"
   overload: System.Diagnostics.EventSchemaTraceListener.BufferSize*
   exceptions: []
   platform:
@@ -313,7 +313,7 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Closes the log file for this listener so that it no longer receives tracing or debugging output."
+  summary: "为此侦听器关闭日志文件，以使它不再接收跟踪或调试输出。"
   syntax:
     content: public override void Close ();
     parameters: []
@@ -333,16 +333,16 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Writes error information, including a basic error message and a detailed error message, to the log file."
+  summary: "写入错误的信息，包括基本错误消息和详细的错误消息，对日志文件。"
   syntax:
     content: public override void Fail (string message, string detailMessage);
     parameters:
     - id: message
       type: System.String
-      description: "The basic error message to write."
+      description: "要写入的基本错误消息。"
     - id: detailMessage
       type: System.String
-      description: "The detailed error message to append to the basic error message."
+      description: "要追加到基本错误消息的详细的错误消息。"
   overload: System.Diagnostics.EventSchemaTraceListener.Fail*
   exceptions: []
   platform:
@@ -359,7 +359,7 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Causes buffered data to be written to the log for this listener."
+  summary: "导致缓冲数据写入该侦听器日志。"
   syntax:
     content: public override void Flush ();
     parameters: []
@@ -379,14 +379,14 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Gets the custom XML configuration attributes that the trace listener supports."
-  remarks: 'The custom attributes that are returned by this method can be used in the XML configuration file to control the behavior of an instance of the <xref:System.Diagnostics.EventSchemaTraceListener> class. Using any other attribute causes a configuration exception. The GetSupportedAttributes method for the <xref:System.Diagnostics.EventSchemaTraceListener> returns the following string array values: &quot;bufferSize&quot;, &quot;logRetentionOption&quot;, &quot;maximumFileSize&quot;, and &quot;maximumNumberOfFiles&quot;.'
+  summary: "获取跟踪侦听器支持的自定义 XML 配置特性。"
+  remarks: '可以在 XML 配置文件中使用此方法返回的自定义属性来控制<xref:System.Diagnostics.EventSchemaTraceListener>类</xref:System.Diagnostics.EventSchemaTraceListener>的实例的行为 使用任何其他属性会导致配置异常。 GetSupportedAttributes 方法<xref:System.Diagnostics.EventSchemaTraceListener>数组值返回以下字符串:&quot;bufferSize&quot;，&quot;logRetentionOption&quot;，&quot;maximumFileSize&quot;和&quot;maximumNumberOfFiles&quot;。</xref:System.Diagnostics.EventSchemaTraceListener>'
   syntax:
     content: protected override string[] GetSupportedAttributes ();
     parameters: []
     return:
       type: System.String[]
-      description: "A <xref:System.String> array that contains the XML configuration attributes recognized by this listener."
+      description: "A<xref:System.String>数组，其中包含此侦听器可识别的 XML 配置特性。</xref:System.String>"
   overload: System.Diagnostics.EventSchemaTraceListener.GetSupportedAttributes*
   exceptions: []
   platform:
@@ -403,7 +403,7 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Gets a value indicating whether the trace listener is thread safe."
+  summary: "获取一个值，该值指示跟踪侦听器是否线程安全。"
   remarks: ''
   example:
   - "The following code example demonstrates how to display the value of the IsThreadSafe property. This code example is part of a larger example that is provided for the <xref:System.Diagnostics.EventSchemaTraceListener> class.  \n  \n [!code-cs[System.Diagnostics.EventSchemaTraceListener#4](~/add/codesnippet/csharp/p-system.diagnostics.eve_5_1.cs)]\n [!code-vb[System.Diagnostics.EventSchemaTraceListener#4](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_5_1.vb)]"
@@ -411,7 +411,7 @@ items:
     content: public override bool IsThreadSafe { get; }
     return:
       type: System.Boolean
-      description: "Always returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "始终返回<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   overload: System.Diagnostics.EventSchemaTraceListener.IsThreadSafe*
   exceptions: []
   platform:
@@ -428,15 +428,15 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Gets the maximum size of the log file."
-  remarks: "The property value is set by the `maximumFileSize` parameter in the constructor or the `maximumFileSize` attribute in the configuration file. For performance reasons, you should set the maximum file size to a multiple of 1024 bytes. The MaximumFileSize property value is not an absolute; it is a threshold that can be exceeded up to the size of the last message.       The following table shows the possible and default values for file size that are associated with each trace log retention option. The values marked as N/A indicate that the MaximumFileSize property is not checked for that <xref:System.Diagnostics.TraceLogRetentionOption> value.      |TraceLogRetentionOption|Maximum file size|Default file size|   |-----------------------------|-----------------------|-----------------------|   |<xref:System.Diagnostics.TraceLogRetentionOption>|N/A|-1|   |<xref:System.Diagnostics.TraceLogRetentionOption>|>0|4 KB|   |<xref:System.Diagnostics.TraceLogRetentionOption>|>0|4 KB|   |<xref:System.Diagnostics.TraceLogRetentionOption>|>0|4 KB|   |<xref:System.Diagnostics.TraceLogRetentionOption>|>0|4 KB|"
+  summary: "获取日志文件的最大大小。"
+  remarks: "通过设置属性值`maximumFileSize`构造函数中的参数或`maximumFileSize`配置文件中的属性。 出于性能原因，你应设置为 1024 字节的倍数的最大文件大小。 不是绝对; MaximumFileSize 属性值。它是可以直到达到最后一条消息的大小超过了阈值。       下表显示可能的值与默认值文件大小与每个跟踪日志保留选项相关联。 标记为不适用的值指示不将该检查是否 MaximumFileSize 属性<xref:System.Diagnostics.TraceLogRetentionOption>值。</xref:System.Diagnostics.TraceLogRetentionOption>      |TraceLogRetentionOption |最大文件大小 |默认文件大小 |  |-----------------------------|-----------------------|-----------------------|  |<xref:System.Diagnostics.TraceLogRetentionOption>|N/A |-1 |  |<xref:System.Diagnostics.TraceLogRetentionOption>|&1;>&0; |&4; KB |  |<xref:System.Diagnostics.TraceLogRetentionOption>|&1;>&0; |&4; KB |  |<xref:System.Diagnostics.TraceLogRetentionOption>|&1;>&0; |&4; KB |  |<xref:System.Diagnostics.TraceLogRetentionOption>|>0|4 KB|</xref:System.Diagnostics.TraceLogRetentionOption></xref:System.Diagnostics.TraceLogRetentionOption></xref:System.Diagnostics.TraceLogRetentionOption></xref:System.Diagnostics.TraceLogRetentionOption></xref:System.Diagnostics.TraceLogRetentionOption>"
   example:
   - "The following code example demonstrates how to display the value of the MaximumFileSize property. This code example is part of a larger example that is provided for the <xref:System.Diagnostics.EventSchemaTraceListener> class.  \n  \n [!code-cs[System.Diagnostics.EventSchemaTraceListener#6](~/add/codesnippet/csharp/p-system.diagnostics.eve_30_1.cs)]\n [!code-vb[System.Diagnostics.EventSchemaTraceListener#6](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_30_1.vb)]"
   syntax:
     content: public long MaximumFileSize { get; }
     return:
       type: System.Int64
-      description: "The maximum file size, in bytes."
+      description: "最大文件大小，以字节为单位。"
   overload: System.Diagnostics.EventSchemaTraceListener.MaximumFileSize*
   exceptions: []
   platform:
@@ -453,15 +453,15 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Gets the maximum number of log files."
-  remarks: "The property value is set by the `maximumNumberOfFiles` parameter in the constructor or the `maximumNumberOfFiles` attribute in the configuration file.       The following table shows the possible and default values for file size and file count that are associated with each trace log retention option. The values marked as N/A indicate that the MaximumNumberOfFiles property is not checked for that <xref:System.Diagnostics.TraceLogRetentionOption> value.      |TraceLogRetentionOption|Maximum number of files|Default number of files|   |-----------------------------|-----------------------------|-----------------------------|   |<xref:System.Diagnostics.TraceLogRetentionOption>|N/A|1|   |<xref:System.Diagnostics.TraceLogRetentionOption>|N/A|1|   |<xref:System.Diagnostics.TraceLogRetentionOption>|N/A|-1|   |<xref:System.Diagnostics.TraceLogRetentionOption>|>0|1|   |<xref:System.Diagnostics.TraceLogRetentionOption>|>1|2|"
+  summary: "获取最大日志文件数。"
+  remarks: "通过设置属性值`maximumNumberOfFiles`构造函数中的参数或`maximumNumberOfFiles`配置文件中的属性。       下表显示对于文件大小和文件计数与每个跟踪日志保留选项相关联的可能和默认值。 标记为不适用的值指示不将该检查是否 MaximumNumberOfFiles 属性<xref:System.Diagnostics.TraceLogRetentionOption>值。</xref:System.Diagnostics.TraceLogRetentionOption>      |TraceLogRetentionOption |最大文件数 |默认的文件数 |  |-----------------------------|-----------------------------|-----------------------------|  |<xref:System.Diagnostics.TraceLogRetentionOption>|N/A |&1; |  |<xref:System.Diagnostics.TraceLogRetentionOption>|N/A |&1; |  |<xref:System.Diagnostics.TraceLogRetentionOption>|N/A |-1 |  |<xref:System.Diagnostics.TraceLogRetentionOption>|>0|1|  |<xref:System.Diagnostics.TraceLogRetentionOption>|>1|2|</xref:System.Diagnostics.TraceLogRetentionOption></xref:System.Diagnostics.TraceLogRetentionOption></xref:System.Diagnostics.TraceLogRetentionOption></xref:System.Diagnostics.TraceLogRetentionOption></xref:System.Diagnostics.TraceLogRetentionOption>"
   example:
   - "The following code example demonstrates how to display the value of the MaximumNumberOfFiles property. This code example is part of a larger example that is provided for the <xref:System.Diagnostics.EventSchemaTraceListener> class.  \n  \n [!code-cs[System.Diagnostics.EventSchemaTraceListener#7](~/add/codesnippet/csharp/p-system.diagnostics.eve_1_1.cs)]\n [!code-vb[System.Diagnostics.EventSchemaTraceListener#7](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_1_1.vb)]"
   syntax:
     content: public int MaximumNumberOfFiles { get; }
     return:
       type: System.Int32
-      description: "The maximum number of log files, determined by the value of the <xref:System.Diagnostics.EventSchemaTraceListener.TraceLogRetentionOption*> property for the file."
+      description: "最大数量的日志文件，由的值确定<xref:System.Diagnostics.EventSchemaTraceListener.TraceLogRetentionOption*>文件的属性。</xref:System.Diagnostics.EventSchemaTraceListener.TraceLogRetentionOption*>"
   overload: System.Diagnostics.EventSchemaTraceListener.MaximumNumberOfFiles*
   exceptions: []
   platform:
@@ -478,26 +478,26 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Writes trace information, a single data object, and event information to the log file."
-  remarks: "The `eventCache`, `source`, `eventType`, and `id` parameters are used in the header and footer of the trace. The `id` parameter is converted to an unsigned integer before it is written. Therefore, a negative `id` value is written as a large positive integer. The `data` parameter is written as a `Data` node in the `UserData` element. The `ToString` method of the data object is used to convert the object to a string.      > [!IMPORTANT] >  This method is not intended to be called directly by application code. It is called by methods of the <xref:System.Diagnostics.Debug>, <xref:System.Diagnostics.Trace>, and <xref:System.Diagnostics.TraceSource> classes to write trace data."
+  summary: "写入跟踪信息、 单个数据对象和事件信息写入日志文件。"
+  remarks: "`eventCache`， `source`， `eventType`，和`id`页眉和页脚的跟踪中使用参数。 `id`参数转换为无符号整数，它写入之前。 因此，一个负数`id`作为较大的正整数写入值。 `data`参数写作`Data`中的节点`UserData`元素。 `ToString`数据对象方法用于将对象转换为字符串。      1> [!IMPORTANT]&1;> 此方法不应直接由应用程序代码调用。 方法的调用<xref:System.Diagnostics.Debug>， <xref:System.Diagnostics.Trace>，和<xref:System.Diagnostics.TraceSource>类将跟踪数据写入。</xref:System.Diagnostics.TraceSource> </xref:System.Diagnostics.Trace> </xref:System.Diagnostics.Debug>"
   syntax:
     content: public override void TraceData (System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, object data);
     parameters:
     - id: eventCache
       type: System.Diagnostics.TraceEventCache
-      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;></xref> that contains the current process ID, thread ID, and stack trace information."
+      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;> </xref> ，其中包含当前进程 ID、 线程 ID 以及堆栈跟踪信息。"
     - id: source
       type: System.String
-      description: "The source name."
+      description: "源名称。"
     - id: eventType
       type: System.Diagnostics.TraceEventType
-      description: "One of the <xref href=&quot;System.Diagnostics.TraceEventType&quot;></xref> values."
+      description: "之一<xref href=&quot;System.Diagnostics.TraceEventType&quot;></xref>值。"
     - id: id
       type: System.Int32
-      description: "A numeric identifier for the event."
+      description: "事件的数值标识符。"
     - id: data
       type: System.Object
-      description: "A data object to emit."
+      description: "要发出的数据对象。"
   overload: System.Diagnostics.EventSchemaTraceListener.TraceData*
   exceptions: []
   platform:
@@ -514,26 +514,26 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Writes trace information, multiple data objects, and event information to the log file."
-  remarks: "The `eventCache`, `source`, `eventType`, and `id` parameters are used in the header and footer of the trace. The `id` parameter is converted to an unsigned integer before it is written. Therefore, a negative `id` value is written as a large positive integer. The objects in the `data` parameter array are written as `Data` nodes in the `UserData` element. The `ToString` method of each data object is used to convert the object to a string.      > [!IMPORTANT] >  This method is not intended to be called directly by application code. It is called by methods of the <xref:System.Diagnostics.Debug>, <xref:System.Diagnostics.Trace>, and <xref:System.Diagnostics.TraceSource> classes to write trace data."
+  summary: "写入跟踪信息、 多个数据对象和事件信息写入日志文件。"
+  remarks: "`eventCache`， `source`， `eventType`，和`id`页眉和页脚的跟踪中使用参数。 `id`参数转换为无符号整数，它写入之前。 因此，一个负数`id`作为较大的正整数写入值。 中的对象`data`参数数组都被编写为`Data`中的节点`UserData`元素。 `ToString`的每个数据对象的方法用于将对象转换为字符串。      1> [!IMPORTANT]&1;> 此方法不应直接由应用程序代码调用。 方法的调用<xref:System.Diagnostics.Debug>， <xref:System.Diagnostics.Trace>，和<xref:System.Diagnostics.TraceSource>类将跟踪数据写入。</xref:System.Diagnostics.TraceSource> </xref:System.Diagnostics.Trace> </xref:System.Diagnostics.Debug>"
   syntax:
     content: public override void TraceData (System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, object[] data);
     parameters:
     - id: eventCache
       type: System.Diagnostics.TraceEventCache
-      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;></xref> that contains the current process ID, thread ID, and stack trace information."
+      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;> </xref> ，其中包含当前进程 ID、 线程 ID 以及堆栈跟踪信息。"
     - id: source
       type: System.String
-      description: "The source name."
+      description: "源名称。"
     - id: eventType
       type: System.Diagnostics.TraceEventType
-      description: "One of the <xref href=&quot;System.Diagnostics.TraceEventType&quot;></xref> values."
+      description: "之一<xref href=&quot;System.Diagnostics.TraceEventType&quot;></xref>值。"
     - id: id
       type: System.Int32
-      description: "A numeric identifier for the event."
+      description: "事件的数值标识符。"
     - id: data
       type: System.Object[]
-      description: "An array of data objects to emit."
+      description: "若要发出的数据对象的数组。"
   overload: System.Diagnostics.EventSchemaTraceListener.TraceData*
   exceptions: []
   platform:
@@ -550,26 +550,26 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Writes trace information, a message, and event information to the log file."
-  remarks: "The `eventCache`, `source`, `eventType`, and `id` parameters are used in the header and footer of the trace. The `id` parameter is converted to an unsigned integer before it is written. Therefore, a negative `id` value is written as a large positive integer. The `message` parameter is written as a `Data` node in the `EventData` element.      > [!IMPORTANT] >  This method is not intended to be called directly by application code. It is called by methods of the <xref:System.Diagnostics.Debug>, <xref:System.Diagnostics.Trace>, and <xref:System.Diagnostics.TraceSource> classes to write trace data."
+  summary: "写入跟踪信息、 消息和事件信息写入日志文件。"
+  remarks: "`eventCache`， `source`， `eventType`，和`id`页眉和页脚的跟踪中使用参数。 `id`参数转换为无符号整数，它写入之前。 因此，一个负数`id`作为较大的正整数写入值。 `message`参数写作`Data`中的节点`EventData`元素。      1> [!IMPORTANT]&1;> 此方法不应直接由应用程序代码调用。 方法的调用<xref:System.Diagnostics.Debug>， <xref:System.Diagnostics.Trace>，和<xref:System.Diagnostics.TraceSource>类将跟踪数据写入。</xref:System.Diagnostics.TraceSource> </xref:System.Diagnostics.Trace> </xref:System.Diagnostics.Debug>"
   syntax:
     content: public override void TraceEvent (System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, string message);
     parameters:
     - id: eventCache
       type: System.Diagnostics.TraceEventCache
-      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;></xref> that contains the current process ID, thread ID, and stack trace information."
+      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;> </xref> ，其中包含当前进程 ID、 线程 ID 以及堆栈跟踪信息。"
     - id: source
       type: System.String
-      description: "The source name."
+      description: "源名称。"
     - id: eventType
       type: System.Diagnostics.TraceEventType
-      description: "One of the <xref href=&quot;System.Diagnostics.TraceEventType&quot;></xref> values."
+      description: "之一<xref href=&quot;System.Diagnostics.TraceEventType&quot;></xref>值。"
     - id: id
       type: System.Int32
-      description: "A numeric identifier for the event."
+      description: "事件的数值标识符。"
     - id: message
       type: System.String
-      description: "The message to write."
+      description: "要写入的消息。"
   overload: System.Diagnostics.EventSchemaTraceListener.TraceEvent*
   exceptions: []
   platform:
@@ -586,29 +586,29 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Writes trace information, a formatted message, and event information to the log file."
+  summary: "写入跟踪信息、 格式化的消息和事件信息写入日志文件。"
   remarks: "The `eventCache`, `source`, `eventType`, and `id` parameters are used in the header and footer of the trace. The `id` parameter is converted to an unsigned integer before it is written. Therefore, a negative `id` value is written as a large positive integer. The [String.Format(String, Object\\[\\])](assetId:///M:System.String.Format(System.String,System.Object[])?qualifyHint=True&autoUpgrade=False) method is called and the `format` string and `args` array are passed in as parameters. This method formats the `args` object array and writes the formatted array as the `Data` node in the `EventData` element.  \n  \n> [!IMPORTANT]\n>  This method is not intended to be called directly by application code. It is called by methods of the <xref:System.Diagnostics.Debug>, <xref:System.Diagnostics.Trace>, and <xref:System.Diagnostics.TraceSource> classes to write trace data."
   syntax:
     content: public override void TraceEvent (System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, string format, object[] args);
     parameters:
     - id: eventCache
       type: System.Diagnostics.TraceEventCache
-      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;></xref> that contains the current process ID, thread ID, and stack trace information."
+      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;> </xref> ，其中包含当前进程 ID、 线程 ID 以及堆栈跟踪信息。"
     - id: source
       type: System.String
-      description: "The source name."
+      description: "源名称。"
     - id: eventType
       type: System.Diagnostics.TraceEventType
-      description: "One of the <xref href=&quot;System.Diagnostics.TraceEventType&quot;></xref> values."
+      description: "之一<xref href=&quot;System.Diagnostics.TraceEventType&quot;></xref>值。"
     - id: id
       type: System.Int32
-      description: "A numeric identifier for the event."
+      description: "事件的数值标识符。"
     - id: format
       type: System.String
-      description: "A format string that contains zero or more format items that correspond to objects in the `args` array."
+      description: "包含零个或多个格式项中的对象对应一个格式字符串`args`数组。"
     - id: args
       type: System.Object[]
-      description: "An object array that contains zero or more objects to format."
+      description: "一个对象数组，其中包含零个或多个要格式化的对象。"
   overload: System.Diagnostics.EventSchemaTraceListener.TraceEvent*
   exceptions: []
   platform:
@@ -625,7 +625,7 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Gets the trace log retention option for the file."
+  summary: "获取文件的跟踪日志保留选项。"
   remarks: ''
   example:
   - "The following code example demonstrates how to display the value of the TraceLogRetentionOption property. This code example is part of a larger example that is provided for the <xref:System.Diagnostics.EventSchemaTraceListener> class.  \n  \n [!code-cs[System.Diagnostics.EventSchemaTraceListener#9](~/add/codesnippet/csharp/p-system.diagnostics.eve_7_1.cs)]\n [!code-vb[System.Diagnostics.EventSchemaTraceListener#9](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_7_1.vb)]"
@@ -633,7 +633,7 @@ items:
     content: public System.Diagnostics.TraceLogRetentionOption TraceLogRetentionOption { get; }
     return:
       type: System.Diagnostics.TraceLogRetentionOption
-      description: "One of the <xref href=&quot;System.Diagnostics.TraceLogRetentionOption&quot;></xref> values. The default is <xref href=&quot;System.Diagnostics.TraceLogRetentionOption&quot;></xref>."
+      description: "之一<xref href=&quot;System.Diagnostics.TraceLogRetentionOption&quot;></xref>值。 默认值是<xref href=&quot;System.Diagnostics.TraceLogRetentionOption&quot;> </xref>。"
   overload: System.Diagnostics.EventSchemaTraceListener.TraceLogRetentionOption*
   exceptions: []
   platform:
@@ -650,26 +650,26 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Writes trace information, including the identity of a related activity, a message, and event information, to the log file."
-  remarks: "The TraceTransfer method is used to correlate related traces. The `eventCache`, `source`, `id`, and `relatedActivityId` parameters are used in the header and footer of the trace. The `id` parameter is converted to an unsigned integer before it is written. Therefore, a negative `id` value is written as a large positive integer. The `message` parameter is written as the `Data` element. The <xref:System.Guid.ToString%28System.String%29?displayProperty=fullName> method is called to convert the `relatedActivityId` value to a &quot;B&quot; formatted string, which appears in the header. The `Opcode` element in the footer identifies the trace event type as a <xref:System.Diagnostics.TraceEventType>.      > [!IMPORTANT] >  The TraceTransfer method should not be called by application code. It is intended to be used by a <xref:System.Diagnostics.TraceSource> object to emit the trace information for its <xref:System.Diagnostics.TraceSource.TraceTransfer%2A> method."
+  summary: "写入跟踪信息，包括相关的活动、 消息和事件信息，写入日志文件的标识。"
+  remarks: "TraceTransfer 方法用于关联相关的跟踪。 `eventCache`， `source`， `id`，和`relatedActivityId`页眉和页脚的跟踪中使用参数。 `id`参数转换为无符号整数，它写入之前。 因此，一个负数`id`作为较大的正整数写入值。 `message`参数写作`Data`元素。 <xref:System.Guid.ToString%28System.String%29?displayProperty=fullName>调用方法来转换`relatedActivityId`值为&quot;B&quot;格式字符串，它显示在标头。</xref:System.Guid.ToString%28System.String%29?displayProperty=fullName> `Opcode`页脚中的元素标识作为一种<xref:System.Diagnostics.TraceEventType>。</xref:System.Diagnostics.TraceEventType>的跟踪事件类型      1> [!IMPORTANT]&1;> TraceTransfer 方法不应由应用程序代码调用。 它旨在供<xref:System.Diagnostics.TraceSource>对象发出的跟踪信息其<xref:System.Diagnostics.TraceSource.TraceTransfer%2A>方法。</xref:System.Diagnostics.TraceSource.TraceTransfer%2A> </xref:System.Diagnostics.TraceSource>"
   syntax:
     content: public override void TraceTransfer (System.Diagnostics.TraceEventCache eventCache, string source, int id, string message, Guid relatedActivityId);
     parameters:
     - id: eventCache
       type: System.Diagnostics.TraceEventCache
-      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;></xref> that contains the current process ID, thread ID, and stack trace information."
+      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;> </xref> ，其中包含当前进程 ID、 线程 ID 以及堆栈跟踪信息。"
     - id: source
       type: System.String
-      description: "The source name."
+      description: "源名称。"
     - id: id
       type: System.Int32
-      description: "A numeric identifier for the event."
+      description: "事件的数值标识符。"
     - id: message
       type: System.String
-      description: "A trace message to write."
+      description: "要写入的跟踪消息。"
     - id: relatedActivityId
       type: System.Guid
-      description: "A <xref:System.Guid> structure that identifies a related activity."
+      description: "A<xref:System.Guid>标识相关的活动的结构。</xref:System.Guid>"
   overload: System.Diagnostics.EventSchemaTraceListener.TraceTransfer*
   exceptions: []
   platform:
@@ -686,14 +686,14 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Writes a message to the log file without providing any additional context information."
-  remarks: "The <xref:System.Diagnostics.EventSchemaTraceListener.TraceEvent%2A> method is called to log the message as an <xref:System.Diagnostics.TraceEventType> event.      > [!IMPORTANT] >  This method is not intended to be called directly by application code. It is called by methods of the <xref:System.Diagnostics.Debug>, <xref:System.Diagnostics.Trace>, and <xref:System.Diagnostics.TraceSource> classes to write trace data."
+  summary: "将消息写入日志文件而无需提供任何其他上下文信息。"
+  remarks: "<xref:System.Diagnostics.EventSchemaTraceListener.TraceEvent%2A>调用方法来将消息记录为<xref:System.Diagnostics.TraceEventType>事件。</xref:System.Diagnostics.TraceEventType> </xref:System.Diagnostics.EventSchemaTraceListener.TraceEvent%2A>      1> [!IMPORTANT]&1;> 此方法不应直接由应用程序代码调用。 方法的调用<xref:System.Diagnostics.Debug>， <xref:System.Diagnostics.Trace>，和<xref:System.Diagnostics.TraceSource>类将跟踪数据写入。</xref:System.Diagnostics.TraceSource> </xref:System.Diagnostics.Trace> </xref:System.Diagnostics.Debug>"
   syntax:
     content: public override void Write (string message);
     parameters:
     - id: message
       type: System.String
-      description: "The message to write."
+      description: "要写入的消息。"
   overload: System.Diagnostics.EventSchemaTraceListener.Write*
   exceptions: []
   platform:
@@ -710,14 +710,14 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Writes a message followed by the current line terminator to the log file without providing any additional context information."
-  remarks: "The <xref:System.Diagnostics.EventSchemaTraceListener.TraceEvent%2A> method is called to log the message as an <xref:System.Diagnostics.TraceEventType> event.      > [!IMPORTANT] >  This method is not intended to be called directly by application code. It is called by methods of the <xref:System.Diagnostics.Debug>, <xref:System.Diagnostics.Trace>, and <xref:System.Diagnostics.TraceSource> classes to write trace data."
+  summary: "写入消息后跟当前行终止符到日志文件而无需提供任何其他上下文信息。"
+  remarks: "<xref:System.Diagnostics.EventSchemaTraceListener.TraceEvent%2A>调用方法来将消息记录为<xref:System.Diagnostics.TraceEventType>事件。</xref:System.Diagnostics.TraceEventType> </xref:System.Diagnostics.EventSchemaTraceListener.TraceEvent%2A>      1> [!IMPORTANT]&1;> 此方法不应直接由应用程序代码调用。 方法的调用<xref:System.Diagnostics.Debug>， <xref:System.Diagnostics.Trace>，和<xref:System.Diagnostics.TraceSource>类将跟踪数据写入。</xref:System.Diagnostics.TraceSource> </xref:System.Diagnostics.Trace> </xref:System.Diagnostics.Debug>"
   syntax:
     content: public override void WriteLine (string message);
     parameters:
     - id: message
       type: System.String
-      description: "The message to write."
+      description: "要写入的消息。"
   overload: System.Diagnostics.EventSchemaTraceListener.WriteLine*
   exceptions: []
   platform:
@@ -734,18 +734,18 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics
-  summary: "Gets or sets the underlying text writer that writes to the log file."
-  remarks: "An attempt to use the set accessor for the Writer property raises a <xref:System.NotSupportedException>."
+  summary: "获取或设置写入日志文件的基础文本编写器。"
+  remarks: "尝试使用 set 访问器的编写器属性引发一种<xref:System.NotSupportedException>。</xref:System.NotSupportedException>"
   syntax:
     content: public System.IO.TextWriter Writer { get; set; }
     return:
       type: System.IO.TextWriter
-      description: "A <xref:System.IO.TextWriter> object."
+      description: "A<xref:System.IO.TextWriter>对象。</xref:System.IO.TextWriter>"
   overload: System.Diagnostics.EventSchemaTraceListener.Writer*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "An attempt was made to assign a value to the Writer property."
+    description: "尝试将值分配到编写器属性。"
   platform:
   - net462
 references:

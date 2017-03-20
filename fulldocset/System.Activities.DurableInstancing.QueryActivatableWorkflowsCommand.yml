@@ -12,8 +12,8 @@ items:
   nameWithType: QueryActivatableWorkflowsCommand
   fullName: System.Activities.DurableInstancing.QueryActivatableWorkflowsCommand
   type: Class
-  summary: "Represents the command that a generic host executes against an instance store to retrieve activation parameters. The generic host uses these activation parameters to create a workflow host, which in turn loads a runnable service instance."
-  remarks: "An instance is *activatable*, if it is not in the suspended state or the completed state and satisfies the following conditions:      -   The instance is *runnable*. An instance in the persistence database is considered as runnable if it satisfies the following conditions:          -   The instance is unlocked and has a pending timer that has expired.          -   The instance is unlocked and its status is **Executing**.          -   The instance has an expired lock on it.      -   There is no workflow host capable of loading the instance is running on the local computer.       An instance store should periodically search for activatable workflow instances that belong to a workflow host that uses the store. It should raise the <xref:System.Activities.DurableInstancing.HasActivatableWorkflowEvent> when it finds an activatable instance in the persistence store. If the instance store does not find an activatable instance in the persistence store, it should continue to monitor the persistence store for any activatable instances.       After raising the HasActivatableWorkflowEvent, the instance store should stop monitoring the persistence store for activatable instances until it receives and executes the QueryActivatableWorkflowsCommand. The monitoring continues only if the command execution does not return any activatable workflow instances.       When a generic host receives this event, it executes the QueryActivatableWorkflowsCommand against the instance store to obtain activation parameters required to create a workflow host. The generic host uses these activation parameters to create a workflow host, which in turn loads and runs the service instance. The activation parameters for the WAS activation type are: Site Name, Application Path (relative to the site), and Service Path (relative to the application). An instance store could return multiple sets of these three activation parameters.       A generic host is a host that has an XName parameter named **ActivationType**, which should be set to a value supported by the instance store. Currently, the SQL Workflow Instance Store supports generic hosts with ActivationType parameter set to value: **WAS**. If the ActivationType is not set at all, the SQL Workflow Instance Store treats the host as a generic host.      > [!NOTE] >  The Workflow Management Service that ships with the code named “Dublin” (Application Server Extensions for .NET 4.0) is a generic host that has the activation type set to **WAS**."
+  summary: "表示泛型宿主针对实例存储以便检索激活参数执行的命令。 泛型宿主使用这些激活参数来创建工作流宿主，后者又依次加载可运行的服务实例。"
+  remarks: "实例是*可激活*，如果它未处于挂起的状态或完成的状态并且满足以下条件:-的实例是*可运行*。 持久性数据库中的实例被视为可为运行，如果它满足以下条件:-实例处于解除锁定状态，并且具有已过期的挂起计时器。          的实例处于解除锁定状态，并且其状态为**执行**。          的实例上的已过期的锁定。      -没有工作流主机能够加载该实例在本地计算机运行。       实例存储应定期搜索属于使用该存储的工作流主机可激活工作流实例。 它应引发<xref:System.Activities.DurableInstancing.HasActivatableWorkflowEvent>在持久性存储区中找到可激活实例时。</xref:System.Activities.DurableInstancing.HasActivatableWorkflowEvent> 如果实例存储在持久性存储区中未找到可激活实例，它应继续监视持久性存储区的任何可激活的实例。       引发 HasActivatableWorkflowEvent 之后, 实例存储应停止监视持久性存储区可激活实例，直至它收到并执行 QueryActivatableWorkflowsCommand 为止。 监视只有会继续如果命令执行未返回任何可激活工作流实例。       当泛型宿主收到此事件时，它将执行针对实例存储 QueryActivatableWorkflowsCommand，以获取创建工作流主机所需的激活参数。 泛型宿主使用这些激活参数来创建工作流宿主，后者又依次加载并运行服务实例。 WAS 激活类型的激活参数包括︰ 站点名称、 应用程序路径 （相对于站点） 和服务路径 （相对于应用程序）。 实例存储区可能返回多组这三个激活参数。       泛型宿主是具有 XName 参数名为的主机**ActivationType**，其应设置为实例存储支持的值。 目前，SQL 工作流实例存储支持泛型主机支持 ActivationType 参数设置为值︰ **WAS**。 如果根本未设置 ActivationType，则 SQL 工作流实例存储将宿主视为泛型宿主。      1> [!NOTE] 1> 附带了代码名为&quot;Dublin&quot;（.NET 4.0 的应用程序服务器扩展） 的工作流管理服务是将激活类型设置为一个泛型主机**WAS**。"
   syntax:
     content: 'public sealed class QueryActivatableWorkflowsCommand : System.Runtime.DurableInstancing.InstancePersistenceCommand'
   inheritance:
@@ -37,7 +37,7 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.DurableInstancing
-  summary: "Initializes an instance of the <xref href=&quot;System.Activities.DurableInstancing.QueryActivatableWorkflowsCommand&quot;></xref> class."
+  summary: "初始化的实例<xref href=&quot;System.Activities.DurableInstancing.QueryActivatableWorkflowsCommand&quot;></xref>类。"
   syntax:
     content: public QueryActivatableWorkflowsCommand ();
     parameters: []
@@ -61,7 +61,7 @@ items:
     content: protected override bool IsTransactionEnlistmentOptional { get; }
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "要添加。"
   overload: System.Activities.DurableInstancing.QueryActivatableWorkflowsCommand.IsTransactionEnlistmentOptional*
   exceptions: []
   platform:
@@ -83,7 +83,7 @@ items:
     parameters:
     - id: view
       type: System.Runtime.DurableInstancing.InstanceView
-      description: "To be added."
+      description: "要添加。"
   overload: System.Activities.DurableInstancing.QueryActivatableWorkflowsCommand.Validate*
   exceptions: []
   platform:
