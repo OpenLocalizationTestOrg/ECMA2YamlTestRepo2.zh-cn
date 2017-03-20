@@ -38,8 +38,8 @@ items:
   nameWithType: WebPartPersonalization
   fullName: System.Web.UI.WebControls.WebParts.WebPartPersonalization
   type: Class
-  summary: "Implements low-level personalization operations."
-  remarks: "This class implements the logic required to carry out lower-level personalization operations. Although the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> class manages the high-level life cycle of personalization, it is the WebPartPersonalization class that is responsible for actually implementing the physical steps necessary to carry out specific personalization actions. The WebPartPersonalization class in turn relies on an implementation of <xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider> to communicate with the underlying data store for personalization information.       If you use the default implementation of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager>, it creates an instance of the WebPartPersonalization class that you can use by referencing the <xref:System.Web.UI.WebControls.WebParts.WebPartManager.Personalization%2A> property. For example, to access the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A> property, you would specify `WebPartManager.Personalization.InitialScope`."
+  summary: "实现低级别的个性化设置操作。"
+  remarks: "此类实现执行较低级别个性化设置操作所需的逻辑。 尽管<xref:System.Web.UI.WebControls.WebParts.WebPartManager>类管理个性化高级生命周期，它是负责实际实现所必需执行特定的个性化设置操作的物理步骤 WebPartPersonalization 类。</xref:System.Web.UI.WebControls.WebParts.WebPartManager> WebPartPersonalization 类又依赖于实现<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider>与个性化设置信息的基础数据存储进行通信。</xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider>       如果你使用的默认实现<xref:System.Web.UI.WebControls.WebParts.WebPartManager>，它将创建可以使用通过引用 WebPartPersonalization 类的实例<xref:System.Web.UI.WebControls.WebParts.WebPartManager.Personalization%2A>属性。</xref:System.Web.UI.WebControls.WebParts.WebPartManager.Personalization%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> 例如，若要访问<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A>属性，则会指定`WebPartManager.Personalization.InitialScope`。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A>"
   example:
   - "The following code example shows how the WebPartPersonalization class is used, as well as providing an example of how personalization scope affects the results of personalized properties. This example has five files:  \n  \n-   An .aspx page that declaratively creates two Web Part zones, each with a control.  \n  \n-   A user control called `Color.ascx` that allows a user to change a personalized property that applies a text box background color based on the user's authorization rights to modify state information and to enter shared scope.  \n  \n-   A user control called `Persmode.ascx` that indicates what the current page scope is and what rights the current user has to enter shared scope or to modify data; it also provides two buttons; one to change scope and one to reset current user personalization information.  \n  \n-   A login control that is used to authorize users.  \n  \n-   A Web.config file with a section that provides an example of authorizing a user to modify personalization state and to enter shared scope.  \n  \n The following code creates an aspx page  with a <xref:System.Web.UI.WebControls.WebParts.WebPartManager> and two Web Part zones and displays the `Color.ascx` and `Persmode.ascx` controls. The page loads a login page that is used to get the current user information. Use the ASP.NET Web Site Administration Tool in [!INCLUDE[vsprvsext](~/add/includes/ajax-current-ext-md.md)] to create users to access the page. See the Web.config file for an example of a user granted authorization in the configuration file to change scope and modify state information.  \n  \n [!code-cs[WebParts_WebPartPersonalization#1](~/add/codesnippet/csharp/t-system.web.ui.webcontr_306_1.aspx)]\n [!code-vb[WebParts_WebPartPersonalization#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_306_1.aspx)]  \n  \n The following example code creates a login page. After a successful login, it redirects to the main aspx page.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[WebParts_WebPartPersonalization#5](~/add/codesnippet/csharp/t-system.web.ui.webcontr_306_2.aspx)]\n [!code-vb[WebParts_WebPartPersonalization#5](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_306_2.aspx)]  \n  \n The following example code is a portion of the Web.config file for this application. This section shows how to set authorization for a user, in this case \"user2\", to enter shared personalization scope and to modify personalization state information. It also shows an example of a role, in this case \"admin\", that can be used to allow users in the \"admin\" role to enter shared personalization scope and to modify personalization state information.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]  \n  \n The following example code creates a user control, called `Color.ascx`, that allows the user to change a personalized property, in this case the background color of two text boxes, based on the current personalization scope and the authorization rights of the user.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](../Topic/Script%20Exploits%20Overview.md).  \n  \n [!code-cs[WebParts_WebPartPersonalization#3](~/add/codesnippet/csharp/t-system.web.ui.webcontr_306_4.ascx)]\n [!code-vb[WebParts_WebPartPersonalization#3](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_306_4.ascx)]  \n  \n The following example code creates a user control, called `Persmode.ascx`, that shows the current personalization scope and the user rights to modify state and to enter shared scope. It also has a reset button for resetting the current personalization state.  \n  \n [!code-cs[WebParts_WebPartPersonalization#4](~/add/codesnippet/csharp/t-system.web.ui.webcontr_306_5.ascx)]\n [!code-vb[WebParts_WebPartPersonalization#4](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_306_5.ascx)]"
   syntax:
@@ -65,19 +65,19 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> class."
-  remarks: "This constructor initializes an instance of this class and associates it with the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control on whose behalf the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> instance will carry out personalization operations."
+  summary: "初始化的新实例<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref>类。"
+  remarks: "此构造函数初始化此类的实例，并将其与关联<xref:System.Web.UI.WebControls.WebParts.WebPartManager>控件的名义<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>个性化设置操作将执行实例。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> </xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   syntax:
     content: public WebPartPersonalization (System.Web.UI.WebControls.WebParts.WebPartManager owner);
     parameters:
     - id: owner
       type: System.Web.UI.WebControls.WebParts.WebPartManager
-      description: "The <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> used to manage the personalization information"
+      description: "<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>用于管理的个性化信息"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>owner</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>owner</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ApplyPersonalizationState
@@ -92,8 +92,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Applies personalization data to the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control."
-  remarks: "If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> property is set to `true`, this method calls the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ApplyWebPartPersonalization%2A> method on the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState> instance to apply personalization state to the supplied Web Parts control."
+  summary: "适用于父个性化数据<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>控件。"
+  remarks: "如果<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>属性设置为`true`，此方法调用<xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ApplyWebPartPersonalization%2A>方法<xref:System.Web.UI.WebControls.WebParts.PersonalizationState>实例将应用于提供的 Web 部件控件的个性化设置状态。</xref:System.Web.UI.WebControls.WebParts.PersonalizationState> </xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ApplyWebPartPersonalization%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>"
   syntax:
     content: protected virtual void ApplyPersonalizationState ();
     parameters: []
@@ -116,22 +116,22 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Applies personalization data to the specified <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPart&quot;></xref> control when requested to do so by the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control."
-  remarks: "This method is called to apply personalization data to an individual <xref:System.Web.UI.WebControls.WebParts.WebPart>-derived class when requested to do so by the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control.       If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> property is set to `true`, this method calls the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ApplyWebPartPersonalization%2A> method on the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState> instance to apply personalization state to the supplied Web Parts control."
+  summary: "适用于指定的个性化数据<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPart&quot;></xref>控制请求为此，则父级时<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>控件。"
+  remarks: "调用此方法将个性化数据应用于单个<xref:System.Web.UI.WebControls.WebParts.WebPart>-派生类请求为此，则父级时<xref:System.Web.UI.WebControls.WebParts.WebPartManager>控件。</xref:System.Web.UI.WebControls.WebParts.WebPartManager> </xref:System.Web.UI.WebControls.WebParts.WebPart>       如果<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>属性设置为`true`，此方法调用<xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ApplyWebPartPersonalization%2A>方法<xref:System.Web.UI.WebControls.WebParts.PersonalizationState>实例将应用于提供的 Web 部件控件的个性化设置状态。</xref:System.Web.UI.WebControls.WebParts.PersonalizationState> </xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ApplyWebPartPersonalization%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>"
   syntax:
     content: protected virtual void ApplyPersonalizationState (System.Web.UI.WebControls.WebParts.WebPart webPart);
     parameters:
     - id: webPart
       type: System.Web.UI.WebControls.WebParts.WebPart
-      description: "The Web Parts control to which personalization data is to be applied."
+      description: "Web 部件控件个性化设置数据的应用。"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ApplyPersonalizationState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "An attempt was made to apply personalization state to a Web Parts control that is not managed by the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+    description: "已尝试将应用于不由父管理 Web 部件控件的个性化设置状态<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>webPart</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>webPart</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "An attempt was made to apply personalization state prior to the state being loaded from the underlying data store.  \n  \n \\- or -  \n  \n The personalization state returned from the data store was <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n An attempt was made to apply personalization data more than once to the same Web Parts control."
@@ -149,15 +149,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Returns a value indicating whether the user is authorized to enter <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> scope."
-  remarks: "This property returns `true` if the user is authorized in the <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability> to enter <xref:System.Web.UI.WebControls.WebParts.PersonalizationScope> scope.       The first time the property is called, it determines the user&quot;s right to enter <xref:System.Web.UI.WebControls.WebParts.PersonalizationScope> scope and caches the information. If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities%2A> dictionary is modified after the first time this property is called, changes are not shown on subsequent calls to this property."
+  summary: "返回一个值，该值指示用户是否有权输入<xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref>作用域。"
+  remarks: "此属性返回`true`如果用户授权中<xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>输入<xref:System.Web.UI.WebControls.WebParts.PersonalizationScope>作用域。</xref:System.Web.UI.WebControls.WebParts.PersonalizationScope> </xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>       第一次调用该属性，它将确定用户的右输入<xref:System.Web.UI.WebControls.WebParts.PersonalizationScope>作用域，缓存信息。</xref:System.Web.UI.WebControls.WebParts.PersonalizationScope> 如果<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities%2A>字典之后修改第一次此属性被调用时，更改不会显示在后续调用此属性。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities%2A>"
   example:
   - "The following code demonstrates using the CanEnterSharedScope property. This code is part of a larger code sample found in the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> class description.  \n  \n [!code-cs[WebParts_WebPartPersonalization#7](~/add/codesnippet/csharp/p-system.web.ui.webcontr_259_1.ascx)]\n [!code-vb[WebParts_WebPartPersonalization#7](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_259_1.ascx)]"
   syntax:
     content: public bool CanEnterSharedScope { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the user is authorized to enter <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> scope; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果用户有权输入<xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref>范围; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.CanEnterSharedScope*
   exceptions: []
   platform:
@@ -174,22 +174,22 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Changes the current page&quot;s <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> instance to the scope specified."
-  remarks: "This method changes the currently executing page&quot;s personalization scope to the new scope specified by the `newScope` parameter. This method is the protected helper method that is called by the public <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ToggleScope%2A> method. This protected method exists to handle future extensibility if there are more than two possible scopes to switch between.       If the current scope and `newScope` are the same value, then this method performs no operation."
+  summary: "更改当前页面的<xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref>实例与指定的作用域。"
+  remarks: "此方法由指定的新作用域更改当前正在执行页的个性化设置范围`newScope`参数。 此方法是调用由公共受保护的帮助器方法<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ToggleScope%2A>方法。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ToggleScope%2A> 此受保护的方法存在是为了处理未来的扩展性，如果有多个两个可能的作用域之间进行切换。       如果当前作用域和`newScope`都是相同的值，则此方法不执行任何操作。"
   syntax:
     content: protected virtual void ChangeScope (System.Web.UI.WebControls.WebParts.PersonalizationScope scope);
     parameters:
     - id: scope
       type: System.Web.UI.WebControls.WebParts.PersonalizationScope
-      description: "The new personalization scope for the current page."
+      description: "针对当前页的个性化设置新范围。"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ChangeScope*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "If attempting to switch from <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> scope to <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> scope, the current user does not have the user capability to enter <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> scope."
+    description: "如果尝试从切换<xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref>到范围<xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref>作用域，当前用户没有用户能够输入<xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref>作用域。"
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>scope</code> is not a valid member of the <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> enumeration."
+    description: "<code>scope</code>不是有效的成员<xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref>枚举。"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.CopyPersonalizationState(System.Web.UI.WebControls.WebParts.WebPart,System.Web.UI.WebControls.WebParts.WebPart)
@@ -204,17 +204,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Extracts the personalization state from one Web Parts control and applies it to a second Web Parts control."
-  remarks: "This method extracts the personalization state from `webPartA` and applies it to `webPartB`. This method assumes that `webPartA` and `webPartB` are the same type. If the Web Parts controls are <xref:System.Web.UI.WebControls.WebParts.GenericWebPart> controls, the method copies the personalization state from the child control wrapped in `webPartA` to the child control wrapped in `webPartB`.       As part of the copy operation, `webPartB` is marked as &quot;dirty&quot;."
+  summary: "从一个 Web 部件控件中提取的个性化设置状态，并将其应用到第二个 Web 部件控件。"
+  remarks: "此方法提取个性化状态从`webPartA`和将其应用于`webPartB`。 此方法假定`webPartA`和`webPartB`具有相同的类型。 如果 Web 部件控件<xref:System.Web.UI.WebControls.WebParts.GenericWebPart>控件，则该方法会将个性化状态复制从包装中的子控件`webPartA`给子控件包装在`webPartB`。</xref:System.Web.UI.WebControls.WebParts.GenericWebPart>       作为复制操作的一部分`webPartB`被标记为&quot;脏&quot;。"
   syntax:
     content: protected virtual void CopyPersonalizationState (System.Web.UI.WebControls.WebParts.WebPart webPartA, System.Web.UI.WebControls.WebParts.WebPart webPartB);
     parameters:
     - id: webPartA
       type: System.Web.UI.WebControls.WebParts.WebPart
-      description: "The Web Parts control supplying the personalization data."
+      description: "Web 部件控件提供个性化数据。"
     - id: webPartB
       type: System.Web.UI.WebControls.WebParts.WebPart
-      description: "The Web Parts control receiving the personalization data."
+      description: "Web 部件控件接收个性化数据。"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.CopyPersonalizationState*
   exceptions:
   - type: System.ArgumentNullException
@@ -237,18 +237,18 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Returns a value indicating whether personalization is requested to be enabled for the associated <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control."
-  remarks: "This property indicates whether personalization is requested to be enabled for the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control. Note that this is a subtle but important distinction from the intent of <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> and <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized%2A>.       This property can only be set prior to the completion of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> method. In practice, this means that the Enabled property must be set in the page markup on the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> element if personalization should be disabled. Alternatively, this property can be set during the `PreInit` phase of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control."
+  summary: "返回一个值，该值指示是否请求个性化启用关联<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>控件。"
+  remarks: "此属性指示是否请求个性化若要启用父<xref:System.Web.UI.WebControls.WebParts.WebPartManager>控件。</xref:System.Web.UI.WebControls.WebParts.WebPartManager> 请注意，这是细微但重要的意图<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>和<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized%2A>。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized%2A></xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>的区别       此属性仅在完成之前设置<xref:System.Web.UI.WebControls.WebParts.WebPartManager>控件的<xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A>方法。</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> 在实践中，这意味着，必须在设置的页标记中的 Enabled 属性<xref:System.Web.UI.WebControls.WebParts.WebPartManager>元素是否应该禁用个性化。</xref:System.Web.UI.WebControls.WebParts.WebPartManager> 或者，可以将此属性设置期间`PreInit`阶段<xref:System.Web.UI.WebControls.WebParts.WebPartManager>控件。</xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   syntax:
     content: public virtual bool Enabled { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if personalization is enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果启用了个性化设置;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.Enabled*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt was made to set this property value after the associated <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*> method had completed."
+    description: "已尝试在关联后设置此属性的值<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>控件的<xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*>已完成，方法。</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*>"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.EnsureEnabled(System.Boolean)
@@ -263,14 +263,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Ensures that the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> instance has completed initialization or that the current user has rights to modify personalization state."
+  summary: "确保<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref>实例已完成初始化或当前用户有权修改个性化设置状态。"
   remarks: "This method is a helper method used in several <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> methods to ensure one of two things:  \n  \n-   The <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> instance has completed initialization (for example, the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> method was called and successfully completed). This check is made if the `ensureModifiable` parameter equals `false`.  \n  \n     \\- or -  \n  \n-   The current user has rights to modify personalization state. This check is made if `ensureModifiable` equals `true`.  \n  \n The <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control also calls this method in a number of cases:  \n  \n-   To switch the display mode to something other than normal. The current user must have rights to modify personalization state.  \n  \n-   To add, delete, or move Web Parts controls. The current user must have rights to modify personalization state.  \n  \n-   To connect, disconnect, and edit Web Parts controls. The current user must have rights to modify personalization state.  \n  \n-   To export the Web Parts controls on a page. The <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> instance must have completed initialization.  \n  \n-   To import Web Parts controls. The current user must have rights to modify personalization state."
   syntax:
     content: public void EnsureEnabled (bool ensureModifiable);
     parameters:
     - id: ensureModifiable
       type: System.Boolean
-      description: "A Boolean value indicating which type of check should be made."
+      description: "应将布尔值，该值指示哪种类型的检查。"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.EnsureEnabled*
   exceptions:
   - type: System.InvalidOperationException
@@ -290,13 +290,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Represents the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartUserCapability&quot;></xref> instance of a user&quot;s authorization to enter <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> scope."
-  remarks: "The user right is represented by the string &quot;enterSharedScope&quot; in the <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability> instance."
+  summary: "表示<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartUserCapability&quot;></xref>实例的用户的授权输入<xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref>作用域。"
+  remarks: "已将用户权限由字符串&quot;enterSharedScope&quot;表示在<xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>实例。</xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>"
   syntax:
     content: public static readonly System.Web.UI.WebControls.WebParts.WebPartUserCapability EnterSharedScopeUserCapability;
     return:
       type: System.Web.UI.WebControls.WebParts.WebPartUserCapability
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -312,8 +312,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Extracts personalization data from the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control."
-  remarks: "If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> property is set to `true`, and personalization state is not being reset during the page request (such as when the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A> property is `false`), then this method extracts personalization data from the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control during its <xref:System.Web.UI.Page.SaveStateComplete> event.       This method calls the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ExtractWebPartManagerPersonalization%2A> method on the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState> instance to extract personalization state from the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control."
+  summary: "从父提取个性化数据<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>控件。"
+  remarks: "如果<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>属性设置为`true`，和个性化设置状态将不重置在页请求期间 (例如，当<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A>属性是`false`)，则此方法从父提取个性化数据<xref:System.Web.UI.WebControls.WebParts.WebPartManager>期间控制其<xref:System.Web.UI.Page.SaveStateComplete>事件。</xref:System.Web.UI.Page.SaveStateComplete> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>       此方法调用<xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ExtractWebPartManagerPersonalization%2A>方法<xref:System.Web.UI.WebControls.WebParts.PersonalizationState>实例从父提取个性化设置状态<xref:System.Web.UI.WebControls.WebParts.WebPartManager>控件。</xref:System.Web.UI.WebControls.WebParts.WebPartManager> </xref:System.Web.UI.WebControls.WebParts.PersonalizationState> </xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ExtractWebPartManagerPersonalization%2A>"
   syntax:
     content: protected virtual void ExtractPersonalizationState ();
     parameters: []
@@ -336,19 +336,19 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Extracts personalization data from a Web Parts control when requested to do so by the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control."
-  remarks: "If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> property is set to `true`, and personalization state is not being reset during the page request (such as when the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A> property is `false`), then this method extracts personalization data from the Web Parts control specified by `webPart`. This method calls the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ExtractWebPartPersonalization%2A> method on the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState> instance to extract personalization state from the supplied Web Parts control."
+  summary: "从 Web 部件控件请求为此，则父级时提取个性化数据<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>控件。"
+  remarks: "如果<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>属性设置为`true`，和个性化设置状态将不重置在页请求期间 (例如，当<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A>属性是`false`)，则此方法从指定的 Web 部件控件提取个性化数据`webPart`。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> 此方法调用<xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ExtractWebPartPersonalization%2A>方法<xref:System.Web.UI.WebControls.WebParts.PersonalizationState>实例从提供的 Web 部件控件提取个性化设置状态。</xref:System.Web.UI.WebControls.WebParts.PersonalizationState> </xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ExtractWebPartPersonalization%2A>"
   syntax:
     content: protected virtual void ExtractPersonalizationState (System.Web.UI.WebControls.WebParts.WebPart webPart);
     parameters:
     - id: webPart
       type: System.Web.UI.WebControls.WebParts.WebPart
-      description: "The Web Parts control containing personalization data to be extracted."
+      description: "Web 部件控件包含要提取的个性化数据。"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ExtractPersonalizationState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "An attempt was made to extract personalization state from a Web Parts control that is not managed by the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+    description: "尝试从 Web 部件控件不由父提取个性化设置状态<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "An attempt was made to extract personalization state prior to the state being loaded from the underlying data store.  \n  \n \\- or -  \n  \n Personalization state has not been applied yet.  \n  \n \\- or -  \n  \n The <xref:System.Web.UI.Control.ID*> of the <xref href=\"System.Web.UI.WebControls.WebParts.WebPart\"></xref> has changed since personalization data was applied.  \n  \n \\- or -  \n  \n The personalization state returned from the data store was <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
@@ -366,17 +366,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Retrieves the authorization filter, if any, associated with the specified Web Parts control."
-  remarks: "This method retrieves the authorization filter, if any, associated with the Web Parts control identified by `webPartID`. Each Web Parts control that is serialized and managed by personalization is associated with a `webPartID` parameter. At run time, a page&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control can filter the controls displayed on a page by determining whether each Web Parts control is authorized. This authorization information is stored as a string in the data associated with each Web Parts control."
+  summary: "检索授权筛选器，如果任何，与指定的 Web 部件控件相关联。"
+  remarks: "此方法检索的授权筛选器，如果任何，与标识的 Web 部件控件相关联`webPartID`。 序列化并由个性化设置的每个 Web 部件控件与`webPartID`参数。 在运行时，页面<xref:System.Web.UI.WebControls.WebParts.WebPartManager>控件可以筛选显示在页上通过确定是否授权每个 Web 部件控件的控件。</xref:System.Web.UI.WebControls.WebParts.WebPartManager> 此授权信息作为字符串中与每个 Web 部件控件关联的数据存储。"
   syntax:
     content: protected virtual string GetAuthorizationFilter (string webPartID);
     parameters:
     - id: webPartID
       type: System.String
-      description: "The ID of the Web Parts control associated with the filter to be retrieved."
+      description: "要检索与筛选器关联的 Web 部件控件的 ID。"
     return:
       type: System.String
-      description: "The authorization filter for the specified Web Parts control."
+      description: "指定的 Web 部件控件的的授权筛选器。"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.GetAuthorizationFilter*
   exceptions:
   - type: System.InvalidOperationException
@@ -384,7 +384,7 @@ items:
     description: "An attempt was made to retrieve an authorization filter when <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled*> is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref> by calling this method too early in the page life cycle.  \n  \n \\- or -  \n  \n An attempt was made to retrieve an authorization filter and no personalization state has been loaded.  \n  \n \\- or  \n  \n The personalization state returned from the data store was <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>webPartID</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty string (&quot;&quot;)."
+    description: "<code>webPartID</code>是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>或空字符串 (&quot;&quot;)。"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.HasPersonalizationState
@@ -399,13 +399,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Returns a value indicating whether the current page and personalization scope have associated personalization data."
-  remarks: "This is a convenient method for determining whether the current page and scope combination has personalization data associated with it. Internally, the method calls <xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.GetCountOfState%2A> on the provider to determine whether data exists."
+  summary: "返回一个值，该值指示当前页和个性化设置范围是否具有关联个性化数据。"
+  remarks: "这是用于确定当前页和范围的组合是否具有与之关联的个性化数据的简便方法。 在内部，该方法调用<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.GetCountOfState%2A>上提供商联系以确定数据是否存在。</xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.GetCountOfState%2A>"
   syntax:
     content: public virtual bool HasPersonalizationState { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the page has personalization data associated with it; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果页具有与之; 关联的个性化数据否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.HasPersonalizationState*
   exceptions:
   - type: System.InvalidOperationException
@@ -425,21 +425,21 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets the default personalization scope."
-  remarks: "This property represents the default personalization scope that should be used for the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control in the absence of previous knowledge about the proper scope. If this property is not explicitly set, it defaults to returning <xref:System.Web.UI.WebControls.WebParts.PersonalizationScope> scope.       This property can only be set prior to the completion of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> method. In practice, this means InitialScope must be set in the page markup on the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> element. Alternatively, this property can be set during the `PreInit` phase of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control."
+  summary: "获取或设置默认个性化设置作用域。"
+  remarks: "此属性表示应用于父的默认个性化设置范围<xref:System.Web.UI.WebControls.WebParts.WebPartManager>以前了解适当的作用域没有的控件。</xref:System.Web.UI.WebControls.WebParts.WebPartManager> 如果未显式设置此属性，则默认为返回<xref:System.Web.UI.WebControls.WebParts.PersonalizationScope>作用域。</xref:System.Web.UI.WebControls.WebParts.PersonalizationScope>       此属性仅在完成之前设置<xref:System.Web.UI.WebControls.WebParts.WebPartManager>控件的<xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A>方法。</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> 在实践中，这意味着必须在上的页标记中设置 InitialScope<xref:System.Web.UI.WebControls.WebParts.WebPartManager>元素。</xref:System.Web.UI.WebControls.WebParts.WebPartManager> 或者，可以将此属性设置期间`PreInit`阶段<xref:System.Web.UI.WebControls.WebParts.WebPartManager>控件。</xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   syntax:
     content: public virtual System.Web.UI.WebControls.WebParts.PersonalizationScope InitialScope { get; set; }
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationScope
-      description: "The <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> indicating the default personalization scope of the associated <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+      description: "<xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> ，该值指示默认个性化设置作用域关联的<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>。"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt was made to set this property to a value other than its current value after the associated <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*> method had completed."
+    description: "尝试将此属性设置为其当前值以外的值，在关联后<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>控件的<xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*>已完成，方法。</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*>"
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "An attempt was made to set a value of InitialScope that is not a member of the <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> enumeration."
+    description: "尝试设置的值不是的成员的 InitialScope <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref>枚举。"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled
@@ -454,13 +454,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets a value that indicates whether personalization is enabled and has successfully loaded personalization data for this instance of the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> class."
-  remarks: "Prior to loading personalization data, this property will always return `false`. For example, this property will return `false` during the `PreInit` phase. After the associated <xref:System.Web.UI.WebControls.WebParts.WebPartManager>&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> method has successfully completed (during which the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> method is called), this property will then return `true`.       This property is a publicly accessible alias for the protected <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized%2A> property."
+  summary: "获取一个值，指示是否个性化设置已启用并已成功加载个性化数据的此实例<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref>类。"
+  remarks: "之前加载个性化数据，此属性始终返回`false`。 例如，此属性将返回`false`期间`PreInit`阶段。 在关联<xref:System.Web.UI.WebControls.WebParts.WebPartManager>的<xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A>方法已成功完成 (在此期间<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A>调用方法)，然后返回此属性将`true`。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager>       此属性是受保护的可公开访问别名<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized%2A>属性。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized%2A>"
   syntax:
     content: public bool IsEnabled { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if personalization is enabled for the current <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> instance and personalization data has successfully loaded; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果当前启用了个性化<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref>实例和个性化数据已成功加载; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled*
   exceptions: []
   platform:
@@ -477,13 +477,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets a value that indicates whether personalization is enabled and has successfully loaded personalization data for this instance of the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> class."
-  remarks: "If the personalization feature is enabled (if the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Enabled%2A> property is set to `true`), the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> instance is considered initialized immediately after the associated <xref:System.Web.UI.WebControls.WebParts.WebPartManager>&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> method has successfully completed (during which the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> method is called). Prior to loading personalization data, this property always returns `false`."
+  summary: "获取一个值，指示是否个性化设置已启用并已成功加载个性化数据的此实例<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref>类。"
+  remarks: "如果启用了个性化功能 (如果<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Enabled%2A>属性设置为`true`)，则<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>实例被视为初始化后立即关联<xref:System.Web.UI.WebControls.WebParts.WebPartManager>的<xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A>方法已成功完成 (在此期间<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A>调用方法)。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Enabled%2A> 之前加载个性化数据，此属性始终返回`false`。"
   syntax:
     content: protected bool IsInitialized { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if personalization is initialized for this instance; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果此实例; 初始化个性化设置否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized*
   exceptions: []
   platform:
@@ -500,15 +500,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets a value that indicates whether the current user is authorized to modify state information."
-  remarks: "The first time this property is called, it caches the result of determining the user’s right to modify personalization state. If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities%2A> dictionary is modified after the first time this property is called, changes are not reflected in subsequent calls to this property."
+  summary: "获取一个值，该值指示当前用户是否有权修改状态信息。"
+  remarks: "第一次调用此属性时，它将缓存的结果确定用户的权限才能修改个性化设置状态。 如果<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities%2A>调用此属性在首次后修改字典，更改不会反映在后续调用此属性。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities%2A>"
   example:
   - "The following code demonstrates using the IsModifiable property. This code is part of a larger code sample found in the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> class description.  \n  \n [!code-cs[WebParts_WebPartPersonalization#6](~/add/codesnippet/csharp/p-system.web.ui.webcontr_67_1.ascx)]\n [!code-vb[WebParts_WebPartPersonalization#6](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_67_1.ascx)]"
   syntax:
     content: public bool IsModifiable { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the user is authorized to modify state information; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果用户有权修改状态信息;，否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsModifiable*
   exceptions: []
   platform:
@@ -525,14 +525,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Initializes personalization."
-  remarks: "This is the main entry point for initializing personalization information on behalf of the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control. This method is called during the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> method. Normally, if personalization has been disabled on the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control, this method will never be called.       During the course of this method, the following initializations occur:      -   A reference to either the default personalization provider, or the custom provider indicated in the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> page markup or the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ProviderName%2A> property, is obtained.      -   The provider is called to determine the user capabilities (<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.DetermineUserCapabilities%2A>) for the currently executing user.      -   The personalization state for the current page/user/scope combination is loaded from the underlying data store by the provider (<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.LoadPersonalizationState%2A>) and stored within the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> instance.      -   The personalization scope for the current page/user/scope is determined by the provider (<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.DetermineInitialScope%2A>). Note that the result of this determination might be different than the value of the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A> property.       The scope value returned from this method is used as the value for the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Scope%2A> property.      > [!NOTE] >  An <xref:System.InvalidOperationException> exception due to personalization not being enabled will occur only if the Load method is called directly. In the ASP.NET implementation, an internal helper method is actually called to perform the load, and this helper method silently returns if personalization has not been enabled for the page."
+  summary: "初始化个性化设置。"
+  remarks: "这是初始化代表父级的个性化设置数据的主入口点<xref:System.Web.UI.WebControls.WebParts.WebPartManager>控件。</xref:System.Web.UI.WebControls.WebParts.WebPartManager> 在父过程中调用此方法<xref:System.Web.UI.WebControls.WebParts.WebPartManager>控件的<xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A>方法。</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> 通常情况下，如果已对父禁用个性化<xref:System.Web.UI.WebControls.WebParts.WebPartManager>控件，将永远不会调用此方法。</xref:System.Web.UI.WebControls.WebParts.WebPartManager>       在此方法的过程中，发生以下初始化:-一个引用为默认的个性化设置提供程序，或自定义提供程序中所示<xref:System.Web.UI.WebControls.WebParts.WebPartManager>页面标记或<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ProviderName%2A>获取属性，。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ProviderName%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager>      -调用此提供程序以确定用户功能 (<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.DetermineUserCapabilities%2A>) 为当前正在执行的用户。</xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.DetermineUserCapabilities%2A>      当前作用域用户/页/组合-个性化状态提供程序，从基础数据存储区加载 (<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.LoadPersonalizationState%2A>) 并存储在<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>实例。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> </xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.LoadPersonalizationState%2A>      -当前页/用户/作用域的个性化设置范围由提供程序 (<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.DetermineInitialScope%2A>)。</xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.DetermineInitialScope%2A> 请注意，此决定的结果可能是不同的值<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A>属性。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A>       此方法返回的作用域值用作的值<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Scope%2A>属性。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Scope%2A>      1> [!NOTE]&1;><xref:System.InvalidOperationException>仅当直接调用负载方法，则会发生异常由于个性化设置未启用。</xref:System.InvalidOperationException> 在 ASP.NET 实现中，内部帮助程序方法实际上调用来执行负载，和此帮助器方法以无提示方式返回如果没有为页上启用个性化时。"
   syntax:
     content: protected virtual System.Web.UI.WebControls.WebParts.PersonalizationScope Load ();
     parameters: []
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationScope
-      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> instance for the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref>父实例<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>。"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load*
   exceptions:
   - type: System.InvalidOperationException
@@ -546,7 +546,7 @@ items:
     description: "A problem occurred while loading and deserializing data.  \n  \n \\- or -  \n  \n An error occurred in the definition of a personalization provider in the configuration file."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
-    description: "The underlying personalization providers failed to initialize because a default provider could not be found or because a failure occurred while attempting to initialize a personalization provider."
+    description: "基础个性化设置提供程序无法初始化因为找不到默认提供程序，或者尝试初始化个性化设置提供程序时出错。"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ModifyStateUserCapability
@@ -561,13 +561,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Represents the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartUserCapability&quot;></xref> instance of a user&quot;s authorization to modify personalization state."
-  remarks: "The user right is represented by the string &quot;modifyState&quot; in the <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability> instance."
+  summary: "表示<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartUserCapability&quot;></xref>的用户的授权修改个性化设置状态的实例。"
+  remarks: "已将用户权限由字符串&quot;modifyState&quot;表示在<xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>实例。</xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>"
   syntax:
     content: public static readonly System.Web.UI.WebControls.WebParts.WebPartUserCapability ModifyStateUserCapability;
     return:
       type: System.Web.UI.WebControls.WebParts.WebPartUserCapability
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -583,18 +583,18 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets the provider name for personalization."
-  remarks: "This property returns the value set for this property in the page declaration. If this property was not set, it returns <xref:System.String.Empty>. In this case, the page uses the default personalization provider specified in the configuration file.       This property can only be set prior to the completion of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> method. This means the ProviderName property must be set in the page declaration on the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> element.  Alternatively, this property can be set during the `PreInit` phase."
+  summary: "获取或设置是为了个性化的提供程序名称。"
+  remarks: "此属性返回为此属性页声明中设置的值。 如果未设置此属性，它将返回<xref:System.String.Empty>.</xref:System.String.Empty> 在这种情况下，页使用默认个性化设置提供程序配置文件中指定。       此属性仅在完成之前设置<xref:System.Web.UI.WebControls.WebParts.WebPartManager>控件的<xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A>方法。</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> 这意味着 ProviderName 属性必须设置在的页声明<xref:System.Web.UI.WebControls.WebParts.WebPartManager>元素。</xref:System.Web.UI.WebControls.WebParts.WebPartManager>  或者，可以将此属性设置期间`PreInit`阶段。"
   syntax:
     content: public virtual string ProviderName { get; set; }
     return:
       type: System.String
-      description: "The name of the personalization provider."
+      description: "个性化设置提供程序的名称。"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ProviderName*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt was made to set this property to a value other than its current value after the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*> method has completed."
+    description: "尝试将此属性设置为在其当前值以外的值<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>控件的<xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*>方法已完成。</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*>"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ResetPersonalizationState
@@ -609,8 +609,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Resets personalization data for the current page, scope, and user in the underlying data store."
-  remarks: "This method resets personalization data for the current page, scope, and user in the underlying data store. As a side effect of the reset, the currently executing page is re-executed by a <xref:System.Web.HttpServerUtility.Transfer%2A> call. Note that this transfer re-executes the current page as a `GET` request regardless of how the page was originally requested.       This method can be called at any time. Internally, this method calls the ResetPersonalizationState method on the provider. After data is successfully reset, the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A> property is set to `true`. This property is used elsewhere by the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> instance to bypass extracting personalization data from control properties and saving it if data has already been reset."
+  summary: "重置为当前页、 范围和基础数据存储区中的用户的个性化数据。"
+  remarks: "此方法将重置为当前页、 范围和基础数据存储区中的用户的个性化数据。 重置的副作用，当前正在执行的页重新执行通过<xref:System.Web.HttpServerUtility.Transfer%2A>调用。</xref:System.Web.HttpServerUtility.Transfer%2A> 请注意，此传输重新执行当前页作为`GET`请求，而与该页最初请求的方式无关。       可以在任何时候调用此方法。 在内部，此方法在提供程序上调用 ResetPersonalizationState 方法。 已成功重置数据后，<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A>属性设置为`true`。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A> 使用此属性是其他地方<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>要跳过从控件属性的解压个性化数据实例并将其保存，如果数据已重置。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>"
   syntax:
     content: public virtual void ResetPersonalizationState ();
     parameters: []
@@ -618,7 +618,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> instance cannot reference a valid personalization provider."
+    description: "<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;> </xref>实例不能引用有效的个性化设置提供程序。"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.Save
@@ -633,8 +633,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Saves personalization data for the current page, scope, and user to the underlying data store."
-  remarks: "This method is called during the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s <xref:System.Web.UI.Page.SaveStateComplete> event. Internally, the method calls the <xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.SavePersonalizationState%2A> method on the provider.       Attempting to save personalization data when the currently executing user does not have the capability called <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ModifyStateUserCapability> (within the current <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability> instance) results in an <xref:System.InvalidOperationException> exception. Note that this would only be true if the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control called the protected Save method directly. In the ASP.NET implementation, an internal helper method is actually called to perform the save, and this helper method silently returns if the currently executing user does not have rights to modify data."
+  summary: "将当前页、 范围和用户的个性化设置数据保存到基础数据存储区。"
+  remarks: "在调用此方法<xref:System.Web.UI.WebControls.WebParts.WebPartManager>控件的<xref:System.Web.UI.Page.SaveStateComplete>事件。</xref:System.Web.UI.Page.SaveStateComplete> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> 在内部，该方法调用<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.SavePersonalizationState%2A>上的提供程序的方法。</xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.SavePersonalizationState%2A>       在尝试保存个性化数据，如果当前正在执行的用户不具有调用的功能<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ModifyStateUserCapability>(在当前<xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>实例) 会导致<xref:System.InvalidOperationException>异常。</xref:System.InvalidOperationException> </xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ModifyStateUserCapability> 请注意，这将仅是 true 如果<xref:System.Web.UI.WebControls.WebParts.WebPartManager>调用受保护的控制 Save 方法直接。</xref:System.Web.UI.WebControls.WebParts.WebPartManager> 在 ASP.NET 实现中，内部帮助程序方法实际上调用来执行保存，和此帮助器方法以无提示方式返回如果当前正在执行的用户没有权限，无法修改数据。"
   syntax:
     content: protected virtual void Save ();
     parameters: []
@@ -657,13 +657,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets the current personalization scope for the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control."
-  remarks: "This value is initially set based on the value returned from the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> method. This value can be modified by calling the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ToggleScope%2A> method.       Note that this represents the scope used for applying and extracting personalization information. The value of this property might differ from the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A> property or the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ChangeScope%2A> method."
+  summary: "获取当前的个性化设置范围是父<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>控件。"
+  remarks: "此值最初设置基于从返回的值上<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A>方法。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> 可以修改此值，通过调用<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ToggleScope%2A>方法。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ToggleScope%2A>       请注意，此令牌表示用于应用和提取个性化设置信息的作用域。 此属性的值可能会与不同<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A>属性或<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ChangeScope%2A>方法。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ChangeScope%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A>"
   syntax:
     content: public System.Web.UI.WebControls.WebParts.PersonalizationScope Scope { get; }
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationScope
-      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> instance indicating the scope of the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref>实例，该值指示的作用域<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>。"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.Scope*
   exceptions: []
   platform:
@@ -680,8 +680,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Marks the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control as having personalization data that has changed (is &quot;dirty&quot;)."
-  remarks: "If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> property is set to `true`, this method marks the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control as &quot;dirty&quot;. Depending on the implementation details of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s instance of <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>, this method might invoke security checks and code access security permission checks. Internally, this method calls the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.SetWebPartManagerDirty%2A> method.       Note that the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control tracks &quot;dirty&quot; state internally and exposes the &quot;dirtiness&quot; of the manager through the <xref:System.Web.UI.WebControls.WebParts.IPersonalizable.IsDirty%2A> property rather than through this method."
+  summary: "将标记父<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>视为已更改的个性化数据的控件 （为&quot;脏&quot;）。"
+  remarks: "如果<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>属性设置为`true`，此方法将标记父<xref:System.Web.UI.WebControls.WebParts.WebPartManager>控件用作&quot;脏&quot;。</xref:System.Web.UI.WebControls.WebParts.WebPartManager> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> 具体取决于的实现详细信息<xref:System.Web.UI.WebControls.WebParts.WebPartManager>控件的实例<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>，此方法可能调用安全检查和代码访问安全性权限检查。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> 此方法在内部调用<xref:System.Web.UI.WebControls.WebParts.PersonalizationState.SetWebPartManagerDirty%2A>方法。</xref:System.Web.UI.WebControls.WebParts.PersonalizationState.SetWebPartManagerDirty%2A>       请注意，<xref:System.Web.UI.WebControls.WebParts.WebPartManager>控件内部跟踪&quot;脏&quot;的状态，并将公开通过管理器的&quot;更新&quot;<xref:System.Web.UI.WebControls.WebParts.IPersonalizable.IsDirty%2A>属性而不是通过此方法。</xref:System.Web.UI.WebControls.WebParts.IPersonalizable.IsDirty%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   syntax:
     content: protected virtual void SetDirty ();
     parameters: []
@@ -689,7 +689,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No personalization data has been loaded."
+    description: "已不加载任何个性化数据。"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.SetDirty(System.Web.UI.WebControls.WebParts.WebPart)
@@ -704,22 +704,22 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Marks the specified Web Parts control as having personalization data that has changed (is &quot;dirty&quot;)."
-  remarks: "If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> property is set to `true`, this method marks the specified Web Parts control as &quot;dirty&quot;. Depending on the implementation details of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s instance of <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>, this method may invoke security checks and code access security permission checks."
+  summary: "将标记为具有已更改的个性化数据指定的 Web 部件控件 （为&quot;脏&quot;）。"
+  remarks: "如果<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>属性设置为`true`，此方法将标记为&quot;脏&quot;指定的 Web 部件控件。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> 具体取决于的实现详细信息<xref:System.Web.UI.WebControls.WebParts.WebPartManager>控件的实例<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>，此方法可能调用安全检查和代码访问安全性权限检查。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> </xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   syntax:
     content: protected virtual void SetDirty (System.Web.UI.WebControls.WebParts.WebPart webPart);
     parameters:
     - id: webPart
       type: System.Web.UI.WebControls.WebParts.WebPart
-      description: "The Web Parts control to be marked &quot;dirty&quot;."
+      description: "要标记为&quot;脏&quot;的 Web 部件控件。"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.SetDirty*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "Attempted to mark as &quot;dirty&quot; a Web Parts control that is not managed by the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+    description: "尝试将标记为&quot;脏&quot;不由父管理的 Web 部件控件<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No personalization data has been loaded."
+    description: "已不加载任何个性化数据。"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState
@@ -734,13 +734,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets a value that indicates whether the personalization data of the current page has been reset (for example, a request was made to delete the personalization data from the underlying data store)."
-  remarks: "If this property is set to `true`, it indicates that the personalization state for the current page has been reset and that extraction of personalization data from controls and subsequent save operations should be skipped. Currently, this property is automatically set to `true` by the personalization infrastructure if the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ResetPersonalizationState%2A> method is called.       Note that although there are no restrictions on when this property can be set, the property must be set to `true` prior to the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s <xref:System.Web.UI.Page.SaveStateComplete> event to have any effect."
+  summary: "获取或设置一个值，该值指示是否已重置当前页的个性化设置数据 （例如，已请求以从基础数据存储区中删除个性化数据）。"
+  remarks: "如果此属性设置为`true`，它表示已重置当前页的个性化设置状态，提取的个性化数据从控件和后续保存操作应跳过。 目前，此属性自动设置为`true`个性化基础结构如果<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ResetPersonalizationState%2A>调用方法。</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ResetPersonalizationState%2A>       请注意，虽然有时可以设置此属性没有限制，但该属性必须设置为`true`之前<xref:System.Web.UI.WebControls.WebParts.WebPartManager>控件的<xref:System.Web.UI.Page.SaveStateComplete>事件以产生任何影响。</xref:System.Web.UI.Page.SaveStateComplete> </xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   syntax:
     content: protected bool ShouldResetPersonalizationState { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the personalization state for the current page has been reset; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果当前页的个性化设置状态已重置;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState*
   exceptions: []
   platform:
@@ -757,8 +757,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Switches the current page&quot;s personalization scope from <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> to <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> or from <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> to <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref>."
-  remarks: "This method toggles the currently executing page&quot;s personalization scope. Toggling the scope results in a <xref:System.Web.HttpServerUtility.Transfer%2A> back to the current executing page.       This method performs no operation if it is called while an export or import of a Web Parts control is occurring.       If a toggle scope request occurs for a page that was submitted via a `POST` request, then any query string values will be preserved during the transfer; query string parameters are not preserved if the page was submitted via a `GET` request."
+  summary: "切换当前页的个性化设置范围从<xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref>到<xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref>或从<xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref>到<xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref>。"
+  remarks: "此方法切换当前正在执行页的个性化设置范围。 切换范围导致<xref:System.Web.HttpServerUtility.Transfer%2A>回当前正在执行的页。</xref:System.Web.HttpServerUtility.Transfer%2A>       如果发生的 Web 部件控件的导入或导出时调用，此方法会执行任何操作。       如果切换范围请求则会发生页通过提交`POST`请求，则任何查询字符串值将保留在传输过程; 如果已通过提交页面，不会保留查询字符串参数`GET`请求。"
   example:
   - "The following code demonstrates using the ToggleScope method. This code is part of a larger code sample found in the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> class description.  \n  \n [!code-cs[WebParts_WebPartPersonalization#7](~/add/codesnippet/csharp/m-system.web.ui.webcontr_235_1.ascx)]\n [!code-vb[WebParts_WebPartPersonalization#7](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_235_1.ascx)]"
   syntax:
@@ -771,7 +771,7 @@ items:
     description: "The current user does not have the user capability to enter <xref href=\"System.Web.UI.WebControls.WebParts.PersonalizationScope\"></xref> scope when attempting to switch from <xref href=\"System.Web.UI.WebControls.WebParts.PersonalizationScope\"></xref> scope to <xref href=\"System.Web.UI.WebControls.WebParts.PersonalizationScope\"></xref> scope.  \n  \n \\- or -  \n  \n The <xref href=\"System.Web.UI.WebControls.WebParts.WebPartPersonalization\"></xref> instance has not completed initialization.  \n  \n \\- or -  \n  \n The <xref href=\"System.Web.UI.Page\"></xref> instance for the associated <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n The value of the <xref:System.Web.UI.Page.Request*> property on the <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> control's associated <xref href=\"System.Web.UI.Page\"></xref> instance is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "An attempt was made to toggle to a scope that is not defined in the <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> enumeration. Technically, this situation should never occur."
+    description: "尝试切换到中未定义的作用域<xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref>枚举。 从技术上讲，这种情况下应永远不会发生。"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities
@@ -786,13 +786,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets the set of user capabilities from <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartUserCapability&quot;></xref> granted to the current user."
+  summary: "获取从用户功能的一组<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartUserCapability&quot;></xref>授予当前用户。"
   remarks: 'Currently the <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability> class contains two values indicating a user''s capabilities: `modifyState` and `enterSharedScope`. For ease of use, the capabilities contained within the dictionary can be checked with the helper properties <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsModifiable%2A> and <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.CanEnterSharedScope%2A>. Note the restrictions on changing capabilities after either of these properties have been accessed; for details, see the description section of each property.'
   syntax:
     content: protected virtual System.Collections.IDictionary UserCapabilities { get; }
     return:
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> containing the set of user capabilities granted to the current user, or an empty <xref href=&quot;System.Collections.Specialized.HybridDictionary&quot;></xref> if the user is anonymous."
+      description: "<xref:System.Collections.IDictionary>包含的用户授予当前用户或为一个空的功能集<xref href=&quot;System.Collections.Specialized.HybridDictionary&quot;></xref>如果用户是匿名的。</xref:System.Collections.IDictionary>"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities*
   exceptions: []
   platform:
@@ -809,13 +809,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets an instance of the current parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control associated with this <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> instance."
-  remarks: "Use this property to determine the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control associated with this instance of the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> class."
+  summary: "获取当前的父实例<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>关联与此控件<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref>实例。"
+  remarks: "使用此属性来确定<xref:System.Web.UI.WebControls.WebParts.WebPartManager>与<xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>类</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>的此实例关联的控件</xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   syntax:
     content: protected System.Web.UI.WebControls.WebParts.WebPartManager WebPartManager { get; }
     return:
       type: System.Web.UI.WebControls.WebParts.WebPartManager
-      description: "The current parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+      description: "当前父<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>。"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.WebPartManager*
   exceptions: []
   platform:

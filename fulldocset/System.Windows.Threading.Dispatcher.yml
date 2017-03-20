@@ -59,8 +59,8 @@ items:
   nameWithType: Dispatcher
   fullName: System.Windows.Threading.Dispatcher
   type: Class
-  summary: "Provides services for managing the queue of work items for a thread."
-  remarks: "The Dispatcher maintains a prioritized queue of work items for a specific thread.       When a Dispatcher is created on a thread, it becomes the only Dispatcher that can be associated with the thread, even if the Dispatcher is shut down.       If you attempt to get the <xref:System.Windows.Threading.Dispatcher.CurrentDispatcher%2A> for the current thread and a Dispatcher is not associated with the thread, a Dispatcher will be created. A Dispatcher is also created when you create a <xref:System.Windows.Threading.DispatcherObject>. If you create a Dispatcher on a background thread, be sure to shut down the dispatcher before exiting the thread.       If a Dispatcher is shut down, it cannot be restarted.       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], a <xref:System.Windows.Threading.DispatcherObject> can only be accessed by the Dispatcher it is associated with.  For example, a background thread cannot update the contents of a <xref:System.Windows.Controls.Button> that is associated with the Dispatcher on the [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] thread.  In order for the background thread to access the <xref:System.Windows.Controls.ContentControl.Content%2A> property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the Dispatcher associated with the [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] thread.  This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>. <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous.  The operation is added to the queue of the Dispatcher at the specified <xref:System.Windows.Threading.DispatcherPriority>.       If <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is called on a Dispatcher that has shut down, the status property of the returned <xref:System.Windows.Threading.DispatcherOperation> is set to <xref:System.Windows.Threading.DispatcherOperationStatus>.       All of the methods on Dispatcher, with the exception of <xref:System.Windows.Threading.Dispatcher.DisableProcessing%2A>, are free-threaded.       Objects that derive from <xref:System.Windows.Threading.DispatcherObject> have thread affinity.       Objects that derive from <xref:System.Windows.Freezable> are free-threaded when they are frozen.  For more information, see [Freezable Objects Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: "提供用于管理工作项的线程的队列服务。"
+  remarks: "调度程序维护特定线程的工作项按优先级排列的队列。       当调度程序线程上创建时，它将成为唯一调度程序可能与线程，即使调度程序已关闭。       如果你尝试获取<xref:System.Windows.Threading.Dispatcher.CurrentDispatcher%2A>当前线程和调度程序是不与线程关联，请将创建调度程序。</xref:System.Windows.Threading.Dispatcher.CurrentDispatcher%2A> 创建一种<xref:System.Windows.Threading.DispatcherObject>。</xref:System.Windows.Threading.DispatcherObject>时，还创建调度程序 如果在后台线程上创建调度程序，请确保在退出线程之前关闭调度程序。       如果调度程序关闭的情况下，它不能重新启动。       在[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]、<xref:System.Windows.Threading.DispatcherObject>仅可以由调度程序与之关联。</xref:System.Windows.Threading.DispatcherObject>  例如，后台线程不能更新的内容<xref:System.Windows.Controls.Button>与调度程序关联上[!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)]线程。</xref:System.Windows.Controls.Button>  为了使后台线程访问<xref:System.Windows.Controls.ContentControl.Content%2A>属性<xref:System.Windows.Controls.Button>，后台线程必须委托到调度程序与关联的工作[!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)]线程。</xref:System.Windows.Controls.Button> </xref:System.Windows.Controls.ContentControl.Content%2A>  这是通过使用其中一种<xref:System.Windows.Threading.Dispatcher.Invoke%2A>或<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>实现 <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步和<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>  该操作添加到的位置指定<xref:System.Windows.Threading.DispatcherPriority>.</xref:System.Windows.Threading.DispatcherPriority>的调度程序队列       如果<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>在调度程序的已关闭，返回<xref:System.Windows.Threading.DispatcherOperation>设置为<xref:System.Windows.Threading.DispatcherOperationStatus>。</xref:System.Windows.Threading.DispatcherOperationStatus></xref:System.Windows.Threading.DispatcherOperation>的 status 属性上调用</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       调度程序上的例外情况的方法的所有<xref:System.Windows.Threading.Dispatcher.DisableProcessing%2A>，为自由线程对象。</xref:System.Windows.Threading.Dispatcher.DisableProcessing%2A>       从派生的对象<xref:System.Windows.Threading.DispatcherObject>具有线程关联。</xref:System.Windows.Threading.DispatcherObject>       从派生的对象<xref:System.Windows.Freezable>是自由线程时它们已冻结。</xref:System.Windows.Freezable>  有关详细信息，请参阅[可冻结对象概述](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following example shows how to place an operation onto a Dispatcher.  For the full source code of this example, see [Single-Threaded Application with Long-Running Calculation Sample](http://go.microsoft.com/fwlink/?LinkID=160038).  \n  \n First, a delegate is created that accepts no arguments.  \n  \n [!code-vb[ThreadingPrimeNumber#ThreadingPrimeNumberInit](~/add/codesnippet/visualbasic/t-system.windows.threadi_2_1.vb)]\n [!code-cs[ThreadingPrimeNumber#ThreadingPrimeNumberInit](~/add/codesnippet/csharp/t-system.windows.threadi_2_1.cs)]  \n  \n Next, <xref:System.Windows.Threading.Dispatcher.BeginInvoke%28System.Windows.Threading.DispatcherPriority%2CSystem.Delegate%29> is called.  This call to <xref:System.Windows.Threading.Dispatcher.BeginInvoke%28System.Windows.Threading.DispatcherPriority%2CSystem.Delegate%29> takes two parameters: the priority, which is set to <xref:System.Windows.Threading.DispatcherPriority?displayProperty=fullName>, and the callback, which is passed in through an instance of the delegate `NextPrimeDelegate`.  \n  \n [!code-vb[ThreadingPrimeNumber#ThreadingPrimeNumberBeingInvoke](~/add/codesnippet/visualbasic/t-system.windows.threadi_2_2.vb)]\n [!code-cs[ThreadingPrimeNumber#ThreadingPrimeNumberBeingInvoke](~/add/codesnippet/csharp/t-system.windows.threadi_2_2.cs)]"
   syntax:
@@ -83,20 +83,20 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate asynchronously with the specified arguments on the thread that the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> was created on."
-  remarks: "The <xref:System.Windows.Threading.DispatcherOperation> object returned by <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> can be used in several ways to interact with the specified delegate, such as:      -   Changing the <xref:System.Windows.Threading.DispatcherPriority> of the delegate as it is pending execution in the event queue.      -   Removing the delegate from the event queue.      -   Waiting for the delegate to return.      -   Obtaining the value that the delegate returns after it is executed.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous; therefore, control returns immediately to the calling object after it is called.       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object. For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread. In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread. This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>. <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous. The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       If <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is called on a <xref:System.Windows.Threading.Dispatcher> that has shut down, the status property of the returned <xref:System.Windows.Threading.DispatcherOperation> is set to <xref:System.Windows.Threading.DispatcherOperationStatus>."
+  summary: "在线程上执行异步使用指定的参数指定的委托， <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>上创建。"
+  remarks: "<xref:System.Windows.Threading.DispatcherOperation>返回对象<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>可通过多种方式与指定的委托，如交互:-更改<xref:System.Windows.Threading.DispatcherPriority>的委托因为它正在等待执行的事件队列。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.DispatcherOperation>      -从事件队列中删除委托。      -等待要返回的委托。      -执行获取在委托返回其后的值。       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的;因此，控制权会立即返回到调用的对象后调用。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       在[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]，仅在创建线程<xref:System.Windows.Threading.DispatcherObject>才能访问该对象。</xref:System.Windows.Threading.DispatcherObject> 例如，从主 UI 线程运行的后台线程不能更新的内容<xref:System.Windows.Controls.Button>UI 线程上创建。</xref:System.Windows.Controls.Button> 为了使后台线程访问的内容属性<xref:System.Windows.Controls.Button>，后台线程必须将工作委托给<xref:System.Windows.Threading.Dispatcher>与 UI 线程关联。</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button> 这是通过使用其中一种<xref:System.Windows.Threading.Dispatcher.Invoke%2A>或<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>实现 <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步和<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A> 该操作将添加到事件队列。<xref:System.Windows.Threading.Dispatcher>在指定<xref:System.Windows.Threading.DispatcherPriority>。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       如果<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>调用上<xref:System.Windows.Threading.Dispatcher>，已关闭，返回<xref:System.Windows.Threading.DispatcherOperation>设置为<xref:System.Windows.Threading.DispatcherOperationStatus>。</xref:System.Windows.Threading.DispatcherOperationStatus></xref:System.Windows.Threading.DispatcherOperation>的 status 属性</xref:System.Windows.Threading.Dispatcher></xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>"
   syntax:
     content: public System.Windows.Threading.DispatcherOperation BeginInvoke (Delegate method, object[] args);
     parameters:
     - id: method
       type: System.Delegate
-      description: "The delegate to a method that takes parameters specified in `args`, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "采用参数中指定的方法的委托`args`，这将被推送到<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>事件队列。"
     - id: args
       type: System.Object[]
-      description: "An array of objects to pass as arguments to the given method. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "要将作为自变量传递给给定方法的对象数组。 Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
     return:
       type: System.Windows.Threading.DispatcherOperation
-      description: "An object, which is returned immediately after <xref:System.Windows.Threading.Dispatcher.BeginInvoke*> is called, that can be used to interact with the delegate as it is pending execution in the event queue."
+      description: "一个对象，它之后立即返回<xref:System.Windows.Threading.Dispatcher.BeginInvoke*>调用时，可用来与该委托，因为它是挂起的执行在事件队列。</xref:System.Windows.Threading.Dispatcher.BeginInvoke*>"
   overload: System.Windows.Threading.Dispatcher.BeginInvoke*
   exceptions: []
   platform:
@@ -113,8 +113,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate asynchronously at the specified priority on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "If multiple BeginInvoke calls are made at the same <xref:System.Windows.Threading.DispatcherPriority>, they will be executed in the order the calls were made.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> returns a <xref:System.Windows.Threading.DispatcherOperation> object that can be used to interact with the delegate when the delegate is in the event queue.       The <xref:System.Windows.Threading.DispatcherOperation> object returned by <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> can be used in several ways to interact with the specified delegate, such as:      -   Changing the <xref:System.Windows.Threading.DispatcherPriority> of the delegate as it is pending execution in the event queue.      -   Removing the delegate from the event queue.      -   Waiting for the delegate to return.      -   Obtaining the value that the delegate returns after it is executed.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous; therefore, control returns immediately to the calling object after it is called.       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object.  For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread.  In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread.  This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.  <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous.  The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       If <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is called on a <xref:System.Windows.Threading.Dispatcher> that has shut down, the status property of the returned <xref:System.Windows.Threading.DispatcherOperation> is set to <xref:System.Windows.Threading.DispatcherOperationStatus>."
+  summary: "在线程上执行指定的委托以异步方式在指定的优先级<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与相关联。"
+  remarks: "如果在同一个可执行多个 BeginInvoke 调用<xref:System.Windows.Threading.DispatcherPriority>，它们将在调用所做的顺序执行。</xref:System.Windows.Threading.DispatcherPriority>       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>返回<xref:System.Windows.Threading.DispatcherOperation>可以用于委托时在事件队列的委托交互的对象。</xref:System.Windows.Threading.DispatcherOperation></xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       <xref:System.Windows.Threading.DispatcherOperation>返回对象<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>可通过多种方式与指定的委托，如交互:-更改<xref:System.Windows.Threading.DispatcherPriority>的委托因为它正在等待执行的事件队列。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.DispatcherOperation>      -从事件队列中删除委托。      -等待要返回的委托。      -执行获取在委托返回其后的值。       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的;因此，控制权会立即返回到调用的对象后调用。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       在[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]，仅在创建线程<xref:System.Windows.Threading.DispatcherObject>才能访问该对象。</xref:System.Windows.Threading.DispatcherObject>  例如，从主 UI 线程运行的后台线程不能更新的内容<xref:System.Windows.Controls.Button>UI 线程上创建。</xref:System.Windows.Controls.Button>  为了使后台线程访问的内容属性<xref:System.Windows.Controls.Button>，后台线程必须将工作委托给<xref:System.Windows.Threading.Dispatcher>与 UI 线程关联。</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button>  这是通过使用其中一种<xref:System.Windows.Threading.Dispatcher.Invoke%2A>或<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>实现  <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步和<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>  该操作将添加到事件队列。<xref:System.Windows.Threading.Dispatcher>在指定<xref:System.Windows.Threading.DispatcherPriority>。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       如果<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>调用上<xref:System.Windows.Threading.Dispatcher>，已关闭，返回<xref:System.Windows.Threading.DispatcherOperation>设置为<xref:System.Windows.Threading.DispatcherOperationStatus>。</xref:System.Windows.Threading.DispatcherOperationStatus></xref:System.Windows.Threading.DispatcherOperation>的 status 属性</xref:System.Windows.Threading.Dispatcher></xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>"
   example:
   - "The following example shows how to place an operation onto a <xref:System.Windows.Threading.Dispatcher>.  For the full source code of this example, see [Single-Threaded Application with Long-Running Calculation Sample](http://go.microsoft.com/fwlink/?LinkID=160038).  \n  \n First, a delegate is created that accepts no arguments.  \n  \n [!code-vb[ThreadingPrimeNumber#ThreadingPrimeNumberInit](~/add/codesnippet/visualbasic/8c08cb62-5b5f-4560-a7bd-_1.vb)]\n [!code-cs[ThreadingPrimeNumber#ThreadingPrimeNumberInit](~/add/codesnippet/csharp/8c08cb62-5b5f-4560-a7bd-_1.cs)]  \n  \n Next, BeginInvoke is called.  Because every <xref:System.Windows.Threading.DispatcherObject> has a property that returns the <xref:System.Windows.Threading.Dispatcher> it is associated with, the desired <xref:System.Windows.Threading.Dispatcher> is obtained by querying the <xref:System.Windows.Threading.DispatcherObject>, in this case a <xref:System.Windows.Controls.Button> named `startStopButton`.   The call to BeginInvoke takes two parameters: the priority, which is set to <xref:System.Windows.Threading.DispatcherPriority?displayProperty=fullName>, and the callback, which is passed in through an instance of the delegate `NextPrimeDelegate`.  \n  \n [!code-vb[ThreadingPrimeNumber#ThreadingPrimeNumberBeingInvoke](~/add/codesnippet/visualbasic/8c08cb62-5b5f-4560-a7bd-_2.vb)]\n [!code-cs[ThreadingPrimeNumber#ThreadingPrimeNumberBeingInvoke](~/add/codesnippet/csharp/8c08cb62-5b5f-4560-a7bd-_2.cs)]"
   syntax:
@@ -122,21 +122,21 @@ items:
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "优先级，相对于其他挂起的操作以<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>调用事件队列，指定方法。"
     - id: method
       type: System.Delegate
-      description: "The delegate to a method that takes no arguments, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "对方法的委托不采用任何参数，其将被推送到<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>事件队列。"
     return:
       type: System.Windows.Threading.DispatcherOperation
-      description: "An object, which is returned immediately after <xref:System.Windows.Threading.Dispatcher.BeginInvoke*> is called, that can be used to interact with the delegate as it is pending execution in the event queue."
+      description: "一个对象，它之后立即返回<xref:System.Windows.Threading.Dispatcher.BeginInvoke*>调用时，可用来与该委托，因为它是挂起的执行在事件队列。</xref:System.Windows.Threading.Dispatcher.BeginInvoke*>"
   overload: System.Windows.Threading.Dispatcher.BeginInvoke*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>method</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>method</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>priority</code> is not a valid <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>."
+    description: "<code>priority</code>不是有效<xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;> </xref>。"
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.BeginInvoke(System.Delegate,System.Windows.Threading.DispatcherPriority,System.Object[])
@@ -151,23 +151,23 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate asynchronously with the specified arguments, at the specified priority, on the thread that the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> was created on."
-  remarks: "The <xref:System.Windows.Threading.DispatcherOperation> object returned by <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> can be used in several ways to interact with the specified delegate, such as:      -   Changing the <xref:System.Windows.Threading.DispatcherPriority> of the delegate as it is pending execution in the event queue.      -   Removing the delegate from the event queue.      -   Waiting for the delegate to return.      -   Obtaining the value that the delegate returns after it is executed.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous; therefore, control returns immediately to the calling object after it is called.       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object. For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread. In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread. This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>. <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous. The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       If <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is called on a <xref:System.Windows.Threading.Dispatcher> that has shut down, the status property of the returned <xref:System.Windows.Threading.DispatcherOperation> is set to <xref:System.Windows.Threading.DispatcherOperationStatus>."
+  summary: "在线程上执行指定的委托使用指定的参数，以指定的优先级，以异步方式， <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>上创建。"
+  remarks: "<xref:System.Windows.Threading.DispatcherOperation>返回对象<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>可通过多种方式与指定的委托，如交互:-更改<xref:System.Windows.Threading.DispatcherPriority>的委托因为它正在等待执行的事件队列。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.DispatcherOperation>      -从事件队列中删除委托。      -等待要返回的委托。      -执行获取在委托返回其后的值。       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的;因此，控制权会立即返回到调用的对象后调用。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       在[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]，仅在创建线程<xref:System.Windows.Threading.DispatcherObject>才能访问该对象。</xref:System.Windows.Threading.DispatcherObject> 例如，从主 UI 线程运行的后台线程不能更新的内容<xref:System.Windows.Controls.Button>UI 线程上创建。</xref:System.Windows.Controls.Button> 为了使后台线程访问的内容属性<xref:System.Windows.Controls.Button>，后台线程必须将工作委托给<xref:System.Windows.Threading.Dispatcher>与 UI 线程关联。</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button> 这是通过使用其中一种<xref:System.Windows.Threading.Dispatcher.Invoke%2A>或<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>实现 <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步和<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A> 该操作将添加到事件队列。<xref:System.Windows.Threading.Dispatcher>在指定<xref:System.Windows.Threading.DispatcherPriority>。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       如果<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>调用上<xref:System.Windows.Threading.Dispatcher>，已关闭，返回<xref:System.Windows.Threading.DispatcherOperation>设置为<xref:System.Windows.Threading.DispatcherOperationStatus>。</xref:System.Windows.Threading.DispatcherOperationStatus></xref:System.Windows.Threading.DispatcherOperation>的 status 属性</xref:System.Windows.Threading.Dispatcher></xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>"
   syntax:
     content: public System.Windows.Threading.DispatcherOperation BeginInvoke (Delegate method, System.Windows.Threading.DispatcherPriority priority, object[] args);
     parameters:
     - id: method
       type: System.Delegate
-      description: "The delegate to a method that takes parameters specified in `args`, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "采用参数中指定的方法的委托`args`，这将被推送到<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>事件队列。"
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "优先级，相对于其他挂起的操作以<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>调用事件队列，指定方法。"
     - id: args
       type: System.Object[]
-      description: "An array of objects to pass as arguments to the given method. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "要将作为自变量传递给给定方法的对象数组。 Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
     return:
       type: System.Windows.Threading.DispatcherOperation
-      description: "An object, which is returned immediately after <xref:System.Windows.Threading.Dispatcher.BeginInvoke*> is called, that can be used to interact with the delegate as it is pending execution in the event queue."
+      description: "一个对象，它之后立即返回<xref:System.Windows.Threading.Dispatcher.BeginInvoke*>调用时，可用来与该委托，因为它是挂起的执行在事件队列。</xref:System.Windows.Threading.Dispatcher.BeginInvoke*>"
   overload: System.Windows.Threading.Dispatcher.BeginInvoke*
   exceptions: []
   platform:
@@ -184,8 +184,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate asynchronously at the specified priority and with the specified argument on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "`Arg` can be `null` if no arguments are needed.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> returns a <xref:System.Windows.Threading.DispatcherOperation> object that can be used to interact with the delegate when the delegate is in the event queue.       The <xref:System.Windows.Threading.DispatcherOperation> object returned by <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> can be used in several ways to interact with the specified delegate, such as:      -   Changing the <xref:System.Windows.Threading.DispatcherPriority> of the delegate as it is pending execution in the event queue.      -   Removing the delegate from the event queue.      -   Waiting for the delegate to return.      -   Obtaining the value that the delegate returns after it is executed.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous; therefore, control returns immediately to the calling object after it is called.       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object.  For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread.  In order for the background thread to access the content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread.  This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.  <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous.  The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       If multiple <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> calls are made at the same <xref:System.Windows.Threading.DispatcherPriority>, they will be executed in the order the calls were made.       If <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is called on a <xref:System.Windows.Threading.Dispatcher> that has shut down, the status property of the returned <xref:System.Windows.Threading.DispatcherOperation> is set to <xref:System.Windows.Threading.DispatcherOperationStatus>."
+  summary: "在线程上执行指定的委托以异步方式在指定的优先级并且指定的自变量<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与相关联。"
+  remarks: "`Arg`可以是`null`如果不需要参数。       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>返回<xref:System.Windows.Threading.DispatcherOperation>可以用于委托时在事件队列的委托交互的对象。</xref:System.Windows.Threading.DispatcherOperation></xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       <xref:System.Windows.Threading.DispatcherOperation>返回对象<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>可通过多种方式与指定的委托，如交互:-更改<xref:System.Windows.Threading.DispatcherPriority>的委托因为它正在等待执行的事件队列。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.DispatcherOperation>      -从事件队列中删除委托。      -等待要返回的委托。      -执行获取在委托返回其后的值。       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的;因此，控制权会立即返回到调用的对象后调用。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       在[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]，仅在创建线程<xref:System.Windows.Threading.DispatcherObject>才能访问该对象。</xref:System.Windows.Threading.DispatcherObject>  例如，从主 UI 线程运行的后台线程不能更新的内容<xref:System.Windows.Controls.Button>UI 线程上创建。</xref:System.Windows.Controls.Button>  为了使后台线程访问的内容属性<xref:System.Windows.Controls.Button>，后台线程必须将工作委托给<xref:System.Windows.Threading.Dispatcher>与 UI 线程关联。</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button>  这是通过使用其中一种<xref:System.Windows.Threading.Dispatcher.Invoke%2A>或<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>实现  <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步和<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>  该操作将添加到事件队列。<xref:System.Windows.Threading.Dispatcher>在指定<xref:System.Windows.Threading.DispatcherPriority>。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       如果选择多个<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>调用在同一个<xref:System.Windows.Threading.DispatcherPriority>，它们将在调用所做的顺序执行。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       如果<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>调用上<xref:System.Windows.Threading.Dispatcher>，已关闭，返回<xref:System.Windows.Threading.DispatcherOperation>设置为<xref:System.Windows.Threading.DispatcherOperationStatus>。</xref:System.Windows.Threading.DispatcherOperationStatus></xref:System.Windows.Threading.DispatcherOperation>的 status 属性</xref:System.Windows.Threading.Dispatcher></xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>"
   example:
   - "The following example shows how to place an operation onto a <xref:System.Windows.Threading.Dispatcher>.  \n  \n First, a delegate is created that accepts one argument, in this case a string.  \n  \n [!code-vb[ThreadingWeatherForecast#ThreadingWeatherDelegates](~/add/codesnippet/visualbasic/threadingweatherforecastsample/window1.xaml.vb#threadingweatherdelegates)]\n [!code-cs[ThreadingWeatherForecast#ThreadingWeatherDelegates](~/add/codesnippet/csharp/ThreadingWeatherForecastSample/Window1.xaml.cs#threadingweatherdelegates)]  \n  \n Next, BeginInvoke is called.  Because every <xref:System.Windows.Threading.DispatcherObject> has a property that returns the <xref:System.Windows.Threading.Dispatcher> it is associated with, the desired <xref:System.Windows.Threading.Dispatcher> is obtained by querying the <xref:System.Windows.Threading.DispatcherObject>, in this case a <xref:System.Windows.Controls.Grid> named `tomorrowsWeather`. The call to BeginInvoke takes three parameters: the priority, which is set to <xref:System.Windows.Threading.DispatcherPriority?displayProperty=fullName>; the callback, which is passed in through an instance of the delegate `OneArgDelegate`; and a string named `weather`, which is the argument for the callback.  \n  \n [!code-vb[threadingweatherforecast#ThreadingWeatherDispatcherOneArge](~/add/codesnippet/visualbasic/threadingweatherforecastsample/window1.xaml.vb#threadingweatherdispatcheronearge)]\n [!code-cs[threadingweatherforecast#ThreadingWeatherDispatcherOneArge](~/add/codesnippet/csharp/ThreadingWeatherForecastSample/Window1.xaml.cs#threadingweatherdispatcheronearge)]"
   syntax:
@@ -193,24 +193,24 @@ items:
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "优先级，相对于其他挂起的操作以<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>调用事件队列，指定方法。"
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes one argument, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "采用一个参数，将被推送到方法的委托<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>事件队列。"
     - id: arg
       type: System.Object
-      description: "The object to pass as an argument to the specified method."
+      description: "要将作为自变量传递给指定的方法的对象。"
     return:
       type: System.Windows.Threading.DispatcherOperation
-      description: "An object, which is returned immediately after <xref:System.Windows.Threading.Dispatcher.BeginInvoke*> is called, that can be used to interact with the delegate as it is pending execution in the event queue."
+      description: "一个对象，它之后立即返回<xref:System.Windows.Threading.Dispatcher.BeginInvoke*>调用时，可用来与该委托，因为它是挂起的执行在事件队列。</xref:System.Windows.Threading.Dispatcher.BeginInvoke*>"
   overload: System.Windows.Threading.Dispatcher.BeginInvoke*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>method</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>method</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>priority</code> is not a valid <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>."
+    description: "<code>priority</code>不是有效<xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;> </xref>。"
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority,System.Delegate,System.Object,System.Object[])
@@ -225,34 +225,34 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate asynchronously at the specified priority and with the specified array of arguments on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "The `arg` parameter can be `null` if no arguments are needed.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> returns a <xref:System.Windows.Threading.DispatcherOperation> object that can be used to interact with the delegate when the delegate is in the event queue.       The <xref:System.Windows.Threading.DispatcherOperation> object returned by <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> can be used in several ways to interact with the specified delegate, such as:      -   Changing the <xref:System.Windows.Threading.DispatcherPriority> of the delegate as it is pending execution in the event queue.      -   Removing the delegate from the event queue.      -   Waiting for the delegate to return.      -   Obtaining the value that the delegate returns after it is executed.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous; therefore, control returns immediately to the calling object after it is called.       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object.  For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread.  In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread.  This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.  <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous.  The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       If multiple <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> calls are made at the same <xref:System.Windows.Threading.DispatcherPriority>, they will be executed in the order the calls were made.       If <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is called on a <xref:System.Windows.Threading.Dispatcher> that has shut down, the status property of the returned <xref:System.Windows.Threading.DispatcherOperation> is set to <xref:System.Windows.Threading.DispatcherOperationStatus>."
+  summary: "在线程上执行指定的委托以异步方式在指定的优先级并且指定的自变量数组<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与相关联。"
+  remarks: "`arg`参数可以为`null`如果不需要参数。       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>返回<xref:System.Windows.Threading.DispatcherOperation>可以用于委托时在事件队列的委托交互的对象。</xref:System.Windows.Threading.DispatcherOperation></xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       <xref:System.Windows.Threading.DispatcherOperation>返回对象<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>可通过多种方式与指定的委托，如交互:-更改<xref:System.Windows.Threading.DispatcherPriority>的委托因为它正在等待执行的事件队列。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.DispatcherOperation>      -从事件队列中删除委托。      -等待要返回的委托。      -执行获取在委托返回其后的值。       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的;因此，控制权会立即返回到调用的对象后调用。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       在[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]，仅在创建线程<xref:System.Windows.Threading.DispatcherObject>才能访问该对象。</xref:System.Windows.Threading.DispatcherObject>  例如，从主 UI 线程运行的后台线程不能更新的内容<xref:System.Windows.Controls.Button>UI 线程上创建。</xref:System.Windows.Controls.Button>  为了使后台线程访问的内容属性<xref:System.Windows.Controls.Button>，后台线程必须将工作委托给<xref:System.Windows.Threading.Dispatcher>与 UI 线程关联。</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button>  这是通过使用其中一种<xref:System.Windows.Threading.Dispatcher.Invoke%2A>或<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>实现  <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步和<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>  该操作将添加到事件队列。<xref:System.Windows.Threading.Dispatcher>在指定<xref:System.Windows.Threading.DispatcherPriority>。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       如果选择多个<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>调用在同一个<xref:System.Windows.Threading.DispatcherPriority>，它们将在调用所做的顺序执行。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       如果<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>调用上<xref:System.Windows.Threading.Dispatcher>，已关闭，返回<xref:System.Windows.Threading.DispatcherOperation>设置为<xref:System.Windows.Threading.DispatcherOperationStatus>。</xref:System.Windows.Threading.DispatcherOperationStatus></xref:System.Windows.Threading.DispatcherOperation>的 status 属性</xref:System.Windows.Threading.Dispatcher></xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>"
   syntax:
     content: public System.Windows.Threading.DispatcherOperation BeginInvoke (System.Windows.Threading.DispatcherPriority priority, Delegate method, object arg, object[] args);
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "优先级，相对于其他挂起的操作以<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>调用事件队列，指定方法。"
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes multiple arguments, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "方法的委托采用多个自变量，这将被推送到<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>事件队列。"
     - id: arg
       type: System.Object
-      description: "The object to pass as an argument to the specified method."
+      description: "要将作为自变量传递给指定的方法的对象。"
     - id: args
       type: System.Object[]
-      description: "An array of objects to pass as arguments to the specified method."
+      description: "要作为参数传递的指定方法的对象数组。"
     return:
       type: System.Windows.Threading.DispatcherOperation
-      description: "An object, which is returned immediately after <xref:System.Windows.Threading.Dispatcher.BeginInvoke*> is called, that can be used to interact with the delegate as it is pending execution in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> queue."
+      description: "一个对象，它之后立即返回<xref:System.Windows.Threading.Dispatcher.BeginInvoke*>调用时，可用来按原样中挂起执行的委托交互<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>队列。</xref:System.Windows.Threading.Dispatcher.BeginInvoke*>"
   overload: System.Windows.Threading.Dispatcher.BeginInvoke*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>method</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>method</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref> is not a valid priority."
+    description: "<xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>不是有效的优先级。"
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.BeginInvokeShutdown(System.Windows.Threading.DispatcherPriority)
@@ -267,14 +267,14 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Initiates shutdown of the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> asynchronously."
-  remarks: "BeginInvokeShutdown demands unrestricted UI Permissions.       When the <xref:System.Windows.Threading.Dispatcher> starts to shut down, the <xref:System.Windows.Threading.Dispatcher.ShutdownStarted> event is raised and <xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> is set to `true`.       The <xref:System.Windows.Threading.Dispatcher> does not shut down completely until the event queue unwinds.       When the Dispatcher finishes shutting down, the <xref:System.Windows.Threading.Dispatcher.ShutdownFinished> event is raised and the <xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A> property is set to `true`.       Once the shutdown process begins, all pending work items in the queue are aborted."
+  summary: "启动关闭<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>以异步方式。"
+  remarks: "BeginInvokeShutdown 要求不受限制的 UI 权限。       当<xref:System.Windows.Threading.Dispatcher>开始关闭的情况下，<xref:System.Windows.Threading.Dispatcher.ShutdownStarted>引发事件和<xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A>设置为`true`。</xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> </xref:System.Windows.Threading.Dispatcher.ShutdownStarted> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher>不会关闭完全展开事件队列之前。</xref:System.Windows.Threading.Dispatcher>       调度程序完成的情况下，关闭时<xref:System.Windows.Threading.Dispatcher.ShutdownFinished>引发事件和<xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A>属性设置为`true`。</xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A> </xref:System.Windows.Threading.Dispatcher.ShutdownFinished>       关闭流程开始之后，所有挂起的工作将中止队列中的项。"
   syntax:
     content: public void BeginInvokeShutdown (System.Windows.Threading.DispatcherPriority priority);
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority at which to begin shutting down the dispatcher."
+      description: "从此处开始关闭调度程序优先级。"
   overload: System.Windows.Threading.Dispatcher.BeginInvokeShutdown*
   exceptions: []
   platform:
@@ -291,8 +291,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Determines whether the calling thread is the thread associated with this <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
-  remarks: "Only the <xref:System.Windows.Threading.Dispatcher> that a <xref:System.Windows.Threading.DispatcherObject> is created on may access the object.  Use <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> to access the object from a different thread.       CheckAccess can be called from any thread.       The difference between CheckAccess and <xref:System.Windows.Threading.Dispatcher.VerifyAccess%2A> is CheckAccess returns a Boolean indicating whether the calling thread has access to the <xref:System.Windows.Threading.Dispatcher> and <xref:System.Windows.Threading.Dispatcher.VerifyAccess%2A> throws an exception."
+  summary: "确定调用线程是否与此相关的线程<xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>。"
+  remarks: "仅<xref:System.Windows.Threading.Dispatcher>，<xref:System.Windows.Threading.DispatcherObject>创建在可能访问的对象。</xref:System.Windows.Threading.DispatcherObject> </xref:System.Windows.Threading.Dispatcher>  使用<xref:System.Windows.Threading.Dispatcher.Invoke%2A>或<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>用于从另一个线程访问的对象。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A>       可以从任何线程调用 checkaccess 方法。       Checkaccess 方法之间的差异和<xref:System.Windows.Threading.Dispatcher.VerifyAccess%2A>为 checkaccess 方法将返回一个布尔值，该值指示调用线程是否有权访问<xref:System.Windows.Threading.Dispatcher>和<xref:System.Windows.Threading.Dispatcher.VerifyAccess%2A>引发异常。</xref:System.Windows.Threading.Dispatcher.VerifyAccess%2A> </xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher.VerifyAccess%2A>"
   example:
   - "The following example uses CheckAccess to determine whether a thread has access to a <xref:System.Windows.Controls.Button>.  The CheckAccess method on the <xref:System.Windows.Threading.Dispatcher> associated with the <xref:System.Windows.Controls.Button> is called to verify access to the thread.  If the calling thread has access to the <xref:System.Windows.Threading.Dispatcher>, the <xref:System.Windows.Controls.Button> is updated by accessing the members of the <xref:System.Windows.Controls.Button>; otherwise, a delegate, which accepts a <xref:System.Windows.Controls.Button> as an argument, is placed onto the <xref:System.Windows.Threading.Dispatcher>.  The <xref:System.Windows.Threading.Dispatcher> will delegate the work of updating the <xref:System.Windows.Controls.Button>.  \n  \n [!code-cs[DispatcherAccessSample#DispatcherAccessCheckAccess](~/add/codesnippet/csharp/DispatcherAccessSample/Window1.xaml.cs#dispatcheraccesscheckaccess)]\n [!code-vb[DispatcherAccessSample#DispatcherAccessCheckAccess](~/add/codesnippet/visualbasic/dispatcheraccesssample/window1.xaml.vb#dispatcheraccesscheckaccess)]"
   syntax:
@@ -300,7 +300,7 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the calling thread is the thread associated with this <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>调用线程是否与此相关的线程<xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Threading.Dispatcher.CheckAccess*
   exceptions: []
   platform:
@@ -317,13 +317,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Gets the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> for the thread currently executing and creates a new <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> if one is not already associated with the thread."
-  remarks: "If a <xref:System.Windows.Threading.Dispatcher> is not associated with the current thread, a new <xref:System.Windows.Threading.Dispatcher> will be created.  This is not the case with the <xref:System.Windows.Threading.Dispatcher.FromThread%2A> method.  <xref:System.Windows.Threading.Dispatcher.FromThread%2A> will return `null` if there is not a dispatcher associated with the specified thread."
+  summary: "获取<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与线程当前正在执行，并创建新<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>如果未与线程相关联。"
+  remarks: "如果<xref:System.Windows.Threading.Dispatcher>不是与当前线程关联的新<xref:System.Windows.Threading.Dispatcher>将创建。</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher>  这不是这种情况<xref:System.Windows.Threading.Dispatcher.FromThread%2A>方法。</xref:System.Windows.Threading.Dispatcher.FromThread%2A>  <xref:System.Windows.Threading.Dispatcher.FromThread%2A>将返回`null`是否不存在与指定的线程调度程序。</xref:System.Windows.Threading.Dispatcher.FromThread%2A>"
   syntax:
     content: public static System.Windows.Threading.Dispatcher CurrentDispatcher { get; }
     return:
       type: System.Windows.Threading.Dispatcher
-      description: "The dispatcher associated with the current thread."
+      description: "调度程序与当前线程关联。"
   overload: System.Windows.Threading.Dispatcher.CurrentDispatcher*
   exceptions: []
   platform:
@@ -340,8 +340,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Disables processing of the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> queue."
-  remarks: "Disabling dispatcher processing is an advanced method that is intended to eliminate the chance of unrelated reentrancy.       The effects of disabling processing are as follows:      -   [!INCLUDE[TLA2#tla_clr#initcap](~/add/includes/tla2sharptla-clrsharpinitcap-md.md)] locks will not pump messages internally.      -   <xref:System.Windows.Threading.DispatcherFrame> objects are not allowed to be pushed.      -   Message processing is not permitted.       The <xref:System.Windows.Threading.DispatcherProcessingDisabled> structure that DisableProcessing returns when it is called can be used to re-enable dispatcher processing.  Calling <xref:System.Windows.Threading.DispatcherProcessingDisabled.Dispose%2A> on the <xref:System.Windows.Threading.DispatcherProcessingDisabled> structure re-enables processing.       DisableProcessing can only be called on the thread the <xref:System.Windows.Threading.Dispatcher> is associated with."
+  summary: "禁用处理<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>队列。"
+  remarks: "禁用调度程序处理属于高级的方法，旨在消除不相关的重新进入的可能性。       禁用处理的影响是，如下所示:-[!INCLUDE[TLA2#tla_clr#initcap](~/add/includes/tla2sharptla-clrsharpinitcap-md.md)]锁都将不内部发送消息。      -<xref:System.Windows.Threading.DispatcherFrame>对象不允许推送。</xref:System.Windows.Threading.DispatcherFrame>      的不允许消息处理。       <xref:System.Windows.Threading.DispatcherProcessingDisabled>DisableProcessing 返回被调用时的结构可用来重新启用调度程序处理。</xref:System.Windows.Threading.DispatcherProcessingDisabled>  调用<xref:System.Windows.Threading.DispatcherProcessingDisabled.Dispose%2A>上<xref:System.Windows.Threading.DispatcherProcessingDisabled>结构将重新启用处理。</xref:System.Windows.Threading.DispatcherProcessingDisabled> </xref:System.Windows.Threading.DispatcherProcessingDisabled.Dispose%2A>       只能在线程上调用 DisableProcessing<xref:System.Windows.Threading.Dispatcher>与相关联。</xref:System.Windows.Threading.Dispatcher>"
   example:
   - "The following example shows how to disable dispatcher processing and re-enable dispatcher processing.  DisableProcessing is called in a **using** statement.  DisableProcessing returns a <xref:System.Windows.Threading.DispatcherProcessingDisabled> structure that is used as the object to be disposed when the **using** block finishes.  When <xref:System.Windows.Threading.DispatcherProcessingDisabled.Dispose%2A> is called on the <xref:System.Windows.Threading.DispatcherProcessingDisabled> structure, dispatcher processing is re-enabled.  \n  \n [!code-vb[DispatcherSnippets#DispatcherDisableProcessing](~/add/codesnippet/visualbasic/dispatchersnippets/window1.xaml.vb#dispatcherdisableprocessing)]\n [!code-cs[DispatcherSnippets#DispatcherDisableProcessing](~/add/codesnippet/csharp/DispatcherSnippets/Window1.xaml.cs#dispatcherdisableprocessing)]"
   syntax:
@@ -349,7 +349,7 @@ items:
     parameters: []
     return:
       type: System.Windows.Threading.DispatcherProcessingDisabled
-      description: "A structure used to re-enable dispatcher processing."
+      description: "用于重新启用处理的调度程序的结构。"
   overload: System.Windows.Threading.Dispatcher.DisableProcessing*
   exceptions: []
   platform:
@@ -366,7 +366,7 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Requests that all frames exit, including nested frames."
+  summary: "退出所有帧，包括嵌套的帧的请求。"
   syntax:
     content: public static void ExitAllFrames ();
     parameters: []
@@ -386,17 +386,17 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Gets the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> for the specified thread."
-  remarks: "If a dispatcher is not available for the specified thread, `null` will be returned.       FromThread does not create a <xref:System.Windows.Threading.Dispatcher> on a thread that does not have a <xref:System.Windows.Threading.Dispatcher>.   A new <xref:System.Windows.Threading.Dispatcher> is created on a thread that does not already have a <xref:System.Windows.Threading.Dispatcher> when attempting to get the <xref:System.Windows.Threading.Dispatcher> by using the <xref:System.Windows.Threading.Dispatcher.CurrentDispatcher%2A> property."
+  summary: "获取<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>指定的线程。"
+  remarks: "如果没有可用于指定线程的调度程序`null`将返回。       FromThread 不创建<xref:System.Windows.Threading.Dispatcher>在线程不具有一种<xref:System.Windows.Threading.Dispatcher>。</xref:System.Windows.Threading.Dispatcher>上</xref:System.Windows.Threading.Dispatcher>   一个新<xref:System.Windows.Threading.Dispatcher>尚不包含的线程上创建<xref:System.Windows.Threading.Dispatcher>时尝试获取<xref:System.Windows.Threading.Dispatcher>使用<xref:System.Windows.Threading.Dispatcher.CurrentDispatcher%2A>属性。</xref:System.Windows.Threading.Dispatcher.CurrentDispatcher%2A> </xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher>"
   syntax:
     content: public static System.Windows.Threading.Dispatcher FromThread (System.Threading.Thread thread);
     parameters:
     - id: thread
       type: System.Threading.Thread
-      description: "The thread to obtain the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> from."
+      description: "要获取的线程<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>从。"
     return:
       type: System.Windows.Threading.Dispatcher
-      description: "The dispatcher for <code>thread</code>."
+      description: "调度程序<code> thread </code>。"
   overload: System.Windows.Threading.Dispatcher.FromThread*
   exceptions: []
   platform:
@@ -413,13 +413,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Determines whether the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> has finished shutting down."
-  remarks: "When the <xref:System.Windows.Threading.Dispatcher> starts to shut down, the <xref:System.Windows.Threading.Dispatcher.ShutdownStarted> event is raised and <xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> is set to `true`.       The <xref:System.Windows.Threading.Dispatcher> does not shutdown completely until the event queue unwinds.       When the Dispatcher finishes shutting down, the <xref:System.Windows.Threading.Dispatcher.ShutdownFinished> event is raised and the HasShutdownFinished property is set to `true`.       Once the shutdown process begins, all pending work items in the queue are aborted."
+  summary: "确定是否<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>已完成的情况下关闭。"
+  remarks: "当<xref:System.Windows.Threading.Dispatcher>开始关闭的情况下，<xref:System.Windows.Threading.Dispatcher.ShutdownStarted>引发事件和<xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A>设置为`true`。</xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> </xref:System.Windows.Threading.Dispatcher.ShutdownStarted> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher>事件队列展开之前完全没有关闭。</xref:System.Windows.Threading.Dispatcher>       调度程序完成的情况下，关闭时<xref:System.Windows.Threading.Dispatcher.ShutdownFinished>引发事件和 HasShutdownFinished 属性设置为`true`。</xref:System.Windows.Threading.Dispatcher.ShutdownFinished>       关闭流程开始之后，所有挂起的工作将中止队列中的项。"
   syntax:
     content: public bool HasShutdownFinished { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the dispatcher has finished shutting down; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果调度程序已完成关闭;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Threading.Dispatcher.HasShutdownFinished*
   exceptions: []
   platform:
@@ -436,13 +436,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Determines whether the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is shutting down."
-  remarks: "When the <xref:System.Windows.Threading.Dispatcher> starts to shut down, the <xref:System.Windows.Threading.Dispatcher.ShutdownStarted> event is raised and HasShutdownStarted is set to `true`.       The <xref:System.Windows.Threading.Dispatcher> does not shut down completely until the event queue unwinds.       When the Dispatcher finishes shutting down, the <xref:System.Windows.Threading.Dispatcher.ShutdownFinished> event is raised and the <xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A> property is set to `true`.       Once the shutdown process begins, all pending work items in the queue are aborted."
+  summary: "确定是否<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>正在关闭。"
+  remarks: "当<xref:System.Windows.Threading.Dispatcher>开始关闭的情况下，<xref:System.Windows.Threading.Dispatcher.ShutdownStarted>引发事件和 HasShutdownStarted 设置为`true`。</xref:System.Windows.Threading.Dispatcher.ShutdownStarted> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher>不会关闭完全展开事件队列之前。</xref:System.Windows.Threading.Dispatcher>       调度程序完成的情况下，关闭时<xref:System.Windows.Threading.Dispatcher.ShutdownFinished>引发事件和<xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A>属性设置为`true`。</xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A> </xref:System.Windows.Threading.Dispatcher.ShutdownFinished>       关闭流程开始之后，所有挂起的工作将中止队列中的项。"
   syntax:
     content: public bool HasShutdownStarted { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> has started shutting down; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>已开始关闭; 否则为为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Windows.Threading.Dispatcher.HasShutdownStarted*
   exceptions: []
   platform:
@@ -459,13 +459,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Gets the collection of hooks that provide additional event information about the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
-  remarks: "The <xref:System.Windows.Threading.DispatcherHooks> class provides additional event information about the <xref:System.Windows.Threading.Dispatcher>, such as when the <xref:System.Windows.Threading.Dispatcher> is inactive or when an operation has competed."
+  summary: "获取的集合提供了一些其他事件信息的挂钩<xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>。"
+  remarks: "<xref:System.Windows.Threading.DispatcherHooks>类提供了有关的其他事件信息<xref:System.Windows.Threading.Dispatcher>，例如，当<xref:System.Windows.Threading.Dispatcher>处于非活动状态或完成操作时。</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.DispatcherHooks>"
   syntax:
     content: public System.Windows.Threading.DispatcherHooks Hooks { get; }
     return:
       type: System.Windows.Threading.DispatcherHooks
-      description: "The hooks associated with this <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
+      description: "与此关联的挂钩<xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>。"
   overload: System.Windows.Threading.Dispatcher.Hooks*
   exceptions: []
   platform:
@@ -482,13 +482,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified <xref:System.Action> synchronously on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
+  summary: "执行指定<xref:System.Action>线程上同步<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与相关联。</xref:System.Action>"
   syntax:
     content: public void Invoke (Action callback);
     parameters:
     - id: callback
       type: System.Action
-      description: "A delegate to invoke through the dispatcher."
+      description: "要通过调度程序调用的委托。"
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions: []
   platform:
@@ -505,16 +505,16 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified <xref:System.Action> synchronously at the specified priority on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
+  summary: "执行指定<xref:System.Action>同步在线程上指定的优先级<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与相关联。</xref:System.Action>"
   syntax:
     content: public void Invoke (Action callback, System.Windows.Threading.DispatcherPriority priority);
     parameters:
     - id: callback
       type: System.Action
-      description: "A delegate to invoke through the dispatcher."
+      description: "要通过调度程序调用的委托。"
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority that determines in what order the specified callback is invoked relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
+      description: "确定以何种顺序指定的回调调用相对于其他挂起的操作中的优先级<xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>。"
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions: []
   platform:
@@ -531,20 +531,20 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate with the specified arguments synchronously on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object. For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread. In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread. This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>. <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous. The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is a synchronous operation; therefore, control will not return to the calling object until after the callback returns."
+  summary: "在线程上异步执行指定的参数与指定的委托<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与相关联。"
+  remarks: "在[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]，仅在创建线程<xref:System.Windows.Threading.DispatcherObject>才能访问该对象。</xref:System.Windows.Threading.DispatcherObject> 例如，从主 UI 线程运行的后台线程不能更新的内容<xref:System.Windows.Controls.Button>UI 线程上创建。</xref:System.Windows.Controls.Button> 为了使后台线程访问的内容属性<xref:System.Windows.Controls.Button>，后台线程必须将工作委托给<xref:System.Windows.Threading.Dispatcher>与 UI 线程关联。</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button> 这是通过使用其中一种<xref:System.Windows.Threading.Dispatcher.Invoke%2A>或<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>实现 <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步和<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A> 该操作将添加到事件队列。<xref:System.Windows.Threading.Dispatcher>在指定<xref:System.Windows.Threading.DispatcherPriority>。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步操作;因此，控件将不返回到之前调用的对象后在回调返回。</xref:System.Windows.Threading.Dispatcher.Invoke%2A>"
   syntax:
     content: public object Invoke (Delegate method, object[] args);
     parameters:
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes parameters specified in `args`, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "采用参数中指定的方法的委托`args`，这将被推送到<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>事件队列。"
     - id: args
       type: System.Object[]
-      description: "An array of objects to pass as arguments to the given method. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "要将作为自变量传递给给定方法的对象数组。 Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
     return:
       type: System.Object
-      description: "The return value from the delegate being invoked or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "正在调用的委托的返回值或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果委托没有返回值。"
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions: []
   platform:
@@ -561,8 +561,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate synchronously at the specified priority on the thread on which the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object.  For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread.  In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread.  This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.  <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous.  The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is a synchronous operation; therefore, control will not return to the calling object until after the callback returns."
+  summary: "在其上的线程上执行指定的委托以同步方式按指定的优先级<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与相关联。"
+  remarks: "在[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]，仅在创建线程<xref:System.Windows.Threading.DispatcherObject>才能访问该对象。</xref:System.Windows.Threading.DispatcherObject>  例如，从主 UI 线程运行的后台线程不能更新的内容<xref:System.Windows.Controls.Button>UI 线程上创建。</xref:System.Windows.Controls.Button>  为了使后台线程访问的内容属性<xref:System.Windows.Controls.Button>，后台线程必须将工作委托给<xref:System.Windows.Threading.Dispatcher>与 UI 线程关联。</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button>  这是通过使用其中一种<xref:System.Windows.Threading.Dispatcher.Invoke%2A>或<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>实现  <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步和<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>  该操作将添加到事件队列。<xref:System.Windows.Threading.Dispatcher>在指定<xref:System.Windows.Threading.DispatcherPriority>。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步操作;因此，控件将不返回到之前调用的对象后在回调返回。</xref:System.Windows.Threading.Dispatcher.Invoke%2A>"
   example:
   - "The following example places a delegate onto a <xref:System.Windows.Threading.Dispatcher> at <xref:System.Windows.Threading.DispatcherPriority> using Invoke.  \n  \n [!code-vb[invalidaterequerywithsystemtimer#SystemTimerDispatcherInvoke](~/add/codesnippet/visualbasic/invalidaterequerywithsystemtimer/window1.xaml.vb#systemtimerdispatcherinvoke)]\n [!code-cs[invalidaterequerywithsystemtimer#SystemTimerDispatcherInvoke](~/add/codesnippet/csharp/InvalidateRequeryWithSystemTimer/Window1.xaml.cs#systemtimerdispatcherinvoke)]"
   syntax:
@@ -570,24 +570,24 @@ items:
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "优先级，相对于其他挂起的操作以<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>调用事件队列，指定方法。"
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes no arguments, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "方法的委托不采用任何参数，其将被推送到<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>事件队列。"
     return:
       type: System.Object
-      description: "The return value from the delegate being invoked or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "正在调用的委托的返回值或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果委托没有返回值。"
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>priority</code> is equal to <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>."
+    description: "<code>priority</code>等同于<xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;> </xref>。"
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>priority</code> is not a valid priority."
+    description: "<code>priority</code>不是有效的优先级。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>method</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>method</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.Invoke(System.Action,System.Windows.Threading.DispatcherPriority,System.Threading.CancellationToken)
@@ -602,19 +602,19 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified <xref:System.Action> synchronously at the specified priority on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
+  summary: "执行指定<xref:System.Action>同步在线程上指定的优先级<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与相关联。</xref:System.Action>"
   syntax:
     content: public void Invoke (Action callback, System.Windows.Threading.DispatcherPriority priority, System.Threading.CancellationToken cancellationToken);
     parameters:
     - id: callback
       type: System.Action
-      description: "A delegate to invoke through the dispatcher."
+      description: "要通过调度程序调用的委托。"
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority that determines in what order the specified callback is invoked relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
+      description: "确定以何种顺序指定的回调调用相对于其他挂起的操作中的优先级<xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>。"
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "An object that indicates whether to cancel the action."
+      description: "一个对象，该值指示是否要取消的操作。"
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions: []
   platform:
@@ -631,23 +631,23 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate within the designated time span at the specified priority with the specified arguments synchronously on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object. For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread. In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread. This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>. <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous. The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is a synchronous operation; therefore, control will not return to the calling object until after the callback returns."
+  summary: "在线程上异步执行指定的参数与指定的优先级在指定的时间范围内指定的委托<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与相关联。"
+  remarks: "在[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]，仅在创建线程<xref:System.Windows.Threading.DispatcherObject>才能访问该对象。</xref:System.Windows.Threading.DispatcherObject> 例如，从主 UI 线程运行的后台线程不能更新的内容<xref:System.Windows.Controls.Button>UI 线程上创建。</xref:System.Windows.Controls.Button> 为了使后台线程访问的内容属性<xref:System.Windows.Controls.Button>，后台线程必须将工作委托给<xref:System.Windows.Threading.Dispatcher>与 UI 线程关联。</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button> 这是通过使用其中一种<xref:System.Windows.Threading.Dispatcher.Invoke%2A>或<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>实现 <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步和<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A> 该操作将添加到事件队列。<xref:System.Windows.Threading.Dispatcher>在指定<xref:System.Windows.Threading.DispatcherPriority>。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步操作;因此，控件将不返回到之前调用的对象后在回调返回。</xref:System.Windows.Threading.Dispatcher.Invoke%2A>"
   syntax:
     content: public object Invoke (Delegate method, TimeSpan timeout, object[] args);
     parameters:
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes parameters specified in `args`, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "采用参数中指定的方法的委托`args`，这将被推送到<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>事件队列。"
     - id: timeout
       type: System.TimeSpan
-      description: "The maximum amount of time to wait for the operation to complete."
+      description: "最长时间等待操作完成。"
     - id: args
       type: System.Object[]
-      description: "An array of objects to pass as arguments to the given method. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "要将作为自变量传递给给定方法的对象数组。 Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
     return:
       type: System.Object
-      description: "The return value from the delegate being invoked or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "正在调用的委托的返回值或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果委托没有返回值。"
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions: []
   platform:
@@ -664,23 +664,23 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate at the specified priority with the specified arguments synchronously on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object. For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread. In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread. This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>. <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous. The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is a synchronous operation; therefore, control will not return to the calling object until after the callback returns."
+  summary: "在线程上异步执行指定的参数与指定的优先级在指定的委托<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与相关联。"
+  remarks: "在[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]，仅在创建线程<xref:System.Windows.Threading.DispatcherObject>才能访问该对象。</xref:System.Windows.Threading.DispatcherObject> 例如，从主 UI 线程运行的后台线程不能更新的内容<xref:System.Windows.Controls.Button>UI 线程上创建。</xref:System.Windows.Controls.Button> 为了使后台线程访问的内容属性<xref:System.Windows.Controls.Button>，后台线程必须将工作委托给<xref:System.Windows.Threading.Dispatcher>与 UI 线程关联。</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button> 这是通过使用其中一种<xref:System.Windows.Threading.Dispatcher.Invoke%2A>或<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>实现 <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步和<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A> 该操作将添加到事件队列。<xref:System.Windows.Threading.Dispatcher>在指定<xref:System.Windows.Threading.DispatcherPriority>。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步操作;因此，控件将不返回到之前调用的对象后在回调返回。</xref:System.Windows.Threading.Dispatcher.Invoke%2A>"
   syntax:
     content: public object Invoke (Delegate method, System.Windows.Threading.DispatcherPriority priority, object[] args);
     parameters:
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes parameters specified in `args`, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "采用参数中指定的方法的委托`args`，这将被推送到<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>事件队列。"
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "优先级，相对于其他挂起的操作以<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>调用事件队列，指定方法。"
     - id: args
       type: System.Object[]
-      description: "An array of objects to pass as arguments to the given method. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "要将作为自变量传递给给定方法的对象数组。 Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
     return:
       type: System.Object
-      description: "The return value from the delegate being invoked or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "正在调用的委托的返回值或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果委托没有返回值。"
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions: []
   platform:
@@ -697,34 +697,34 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate at the specified priority with the specified argument synchronously on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "`Arg` can be `null` if an argument is not needed       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object.  For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread.  In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread.  This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.  <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous.  The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is a synchronous operation; therefore, control will not return to the calling object until after the callback returns."
+  summary: "在线程上异步执行指定的委托，以使用指定的参数指定的优先级<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与相关联。"
+  remarks: "`Arg`可以是`null`如果参数不需要在[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]，仅在创建线程<xref:System.Windows.Threading.DispatcherObject>才能访问该对象。</xref:System.Windows.Threading.DispatcherObject>  例如，从主 UI 线程运行的后台线程不能更新的内容<xref:System.Windows.Controls.Button>UI 线程上创建。</xref:System.Windows.Controls.Button>  为了使后台线程访问的内容属性<xref:System.Windows.Controls.Button>，后台线程必须将工作委托给<xref:System.Windows.Threading.Dispatcher>与 UI 线程关联。</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button>  这是通过使用其中一种<xref:System.Windows.Threading.Dispatcher.Invoke%2A>或<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>实现  <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步和<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>  该操作将添加到事件队列。<xref:System.Windows.Threading.Dispatcher>在指定<xref:System.Windows.Threading.DispatcherPriority>。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步操作;因此，控件将不返回到之前调用的对象后在回调返回。</xref:System.Windows.Threading.Dispatcher.Invoke%2A>"
   syntax:
     content: public object Invoke (System.Windows.Threading.DispatcherPriority priority, Delegate method, object arg);
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "优先级，相对于其他挂起的操作以<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>调用事件队列，指定方法。"
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes one argument, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "采用一个参数，将被推送到方法的委托<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>事件队列。"
     - id: arg
       type: System.Object
-      description: "An object to pass as an argument to the given method."
+      description: "要将其作为自变量传递给给定方法的对象。"
     return:
       type: System.Object
-      description: "The return value from the delegate being invoked or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "正在调用的委托的返回值或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果委托没有返回值。"
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>priority</code> is equal to <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>."
+    description: "<code>priority</code>等同于<xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;> </xref>。"
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>priority</code> is not a valid priority."
+    description: "<code>priority</code>不是有效的优先级。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>method</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>method</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority,System.TimeSpan,System.Delegate)
@@ -739,23 +739,23 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate synchronously at the specified priority and with the specified time-out value on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> was created."
-  remarks: "In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object.  For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread.  In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread.  This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.  <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous.  The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is a synchronous operation; therefore, control will not return to the calling object until after the callback returns."
+  summary: "在线程上执行指定的委托以同步方式在指定的优先级并且指定的超时值<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>已创建。"
+  remarks: "在[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]，仅在创建线程<xref:System.Windows.Threading.DispatcherObject>才能访问该对象。</xref:System.Windows.Threading.DispatcherObject>  例如，从主 UI 线程运行的后台线程不能更新的内容<xref:System.Windows.Controls.Button>UI 线程上创建。</xref:System.Windows.Controls.Button>  为了使后台线程访问的内容属性<xref:System.Windows.Controls.Button>，后台线程必须将工作委托给<xref:System.Windows.Threading.Dispatcher>与 UI 线程关联。</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button>  这是通过使用其中一种<xref:System.Windows.Threading.Dispatcher.Invoke%2A>或<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>实现  <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步和<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>  该操作将添加到事件队列。<xref:System.Windows.Threading.Dispatcher>在指定<xref:System.Windows.Threading.DispatcherPriority>。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步操作;因此，控件将不返回到之前调用的对象后在回调返回。</xref:System.Windows.Threading.Dispatcher.Invoke%2A>"
   syntax:
     content: public object Invoke (System.Windows.Threading.DispatcherPriority priority, TimeSpan timeout, Delegate method);
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "优先级，相对于其他挂起的操作以<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>调用事件队列，指定方法。"
     - id: timeout
       type: System.TimeSpan
-      description: "The maximum time to wait for the operation to finish."
+      description: "等待要完成的操作的最大时间。"
     - id: method
       type: System.Delegate
-      description: "The delegate to a method that takes no arguments, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "对方法的委托不采用任何参数，其将被推送到<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>事件队列。"
     return:
       type: System.Object
-      description: "The return value from the delegate being invoked or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "正在调用的委托的返回值或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果委托没有返回值。"
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions: []
   platform:
@@ -772,22 +772,22 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified <xref:System.Action> synchronously at the specified priority on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
+  summary: "执行指定<xref:System.Action>同步在线程上指定的优先级<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与相关联。</xref:System.Action>"
   syntax:
     content: public void Invoke (Action callback, System.Windows.Threading.DispatcherPriority priority, System.Threading.CancellationToken cancellationToken, TimeSpan timeout);
     parameters:
     - id: callback
       type: System.Action
-      description: "A delegate to invoke through the dispatcher."
+      description: "要通过调度程序调用的委托。"
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority that determines in what order the specified callback is invoked relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
+      description: "确定以何种顺序指定的回调调用相对于其他挂起的操作中的优先级<xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>。"
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "An object that indicates whether to cancel the action."
+      description: "一个对象，该值指示是否要取消的操作。"
     - id: timeout
       type: System.TimeSpan
-      description: "The minimum amount of time to wait for the operation to start."
+      description: "要启动的操作等待的时间最小数量。"
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions: []
   platform:
@@ -804,26 +804,26 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate within the designated time span at the specified priority with the specified arguments synchronously on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object. For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread. In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread. This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>. <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous. The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is a synchronous operation; therefore, control will not return to the calling object until after the callback returns."
+  summary: "在线程上异步执行指定的参数与指定的优先级在指定的时间范围内指定的委托<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与相关联。"
+  remarks: "在[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]，仅在创建线程<xref:System.Windows.Threading.DispatcherObject>才能访问该对象。</xref:System.Windows.Threading.DispatcherObject> 例如，从主 UI 线程运行的后台线程不能更新的内容<xref:System.Windows.Controls.Button>UI 线程上创建。</xref:System.Windows.Controls.Button> 为了使后台线程访问的内容属性<xref:System.Windows.Controls.Button>，后台线程必须将工作委托给<xref:System.Windows.Threading.Dispatcher>与 UI 线程关联。</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button> 这是通过使用其中一种<xref:System.Windows.Threading.Dispatcher.Invoke%2A>或<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>实现 <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步和<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A> 该操作将添加到事件队列。<xref:System.Windows.Threading.Dispatcher>在指定<xref:System.Windows.Threading.DispatcherPriority>。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步操作;因此，控件将不返回到之前调用的对象后在回调返回。</xref:System.Windows.Threading.Dispatcher.Invoke%2A>"
   syntax:
     content: public object Invoke (Delegate method, TimeSpan timeout, System.Windows.Threading.DispatcherPriority priority, object[] args);
     parameters:
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes parameters specified in `args`, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "采用参数中指定的方法的委托`args`，这将被推送到<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>事件队列。"
     - id: timeout
       type: System.TimeSpan
-      description: "The maximum amount of time to wait for the operation to complete."
+      description: "最长时间等待操作完成。"
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "优先级，相对于其他挂起的操作以<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>调用事件队列，指定方法。"
     - id: args
       type: System.Object[]
-      description: "An array of objects to pass as arguments to the given method. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "要将作为自变量传递给给定方法的对象数组。 Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
     return:
       type: System.Object
-      description: "The return value from the delegate being invoked or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "正在调用的委托的返回值或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果委托没有返回值。"
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions: []
   platform:
@@ -840,37 +840,37 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate at the specified priority with the specified arguments synchronously on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "`Arg` can be `null` if an argument is not needed       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object.  For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread.  In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread.  This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.  <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous.  The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is a synchronous operation; therefore, control will not return to the calling object until after the callback returns."
+  summary: "在线程上异步执行指定的参数与指定的优先级在指定的委托<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与相关联。"
+  remarks: "`Arg`可以是`null`如果参数不需要在[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]，仅在创建线程<xref:System.Windows.Threading.DispatcherObject>才能访问该对象。</xref:System.Windows.Threading.DispatcherObject>  例如，从主 UI 线程运行的后台线程不能更新的内容<xref:System.Windows.Controls.Button>UI 线程上创建。</xref:System.Windows.Controls.Button>  为了使后台线程访问的内容属性<xref:System.Windows.Controls.Button>，后台线程必须将工作委托给<xref:System.Windows.Threading.Dispatcher>与 UI 线程关联。</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button>  这是通过使用其中一种<xref:System.Windows.Threading.Dispatcher.Invoke%2A>或<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>实现  <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步和<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>  该操作将添加到事件队列。<xref:System.Windows.Threading.Dispatcher>在指定<xref:System.Windows.Threading.DispatcherPriority>。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步操作;因此，控件将不返回到之前调用的对象后在回调返回。</xref:System.Windows.Threading.Dispatcher.Invoke%2A>"
   syntax:
     content: public object Invoke (System.Windows.Threading.DispatcherPriority priority, Delegate method, object arg, object[] args);
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "优先级，相对于其他挂起的操作以<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>调用事件队列，指定方法。"
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes multiple arguments, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "方法的委托采用多个自变量，这将被推送到<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>事件队列。"
     - id: arg
       type: System.Object
-      description: "An object to pass as an argument to the given method."
+      description: "要将其作为自变量传递给给定方法的对象。"
     - id: args
       type: System.Object[]
-      description: "An array of objects to pass as arguments to the given method."
+      description: "要将作为自变量传递给给定方法的对象数组。"
     return:
       type: System.Object
-      description: "The return value from the delegate being invoked or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "正在调用的委托的返回值或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果委托没有返回值。"
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>priority</code> is equal to <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>."
+    description: "<code>priority</code>等同于<xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;> </xref>。"
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>priority</code> is not a valid priority."
+    description: "<code>priority</code>不是有效的优先级。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>method</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>method</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority,System.TimeSpan,System.Delegate,System.Object)
@@ -885,37 +885,37 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate at the specified priority with the specified argument synchronously on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "`Arg` can be `null` if an argument is not needed       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object.  For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread.  In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread.  This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.  <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous.  The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is a synchronous operation; therefore, control will not return to the calling object until after the callback returns."
+  summary: "在线程上异步执行指定的委托，以使用指定的参数指定的优先级<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与相关联。"
+  remarks: "`Arg`可以是`null`如果参数不需要在[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]，仅在创建线程<xref:System.Windows.Threading.DispatcherObject>才能访问该对象。</xref:System.Windows.Threading.DispatcherObject>  例如，从主 UI 线程运行的后台线程不能更新的内容<xref:System.Windows.Controls.Button>UI 线程上创建。</xref:System.Windows.Controls.Button>  为了使后台线程访问的内容属性<xref:System.Windows.Controls.Button>，后台线程必须将工作委托给<xref:System.Windows.Threading.Dispatcher>与 UI 线程关联。</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button>  这是通过使用其中一种<xref:System.Windows.Threading.Dispatcher.Invoke%2A>或<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>实现  <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步和<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>  该操作将添加到事件队列。<xref:System.Windows.Threading.Dispatcher>在指定<xref:System.Windows.Threading.DispatcherPriority>。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步操作;因此，控件将不返回到之前调用的对象后在回调返回。</xref:System.Windows.Threading.Dispatcher.Invoke%2A>"
   syntax:
     content: public object Invoke (System.Windows.Threading.DispatcherPriority priority, TimeSpan timeout, Delegate method, object arg);
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "优先级，相对于其他挂起的操作以<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>调用事件队列，指定方法。"
     - id: timeout
       type: System.TimeSpan
-      description: "The maximum time to wait for the operation to finish."
+      description: "等待要完成的操作的最大时间。"
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes multiple arguments, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "方法的委托采用多个自变量，这将被推送到<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>事件队列。"
     - id: arg
       type: System.Object
-      description: "An object to pass as an argument to the given method. This can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if no arguments are needed."
+      description: "要将其作为自变量传递给给定方法的对象。 这可以是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果不需要参数。"
     return:
       type: System.Object
-      description: "The return value from the delegate being invoked or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "正在调用的委托的返回值或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果委托没有返回值。"
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>priority</code> is equal to <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>."
+    description: "<code>priority</code>等同于<xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;> </xref>。"
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>priority</code> is not a valid priority."
+    description: "<code>priority</code>不是有效的优先级。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>method</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>method</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority,System.TimeSpan,System.Delegate,System.Object,System.Object[])
@@ -930,40 +930,40 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate at the specified priority with the specified arguments synchronously on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "`Arg` can be `null` if an argument is not needed.       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object.  For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread.  In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread.  This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.  <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous.  The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is a synchronous operation; therefore, control will not return to the calling object until after the callback returns."
+  summary: "在线程上异步执行指定的参数与指定的优先级在指定的委托<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与相关联。"
+  remarks: "`Arg`可以是`null`如果不需要自变量。       在[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]，仅在创建线程<xref:System.Windows.Threading.DispatcherObject>才能访问该对象。</xref:System.Windows.Threading.DispatcherObject>  例如，从主 UI 线程运行的后台线程不能更新的内容<xref:System.Windows.Controls.Button>UI 线程上创建。</xref:System.Windows.Controls.Button>  为了使后台线程访问的内容属性<xref:System.Windows.Controls.Button>，后台线程必须将工作委托给<xref:System.Windows.Threading.Dispatcher>与 UI 线程关联。</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button>  这是通过使用其中一种<xref:System.Windows.Threading.Dispatcher.Invoke%2A>或<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>实现  <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步和<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>是异步的。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>  该操作将添加到事件队列。<xref:System.Windows.Threading.Dispatcher>在指定<xref:System.Windows.Threading.DispatcherPriority>。</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher.Invoke%2A>是同步操作;因此，控件将不返回到之前调用的对象后在回调返回。</xref:System.Windows.Threading.Dispatcher.Invoke%2A>"
   syntax:
     content: public object Invoke (System.Windows.Threading.DispatcherPriority priority, TimeSpan timeout, Delegate method, object arg, object[] args);
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "优先级，相对于其他挂起的操作以<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>调用事件队列，指定方法。"
     - id: timeout
       type: System.TimeSpan
-      description: "The maximum time to wait for the operation to finish."
+      description: "等待要完成的操作的最大时间。"
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes multiple arguments, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "方法的委托采用多个自变量，这将被推送到<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>事件队列。"
     - id: arg
       type: System.Object
-      description: "An object to pass as an argument to the specified method."
+      description: "要将作为自变量传递给指定的方法的对象。"
     - id: args
       type: System.Object[]
-      description: "An array of objects to pass as arguments to the specified method."
+      description: "要作为参数传递的指定方法的对象数组。"
     return:
       type: System.Object
-      description: "The return value from the delegate being invoked or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "正在调用的委托的返回值或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果委托没有返回值。"
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>priority</code> is equal to <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>."
+    description: "<code>priority</code>等同于<xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;> </xref>。"
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>priority</code> is not a valid <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>."
+    description: "<code>priority</code>不是有效<xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;> </xref>。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>method</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>method</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.Invoke``1(System.Func{``0})
@@ -983,10 +983,10 @@ items:
     parameters:
     - id: callback
       type: System.Func{TResult}
-      description: "To be added."
+      description: "要添加。"
     return:
       type: TResult
-      description: "To be added."
+      description: "要添加。"
   overload: System.Windows.Threading.Dispatcher.Invoke<TResult>*
   exceptions: []
   platform:
@@ -1008,13 +1008,13 @@ items:
     parameters:
     - id: callback
       type: System.Func{TResult}
-      description: "To be added."
+      description: "要添加。"
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "To be added."
+      description: "要添加。"
     return:
       type: TResult
-      description: "To be added."
+      description: "要添加。"
   overload: System.Windows.Threading.Dispatcher.Invoke<TResult>*
   exceptions: []
   platform:
@@ -1036,16 +1036,16 @@ items:
     parameters:
     - id: callback
       type: System.Func{TResult}
-      description: "To be added."
+      description: "要添加。"
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "To be added."
+      description: "要添加。"
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "To be added."
+      description: "要添加。"
     return:
       type: TResult
-      description: "To be added."
+      description: "要添加。"
   overload: System.Windows.Threading.Dispatcher.Invoke<TResult>*
   exceptions: []
   platform:
@@ -1067,19 +1067,19 @@ items:
     parameters:
     - id: callback
       type: System.Func{TResult}
-      description: "To be added."
+      description: "要添加。"
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "To be added."
+      description: "要添加。"
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "To be added."
+      description: "要添加。"
     - id: timeout
       type: System.TimeSpan
-      description: "To be added."
+      description: "要添加。"
     return:
       type: TResult
-      description: "To be added."
+      description: "要添加。"
   overload: System.Windows.Threading.Dispatcher.Invoke<TResult>*
   exceptions: []
   platform:
@@ -1096,16 +1096,16 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified <xref:System.Action> asynchronously on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
+  summary: "执行指定<xref:System.Action>线程上异步<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与相关联。</xref:System.Action>"
   syntax:
     content: public System.Windows.Threading.DispatcherOperation InvokeAsync (Action callback);
     parameters:
     - id: callback
       type: System.Action
-      description: "A delegate to invoke through the dispatcher."
+      description: "要通过调度程序调用的委托。"
     return:
       type: System.Windows.Threading.DispatcherOperation
-      description: "An object, which is returned immediately after InvokeAsync is called, that can be used to interact with the delegate as it is pending execution in the event queue."
+      description: "一个对象，调用 InvokeAsync 后立即返回，可用来与该委托，因为它是挂起的执行在事件队列。"
   overload: System.Windows.Threading.Dispatcher.InvokeAsync*
   exceptions: []
   platform:
@@ -1122,19 +1122,19 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified <xref:System.Action> asynchronously at the specified priority on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
+  summary: "执行指定<xref:System.Action>以异步方式在线程上指定的优先级<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与相关联。</xref:System.Action>"
   syntax:
     content: public System.Windows.Threading.DispatcherOperation InvokeAsync (Action callback, System.Windows.Threading.DispatcherPriority priority);
     parameters:
     - id: callback
       type: System.Action
-      description: "A delegate to invoke through the dispatcher."
+      description: "要通过调度程序调用的委托。"
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority that determines in what order the specified callback is invoked relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
+      description: "确定以何种顺序指定的回调调用相对于其他挂起的操作中的优先级<xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>。"
     return:
       type: System.Windows.Threading.DispatcherOperation
-      description: "An object, which is returned immediately after InvokeAsync is called, that can be used to interact with the delegate as it is pending execution in the event queue."
+      description: "一个对象，调用 InvokeAsync 后立即返回，可用来与该委托，因为它是挂起的执行在事件队列。"
   overload: System.Windows.Threading.Dispatcher.InvokeAsync*
   exceptions: []
   platform:
@@ -1151,22 +1151,22 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified <xref:System.Action> asynchronously at the specified priority on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
+  summary: "执行指定<xref:System.Action>以异步方式在线程上指定的优先级<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与相关联。</xref:System.Action>"
   syntax:
     content: public System.Windows.Threading.DispatcherOperation InvokeAsync (Action callback, System.Windows.Threading.DispatcherPriority priority, System.Threading.CancellationToken cancellationToken);
     parameters:
     - id: callback
       type: System.Action
-      description: "A delegate to invoke through the dispatcher."
+      description: "要通过调度程序调用的委托。"
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority that determines in what order the specified callback is invoked relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
+      description: "确定以何种顺序指定的回调调用相对于其他挂起的操作中的优先级<xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>。"
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "An object that indicates whether to cancel the action."
+      description: "一个对象，该值指示是否要取消的操作。"
     return:
       type: System.Windows.Threading.DispatcherOperation
-      description: "An object, which is returned immediately after InvokeAsync is called, that can be used to interact with the delegate as it is pending execution in the event queue."
+      description: "一个对象，调用 InvokeAsync 后立即返回，可用来与该委托，因为它是挂起的执行在事件队列。"
   overload: System.Windows.Threading.Dispatcher.InvokeAsync*
   exceptions: []
   platform:
@@ -1188,10 +1188,10 @@ items:
     parameters:
     - id: callback
       type: System.Func{TResult}
-      description: "To be added."
+      description: "要添加。"
     return:
       type: System.Windows.Threading.DispatcherOperation`1
-      description: "To be added."
+      description: "要添加。"
   overload: System.Windows.Threading.Dispatcher.InvokeAsync<TResult>*
   exceptions: []
   platform:
@@ -1213,13 +1213,13 @@ items:
     parameters:
     - id: callback
       type: System.Func{TResult}
-      description: "To be added."
+      description: "要添加。"
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "To be added."
+      description: "要添加。"
     return:
       type: System.Windows.Threading.DispatcherOperation`1
-      description: "To be added."
+      description: "要添加。"
   overload: System.Windows.Threading.Dispatcher.InvokeAsync<TResult>*
   exceptions: []
   platform:
@@ -1241,16 +1241,16 @@ items:
     parameters:
     - id: callback
       type: System.Func{TResult}
-      description: "To be added."
+      description: "要添加。"
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "To be added."
+      description: "要添加。"
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "To be added."
+      description: "要添加。"
     return:
       type: System.Windows.Threading.DispatcherOperation`1
-      description: "To be added."
+      description: "要添加。"
   overload: System.Windows.Threading.Dispatcher.InvokeAsync<TResult>*
   exceptions: []
   platform:
@@ -1267,8 +1267,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Initiates the shutdown process of the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> synchronously."
-  remarks: "InvokeShutdown demands unrestricted UI Permissions.       When the <xref:System.Windows.Threading.Dispatcher> starts to shut down, the <xref:System.Windows.Threading.Dispatcher.ShutdownStarted> event is raised and <xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> is set to `true`.       The <xref:System.Windows.Threading.Dispatcher> does not shut down completely until the event queue unwinds.       When the Dispatcher finishes shutting down, the <xref:System.Windows.Threading.Dispatcher.ShutdownFinished> event is raised and the <xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A> property is set to `true`.       Once the shutdown process begins, all pending work items in the queue are aborted."
+  summary: "启动的关闭过程<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>同步。"
+  remarks: "InvokeShutdown 要求不受限制的 UI 权限。       当<xref:System.Windows.Threading.Dispatcher>开始关闭的情况下，<xref:System.Windows.Threading.Dispatcher.ShutdownStarted>引发事件和<xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A>设置为`true`。</xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> </xref:System.Windows.Threading.Dispatcher.ShutdownStarted> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher>不会关闭完全展开事件队列之前。</xref:System.Windows.Threading.Dispatcher>       调度程序完成的情况下，关闭时<xref:System.Windows.Threading.Dispatcher.ShutdownFinished>引发事件和<xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A>属性设置为`true`。</xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A> </xref:System.Windows.Threading.Dispatcher.ShutdownFinished>       关闭流程开始之后，所有挂起的工作将中止队列中的项。"
   syntax:
     content: public void InvokeShutdown ();
     parameters: []
@@ -1288,8 +1288,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Enters an execute loop."
-  remarks: "A <xref:System.Windows.Threading.DispatcherFrame> represents a loop that processes pending work items.       The Dispatcher processes the work item queue in a loop.  The loop is referred to as a frame.  The initial loop is typically initiated by the application by calling <xref:System.Windows.Threading.Dispatcher.Run%2A>.       PushFrame enters a loop represented by the parameter `frame`.  At each iteration of the loop, the <xref:System.Windows.Threading.Dispatcher> will check the <xref:System.Windows.Threading.DispatcherFrame.Continue%2A> property on the <xref:System.Windows.Threading.DispatcherFrame> class to determine whether the loop should continue or if it should stop.       <xref:System.Windows.Threading.DispatcherFrame> allows for the <xref:System.Windows.Threading.DispatcherFrame.Continue%2A> property to be set explicitly and it respects the <xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> property on the <xref:System.Windows.Threading.Dispatcher>.  This means when the <xref:System.Windows.Threading.Dispatcher> starts to shut down, frames that use the default <xref:System.Windows.Threading.DispatcherFrame> implementation will exit, which enables all nested frames to exit."
+  summary: "进入执行循环。"
+  remarks: "A<xref:System.Windows.Threading.DispatcherFrame>表示处理挂起的工作项的循环。</xref:System.Windows.Threading.DispatcherFrame>       调度程序处理在循环中的工作项队列。  循环称为框架。  初始循环通常通过调用<xref:System.Windows.Threading.Dispatcher.Run%2A>.</xref:System.Windows.Threading.Dispatcher.Run%2A>来启动应用程序       PushFrame 进入该参数表示循环`frame`。  每次迭代循环，<xref:System.Windows.Threading.Dispatcher>将检查<xref:System.Windows.Threading.DispatcherFrame.Continue%2A>属性<xref:System.Windows.Threading.DispatcherFrame>类以确定是否应继续循环或如果它应停止。</xref:System.Windows.Threading.DispatcherFrame> </xref:System.Windows.Threading.DispatcherFrame.Continue%2A> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.DispatcherFrame>允许的<xref:System.Windows.Threading.DispatcherFrame.Continue%2A>属性来显式设置，并且它遵循<xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A><xref:System.Windows.Threading.Dispatcher>.</xref:System.Windows.Threading.Dispatcher>属性</xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A></xref:System.Windows.Threading.DispatcherFrame.Continue%2A></xref:System.Windows.Threading.DispatcherFrame>  这意味着当<xref:System.Windows.Threading.Dispatcher>开始关闭的情况下，使用默认的帧<xref:System.Windows.Threading.DispatcherFrame>实现将退出，从而使所有嵌套的帧退出。</xref:System.Windows.Threading.DispatcherFrame> </xref:System.Windows.Threading.Dispatcher>"
   example:
   - "The following example shows how to use a <xref:System.Windows.Threading.DispatcherFrame> to achieve similar results as the [!INCLUDE[TLA#tla_winforms](~/add/includes/ajax-current-ext-md.md)] <xref:System.Windows.Forms.Application.DoEvents%2A> method.  \n  \n [!code-vb[dispatchersnippets#DispatcherDispatcherFrameDoEvents](~/add/codesnippet/visualbasic/dispatchersnippets/window1.xaml.vb#dispatcherdispatcherframedoevents)]\n [!code-cs[dispatchersnippets#DispatcherDispatcherFrameDoEvents](~/add/codesnippet/csharp/DispatcherSnippets/Window1.xaml.cs#dispatcherdispatcherframedoevents)]"
   syntax:
@@ -1297,15 +1297,15 @@ items:
     parameters:
     - id: frame
       type: System.Windows.Threading.DispatcherFrame
-      description: "The frame for the dispatcher to process."
+      description: "为处理调度程序帧。"
   overload: System.Windows.Threading.Dispatcher.PushFrame*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>frame</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>frame</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "<xref:System.Windows.Threading.Dispatcher.HasShutdownFinished*> is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>       -or-       <code>frame</code> is running on a different <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>.       -or-       Dispatcher processing has been disabled."
+    description: "<xref:System.Windows.Threading.Dispatcher.HasShutdownFinished*>is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>       -or-       <code>frame</code> is running on a different <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>.</xref:System.Windows.Threading.Dispatcher.HasShutdownFinished*>       -或者-调度程序处理已被禁用。"
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.Run
@@ -1320,8 +1320,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Pushes the main execution frame on the event queue of the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
-  remarks: "The <xref:System.Windows.Threading.Dispatcher> processes the event queue in a loop.  The loop is referred to as a frame.  The initial loop is typically initiated by the application by calling Run.       The main execution frame will continue until the <xref:System.Windows.Threading.Dispatcher> is shutdown."
+  summary: "将主执行帧推送的事件队列<xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>。"
+  remarks: "<xref:System.Windows.Threading.Dispatcher>处理在循环中的事件队列。</xref:System.Windows.Threading.Dispatcher>  循环称为框架。  初始循环通常通过调用运行启动应用程序。       主执行帧将继续进行，直到<xref:System.Windows.Threading.Dispatcher>关闭。</xref:System.Windows.Threading.Dispatcher>"
   syntax:
     content: public static void Run ();
     parameters: []
@@ -1341,13 +1341,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Occurs when the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> finishes shutting down."
-  remarks: "When the shutdown process of a <xref:System.Windows.Threading.Dispatcher> is started, the <xref:System.Windows.Threading.Dispatcher.ShutdownStarted> event is raised and <xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> is set to `true`.       The <xref:System.Windows.Threading.Dispatcher> does not shutdown completely until the event queue unwinds.       When the Dispatcher finishes shutting down, the ShutdownFinished event is raised and the <xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A> property is set to `true`.       Once the shutdown process begins, all pending work items in the queue are aborted."
+  summary: "发生时<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>完成的情况下关闭。"
+  remarks: "当关闭进程的<xref:System.Windows.Threading.Dispatcher>启动时，<xref:System.Windows.Threading.Dispatcher.ShutdownStarted>引发事件和<xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A>设置为`true`。</xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> </xref:System.Windows.Threading.Dispatcher.ShutdownStarted> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher>事件队列展开之前完全没有关闭。</xref:System.Windows.Threading.Dispatcher>       当调度程序完成后关闭时，将引发 ShutdownFinished 事件和<xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A>属性设置为`true`。</xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A>       关闭流程开始之后，所有挂起的工作将中止队列中的项。"
   syntax:
     content: public event EventHandler ShutdownFinished;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1363,13 +1363,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Occurs when the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> begins to shut down."
-  remarks: "When the shutdown process of a <xref:System.Windows.Threading.Dispatcher> is started, the ShutdownStarted event is raised and <xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> is set to `true`.       The <xref:System.Windows.Threading.Dispatcher> does not shutdown completely until the event queue unwinds.       When the Dispatcher finishes shutting down, the <xref:System.Windows.Threading.Dispatcher.ShutdownFinished> event is raised and the <xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A> property is set to `true`.       Once the shutdown process begins, all pending work items in the queue are aborted."
+  summary: "发生时<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>开始关闭。"
+  remarks: "当关闭进程的<xref:System.Windows.Threading.Dispatcher>是开始，将引发 ShutdownStarted 事件和<xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A>设置为`true`。</xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher>事件队列展开之前完全没有关闭。</xref:System.Windows.Threading.Dispatcher>       调度程序完成的情况下，关闭时<xref:System.Windows.Threading.Dispatcher.ShutdownFinished>引发事件和<xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A>属性设置为`true`。</xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A> </xref:System.Windows.Threading.Dispatcher.ShutdownFinished>       关闭流程开始之后，所有挂起的工作将中止队列中的项。"
   syntax:
     content: public event EventHandler ShutdownStarted;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1385,12 +1385,12 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Gets the thread this <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
+  summary: "获取线程此<xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>与相关联。"
   syntax:
     content: public System.Threading.Thread Thread { get; }
     return:
       type: System.Threading.Thread
-      description: "The thread."
+      description: "中的线程。"
   overload: System.Windows.Threading.Dispatcher.Thread*
   exceptions: []
   platform:
@@ -1407,13 +1407,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Occurs when a thread exception is thrown and uncaught during execution of a delegate by way of <xref:System.Windows.Threading.Dispatcher.Invoke*> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke*>."
-  remarks: "This event is raised when an exception that was thrown during execution of a delegate by way of <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is uncaught.       A handler can mark the exception as handled, which will prevent the internal exception handler from being called.       Event handlers for this event must be written with care to avoid creating secondary exceptions and to catch any that occur. It is recommended to avoid allocating memory or doing any resource intensive operations in the handler.       The <xref:System.Windows.Threading.Dispatcher.UnhandledExceptionFilter> event provides a means to not raise the UnhandledException event.  The <xref:System.Windows.Threading.Dispatcher.UnhandledExceptionFilter> event is raised first, and If <xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs.RequestCatch%2A> on the <xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs> is set to `false`, the UnhandledException event will not be raised."
+  summary: "当引发并通过委托执行期间未捕获线程异常时发生<> *1> 或<> *1>。"
+  remarks: "通过委托执行期间引发的异常时，将引发此事件<xref:System.Windows.Threading.Dispatcher.Invoke%2A>或<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>未捕获。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A>       处理程序可以将该异常标记为已处理，这会阻止内部的异常处理程序调用。       必须小心来避免创建辅助异常并发现出现任何的写入此事件的事件处理程序。 建议避免分配内存或执行处理程序中的密集型操作的任何资源。       <xref:System.Windows.Threading.Dispatcher.UnhandledExceptionFilter>事件提供了一种不会引发 UnhandledException 事件的方法。</xref:System.Windows.Threading.Dispatcher.UnhandledExceptionFilter>  <xref:System.Windows.Threading.Dispatcher.UnhandledExceptionFilter>事件引发第一次，并且如果<xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs.RequestCatch%2A>上<xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs>设置为`false`，不会引发 UnhandledException 事件。</xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs> </xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs.RequestCatch%2A> </xref:System.Windows.Threading.Dispatcher.UnhandledExceptionFilter>"
   syntax:
     content: public event System.Windows.Threading.DispatcherUnhandledExceptionEventHandler UnhandledException;
     return:
       type: System.Windows.Threading.DispatcherUnhandledExceptionEventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1429,13 +1429,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Occurs when a thread exception is thrown and uncaught during execution of a delegate by way of <xref:System.Windows.Threading.Dispatcher.Invoke*> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke*> when in the filter stage."
-  remarks: "This event is raised during the filter stage for an exception that is raised during execution of a delegate by way of <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> and is uncaught.       The call stack is not unwound at this point (first-chance exception).       Event handlers for this event must be written with care to avoid creating secondary exceptions and to catch any that occur.  It is recommended to avoid allocating memory or doing any resource intensive operations in the handler.       The UnhandledExceptionFilter event provides a means to not raise the <xref:System.Windows.Threading.Dispatcher.UnhandledException> event.  The UnhandledExceptionFilter event is raised first, and If <xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs.RequestCatch%2A> on the <xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs> is set to `false`, the <xref:System.Windows.Threading.Dispatcher.UnhandledException> event will not be raised."
+  summary: "当引发并通过委托执行期间未捕获线程异常时发生<> *1> 或<> *1> 在筛选器阶段时。"
+  remarks: "将通过委托执行期间引发的异常的筛选器阶段引发此事件<xref:System.Windows.Threading.Dispatcher.Invoke%2A>或<xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>且未能捕获。</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A>       调用堆栈不展开这一时刻 （首次异常）。       必须小心来避免创建辅助异常并发现出现任何的写入此事件的事件处理程序。  建议避免分配内存或执行处理程序中的密集型操作的任何资源。       UnhandledExceptionFilter 事件提供了一种方法不会引发<xref:System.Windows.Threading.Dispatcher.UnhandledException>事件。</xref:System.Windows.Threading.Dispatcher.UnhandledException>  UnhandledExceptionFilter 事件引发第一次，并且如果<xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs.RequestCatch%2A>上<xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs>设置为`false`、<xref:System.Windows.Threading.Dispatcher.UnhandledException>不会引发事件。</xref:System.Windows.Threading.Dispatcher.UnhandledException> </xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs> </xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs.RequestCatch%2A>"
   syntax:
     content: public event System.Windows.Threading.DispatcherUnhandledExceptionFilterEventHandler UnhandledExceptionFilter;
     return:
       type: System.Windows.Threading.DispatcherUnhandledExceptionFilterEventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1451,21 +1451,21 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Determines whether the specified <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref> is a valid priority."
+  summary: "确定是否指定<xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>是有效的优先级。"
   syntax:
     content: public static void ValidatePriority (System.Windows.Threading.DispatcherPriority priority, string parameterName);
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority to check."
+      description: "要检查的优先级。"
     - id: parameterName
       type: System.String
-      description: "A string that will be returned by the exception that occurs if the priority is invalid."
+      description: "一个字符串，将返回发生如果的优先级为无效的异常。"
   overload: System.Windows.Threading.Dispatcher.ValidatePriority*
   exceptions:
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>priority</code> is not a valid <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>."
+    description: "<code>priority</code>不是有效<xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;> </xref>。"
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.VerifyAccess
@@ -1480,8 +1480,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Determines whether the calling thread has access to this <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
-  remarks: "Only the thread the <xref:System.Windows.Threading.Dispatcher> is created on may access the <xref:System.Windows.Threading.Dispatcher>.       This method is public; therefore, any thread can check to see whether it has access to the <xref:System.Windows.Threading.Dispatcher>.       The difference between <xref:System.Windows.Threading.Dispatcher.CheckAccess%2A> and VerifyAccess is <xref:System.Windows.Threading.Dispatcher.CheckAccess%2A> returns a Boolean if the calling thread does not have access to the <xref:System.Windows.Threading.Dispatcher> and VerifyAccess throws an exception."
+  summary: "确定调用线程是否有权访问此<xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>。"
+  remarks: "只有线程<xref:System.Windows.Threading.Dispatcher>创建在可以访问<xref:System.Windows.Threading.Dispatcher>.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher>       此方法是公共的;因此，可以检查任何线程以查看它是否有权访问<xref:System.Windows.Threading.Dispatcher>.</xref:System.Windows.Threading.Dispatcher>       之间的差异<xref:System.Windows.Threading.Dispatcher.CheckAccess%2A>和 VerifyAccess 是<xref:System.Windows.Threading.Dispatcher.CheckAccess%2A>返回一个布尔值，如果调用线程不具有访问<xref:System.Windows.Threading.Dispatcher>并 VerifyAccess 引发异常。</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher.CheckAccess%2A> </xref:System.Windows.Threading.Dispatcher.CheckAccess%2A>"
   example:
   - "The following example uses VerifyAccess to determine whether a thread has access to the thread that a <xref:System.Windows.Controls.Button> was created on.  The method takes an object as an argument, which is cast to a <xref:System.Windows.Controls.Button>.  The VerifyAccess method on the <xref:System.Windows.Threading.Dispatcher> of the <xref:System.Windows.Controls.Button> is called to verify access to the thread.  \n  \n If the calling thread has access to the <xref:System.Windows.Threading.Dispatcher>, the <xref:System.Windows.Controls.Button> is updated by just accessing the members of the <xref:System.Windows.Controls.Button>.  \n  \n If the calling thread does not have access, an <xref:System.InvalidOperationException> is thrown.  This example catches the exception and pushes a delegate, which accepts a <xref:System.Windows.Controls.Button> as an argument, onto the <xref:System.Windows.Threading.Dispatcher> of the <xref:System.Windows.Controls.Button>.  This <xref:System.Windows.Threading.Dispatcher> will do the work of updating the <xref:System.Windows.Controls.Button>.  \n  \n [!code-cs[DispatcherAccessSample#DispatcherAccessVerifyAccess](~/add/codesnippet/csharp/DispatcherAccessSample/Window1.xaml.cs#dispatcheraccessverifyaccess)]\n [!code-vb[DispatcherAccessSample#DispatcherAccessVerifyAccess](~/add/codesnippet/visualbasic/dispatcheraccesssample/window1.xaml.vb#dispatcheraccessverifyaccess)]"
   syntax:
@@ -1491,7 +1491,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The calling thread does not have access to this <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
+    description: "调用线程没有访问此<xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>。"
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.Yield
@@ -1506,14 +1506,14 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Creates an awaitable object that asynchronously yields control back to the current dispatcher and provides an opportunity for the dispatcher to process other events."
-  remarks: "This method provides a way for you to temporarily release execution control to the current dispatcher so it can do other work, such as process other events. Use the `await`, or `Await` in Visual Basic, operator on the return value to return control to the current dispatcher. Use this method if want to give your app a chance to process events while you app is doing a lot of work on the UI thread. For example, you can use this method in a long-running loop that updates a control.       This method is equivalent to calling the <xref:System.Windows.Threading.Dispatcher.Yield%28System.Windows.Threading.DispatcherPriority%29> method and passing in <xref:System.Windows.Threading.DispatcherPriority?displayProperty=fullName>."
+  summary: "创建以异步方式会将控制权出让回当前的调度程序，并提供要处理的其他事件的调度程序有机会的等待对象。"
+  remarks: "此方法使你能够暂时释放到当前的调度程序的执行控件，以便它可以执行其他工作，就像处理其他事件的方法。 使用`await`，或`Await`在 Visual Basic 中，运算符的返回值来将控制返回到当前的调度程序。 使用此方法，如果想要让你的应用程序有机会处理事件，而你应用程序执行大量的 UI 线程上的工作。 例如，你可以在更新控件的运行时间较长循环中使用此方法。       此方法等效于调用的<xref:System.Windows.Threading.Dispatcher.Yield%28System.Windows.Threading.DispatcherPriority%29>方法并传入<xref:System.Windows.Threading.DispatcherPriority?displayProperty=fullName>.</xref:System.Windows.Threading.DispatcherPriority?displayProperty=fullName> </xref:System.Windows.Threading.Dispatcher.Yield%28System.Windows.Threading.DispatcherPriority%29>"
   syntax:
     content: public static System.Windows.Threading.DispatcherPriorityAwaitable Yield ();
     parameters: []
     return:
       type: System.Windows.Threading.DispatcherPriorityAwaitable
-      description: "An awaitable object that asynchronously yields control back to the current dispatcher and provides an opportunity for the dispatcher to process other events."
+      description: "以异步方式会将控制权出让回当前的调度程序，并提供要处理的其他事件的调度程序有机会的等待对象。"
   overload: System.Windows.Threading.Dispatcher.Yield*
   exceptions: []
   platform:
@@ -1530,17 +1530,17 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Creates an awaitable object that asynchronously yields control back to the current dispatcher and provides an opportunity for the dispatcher to process other events.  The work that occurs when control returns to the code awaiting the result of this method is scheduled with the specified priority."
-  remarks: "This method provides a way for you to temporarily release execution control to the current dispatcher so it can do other work, such as process other events. Use the `await`, or `Await` in Visual Basic, operator on the return value to return control to the current dispatcher. Use this method if want to give your app a chance to process events while you app is doing a lot of work on the UI thread. For example, you can use this method in a long-running loop that updates a control."
+  summary: "创建以异步方式会将控制权出让回当前的调度程序，并提供要处理的其他事件的调度程序有机会的等待对象。  用指定的优先级计划时发生控制返回到等待此方法的结果代码的工作。"
+  remarks: "此方法使你能够暂时释放到当前的调度程序的执行控件，以便它可以执行其他工作，就像处理其他事件的方法。 使用`await`，或`Await`在 Visual Basic 中，运算符的返回值来将控制返回到当前的调度程序。 使用此方法，如果想要让你的应用程序有机会处理事件，而你应用程序执行大量的 UI 线程上的工作。 例如，你可以在更新控件的运行时间较长循环中使用此方法。"
   syntax:
     content: public static System.Windows.Threading.DispatcherPriorityAwaitable Yield (System.Windows.Threading.DispatcherPriority priority);
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority at which to schedule the continuation."
+      description: "计划延续优先级。"
     return:
       type: System.Windows.Threading.DispatcherPriorityAwaitable
-      description: "An awaitable object that asynchronously yields control back to the current dispatcher and provides an opportunity for the dispatcher to process other events."
+      description: "以异步方式会将控制权出让回当前的调度程序，并提供要处理的其他事件的调度程序有机会的等待对象。"
   overload: System.Windows.Threading.Dispatcher.Yield*
   exceptions: []
   platform:

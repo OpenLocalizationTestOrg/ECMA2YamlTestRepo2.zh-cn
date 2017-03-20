@@ -13,7 +13,7 @@ items:
   nameWithType: ISynchronizeInvoke
   fullName: System.ComponentModel.ISynchronizeInvoke
   type: Interface
-  summary: "Provides a way to synchronously or asynchronously execute a delegate."
+  summary: "提供一种同步或异步执行委托。"
   remarks: "The ISynchronizeInvoke interface provides synchronous and asynchronous communication between objects about the occurrence of an event. Objects that implement this interface can receive notification that an event has occurred, and they can respond to queries about the event. In this way, clients can ensure that one request has been processed before they submit a subsequent request that depends on completion of the first.  \n  \n The ISynchronizeInvoke class provides two ways to invoke a process:  \n  \n1.  Asynchronously, by using the [BeginInvoke(Delegate, Object\\[\\])](assetId:///M:System.ComponentModel.ISynchronizeInvoke.BeginInvoke(System.Delegate,System.Object[])?qualifyHint=False&autoUpgrade=True) method. <xref:System.ComponentModel.ISynchronizeInvoke.BeginInvoke%2A> starts a process and then returns immediately. Use <xref:System.ComponentModel.ISynchronizeInvoke.EndInvoke%2A> to wait until the process started by <xref:System.ComponentModel.ISynchronizeInvoke.BeginInvoke%2A> completes.  \n  \n2.  Synchronously, by using the <xref:System.ComponentModel.ISynchronizeInvoke.Invoke%2A> method. <xref:System.ComponentModel.ISynchronizeInvoke.Invoke%2A> starts a process, waits until it completes, and then returns. Use <xref:System.ComponentModel.ISynchronizeInvoke.Invoke%2A> when the control's main thread is different from the calling thread to marshal the call to the proper thread.  \n  \n> [!NOTE]\n>  The <xref:System.Security.Permissions.HostProtectionAttribute> attribute applied to this class has the following <xref:System.Security.Permissions.HostProtectionAttribute.Resources%2A> property value: <xref:System.Security.Permissions.HostProtectionResource> &#124; <xref:System.Security.Permissions.HostProtectionResource>. The <xref:System.Security.Permissions.HostProtectionAttribute> does not affect desktop applications (which are typically started by double-clicking an icon, typing a command, or entering a URL in a browser). For more information, see the <xref:System.Security.Permissions.HostProtectionAttribute> class or [SQL Server Programming and Host Protection Attributes](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public interface ISynchronizeInvoke
@@ -32,20 +32,20 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Asynchronously executes the delegate on the thread that created this object."
-  remarks: "The `method` delegate is executed on the thread that created the object, instead of the thread on which BeginInvoke was called.       The delegate is called asynchronously, and this method returns immediately. You can call this method from any thread. If you need the return value from a process started with this method, call <xref:System.ComponentModel.ISynchronizeInvoke.EndInvoke%2A> to get the value.       If you need to call the delegate synchronously, use the <xref:System.ComponentModel.ISynchronizeInvoke.Invoke%2A> method instead."
+  summary: "创建此对象的线程上异步执行委托。"
+  remarks: "`method`创建的对象，而不是在其调用 BeginInvoke 的线程的线程上执行委托。       以异步方式调用的委托，此方法将立即返回。 你可以从任何线程调用此方法。 如果你需要使用此方法启动的进程的返回值，调用<xref:System.ComponentModel.ISynchronizeInvoke.EndInvoke%2A>来获取的值。</xref:System.ComponentModel.ISynchronizeInvoke.EndInvoke%2A>       如果你需要以同步方式调用委托时，使用<xref:System.ComponentModel.ISynchronizeInvoke.Invoke%2A>方法相反。</xref:System.ComponentModel.ISynchronizeInvoke.Invoke%2A>"
   syntax:
     content: public IAsyncResult BeginInvoke (Delegate method, object[] args);
     parameters:
     - id: method
       type: System.Delegate
-      description: "A <xref:System.Delegate> to a method that takes parameters of the same number and type that are contained in `args`."
+      description: "A<xref:System.Delegate>采用的相同的数量和中包含的类型参数的方法`args`。</xref:System.Delegate>"
     - id: args
       type: System.Object[]
-      description: "An array of type <xref:System.Object> to pass as arguments to the given method. This can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if no arguments are needed."
+      description: "类型的数组<xref:System.Object>作为自变量传递给给定的方法。</xref:System.Object> 这可以是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果不需要参数。"
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> interface that represents the asynchronous operation started by calling this method."
+      description: "<xref:System.IAsyncResult>通过调用此方法启动表示异步操作的接口。</xref:System.IAsyncResult>"
   overload: System.ComponentModel.ISynchronizeInvoke.BeginInvoke*
   exceptions: []
   platform:
@@ -62,17 +62,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Waits until the process started by calling <xref:System.ComponentModel.ISynchronizeInvoke.BeginInvoke*> completes, and then returns the value generated by the process."
-  remarks: "This method gets the return value of the asynchronous operation represented by the <xref:System.IAsyncResult> passed by this interface. If the asynchronous operation has not completed, this method will wait until the result is available."
+  summary: "通过调用进程一直等到启动<xref:System.ComponentModel.ISynchronizeInvoke.BeginInvoke*>完成后，，然后返回进程生成的值。</xref:System.ComponentModel.ISynchronizeInvoke.BeginInvoke*>"
+  remarks: "此方法获取所表示的异步操作的返回值<xref:System.IAsyncResult>通过此接口。</xref:System.IAsyncResult> 如果未完成异步操作，在结果可用之前将等待此方法。"
   syntax:
     content: public object EndInvoke (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> interface that represents the asynchronous operation started by calling <xref:System.ComponentModel.ISynchronizeInvoke.BeginInvoke*>."
+      description: "<xref:System.IAsyncResult>表示通过调用<xref:System.ComponentModel.ISynchronizeInvoke.BeginInvoke*>.</xref:System.ComponentModel.ISynchronizeInvoke.BeginInvoke*>开始的异步操作的接口</xref:System.IAsyncResult>"
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the return value generated by the asynchronous operation."
+      description: "<xref:System.Object>，表示生成的异步操作的返回值。</xref:System.Object>"
   overload: System.ComponentModel.ISynchronizeInvoke.EndInvoke*
   exceptions: []
   platform:
@@ -89,20 +89,20 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Synchronously executes the delegate on the thread that created this object and marshals the call to the creating thread."
-  remarks: "Unlike <xref:System.ComponentModel.ISynchronizeInvoke.BeginInvoke%2A>, this method operates synchronously, that is, it waits until the process completes before returning. Exceptions raised during the call are propagated back to the caller.       Use this method when calling a method from a different thread to marshal the call to the proper thread."
+  summary: "以同步方式创建此对象，并将对创建的线程的调用封送的线程上执行委托。"
+  remarks: "与不同<xref:System.ComponentModel.ISynchronizeInvoke.BeginInvoke%2A>，此方法同步运行，也就是说，它等待，直到在返回之前完成此过程。</xref:System.ComponentModel.ISynchronizeInvoke.BeginInvoke%2A> 在调用过程中引发的异常会传播回调用方。       从另一个线程调用方法时使用此方法要封送到合适的线程的调用。"
   syntax:
     content: public object Invoke (Delegate method, object[] args);
     parameters:
     - id: method
       type: System.Delegate
-      description: "A <xref:System.Delegate> that contains a method to call, in the context of the thread for the control."
+      description: "A <xref:System.Delegate>，其中包含要调用的控件的线程上下文中的方法。</xref:System.Delegate>"
     - id: args
       type: System.Object[]
-      description: "An array of type <xref:System.Object> that represents the arguments to pass to the given method. This can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if no arguments are needed."
+      description: "类型的数组<xref:System.Object>，表示要传递给给定方法的自变量。</xref:System.Object> 这可以是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果不需要参数。"
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the return value from the delegate being invoked, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "<xref:System.Object>，表示正在调用的委托的返回值或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果委托没有返回值。</xref:System.Object>"
   overload: System.ComponentModel.ISynchronizeInvoke.Invoke*
   exceptions: []
   platform:
@@ -119,13 +119,13 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Gets a value indicating whether the caller must call <xref:System.ComponentModel.ISynchronizeInvoke.Invoke*> when calling an object that implements this interface."
-  remarks: "This property determines whether the caller must call <xref:System.ComponentModel.ISynchronizeInvoke.Invoke%2A> when making method calls to an object that implements this interface. Such objects are bound to a specific thread and are not thread-safe. If you are calling a method from a different thread, you must use the <xref:System.ComponentModel.ISynchronizeInvoke.Invoke%2A> method to marshal the call to the proper thread."
+  summary: "获取一个值，该值指示调用方是否必须调用<xref:System.ComponentModel.ISynchronizeInvoke.Invoke*>时调用对象实现此接口。</xref:System.ComponentModel.ISynchronizeInvoke.Invoke*>"
+  remarks: "此属性确定调用方是否必须调用<xref:System.ComponentModel.ISynchronizeInvoke.Invoke%2A>时进行的对象的方法调用，实现此接口。</xref:System.ComponentModel.ISynchronizeInvoke.Invoke%2A> 此类对象绑定到特定线程并不是线程安全。 如果你正在从另一个线程调用的方法，则必须使用<xref:System.ComponentModel.ISynchronizeInvoke.Invoke%2A>封送到合适的线程调用的方法。</xref:System.ComponentModel.ISynchronizeInvoke.Invoke%2A>"
   syntax:
     content: public bool InvokeRequired { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the caller must call <xref:System.ComponentModel.ISynchronizeInvoke.Invoke*>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果调用方必须调用<xref:System.ComponentModel.ISynchronizeInvoke.Invoke*>; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。</xref:System.ComponentModel.ISynchronizeInvoke.Invoke*>"
   overload: System.ComponentModel.ISynchronizeInvoke.InvokeRequired*
   exceptions: []
   platform:

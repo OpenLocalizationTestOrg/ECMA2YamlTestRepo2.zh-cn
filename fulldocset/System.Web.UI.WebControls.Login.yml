@@ -70,8 +70,8 @@ items:
   nameWithType: Login
   fullName: System.Web.UI.WebControls.Login
   type: Class
-  summary: "Provides user interface (UI) elements for logging in to a Web site."
-  remarks: "In this topic:      -   [Introduction](#introduction)      -   [Style and Templates](#styles_and_templates)      -   [Validation Groupings](#validation_groupings)      -   [Accessibility](#accessibility)      -   [Applying CSS Styles](#applying_styles)      -   [Declarative Syntax](#declarative_syntax)      <a name=&quot;introduction&quot;></a>    ## Introduction    The Login control is a composite control that provides all the common UI elements needed to authenticate a user on a Web site. The following three elements are required for all login scenarios:      -   A unique user name to identify the user.      -   A password to verify the identity of the user.      -   A login button to send the login information to the server.       The Login control also provides the following optional UI elements that support additional functions:      -   A link for a password reminder.      -   A Remember Me checkbox for retaining the login information between sessions.      -   A Help link for users who are having trouble logging in.      -   A Register New User link that redirects users to a registration page.      -   Instruction text that appears on the login form.      -   Custom error text that appears when the user clicks the login button without filling in the user name or password fields.      -   Custom error text that appears if the login fails.      -   A custom action that occurs when login succeeds.      -   A way to hide the login control if the user is already logged in to the site.       For a table showing which controls are required and which are optional, see <xref:System.Web.UI.WebControls.Login.LayoutTemplate%2A> property.      > [!NOTE] >  If you are not familiar with the set of login controls available in ASP.NET, see [ASP.NET Login Controls Overview](~/add/includes/ajax-current-ext-md.md) before continuing. For a list of other topics related to login controls and membership, see [Managing Users by Using Membership](~/add/includes/ajax-current-ext-md.md).      > [!IMPORTANT] >  Accepting user input is a potential security threat. Malicious users can send data that is intended to expose vulnerabilities or run programs that try generated passwords. To improve security when working with user input, you should use the validation features of your control and secure any data providers that are configured for your control. For more information, see [Securing Login Controls](~/add/includes/ajax-current-ext-md.md), [Basic Security Practices for Web Applications](~/add/includes/ajax-current-ext-md.md), and [Securing Membership](~/add/includes/ajax-current-ext-md.md).       The Login control uses a membership provider to obtain user credentials. Unless you specify otherwise, the Login control uses the default membership provider defined in the Web.config file. To specify a different provider, set the <xref:System.Web.UI.WebControls.Login.MembershipProvider%2A> property to one of the membership provider names defined in your application&quot;s Web.config file. For more information, see [Membership Providers](~/add/includes/ajax-current-ext-md.md).       If you want to use a custom authentication service, you can use the <xref:System.Web.UI.WebControls.Login.OnAuthenticate%2A> method to call the service.      <a name=&quot;styles_and_templates&quot;></a>    ## Styles and Templates    The appearance of the Login control is fully customizable through templates and style settings. All UI text messages are also customizable through properties of the Login class. The default interface text is automatically localized based on the locale setting on the server.       If the Login control is customized with templates, then the <xref:System.Web.UI.WebControls.WebControl.AccessKey%2A> property and the <xref:System.Web.UI.WebControls.WebControl.TabIndex%2A> property are ignored. In this case, set the <xref:System.Web.UI.WebControls.WebControl.AccessKey%2A> property and the <xref:System.Web.UI.WebControls.WebControl.TabIndex%2A> property of each template child control directly.       Login control properties represented by text boxes, such as <xref:System.Web.UI.WebControls.Login.UserName%2A> and <xref:System.Web.UI.WebControls.Login.Password%2A>, are accessible during all phases of the page life cycle. The control will pick up any changes made by the end user by means of the <xref:System.Web.UI.WebControls.TextBox.TextChanged> event triggered by the textboxes.      > [!NOTE] >  If you embed the Login control in a <xref:System.Web.UI.WebControls.WizardStep> object, explicitly set the <xref:System.Web.UI.WebControls.Wizard.ActiveStepIndex%2A> property in a `Page_Load` event handler if the user is authenticated. The <xref:System.Web.UI.WebControls.Wizard> control does not automatically advance to the next <xref:System.Web.UI.WebControls.WizardStep> object in this scenario.       The following table lists the Login control style properties and explains which UI element each style property affects. For a list of which properties each style applies to, see the documentation for the individual style properties.      |Style property|UI element affected|   |--------------------|-------------------------|   |<xref:System.Web.UI.WebControls.Login.BorderPadding%2A>|The space between the control contents and the control&quot;s border.|   |<xref:System.Web.UI.WebControls.Login.CheckBoxStyle%2A>|Remember Me checkbox.|   |<xref:System.Web.UI.WebControls.Login.FailureTextStyle%2A>|Login failure text.|   |<xref:System.Web.UI.WebControls.Login.InstructionTextStyle%2A>|Instructional text on the page that tells users how to use the control.|   |<xref:System.Web.UI.WebControls.Login.LabelStyle%2A>|Labels for all input fields, such as text boxes.|   |<xref:System.Web.UI.WebControls.Login.TextBoxStyle%2A>|Text entry input fields.|   |<xref:System.Web.UI.WebControls.Login.TitleTextStyle%2A>|Title text.|   |<xref:System.Web.UI.WebControls.Login.ValidatorTextStyle%2A>|Text displayed to the user when a login attempt is unsuccessful due to validation errors.|   |<xref:System.Web.UI.WebControls.Login.HyperLinkStyle%2A>|Links to other pages.|   |<xref:System.Web.UI.WebControls.Login.LoginButtonStyle%2A>|Login button.|      <a name=&quot;validation_groupings&quot;></a>    ## Validation Groupings    The <xref:System.Web.UI.WebControls.Login.UserName%2A> and <xref:System.Web.UI.WebControls.Login.Password%2A> properties have <xref:System.Web.UI.WebControls.RequiredFieldValidator> controls associated with them to prevent users from submitting the page without providing required information.       The Login control uses a validation group so that other fields on the same page as the Login control can be validated separately. By default, the <xref:System.Web.UI.Control.ID%2A> property of the Login control is used as the name of the validation group. For example, a Login control with the ID &quot;Login1&quot; will use a validation group name of &quot;Login1&quot;. If you want to set the validation group that the Login control is part of, you must template the control and change the validation group name.      <a name=&quot;applying_styles&quot;></a>    ## Applying CSS Styles    The Login control lets you specify CSS style rules in markup. If you use templates to customize the appearance of the Login control, you can specify CSS styles in the markup in the templates. In that case, no extra outer table is required. You can prevent the table from being rendered by setting the <xref:System.Web.UI.WebControls.Login.RenderOuterTable%2A> property to `false`.      <a name=&quot;accessibility&quot;></a>    ## Accessibility    For information about how to configure this control so that it generates markup that conforms to accessibility standards, see [Accessibility in Visual Studio and ASP.NET](~/add/includes/ajax-current-ext-md.md) and [ASP.NET Controls and Accessibility](~/add/includes/ajax-current-ext-md.md).      <a name=&quot;declarative_syntax&quot;></a>    ## Declarative Syntax      ```   <asp:Login       AccessKey=&quot;string&quot;       BackColor=&quot;color name|#dddddd&quot;       BorderColor=&quot;color name|#dddddd&quot;       BorderPadding=&quot;integer&quot;       BorderStyle=&quot;NotSet|None|Dotted|Dashed|Solid|Double|Groove|Ridge|           Inset|Outset&quot;       BorderWidth=&quot;size&quot;       CreateUserIconUrl=&quot;uri&quot;       CreateUserText=&quot;string&quot;       CreateUserUrl=&quot;uri&quot;       CssClass=&quot;string&quot;       DestinationPageUrl=&quot;uri&quot;       DisplayRememberMe=&quot;True|False&quot;       Enabled=&quot;True|False&quot;       EnableTheming=&quot;True|False&quot;       EnableViewState=&quot;True|False&quot;       FailureAction=&quot;Refresh|RedirectToLoginPage&quot;       FailureText=&quot;string&quot;       Font-Bold=&quot;True|False&quot;       Font-Italic=&quot;True|False&quot;       Font-Names=&quot;string&quot;       Font-Overline=&quot;True|False&quot;       Font-Size=&quot;string|Smaller|Larger|XX-Small|X-Small|Small|Medium|                  Large|X-Large|XX-Large&quot;       Font-Strikeout=&quot;True|False&quot;       Font-Underline=&quot;True|False&quot;       ForeColor=&quot;color name|#dddddd&quot;       Height=&quot;size&quot;       HelpPageIconUrl=&quot;uri&quot;       HelpPageText=&quot;string&quot;       HelpPageUrl=&quot;uri&quot;       ID=&quot;string&quot;       InstructionText=&quot;string&quot;       LoginButtonImageUrl=&quot;uri&quot;       LoginButtonText=&quot;string&quot;       LoginButtonType=&quot;Button|Image|Link&quot;       MembershipProvider=&quot;string&quot;       OnAuthenticate=&quot;Authenticate event handler&quot;       OnDataBinding=&quot;DataBinding event handler&quot;       OnDisposed=&quot;Disposed event handler&quot;       OnInit=&quot;Init event handler&quot;       OnLoad=&quot;Load event handler&quot;       OnLoggedIn=&quot;LoggedIn event handler&quot;       OnLoggingIn=&quot;LoggingIn event handler&quot;       OnLoginError=&quot;LoginError event handler&quot;       OnPreRender=&quot;PreRender event handler&quot;       OnUnload=&quot;Unload event handler&quot;       Orientation=&quot;Horizontal|Vertical&quot;       PasswordLabelText=&quot;string&quot;       PasswordRecoveryIconUrl=&quot;uri&quot;       PasswordRecoveryText=&quot;string&quot;       PasswordRecoveryUrl=&quot;uri&quot;       PasswordRequiredErrorMessage=&quot;string&quot;       RememberMeSet=&quot;True|False&quot;       RememberMeText=&quot;string&quot;       runat=&quot;server&quot;       SkinID=&quot;string&quot;       Style=&quot;string&quot;       TabIndex=&quot;integer&quot;       TextLayout=&quot;TextOnLeft|TextOnTop&quot;       TitleText=&quot;string&quot;       ToolTip=&quot;string&quot;       UserName=&quot;string&quot;       UserNameLabelText=&quot;string&quot;       UserNameRequiredErrorMessage=&quot;string&quot;       Visible=&quot;True|False&quot;       VisibleWhenLoggedIn=&quot;True|False&quot;       Width=&quot;size&quot;   >           <CheckBoxStyle />           <FailureTextStyle />           <HyperLinkStyle />           <InstructionTextStyle />           <LabelStyle />           <LayoutTemplate>               <!-- child controls -->           </LayoutTemplate>           <LoginButtonStyle />           <TextBoxStyle />           <TitleTextStyle />           <ValidatorTextStyle />   </asp:Login>   ```"
+  summary: "提供用户界面 (UI) 元素以便登录到网站。"
+  remarks: "本主题中:-[简介](#introduction)      -   [样式和模板](#styles_and_templates)      -   [验证分组](#validation_groupings)      -   [可访问性](#accessibility)      -   [应用 CSS 样式](#applying_styles)      -   [声明性语法](#declarative_syntax)<a name=&quot;introduction&quot;> </a> # # 简介登录控件是提供对 Web 站点上的用户进行身份验证所需所有常见 UI 元素的复合控件。       以下三个元素所需的所有登录方案:-用于标识用户的唯一用户名。      的若要验证的用户标识密码。      -A 登录按钮以向服务器发送的登录信息。       登录控件还提供了以下可选 UI 元素，以便支持其他函数:-密码提示的链接。      -A 记住我复选框保留会话之间的登录信息。      的用户登录时出现问题帮助链接。      -A 注册新用户的链接将用户重定向到的注册页。      指令登录窗体显示的文本。      的当用户而不填充用户名称或密码字段中单击登录按钮时显示自定义错误文本。      -显示如果登录失败达到的自定义错误文本。      的登录成功时发生自定义操作。      的如果用户已登录到站点，则隐藏 login 控件一种方法。       显示哪些控件为必选和可选的表，请参阅<xref:System.Web.UI.WebControls.Login.LayoutTemplate%2A>属性。</xref:System.Web.UI.WebControls.Login.LayoutTemplate%2A>      1> [!NOTE]&1;> 如果你不熟悉的 ASP.NET 提供的登录控件集，请参阅[ASP.NET 登录控件概述](~/add/includes/ajax-current-ext-md.md)才能继续。 有关与登录控件和成员资格相关的其他主题的列表，请参阅[使用成员资格管理用户](~/add/includes/ajax-current-ext-md.md)。      1> [!IMPORTANT]&1;> 接受用户输入是一个潜在的安全威胁。 恶意用户可以发送数据，用于公开的漏洞或运行程序会尝试生成的密码。 为了提高安全性，处理用户输入时，应使用的控件的验证功能和安全配置的任何数据提供程序为您的控件。 有关详细信息，请参阅[保护登录控件](~/add/includes/ajax-current-ext-md.md)， [Web 应用程序的基本安全实践](~/add/includes/ajax-current-ext-md.md)，和[保护成员资格](~/add/includes/ajax-current-ext-md.md)。       登录控件使用成员资格提供程序获取用户凭据。 除非另行指定，否则，Login 控件使用 Web.config 文件中定义默认成员资格提供程序。 若要指定不同的提供程序，设置<xref:System.Web.UI.WebControls.Login.MembershipProvider%2A>到其中一个成员资格提供程序名称的属性在应用程序的 Web.config 文件中定义。</xref:System.Web.UI.WebControls.Login.MembershipProvider%2A> 有关详细信息，请参阅[成员资格提供程序](~/add/includes/ajax-current-ext-md.md)。       如果你想要使用自定义身份验证服务，则可以使用<xref:System.Web.UI.WebControls.Login.OnAuthenticate%2A>方法来调用服务。</xref:System.Web.UI.WebControls.Login.OnAuthenticate%2A>      <a name=&quot;styles_and_templates&quot;></a># # 样式和模板是通过模板和样式设置完全可自定义登录控件的外观。 所有 UI 文本消息也都是通过登录类的属性可自定义的。 默认接口文本自动进行了本地化基于服务器上的区域设置。       如果使用模板时，自定义登录控件则<xref:System.Web.UI.WebControls.WebControl.AccessKey%2A>属性和<xref:System.Web.UI.WebControls.WebControl.TabIndex%2A>属性将被忽略。</xref:System.Web.UI.WebControls.WebControl.TabIndex%2A> </xref:System.Web.UI.WebControls.WebControl.AccessKey%2A> 在这种情况下，设置<xref:System.Web.UI.WebControls.WebControl.AccessKey%2A>属性和<xref:System.Web.UI.WebControls.WebControl.TabIndex%2A>直接每个模板子控件的属性。</xref:System.Web.UI.WebControls.WebControl.TabIndex%2A> </xref:System.Web.UI.WebControls.WebControl.AccessKey%2A>       表示文本框中，如登录控件属性<xref:System.Web.UI.WebControls.Login.UserName%2A>和<xref:System.Web.UI.WebControls.Login.Password%2A>，页生命周期的所有阶段都可访问。</xref:System.Web.UI.WebControls.Login.Password%2A> </xref:System.Web.UI.WebControls.Login.UserName%2A> 控件将选取由最终用户的方式进行任何更改<xref:System.Web.UI.WebControls.TextBox.TextChanged>由文本框触发的事件。</xref:System.Web.UI.WebControls.TextBox.TextChanged>      1> [!NOTE]&1;> 如果您嵌入中的登录控件<xref:System.Web.UI.WebControls.WizardStep>对象，显式设置<xref:System.Web.UI.WebControls.Wizard.ActiveStepIndex%2A>中的属性`Page_Load`事件处理程序当用户进行身份验证。</xref:System.Web.UI.WebControls.Wizard.ActiveStepIndex%2A> </xref:System.Web.UI.WebControls.WizardStep> <xref:System.Web.UI.WebControls.Wizard>控件没有自动前进到下一个<xref:System.Web.UI.WebControls.WizardStep>在此方案中的对象。</xref:System.Web.UI.WebControls.WizardStep> </xref:System.Web.UI.WebControls.Wizard>       下表列出的登录控件样式属性并说明每个样式属性会影响哪些用户界面元素。 有关哪些属性的每个样式应用到的列表，请参阅的单个样式属性的文档。      |样式属性 |受影响的用户界面元素 |  |--------------------|-------------------------|  |<xref:System.Web.UI.WebControls.Login.BorderPadding%2A>|控件内容和控件的边框之间的空间。 |  |<xref:System.Web.UI.WebControls.Login.CheckBoxStyle%2A>|记住我复选框。 |  |<xref:System.Web.UI.WebControls.Login.FailureTextStyle%2A>|登录失败文本。 |  |<xref:System.Web.UI.WebControls.Login.InstructionTextStyle%2A>|告知用户如何使用控件的页面上的说明文本。 |  |<xref:System.Web.UI.WebControls.Login.LabelStyle%2A>|标签的所有输入字段，例如文本框。 |  |<xref:System.Web.UI.WebControls.Login.TextBoxStyle%2A>|文本输入输入字段。 |  |<xref:System.Web.UI.WebControls.Login.TitleTextStyle%2A>|标题文本。 |  |<xref:System.Web.UI.WebControls.Login.ValidatorTextStyle%2A>|由于验证错误而失败的登录尝试时向用户显示的文本。 |  |<xref:System.Web.UI.WebControls.Login.HyperLinkStyle%2A>|链接至其他页面。 |  |<xref:System.Web.UI.WebControls.Login.LoginButtonStyle%2A>|登录按钮。 |     <a name=&quot;validation_groupings&quot;> </a> # # 验证分组<xref:System.Web.UI.WebControls.Login.UserName%2A>和<xref:System.Web.UI.WebControls.Login.Password%2A>属性具有<xref:System.Web.UI.WebControls.RequiredFieldValidator>与它们可以阻止用户且不提供所需的信息提交页面相关联的控件。</xref:System.Web.UI.WebControls.RequiredFieldValidator> </xref:System.Web.UI.WebControls.Login.Password%2A> </xref:System.Web.UI.WebControls.Login.UserName%2A> </xref:System.Web.UI.WebControls.Login.LoginButtonStyle%2A> </xref:System.Web.UI.WebControls.Login.HyperLinkStyle%2A> </xref:System.Web.UI.WebControls.Login.ValidatorTextStyle%2A> </xref:System.Web.UI.WebControls.Login.TitleTextStyle%2A> </xref:System.Web.UI.WebControls.Login.TextBoxStyle%2A> </xref:System.Web.UI.WebControls.Login.LabelStyle%2A> </xref:System.Web.UI.WebControls.Login.InstructionTextStyle%2A> </xref:System.Web.UI.WebControls.Login.FailureTextStyle%2A> </xref:System.Web.UI.WebControls.Login.CheckBoxStyle%2A> </xref:System.Web.UI.WebControls.Login.BorderPadding%2A>       登录控件使用的验证组，以便可以单独验证与登录控件相同的页上的其他字段。 默认情况下，<xref:System.Web.UI.Control.ID%2A>登录控件的属性用作验证组的名称。</xref:System.Web.UI.Control.ID%2A> 例如，具有 ID&quot;Login1&quot;的登录控件将使用&quot;Login1&quot;的验证组名称。 如果你想要设置的验证组中 Login 控件是的一部分，你必须将控件模板和更改的验证组名称。      <a name=&quot;applying_styles&quot;></a># # 应用 CSS 样式登录控制允许您指定在标记中的 CSS 样式规则。 如果模板用于自定义登录控件的外观，你可以在模板中的标记中指定 CSS 样式。 在这种情况下，没有额外的外部表是必需的。 你可以防止通过设置呈现表<xref:System.Web.UI.WebControls.Login.RenderOuterTable%2A>属性`false`。</xref:System.Web.UI.WebControls.Login.RenderOuterTable%2A>      <a name=&quot;accessibility&quot;></a># # 有关如何配置此控件，以使其生成符合辅助功能标准的标记辅助功能的信息，请参阅[Visual Studio 和 ASP.NET 中的辅助功能](~/add/includes/ajax-current-ext-md.md)和[ASP.NET 控件和可访问性](~/add/includes/ajax-current-ext-md.md)。      <a name=&quot;declarative_syntax&quot;></a># # 声明性语法```   <asp:Login       AccessKey=&quot;string&quot;       BackColor=&quot;color name|#dddddd&quot;       BorderColor=&quot;color name|#dddddd&quot;       BorderPadding=&quot;integer&quot;       BorderStyle=&quot;NotSet|None|Dotted|Dashed|Solid|Double|Groove|Ridge|           Inset|Outset&quot;       BorderWidth=&quot;size&quot;       CreateUserIconUrl=&quot;uri&quot;       CreateUserText=&quot;string&quot;       CreateUserUrl=&quot;uri&quot;       CssClass=&quot;string&quot;       DestinationPageUrl=&quot;uri&quot;       DisplayRememberMe=&quot;True|False&quot;       Enabled=&quot;True|False&quot;       EnableTheming=&quot;True|False&quot;       EnableViewState=&quot;True|False&quot;       FailureAction=&quot;Refresh|RedirectToLoginPage&quot;       FailureText=&quot;string&quot;       Font-Bold=&quot;True|False&quot;       Font-Italic=&quot;True|False&quot;       Font-Names=&quot;string&quot;       Font-Overline=&quot;True|False&quot;       Font-Size=&quot;string|Smaller|Larger|XX-Small|X-Small|Small|Medium|                  Large|X-Large|XX-Large&quot;       Font-Strikeout=&quot;True|False&quot;       Font-Underline=&quot;True|False&quot;       ForeColor=&quot;color name|#dddddd&quot;       Height=&quot;size&quot;       HelpPageIconUrl=&quot;uri&quot;       HelpPageText=&quot;string&quot;       HelpPageUrl=&quot;uri&quot;       ID=&quot;string&quot;       InstructionText=&quot;string&quot;       LoginButtonImageUrl=&quot;uri&quot;       LoginButtonText=&quot;string&quot;       LoginButtonType=&quot;Button|Image|Link&quot;       MembershipProvider=&quot;string&quot;       OnAuthenticate=&quot;Authenticate event handler&quot;       OnDataBinding=&quot;DataBinding event handler&quot;       OnDisposed=&quot;Disposed event handler&quot;       OnInit=&quot;Init event handler&quot;       OnLoad=&quot;Load event handler&quot;       OnLoggedIn=&quot;LoggedIn event handler&quot;       OnLoggingIn=&quot;LoggingIn event handler&quot;       OnLoginError=&quot;LoginError event handler&quot;       OnPreRender=&quot;PreRender event handler&quot;       OnUnload=&quot;Unload event handler&quot;       Orientation=&quot;Horizontal|Vertical&quot;       PasswordLabelText=&quot;string&quot;       PasswordRecoveryIconUrl=&quot;uri&quot;       PasswordRecoveryText=&quot;string&quot;       PasswordRecoveryUrl=&quot;uri&quot;       PasswordRequiredErrorMessage=&quot;string&quot;       RememberMeSet=&quot;True|False&quot;       RememberMeText=&quot;string&quot;       runat=&quot;server&quot;       SkinID=&quot;string&quot;       Style=&quot;string&quot;       TabIndex=&quot;integer&quot;       TextLayout=&quot;TextOnLeft|TextOnTop&quot;       TitleText=&quot;string&quot;       ToolTip=&quot;string&quot;       UserName=&quot;string&quot;       UserNameLabelText=&quot;string&quot;       UserNameRequiredErrorMessage=&quot;string&quot;       Visible=&quot;True|False&quot;       VisibleWhenLoggedIn=&quot;True|False&quot;       Width=&quot;size&quot;   >           <CheckBoxStyle />           <FailureTextStyle />           <HyperLinkStyle />           <InstructionTextStyle />           <LabelStyle />           <LayoutTemplate>               <!-- child controls -->           </LayoutTemplate>           <LoginButtonStyle />           <TextBoxStyle />           <TitleTextStyle />           <ValidatorTextStyle />   </asp:Login>   ```"
   example:
   - "The following code example uses a Login control to provide a UI for logging in to a Web site.  \n  \n [!code-cs[LoginClass#1](~/add/codesnippet/csharp/t-system.web.ui.webcontr_214_1.aspx)]\n [!code-vb[LoginClass#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_214_1.aspx)]  \n  \n The following code example demonstrates how you can extend the Login control. The `CustomLogin` control includes a <xref:System.Web.UI.WebControls.DropDownList> control that lets users choose which membership provider they are authenticated with. (These providers are configured in Web.config.) In the <xref:System.Web.UI.WebControls.Login.OnLoggingIn%2A> method, the <xref:System.Web.UI.WebControls.Login.MembershipProvider%2A> property is set to the selected value of the <xref:System.Web.UI.WebControls.DropDownList> control.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[Samples.AspNet.Controls.CustomLogin#1](~/add/codesnippet/csharp/t-system.web.ui.webcontr_214_2.cs)]\n [!code-vb[Samples.AspNet.Controls.CustomLogin#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_214_2.vb)]"
   syntax:
@@ -239,8 +239,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Creates a new instance of the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control."
-  remarks: "The <xref:System.Web.UI.WebControls.Login> constructor creates a new instance of the <xref:System.Web.UI.WebControls.Login> control that can be programmatically inserted into a Web page.       The following table shows the initial property values for a new instance of <xref:System.Web.UI.WebControls.Login>.      |Property|Initial value|   |--------------|-------------------|   |<xref:System.Web.UI.WebControls.Login.RememberMeSet%2A>|`true`|   |<xref:System.Web.UI.WebControls.Login.VisibleWhenLoggedIn%2A>|`true`|   |<xref:System.Web.UI.WebControls.Login.FailureAction%2A>|`true`|   |<xref:System.Web.UI.WebControls.Login.FailureText%2A>|&quot;Your login attempt has failed. Please try again.&quot;|   |<xref:System.Web.UI.WebControls.Login.MembershipProvider%2A>|&quot;Default&quot;|   |<xref:System.Web.UI.WebControls.Login.Orientation%2A>|<xref:System.Web.UI.WebControls.Orientation>|   |<xref:System.Web.UI.WebControls.Login.PasswordLabelText%2A>|&quot;Password:&quot;|   |<xref:System.Web.UI.WebControls.Login.PasswordRequiredErrorMessage%2A>|&quot;Password.&quot;|   |<xref:System.Web.UI.WebControls.Login.RememberMeSet%2A>|`false`|   |<xref:System.Web.UI.WebControls.Login.RememberMeText%2A>|&quot;Remember me next time.&quot;|   |<xref:System.Web.UI.WebControls.Login.LoginButtonText%2A>|&quot;Login&quot;|   |<xref:System.Web.UI.WebControls.Login.TextLayout%2A>|<xref:System.Web.UI.WebControls.LoginTextLayout>|   |<xref:System.Web.UI.WebControls.Login.TitleText%2A>|&quot;Login&quot;|   |<xref:System.Web.UI.WebControls.Login.UserNameLabelText%2A>|&quot;User Name:&quot;|   |<xref:System.Web.UI.WebControls.Login.UserNameRequiredErrorMessage%2A>|&quot;User Name.&quot;|"
+  summary: "创建的新实例<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控件。"
+  remarks: "<xref:System.Web.UI.WebControls.Login>构造函数创建的新实例<xref:System.Web.UI.WebControls.Login>可以以编程方式插入到网页上的控件。</xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.WebControls.Login>       下表显示<xref:System.Web.UI.WebControls.Login>.</xref:System.Web.UI.WebControls.Login>的新实例的初始属性值      |属性 |初始值 |  |--------------|-------------------|  |<xref:System.Web.UI.WebControls.Login.RememberMeSet%2A>|`true`|  |<xref:System.Web.UI.WebControls.Login.VisibleWhenLoggedIn%2A>|`true`|  |<xref:System.Web.UI.WebControls.Login.FailureAction%2A>|`true`|  |<xref:System.Web.UI.WebControls.Login.FailureText%2A>|&quot;您的登录尝试失败。</xref:System.Web.UI.WebControls.Login.FailureText%2A> </xref:System.Web.UI.WebControls.Login.FailureAction%2A> </xref:System.Web.UI.WebControls.Login.VisibleWhenLoggedIn%2A> </xref:System.Web.UI.WebControls.Login.RememberMeSet%2A> 请重试。&quot;| |<xref:System.Web.UI.WebControls.Login.MembershipProvider%2A>|&quot;默认值&quot;|  |<xref:System.Web.UI.WebControls.Login.Orientation%2A>|<xref:System.Web.UI.WebControls.Orientation>|  |<xref:System.Web.UI.WebControls.Login.PasswordLabelText%2A>|&quot;密码:&quot;|  |<xref:System.Web.UI.WebControls.Login.PasswordRequiredErrorMessage%2A>|&quot;密码。&quot;| |<xref:System.Web.UI.WebControls.Login.RememberMeSet%2A>|`false`|  |<xref:System.Web.UI.WebControls.Login.RememberMeText%2A>|&quot;记住我下一次。&quot;| |<xref:System.Web.UI.WebControls.Login.LoginButtonText%2A>|&quot;登录名&quot;|  |<xref:System.Web.UI.WebControls.Login.TextLayout%2A>|<xref:System.Web.UI.WebControls.LoginTextLayout>|  |<xref:System.Web.UI.WebControls.Login.TitleText%2A>|&quot;登录名&quot;|  |<xref:System.Web.UI.WebControls.Login.UserNameLabelText%2A>|&quot;用户名称:&quot;|  |<xref:System.Web.UI.WebControls.Login.UserNameRequiredErrorMessage%2A>|&quot;User Name.&quot;|</xref:System.Web.UI.WebControls.Login.UserNameRequiredErrorMessage%2A></xref:System.Web.UI.WebControls.Login.UserNameLabelText%2A></xref:System.Web.UI.WebControls.Login.TitleText%2A></xref:System.Web.UI.WebControls.LoginTextLayout></xref:System.Web.UI.WebControls.Login.TextLayout%2A></xref:System.Web.UI.WebControls.Login.LoginButtonText%2A></xref:System.Web.UI.WebControls.Login.RememberMeText%2A></xref:System.Web.UI.WebControls.Login.RememberMeSet%2A></xref:System.Web.UI.WebControls.Login.PasswordRequiredErrorMessage%2A></xref:System.Web.UI.WebControls.Login.PasswordLabelText%2A></xref:System.Web.UI.WebControls.Orientation></xref:System.Web.UI.WebControls.Login.Orientation%2A></xref:System.Web.UI.WebControls.Login.MembershipProvider%2A>"
   example:
   - "The following code example uses the Login constructor to create a new instance of the <xref:System.Web.UI.WebControls.Login> control and add that instance to the <xref:System.Web.UI.Control.Controls%2A> collection of a <xref:System.Web.UI.WebControls.PlaceHolder> control.  \n  \n [!code-cs[LoginLogin#1](~/add/codesnippet/csharp/m-system.web.ui.webcontr_31_1.aspx)]\n [!code-vb[LoginLogin#1](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_31_1.aspx)]"
   syntax:
@@ -262,15 +262,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Occurs when a user is authenticated."
-  remarks: "The Authenticate event is raised when a user uses the <xref:System.Web.UI.WebControls.Login> control to log in to a Web site. Custom authentication schemes can use the Authenticate event to authenticate users.      > [!NOTE] >  When a user uses the <xref:System.Web.UI.WebControls.Login> control to log in to a Web site, all data in the view state and all post data is lost. Do not perform actions in the Authenticate event that rely on the view state.       For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "当用户进行身份验证时发生。"
+  remarks: "当用户使用时引发进行身份验证事件<xref:System.Web.UI.WebControls.Login>控件以要求在登录到网站。</xref:System.Web.UI.WebControls.Login> 自定义身份验证方案可以使用身份验证事件用户进行身份验证。      1> [!NOTE]&1;> 当用户使用<xref:System.Web.UI.WebControls.Login>控件中登录到网站时中的视图状态的所有数据和所有 post 数据将丢失。</xref:System.Web.UI.WebControls.Login> 不依赖于的视图状态进行身份验证事件中执行操作。       有关处理事件的详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example uses the Authenticate event to call site-specific custom authentication code.  \n  \n [!code-cs[LoginAuthenticate#1](~/add/codesnippet/csharp/e-system.web.ui.webcontr_44_1.aspx)]\n [!code-vb[LoginAuthenticate#1](~/add/codesnippet/visualbasic/e-system.web.ui.webcontr_44_1.aspx)]"
   syntax:
     content: public event System.Web.UI.WebControls.AuthenticateEventHandler Authenticate;
     return:
       type: System.Web.UI.WebControls.AuthenticateEventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -286,18 +286,18 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the amount of padding inside the borders of the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control."
-  remarks: "The value of the BorderPadding property is stored in view state."
+  summary: "获取或设置的边框内的填充量<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控件。"
+  remarks: "属性是 BorderPadding 的值存储在视图状态。"
   syntax:
     content: public virtual int BorderPadding { get; set; }
     return:
       type: System.Int32
-      description: "The amount of space (in pixels) between the contents of a <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control and the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control&quot;s border. The default value is <xref uid=&quot;langword_csharp_1&quot; name=&quot;1&quot; href=&quot;&quot;></xref>."
+      description: "（以像素为单位） 的内容之间的空间量<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控件和<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控件的边框。 默认值是<xref uid=&quot;langword_csharp_1&quot; name=&quot;1&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.Login.BorderPadding*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The BorderPadding property is set to a value less than -1."
+    description: "BorderPadding 属性设置为小于-1 的值。"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.Login.CheckBoxStyle
@@ -312,15 +312,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets a reference to a <xref href=&quot;System.Web.UI.WebControls.Style&quot;></xref> object that defines the settings for the Remember Me check box."
-  remarks: "The CheckBoxStyle property gets a reference to a <xref:System.Web.UI.WebControls.Style> object that you use to change the appearance of the <xref:System.Web.UI.WebControls.Login> control&quot;s Remember Me check box.       This property is read-only; however, you can set the properties of the <xref:System.Web.UI.WebControls.Style> object it returns. You can set these properties declaratively in the form `Property-Subproperty`, where `Subproperty` represents a property of the <xref:System.Web.UI.WebControls.Style> class (for example, `CheckBoxStyle-ForeColor`). You can set the property programmatically in the form `Property.Subproperty` (for example, `CheckBoxStyle.ForeColor`).       Common settings include custom background color, text color, and font properties. The CheckBoxStyle property defines the appearance of the <xref:System.Web.UI.WebControls.Login.RememberMeText%2A> property.       The style settings for the CheckBoxStyle property are merged with the style settings for the <xref:System.Web.UI.WebControls.Login> control. Any settings made in the CheckBoxStyle property override the corresponding settings in properties of the <xref:System.Web.UI.WebControls.Login> control.       The following <xref:System.Web.UI.WebControls.Login> control style properties are overridden by CheckBoxStyle settings:      -   <xref:System.Web.UI.WebControls.WebControl.BackColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Enabled%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Font%2A>      -   <xref:System.Web.UI.WebControls.WebControl.ForeColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Height%2A>      -   <xref:System.Web.UI.WebControls.WebControl.ToolTip%2A>      -   <xref:System.Web.UI.Control.Visible%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Width%2A>       When you use templates to define the appearance of the <xref:System.Web.UI.WebControls.Login> control, the CheckBoxStyle property has no effect."
+  summary: "获取对<xref href=&quot;System.Web.UI.WebControls.Style&quot;></xref>对象，用于定义的设置记住我复选框。"
+  remarks: "CheckBoxStyle 属性获取的引用<xref:System.Web.UI.WebControls.Style>对象，供你用来更改的外观<xref:System.Web.UI.WebControls.Login>控件的记住我复选框。</xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.WebControls.Style>       此属性是只读的;但是，可以设置的属性<xref:System.Web.UI.WebControls.Style>对象返回。</xref:System.Web.UI.WebControls.Style> 你可以在窗体中以声明方式设置这些属性`Property-Subproperty`，其中`Subproperty`表示的属性<xref:System.Web.UI.WebControls.Style>类 (例如， `CheckBoxStyle-ForeColor`)。</xref:System.Web.UI.WebControls.Style> 你可以以编程方式设置此属性的形式`Property.Subproperty`(例如， `CheckBoxStyle.ForeColor`)。       常用的设置包括自定义的背景色、 文本颜色和字体属性。 CheckBoxStyle 属性定义的外观<xref:System.Web.UI.WebControls.Login.RememberMeText%2A>属性。</xref:System.Web.UI.WebControls.Login.RememberMeText%2A>       与的样式设置合并 CheckBoxStyle 属性的样式设置<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> CheckBoxStyle 属性中所做的任何设置重写的属性中的相应设置<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login>       以下<xref:System.Web.UI.WebControls.Login>控件样式属性被 CheckBoxStyle 设置覆盖:- <xref:System.Web.UI.WebControls.WebControl.BackColor%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderColor%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A>- <xref:System.Web.UI.WebControls.WebControl.Enabled%2A>- <xref:System.Web.UI.WebControls.WebControl.Font%2A>- <xref:System.Web.UI.WebControls.WebControl.ForeColor%2A>- <xref:System.Web.UI.WebControls.WebControl.Height%2A>- <xref:System.Web.UI.WebControls.WebControl.ToolTip%2A>- <xref:System.Web.UI.Control.Visible%2A>-<xref:System.Web.UI.WebControls.WebControl.Width%2A>当你使用模板定义的外观<xref:System.Web.UI.WebControls.Login>控件，CheckBoxStyle 属性不起作用。</xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.WebControls.WebControl.Width%2A> </xref:System.Web.UI.Control.Visible%2A> </xref:System.Web.UI.WebControls.WebControl.ToolTip%2A> </xref:System.Web.UI.WebControls.WebControl.Height%2A> </xref:System.Web.UI.WebControls.WebControl.ForeColor%2A> </xref:System.Web.UI.WebControls.WebControl.Font%2A> </xref:System.Web.UI.WebControls.WebControl.Enabled%2A> </xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A> </xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A> </xref:System.Web.UI.WebControls.WebControl.BorderColor%2A> </xref:System.Web.UI.WebControls.WebControl.BackColor%2A> </xref:System.Web.UI.WebControls.Login>"
   example:
   - "The following code example sets the text color of the Remember Me check box to blue and the font style to italic by setting properties of the <xref:System.Web.UI.WebControls.Style> object referenced by the CheckBoxStyle property.  \n  \n [!code-vb[LoginCheckBoxStyle#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_354_1.aspx)]\n [!code-cs[LoginCheckBoxStyle#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_354_1.aspx)]"
   syntax:
     content: public System.Web.UI.WebControls.TableItemStyle CheckBoxStyle { get; }
     return:
       type: System.Web.UI.WebControls.TableItemStyle
-      description: "A reference to the <xref href=&quot;System.Web.UI.WebControls.Style&quot;></xref> that defines the style settings for the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control&quot;s Remember Me check box."
+      description: "对引用<xref href=&quot;System.Web.UI.WebControls.Style&quot;> </xref> ，它定义的样式设置<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控件的记住我复选框。"
   overload: System.Web.UI.WebControls.Login.CheckBoxStyle*
   exceptions: []
   platform:
@@ -337,8 +337,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Creates the individual controls that make up the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control and associates event handlers with their events."
-  remarks: "The CreateChildControls method creates instances of the controls that compose the <xref:System.Web.UI.WebControls.Login> control."
+  summary: "创建构成单个控件<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>使用其事件的控件并将关联事件处理程序。"
+  remarks: "CreateChildControls 方法创建的控件的撰写实例<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login>"
   syntax:
     content: protected override void CreateChildControls ();
     parameters: []
@@ -358,12 +358,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets the location of an image to display next to the link to a registration page for new users."
+  summary: "获取要显示旁边为新用户的注册页的链接的图像的位置。"
   syntax:
     content: public virtual string CreateUserIconUrl { get; set; }
     return:
       type: System.String
-      description: "The URL of the image to display. The default is <xref:System.String>."
+      description: "若要显示的图像的 URL。 默认值为<xref:System.String>。</xref:System.String>"
   overload: System.Web.UI.WebControls.Login.CreateUserIconUrl*
   exceptions: []
   platform:
@@ -380,15 +380,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the text of a link to a registration page for new users."
-  remarks: "The CreateUserText property contains the text of a link to the registration page for the site. The URL of the registration page is specified in the <xref:System.Web.UI.WebControls.Login.CreateUserUrl%2A> property.       If <xref:System.Web.UI.WebControls.Login.CreateUserUrl%2A> is empty, the text in the CreateUserText property is displayed to the user, but is not formatted as a link.       If the CreateUserText property is empty, a link to the registration page is not available to the user.       The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置到注册页的链接文本新用户。"
+  remarks: "CreateUserText 属性包含指向站点的注册页的文本。 注册页的 URL 中指定<xref:System.Web.UI.WebControls.Login.CreateUserUrl%2A>属性。</xref:System.Web.UI.WebControls.Login.CreateUserUrl%2A>       如果<xref:System.Web.UI.WebControls.Login.CreateUserUrl%2A>为空的 CreateUserText 属性显示给用户，但未格式化的链接的形式中的文本。</xref:System.Web.UI.WebControls.Login.CreateUserUrl%2A>       如果 CreateUserText 属性为空，不是可供用户注册页的链接。       此属性的值设置时，可以自动保存到的资源文件通过使用设计器工具。 有关详细信息，请参阅<xref:System.ComponentModel.LocalizableAttribute>和[全球化和本地化](~/add/includes/ajax-current-ext-md.md)。</xref:System.ComponentModel.LocalizableAttribute>"
   example:
   - "The following code example sets the CreateUserText property to \"Register new user...\"  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[LoginCreateUserText#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_115_1.aspx)]\n [!code-cs[LoginCreateUserText#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_115_1.aspx)]"
   syntax:
     content: public virtual string CreateUserText { get; set; }
     return:
       type: System.String
-      description: "The text of the link to the new-user registration page. The default is <xref:System.String>."
+      description: "新用户注册页的链接的文本。 默认值为<xref:System.String>。</xref:System.String>"
   overload: System.Web.UI.WebControls.Login.CreateUserText*
   exceptions: []
   platform:
@@ -405,15 +405,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the URL of the new-user registration page."
-  remarks: "The CreateUserUrl property contains the URL of the new-user registration page for the Web site. The <xref:System.Web.UI.WebControls.Login.CreateUserText%2A> property contains the text used for the link.       If the <xref:System.Web.UI.WebControls.Login.CreateUserText%2A> property is empty, the link to the registration page is unavailable to the user."
+  summary: "获取或设置新用户注册页的 URL。"
+  remarks: "CreateUserUrl 属性包含网站的新用户注册页的 URL。 <xref:System.Web.UI.WebControls.Login.CreateUserText%2A>属性包含用于链接的文本。</xref:System.Web.UI.WebControls.Login.CreateUserText%2A>       如果<xref:System.Web.UI.WebControls.Login.CreateUserText%2A>属性为空，则在注册页的链接才对用户不可用。</xref:System.Web.UI.WebControls.Login.CreateUserText%2A>"
   example:
   - "The following code example sets the CreateUserUrl property to \"register.aspx\".  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[LoginCreateUserText#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_808_1.aspx)]\n [!code-cs[LoginCreateUserText#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_808_1.aspx)]"
   syntax:
     content: public virtual string CreateUserUrl { get; set; }
     return:
       type: System.String
-      description: "The URL of the new-user registration page. The default is <xref:System.String>."
+      description: "新用户注册页的 URL。 默认值为<xref:System.String>。</xref:System.String>"
   overload: System.Web.UI.WebControls.Login.CreateUserUrl*
   exceptions: []
   platform:
@@ -430,15 +430,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the URL of the page displayed to the user when a login attempt is successful."
-  remarks: "The DestinationPageUrl property specifies the page that is displayed when a login attempt is successful.       The default behavior of the <xref:System.Web.UI.WebControls.Login> control is to return the user to the referring page, or to the page defined in the `defaultUrl` attribute of the  element in the Web.config file.       The DestinationPageUrl property overrides the default behavior of the <xref:System.Web.UI.WebControls.Login> control, as well as the `defaultUrl` setting made in the configuration file.       This property cannot be set by themes or style sheet themes. For more information, see <xref:System.Web.UI.ThemeableAttribute> and [ASP.NET Themes and Skins](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置成功的登录尝试时向用户显示的页面的 URL。"
+  remarks: "DestinationPageUrl 属性指定当登录尝试不成功时显示的页。       默认行为<xref:System.Web.UI.WebControls.Login>控制是将用户返回到引用的页中，或中定义的页`defaultUrl`的 Web.config 文件中的元素的属性。</xref:System.Web.UI.WebControls.Login>       DestinationPageUrl 属性重写的默认行为<xref:System.Web.UI.WebControls.Login>控件，以及`defaultUrl`所做的配置文件中的设置。</xref:System.Web.UI.WebControls.Login>       此属性不能通过主题或样式表主题设置。 有关详细信息，请参阅<xref:System.Web.UI.ThemeableAttribute>和[ASP.NET 主题和皮肤](~/add/includes/ajax-current-ext-md.md)。</xref:System.Web.UI.ThemeableAttribute>"
   example:
   - "The following code example sets the DestinationPageUrl property. The Page_Load method is used to attach the URL of the referring page to the URL of the destination page so that the destination page can return the user to the original page if desired.  \n  \n [!code-vb[LoginDestinationPageUrl#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_799_1.aspx)]\n [!code-cs[LoginDestinationPageUrl#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_799_1.aspx)]"
   syntax:
     content: public virtual string DestinationPageUrl { get; set; }
     return:
       type: System.String
-      description: "The URL of the page the user is redirected to when a login attempt is successful. The default is <xref:System.String>."
+      description: "页面的 URL 用户时重定向到登录尝试不成功。 默认值为<xref:System.String>。</xref:System.String>"
   overload: System.Web.UI.WebControls.Login.DestinationPageUrl*
   exceptions: []
   platform:
@@ -455,15 +455,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets a value indicating whether to display a check box to enable the user to control whether a persistent cookie is sent to their browser."
-  remarks: "When the DisplayRememberMe property is set to `true`, the text contained in the <xref:System.Web.UI.WebControls.Login.RememberMeText%2A> property is displayed on the page, along with a Remember Me check box. When the user selects the Remember Me check box, the authentication cookie sent to his or her computer persists so that the user is automatically authenticated on future visits to the site. The value of the <xref:System.Web.UI.WebControls.Login.RememberMeSet%2A> property is set by the selection in the Remember Me check box.       If DisplayRememberMe is `false`, a Remember Me check box is not displayed on the page and the user has no way to control whether the authentication cookie persists or not. You can still set the <xref:System.Web.UI.WebControls.Login.RememberMeSet%2A> property to `true` to send a persistent authentication cookie to the user&quot;s browser without displaying the check box.      > [!NOTE] >  There are inherent security risks with setting a persistent authentication cookie on a user&quot;s browser. You should determine whether these security risks are acceptable to your site. If you set the <xref:System.Web.UI.WebControls.Login.RememberMeSet%2A> property to `true` and the DisplayRememberMe property to `false`, users visiting your Web site from public browsers, as in Internet cafes for example, can accidentally leave persistent authentication cookies behind and the next user of the browser will be able to access your Web site using the previous user&quot;s credentials.       This property cannot be set by themes or style sheet themes. For more information, see <xref:System.Web.UI.ThemeableAttribute> and [ASP.NET Themes and Skins](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置一个值，该值指示是否显示一个复选框以使用户能够控制是否持久性 cookie 发送到其浏览器。"
+  remarks: "当 DisplayRememberMe 属性设置为`true`中, 包含的文本<xref:System.Web.UI.WebControls.Login.RememberMeText%2A>页面上显示属性，以及记住我复选框。</xref:System.Web.UI.WebControls.Login.RememberMeText%2A> 当用户选择记住我复选框，发送到他或她的计算机的身份验证 cookie 仍然存在，以便将来访问站点上自动验证用户。 值<xref:System.Web.UI.WebControls.Login.RememberMeSet%2A>属性由设置所选内容中记住我复选框。</xref:System.Web.UI.WebControls.Login.RememberMeSet%2A>       如果 DisplayRememberMe `false`、 记住我复选框不会显示在页面和用户是否身份验证 cookie 仍然存在或不具有不能控制。 您仍可以设置<xref:System.Web.UI.WebControls.Login.RememberMeSet%2A>属性`true`发送到用户的浏览器的持久性身份验证 cookie，而不显示复选框。</xref:System.Web.UI.WebControls.Login.RememberMeSet%2A>      1> [!NOTE]&1;> 有与在用户的浏览器上设置持久性身份验证 cookie 的固有安全风险。 你应该确定是否可以接受你的站点的这些安全风险。 如果你设置<xref:System.Web.UI.WebControls.Login.RememberMeSet%2A>属性`true`而 DisplayRememberMe 属性设为`false`、 访问您的网站从公共的浏览器的用户，如下所示 Internet 吧例如，可以无意中将留在后面的持久性身份验证 cookie 和浏览器的下一个用户将能够访问您的网站以使用以前用户的凭据。</xref:System.Web.UI.WebControls.Login.RememberMeSet%2A>       此属性不能通过主题或样式表主题设置。 有关详细信息，请参阅<xref:System.Web.UI.ThemeableAttribute>和[ASP.NET 主题和皮肤](~/add/includes/ajax-current-ext-md.md)。</xref:System.Web.UI.ThemeableAttribute>"
   example:
   - "The following code example disables the Remember Me check box by setting the DisplayRememberMe property to `false`.  \n  \n [!code-vb[LoginEnableRememberMe#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_765_1.aspx)]\n [!code-cs[LoginEnableRememberMe#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_765_1.aspx)]"
   syntax:
     content: public virtual bool DisplayRememberMe { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to display the check box; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>若要显示复选框，则否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.Login.DisplayRememberMe*
   exceptions: []
   platform:
@@ -480,20 +480,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the action that occurs when a login attempt fails."
-  remarks: "The FailureAction property defines the behavior of the <xref:System.Web.UI.WebControls.Login> control when the user does not successfully log in to the Web site.       The default behavior reloads the page and displays the contents of the <xref:System.Web.UI.WebControls.Login.FailureText%2A> property to alert the user that the login attempt failed.       When FailureAction is set to <xref:System.Web.UI.WebControls.LoginFailureAction>, the user is redirected to the login page defined in the Web.config file.       This property cannot be set by themes or style sheet themes. For more information, see <xref:System.Web.UI.ThemeableAttribute> and [ASP.NET Themes and Skins](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置当登录尝试失败时发生的操作。"
+  remarks: "FailureAction 属性定义的行为<xref:System.Web.UI.WebControls.Login>控制当用户没有成功登录到网站。</xref:System.Web.UI.WebControls.Login>       默认行为重新加载页面，并显示的内容<xref:System.Web.UI.WebControls.Login.FailureText%2A>属性来提醒用户的登录尝试失败。</xref:System.Web.UI.WebControls.Login.FailureText%2A>       当 FailureAction 设置为<xref:System.Web.UI.WebControls.LoginFailureAction>，用户定向到 Web.config 文件中定义的登录页。</xref:System.Web.UI.WebControls.LoginFailureAction>       此属性不能通过主题或样式表主题设置。 有关详细信息，请参阅<xref:System.Web.UI.ThemeableAttribute>和[ASP.NET 主题和皮肤](~/add/includes/ajax-current-ext-md.md)。</xref:System.Web.UI.ThemeableAttribute>"
   example:
   - "The following code example shows how to set the FailureAction property both declaratively and in code.  \n  \n [!code-vb[LoginLoginFailureAction#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1151_1.aspx)]\n [!code-cs[LoginLoginFailureAction#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1151_1.aspx)]"
   syntax:
     content: public virtual System.Web.UI.WebControls.LoginFailureAction FailureAction { get; set; }
     return:
       type: System.Web.UI.WebControls.LoginFailureAction
-      description: "One of the <xref href=&quot;System.Web.UI.WebControls.LoginFailureAction&quot;></xref> enumeration values. The default is <xref href=&quot;System.Web.UI.WebControls.LoginFailureAction&quot;></xref>."
+      description: "之一<xref href=&quot;System.Web.UI.WebControls.LoginFailureAction&quot;></xref>枚举值。 默认值是<xref href=&quot;System.Web.UI.WebControls.LoginFailureAction&quot;> </xref>。"
   overload: System.Web.UI.WebControls.Login.FailureAction*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The selected value is not one of the <xref href=&quot;System.Web.UI.WebControls.LoginFailureAction&quot;></xref> enumeration values."
+    description: "所选的值不是之一<xref href=&quot;System.Web.UI.WebControls.LoginFailureAction&quot;></xref>枚举值。"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.Login.FailureText
@@ -508,7 +508,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the text displayed when a login attempt fails."
+  summary: "获取或设置显示的登录尝试失败时的文本。"
   remarks: "The FailureText property specifies the string that is displayed when a login attempt fails.  \n  \n If you define a template for the <xref:System.Web.UI.WebControls.Login> control, you can indicate where on the template to display the FailureText property by using a <xref:System.Web.UI.WebControls.Literal> control and giving that control the ID \"FailureText\". When you use a template, the <xref:System.Web.UI.WebControls.Login.FailureTextStyle%2A> property is not applied to the text specified in the FailureText property.  \n  \n The default text for the property is localized based on the server's current locale.  \n  \n> [!NOTE]\n>  For security reasons, the login failure text should not include a specific reason for the failure. For example, an error message such as \"Password not valid for user \\<username>\" reveals to a potential attacker that \\<username> is a user on the system. For more information, see [How to: Display Safe Error Messages](~/add/includes/ajax-current-ext-md.md).  \n  \n The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example sets the FailureText property to \"There was an error while logging you in. Please try again.\".  \n  \n [!code-vb[LoginLoginFailureText#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_296_1.aspx)]\n [!code-cs[LoginLoginFailureText#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_296_1.aspx)]"
@@ -516,7 +516,7 @@ items:
     content: public virtual string FailureText { get; set; }
     return:
       type: System.String
-      description: "The text to display to the user when a login attempt fails. The default is &quot;Your login attempt has failed. Please try again.&quot;"
+      description: "要登录尝试失败时，向用户显示的文本。 默认值为&quot;您的登录尝试失败。 请重试。&quot;"
   overload: System.Web.UI.WebControls.Login.FailureText*
   exceptions: []
   platform:
@@ -533,15 +533,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets a reference to a collection of properties that define the appearance of error text in the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control."
-  remarks: "The FailureTextStyle property gets a reference to a <xref:System.Web.UI.WebControls.TableItemStyle> object that you use to change the appearance of login failure text. The default is to display the text in red.       This property is read-only; however, you can set the properties of the <xref:System.Web.UI.WebControls.TableItemStyle> object it returns. You can set these properties declaratively in the form `Property-Subproperty`, where `Subproperty` represents a property of the <xref:System.Web.UI.WebControls.TableItemStyle> class (for example, `FailureTextStyle-ForeColor`). You can set the property programmatically in the form `Property.Subproperty` (for example, `FailureTextStyle.ForeColor`).       Common settings include custom background color, text color, and font properties. The FailureTextStyle property defines the appearance of the <xref:System.Web.UI.WebControls.Login.FailureText%2A> property.       The style settings for the FailureTextStyle property are merged with the style settings for the <xref:System.Web.UI.WebControls.Login> control. Any settings made in the FailureTextStyle property override the corresponding settings in properties of the <xref:System.Web.UI.WebControls.Login> control.       The following <xref:System.Web.UI.WebControls.Login> control style properties are overridden by FailureTextStyle settings:      -   <xref:System.Web.UI.WebControls.WebControl.BackColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Enabled%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Font%2A>      -   <xref:System.Web.UI.WebControls.WebControl.ForeColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Height%2A>      -   <xref:System.Web.UI.WebControls.WebControl.ToolTip%2A>      -   <xref:System.Web.UI.Control.Visible%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Width%2A>       When you use templates to define the appearance of the <xref:System.Web.UI.WebControls.Login> control, the FailureTextStyle property has no effect."
+  summary: "获取一个定义中的错误文本的外观的属性集合的引用<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控件。"
+  remarks: "FailureTextStyle 属性获取的引用<xref:System.Web.UI.WebControls.TableItemStyle>对象，供你用来更改登录失败文本的外观。</xref:System.Web.UI.WebControls.TableItemStyle> 默认值是以红色显示文本。       此属性是只读的;但是，可以设置的属性<xref:System.Web.UI.WebControls.TableItemStyle>对象返回。</xref:System.Web.UI.WebControls.TableItemStyle> 你可以在窗体中以声明方式设置这些属性`Property-Subproperty`，其中`Subproperty`表示的属性<xref:System.Web.UI.WebControls.TableItemStyle>类 (例如， `FailureTextStyle-ForeColor`)。</xref:System.Web.UI.WebControls.TableItemStyle> 你可以以编程方式设置此属性的形式`Property.Subproperty`(例如， `FailureTextStyle.ForeColor`)。       常用的设置包括自定义的背景色、 文本颜色和字体属性。 FailureTextStyle 属性定义的外观<xref:System.Web.UI.WebControls.Login.FailureText%2A>属性。</xref:System.Web.UI.WebControls.Login.FailureText%2A>       与的样式设置合并 FailureTextStyle 属性的样式设置<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> FailureTextStyle 属性中所做的任何设置重写的属性中的相应设置<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login>       以下<xref:System.Web.UI.WebControls.Login>控件样式属性被 FailureTextStyle 设置覆盖:- <xref:System.Web.UI.WebControls.WebControl.BackColor%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderColor%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A>- <xref:System.Web.UI.WebControls.WebControl.Enabled%2A>- <xref:System.Web.UI.WebControls.WebControl.Font%2A>- <xref:System.Web.UI.WebControls.WebControl.ForeColor%2A>- <xref:System.Web.UI.WebControls.WebControl.Height%2A>- <xref:System.Web.UI.WebControls.WebControl.ToolTip%2A>- <xref:System.Web.UI.Control.Visible%2A>-<xref:System.Web.UI.WebControls.WebControl.Width%2A>当你使用模板定义的外观<xref:System.Web.UI.WebControls.Login>控件，FailureTextStyle 属性不起作用。</xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.WebControls.WebControl.Width%2A> </xref:System.Web.UI.Control.Visible%2A> </xref:System.Web.UI.WebControls.WebControl.ToolTip%2A> </xref:System.Web.UI.WebControls.WebControl.Height%2A> </xref:System.Web.UI.WebControls.WebControl.ForeColor%2A> </xref:System.Web.UI.WebControls.WebControl.Font%2A> </xref:System.Web.UI.WebControls.WebControl.Enabled%2A> </xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A> </xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A> </xref:System.Web.UI.WebControls.WebControl.BorderColor%2A> </xref:System.Web.UI.WebControls.WebControl.BackColor%2A> </xref:System.Web.UI.WebControls.Login>"
   example:
   - "The following code example specifies the login failure text style by setting the background and text color properties of the <xref:System.Web.UI.WebControls.TableItemStyle> object referenced in the FailureTextStyle property.  \n  \n [!code-vb[LoginLoginFailureText#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_783_1.aspx)]\n [!code-cs[LoginLoginFailureText#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_783_1.aspx)]"
   syntax:
     content: public System.Web.UI.WebControls.TableItemStyle FailureTextStyle { get; }
     return:
       type: System.Web.UI.WebControls.TableItemStyle
-      description: "A reference to the <xref href=&quot;System.Web.UI.WebControls.TableItemStyle&quot;></xref> that contains properties that define the appearance of error text."
+      description: "对引用<xref href=&quot;System.Web.UI.WebControls.TableItemStyle&quot;></xref>包含定义的错误文本外观的属性。"
   overload: System.Web.UI.WebControls.Login.FailureTextStyle*
   exceptions: []
   platform:
@@ -558,12 +558,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets the location of an image to display next to the link to the login Help page."
+  summary: "获取指向登录帮助页的旁边显示的图像的位置。"
   syntax:
     content: public virtual string HelpPageIconUrl { get; set; }
     return:
       type: System.String
-      description: "The URL of the image to display. The default is <xref:System.String>."
+      description: "若要显示的图像的 URL。 默认值为<xref:System.String>。</xref:System.String>"
   overload: System.Web.UI.WebControls.Login.HelpPageIconUrl*
   exceptions: []
   platform:
@@ -580,15 +580,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the text of a link to the login Help page."
-  remarks: "The HelpPageText property contains the link text to the login Help page for the site. The URL of the login Help page is specified in the <xref:System.Web.UI.WebControls.Login.HelpPageUrl%2A> property.       If <xref:System.Web.UI.WebControls.Login.HelpPageUrl%2A> is empty, the text in the HelpPageText property is displayed to the user on the page, but is not formatted as a link.       If the HelpPageText property is empty, the link to the login Help page is not available to the user.       The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置到登录帮助页的链接的文本。"
+  remarks: "HelpPageText 属性包含到站点的登录名的帮助页的链接文本。 登录帮助页的 URL 中指定<xref:System.Web.UI.WebControls.Login.HelpPageUrl%2A>属性。</xref:System.Web.UI.WebControls.Login.HelpPageUrl%2A>       如果<xref:System.Web.UI.WebControls.Login.HelpPageUrl%2A>为空的 HelpPageText 向在页上，用户显示的属性，但未格式化的链接的形式中的文本。</xref:System.Web.UI.WebControls.Login.HelpPageUrl%2A>       如果 HelpPageText 属性为空，不是可供用户登录帮助页的链接。       此属性的值设置时，可以自动保存到的资源文件通过使用设计器工具。 有关详细信息，请参阅<xref:System.ComponentModel.LocalizableAttribute>和[全球化和本地化](~/add/includes/ajax-current-ext-md.md)。</xref:System.ComponentModel.LocalizableAttribute>"
   example:
   - "The following code example uses the HelpPageText property to specify the text of a link to the site's login Help page.  \n  \n [!code-cs[LoginHelpPageText#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1243_1.aspx)]\n [!code-vb[LoginHelpPageText#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1243_1.aspx)]"
   syntax:
     content: public virtual string HelpPageText { get; set; }
     return:
       type: System.String
-      description: "The text of the link to the login Help page. The default is <xref:System.String>."
+      description: "登录帮助页的链接的文本。 默认值为<xref:System.String>。</xref:System.String>"
   overload: System.Web.UI.WebControls.Login.HelpPageText*
   exceptions: []
   platform:
@@ -605,15 +605,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the URL of the login Help page."
-  remarks: "The HelpPageUrl property contains the URL of the login Help page for the Web site. The <xref:System.Web.UI.WebControls.Login.HelpPageText%2A> property contains the text used for the link.       If HelpPageUrl is empty, text in the <xref:System.Web.UI.WebControls.Login.HelpPageText%2A> property is displayed to the user, but is not formatted as a link.       If the <xref:System.Web.UI.WebControls.Login.HelpPageText%2A> property is empty, the link to the login Help page is not available to the user."
+  summary: "获取或设置登录帮助页的 URL。"
+  remarks: "HelpPageUrl 属性包含网站的登录帮助页的 URL。 <xref:System.Web.UI.WebControls.Login.HelpPageText%2A>属性包含用于链接的文本。</xref:System.Web.UI.WebControls.Login.HelpPageText%2A>       如果 HelpPageUrl 为空中的文本<xref:System.Web.UI.WebControls.Login.HelpPageText%2A>属性显示给用户，但未格式化的链接的形式。</xref:System.Web.UI.WebControls.Login.HelpPageText%2A>       如果<xref:System.Web.UI.WebControls.Login.HelpPageText%2A>属性为空，登录帮助页的链接，不能给用户。</xref:System.Web.UI.WebControls.Login.HelpPageText%2A>"
   example:
   - "The following code example uses the HelpPageUrl property to specify the URL of the site's login Help page.  \n  \n [!code-cs[LoginHelpPageText#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1070_1.aspx)]\n [!code-vb[LoginHelpPageText#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1070_1.aspx)]"
   syntax:
     content: public virtual string HelpPageUrl { get; set; }
     return:
       type: System.String
-      description: "The URL of the login Help page. The default is <xref:System.String>."
+      description: "登录帮助页的 URL。 默认值为<xref:System.String>。</xref:System.String>"
   overload: System.Web.UI.WebControls.Login.HelpPageUrl*
   exceptions: []
   platform:
@@ -630,15 +630,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets a reference to a collection of properties that define the appearance of hyperlinks in the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control."
-  remarks: "The HyperLinkStyle property defines the appearance of hyperlinks in the <xref:System.Web.UI.WebControls.Login> control. This property is read-only; however, you can set the properties of the <xref:System.Web.UI.WebControls.TableItemStyle> object it returns. You can set these properties declaratively in the form `Property-Subproperty`, where `Subproperty` represents a property of the <xref:System.Web.UI.WebControls.TableItemStyle> class (for example, `HyperLinkStyle-ForeColor`). You can set the property programmatically in the form `Property.Subproperty` (for example, `HyperLinkStyle.ForeColor`).       Common settings include custom background color, text color, and font properties. The HyperLinkStyle property defines the appearance of the following properties:      -   <xref:System.Web.UI.WebControls.Login.CreateUserText%2A>      -   <xref:System.Web.UI.WebControls.Login.HelpPageText%2A>      -   <xref:System.Web.UI.WebControls.Login.PasswordRecoveryText%2A>       The style settings for the HyperLinkStyle property are merged with the style settings for the <xref:System.Web.UI.WebControls.Login> control. Any settings made in the HyperLinkStyle property override the corresponding settings in properties of the <xref:System.Web.UI.WebControls.Login> control.       The following <xref:System.Web.UI.WebControls.Login> style properties are overridden by HyperLinkStyle settings:      -   <xref:System.Web.UI.WebControls.WebControl.BackColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Enabled%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Font%2A>      -   <xref:System.Web.UI.WebControls.WebControl.ForeColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Height%2A>      -   <xref:System.Web.UI.WebControls.WebControl.ToolTip%2A>      -   <xref:System.Web.UI.Control.Visible%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Width%2A>       When you use templates to define the appearance of the <xref:System.Web.UI.WebControls.Login> control, the HyperLinkStyle property has no effect."
+  summary: "获取一个定义中的超链接的外观的属性集合的引用<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控件。"
+  remarks: "HyperLinkStyle 属性定义中的超链接的外观<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> 此属性是只读的;但是，可以设置的属性<xref:System.Web.UI.WebControls.TableItemStyle>对象返回。</xref:System.Web.UI.WebControls.TableItemStyle> 你可以在窗体中以声明方式设置这些属性`Property-Subproperty`，其中`Subproperty`表示的属性<xref:System.Web.UI.WebControls.TableItemStyle>类 (例如， `HyperLinkStyle-ForeColor`)。</xref:System.Web.UI.WebControls.TableItemStyle> 你可以以编程方式设置此属性的形式`Property.Subproperty`(例如， `HyperLinkStyle.ForeColor`)。       常用的设置包括自定义的背景色、 文本颜色和字体属性。 HyperLinkStyle 属性定义以下属性的外观:- <xref:System.Web.UI.WebControls.Login.CreateUserText%2A>- <xref:System.Web.UI.WebControls.Login.HelpPageText%2A>- <xref:System.Web.UI.WebControls.Login.PasswordRecoveryText%2A>HyperLinkStyle 属性的样式设置的样式设置与合并<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.WebControls.Login.PasswordRecoveryText%2A> </xref:System.Web.UI.WebControls.Login.HelpPageText%2A> </xref:System.Web.UI.WebControls.Login.CreateUserText%2A> HyperLinkStyle 属性中所做的任何设置重写的属性中的相应设置<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login>       以下<xref:System.Web.UI.WebControls.Login>样式属性被 HyperLinkStyle 设置覆盖:- <xref:System.Web.UI.WebControls.WebControl.BackColor%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderColor%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A>- <xref:System.Web.UI.WebControls.WebControl.Enabled%2A>- <xref:System.Web.UI.WebControls.WebControl.Font%2A>- <xref:System.Web.UI.WebControls.WebControl.ForeColor%2A>- <xref:System.Web.UI.WebControls.WebControl.Height%2A>- <xref:System.Web.UI.WebControls.WebControl.ToolTip%2A>- <xref:System.Web.UI.Control.Visible%2A>-<xref:System.Web.UI.WebControls.WebControl.Width%2A>当你使用模板定义的外观<xref:System.Web.UI.WebControls.Login>控件，HyperLinkStyle 属性不起作用。</xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.WebControls.WebControl.Width%2A> </xref:System.Web.UI.Control.Visible%2A> </xref:System.Web.UI.WebControls.WebControl.ToolTip%2A> </xref:System.Web.UI.WebControls.WebControl.Height%2A> </xref:System.Web.UI.WebControls.WebControl.ForeColor%2A> </xref:System.Web.UI.WebControls.WebControl.Font%2A> </xref:System.Web.UI.WebControls.WebControl.Enabled%2A> </xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A> </xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A> </xref:System.Web.UI.WebControls.WebControl.BorderColor%2A> </xref:System.Web.UI.WebControls.WebControl.BackColor%2A> </xref:System.Web.UI.WebControls.Login>"
   example:
   - "The following code example sets hyperlinks in the <xref:System.Web.UI.WebControls.Login> control to green italic text by setting properties of the <xref:System.Web.UI.WebControls.TableItemStyle> object referenced by the HyperLinkStyle property.  \n  \n [!code-vb[LoginHyperLinkStyle#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_416_1.aspx)]\n [!code-cs[LoginHyperLinkStyle#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_416_1.aspx)]"
   syntax:
     content: public System.Web.UI.WebControls.TableItemStyle HyperLinkStyle { get; }
     return:
       type: System.Web.UI.WebControls.TableItemStyle
-      description: "A reference to the <xref href=&quot;System.Web.UI.WebControls.TableItemStyle&quot;></xref> that contains properties that define the appearance of hyperlinks."
+      description: "对引用<xref href=&quot;System.Web.UI.WebControls.TableItemStyle&quot;></xref>包含定义超链接的外观的属性。"
   overload: System.Web.UI.WebControls.Login.HyperLinkStyle*
   exceptions: []
   platform:
@@ -655,15 +655,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets login instruction text for the user."
-  remarks: "The InstructionText property contains instructions for users logging in to the Web site. This text is displayed in the <xref:System.Web.UI.WebControls.Login> control, following the title.       If the InstructionText property is set to <xref:System.String.Empty>, no instruction text is available to the user.       The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置该用户登录说明文本。"
+  remarks: "InstructionText 属性包含有关用户登录到网站的说明。 此文本显示在<xref:System.Web.UI.WebControls.Login>控件，在标题后。</xref:System.Web.UI.WebControls.Login>       如果 InstructionText 属性设置为<xref:System.String.Empty>，没有指令文本是可供用户。</xref:System.String.Empty>       此属性的值设置时，可以自动保存到的资源文件通过使用设计器工具。 有关详细信息，请参阅<xref:System.ComponentModel.LocalizableAttribute>和[全球化和本地化](~/add/includes/ajax-current-ext-md.md)。</xref:System.ComponentModel.LocalizableAttribute>"
   example:
   - "The following code example uses the InstructionText property to insert instruction text in the <xref:System.Web.UI.WebControls.Login> control.  \n  \n [!code-cs[LoginInstructionText#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_908_1.aspx)]\n [!code-vb[LoginInstructionText#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_908_1.aspx)]"
   syntax:
     content: public virtual string InstructionText { get; set; }
     return:
       type: System.String
-      description: "The login instruction text to display to the user. The default is <xref:System.String>."
+      description: "要向用户显示的登录名指令文本。 默认值为<xref:System.String>。</xref:System.String>"
   overload: System.Web.UI.WebControls.Login.InstructionText*
   exceptions: []
   platform:
@@ -680,15 +680,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets a reference to a <xref href=&quot;System.Web.UI.WebControls.TableItemStyle&quot;></xref> object that defines the settings for instruction text in the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control."
-  remarks: "The InstructionTextStyle property defines the appearance of instruction text in the <xref:System.Web.UI.WebControls.Login> control. This property is read-only; however, you can set the properties of the <xref:System.Web.UI.WebControls.TableItemStyle> object it returns. You can set these properties declaratively in the form `Property-Subproperty`, where `Subproperty` represents a property of the <xref:System.Web.UI.WebControls.TableItemStyle> class (for example, `InstructionTextStyle-ForeColor`). You can set the property programmatically in the form `Property.Subproperty` (for example, `InstructionTextStyle.ForeColor`).       Common settings include custom background color, text color, and font properties. The InstructionTextStyle property defines the appearance of the <xref:System.Web.UI.WebControls.Login.InstructionText%2A> property.       The style settings for the InstructionTextStyle property are merged with the style settings for the <xref:System.Web.UI.WebControls.Login> control. Any settings made in the InstructionTextStyle property override the corresponding settings in properties of the <xref:System.Web.UI.WebControls.Login> control.       The following <xref:System.Web.UI.WebControls.Login> style properties are overridden by InstructionTextStyle settings:      -   <xref:System.Web.UI.WebControls.WebControl.BackColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Enabled%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Font%2A>      -   <xref:System.Web.UI.WebControls.WebControl.ForeColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Height%2A>      -   <xref:System.Web.UI.WebControls.WebControl.ToolTip%2A>      -   <xref:System.Web.UI.Control.Visible%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Width%2A>       When you use templates to define the appearance of the <xref:System.Web.UI.WebControls.Login> control, the InstructionTextStyle property has no effect."
+  summary: "获取对<xref href=&quot;System.Web.UI.WebControls.TableItemStyle&quot;></xref>对象，用于定义中的说明文本设置<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控件。"
+  remarks: "InstructionTextStyle 属性定义中的说明文本的外观<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> 此属性是只读的;但是，可以设置的属性<xref:System.Web.UI.WebControls.TableItemStyle>对象返回。</xref:System.Web.UI.WebControls.TableItemStyle> 你可以在窗体中以声明方式设置这些属性`Property-Subproperty`，其中`Subproperty`表示的属性<xref:System.Web.UI.WebControls.TableItemStyle>类 (例如， `InstructionTextStyle-ForeColor`)。</xref:System.Web.UI.WebControls.TableItemStyle> 你可以以编程方式设置此属性的形式`Property.Subproperty`(例如， `InstructionTextStyle.ForeColor`)。       常用的设置包括自定义的背景色、 文本颜色和字体属性。 InstructionTextStyle 属性定义的外观<xref:System.Web.UI.WebControls.Login.InstructionText%2A>属性。</xref:System.Web.UI.WebControls.Login.InstructionText%2A>       与的样式设置合并 InstructionTextStyle 属性的样式设置<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> InstructionTextStyle 属性中所做的任何设置重写的属性中的相应设置<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login>       以下<xref:System.Web.UI.WebControls.Login>样式属性被 InstructionTextStyle 设置覆盖:- <xref:System.Web.UI.WebControls.WebControl.BackColor%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderColor%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A>- <xref:System.Web.UI.WebControls.WebControl.Enabled%2A>- <xref:System.Web.UI.WebControls.WebControl.Font%2A>- <xref:System.Web.UI.WebControls.WebControl.ForeColor%2A>- <xref:System.Web.UI.WebControls.WebControl.Height%2A>- <xref:System.Web.UI.WebControls.WebControl.ToolTip%2A>- <xref:System.Web.UI.Control.Visible%2A>-<xref:System.Web.UI.WebControls.WebControl.Width%2A>当你使用模板定义的外观<xref:System.Web.UI.WebControls.Login>控件，InstructionTextStyle 属性不起作用。</xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.WebControls.WebControl.Width%2A> </xref:System.Web.UI.Control.Visible%2A> </xref:System.Web.UI.WebControls.WebControl.ToolTip%2A> </xref:System.Web.UI.WebControls.WebControl.Height%2A> </xref:System.Web.UI.WebControls.WebControl.ForeColor%2A> </xref:System.Web.UI.WebControls.WebControl.Font%2A> </xref:System.Web.UI.WebControls.WebControl.Enabled%2A> </xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A> </xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A> </xref:System.Web.UI.WebControls.WebControl.BorderColor%2A> </xref:System.Web.UI.WebControls.WebControl.BackColor%2A> </xref:System.Web.UI.WebControls.Login>"
   example:
   - "The following code example sets the instruction text and the background color for the instruction text by setting properties of the <xref:System.Web.UI.WebControls.TableItemStyle> object referenced by the InstructionTextStyle property.  \n  \n [!code-cs[LoginInstructionText#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_451_1.aspx)]\n [!code-vb[LoginInstructionText#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_451_1.aspx)]"
   syntax:
     content: public System.Web.UI.WebControls.TableItemStyle InstructionTextStyle { get; }
     return:
       type: System.Web.UI.WebControls.TableItemStyle
-      description: "A reference to the <xref href=&quot;System.Web.UI.WebControls.TableItemStyle&quot;></xref> that contains the style settings of the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control instruction text."
+      description: "对引用<xref href=&quot;System.Web.UI.WebControls.TableItemStyle&quot;> </xref> ，包含的样式设置<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控制说明文本。"
   overload: System.Web.UI.WebControls.Login.InstructionTextStyle*
   exceptions: []
   platform:
@@ -705,15 +705,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets a reference to a <xref href=&quot;System.Web.UI.WebControls.TableItemStyle&quot;></xref> object that defines the settings for <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control labels."
-  remarks: "The LabelStyle property defines the appearance of text box labels in the <xref:System.Web.UI.WebControls.Login> control. This property is read-only; however, you can set the properties of the <xref:System.Web.UI.WebControls.TableItemStyle> object it returns. You can set these properties declaratively in the form `Property-Subproperty`, where `Subproperty` represents a property of the <xref:System.Web.UI.WebControls.TableItemStyle> class (for example, `LabelStyle-ForeColor`). You can set the property programmatically in the form `Property.Subproperty` (for example, `LableStyle.ForeColor`).       Common settings include custom background color, text color, and font properties. The LabelStyle property defines the appearance of the following properties:      -   <xref:System.Web.UI.WebControls.Login.PasswordLabelText%2A>      -   <xref:System.Web.UI.WebControls.Login.UserNameLabelText%2A>       The style settings for the LabelStyle property are merged with the style settings for the <xref:System.Web.UI.WebControls.Login> control. Any settings made in the LabelStyle property override the corresponding settings in properties of the <xref:System.Web.UI.WebControls.Login> control.       The following <xref:System.Web.UI.WebControls.Login> style properties are overridden by LabelStyle settings:      -   <xref:System.Web.UI.WebControls.WebControl.BackColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Enabled%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Font%2A>      -   <xref:System.Web.UI.WebControls.WebControl.ForeColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Height%2A>      -   <xref:System.Web.UI.WebControls.WebControl.ToolTip%2A>      -   <xref:System.Web.UI.Control.Visible%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Width%2A>       When you use templates to define the appearance of the <xref:System.Web.UI.WebControls.Login> control, the LabelStyle property has no effect."
+  summary: "获取对<xref href=&quot;System.Web.UI.WebControls.TableItemStyle&quot;></xref>定义的设置的对象<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控制标签。"
+  remarks: "LabelStyle 属性定义中文本框标签的外观<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> 此属性是只读的;但是，可以设置的属性<xref:System.Web.UI.WebControls.TableItemStyle>对象返回。</xref:System.Web.UI.WebControls.TableItemStyle> 你可以在窗体中以声明方式设置这些属性`Property-Subproperty`，其中`Subproperty`表示的属性<xref:System.Web.UI.WebControls.TableItemStyle>类 (例如， `LabelStyle-ForeColor`)。</xref:System.Web.UI.WebControls.TableItemStyle> 你可以以编程方式设置此属性的形式`Property.Subproperty`(例如， `LableStyle.ForeColor`)。       常用的设置包括自定义的背景色、 文本颜色和字体属性。 LabelStyle 属性定义以下属性的外观:- <xref:System.Web.UI.WebControls.Login.PasswordLabelText%2A>- <xref:System.Web.UI.WebControls.Login.UserNameLabelText%2A>LabelStyle 属性的样式设置的样式设置与合并<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.WebControls.Login.UserNameLabelText%2A> </xref:System.Web.UI.WebControls.Login.PasswordLabelText%2A> LabelStyle 属性中所做的任何设置重写的属性中的相应设置<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login>       以下<xref:System.Web.UI.WebControls.Login>样式属性被 LabelStyle 设置覆盖:- <xref:System.Web.UI.WebControls.WebControl.BackColor%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderColor%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A>- <xref:System.Web.UI.WebControls.WebControl.Enabled%2A>- <xref:System.Web.UI.WebControls.WebControl.Font%2A>- <xref:System.Web.UI.WebControls.WebControl.ForeColor%2A>- <xref:System.Web.UI.WebControls.WebControl.Height%2A>- <xref:System.Web.UI.WebControls.WebControl.ToolTip%2A>- <xref:System.Web.UI.Control.Visible%2A>-<xref:System.Web.UI.WebControls.WebControl.Width%2A>当你使用模板定义的外观<xref:System.Web.UI.WebControls.Login>控件，LabelStyle 属性不起作用。</xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.WebControls.WebControl.Width%2A> </xref:System.Web.UI.Control.Visible%2A> </xref:System.Web.UI.WebControls.WebControl.ToolTip%2A> </xref:System.Web.UI.WebControls.WebControl.Height%2A> </xref:System.Web.UI.WebControls.WebControl.ForeColor%2A> </xref:System.Web.UI.WebControls.WebControl.Font%2A> </xref:System.Web.UI.WebControls.WebControl.Enabled%2A> </xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A> </xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A> </xref:System.Web.UI.WebControls.WebControl.BorderColor%2A> </xref:System.Web.UI.WebControls.WebControl.BackColor%2A> </xref:System.Web.UI.WebControls.Login>"
   example:
   - "The following code example sets the text box labels to blue italic text by setting properties of the <xref:System.Web.UI.WebControls.TableItemStyle> object referenced by the LabelStyle property.  \n  \n [!code-cs[LoginLabelStyle#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_262_1.aspx)]\n [!code-vb[LoginLabelStyle#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_262_1.aspx)]"
   syntax:
     content: public System.Web.UI.WebControls.TableItemStyle LabelStyle { get; }
     return:
       type: System.Web.UI.WebControls.TableItemStyle
-      description: "A reference to the <xref href=&quot;System.Web.UI.WebControls.TableItemStyle&quot;></xref> that defines the style settings of the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control labels."
+      description: "对引用<xref href=&quot;System.Web.UI.WebControls.TableItemStyle&quot;> </xref> ，它定义的样式设置<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控制标签。"
   overload: System.Web.UI.WebControls.Login.LabelStyle*
   exceptions: []
   platform:
@@ -730,15 +730,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the template used to display the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control."
-  remarks: "The LayoutTemplate property contains the template that defines how the <xref:System.Web.UI.WebControls.Login> control is displayed to the user.       The following table lists the required and optional controls used in a <xref:System.Web.UI.WebControls.Login> control template.      |ID or command name|Control type|Required/optional|   |------------------------|------------------|------------------------|   |`UserName`|Any control that implements <xref:System.Web.UI.IEditableTextControl>, including <xref:System.Web.UI.WebControls.TextBox>, or a custom or third-party control.|Required|   |`Password`|Any control that implements <xref:System.Web.UI.IEditableTextControl>, including <xref:System.Web.UI.WebControls.TextBox>, or a custom or third-party control.|Required|   |`RememberMe`|<xref:System.Web.UI.WebControls.CheckBox>|Optional|   |`FailureText`|Any control that implements <xref:System.Web.UI.ITextControl>.|Optional|   |`Login`|Any control that causes event bubbling.|Optional|       The <xref:System.Web.UI.WebControls.Login> control throws an <xref:System.Web.HttpException> exception if the layout template does not contain the required controls. No exception is thrown if you give an optional control ID to a control of the wrong type; however, the control is subsequently ignored by the <xref:System.Web.UI.WebControls.Login> control.       The login control can be any control that causes event bubbling, such as <xref:System.Web.UI.WebControls.Button>, <xref:System.Web.UI.WebControls.LinkButton>, or <xref:System.Web.UI.WebControls.ImageButton>. The control&quot;s command name property must be set to &quot;Login&quot;.       When a template is used for the <xref:System.Web.UI.WebControls.Login> control, only the following properties affect the behavior of the control:      -   All properties inherited from <xref:System.Web.UI.WebControls.WebControl>. (For details, see the <xref:System.Web.UI.WebControls.Login> control members table.)      -   <xref:System.Web.UI.WebControls.Login.DestinationPageUrl%2A>.      -   <xref:System.Web.UI.WebControls.Login.VisibleWhenLoggedIn%2A>.      -   LayoutTemplate.      -   <xref:System.Web.UI.WebControls.Login.FailureAction%2A>.      -   <xref:System.Web.UI.WebControls.Login.MembershipProvider%2A>.      -   <xref:System.Web.UI.WebControls.Login.Password%2A>.      -   <xref:System.Web.UI.WebControls.Login.RememberMeSet%2A>.      -   <xref:System.Web.UI.WebControls.Login.UserName%2A>.       All other properties are inactive when a template is set for the <xref:System.Web.UI.WebControls.Login> control."
+  summary: "获取或设置用来显示模板<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控件。"
+  remarks: "LayoutTemplate 属性包含模板，它定义如何<xref:System.Web.UI.WebControls.Login>向用户显示控件。</xref:System.Web.UI.WebControls.Login>       下表列出了使用中的必选和可选控件<xref:System.Web.UI.WebControls.Login>控件模板。</xref:System.Web.UI.WebControls.Login>      | ID 或命令名称 |控件类型 |必需/可选 |  |------------------------|------------------|------------------------|  |`UserName`|实现<xref:System.Web.UI.IEditableTextControl>，任何控件包括<xref:System.Web.UI.WebControls.TextBox>，或自定义或第三方控件。 |所需 |  |`Password`|实现<xref:System.Web.UI.IEditableTextControl>，任何控件包括<xref:System.Web.UI.WebControls.TextBox>，或自定义或第三方控件。 |所需 |  |`RememberMe`|<xref:System.Web.UI.WebControls.CheckBox>|可选 |  |`FailureText`|实现<xref:System.Web.UI.ITextControl>任何控件。 |可选 |  |`Login`|导致事件冒泡任何控件。 |可选 |      <xref:System.Web.UI.WebControls.Login>控件将引发<xref:System.Web.HttpException>异常如果布局模板不包含所需的控件。</xref:System.Web.HttpException> </xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.ITextControl> </xref:System.Web.UI.WebControls.CheckBox> </xref:System.Web.UI.WebControls.TextBox> </xref:System.Web.UI.IEditableTextControl> </xref:System.Web.UI.WebControls.TextBox> </xref:System.Web.UI.IEditableTextControl> 在可选控件 ID 赋予错误类型; 的控件不引发任何异常但是，该控件随后将被忽略<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login>       登录控件均可以是导致事件上传方法，如任何控件<xref:System.Web.UI.WebControls.Button>， <xref:System.Web.UI.WebControls.LinkButton>，或<xref:System.Web.UI.WebControls.ImageButton>。</xref:System.Web.UI.WebControls.ImageButton> </xref:System.Web.UI.WebControls.LinkButton> </xref:System.Web.UI.WebControls.Button> 控件的命令名称属性必须设置为&quot;登录&quot;。       当模板用于<xref:System.Web.UI.WebControls.Login>控件时，只有以下属性会影响控件的行为:-从<xref:System.Web.UI.WebControls.WebControl>.</xref:System.Web.UI.WebControls.WebControl>继承所有属性</xref:System.Web.UI.WebControls.Login> （有关详细信息，请参阅<xref:System.Web.UI.WebControls.Login>控件成员表）。     -   <xref:System.Web.UI.WebControls.Login.DestinationPageUrl%2A>.</xref:System.Web.UI.WebControls.Login.DestinationPageUrl%2A></xref:System.Web.UI.WebControls.Login>      -   <xref:System.Web.UI.WebControls.Login.VisibleWhenLoggedIn%2A>.</xref:System.Web.UI.WebControls.Login.VisibleWhenLoggedIn%2A>      -LayoutTemplate。      -   <xref:System.Web.UI.WebControls.Login.FailureAction%2A>.</xref:System.Web.UI.WebControls.Login.FailureAction%2A>      -   <xref:System.Web.UI.WebControls.Login.MembershipProvider%2A>.</xref:System.Web.UI.WebControls.Login.MembershipProvider%2A>      -   <xref:System.Web.UI.WebControls.Login.Password%2A>.</xref:System.Web.UI.WebControls.Login.Password%2A>      -   <xref:System.Web.UI.WebControls.Login.RememberMeSet%2A>.</xref:System.Web.UI.WebControls.Login.RememberMeSet%2A>      -   <xref:System.Web.UI.WebControls.Login.UserName%2A>.</xref:System.Web.UI.WebControls.Login.UserName%2A>       为设置模板时，所有其他属性都是处于非活动状态<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login>"
   example:
   - "The following code example creates a template for the <xref:System.Web.UI.WebControls.Login> control.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[LoginLayoutTemplate#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1189_1.aspx)]\n [!code-cs[LoginLayoutTemplate#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1189_1.aspx)]"
   syntax:
     content: public virtual System.Web.UI.ITemplate LayoutTemplate { get; set; }
     return:
       type: System.Web.UI.ITemplate
-      description: "An <xref href=&quot;System.Web.UI.ITemplate&quot;></xref> that contains the template for displaying the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control. The default value is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "<xref href=&quot;System.Web.UI.ITemplate&quot;> </xref> ，其中包含用于显示模板<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控件。 默认值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.Login.LayoutTemplate*
   exceptions: []
   platform:
@@ -755,18 +755,18 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Restores view-state information from a previous request that was saved with the <xref:System.Web.UI.WebControls.WebControl.SaveViewState*> method."
+  summary: "从已保存的上一个请求还原视图状态信息<xref:System.Web.UI.WebControls.WebControl.SaveViewState*>方法。</xref:System.Web.UI.WebControls.WebControl.SaveViewState*>"
   syntax:
     content: protected override void LoadViewState (object savedState);
     parameters:
     - id: savedState
       type: System.Object
-      description: "An object that represents the control state to restore."
+      description: "一个表示要还原的控件状态的对象。"
   overload: System.Web.UI.WebControls.Login.LoadViewState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>savedState</code> is not a valid <xref:System.Web.UI.PageStatePersister.ViewState*>."
+    description: "<code>savedState</code>不是有效<xref:System.Web.UI.PageStatePersister.ViewState*>。"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.Login.LoggedIn
@@ -781,15 +781,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Occurs when the user logs in to the Web site and has been authenticated."
-  remarks: "The LoggedIn event is raised after the authentication provider checks the user&quot;s credentials and the authentication cookie is queued to send to the browser in the next response. Use the LoggedIn event to provide additional processing, such as accessing per-user data, after the user is authenticated.       When a user submits his or her login information, the <xref:System.Web.UI.WebControls.Login> control first raises the <xref:System.Web.UI.WebControls.Login.LoggingIn> event, then the <xref:System.Web.UI.WebControls.Login.Authenticate> event, and finally the LoggedIn event.      > [!NOTE] >  When a user uses the <xref:System.Web.UI.WebControls.Login> control to log in to a Web site, all data in the view state and all post data is lost. Do not perform actions in the LoggedIn event that rely on the view state.       For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "当用户在登录到网站并已经过身份验证时发生。"
+  remarks: "身份验证提供程序将检查用户的凭据和身份验证 cookie 排队等待发送到下一步的响应中的浏览器后，将引发 LoggedIn 事件。 使用 LoggedIn 事件提供额外的处理，例如用户进行身份验证之后访问每个用户数据。       当用户提交他或她登录信息，<xref:System.Web.UI.WebControls.Login>控件首先引发<xref:System.Web.UI.WebControls.Login.LoggingIn>事件，则<xref:System.Web.UI.WebControls.Login.Authenticate>事件，并最后 LoggedIn 事件。</xref:System.Web.UI.WebControls.Login.Authenticate> </xref:System.Web.UI.WebControls.Login.LoggingIn> </xref:System.Web.UI.WebControls.Login>      1> [!NOTE]&1;> 当用户使用<xref:System.Web.UI.WebControls.Login>控件中登录到网站时中的视图状态的所有数据和所有 post 数据将丢失。</xref:System.Web.UI.WebControls.Login> 不依赖于的视图状态 LoggedIn 事件中执行操作。       有关处理事件的详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example uses the LoggedIn event to call a site-specific method that keeps a record of user logins.  \n  \n [!code-vb[LoginAfterLogin#1](~/add/codesnippet/visualbasic/e-system.web.ui.webcontr_94_1.aspx)]\n [!code-cs[LoginAfterLogin#1](~/add/codesnippet/csharp/e-system.web.ui.webcontr_94_1.aspx)]"
   syntax:
     content: public event EventHandler LoggedIn;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -805,15 +805,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Occurs when a user submits login information, before authentication takes place."
-  remarks: "The LoggingIn event is raised when a user submits login information but before the user is authenticated on the Web site. Use the LoggingIn event to set up any information that you need before authenticating a user.       You can cancel a login attempt during the LoggingIn event by setting the <xref:System.ComponentModel.CancelEventArgs.Cancel%2A> property of the <xref:System.ComponentModel.CancelEventArgs> object to `true`.       After the LoggingIn event is raised, the <xref:System.Web.UI.WebControls.Login> control raises the <xref:System.Web.UI.WebControls.Login.Authenticate> event and then the <xref:System.Web.UI.WebControls.Login.LoggedIn> event.       For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "当用户在身份验证发生之前提交登录信息时发生。"
+  remarks: "当用户提交登录信息，但在用户进行身份验证网站上之前，将引发当前登录事件。 使用当前登录事件设置对用户进行身份验证之前，你需要的任何信息。       可以通过设置在当前登录事件期间取消登录尝试<xref:System.ComponentModel.CancelEventArgs.Cancel%2A>属性<xref:System.ComponentModel.CancelEventArgs>对象传递给`true`。</xref:System.ComponentModel.CancelEventArgs> </xref:System.ComponentModel.CancelEventArgs.Cancel%2A>       引发当前登录事件后，<xref:System.Web.UI.WebControls.Login>控件都将引发<xref:System.Web.UI.WebControls.Login.Authenticate>事件，然后<xref:System.Web.UI.WebControls.Login.LoggedIn>事件。</xref:System.Web.UI.WebControls.Login.LoggedIn> </xref:System.Web.UI.WebControls.Login.Authenticate> </xref:System.Web.UI.WebControls.Login>       有关处理事件的详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following code example uses the LoggingIn event to ensure that the user has entered a well-formed e-mail address in the <xref:System.Web.UI.WebControls.Login.UserName%2A> property. If not, the LoggingIn event cancels the login attempt and displays an error message using the <xref:System.Web.UI.WebControls.Login.InstructionText%2A> property.  \n  \n [!code-cs[LoginBeforeLogin#1](~/add/codesnippet/csharp/e-system.web.ui.webcontr_8_1.aspx)]\n [!code-vb[LoginBeforeLogin#1](~/add/codesnippet/visualbasic/e-system.web.ui.webcontr_8_1.aspx)]"
   syntax:
     content: public event System.Web.UI.WebControls.LoginCancelEventHandler LoggingIn;
     return:
       type: System.Web.UI.WebControls.LoginCancelEventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -829,13 +829,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Represents the command name associated with the login button."
-  remarks: "LoginButtonCommandName is a read-only field and the default value is &quot;Login&quot;. This value is passed to the <xref:System.Web.UI.WebControls.Login.OnBubbleEvent%2A>, and if the value is &quot;Login&quot;, the control attempts to log in the current user."
+  summary: "表示与登录按钮相关联的命令名称。"
+  remarks: "LoginButtonCommandName 为只读字段，默认值为&quot;登录&quot;。 此值传递给<xref:System.Web.UI.WebControls.Login.OnBubbleEvent%2A>，如果值为&quot;登录&quot;，尝试登录当前的用户控件。</xref:System.Web.UI.WebControls.Login.OnBubbleEvent%2A>"
   syntax:
     content: public static readonly string LoginButtonCommandName;
     return:
       type: System.String
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -851,15 +851,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the URL of an image to use for the login button."
-  remarks: "The LoginButtonImageUrl property contains the URL of the image rendered as the <xref:System.Web.UI.WebControls.Login> control login button when the <xref:System.Web.UI.WebControls.Login.LoginButtonType%2A> property is set to <xref:System.Web.UI.WebControls.ButtonType>.       The <xref:System.Web.UI.WebControls.Login.LoginButtonText%2A> property is used as the alternative text for the image in browsers that do not display images."
+  summary: "获取或设置要使用的登录按钮图像的 URL。"
+  remarks: "LoginButtonImageUrl 属性包含呈现为图像的 URL<xref:System.Web.UI.WebControls.Login>控件登录按钮时的<xref:System.Web.UI.WebControls.Login.LoginButtonType%2A>属性设置为<xref:System.Web.UI.WebControls.ButtonType>。</xref:System.Web.UI.WebControls.ButtonType> </xref:System.Web.UI.WebControls.Login.LoginButtonType%2A> </xref:System.Web.UI.WebControls.Login>       <xref:System.Web.UI.WebControls.Login.LoginButtonText%2A>属性用作中不显示图像的浏览器的图像的替换文字。</xref:System.Web.UI.WebControls.Login.LoginButtonText%2A>"
   example:
   - "The following code example sets the LoginButtonImageUrl property to the URL of an image.  \n  \n [!code-vb[LoginSubmitButtonImageUrl#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_452_1.aspx)]\n [!code-cs[LoginSubmitButtonImageUrl#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_452_1.aspx)]"
   syntax:
     content: public virtual string LoginButtonImageUrl { get; set; }
     return:
       type: System.String
-      description: "The URL of the image used for the login button. The default is <xref:System.String>."
+      description: "用于登录按钮的图像的 URL。 默认值为<xref:System.String>。</xref:System.String>"
   overload: System.Web.UI.WebControls.Login.LoginButtonImageUrl*
   exceptions: []
   platform:
@@ -876,15 +876,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets a reference to the <xref href=&quot;System.Web.UI.WebControls.Style&quot;></xref> object that allows you to set the appearance of the login button in the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control."
-  remarks: "Use the LoginButtonStyle property to control the appearance of the login button in the <xref:System.Web.UI.WebControls.Login> control. This property is read-only; however, you can set the properties of the <xref:System.Web.UI.WebControls.Style> object it returns. You can set these properties declaratively in the form `Property-Subproperty`, where `Subproperty` represents a property of the <xref:System.Web.UI.WebControls.Style> class (for example, `LoginButtonStyle-ForeColor`). You can set the property programmatically in the form `Property.Subproperty` (for example, `LoginButtonStyle.ForeColor`).       Common settings include custom background color, text color, and font properties. The LoginButtonStyle property defines the appearance of the login button.       The style settings for the LoginButtonStyle property are merged with the style settings for the <xref:System.Web.UI.WebControls.Login> control. Any settings made in the LoginButtonStyle property override the corresponding settings in properties of the <xref:System.Web.UI.WebControls.Login> control.       The following <xref:System.Web.UI.WebControls.Login> style properties are overridden by LoginButtonStyle settings:      -   <xref:System.Web.UI.WebControls.WebControl.BackColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Enabled%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Font%2A>      -   <xref:System.Web.UI.WebControls.WebControl.ForeColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Height%2A>      -   <xref:System.Web.UI.WebControls.WebControl.ToolTip%2A>      -   <xref:System.Web.UI.Control.Visible%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Width%2A>       When you use templates to define the appearance of the <xref:System.Web.UI.WebControls.Login> control, the LoginButtonStyle property has no effect."
+  summary: "获取对<xref href=&quot;System.Web.UI.WebControls.Style&quot;></xref>对象，它允许你设置中的登录按钮的外观<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控件。"
+  remarks: "使用 LoginButtonStyle 属性来控制中的登录按钮的外观<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> 此属性是只读的;但是，可以设置的属性<xref:System.Web.UI.WebControls.Style>对象返回。</xref:System.Web.UI.WebControls.Style> 你可以在窗体中以声明方式设置这些属性`Property-Subproperty`，其中`Subproperty`表示的属性<xref:System.Web.UI.WebControls.Style>类 (例如， `LoginButtonStyle-ForeColor`)。</xref:System.Web.UI.WebControls.Style> 你可以以编程方式设置此属性的形式`Property.Subproperty`(例如， `LoginButtonStyle.ForeColor`)。       常用的设置包括自定义的背景色、 文本颜色和字体属性。 LoginButtonStyle 属性定义的登录按钮的外观。       与的样式设置合并 LoginButtonStyle 属性的样式设置<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> LoginButtonStyle 属性中所做的任何设置重写的属性中的相应设置<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login>       以下<xref:System.Web.UI.WebControls.Login>样式属性被 LoginButtonStyle 设置覆盖:- <xref:System.Web.UI.WebControls.WebControl.BackColor%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderColor%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A>- <xref:System.Web.UI.WebControls.WebControl.Enabled%2A>- <xref:System.Web.UI.WebControls.WebControl.Font%2A>- <xref:System.Web.UI.WebControls.WebControl.ForeColor%2A>- <xref:System.Web.UI.WebControls.WebControl.Height%2A>- <xref:System.Web.UI.WebControls.WebControl.ToolTip%2A>- <xref:System.Web.UI.Control.Visible%2A>-<xref:System.Web.UI.WebControls.WebControl.Width%2A>当你使用模板定义的外观<xref:System.Web.UI.WebControls.Login>控件，LoginButtonStyle 属性不起作用。</xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.WebControls.WebControl.Width%2A> </xref:System.Web.UI.Control.Visible%2A> </xref:System.Web.UI.WebControls.WebControl.ToolTip%2A> </xref:System.Web.UI.WebControls.WebControl.Height%2A> </xref:System.Web.UI.WebControls.WebControl.ForeColor%2A> </xref:System.Web.UI.WebControls.WebControl.Font%2A> </xref:System.Web.UI.WebControls.WebControl.Enabled%2A> </xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A> </xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A> </xref:System.Web.UI.WebControls.WebControl.BorderColor%2A> </xref:System.Web.UI.WebControls.WebControl.BackColor%2A> </xref:System.Web.UI.WebControls.Login>"
   example:
   - "The following code example uses the LoginButtonStyle property to define the appearance of the <xref:System.Web.UI.WebControls.Login> control login button.  \n  \n [!code-vb[LoginButtonStyle#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_201_1.aspx)]\n [!code-cs[LoginButtonStyle#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_201_1.aspx)]"
   syntax:
     content: public System.Web.UI.WebControls.Style LoginButtonStyle { get; }
     return:
       type: System.Web.UI.WebControls.Style
-      description: "A reference to a <xref href=&quot;System.Web.UI.WebControls.Style&quot;></xref> that represents the style of the login button."
+      description: "对引用<xref href=&quot;System.Web.UI.WebControls.Style&quot;></xref>该对象表示的登录按钮样式。"
   overload: System.Web.UI.WebControls.Login.LoginButtonStyle*
   exceptions: []
   platform:
@@ -901,15 +901,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the text for the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control&quot;s login button."
-  remarks: "The LoginButtonText property contains the text displayed for the <xref:System.Web.UI.WebControls.Login> control&quot;s login button. Depending on the value of the <xref:System.Web.UI.WebControls.Login.LoginButtonType%2A> property, the LoginButtonText property can appear as text on a button, as text displayed as an alternative to an image in browsers that do not render images, or as the text of a link. The following table describes how the different <xref:System.Web.UI.WebControls.Login.LoginButtonType%2A> values affect the LoginButtonText property.      |<xref:System.Web.UI.WebControls.Login.LoginButtonType%2A> setting|How the LoginButtonText property is used.|   |----------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|   |<xref:System.Web.UI.WebControls.ButtonType>|As the button&quot;s `Text` property.|   |<xref:System.Web.UI.WebControls.ButtonType>|As alternative text for the image.|   |<xref:System.Web.UI.WebControls.ButtonType>|As link text.|       The default text for the control is localized based on the server&quot;s current locale.       The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置的文本<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控件的登录按钮。"
+  remarks: "LoginButtonText 属性包含为显示的文本<xref:System.Web.UI.WebControls.Login>控件的登录按钮。</xref:System.Web.UI.WebControls.Login> 根据值<xref:System.Web.UI.WebControls.Login.LoginButtonType%2A>属性，LoginButtonText 属性可以显示为上一个按钮的文本显示在浏览器中不呈现图像，图像的替代项为或链接的文本的文本。</xref:System.Web.UI.WebControls.Login.LoginButtonType%2A> 下表描述了如何不同<xref:System.Web.UI.WebControls.Login.LoginButtonType%2A>值会影响 LoginButtonText 属性。</xref:System.Web.UI.WebControls.Login.LoginButtonType%2A>      |<xref:System.Web.UI.WebControls.Login.LoginButtonType%2A>设置 |如何使用 LoginButtonText 属性。 |  |----------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|  |<xref:System.Web.UI.WebControls.ButtonType>|为按钮的`Text`属性。 |  |<xref:System.Web.UI.WebControls.ButtonType>|为映像的可选文本。 |  |<xref:System.Web.UI.WebControls.ButtonType>|作为链接文本。 |      默认文本控件已本地化根据服务器的当前区域设置。</xref:System.Web.UI.WebControls.ButtonType> </xref:System.Web.UI.WebControls.ButtonType> </xref:System.Web.UI.WebControls.ButtonType> </xref:System.Web.UI.WebControls.Login.LoginButtonType%2A>       此属性的值设置时，可以自动保存到的资源文件通过使用设计器工具。 有关详细信息，请参阅<xref:System.ComponentModel.LocalizableAttribute>和[全球化和本地化](~/add/includes/ajax-current-ext-md.md)。</xref:System.ComponentModel.LocalizableAttribute>"
   example:
   - "The following code example shows how the text in the LoginButtonText property is affected by the value of the <xref:System.Web.UI.WebControls.Login.LoginButtonType%2A> property.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[LoginButtonType#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_877_1.aspx)]\n [!code-cs[LoginButtonType#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_877_1.aspx)]"
   syntax:
     content: public virtual string LoginButtonText { get; set; }
     return:
       type: System.String
-      description: "The text used for the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control&quot;s login button. The default is &quot;Login&quot;."
+      description: "用于文本<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控件的登录按钮。 默认值为&quot;登录&quot;。"
   overload: System.Web.UI.WebControls.Login.LoginButtonText*
   exceptions: []
   platform:
@@ -926,20 +926,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the type of button to use when rendering the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> button."
-  remarks: "The LoginButtonType property determines the type of button to use for the <xref:System.Web.UI.WebControls.Login> control&quot;s login button. The following table describes the different button types.      |LoginButtonType setting|Type of button rendered|   |----------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------|   |<xref:System.Web.UI.WebControls.ButtonType>|An HTML button with the text specified in the <xref:System.Web.UI.WebControls.Login.LoginButtonText%2A> property.|   |<xref:System.Web.UI.WebControls.ButtonType>|An image. The URL of the image is specified in the <xref:System.Web.UI.WebControls.Login.LoginButtonImageUrl%2A> property. The string specified in the <xref:System.Web.UI.WebControls.Login.LoginButtonText%2A> property is used as alternate text for the image.|   |<xref:System.Web.UI.WebControls.ButtonType>|An HTML link with the text specified in the <xref:System.Web.UI.WebControls.Login.LoginButtonText%2A> property.|       When the LoginButtonType property is set to <xref:System.Web.UI.WebControls.ButtonType> or <xref:System.Web.UI.WebControls.ButtonType>, the content of the <xref:System.Web.UI.WebControls.Login.LoginButtonImageUrl%2A> property is ignored."
+  summary: "获取或设置要使用在呈现时的按钮类型<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>按钮。"
+  remarks: "LoginButtonType 属性确定的一种按钮用于<xref:System.Web.UI.WebControls.Login>控件的登录按钮。</xref:System.Web.UI.WebControls.Login> 下表描述了不同的按钮类型。      |LoginButtonType 设置 |呈现的按钮类型 |  |----------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------|  |<xref:System.Web.UI.WebControls.ButtonType>|<xref:System.Web.UI.WebControls.Login.LoginButtonText%2A>属性中指定的文本 HTML 按钮。 |  |<xref:System.Web.UI.WebControls.ButtonType>|映像。</xref:System.Web.UI.WebControls.ButtonType> </xref:System.Web.UI.WebControls.Login.LoginButtonText%2A> </xref:System.Web.UI.WebControls.ButtonType> 中指定的图像的 URL<xref:System.Web.UI.WebControls.Login.LoginButtonImageUrl%2A>属性。</xref:System.Web.UI.WebControls.Login.LoginButtonImageUrl%2A> <xref:System.Web.UI.WebControls.Login.LoginButtonText%2A>属性中指定的字符串用作映像替换文字。 |  |<xref:System.Web.UI.WebControls.ButtonType>|一条带有<xref:System.Web.UI.WebControls.Login.LoginButtonText%2A>属性中指定的文本的 HTML 链接。 |      当 LoginButtonType 属性设置为<xref:System.Web.UI.WebControls.ButtonType>或<xref:System.Web.UI.WebControls.ButtonType>，则内容的<xref:System.Web.UI.WebControls.Login.LoginButtonImageUrl%2A>属性将被忽略。</xref:System.Web.UI.WebControls.Login.LoginButtonImageUrl%2A> </xref:System.Web.UI.WebControls.ButtonType> </xref:System.Web.UI.WebControls.ButtonType> </xref:System.Web.UI.WebControls.Login.LoginButtonText%2A> </xref:System.Web.UI.WebControls.ButtonType> </xref:System.Web.UI.WebControls.Login.LoginButtonText%2A>"
   example:
   - "The following code example shows the different types of login buttons available for the <xref:System.Web.UI.WebControls.Login> control.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[LoginButtonType#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1315_1.aspx)]\n [!code-cs[LoginButtonType#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1315_1.aspx)]"
   syntax:
     content: public virtual System.Web.UI.WebControls.ButtonType LoginButtonType { get; set; }
     return:
       type: System.Web.UI.WebControls.ButtonType
-      description: "One of the <xref href=&quot;System.Web.UI.WebControls.ButtonType&quot;></xref> enumeration values. The default is <xref href=&quot;System.Web.UI.WebControls.ButtonType&quot;></xref>."
+      description: "之一<xref href=&quot;System.Web.UI.WebControls.ButtonType&quot;></xref>枚举值。 默认值是<xref href=&quot;System.Web.UI.WebControls.ButtonType&quot;> </xref>。"
   overload: System.Web.UI.WebControls.Login.LoginButtonType*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The LoginButtonType property is not set to a valid <xref href=&quot;System.Web.UI.WebControls.ButtonType&quot;></xref> enumeration value."
+    description: "LoginButtonType 属性未设置为有效<xref href=&quot;System.Web.UI.WebControls.ButtonType&quot;></xref>枚举值。"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.Login.LoginError
@@ -954,15 +954,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Occurs when a login error is detected."
-  remarks: "The LoginError event is raised when the credentials entered by the user are invalid. You can use the LoginError event to redirect the user to a custom error page, to offer additional help, or to log failed login attempts.       For more information about handling events, see [NIB: Consuming Events](http://msdn.microsoft.com/en-us/01e4f1bc-e55e-413f-98c7-6588493e5f67)."
+  summary: "当检测到登录名错误时发生。"
+  remarks: "用户输入的凭据无效时，将引发 LoginError 事件。 你可以使用 LoginError 事件将用户重定向到自定义错误页，以提供更多帮助，或登录失败的登录尝试次数。       有关处理事件的详细信息，请参阅[NIB︰ 使用事件](http://msdn.microsoft.com/en-us/01e4f1bc-e55e-413f-98c7-6588493e5f67)。"
   example:
   - "The following code example uses the LoginError event to display Help links to the user when a login attempt fails.  \n  \n [!code-vb[LoginLoginError#1](~/add/codesnippet/visualbasic/e-system.web.ui.webcontr_7_1.aspx)]\n [!code-cs[LoginLoginError#1](~/add/codesnippet/csharp/e-system.web.ui.webcontr_7_1.aspx)]"
   syntax:
     content: public event EventHandler LoginError;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -978,13 +978,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the name of the membership data provider used by the control."
-  remarks: "The MembershipProvider property contains the name of the data provider that provides the authentication information for the <xref:System.Web.UI.WebControls.Login> control. Valid membership provider names are defined in the `<membership>` element in your application&quot;s Machine.config or Web.config file.       If you do not set the MembershipProvider property, it will always return <xref:System.String.Empty>.       For more information, see the <xref:System.Web.Security.Membership> class.       This property cannot be set by themes or style sheet themes. For more information, see <xref:System.Web.UI.ThemeableAttribute> and [ASP.NET Themes and Skins](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置该控件使用的成员身份数据提供程序的名称。"
+  remarks: "MembershipProvider 属性包含的数据提供程序提供的身份验证信息的名称<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> 在中定义有效的成员资格提供程序名称`<membership>`应用程序的 Machine.config 或 Web.config 文件中的元素。       如果未设置 MembershipProvider 属性，它将始终返回<xref:System.String.Empty>.</xref:System.String.Empty>       有关详细信息，请参阅<xref:System.Web.Security.Membership>类。</xref:System.Web.Security.Membership>       此属性不能通过主题或样式表主题设置。 有关详细信息，请参阅<xref:System.Web.UI.ThemeableAttribute>和[ASP.NET 主题和皮肤](~/add/includes/ajax-current-ext-md.md)。</xref:System.Web.UI.ThemeableAttribute>"
   syntax:
     content: public virtual string MembershipProvider { get; set; }
     return:
       type: System.String
-      description: "The name of the membership data provider used by the control. The default is <xref:System.String>."
+      description: "使用由该控件的成员身份数据提供程序的名称。 默认值为<xref:System.String>。</xref:System.String>"
   overload: System.Web.UI.WebControls.Login.MembershipProvider*
   exceptions: []
   platform:
@@ -1001,8 +1001,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Raises the <xref href=&quot;System.Web.UI.WebControls.Login.Authenticate&quot;></xref> event to authenticate the user."
-  remarks: "The OnAuthenticate method raises the <xref:System.Web.UI.WebControls.Login.Authenticate> event. Use the <xref:System.Web.UI.WebControls.Login.Authenticate> event to implement a custom authentication scheme.       Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnAuthenticate method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Web.UI.WebControls.Login.Authenticate&quot;></xref>事件以对用户进行身份验证。"
+  remarks: "OnAuthenticate 方法将引发<xref:System.Web.UI.WebControls.Login.Authenticate>事件。</xref:System.Web.UI.WebControls.Login.Authenticate> 使用<xref:System.Web.UI.WebControls.Login.Authenticate>事件以实现自定义身份验证方案。</xref:System.Web.UI.WebControls.Login.Authenticate>       引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnAuthenticate 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   example:
   - "The following code example uses the <xref:System.Web.UI.WebControls.Login.Authenticate> event to call site-specific custom authentication code.  \n  \n [!code-vb[LoginOnAuthenticate#1](~/add/codesnippet/visualbasic/db5cd531-01e6-4512-975d-_1.aspx)]\n [!code-cs[LoginOnAuthenticate#1](~/add/codesnippet/csharp/db5cd531-01e6-4512-975d-_1.aspx)]"
   syntax:
@@ -1010,7 +1010,7 @@ items:
     parameters:
     - id: e
       type: System.Web.UI.WebControls.AuthenticateEventArgs
-      description: "An <xref href=&quot;System.Web.UI.WebControls.AuthenticateEventArgs&quot;></xref> that contains the event data."
+      description: "<xref href=&quot;System.Web.UI.WebControls.AuthenticateEventArgs&quot;> </xref>包含事件数据。"
   overload: System.Web.UI.WebControls.Login.OnAuthenticate*
   exceptions: []
   platform:
@@ -1027,20 +1027,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Determines whether to pass an event up the page&quot;s user interface (UI) server control hierarchy."
-  remarks: "The OnBubbleEvent method implements the <xref:System.Web.UI.Control.OnBubbleEvent%2A?displayProperty=fullName> method to pass events from child controls to the page hierarchy.       If the current event is posted by the <xref:System.Web.UI.WebControls.Login> control Login button, the <xref:System.Web.UI.WebControls.Login> control attempts to log in to the Web site. Otherwise, the event is passed up the page control hierarchy."
+  summary: "确定是否将事件沿页面的用户界面 (UI) 服务器控件层次结构向上传递。"
+  remarks: "OnBubbleEvent 方法实现<xref:System.Web.UI.Control.OnBubbleEvent%2A?displayProperty=fullName>方法将从子控件的事件传递到页层次结构。</xref:System.Web.UI.Control.OnBubbleEvent%2A?displayProperty=fullName>       如果当前事件发布<xref:System.Web.UI.WebControls.Login>控制登录按钮，<xref:System.Web.UI.WebControls.Login>控件尝试登录到网站。</xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.WebControls.Login> 否则，事件将沿页面控件层次结构向上传递。"
   syntax:
     content: protected override bool OnBubbleEvent (object source, EventArgs e);
     parameters:
     - id: source
       type: System.Object
-      description: "The source of the event."
+      description: "事件源。"
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> containing the data for the event."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the event has been canceled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果事件已被取消;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.Login.OnBubbleEvent*
   exceptions: []
   platform:
@@ -1057,8 +1057,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Raises the <xref href=&quot;System.Web.UI.WebControls.Login.LoggedIn&quot;></xref> event after the user logs in to the Web site and has been authenticated."
-  remarks: "The OnLoggedIn method raises the <xref:System.Web.UI.WebControls.Login.LoggedIn> event. Use the <xref:System.Web.UI.WebControls.Login.LoggedIn> event to provide additional processing, such as accessing per-user data, after the user is authenticated.       Raising an event invokes the event handler through a delegate. For more information, see [Events](~/add/includes/ajax-current-ext-md.md).       The OnLoggedIn method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Web.UI.WebControls.Login.LoggedIn&quot;></xref>用户登录到网站并已经过身份验证后的事件。"
+  remarks: "OnLoggedIn 方法将引发<xref:System.Web.UI.WebControls.Login.LoggedIn>事件。</xref:System.Web.UI.WebControls.Login.LoggedIn> 使用<xref:System.Web.UI.WebControls.Login.LoggedIn>事件，以便提供额外的处理，例如用户进行身份验证之后访问每个用户数据。</xref:System.Web.UI.WebControls.Login.LoggedIn>       引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。       OnLoggedIn 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   example:
   - "The following code example uses the <xref:System.Web.UI.WebControls.Login.LoggedIn> event to call a site-specific method that keeps a record of user logins.  \n  \n [!code-vb[LoginOnAfterLogin#1](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_105_1.aspx)]\n [!code-cs[LoginOnAfterLogin#1](~/add/codesnippet/csharp/m-system.web.ui.webcontr_105_1.aspx)]"
   syntax:
@@ -1066,7 +1066,7 @@ items:
     parameters:
     - id: e
       type: System.EventArgs
-      description: "A <xref:System.EventArgs> that contains the event data."
+      description: "A<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Web.UI.WebControls.Login.OnLoggedIn*
   exceptions: []
   platform:
@@ -1083,8 +1083,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Raises the <xref href=&quot;System.Web.UI.WebControls.Login.LoggingIn&quot;></xref> event when a user submits login information but before the authentication takes place."
-  remarks: "The OnLoggingIn method raises the <xref:System.Web.UI.WebControls.Login.LoggingIn> event. Use the <xref:System.Web.UI.WebControls.Login.LoggingIn> event to perform any processing that you need before authenticating a user or to perform custom validation.       Raising an event invokes the event handler through a delegate. For more information, see [Events](~/add/includes/ajax-current-ext-md.md).       The OnLoggingIn method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Web.UI.WebControls.Login.LoggingIn&quot;></xref>事件在用户提交登录信息但之前进行身份验证。"
+  remarks: "OnLoggingIn 方法将引发<xref:System.Web.UI.WebControls.Login.LoggingIn>事件。</xref:System.Web.UI.WebControls.Login.LoggingIn> 使用<xref:System.Web.UI.WebControls.Login.LoggingIn>事件以执行所验证的用户之前，你需要的任何处理或执行自定义验证。</xref:System.Web.UI.WebControls.Login.LoggingIn>       引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[事件](~/add/includes/ajax-current-ext-md.md)。       OnLoggingIn 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   example:
   - "The following code example uses the <xref:System.Web.UI.WebControls.Login.LoggingIn> event to ensure that the user has entered a well-formed e-mail address in the <xref:System.Web.UI.WebControls.Login.UserName%2A> property. If not, the <xref:System.Web.UI.WebControls.Login.LoggingIn> event handler cancels the login attempt and displays the error message specified in the <xref:System.Web.UI.WebControls.Login.InstructionText%2A> property.  \n  \n [!code-vb[LoginOnBeforeLogin#1](~/add/codesnippet/visualbasic/1be72d23-9554-4404-b2ef-_1.aspx)]\n [!code-cs[LoginOnBeforeLogin#1](~/add/codesnippet/csharp/1be72d23-9554-4404-b2ef-_1.aspx)]  \n  \n The following code example demonstrates how you can extend the <xref:System.Web.UI.WebControls.Login> control. The `CustomLogin` control includes a <xref:System.Web.UI.WebControls.DropDownList> control that lets users choose which membership provider they are authenticated with. (These providers are configured in Web.config.) In the OnLoggingIn method, the <xref:System.Web.UI.WebControls.Login.MembershipProvider%2A> property is set to the selected value of the <xref:System.Web.UI.WebControls.DropDownList> control.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[Samples.AspNet.Controls.CustomLogin#1](~/add/codesnippet/csharp/1be72d23-9554-4404-b2ef-_2.cs)]\n [!code-vb[Samples.AspNet.Controls.CustomLogin#1](~/add/codesnippet/visualbasic/1be72d23-9554-4404-b2ef-_2.vb)]"
   syntax:
@@ -1092,7 +1092,7 @@ items:
     parameters:
     - id: e
       type: System.Web.UI.WebControls.LoginCancelEventArgs
-      description: "A <xref href=&quot;System.Web.UI.WebControls.LoginCancelEventArgs&quot;></xref> containing the event data."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.LoginCancelEventArgs&quot;> </xref>包含事件数据。"
   overload: System.Web.UI.WebControls.Login.OnLoggingIn*
   exceptions: []
   platform:
@@ -1109,8 +1109,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Raises the <xref href=&quot;System.Web.UI.WebControls.Login.LoginError&quot;></xref> event when a login attempt fails."
-  remarks: "The OnLoginError method raises the <xref:System.Web.UI.WebControls.Login.LoginError> event. Use the <xref:System.Web.UI.WebControls.Login.LoginError> event to provide additional processing, such as error logging, when a user&quot;s login attempt fails.       Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnLoginError method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Web.UI.WebControls.Login.LoginError&quot;></xref>登录尝试失败时的事件。"
+  remarks: "OnLoginError 方法将引发<xref:System.Web.UI.WebControls.Login.LoginError>事件。</xref:System.Web.UI.WebControls.Login.LoginError> 使用<xref:System.Web.UI.WebControls.Login.LoginError>事件，以便当用户的登录尝试失败时提供额外的处理，例如错误日志记录。</xref:System.Web.UI.WebControls.Login.LoginError>       引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnLoginError 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   example:
   - "The following code example uses the <xref:System.Web.UI.WebControls.Login.LoginError> event to display Help links to the user when a login attempt fails.  \n  \n [!code-vb[LoginOnLoginError#1](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_134_1.aspx)]\n [!code-cs[LoginOnLoginError#1](~/add/codesnippet/csharp/m-system.web.ui.webcontr_134_1.aspx)]"
   syntax:
@@ -1118,7 +1118,7 @@ items:
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Web.UI.WebControls.Login.OnLoginError*
   exceptions: []
   platform:
@@ -1135,14 +1135,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Implements the base &lt;xref:System.Web.UI.Control.OnPreRender%2A?displayProperty=fullName&gt; method."
-  remarks: "The OnPreRender method implements the <xref:System.Web.UI.Control.OnPreRender%2A?displayProperty=fullName> method to notify the <xref:System.Web.UI.WebControls.Login> control to perform any necessary prerendering steps before saving view state and rendering content.       Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnPreRender method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "实现基&lt;xref:System.Web.UI.Control.OnPreRender%2A?displayProperty=fullName&gt;方法。"
+  remarks: "OnPreRender 方法实现<xref:System.Web.UI.Control.OnPreRender%2A?displayProperty=fullName>方法通知<xref:System.Web.UI.WebControls.Login>之前要执行任何必要的预呈现步骤保存视图状态和呈现内容的控件。</xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.Control.OnPreRender%2A?displayProperty=fullName>       引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[NIB︰ 引发事件](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)。       OnPreRender 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   syntax:
     content: protected override void OnPreRender (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains event data."
+      description: "<xref:System.EventArgs>包含事件数据。</xref:System.EventArgs>"
   overload: System.Web.UI.WebControls.Login.OnPreRender*
   exceptions: []
   platform:
@@ -1159,20 +1159,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets a value that specifies the position of the elements of the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control on the page."
-  remarks: "The Orientation property determines whether to display the <xref:System.Web.UI.WebControls.Login> control in a vertical format, with the <xref:System.Web.UI.WebControls.Login.UserName%2A> text entry field above the <xref:System.Web.UI.WebControls.Login.Password%2A> text entry field, or in a horizontal format, with the <xref:System.Web.UI.WebControls.Login.UserName%2A> text entry field next to the <xref:System.Web.UI.WebControls.Login.Password%2A> text entry field."
+  summary: "获取或设置一个值，指定的元素的位置<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>页上的控件。"
+  remarks: "方向属性确定是否显示<xref:System.Web.UI.WebControls.Login>控制垂直格式，与<xref:System.Web.UI.WebControls.Login.UserName%2A>文本输入字段上方<xref:System.Web.UI.WebControls.Login.Password%2A>文本输入字段，或水平格式，与<xref:System.Web.UI.WebControls.Login.UserName%2A>文本输入字段旁边<xref:System.Web.UI.WebControls.Login.Password%2A>文本输入字段。</xref:System.Web.UI.WebControls.Login.Password%2A> </xref:System.Web.UI.WebControls.Login.UserName%2A> </xref:System.Web.UI.WebControls.Login.Password%2A> </xref:System.Web.UI.WebControls.Login.UserName%2A> </xref:System.Web.UI.WebControls.Login>"
   example:
   - "The following code example shows the effect of changing the Orientation property.  \n  \n [!code-cs[LoginLoginLayout#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_380_1.aspx)]\n [!code-vb[LoginLoginLayout#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_380_1.aspx)]"
   syntax:
     content: public virtual System.Web.UI.WebControls.Orientation Orientation { get; set; }
     return:
       type: System.Web.UI.WebControls.Orientation
-      description: "One the <xref href=&quot;System.Web.UI.WebControls.Orientation&quot;></xref> enumeration values. The default is <xref href=&quot;System.Web.UI.WebControls.Orientation&quot;></xref>."
+      description: "一个<xref href=&quot;System.Web.UI.WebControls.Orientation&quot;></xref>枚举值。 默认值是<xref href=&quot;System.Web.UI.WebControls.Orientation&quot;> </xref>。"
   overload: System.Web.UI.WebControls.Login.Orientation*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The Orientation property is not set to a valid <xref href=&quot;System.Web.UI.WebControls.Orientation&quot;></xref> enumeration value."
+    description: "方向属性未设置为有效<xref href=&quot;System.Web.UI.WebControls.Orientation&quot;></xref>枚举值。"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.Login.Password
@@ -1187,15 +1187,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets the password entered by the user."
-  remarks: "The Password property contains the password entered by the user. The password is in clear text. For more information, see [Basic Security Practices for Web Applications](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] >  If you manipulate the <xref:System.Web.UI.WebControls.Login.UserName%2A> or Password properties programmatically, it is important to do so at the correct time during the page life cycle. The values of <xref:System.Web.UI.WebControls.Login.UserName%2A> and Password are not available during the `Page_Load` phase, but are during the `Pre_Render` phase.       <xref:System.Web.UI.WebControls.Login> control properties represented by text boxes, such as <xref:System.Web.UI.WebControls.Login.UserName%2A> and Password, are accessible during all phases of the page life cycle. The control will pick up any changes made by the end user by means of the <xref:System.Web.UI.WebControls.TextBox.TextChanged> event triggered by the textboxes."
+  summary: "获取用户输入的密码。"
+  remarks: "密码属性包含用户输入的密码。 密码为明文形式。 有关详细信息，请参阅[Web 应用程序的基本安全实践](~/add/includes/ajax-current-ext-md.md)。      1> [!NOTE]&1;> 如果您操作<xref:System.Web.UI.WebControls.Login.UserName%2A>或密码属性以编程方式，请务必在页生命周期中正确的时间进行操作。</xref:System.Web.UI.WebControls.Login.UserName%2A> 值<xref:System.Web.UI.WebControls.Login.UserName%2A>和密码也不可用期间`Page_Load`阶段，但在`Pre_Render`阶段。</xref:System.Web.UI.WebControls.Login.UserName%2A>       <xref:System.Web.UI.WebControls.Login>控件属性的文本框，如表示<xref:System.Web.UI.WebControls.Login.UserName%2A>和密码，在页面生命周期的所有阶段都可访问。</xref:System.Web.UI.WebControls.Login.UserName%2A></xref:System.Web.UI.WebControls.Login> 控件将选取由最终用户的方式进行任何更改<xref:System.Web.UI.WebControls.TextBox.TextChanged>由文本框触发的事件。</xref:System.Web.UI.WebControls.TextBox.TextChanged>"
   example:
   - "The following code example passes the Password property to a custom authentication method.  \n  \n [!code-cs[LoginAuthenticate#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1006_1.aspx)]\n [!code-vb[LoginAuthenticate#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1006_1.aspx)]"
   syntax:
     content: public virtual string Password { get; }
     return:
       type: System.String
-      description: "The password entered by the user. The default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "由用户输入的密码。 默认值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.Login.Password*
   exceptions: []
   platform:
@@ -1212,15 +1212,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the text of the label for the <xref:System.Web.UI.WebControls.Login.Password*> text box."
-  remarks: "The PasswordLabelText property contains the label text for the <xref:System.Web.UI.WebControls.Login.Password%2A> text box.       The <xref:System.Web.UI.WebControls.Login.TextLayout%2A> property defines where the field label is positioned.       The default text for the control is localized based on the server&quot;s current locale.       The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置的标签文本<xref:System.Web.UI.WebControls.Login.Password*>文本框。</xref:System.Web.UI.WebControls.Login.Password*>"
+  remarks: "PasswordLabelText 属性包含的标签文本<xref:System.Web.UI.WebControls.Login.Password%2A>文本框。</xref:System.Web.UI.WebControls.Login.Password%2A>       <xref:System.Web.UI.WebControls.Login.TextLayout%2A>属性定义的字段标签放置的位置。</xref:System.Web.UI.WebControls.Login.TextLayout%2A>       控件的默认文本进行了本地化根据服务器的当前区域设置。       此属性的值设置时，可以自动保存到的资源文件通过使用设计器工具。 有关详细信息，请参阅<xref:System.ComponentModel.LocalizableAttribute>和[全球化和本地化](~/add/includes/ajax-current-ext-md.md)。</xref:System.ComponentModel.LocalizableAttribute>"
   example:
   - "The following code example sets the PasswordLabelText property to \"User Password:\".  \n  \n [!code-cs[LoginLabelText#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_511_1.aspx)]\n [!code-vb[LoginLabelText#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_511_1.aspx)]"
   syntax:
     content: public virtual string PasswordLabelText { get; set; }
     return:
       type: System.String
-      description: "The text of the label for the <xref:System.Web.UI.WebControls.Login.Password*> text box. The default is &quot;Password:&quot;."
+      description: "标签文本<xref:System.Web.UI.WebControls.Login.Password*>文本框。</xref:System.Web.UI.WebControls.Login.Password*> 默认值是&quot;密码:&quot;。"
   overload: System.Web.UI.WebControls.Login.PasswordLabelText*
   exceptions: []
   platform:
@@ -1237,12 +1237,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets the location of an image to display next to the link to the password recovery page."
+  summary: "获取指向密码恢复页的旁边显示的图像的位置。"
   syntax:
     content: public virtual string PasswordRecoveryIconUrl { get; set; }
     return:
       type: System.String
-      description: "The URL of the image to display. The default is <xref:System.String>."
+      description: "若要显示的图像的 URL。 默认值为<xref:System.String>。</xref:System.String>"
   overload: System.Web.UI.WebControls.Login.PasswordRecoveryIconUrl*
   exceptions: []
   platform:
@@ -1259,15 +1259,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the text of a link to the password recovery page."
-  remarks: "The PasswordRecoveryText property contains the text of a link to the password recovery page for the site. The URL of the password recovery page is specified in the <xref:System.Web.UI.WebControls.Login.PasswordRecoveryUrl%2A> property.       If <xref:System.Web.UI.WebControls.Login.PasswordRecoveryUrl%2A> is empty, the text in the PasswordRecoveryText property is displayed to the user, but is not formatted as a link.       If the PasswordRecoveryText property is empty, the link to the password recovery page is not available to the user.       The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置到密码恢复页的链接的文本。"
+  remarks: "PasswordRecoveryText 属性包含指向站点的密码恢复页面的链接的文本。 中指定的密码恢复页面的 URL<xref:System.Web.UI.WebControls.Login.PasswordRecoveryUrl%2A>属性。</xref:System.Web.UI.WebControls.Login.PasswordRecoveryUrl%2A>       如果<xref:System.Web.UI.WebControls.Login.PasswordRecoveryUrl%2A>为空的 PasswordRecoveryText 属性显示给用户，但未格式化的链接的形式中的文本。</xref:System.Web.UI.WebControls.Login.PasswordRecoveryUrl%2A>       如果 PasswordRecoveryText 属性为空，不是可供用户密码恢复页的链接。       此属性的值设置时，可以自动保存到的资源文件通过使用设计器工具。 有关详细信息，请参阅<xref:System.ComponentModel.LocalizableAttribute>和[全球化和本地化](~/add/includes/ajax-current-ext-md.md)。</xref:System.ComponentModel.LocalizableAttribute>"
   example:
   - "The following code example sets the PasswordRecoveryText property to specify the text of the link to the site's password recovery page. The example displays a login form and sets the <xref:System.Web.UI.WebControls.Login.PasswordRecoveryUrl%2A> and PasswordRecoveryText properties. If the user clicks \"Forgot your password\", the getPass.aspx page is displayed.  \n  \n [!code-cs[LoginPasswordRecoveryText#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_232_1.aspx)]\n [!code-vb[LoginPasswordRecoveryText#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_232_1.aspx)]"
   syntax:
     content: public virtual string PasswordRecoveryText { get; set; }
     return:
       type: System.String
-      description: "The text of the link to the password recovery page. The default is <xref:System.String>."
+      description: "密码恢复页的链接的文本。 默认值为<xref:System.String>。</xref:System.String>"
   overload: System.Web.UI.WebControls.Login.PasswordRecoveryText*
   exceptions: []
   platform:
@@ -1284,15 +1284,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the URL of the password recovery page."
-  remarks: "The PasswordRecoveryUrl property contains the URL of the password recovery page for the Web site. The <xref:System.Web.UI.WebControls.Login.PasswordRecoveryText%2A> property contains the text used for the link.       If the <xref:System.Web.UI.WebControls.Login.PasswordRecoveryText%2A> property is empty, the link to the password recovery page is not available to the user."
+  summary: "获取或设置密码恢复页面的 URL。"
+  remarks: "PasswordRecoveryUrl 属性包含网站的密码恢复页面的 URL。 <xref:System.Web.UI.WebControls.Login.PasswordRecoveryText%2A>属性包含用于链接的文本。</xref:System.Web.UI.WebControls.Login.PasswordRecoveryText%2A>       如果<xref:System.Web.UI.WebControls.Login.PasswordRecoveryText%2A>属性为空，则不向用户提供到密码恢复页链接。</xref:System.Web.UI.WebControls.Login.PasswordRecoveryText%2A>"
   example:
   - "The following example code uses the PasswordRecoveryUrl property to specify the URL of the site's password recovery page. The example displays a login form and sets the PasswordRecoveryUrl and <xref:System.Web.UI.WebControls.Login.PasswordRecoveryText%2A> properties. If the user clicks \"Forgot your password\", the getPass.aspx page is displayed.  \n  \n [!code-cs[LoginPasswordRecoveryText#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1030_1.aspx)]\n [!code-vb[LoginPasswordRecoveryText#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1030_1.aspx)]"
   syntax:
     content: public virtual string PasswordRecoveryUrl { get; set; }
     return:
       type: System.String
-      description: "The URL of the password recovery page. The default is <xref:System.String>."
+      description: "密码恢复页的 URL。 默认值为<xref:System.String>。</xref:System.String>"
   overload: System.Web.UI.WebControls.Login.PasswordRecoveryUrl*
   exceptions: []
   platform:
@@ -1309,15 +1309,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the error message to display in a <xref href=&quot;System.Web.UI.WebControls.ValidationSummary&quot;></xref> control when the password field is left blank."
-  remarks: "The PasswordRequiredErrorMessage property contains the error message displayed in a <xref:System.Web.UI.WebControls.ValidationSummary> control on the login page.       The PasswordRequiredErrorMessage property value is displayed only when both the following conditions are true:      -   A <xref:System.Web.UI.WebControls.ValidationSummary> control is present on the page.      -   The Password text box is left blank by the user.       The default text for the property is localized based on the server&quot;s current locale.       The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md).       Both the PasswordRequiredErrorMessage and <xref:System.Web.UI.WebControls.Login.UserNameRequiredErrorMessage%2A> values are wrapped in a validation group within the <xref:System.Web.UI.WebControls.Login> control. For these values to display, the <xref:System.Web.UI.WebControls.ValidationSummary.ValidationGroup%2A> property of the <xref:System.Web.UI.WebControls.ValidationSummary> control must be set to the <xref:System.Web.UI.Control.ID%2A> property of the <xref:System.Web.UI.WebControls.Login> control."
+  summary: "获取或设置要在中显示的错误消息<xref href=&quot;System.Web.UI.WebControls.ValidationSummary&quot;></xref>控制当将密码字段留空。"
+  remarks: "PasswordRequiredErrorMessage 属性包含中显示的错误消息<xref:System.Web.UI.WebControls.ValidationSummary>的登录页上的控件。</xref:System.Web.UI.WebControls.ValidationSummary>       仅在满足以下条件时会显示 PasswordRequiredErrorMessage 属性值:-<xref:System.Web.UI.WebControls.ValidationSummary>控件是在页上存在。</xref:System.Web.UI.WebControls.ValidationSummary>      -密码文本框是由用户保留为空。       属性的默认文本进行了本地化根据服务器的当前区域设置。       此属性的值设置时，可以自动保存到的资源文件通过使用设计器工具。 有关详细信息，请参阅<xref:System.ComponentModel.LocalizableAttribute>和[全球化和本地化](~/add/includes/ajax-current-ext-md.md)。</xref:System.ComponentModel.LocalizableAttribute>       这两个 PasswordRequiredErrorMessage 和<xref:System.Web.UI.WebControls.Login.UserNameRequiredErrorMessage%2A>值包装在中的验证组<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.WebControls.Login.UserNameRequiredErrorMessage%2A> 若要显示，这些值<xref:System.Web.UI.WebControls.ValidationSummary.ValidationGroup%2A>属性<xref:System.Web.UI.WebControls.ValidationSummary>控件必须设置为<xref:System.Web.UI.Control.ID%2A>属性<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.Control.ID%2A> </xref:System.Web.UI.WebControls.ValidationSummary> </xref:System.Web.UI.WebControls.ValidationSummary.ValidationGroup%2A>"
   example:
   - "The following code example uses a <xref:System.Web.UI.WebControls.ValidationSummary> control to display the error message specified in the PasswordRequiredErrorMessage property.  \n  \n [!code-vb[LoginRequiredErrorMessage#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_551_1.aspx)]\n [!code-cs[LoginRequiredErrorMessage#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_551_1.aspx)]"
   syntax:
     content: public virtual string PasswordRequiredErrorMessage { get; set; }
     return:
       type: System.String
-      description: "The error message to display in a <xref href=&quot;System.Web.UI.WebControls.ValidationSummary&quot;></xref> control when the password field is left blank. The default is &quot;Password.&quot;"
+      description: "要在显示的错误消息<xref href=&quot;System.Web.UI.WebControls.ValidationSummary&quot;></xref>控制当将密码字段留空。 默认值是&quot;密码。"
   overload: System.Web.UI.WebControls.Login.PasswordRequiredErrorMessage*
   exceptions: []
   platform:
@@ -1334,13 +1334,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets a value indicating whether to send a persistent authentication cookie to the user&quot;s browser."
-  remarks: "When the RememberMeSet property is `true`, the authentication cookie sent to the user&quot;s computer is set to expire in 50 years, making it a persistent cookie that will be used when the user next visits the Web site. Because the authentication cookie will be present on the user&quot;s computer, the user will be considered already authenticated and will not have to log in to the Web site again.       When the <xref:System.Web.UI.WebControls.Login.DisplayRememberMe%2A> property is `true`, the RememberMeSet property is set to the value of the check box displayed to the user.       If the <xref:System.Web.UI.WebControls.Login.DisplayRememberMe%2A> property is `false`, a Remember Me check box is not displayed on the page and the user has no way to control whether the authentication cookie is persistent. If the RememberMeSet property is `true`, the authentication cookie sent to the user&quot;s browser will be a persistent cookie.       If the user logs out of the Web site using the <xref:System.Web.UI.WebControls.LoginStatus> control, the persistent cookie is cleared from the user&quot;s computer and the user will have to log in to the site on the next visit.      > [!NOTE] >  There are inherent security risks with setting a persistent authentication cookie on a user&quot;s browser. You should determine whether these security risks are acceptable to your site. If you set the RememberMeSet property to `true` and the <xref:System.Web.UI.WebControls.Login.DisplayRememberMe%2A> property to `false`, users visiting your Web site from public browsers, as in Internet cafes for example, can accidentally leave persistent authentication cookies behind and the next user of the browser will be able to access your Web site using the previous user&quot;s credentials.       This property cannot be set by themes or style sheet themes. For more information, see <xref:System.Web.UI.ThemeableAttribute> and [ASP.NET Themes and Skins](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置一个值，该值指示是否将持久性身份验证 cookie 发送到用户的浏览器。"
+  remarks: "当 RememberMeSet 属性是`true`，发送到用户的计算机的身份验证 cookie 已设置为过期 50 在年中，因而当用户下一步访问网站时将使用持久性 cookie。 由于身份验证 cookie 将存在于用户的计算机上，用户将被视为已通过身份验证，并不会再次登录到网站。       当<xref:System.Web.UI.WebControls.Login.DisplayRememberMe%2A>属性是`true`，RememberMeSet 属性设置为向用户显示复选框的值。</xref:System.Web.UI.WebControls.Login.DisplayRememberMe%2A>       如果<xref:System.Web.UI.WebControls.Login.DisplayRememberMe%2A>属性是`false`、 记住我复选框不会显示在页面和用户具有不能控制是否是持久性的身份验证 cookie。</xref:System.Web.UI.WebControls.Login.DisplayRememberMe%2A> 如果 RememberMeSet 属性为`true`，发送到用户的浏览器的身份验证 cookie 将持久性 cookie。       如果在用户登录网站利用<xref:System.Web.UI.WebControls.LoginStatus>控制，则持久性 cookie 清除从用户的计算机和用户将需要在下一步访问登录到站点。</xref:System.Web.UI.WebControls.LoginStatus>      1> [!NOTE]&1;> 有与在用户的浏览器上设置持久性身份验证 cookie 的固有安全风险。 你应该确定是否可以接受你的站点的这些安全风险。 如果将 RememberMeSet 属性设为`true`和<xref:System.Web.UI.WebControls.Login.DisplayRememberMe%2A>属性`false`、 访问您的网站从公共的浏览器的用户，如下所示 Internet 吧例如，可以无意中将留在后面的持久性身份验证 cookie 和浏览器的下一个用户将能够访问您的网站以使用以前用户的凭据。</xref:System.Web.UI.WebControls.Login.DisplayRememberMe%2A>       此属性不能通过主题或样式表主题设置。 有关详细信息，请参阅<xref:System.Web.UI.ThemeableAttribute>和[ASP.NET 主题和皮肤](~/add/includes/ajax-current-ext-md.md)。</xref:System.Web.UI.ThemeableAttribute>"
   syntax:
     content: public virtual bool RememberMeSet { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to send a persistent authentication cookie; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default value is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>若要发送持久性身份验证 cookie;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.Login.RememberMeSet*
   exceptions: []
   platform:
@@ -1357,13 +1357,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the text of the label for the Remember Me check box."
-  remarks: "The RememberMeText property contains the text of the label for the Remember Me <xref:System.Web.UI.WebControls.CheckBox> control.       The default text for the property is localized based on the server&quot;s current locale.       The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置记住我复选框标签的文本。"
+  remarks: "RememberMeText 属性包含用于记住我的标签文本<xref:System.Web.UI.WebControls.CheckBox>控件。</xref:System.Web.UI.WebControls.CheckBox>       属性的默认文本进行了本地化根据服务器的当前区域设置。       此属性的值设置时，可以自动保存到的资源文件通过使用设计器工具。 有关详细信息，请参阅<xref:System.ComponentModel.LocalizableAttribute>和[全球化和本地化](~/add/includes/ajax-current-ext-md.md)。</xref:System.ComponentModel.LocalizableAttribute>"
   syntax:
     content: public virtual string RememberMeText { get; set; }
     return:
       type: System.String
-      description: "The text of the label for the Remember Me check box. The default is &quot;Remember me next time.&quot;"
+      description: "文本的标签记住我复选框。 默认值为&quot;记住我下一次。&quot;"
   overload: System.Web.UI.WebControls.Login.RememberMeText*
   exceptions: []
   platform:
@@ -1380,13 +1380,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Renders the login form using the specified HTML writer."
+  summary: "呈现使用指定的 HTML 编写器登录窗体。"
   syntax:
     content: protected override void Render (System.Web.UI.HtmlTextWriter writer);
     parameters:
     - id: writer
       type: System.Web.UI.HtmlTextWriter
-      description: "The HMTL writer."
+      description: "HMTL 编写器。"
   overload: System.Web.UI.WebControls.Login.Render*
   exceptions: []
   platform:
@@ -1403,13 +1403,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets a value that indicates whether the control encloses rendered HTML in a <xref uid=&quot;langword_csharp_table&quot; name=&quot;table&quot; href=&quot;&quot;></xref> element in order to apply inline styles."
-  remarks: "In order to make inline style properties such as <xref:System.Web.UI.WebControls.WebControl.ForeColor%2A> apply to all the HTML that is rendered for the control, ASP.NET encloses the rendered HTML in a `table` element. If you do not want the outer `table` element to be rendered, set this property to `false`. In that case, if you try to set inline style properties that apply to the whole control, an exception is thrown."
+  summary: "获取或设置一个值，该值指示控件是否包含在呈现的 HTML <xref uid=&quot;langword_csharp_table&quot; name=&quot;table&quot; href=&quot;&quot;> </xref>才能将应用内联样式元素。"
+  remarks: "为了使内联样式属性，如<xref:System.Web.UI.WebControls.WebControl.ForeColor%2A>适用于所有控件呈现的 HTML，ASP.NET 将中呈现的 HTML`table`元素。</xref:System.Web.UI.WebControls.WebControl.ForeColor%2A> 如果不希望外部`table`元素呈现，将此属性设置为`false`。 在这种情况下，如果你尝试设置应用于整个控件的样式属性的内联，则引发异常。"
   syntax:
     content: public virtual bool RenderOuterTable { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the control encloses rendered HTML in a <xref uid=&quot;langword_csharp_table&quot; name=&quot;table&quot; href=&quot;&quot;></xref> element; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果控件包含中呈现的 HTML <xref uid=&quot;langword_csharp_table&quot; name=&quot;table&quot; href=&quot;&quot;> </xref>元素; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.Login.RenderOuterTable*
   exceptions: []
   platform:
@@ -1426,13 +1426,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Saves any state that was modified after the <xref:System.Web.UI.WebControls.Style.TrackViewState*> method was invoked."
+  summary: "将保存已修改后的任何状态<xref:System.Web.UI.WebControls.Style.TrackViewState*>调用方法。</xref:System.Web.UI.WebControls.Style.TrackViewState*>"
   syntax:
     content: protected override object SaveViewState ();
     parameters: []
     return:
       type: System.Object
-      description: "An object that contains the current view state of the control; otherwise, if there is no view state associated with the control, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "包含控件; 的当前视图状态的对象否则为如果没有与该控件关联的视图状态<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.Login.SaveViewState*
   exceptions: []
   platform:
@@ -1449,13 +1449,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Sets design-time data for a control."
+  summary: "设置控件的设计时数据。"
   syntax:
     content: protected override void SetDesignModeState (System.Collections.IDictionary data);
     parameters:
     - id: data
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> containing the design-time data for the control."
+      description: "<xref:System.Collections.IDictionary>包含控件的设计时数据。</xref:System.Collections.IDictionary>"
   overload: System.Web.UI.WebControls.Login.SetDesignModeState*
   exceptions: []
   platform:
@@ -1472,13 +1472,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets the <xref href=&quot;System.Web.UI.HtmlTextWriterTag&quot;></xref> value that corresponds to a <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control. This property is used primarily by control developers."
-  remarks: "Use the TagKey property to determine the <xref:System.Web.UI.HtmlTextWriterTag> value that is associated with a <xref:System.Web.UI.WebControls.Login> control. This property is used primarily by control developers."
+  summary: "获取<xref href=&quot;System.Web.UI.HtmlTextWriterTag&quot;></xref>对应于值<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控件。 此属性主要由控件开发人员使用。"
+  remarks: "使用 TagKey 属性来确定<xref:System.Web.UI.HtmlTextWriterTag>与关联的值<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.HtmlTextWriterTag> 此属性主要由控件开发人员使用。"
   syntax:
     content: protected override System.Web.UI.HtmlTextWriterTag TagKey { get; }
     return:
       type: System.Web.UI.HtmlTextWriterTag
-      description: "Always returns <xref href=&quot;System.Web.UI.HtmlTextWriterTag&quot;></xref>."
+      description: "始终返回<xref href=&quot;System.Web.UI.HtmlTextWriterTag&quot;> </xref>。"
   overload: System.Web.UI.WebControls.Login.TagKey*
   exceptions: []
   platform:
@@ -1495,15 +1495,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets a reference to a collection of properties that define the appearance of text boxes in the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control."
-  remarks: "The TextBoxStyle property defines the appearance of the User name and Password <xref:System.Web.UI.WebControls.TextBox> controls in the <xref:System.Web.UI.WebControls.Login> control. This property is read-only; however, you can set the properties of the <xref:System.Web.UI.WebControls.Style> object it returns. You can set these properties declaratively in the form `Property-Subproperty`, where `Subproperty` represents a property of the <xref:System.Web.UI.WebControls.Style> class (for example, `TextBoxStyle-ForeColor`). You can set the property programmatically in the form `Property.Subproperty` (for example, `TextBoxStyle.ForeColor`).       Common settings include custom background color, text color, and font properties. The TextBoxStyle property defines the appearance of the user name and password text boxes.       The style settings for the TextBoxStyle property are merged with the style settings for the <xref:System.Web.UI.WebControls.Login> control. Any settings made in the TextBoxStyle property override the corresponding settings in properties of the <xref:System.Web.UI.WebControls.Login> control.       The following <xref:System.Web.UI.WebControls.Login> style properties are overridden by TextBoxStyle settings:      -   <xref:System.Web.UI.WebControls.WebControl.BackColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Enabled%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Font%2A>      -   <xref:System.Web.UI.WebControls.WebControl.ForeColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Height%2A>      -   <xref:System.Web.UI.WebControls.WebControl.ToolTip%2A>      -   <xref:System.Web.UI.Control.Visible%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Width%2A>       When you use templates to define the appearance of the <xref:System.Web.UI.WebControls.Login> control, the TextBoxStyle property has no effect."
+  summary: "获取对定义的文本外观的属性的集合的引用框中<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控件。"
+  remarks: "TextBoxStyle 属性定义的用户名和密码的外观<xref:System.Web.UI.WebControls.TextBox>中控制<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.WebControls.TextBox> 此属性是只读的;但是，可以设置的属性<xref:System.Web.UI.WebControls.Style>对象返回。</xref:System.Web.UI.WebControls.Style> 你可以在窗体中以声明方式设置这些属性`Property-Subproperty`，其中`Subproperty`表示的属性<xref:System.Web.UI.WebControls.Style>类 (例如， `TextBoxStyle-ForeColor`)。</xref:System.Web.UI.WebControls.Style> 你可以以编程方式设置此属性的形式`Property.Subproperty`(例如， `TextBoxStyle.ForeColor`)。       常用的设置包括自定义的背景色、 文本颜色和字体属性。 TextBoxStyle 属性定义的用户名称和密码文本框的外观。       与的样式设置合并 TextBoxStyle 属性的样式设置<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> TextBoxStyle 属性中所做的任何设置重写的属性中的相应设置<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login>       以下<xref:System.Web.UI.WebControls.Login>样式属性被 TextBoxStyle 设置覆盖:- <xref:System.Web.UI.WebControls.WebControl.BackColor%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderColor%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A>- <xref:System.Web.UI.WebControls.WebControl.Enabled%2A>- <xref:System.Web.UI.WebControls.WebControl.Font%2A>- <xref:System.Web.UI.WebControls.WebControl.ForeColor%2A>- <xref:System.Web.UI.WebControls.WebControl.Height%2A>- <xref:System.Web.UI.WebControls.WebControl.ToolTip%2A>- <xref:System.Web.UI.Control.Visible%2A>-<xref:System.Web.UI.WebControls.WebControl.Width%2A>当你使用模板定义的外观<xref:System.Web.UI.WebControls.Login>控件，TextBoxStyle 属性不起作用。</xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.WebControls.WebControl.Width%2A> </xref:System.Web.UI.Control.Visible%2A> </xref:System.Web.UI.WebControls.WebControl.ToolTip%2A> </xref:System.Web.UI.WebControls.WebControl.Height%2A> </xref:System.Web.UI.WebControls.WebControl.ForeColor%2A> </xref:System.Web.UI.WebControls.WebControl.Font%2A> </xref:System.Web.UI.WebControls.WebControl.Enabled%2A> </xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A> </xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A> </xref:System.Web.UI.WebControls.WebControl.BorderColor%2A> </xref:System.Web.UI.WebControls.WebControl.BackColor%2A> </xref:System.Web.UI.WebControls.Login>"
   example:
   - "The following code example sets the background and text colors of the User name and Password <xref:System.Web.UI.WebControls.TextBox> controls by setting properties on the <xref:System.Web.UI.WebControls.Style> object referenced by the TextBoxStyle property.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[LoginTextBoxStyle#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_77_1.aspx)]\n [!code-cs[LoginTextBoxStyle#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_77_1.aspx)]"
   syntax:
     content: public System.Web.UI.WebControls.Style TextBoxStyle { get; }
     return:
       type: System.Web.UI.WebControls.Style
-      description: "A reference to the <xref href=&quot;System.Web.UI.WebControls.Style&quot;></xref> that contains properties that define the appearance of text boxes."
+      description: "对引用<xref href=&quot;System.Web.UI.WebControls.Style&quot;></xref>包含定义文本框的外观的属性。"
   overload: System.Web.UI.WebControls.Login.TextBoxStyle*
   exceptions: []
   platform:
@@ -1520,20 +1520,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Specifies the position of each label relative to its associated text box for the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control."
-  remarks: "You can use the TextLayout property to specify the position of labels relative to their associated text boxes for the <xref:System.Web.UI.WebControls.Login> control. This property is set using one of the <xref:System.Web.UI.WebControls.LoginTextLayout> enumeration values. The following table lists the possible values.      |LoginTextLayout value|Description|   |---------------------------|-----------------|   |<xref:System.Web.UI.WebControls.LoginTextLayout>|Places labels to the left of the associated text entry fields.|   |<xref:System.Web.UI.WebControls.LoginTextLayout>|Places labels above the associated text entry fields.|"
+  summary: "指定相对于其关联的文本框中为每个标签的位置<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控件。"
+  remarks: "你可以使用 TextLayout 属性指定的位置标签相对于其关联的文本框中，以便<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> 此属性使用其中一个设置<xref:System.Web.UI.WebControls.LoginTextLayout>枚举值。</xref:System.Web.UI.WebControls.LoginTextLayout> 下表列出可能的值。      |LoginTextLayout 值 |说明 |  |---------------------------|-----------------|  |<xref:System.Web.UI.WebControls.LoginTextLayout>|将标签放到关联的文本输入字段的左侧。 |  |<xref:System.Web.UI.WebControls.LoginTextLayout>|将标签放关联的文本输入字段的上方。 |</xref:System.Web.UI.WebControls.LoginTextLayout> </xref:System.Web.UI.WebControls.LoginTextLayout>"
   example:
   - "The following code example demonstrates using the <xref:System.Web.UI.WebControls.LoginTextLayout> enumeration to set the TextLayout property of a <xref:System.Web.UI.WebControls.Login> control.  \n  \n [!code-vb[System.Web.UI.WebControls.LoginTextLayout#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_311_1.aspx)]\n [!code-cs[System.Web.UI.WebControls.LoginTextLayout#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_311_1.aspx)]"
   syntax:
     content: public virtual System.Web.UI.WebControls.LoginTextLayout TextLayout { get; set; }
     return:
       type: System.Web.UI.WebControls.LoginTextLayout
-      description: "One of the <xref href=&quot;System.Web.UI.WebControls.LoginTextLayout&quot;></xref> enumeration values. The default is <xref href=&quot;System.Web.UI.WebControls.LoginTextLayout&quot;></xref>."
+      description: "之一<xref href=&quot;System.Web.UI.WebControls.LoginTextLayout&quot;></xref>枚举值。 默认值是<xref href=&quot;System.Web.UI.WebControls.LoginTextLayout&quot;> </xref>。"
   overload: System.Web.UI.WebControls.Login.TextLayout*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The selected value is not one of the <xref href=&quot;System.Web.UI.WebControls.LoginTextLayout&quot;></xref> enumeration values."
+    description: "所选的值不是之一<xref href=&quot;System.Web.UI.WebControls.LoginTextLayout&quot;></xref>枚举值。"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.Login.TitleText
@@ -1548,15 +1548,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the title of the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control."
-  remarks: "The TitleText property specifies the title displayed at the top of the <xref:System.Web.UI.WebControls.Login> control.       The default text for the control is localized based on the server&quot;s current locale.       The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置标题<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控件。"
+  remarks: "TitleText 属性指定显示在顶部的标题<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login>       控件的默认文本进行了本地化根据服务器的当前区域设置。       此属性的值设置时，可以自动保存到的资源文件通过使用设计器工具。 有关详细信息，请参阅<xref:System.ComponentModel.LocalizableAttribute>和[全球化和本地化](~/add/includes/ajax-current-ext-md.md)。</xref:System.ComponentModel.LocalizableAttribute>"
   example:
   - "The following code example sets the TitleText property.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[LoginTitleText#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1328_1.aspx)]\n [!code-vb[LoginTitleText#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1328_1.aspx)]"
   syntax:
     content: public virtual string TitleText { get; set; }
     return:
       type: System.String
-      description: "The title of the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control. The default is &quot;Login&quot;."
+      description: "标题<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控件。 默认值为&quot;登录&quot;。"
   overload: System.Web.UI.WebControls.Login.TitleText*
   exceptions: []
   platform:
@@ -1573,15 +1573,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets a reference to a collection of properties that define the appearance of the title text in the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control."
-  remarks: "The TitleTextStyle property gets a reference to a <xref:System.Web.UI.WebControls.TableItemStyle> object that you use to change the appearance of the title contained in the <xref:System.Web.UI.WebControls.Login.TitleText%2A> property.       The TitleTextStyle property defines the appearance of the title in the <xref:System.Web.UI.WebControls.Login> control. This property is read-only; however, you can set the properties of the <xref:System.Web.UI.WebControls.TableItemStyle> object it returns. You can set these properties declaratively in the form `Property-Subproperty`, where `Subproperty` represents a property of the <xref:System.Web.UI.WebControls.TableItemStyle> class (for example, `TitleStyle-ForeColor`). You can set the property programmatically in the form `Property.Subproperty` (for example, `TitleStyle.ForeColor`).       Common settings include custom background color, text color, and font properties. The TitleTextStyle property defines the appearance of the <xref:System.Web.UI.WebControls.Login.TitleText%2A> property.       The style settings for the TitleTextStyle property are merged with the style settings for the <xref:System.Web.UI.WebControls.Login> control. Any settings made in the TitleTextStyle property override the corresponding settings in properties of the <xref:System.Web.UI.WebControls.Login> control.       The following <xref:System.Web.UI.WebControls.Login> style properties are overridden by TitleTextStyle settings:      -   <xref:System.Web.UI.WebControls.WebControl.BackColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A>      -   <xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Enabled%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Font%2A>      -   <xref:System.Web.UI.WebControls.WebControl.ForeColor%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Height%2A>      -   <xref:System.Web.UI.WebControls.WebControl.ToolTip%2A>      -   <xref:System.Web.UI.Control.Visible%2A>      -   <xref:System.Web.UI.WebControls.WebControl.Width%2A>       When you use templates to define the appearance of the <xref:System.Web.UI.WebControls.Login> control, the TitleTextStyle property has no effect."
+  summary: "获取一个定义中的标题文本的外观的属性集合的引用<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控件。"
+  remarks: "TitleTextStyle 属性获取的引用<xref:System.Web.UI.WebControls.TableItemStyle>对象，用于更改标题中包含的外观<xref:System.Web.UI.WebControls.Login.TitleText%2A>属性。</xref:System.Web.UI.WebControls.Login.TitleText%2A> </xref:System.Web.UI.WebControls.TableItemStyle>       TitleTextStyle 属性定义中的标题的外观<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> 此属性是只读的;但是，可以设置的属性<xref:System.Web.UI.WebControls.TableItemStyle>对象返回。</xref:System.Web.UI.WebControls.TableItemStyle> 你可以在窗体中以声明方式设置这些属性`Property-Subproperty`，其中`Subproperty`表示的属性<xref:System.Web.UI.WebControls.TableItemStyle>类 (例如， `TitleStyle-ForeColor`)。</xref:System.Web.UI.WebControls.TableItemStyle> 你可以以编程方式设置此属性的形式`Property.Subproperty`(例如， `TitleStyle.ForeColor`)。       常用的设置包括自定义的背景色、 文本颜色和字体属性。 TitleTextStyle 属性定义的外观<xref:System.Web.UI.WebControls.Login.TitleText%2A>属性。</xref:System.Web.UI.WebControls.Login.TitleText%2A>       与的样式设置合并 TitleTextStyle 属性的样式设置<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> TitleTextStyle 属性中所做的任何设置重写的属性中的相应设置<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login>       以下<xref:System.Web.UI.WebControls.Login>样式属性被 TitleTextStyle 设置覆盖:- <xref:System.Web.UI.WebControls.WebControl.BackColor%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderColor%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A>- <xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A>- <xref:System.Web.UI.WebControls.WebControl.Enabled%2A>- <xref:System.Web.UI.WebControls.WebControl.Font%2A>- <xref:System.Web.UI.WebControls.WebControl.ForeColor%2A>- <xref:System.Web.UI.WebControls.WebControl.Height%2A>- <xref:System.Web.UI.WebControls.WebControl.ToolTip%2A>- <xref:System.Web.UI.Control.Visible%2A>-<xref:System.Web.UI.WebControls.WebControl.Width%2A>当你使用模板定义的外观<xref:System.Web.UI.WebControls.Login>控件，TitleTextStyle 属性不起作用。</xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.WebControls.WebControl.Width%2A> </xref:System.Web.UI.Control.Visible%2A> </xref:System.Web.UI.WebControls.WebControl.ToolTip%2A> </xref:System.Web.UI.WebControls.WebControl.Height%2A> </xref:System.Web.UI.WebControls.WebControl.ForeColor%2A> </xref:System.Web.UI.WebControls.WebControl.Font%2A> </xref:System.Web.UI.WebControls.WebControl.Enabled%2A> </xref:System.Web.UI.WebControls.WebControl.BorderWidth%2A> </xref:System.Web.UI.WebControls.WebControl.BorderStyle%2A> </xref:System.Web.UI.WebControls.WebControl.BorderColor%2A> </xref:System.Web.UI.WebControls.WebControl.BackColor%2A> </xref:System.Web.UI.WebControls.Login>"
   example:
   - "The following code example sets the text color, background color, and font weight of the title by setting properties of the <xref:System.Web.UI.WebControls.TableItemStyle> object referenced by the TitleTextStyle property.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[LoginTitleText#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_334_1.aspx)]\n [!code-vb[LoginTitleText#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_334_1.aspx)]"
   syntax:
     content: public System.Web.UI.WebControls.TableItemStyle TitleTextStyle { get; }
     return:
       type: System.Web.UI.WebControls.TableItemStyle
-      description: "A reference to the <xref href=&quot;System.Web.UI.WebControls.TableItemStyle&quot;></xref> that contains properties that define the appearance of title text."
+      description: "对引用<xref href=&quot;System.Web.UI.WebControls.TableItemStyle&quot;></xref>包含定义的标题文本外观的属性。"
   overload: System.Web.UI.WebControls.Login.TitleTextStyle*
   exceptions: []
   platform:
@@ -1598,7 +1598,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Overrides the base &lt;xref:System.Web.UI.Control.TrackViewState%2A?displayProperty=fullName&gt; method."
+  summary: "重写基&lt;xref:System.Web.UI.Control.TrackViewState%2A?displayProperty=fullName&gt;方法。"
   syntax:
     content: protected override void TrackViewState ();
     parameters: []
@@ -1618,15 +1618,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets the user name entered by the user."
-  remarks: "The UserName property contains the user name entered by the user. <xref:System.Web.UI.WebControls.Login> control properties represented by text boxes, such as UserName and <xref:System.Web.UI.WebControls.Login.Password%2A>, are accessible during all phases of the page life cycle. The control will pick up any changes made by the end user by means of the <xref:System.Web.UI.WebControls.TextBox.TextChanged> event triggered by the textboxes."
+  summary: "获取用户输入的用户名。"
+  remarks: "UserName 属性包含用户输入的用户名。 <xref:System.Web.UI.WebControls.Login>控制由文本框中，例如用户名的属性和<xref:System.Web.UI.WebControls.Login.Password%2A>，页生命周期的所有阶段都可访问。</xref:System.Web.UI.WebControls.Login.Password%2A></xref:System.Web.UI.WebControls.Login> 控件将选取由最终用户的方式进行任何更改<xref:System.Web.UI.WebControls.TextBox.TextChanged>由文本框触发的事件。</xref:System.Web.UI.WebControls.TextBox.TextChanged>"
   example:
   - "The following code example passes the UserName property to a custom authentication method.  \n  \n [!code-cs[LoginAuthenticate#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_481_1.aspx)]\n [!code-vb[LoginAuthenticate#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_481_1.aspx)]"
   syntax:
     content: public virtual string UserName { get; set; }
     return:
       type: System.String
-      description: "The user name entered by the user. The default is <xref:System.String>."
+      description: "由用户输入的用户名。 默认值为<xref:System.String>。</xref:System.String>"
   overload: System.Web.UI.WebControls.Login.UserName*
   exceptions: []
   platform:
@@ -1643,15 +1643,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the text of the label for the <xref:System.Web.UI.WebControls.Login.UserName*> text box."
-  remarks: "The UserNameLabelText property contains the label text for the <xref:System.Web.UI.WebControls.Login.UserName%2A> text box.       The <xref:System.Web.UI.WebControls.Login.TextLayout%2A> property defines where the field label is positioned.       The default text for the control is localized based on the server&quot;s current locale.       The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置的标签文本<xref:System.Web.UI.WebControls.Login.UserName*>文本框。</xref:System.Web.UI.WebControls.Login.UserName*>"
+  remarks: "UserNameLabelText 属性包含的标签文本<xref:System.Web.UI.WebControls.Login.UserName%2A>文本框。</xref:System.Web.UI.WebControls.Login.UserName%2A>       <xref:System.Web.UI.WebControls.Login.TextLayout%2A>属性定义的字段标签放置的位置。</xref:System.Web.UI.WebControls.Login.TextLayout%2A>       控件的默认文本进行了本地化根据服务器的当前区域设置。       此属性的值设置时，可以自动保存到的资源文件通过使用设计器工具。 有关详细信息，请参阅<xref:System.ComponentModel.LocalizableAttribute>和[全球化和本地化](~/add/includes/ajax-current-ext-md.md)。</xref:System.ComponentModel.LocalizableAttribute>"
   example:
   - "The following code example demonstrates setting the UserNameLabelText property.  \n  \n [!code-cs[LoginLabelText#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_0_1.aspx)]\n [!code-vb[LoginLabelText#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_0_1.aspx)]"
   syntax:
     content: public virtual string UserNameLabelText { get; set; }
     return:
       type: System.String
-      description: "The text of the label for the <xref:System.Web.UI.WebControls.Login.UserName*> text box. The default is &quot;User Name:&quot;."
+      description: "标签文本<xref:System.Web.UI.WebControls.Login.UserName*>文本框。</xref:System.Web.UI.WebControls.Login.UserName*> 默认值是&quot;用户名称:&quot;。"
   overload: System.Web.UI.WebControls.Login.UserNameLabelText*
   exceptions: []
   platform:
@@ -1668,15 +1668,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the error message to display in a <xref href=&quot;System.Web.UI.WebControls.ValidationSummary&quot;></xref> control when the user name field is left blank."
-  remarks: "The UserNameRequiredErrorMessage property contains the error message displayed in a <xref:System.Web.UI.WebControls.ValidationSummary> control on the login page.       The UserNameRequiredErrorMessage property value is displayed only when both the following conditions are true:      -   A <xref:System.Web.UI.WebControls.ValidationSummary> control is present on the page.      -   The User name text box is left blank by the user.       The default text for the control is localized based on the server&quot;s current locale.       The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md).       Both the <xref:System.Web.UI.WebControls.Login.PasswordRequiredErrorMessage%2A> and UserNameRequiredErrorMessage values are wrapped in a validation group within the <xref:System.Web.UI.WebControls.Login> control. For these values to display, the <xref:System.Web.UI.WebControls.ValidationSummary.ValidationGroup%2A> property of the <xref:System.Web.UI.WebControls.ValidationSummary> control must be set to the <xref:System.Web.UI.Control.ID%2A> property of the <xref:System.Web.UI.WebControls.Login> control."
+  summary: "获取或设置要在中显示的错误消息<xref href=&quot;System.Web.UI.WebControls.ValidationSummary&quot;></xref>控制当将用户名字段留空。"
+  remarks: "UserNameRequiredErrorMessage 属性包含中显示的错误消息<xref:System.Web.UI.WebControls.ValidationSummary>的登录页上的控件。</xref:System.Web.UI.WebControls.ValidationSummary>       仅在满足以下条件时会显示 UserNameRequiredErrorMessage 属性值:-<xref:System.Web.UI.WebControls.ValidationSummary>控件是在页上存在。</xref:System.Web.UI.WebControls.ValidationSummary>      -用户名称文本框中是由用户保留为空。       控件的默认文本进行了本地化根据服务器的当前区域设置。       此属性的值设置时，可以自动保存到的资源文件通过使用设计器工具。 有关详细信息，请参阅<xref:System.ComponentModel.LocalizableAttribute>和[全球化和本地化](~/add/includes/ajax-current-ext-md.md)。</xref:System.ComponentModel.LocalizableAttribute>       同时<xref:System.Web.UI.WebControls.Login.PasswordRequiredErrorMessage%2A>和 UserNameRequiredErrorMessage 值包装在中的验证组<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.WebControls.Login.PasswordRequiredErrorMessage%2A> 若要显示，这些值<xref:System.Web.UI.WebControls.ValidationSummary.ValidationGroup%2A>属性<xref:System.Web.UI.WebControls.ValidationSummary>控件必须设置为<xref:System.Web.UI.Control.ID%2A>属性<xref:System.Web.UI.WebControls.Login>控件。</xref:System.Web.UI.WebControls.Login> </xref:System.Web.UI.Control.ID%2A> </xref:System.Web.UI.WebControls.ValidationSummary> </xref:System.Web.UI.WebControls.ValidationSummary.ValidationGroup%2A>"
   example:
   - "The following code example demonstrates using a <xref:System.Web.UI.WebControls.ValidationSummary> control to display the error message specified in the UserNameRequiredErrorMessage property.  \n  \n [!code-vb[LoginRequiredErrorMessage#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_48_1.aspx)]\n [!code-cs[LoginRequiredErrorMessage#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_48_1.aspx)]"
   syntax:
     content: public virtual string UserNameRequiredErrorMessage { get; set; }
     return:
       type: System.String
-      description: "The error message to display in a <xref href=&quot;System.Web.UI.WebControls.ValidationSummary&quot;></xref> control when the user name field is left blank. The default is &quot;User Name.&quot;"
+      description: "要在显示的错误消息<xref href=&quot;System.Web.UI.WebControls.ValidationSummary&quot;></xref>控制当将用户名字段留空。 默认值是&quot;用户名称&quot;。"
   overload: System.Web.UI.WebControls.Login.UserNameRequiredErrorMessage*
   exceptions: []
   platform:
@@ -1693,13 +1693,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets a reference to a collection of <xref href=&quot;System.Web.UI.WebControls.Style&quot;></xref> properties that define the appearance of error messages associated with validators used by the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control."
-  remarks: "The following table lists the style settings that are available for customization with the ValidatorTextStyle property.      |Setting|Description|   |-------------|-----------------|   |`BackColor`|The color behind the error messages. The color can be any of the <xref:System.Drawing.Color> properties.|   |`BorderColor`|The color of the border around the error messages. The color can be any of the <xref:System.Drawing.Color> properties.|   |`BorderStyle`|The style of the border around the error messages. The style can be &quot;None&quot;, &quot;Dotted&quot;, &quot;Dashed&quot;, &quot;Solid&quot;, &quot;Double&quot;, &quot;Groove&quot;, &quot;Ridge&quot;, &quot;Inset&quot;, or &quot;Outset&quot;. The default is &quot;NotSet&quot;. Some styles do not show up clearly unless the `BorderWidth` value is greater than 2.|   |`BorderWidth`|The width of the border around the error messages.|   |`CssClass`|The cascading style sheet (CSS) class used to render the error messages. If other settings are specified, they will override a style sheet setting.|   |`Font-Bold`|`true` to display the error message text in bold type.|   |`Font-Italic`|`true` to display the error message text in italic type.|   |`Font-Names`|The name of the font face.|   |`Font-Overline`|`true` to display the error message text with a line above it.|   |`Font-Size`|The size of the text in the error messages as a <xref:System.Web.UI.WebControls.FontUnit> object.|   |`Font-Strikeout`|`true` to display the error message text as crossed out.|   |`Font-Underline`|`true` to display the error message text with an underline.|   |`ForeColor`|The color of the text in the error messages. The color can be any of the <xref:System.Drawing.Color> properties.|   |`Height`|A <xref:System.Web.UI.WebControls.Unit> object that represents the height of the error messages.|   |`Width`|A <xref:System.Web.UI.WebControls.Unit> object that represents the width of the error messages.|"
+  summary: "获取对的集合的引用<xref href=&quot;System.Web.UI.WebControls.Style&quot;></xref>定义错误消息的外观的属性与使用的验证程序<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>控件。"
+  remarks: "下表列出可用于与 ValidatorTextStyle 属性的自定义项的样式设置。      |设置 |说明 |  |-------------|-----------------|  |`BackColor`|错误消息的背景色。 颜色可以是任何<xref:System.Drawing.Color>属性。 |  |`BorderColor`|错误消息周围边框的颜色。</xref:System.Drawing.Color> 颜色可以是任何<xref:System.Drawing.Color>属性。 |  |`BorderStyle`|错误消息周围边框的样式。</xref:System.Drawing.Color> 该样式可以是&quot;None&quot;、&quot;点&quot;、&quot;虚线&quot;、&quot;实体&quot;、&quot;Double&quot;、&quot;凹线&quot;、&quot;Ridge&quot;、&quot;嵌入&quot;或&quot;开始&quot;。 默认值为&quot;NotSet&quot;。 某些样式不清楚地出现除非`BorderWidth`值是否大于 2。 |  |`BorderWidth`|错误消息周围边框的宽度。 |  |`CssClass`|用于呈现错误消息的级联样式表 (CSS) 类。 如果指定其他设置，它们将替代的样式表设置。 |  |`Font-Bold` | `true`以粗体类型显示错误消息文本。 |  |`Font-Italic` | `true`以斜体显示的错误消息文本。 |  |`Font-Names`|字体的名称。 |  |`Font-Overline` | `true`以指示它上面的行在错误消息文本显示。 |  |`Font-Size`|作为<xref:System.Web.UI.WebControls.FontUnit>对象中的错误消息文本的大小。 |  |`Font-Strikeout` | `true`为带删除线显示错误消息文本。 |  |`Font-Underline` | `true`以显示错误消息文本中的带下划线。 |  |`ForeColor`|中的错误消息的文本的颜色。</xref:System.Web.UI.WebControls.FontUnit> 颜色可以是任何<xref:System.Drawing.Color>属性。 |  |`Height`|<xref:System.Web.UI.WebControls.Unit>对象，表示的错误消息的高度。 |  |`Width`|A<xref:System.Web.UI.WebControls.Unit>对象，表示的错误消息的宽度。 |</xref:System.Web.UI.WebControls.Unit> </xref:System.Web.UI.WebControls.Unit> </xref:System.Drawing.Color>"
   syntax:
     content: public System.Web.UI.WebControls.Style ValidatorTextStyle { get; }
     return:
       type: System.Web.UI.WebControls.Style
-      description: "A <xref href=&quot;System.Web.UI.WebControls.Style&quot;></xref> containing the style settings."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.Style&quot;> </xref>包含的样式设置。"
   overload: System.Web.UI.WebControls.Login.ValidatorTextStyle*
   exceptions: []
   platform:
@@ -1716,15 +1716,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets a value indicating whether to show the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control after the user is authenticated."
-  remarks: "The VisibleWhenLoggedIn property specifies whether the <xref:System.Web.UI.WebControls.Login> control is displayed to authenticated users. When the property is `false`, the <xref:System.Web.UI.WebControls.Login> control does not appear on the page when an authenticated user accesses the site. This is used on Web pages that are used both as login pages and as information pages to hide the <xref:System.Web.UI.WebControls.Login> control after the user has been authenticated.       The VisibleWhenLoggedIn property has no effect on a <xref:System.Web.UI.WebControls.Login> control that appears on the default login page defined in Web.config or in the application&quot;s configuration file.       This property cannot be set by themes or style sheet themes. For more information, see <xref:System.Web.UI.ThemeableAttribute> and [ASP.NET Themes and Skins](~/add/includes/ajax-current-ext-md.md)."
+  summary: "获取或设置一个值，该值指示是否显示<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>后对用户进行身份验证进行控制。"
+  remarks: "VisibleWhenLoggedIn 属性指定是否<xref:System.Web.UI.WebControls.Login>向经过身份验证的用户显示控件。</xref:System.Web.UI.WebControls.Login> 当该属性是`false`、<xref:System.Web.UI.WebControls.Login>当经过身份验证的用户访问站点时，控件不显示在页面上。</xref:System.Web.UI.WebControls.Login> 用于登录页和信息页面隐藏的网页上使用此<xref:System.Web.UI.WebControls.Login>后对用户已经过身份验证进行控制。</xref:System.Web.UI.WebControls.Login>       VisibleWhenLoggedIn 属性不起任何作用<xref:System.Web.UI.WebControls.Login>在 Web.config 中或应用程序的配置文件中定义的默认登录页显示的控件。</xref:System.Web.UI.WebControls.Login>       此属性不能通过主题或样式表主题设置。 有关详细信息，请参阅<xref:System.Web.UI.ThemeableAttribute>和[ASP.NET 主题和皮肤](~/add/includes/ajax-current-ext-md.md)。</xref:System.Web.UI.ThemeableAttribute>"
   example:
   - "The following code example sets the VisibleWhenLoggedIn property to `true` to specify that the <xref:System.Web.UI.WebControls.Login> control is not hidden and is always displayed on the page, regardless of whether the user has been authenticated.  \n  \n [!code-vb[LoginHideWhenLoggedIn#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_504_1.aspx)]\n [!code-cs[LoginHideWhenLoggedIn#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_504_1.aspx)]"
   syntax:
     content: public virtual bool VisibleWhenLoggedIn { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref> control should be hidden when the user is authenticated; otherwise, <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>如果<xref href=&quot;System.Web.UI.WebControls.Login&quot;></xref>时用户已经过身份验证; 否则为将隐藏控件<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.Login.VisibleWhenLoggedIn*
   exceptions: []
   platform:

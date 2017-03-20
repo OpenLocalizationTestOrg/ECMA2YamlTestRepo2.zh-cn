@@ -12,8 +12,8 @@ items:
   nameWithType: IDesignerLoaderService
   fullName: System.ComponentModel.Design.Serialization.IDesignerLoaderService
   type: Interface
-  summary: "Provides an interface that can extend a designer loader to support asynchronous loading of external components."
-  remarks: "A <xref:System.ComponentModel.Design.Serialization.DesignerLoader> can implement this interface to manage designer loading that involves external components. This interface also allows external components to initiate a reload of the design surface by calling <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.Reload%2A>. A designer loader does not have to implement this interface if it does not require support for asynchronous loading.       Designer loading using a custom implementation of the IDesignerLoaderService can occur in a variety of ways. Sometimes external components are involved in the loading process. To facilitate loading with external dependencies, the designer loader service interface provides a mechanism that determines when loading is complete and allows each portion of loading to signal that it has completed. The IDesignerLoaderService typically determines when loading is complete by testing a counter that tracks the number of load dependencies remaining. When each portion of the load completes, <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A> is called, and the service decrements the counter. To set the number of dependent load processes, call <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.AddLoadDependency%2A> once for each load process that calls <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A> when its loading is complete. When the final loading is complete, the service calls <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderHost.EndLoad%2A> on the loader host."
+  summary: "提供可以扩展设计器的加载程序，以支持异步加载的外部组件的接口。"
+  remarks: "A<xref:System.ComponentModel.Design.Serialization.DesignerLoader>可以实现此接口可管理涉及外部组件的设计器加载。</xref:System.ComponentModel.Design.Serialization.DesignerLoader> 此接口还允许通过调用<xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.Reload%2A>.</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.Reload%2A>启动重新加载设计图面的外部组件 设计器加载程序不需要实现此接口，如果不需要异步加载支持。       设计器加载使用 IDesignerLoaderService 的自定义实现可以在各种不同的方式发生。 在加载过程中涉及有时外部组件。 为了便于加载具有外部依赖项，设计器加载程序服务接口提供了一种机制，确定何时加载已完成，并允许负载，以指示它已完成的每个部分。 IDesignerLoaderService 通常确定加载时通过测试的计数器，用于跟踪剩余的负载依赖关系的数量已完成。 完成的负载每个部分后，<xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A>调用时，同时服务递减计数器。</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A> 若要设置依赖加载进程的数量，请调用<xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.AddLoadDependency%2A>一次针对调用每个负载进程<xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A>其加载过程何时完成。</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A> </xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.AddLoadDependency%2A> 最终加载完成时，服务调用<xref:System.ComponentModel.Design.Serialization.IDesignerLoaderHost.EndLoad%2A>加载程序主机上。</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderHost.EndLoad%2A>"
   syntax:
     content: public interface IDesignerLoaderService
   implements: []
@@ -31,8 +31,8 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Registers an external component as part of the load process managed by this interface."
-  remarks: "Call AddLoadDependency once for each external object participating in the load process. <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A> is called when the work of the load process is done."
+  summary: "将外部组件注册为此接口由管理在加载过程的一部分。"
+  remarks: "调用 AddLoadDependency 一次为每个参与加载过程的外部对象。 <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A>加载过程的工作都完成时调用。</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A>"
   syntax:
     content: public void AddLoadDependency ();
     parameters: []
@@ -52,17 +52,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Signals that a dependent load has finished."
-  remarks: "This method is called to signal that a dependent loading operation has completed. Call DependentLoadComplete once for every process that was registered by calling <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.AddLoadDependency%2A>, which has already completed.       If the dependent load succeeds, the caller sets the `successful` parameter to `true` and passes either an empty collection or `null` to the `errorCollection` parameter. If the dependent load encounters errors, the caller sets the `successful` parameter to `false` and passes a collection of exceptions that indicate the reason or reasons for failure to the `errorCollection` parameter."
+  summary: "依赖加载已完成的信号。"
+  remarks: "调用此方法以发出信号依赖加载操作已完成。 为每个进程都已由调用注册一次调用 DependentLoadComplete <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.AddLoadDependency%2A>，已完成的。</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.AddLoadDependency%2A>       如果依赖加载成功，调用方集`successful`参数`true`并传递空集合或`null`到`errorCollection`参数。 如果依赖加载遇到错误，调用方将设置`successful`参数`false`并将传递的指示或多个与失败的原因的异常集合`errorCollection`参数。"
   syntax:
     content: public void DependentLoadComplete (bool successful, System.Collections.ICollection errorCollection);
     parameters:
     - id: successful
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the load of the designer is successful; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if errors prevented the load from finishing."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果成功，则设计器的负载<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>如果错误阻止从负载完成。"
     - id: errorCollection
       type: System.Collections.ICollection
-      description: "A collection of errors that occurred during the load, if any. If no errors occurred, pass either an empty collection or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "如果有在加载期间，发生的错误的集合。 如果没有发生任何错误，传递空集合或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete*
   exceptions: []
   platform:
@@ -79,14 +79,14 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Reloads the design document."
-  remarks: "Any object can call this method to request that the loader reload the design document. If the loader supports reloading and complies with the reload, the designer loader can return `true`. Otherwise, it returns `false`, indicating that the reload will not occur. Callers cannot rely on the reload happening immediately; the designer loader can schedule this for some other time, or it can try to reload at once.       The caller can display a message to the user if the designer cannot be reloaded."
+  summary: "将重新加载设计文档。"
+  remarks: "任何对象都可以调用此方法来请求，加载程序重新加载设计文档。 如果加载程序支持重新加载并执行重新加载，则设计器加载程序可以返回`true`。 否则，它将返回`false`，指示将不会发生重新加载。 调用方不能依赖立即; 发生重新加载设计器加载程序可以计划这段时间，或它可以尝试重新加载一次。       如果无法重新加载设计器，调用方可以向用户显示一条消息。"
   syntax:
     content: public bool Reload ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the reload request is accepted, or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the loader does not allow the reload."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果重新加载请求被接受，或<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>如果加载程序不允许重新加载。"
   overload: System.ComponentModel.Design.Serialization.IDesignerLoaderService.Reload*
   exceptions: []
   platform:

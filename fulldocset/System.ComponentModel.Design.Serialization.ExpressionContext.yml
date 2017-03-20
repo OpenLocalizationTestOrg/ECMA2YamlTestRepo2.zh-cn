@@ -15,8 +15,8 @@ items:
   nameWithType: ExpressionContext
   fullName: System.ComponentModel.Design.Serialization.ExpressionContext
   type: Class
-  summary: "Provides a means of passing context state among serializers. This class cannot be inherited."
-  remarks: "An ExpressionContext is placed on the context stack and contains the most relevant expression during serialization. The following C# code demonstrates an assignment.      ```   button1.Text = &quot;Hello&quot;;   ```       During serialization, several serializers are responsible for creating this single statement. One of those serializers is responsible for creating &quot;Hello&quot;. There are times when that serializer may need to know the context in which it is creating its expression. In the previous example, this context is not needed. The following C# code shows a situation in which knowledge of the context is necessary.      ```   button1.Text = rm.GetString(&quot;button1_Text&quot;);   ```       In this case, the serializer responsible for creating the resource expression needs to be informed of the names of the target objects. The ExpressionContext class can be used for this. As each serializer creates an expression and invokes a serializer to handle a smaller part of the statement as a whole, the serializer pushes an expression context on the context stack. Each expression context has a parent property that locates the next expression context on the stack. This provides a convenient traversal capability."
+  summary: "提供了一种传递序列化程序之间的上下文状态。 此类不能被继承。"
+  remarks: "ExpressionContext 放置在上下文堆栈，并包含序列化期间最相关的表达式。 下面的 C# 代码演示赋值。      ```   button1.Text = &quot;Hello&quot;;   ```序列化期间，多个序列化程序负责创建这一条语句。 这些序列化程序之一是负责创建&quot;Hello&quot;。 有该序列化程序可能需要知道它在其中创建它的表达式的上下文的场合。 在前面的示例中，不需要此上下文。 下面的 C# 代码演示在该环境的知识是必要的情况。      ```   button1.Text = rm.GetString(&quot;button1_Text&quot;);   ```在这种情况下，负责创建资源表达式序列化程序需要通知的目标对象的名称。 为此，可以使用 ExpressionContext 类。 在每个序列化程序创建的表达式和调用序列化程序来处理作为一个整体的语句的较小部分时，序列化程序上下文在堆栈上推送表达式上下文。 每个表达式上下文都具有一个父属性，在堆栈上查找下一步的表达式上下文。 这提供了一种可方便遍历功能。"
   syntax:
     content: public sealed class ExpressionContext
   inheritance:
@@ -37,19 +37,19 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Design.Serialization.ExpressionContext&quot;></xref> class with the given expression and owner."
+  summary: "初始化的新实例<xref href=&quot;System.ComponentModel.Design.Serialization.ExpressionContext&quot;></xref>与给定的表达式和所有者的类。"
   syntax:
     content: public ExpressionContext (System.CodeDom.CodeExpression expression, Type expressionType, object owner);
     parameters:
     - id: expression
       type: System.CodeDom.CodeExpression
-      description: "The given code expression."
+      description: "给定的代码表达式。"
     - id: expressionType
       type: System.Type
-      description: "The given code expression type."
+      description: "给定的代码表达式的类型。"
     - id: owner
       type: System.Object
-      description: "The given code expression owner."
+      description: "给定的代码表达式的所有者。"
   overload: System.ComponentModel.Design.Serialization.ExpressionContext.#ctor*
   exceptions:
   - type: System.ArgumentNullException
@@ -69,22 +69,22 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Design.Serialization.ExpressionContext&quot;></xref> class with a current value."
+  summary: "初始化的新实例<xref href=&quot;System.ComponentModel.Design.Serialization.ExpressionContext&quot;></xref>类与当前值。"
   syntax:
     content: public ExpressionContext (System.CodeDom.CodeExpression expression, Type expressionType, object owner, object presetValue);
     parameters:
     - id: expression
       type: System.CodeDom.CodeExpression
-      description: "The given code expression."
+      description: "给定的代码表达式。"
     - id: expressionType
       type: System.Type
-      description: "The given code expression type."
+      description: "给定的代码表达式的类型。"
     - id: owner
       type: System.Object
-      description: "The given code expression owner."
+      description: "给定的代码表达式的所有者。"
     - id: presetValue
       type: System.Object
-      description: "The given code expression preset value."
+      description: "给定的代码表达式的预设值。"
   overload: System.ComponentModel.Design.Serialization.ExpressionContext.#ctor*
   exceptions:
   - type: System.ArgumentNullException
@@ -104,12 +104,12 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Gets the expression this context represents."
+  summary: "获取此上下文中表示的表达式。"
   syntax:
     content: public System.CodeDom.CodeExpression Expression { get; }
     return:
       type: System.CodeDom.CodeExpression
-      description: "The expression this context represents."
+      description: "此上下文中表示的表达式。"
   overload: System.ComponentModel.Design.Serialization.ExpressionContext.Expression*
   exceptions: []
   platform:
@@ -126,13 +126,13 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Gets the <xref:System.Type> of the expression."
-  remarks: "You can use <xref:System.ComponentModel.Design.Serialization.ExpressionContext> to determine if a cast is needed when assigning to the expression."
+  summary: "获取<xref:System.Type>的表达式。</xref:System.Type>"
+  remarks: "你可以使用<xref:System.ComponentModel.Design.Serialization.ExpressionContext>以确定将分配给该表达式时，是否需要强制转换。</xref:System.ComponentModel.Design.Serialization.ExpressionContext>"
   syntax:
     content: public Type ExpressionType { get; }
     return:
       type: System.Type
-      description: "The <xref:System.Type> of the expression."
+      description: "<xref:System.Type>的表达式。</xref:System.Type>"
   overload: System.ComponentModel.Design.Serialization.ExpressionContext.ExpressionType*
   exceptions: []
   platform:
@@ -149,13 +149,13 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Gets the object owning this expression."
-  remarks: "If the expression is a property reference to the <xref:System.Windows.Forms.Control.Text%2A> property of an instance of <xref:System.Windows.Forms.Button> called `button1`, Owner returns `button1`."
+  summary: "获取拥有此表达式的对象。"
+  remarks: "如果表达式是对的属性引用<xref:System.Windows.Forms.Control.Text%2A>实例的属性<xref:System.Windows.Forms.Button>调用`button1`，所有者返回`button1`。</xref:System.Windows.Forms.Button> </xref:System.Windows.Forms.Control.Text%2A>"
   syntax:
     content: public object Owner { get; }
     return:
       type: System.Object
-      description: "The object owning this expression."
+      description: "拥有此表达式的对象。"
   overload: System.ComponentModel.Design.Serialization.ExpressionContext.Owner*
   exceptions: []
   platform:
@@ -172,13 +172,13 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Gets the preset value of an expression."
-  remarks: "Contains the preset value of an expression, should one exist. For example, if the expression is a property reference expression referring to the <xref:System.Windows.Forms.Control.Controls%2A> property of a <xref:System.Windows.Forms.Button>, the PresetValue property contains the instance of the <xref:System.Windows.Forms.Control.Controls%2A> property. This is because the property is read-only and preset by the object to contain a value. On the other hand, a property such as <xref:System.Windows.Forms.Control.Text%2A> or <xref:System.Windows.Forms.Control.Visible%2A> does not have a preset value and therefore the PresetValue property returns `null`.       The following C# code shows how serializers can use this information to guide serialization.       [C#]      ```   Padding p = new Padding();   p.Left = 5;   button1.Padding = p;      button1.Padding.Left = 5;   ```       The serializer of the <xref:System.Windows.Forms.Padding> structure needs to be informed if it should generate the first or second form. The first form is generated by default. The second form is only generated if there is an <xref:System.ComponentModel.Design.Serialization.ExpressionContext> on the context stack that contains a PresetValue equal to the value of the <xref:System.Windows.Forms.Padding> currently being serialized."
+  summary: "获取表达式的预设的值。"
+  remarks: "包含预设的值的表达式，应存在。 例如，如果表达式是属性引用表达式引用<xref:System.Windows.Forms.Control.Controls%2A>属性<xref:System.Windows.Forms.Button>，PresetValue 属性包含的实例<xref:System.Windows.Forms.Control.Controls%2A>属性。</xref:System.Windows.Forms.Control.Controls%2A> </xref:System.Windows.Forms.Button> </xref:System.Windows.Forms.Control.Controls%2A> 这是因为该属性是只读的和预先设置的对象，以包含一个值。 另一方面，如属性<xref:System.Windows.Forms.Control.Text%2A>或<xref:System.Windows.Forms.Control.Visible%2A>没有预设的值，因此 PresetValue 属性返回`null`。</xref:System.Windows.Forms.Control.Visible%2A> </xref:System.Windows.Forms.Control.Text%2A>       下面的 C# 代码演示如何序列化程序可以使用此信息来指导序列化。       [C#]     ```   Padding p = new Padding();   p.Left = 5;   button1.Padding = p;      button1.Padding.Left = 5;   ```的序列化程序<xref:System.Windows.Forms.Padding>结构需要如果它应生成第一个或第二个窗体获悉。</xref:System.Windows.Forms.Padding> 默认情况下，生成第一个窗体。 如果没有，第二种形式将仅生成<xref:System.ComponentModel.Design.Serialization.ExpressionContext>包含 PresetValue 上下文堆栈上相等的值<xref:System.Windows.Forms.Padding>当前正在序列化。</xref:System.Windows.Forms.Padding> </xref:System.ComponentModel.Design.Serialization.ExpressionContext>"
   syntax:
     content: public object PresetValue { get; }
     return:
       type: System.Object
-      description: "The preset value of this expression, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if not assigned."
+      description: "此表达式的预设的值或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果不分配。"
   overload: System.ComponentModel.Design.Serialization.ExpressionContext.PresetValue*
   exceptions: []
   platform:
