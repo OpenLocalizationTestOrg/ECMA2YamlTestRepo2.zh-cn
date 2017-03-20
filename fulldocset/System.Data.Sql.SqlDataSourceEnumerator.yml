@@ -11,8 +11,8 @@ items:
   nameWithType: SqlDataSourceEnumerator
   fullName: System.Data.Sql.SqlDataSourceEnumerator
   type: Class
-  summary: "Provides a mechanism for enumerating all available instances of SQL Server within the local network."
-  remarks: "Both SQL Server 2000 and SQL Server 2005 make it possible for applications to determine the existence of SQL Server instances within the current network. The SqlDataSourceEnumerator class exposes this information to the application developer, providing a <xref:System.Data.DataTable> containing information about all the available servers. This returned table contains a list of server instances that matches the list provided when a user attempts to create a new connection, and on the `Connection Properties` dialog box, expands the drop-down list containing all the available servers."
+  summary: "提供枚举的本地网络中的 SQL Server 的所有可用实例的机制。"
+  remarks: "SQL Server 2000 和 SQL Server 2005 使其适用于应用程序以确定当前的网络中的 SQL Server 实例存在。 SqlDataSourceEnumerator 该类会公开给应用程序开发人员，提供此信息<xref:System.Data.DataTable>包含有关所有可用服务器的信息。</xref:System.Data.DataTable> 此返回的表包含列表的与的列表匹配提供当用户尝试创建新的连接，服务器实例和`Connection Properties`对话框中，展开包含所有可用服务器的下拉列表。"
   syntax:
     content: 'public sealed class SqlDataSourceEnumerator : System.Data.Common.DbDataSourceEnumerator'
   inheritance:
@@ -34,8 +34,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Sql
-  summary: "Retrieves a <xref href=&quot;System.Data.DataTable&quot;></xref> containing information about all visible SQL Server 2000 or SQL Server 2005 instances."
-  remarks: "The table returned by this method contains the following columns, all of which contain strings:      |Column|Description|   |------------|-----------------|   |**ServerName**|Name of the server.|   |**InstanceName**|Name of the server instance. Blank if the server is running as the default instance.|   |**IsClustered**|Indicates whether the server is part of a cluster.|   |**Version**|Version of the server (8.00.x for SQL Server 2000, and 9.00.x for SQL Server 2005).|      > [!NOTE] >  Due to the nature of the mechanism used by <xref:System.Data.Sql.SqlDataSourceEnumerator> to locate data sources on a network, the method will not always return a complete list of the available servers, and the list might not be the same on every call. If you plan to use this function to let users select a server from a list, make sure that you always also supply an option to type in a name that is not in the list, in case the server enumeration does not return all the available servers. In addition, this method may take a significant amount of time to execute, so be careful about calling it when performance is critical."
+  summary: "检索<xref href=&quot;System.Data.DataTable&quot;></xref>包含所有可见的 SQL Server 2000 或 SQL Server 2005 实例有关的信息。"
+  remarks: "此方法返回的表包含以下列，所有这些包含字符串: |列 |说明 |  |------------|-----------------|  |**ServerName**|服务器的名称。 |  |**InstanceName**|服务器实例的名称。 如果服务器运行作为默认实例为空。 |  |**IsClustered**|指示服务器是否属于群集。 |  |**Version**|版本的服务器 (SQL Server 2000 8.00.x) 和 SQL Server 2005 的 9.00.x。 |     1> [!NOTE] 1> 由于使用的机制的性质<xref:System.Data.Sql.SqlDataSourceEnumerator>若要查找在网络上的数据源，方法将始终返回的可用服务器的完整列表和列表可能不是每次调用相同。</xref:System.Data.Sql.SqlDataSourceEnumerator> 如果你打算使用此函数可让用户从列表中选择一台服务器，请确保你始终也提供的选项以防服务器枚举不会返回所有可用服务器不在列表中，名称中键入。 此外，此方法可能需要很长的时间执行，所以请小心有关性能至关重要时调用它。"
   example:
   - "The following console application retrieves information about all the visible SQL Server instances and displays the information in the console window.  \n  \n```vb#  \nImports System.Data.Sql  \n  \nModule Module1  \n  Sub Main()  \n    ' Retrieve the enumerator instance and then the data.  \n    Dim instance As SqlDataSourceEnumerator = _  \n     SqlDataSourceEnumerator.Instance  \n    Dim table As System.Data.DataTable = instance.GetDataSources()  \n  \n    ' Display the contents of the table.  \n    DisplayData(table)  \n  \n    Console.WriteLine(\"Press any key to continue.\")  \n    Console.ReadKey()  \n  End Sub  \n  \n  Private Sub DisplayData(ByVal table As DataTable)  \n    For Each row As DataRow In table.Rows  \n      For Each col As DataColumn In table.Columns  \n        Console.WriteLine(\"{0} = {1}\", col.ColumnName, row(col))  \n      Next  \n      Console.WriteLine(\"============================\")  \n    Next  \n  End Sub  \nEnd Module  \n```  \n  \n```c#  \nusing System.Data.Sql;  \n  \nclass Program  \n{  \n  static void Main()  \n  {  \n    // Retrieve the enumerator instance and then the data.  \n    SqlDataSourceEnumerator instance =  \n      SqlDataSourceEnumerator.Instance;  \n    System.Data.DataTable table = instance.GetDataSources();  \n  \n    // Display the contents of the table.  \n    DisplayData(table);  \n  \n    Console.WriteLine(\"Press any key to continue.\");  \n    Console.ReadKey();  \n  }  \n  \n  private static void DisplayData(System.Data.DataTable table)  \n  {  \n    foreach (System.Data.DataRow row in table.Rows)  \n    {  \n      foreach (System.Data.DataColumn col in table.Columns)  \n      {  \n        Console.WriteLine(\"{0} = {1}\", col.ColumnName, row[col]);  \n      }  \n      Console.WriteLine(\"============================\");  \n    }  \n  }  \n}  \n```"
   syntax:
@@ -43,7 +43,7 @@ items:
     parameters: []
     return:
       type: System.Data.DataTable
-      description: "Returns a <xref href=&quot;System.Data.DataTable&quot;></xref> containing information about the visible SQL Server instances."
+      description: "返回<xref href=&quot;System.Data.DataTable&quot;></xref>包含有关可见的 SQL Server 实例的信息。"
   overload: System.Data.Sql.SqlDataSourceEnumerator.GetDataSources*
   exceptions: []
   platform:
@@ -60,15 +60,15 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Sql
-  summary: "Gets an instance of the <xref href=&quot;System.Data.Sql.SqlDataSourceEnumerator&quot;></xref>, which can be used to retrieve information about available SQL Server instances."
-  remarks: "The <xref:System.Data.Sql.SqlDataSourceEnumerator> class does not provide a constructor. Use the Instance property to retrieve an instance of the class instead."
+  summary: "获取实例<xref href=&quot;System.Data.Sql.SqlDataSourceEnumerator&quot;> </xref>，这可以用于检索有关可用的 SQL Server 实例的信息。"
+  remarks: "<xref:System.Data.Sql.SqlDataSourceEnumerator>类不提供一个构造函数。</xref:System.Data.Sql.SqlDataSourceEnumerator> 使用实例属性改为检索类的实例。"
   example:
   - "The following console application displays a list of all the available SQL Server 2005 instances within the local network. This code uses the <xref:System.Data.DataTable.Select%2A> method to filter the rows in the table returned by the <xref:System.Data.Sql.SqlDataSourceEnumerator.GetDataSources%2A> method.  \n  \n```vb#  \nImports System.Data.Sql  \n  \nModule Module1  \n  Sub Main()  \n    ' Retrieve the enumerator instance, and  \n    ' then retrieve the data sources.  \n    Dim instance As SqlDataSourceEnumerator = _  \n     SqlDataSourceEnumerator.Instance  \n    Dim table As System.Data.DataTable = instance.GetDataSources()  \n  \n    ' Filter the sources to just show SQL Server 2005 instances.  \n    Dim rows() As DataRow = table.Select(\"Version LIKE '9%'\")  \n    For Each row As DataRow In rows  \n      Console.WriteLine(row(\"ServerName\"))  \n    Next  \n    Console.WriteLine(\"Press any key to continue.\")  \n    Console.ReadKey()  \n  End Sub  \nEnd Module  \n```  \n  \n```c#  \nusing System.Data.Sql;  \n  \nclass Program  \n{  \n  static void Main()  \n  {  \n    // Retrieve the enumerator instance, and  \n    // then retrieve the data sources.  \n    SqlDataSourceEnumerator instance =  \n      SqlDataSourceEnumerator.Instance;  \n    System.Data.DataTable table = instance.GetDataSources();  \n  \n    // Filter the sources to just show SQL Server 2005 instances.  \n    System.Data.DataRow[] rows = table.Select(\"Version LIKE '9%'\");  \n    foreach (System.Data.DataRow row in rows)  \n    {  \n      Console.WriteLine(row[\"ServerName\"]);  \n    }  \n    Console.WriteLine(\"Press any key to continue.\");  \n    Console.ReadKey();  \n  }  \n}  \n```"
   syntax:
     content: public static System.Data.Sql.SqlDataSourceEnumerator Instance { get; }
     return:
       type: System.Data.Sql.SqlDataSourceEnumerator
-      description: "An instance of the <xref href=&quot;System.Data.Sql.SqlDataSourceEnumerator&quot;></xref> used to retrieve information about available SQL Server instances."
+      description: "实例<xref href=&quot;System.Data.Sql.SqlDataSourceEnumerator&quot;></xref>用于检索有关可用的 SQL Server 实例的信息。"
   overload: System.Data.Sql.SqlDataSourceEnumerator.Instance*
   exceptions: []
   platform:

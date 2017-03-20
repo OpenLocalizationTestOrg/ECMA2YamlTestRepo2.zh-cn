@@ -15,8 +15,8 @@ items:
   nameWithType: ClientScriptItem
   fullName: System.Web.UI.Design.ClientScriptItem
   type: Class
-  summary: "Represents a client script element in a Web Form or user control at design time. This class cannot be inherited."
-  remarks: "The ClientScriptItem class represents a `script` element that is contained in a Web document at design time. A custom control designer implementation can use a ClientScriptItem object to add client script elements to a Web Form or user control.       At design time, use the <xref:System.Web.UI.Design.WebFormsRootDesigner> class to set or examine client script elements that are contained in a document, such as a Web form, a Web server control, a content page, or a master page, on the design surface. Retrieve the collection of client script elements that are contained within the Web document by using the <xref:System.Web.UI.Design.WebFormsRootDesigner.GetClientScriptsInDocument%2A> method. Add a client script element to the Web document by using the <xref:System.Web.UI.Design.WebFormsRootDesigner.AddClientScriptToDocument%2A> method.       Typically, a `script` element either contains script statements or specifies an external location for script statements. The `script` element can optionally define the language of the script statements. Use the <xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A> constructor to initialize the properties for a new script object. Use the ClientScriptItem properties to examine the `script` object attributes and contents. The <xref:System.Web.UI.Design.ClientScriptItem.Language%2A> property represents the `language` attribute of the `script` element. The <xref:System.Web.UI.Design.ClientScriptItem.Source%2A> property represents the `src` attribute. The <xref:System.Web.UI.Design.ClientScriptItem.Text%2A> property represents the script statements to be executed on the client that are contained in the `script` element.       Use the ClientScriptItem class to manage scripts that are to be executed at design-time.       To manage client script elements at run time, use the <xref:System.Web.UI.ClientScriptManager> class. For more information about using client scripts at run time, see [Client Script in ASP.NET Web Pages](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] >  The ClientScriptItem class represents `script` elements at design time that are ultimately parsed and run in the client browser. Because the `script` elements that are generated for the ClientScriptItem objects are not run on the server, the elements do not contain the `runat=&quot;server&quot;` attribute."
+  summary: "在设计时表示 Web 窗体或用户控件中的客户端脚本元素。 此类不能被继承。"
+  remarks: "ClientScriptItem 类表示`script`在设计时包含 Web 文档中的元素。 自定义控件的设计器实现可以使用 ClientScriptItem 对象将客户端脚本元素添加到 Web 窗体或用户控件。       在设计时，使用<xref:System.Web.UI.Design.WebFormsRootDesigner>类来设置或检查包含在文档中，如 Web 窗体、 Web 服务器控件、 内容页中或母版页，设计图面上的客户端脚本元素。</xref:System.Web.UI.Design.WebFormsRootDesigner> 检索客户端通过使用包含在 Web 文档的脚本元素的集合<xref:System.Web.UI.Design.WebFormsRootDesigner.GetClientScriptsInDocument%2A>方法。</xref:System.Web.UI.Design.WebFormsRootDesigner.GetClientScriptsInDocument%2A> 通过将客户端脚本元素添加到的 Web 文档<xref:System.Web.UI.Design.WebFormsRootDesigner.AddClientScriptToDocument%2A>方法。</xref:System.Web.UI.Design.WebFormsRootDesigner.AddClientScriptToDocument%2A>       通常情况下，`script`元素包含脚本语句或指定脚本语句的外部位置。 `script`元素可以选择性地定义脚本语句的语言。 使用<xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A>构造函数初始化新的脚本对象的属性。</xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A> 使用 ClientScriptItem 属性来检查`script`对象属性和内容。 <xref:System.Web.UI.Design.ClientScriptItem.Language%2A>属性表示`language`属性`script`元素。</xref:System.Web.UI.Design.ClientScriptItem.Language%2A> <xref:System.Web.UI.Design.ClientScriptItem.Source%2A>属性表示`src`属性。</xref:System.Web.UI.Design.ClientScriptItem.Source%2A> <xref:System.Web.UI.Design.ClientScriptItem.Text%2A>属性表示脚本语句中包含的客户端上执行`script`元素。</xref:System.Web.UI.Design.ClientScriptItem.Text%2A>       使用 ClientScriptItem 类来管理在设计时要执行的脚本。       若要在运行时管理客户端脚本元素，请使用<xref:System.Web.UI.ClientScriptManager>类。</xref:System.Web.UI.ClientScriptManager> 有关在运行时使用客户端脚本的详细信息，请参阅[客户端脚本中的 ASP.NET Web Pages](~/add/includes/ajax-current-ext-md.md)。      1> [!NOTE]&1;> ClientScriptItem 类表示`script`最终分析和客户端浏览器中运行的设计时处的元素。 因为`script`为 ClientScriptItem 对象不会在服务器上运行生成的元素，这些元素不包含`runat=&quot;server&quot;`属性。"
   syntax:
     content: public sealed class ClientScriptItem
   inheritance:
@@ -37,31 +37,31 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.Design.ClientScriptItem&quot;></xref> class using the provided parameters."
-  remarks: "Initialize the statements for the <xref:System.Web.UI.Design.ClientScriptItem> object by using either the `text` or `source` parameter (not both). Use `text` to initialize the script using an input string that contains the statements. Alternately, use `source` to initialize a script using a path that contains the script statements.       You can specify any of the input parameters as `null` or an empty string (&quot;&quot;); the corresponding property is set using the input value, and the `script` element is generated without that property. Using `null` or an empty string (&quot;&quot;) generates the following results:      -   For `text`, the corresponding `script` element does not contain script statements.      -   For `source`, the `src` attribute is not set in the `script` element.      -   For `language`, the `language` attribute is not set in the `script` element.           When a client script block does not specify the script language, the client browser determines the language.      -   For `type`, the `type` attribute is not set in the script element.           When a client script block does not specify the script type, the client browser determines the type.      -   For `id`, the design host (for example, [!INCLUDE[vsprvslong](~/add/includes/ajax-current-ext-md.md)]) will throw an <xref:System.ArgumentNullException>."
+  summary: "初始化的新实例<xref href=&quot;System.Web.UI.Design.ClientScriptItem&quot;></xref>类使用提供的参数。"
+  remarks: "初始化的语句<xref:System.Web.UI.Design.ClientScriptItem>通过使用对象`text`或`source`参数 （不是两者）。</xref:System.Web.UI.Design.ClientScriptItem> 使用`text`初始化脚本中使用的输入的字符串，包含的语句。 或者，使用`source`来初始化脚本使用包含的脚本语句的路径。       你可以指定任何输入参数作为`null`或空字符串 (&quot;&quot;);使用输入的值，设置对应的属性和`script`没有该属性不会生成元素。 使用`null`或空字符串 (&quot;&quot;) 将生成以下结果:-对于`text`，相应`script`元素不包含脚本语句。      -为`source`、`src`未设置属性`script`元素。      -为`language`、`language`未设置属性`script`元素。           当客户端脚本块不指定的脚本语言时，客户端浏览器将确定的语言。      -为`type`、`type`脚本元素中未设置属性。           当客户端脚本块未指定脚本类型时，客户端浏览器将确定的类型。      -为`id`，设计宿主 (例如， [!INCLUDE[vsprvslong](~/add/includes/ajax-current-ext-md.md)]) 将引发<xref:System.ArgumentNullException>.</xref:System.ArgumentNullException>"
   syntax:
     content: public ClientScriptItem (string text, string source, string language, string type, string id);
     parameters:
     - id: text
       type: System.String
-      description: "The contents for the <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref> element; a string of script statements to run on the client."
+      description: "内容<xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref>元素; 要在客户端上运行的脚本语句的字符串。"
     - id: source
       type: System.String
-      description: "The <xref uid=&quot;langword_csharp_src&quot; name=&quot;src&quot; href=&quot;&quot;></xref> attribute value for the <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref> element, specifying an external source location for the client script contents."
+      description: "<xref uid=&quot;langword_csharp_src&quot; name=&quot;src&quot; href=&quot;&quot;> </xref>特性值<xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref>元素，指定客户端脚本内容的外部源位置。"
     - id: language
       type: System.String
-      description: "The <xref uid=&quot;langword_csharp_language&quot; name=&quot;language&quot; href=&quot;&quot;></xref> attribute value for the <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref> element, specifying the language of the script statements."
+      description: "<xref uid=&quot;langword_csharp_language&quot; name=&quot;language&quot; href=&quot;&quot;> </xref>特性值<xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref>元素，指定的脚本语句的语言。"
     - id: type
       type: System.String
-      description: "The type attribute value for the <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref> element, indicating the MIME type for the associated scripting engine."
+      description: "类型属性值<xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref>元素，，该值指示相关联的脚本引擎的 MIME 类型。"
     - id: id
       type: System.String
-      description: "The ID for the <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref> element. This argument is required by the design host (for example, [!INCLUDE[vsprvslong](~/add/includes/ajax-current-ext-md.md)])."
+      description: "ID <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;> </xref>元素。 此参数为所需设计宿主 (例如， [!INCLUDE[vsprvslong](~/add/includes/ajax-current-ext-md.md)])。"
   overload: System.Web.UI.Design.ClientScriptItem.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>id</code> is null (thrown by the design host)."
+    description: "<code>id</code>为 null （设计宿主中引发）。"
   platform:
   - net462
 - uid: System.Web.UI.Design.ClientScriptItem.Id
@@ -76,12 +76,12 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Gets the <xref uid=&quot;langword_csharp_ID&quot; name=&quot;ID&quot; href=&quot;&quot;></xref> attribute value for the client script element."
+  summary: "获取<xref uid=&quot;langword_csharp_ID&quot; name=&quot;ID&quot; href=&quot;&quot;></xref>属性的客户端脚本元素的值。"
   syntax:
     content: public string Id { get; }
     return:
       type: System.String
-      description: "The <xref uid=&quot;langword_csharp_ID&quot; name=&quot;ID&quot; href=&quot;&quot;></xref> value of the <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref> element."
+      description: "<xref uid=&quot;langword_csharp_ID&quot; name=&quot;ID&quot; href=&quot;&quot;> </xref>值<xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref>元素。"
   overload: System.Web.UI.Design.ClientScriptItem.Id*
   exceptions: []
   platform:
@@ -98,13 +98,13 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Gets the <xref uid=&quot;langword_csharp_language&quot; name=&quot;language&quot; href=&quot;&quot;></xref> attribute value for the client script element."
-  remarks: "The Language property represents the language in which the script statements are written. If the Language property is `null` or an empty string (&quot;&quot;), the `language` attribute is not set in the `script` element. When a client script block does not specify the script language, the client browser determines the language.       The Language property is initialized by the <xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A> constructor."
+  summary: "获取<xref uid=&quot;langword_csharp_language&quot; name=&quot;language&quot; href=&quot;&quot;></xref>属性的客户端脚本元素的值。"
+  remarks: "语言属性表示编写脚本语句所用的语言。 如果语言属性为`null`或空字符串 (&quot;&quot;)，则`language`未设置属性`script`元素。 当客户端脚本块不指定的脚本语言时，客户端浏览器将确定的语言。       语言属性由初始化<xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A>构造函数。</xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A>"
   syntax:
     content: public string Language { get; }
     return:
       type: System.String
-      description: "The language name specified for the <xref uid=&quot;langword_csharp_language&quot; name=&quot;language&quot; href=&quot;&quot;></xref> attribute in the <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref> element."
+      description: "为指定的语言名称<xref uid=&quot;langword_csharp_language&quot; name=&quot;language&quot; href=&quot;&quot;></xref>属性中<xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref>元素。"
   overload: System.Web.UI.Design.ClientScriptItem.Language*
   exceptions: []
   platform:
@@ -121,13 +121,13 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Gets the <xref uid=&quot;langword_csharp_src&quot; name=&quot;src&quot; href=&quot;&quot;></xref> attribute value for the client script element."
-  remarks: "The Source property specifies an external source location for the client script contents. Typically, the script statements for a `script` element are specified using either the <xref:System.Web.UI.Design.ClientScriptItem.Text%2A> or Source property.       If the Source property is `null` or an empty string (&quot;&quot;), the `src` attribute is not set in the `script` element.       The Source property is initialized by the <xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A>."
+  summary: "获取<xref uid=&quot;langword_csharp_src&quot; name=&quot;src&quot; href=&quot;&quot;></xref>属性的客户端脚本元素的值。"
+  remarks: "源属性指定客户端脚本内容的外部源位置。 通常情况下，用于的脚本语句`script`元素指定使用<xref:System.Web.UI.Design.ClientScriptItem.Text%2A>或 Source 属性。</xref:System.Web.UI.Design.ClientScriptItem.Text%2A>       如果源属性为`null`或空字符串 (&quot;&quot;)，则`src`未设置属性`script`元素。       源属性由<xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A>.</xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A>初始化"
   syntax:
     content: public string Source { get; }
     return:
       type: System.String
-      description: "The path to the source file specified for the <xref uid=&quot;langword_csharp_src&quot; name=&quot;src&quot; href=&quot;&quot;></xref> attribute in the <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref> element."
+      description: "为指定的源文件的路径<xref uid=&quot;langword_csharp_src&quot; name=&quot;src&quot; href=&quot;&quot;></xref>属性中<xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref>元素。"
   overload: System.Web.UI.Design.ClientScriptItem.Source*
   exceptions: []
   platform:
@@ -144,13 +144,13 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Gets the script statements contained in the client script element."
-  remarks: "The Text property represents the statements that are contained in the `script` element. Typically, the script statements for a `script` element are specified using either the Text or <xref:System.Web.UI.Design.ClientScriptItem.Source%2A> property.       If the Text property is `null` or an empty string (&quot;&quot;), the `script` element does not contain any script statements.       The <xref:System.Web.UI.Design.ClientScriptItem.Source%2A> property is initialized by the <xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A> constructor."
+  summary: "获取客户端脚本元素中包含的脚本语句。"
+  remarks: "Text 属性表示中包含的语句`script`元素。 通常情况下，用于的脚本语句`script`元素指定使用的文本或<xref:System.Web.UI.Design.ClientScriptItem.Source%2A>属性。</xref:System.Web.UI.Design.ClientScriptItem.Source%2A>       如果文本属性为`null`或空字符串 (&quot;&quot;)，则`script`元素不包含任何脚本语句。       <xref:System.Web.UI.Design.ClientScriptItem.Source%2A>属性由初始化<xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A>构造函数。</xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A> </xref:System.Web.UI.Design.ClientScriptItem.Source%2A>"
   syntax:
     content: public string Text { get; }
     return:
       type: System.String
-      description: "The script statements contained in the <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref> element."
+      description: "中包含的脚本语句<xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref>元素。"
   overload: System.Web.UI.Design.ClientScriptItem.Text*
   exceptions: []
   platform:
@@ -167,12 +167,12 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Gets the <xref uid=&quot;langword_csharp_type&quot; name=&quot;type&quot; href=&quot;&quot;></xref> attribute value for the client script element."
+  summary: "获取<xref uid=&quot;langword_csharp_type&quot; name=&quot;type&quot; href=&quot;&quot;></xref>属性的客户端脚本元素的值。"
   syntax:
     content: public string Type { get; }
     return:
       type: System.String
-      description: "The name of the MIME type associated with the <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref> element."
+      description: "MIME 类型的名称与关联<xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref>元素。"
   overload: System.Web.UI.Design.ClientScriptItem.Type*
   exceptions: []
   platform:
