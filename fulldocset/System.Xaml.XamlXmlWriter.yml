@@ -26,8 +26,8 @@ items:
   nameWithType: XamlXmlWriter
   fullName: System.Xaml.XamlXmlWriter
   type: Class
-  summary: "Uses a <xref:System.IO.TextWriter> or <xref:System.Xml.XmlWriter> support class to write a XAML node stream to a text or markup serialized form."
-  remarks: "This class is typically used in serialization scenarios.      ## How to Use XamlXmlWriter    The <xref:System.Xaml.XamlWriter> API has several methods that write different types of XAML nodes. Collectively, these are referred to in documentation as the `Write` methods of a <xref:System.Xaml.XamlWriter>. XamlXmlWriter uses several internal state classes to determine what to do when one of its `Write` implementations is called. A `Write` call uses the states to determine whether the requested element, attribute, or value can be written, or whether an exception is thrown. For example, if you call <xref:System.Xaml.XamlXmlWriter.WriteEndObject%2A> and the state of the XamlXmlWriter current node position is on a value or within a member, an exception is thrown. Typically, callers of the XamlXmlWriter API should be aware of the type of the current XAML node that is coming from the XAML reader and the XAML node stream. Based on this knowledge, callers should avoid calling `Write` APIs that are not relevant to the current node type.      ## XAML Namespaces and XamlXmlWriter    The XAML namespace writing behavior of XamlXmlWriter is complex and is not limited to explicit calls to <xref:System.Xaml.XamlXmlWriter.WriteNamespace%2A>. Instead, other `Write` calls, such as <xref:System.Xaml.XamlXmlWriter.WriteStartObject%2A>, might require that the namespace declaration be written at particular points in the node structure. The XAML writer either generates a prefix by its own logic, or uses information from the <xref:System.Xaml.INamespacePrefixLookup> service to determine a preferred prefix. Also, explicit <xref:System.Xaml.XamlXmlWriter.WriteNamespace%2A> calls might defer or might return nothing if the XAML namespace declaration is already applicable and declared elsewhere.      ## Write Method Exceptions    Exceptions thrown by the XamlXmlWriter`Write` methods are typically either <xref:System.InvalidOperationException> or <xref:System.Xaml.XamlXmlWriterException>.       An <xref:System.InvalidOperationException> often indicates that a XAML reader passed an invalid node structure into the XAML node stream. In this case the node structure is invalid for reasons that are not related to validation of a XAML schema or a XAML schema context. Rather, the node stream is invalid in its basic form. For example, if a faulty XAML reader implementation generated a XAML node stream that contained two consecutive `StartObject` nodes, the attempt to call the second <xref:System.Xaml.XamlXmlWriter.WriteStartObject%2A> would throw an <xref:System.InvalidOperationException>. All XAML writers would consider such an operation to be invalid. Another example of an <xref:System.InvalidOperationException> is when XAML namespace information is unavailable through the XAML schema context that applies to the current node stream position.       A <xref:System.Xaml.XamlXmlWriterException> indicates an exception where this particular XAML writer implementation chooses to throw an exception based on its intended functionality. A <xref:System.Xaml.XamlXmlWriterException> can indicate specific cases where a XamlXmlWriter violates its own state or settings. For example, a <xref:System.Xaml.XamlXmlWriterException> might result from attempts to write XAML namespace information into a position that the XamlXmlWriter and its serialization format do not support, or writing duplicate members when the instance&quot;s <xref:System.Xaml.XamlXmlWriterSettings> forbid it."
+  summary: "使用<xref:System.IO.TextWriter>或<xref:System.Xml.XmlWriter>要写入的文本或标记的 XAML 节点流的支持类序列化形式。</xref:System.Xml.XmlWriter> </xref:System.IO.TextWriter>"
+  remarks: "此类通常用于序列化方案。      ## 如何使用 XamlXmlWriter <xref:System.Xaml.XamlWriter>API 具有多种方法用以编写不同类型的 XAML 节点。</xref:System.Xaml.XamlWriter> 这些统称为文档中`Write`的一种<xref:System.Xaml.XamlWriter>。</xref:System.Xaml.XamlWriter>方法 XamlXmlWriter 使用多个内部状态类来确定要执行的操作时之一其`Write`调用实现。 A`Write`调用使用状态来确定是否可以写入请求的元素、 特性或值，或是否会引发异常。 例如，如果你调用<xref:System.Xaml.XamlXmlWriter.WriteEndObject%2A>和 XamlXmlWriter 当前节点的位置是对值或成员中的状态，将引发异常。</xref:System.Xaml.XamlXmlWriter.WriteEndObject%2A> 通常情况下，XamlXmlWriter API 的调用方应注意到当前来自 XAML 读取器和 XAML 节点流的 XAML 节点的类型。 基于此知识，调用方应避免调用`Write`与当前的节点类型不相关的 Api。      ## XAML 命名空间和 XamlXmlWriter XAML 命名空间编写 XamlXmlWriter 行为很复杂，不限于到<xref:System.Xaml.XamlXmlWriter.WriteNamespace%2A>。</xref:System.Xaml.XamlXmlWriter.WriteNamespace%2A>显式调用 相反，其他`Write`调用，如<xref:System.Xaml.XamlXmlWriter.WriteStartObject%2A>，可能需要在节点结构的特定点处编写的命名空间声明。</xref:System.Xaml.XamlXmlWriter.WriteStartObject%2A> XAML 编写器根据自己的逻辑，会生成前缀或使用来自信息<xref:System.Xaml.INamespacePrefixLookup>服务，以确定首选的前缀。</xref:System.Xaml.INamespacePrefixLookup> 此外，显式<xref:System.Xaml.XamlXmlWriter.WriteNamespace%2A>调用可能会延迟，或可能会返回任何内容的 XAML 命名空间声明是否已声明且适用其他位置。</xref:System.Xaml.XamlXmlWriter.WriteNamespace%2A>      ## 编写方法异常的异常引发的 XamlXmlWriter`Write`方法通常是其中一种<xref:System.InvalidOperationException>或<xref:System.Xaml.XamlXmlWriterException>。</xref:System.Xaml.XamlXmlWriterException> </xref:System.InvalidOperationException>       <xref:System.InvalidOperationException>通常表明 XAML 读取器，传递到 XAML 节点流中无效的节点结构。</xref:System.InvalidOperationException> 在这种情况下节点结构无效的原因，不相关的 XAML 架构或 XAML 架构上下文的验证。 相反，节点流是在其基本窗体中无效。 例如，如果发生故障的 XAML 读取器实现生成 XAML 节点流包含两个连续`StartObject`节点，尝试调用第二个<xref:System.Xaml.XamlXmlWriter.WriteStartObject%2A>会引发<xref:System.InvalidOperationException>.</xref:System.InvalidOperationException> </xref:System.Xaml.XamlXmlWriter.WriteStartObject%2A> 所有 XAML 编写器应都考虑此类操作无效。 另一个示例<xref:System.InvalidOperationException>是 XAML 命名空间信息时通过适用于将当前节点流的位置的 XAML 架构上下文不可用。</xref:System.InvalidOperationException>       A<xref:System.Xaml.XamlXmlWriterException>表示此特定的 XAML 编写器实现引发异常根据其预期的功能而进行选择的其中一个异常。</xref:System.Xaml.XamlXmlWriterException> A<xref:System.Xaml.XamlXmlWriterException>可以指示特定用例 XamlXmlWriter 违反其自己的状态或设置了。</xref:System.Xaml.XamlXmlWriterException> 例如，<xref:System.Xaml.XamlXmlWriterException>可能因尝试写入到的位置上，不支持 XamlXmlWriter 和其序列化格式，XAML 命名空间信息或写入成员重复时实例的<xref:System.Xaml.XamlXmlWriterSettings>禁止它。</xref:System.Xaml.XamlXmlWriterSettings> </xref:System.Xaml.XamlXmlWriterException>"
   syntax:
     content: 'public class XamlXmlWriter : System.Xaml.XamlWriter'
   inheritance:
@@ -53,21 +53,21 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Initializes a new instance of the <xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref> class from a stream."
+  summary: "初始化的新实例<xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref>从流的类。"
   syntax:
     content: public XamlXmlWriter (System.IO.Stream stream, System.Xaml.XamlSchemaContext schemaContext);
     parameters:
     - id: stream
       type: System.IO.Stream
-      description: "The stream to write."
+      description: "要写入的流。"
     - id: schemaContext
       type: System.Xaml.XamlSchemaContext
-      description: "The XAML schema context for the XAML writer."
+      description: "XAML 编写器 XAML 架构上下文。"
   overload: System.Xaml.XamlXmlWriter.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>stream</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>schemaContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>stream</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>schemaContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlXmlWriter.#ctor(System.IO.TextWriter,System.Xaml.XamlSchemaContext)
@@ -82,21 +82,21 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Initializes a new instance of the <xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref> class from a <xref:System.IO.TextWriter> basis."
+  summary: "初始化的新实例<xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref>类<xref:System.IO.TextWriter>基础。</xref:System.IO.TextWriter>"
   syntax:
     content: public XamlXmlWriter (System.IO.TextWriter textWriter, System.Xaml.XamlSchemaContext schemaContext);
     parameters:
     - id: textWriter
       type: System.IO.TextWriter
-      description: "The <xref:System.IO.TextWriter> that writes the output."
+      description: "<xref:System.IO.TextWriter>，它将写入输出。</xref:System.IO.TextWriter>"
     - id: schemaContext
       type: System.Xaml.XamlSchemaContext
-      description: "The XAML schema context for the XAML writer."
+      description: "XAML 编写器 XAML 架构上下文。"
   overload: System.Xaml.XamlXmlWriter.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>textWriter</code> or <code>schemaContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>textWriter</code>or <code>schemaContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlXmlWriter.#ctor(System.Xml.XmlWriter,System.Xaml.XamlSchemaContext)
@@ -111,21 +111,21 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Initializes a new instance of the <xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref> class from a <xref:System.Xml.XmlWriter> basis."
+  summary: "初始化的新实例<xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref>类<xref:System.Xml.XmlWriter>基础。</xref:System.Xml.XmlWriter>"
   syntax:
     content: public XamlXmlWriter (System.Xml.XmlWriter xmlWriter, System.Xaml.XamlSchemaContext schemaContext);
     parameters:
     - id: xmlWriter
       type: System.Xml.XmlWriter
-      description: "The <xref:System.Xml.XmlWriter> that writes the output."
+      description: "<xref:System.Xml.XmlWriter>，它将写入输出。</xref:System.Xml.XmlWriter>"
     - id: schemaContext
       type: System.Xaml.XamlSchemaContext
-      description: "The XAML schema context for the XAML writer."
+      description: "XAML 编写器 XAML 架构上下文。"
   overload: System.Xaml.XamlXmlWriter.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>xmlWriter</code> or <code>schemaContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>xmlWriter</code>or <code>schemaContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlXmlWriter.#ctor(System.IO.Stream,System.Xaml.XamlSchemaContext,System.Xaml.XamlXmlWriterSettings)
@@ -140,25 +140,25 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Initializes a new instance of the <xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref> class from a stream using a writer settings object."
-  remarks: "Do not change any values of the `settings` object after the <xref:System.Xaml.XamlXmlWriter> instance is constructed. <xref:System.Xaml.XamlXmlWriter> cannot update its internal settings based on settings values that are mutable at run time. Settings should be provided for initialization only. You can merge settings from an active XAML writer by using one of the <xref:System.Xaml.XamlXmlWriterSettings> constructor signatures; however, you must then apply these settings to a new XAML writer instance instead of attempting to adjust the existing one."
+  summary: "初始化的新实例<xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref>从流使用编写器设置对象的类。"
+  remarks: "不更改的任何值`settings`对象后<xref:System.Xaml.XamlXmlWriter>构造实例。</xref:System.Xaml.XamlXmlWriter> <xref:System.Xaml.XamlXmlWriter>无法更新其基于在运行时是可变的设置值的内部设置。</xref:System.Xaml.XamlXmlWriter> 应仅为初始化提供设置。 你可以通过使用之一来合并从活动的 XAML 编写器设置<xref:System.Xaml.XamlXmlWriterSettings>构造函数签名; 但是，你必须然后将这些设置应用到新的 XAML 编写器实例，而不是尝试调整现有。</xref:System.Xaml.XamlXmlWriterSettings>"
   syntax:
     content: public XamlXmlWriter (System.IO.Stream stream, System.Xaml.XamlSchemaContext schemaContext, System.Xaml.XamlXmlWriterSettings settings);
     parameters:
     - id: stream
       type: System.IO.Stream
-      description: "The stream to write."
+      description: "要写入的流。"
     - id: schemaContext
       type: System.Xaml.XamlSchemaContext
-      description: "The XAML schema context for the XAML writer."
+      description: "XAML 编写器 XAML 架构上下文。"
     - id: settings
       type: System.Xaml.XamlXmlWriterSettings
-      description: "An instance of <xref href=&quot;System.Xaml.XamlXmlWriterSettings&quot;></xref>, which typically has specific non-default settings."
+      description: "实例<xref href=&quot;System.Xaml.XamlXmlWriterSettings&quot;> </xref>，通常具有特定的非默认设置。"
   overload: System.Xaml.XamlXmlWriter.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>stream</code> or <code>schemaContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>"
+    description: "<code>stream</code>or <code>schemaContext</code> is<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>"
   platform:
   - net462
 - uid: System.Xaml.XamlXmlWriter.#ctor(System.IO.TextWriter,System.Xaml.XamlSchemaContext,System.Xaml.XamlXmlWriterSettings)
@@ -173,25 +173,25 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Initializes a new instance of the <xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref> class from a <xref:System.IO.TextWriter> basis using a settings object."
-  remarks: "Do not change any values of the `settings` object after the <xref:System.Xaml.XamlXmlWriter> instance is constructed. <xref:System.Xaml.XamlXmlWriter> cannot update its internal settings based on settings values that are mutable at run time. Settings should be provided for initialization only. You can merge settings from an active XAML writer by using one of the <xref:System.Xaml.XamlXmlWriterSettings> constructor signatures; however, you must then apply these settings to a new XAML writer instance instead of attempting to adjust the existing one."
+  summary: "初始化的新实例<xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref>类<xref:System.IO.TextWriter>使用设置对象的基础。</xref:System.IO.TextWriter>"
+  remarks: "不更改的任何值`settings`对象后<xref:System.Xaml.XamlXmlWriter>构造实例。</xref:System.Xaml.XamlXmlWriter> <xref:System.Xaml.XamlXmlWriter>无法更新其基于在运行时是可变的设置值的内部设置。</xref:System.Xaml.XamlXmlWriter> 应仅为初始化提供设置。 你可以通过使用之一来合并从活动的 XAML 编写器设置<xref:System.Xaml.XamlXmlWriterSettings>构造函数签名; 但是，你必须然后将这些设置应用到新的 XAML 编写器实例，而不是尝试调整现有。</xref:System.Xaml.XamlXmlWriterSettings>"
   syntax:
     content: public XamlXmlWriter (System.IO.TextWriter textWriter, System.Xaml.XamlSchemaContext schemaContext, System.Xaml.XamlXmlWriterSettings settings);
     parameters:
     - id: textWriter
       type: System.IO.TextWriter
-      description: "The <xref:System.IO.TextWriter> that writes the output."
+      description: "<xref:System.IO.TextWriter>，它将写入输出。</xref:System.IO.TextWriter>"
     - id: schemaContext
       type: System.Xaml.XamlSchemaContext
-      description: "The XAML schema context for the XAML writer."
+      description: "XAML 编写器 XAML 架构上下文。"
     - id: settings
       type: System.Xaml.XamlXmlWriterSettings
-      description: "An instance of <xref href=&quot;System.Xaml.XamlXmlWriterSettings&quot;></xref>, which typically has specific non-default settings."
+      description: "实例<xref href=&quot;System.Xaml.XamlXmlWriterSettings&quot;> </xref>，通常具有特定的非默认设置。"
   overload: System.Xaml.XamlXmlWriter.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>textWriter</code> or <code>schemaContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>textWriter</code>or <code>schemaContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlXmlWriter.#ctor(System.Xml.XmlWriter,System.Xaml.XamlSchemaContext,System.Xaml.XamlXmlWriterSettings)
@@ -206,25 +206,25 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Initializes a new instance of the <xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref> class from a <xref:System.Xml.XmlWriter> basis using a settings object."
-  remarks: "Do not change any values of the `settings` object after the <xref:System.Xaml.XamlXmlWriter> instance is constructed. <xref:System.Xaml.XamlXmlWriter> cannot update its internal settings based on settings values that are mutable at run time. Settings should be provided for initialization only. You can merge settings from an active XAML writer by using one of the <xref:System.Xaml.XamlXmlWriterSettings> constructor signatures; however, you must then apply these settings to a new XAML writer instance instead of attempting to adjust the existing one."
+  summary: "初始化的新实例<xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref>类<xref:System.Xml.XmlWriter>使用设置对象的基础。</xref:System.Xml.XmlWriter>"
+  remarks: "不更改的任何值`settings`对象后<xref:System.Xaml.XamlXmlWriter>构造实例。</xref:System.Xaml.XamlXmlWriter> <xref:System.Xaml.XamlXmlWriter>无法更新其基于在运行时是可变的设置值的内部设置。</xref:System.Xaml.XamlXmlWriter> 应仅为初始化提供设置。 你可以通过使用之一来合并从活动的 XAML 编写器设置<xref:System.Xaml.XamlXmlWriterSettings>构造函数签名; 但是，你必须然后将这些设置应用到新的 XAML 编写器实例，而不是尝试调整现有。</xref:System.Xaml.XamlXmlWriterSettings>"
   syntax:
     content: public XamlXmlWriter (System.Xml.XmlWriter xmlWriter, System.Xaml.XamlSchemaContext schemaContext, System.Xaml.XamlXmlWriterSettings settings);
     parameters:
     - id: xmlWriter
       type: System.Xml.XmlWriter
-      description: "The <xref:System.Xml.XmlWriter> that writes the output."
+      description: "<xref:System.Xml.XmlWriter>，它将写入输出。</xref:System.Xml.XmlWriter>"
     - id: schemaContext
       type: System.Xaml.XamlSchemaContext
-      description: "The XAML schema context for the XAML writer."
+      description: "XAML 编写器 XAML 架构上下文。"
     - id: settings
       type: System.Xaml.XamlXmlWriterSettings
-      description: "An instance of <xref href=&quot;System.Xaml.XamlXmlWriterSettings&quot;></xref>, which typically has specific non-default settings."
+      description: "实例<xref href=&quot;System.Xaml.XamlXmlWriterSettings&quot;> </xref>，通常具有特定的非默认设置。"
   overload: System.Xaml.XamlXmlWriter.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>xmlWriter</code> or <code>schemaContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>xmlWriter</code>or <code>schemaContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlXmlWriter.Dispose(System.Boolean)
@@ -239,14 +239,14 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Releases the unmanaged resources used by <xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref> and optionally releases the managed resources."
-  remarks: "This implementation calls `Close` on the underlying <xref:System.Xml.XmlWriter> or <xref:System.IO.TextWriter> for cases where <xref:System.Xaml.XamlXmlWriterSettings.CloseOutput%2A> is `true` in any supplied <xref:System.Xaml.XamlXmlWriterSettings>. Otherwise, it calls <xref:System.Xaml.XamlXmlWriter.Flush%2A>."
+  summary: "释放由非托管的资源<xref href=&quot;System.Xaml.XamlXmlWriter&quot;> </xref> ，还可以释放托管的资源。"
+  remarks: "此实现中调用`Close`基础<xref:System.Xml.XmlWriter>或<xref:System.IO.TextWriter>用例其中<xref:System.Xaml.XamlXmlWriterSettings.CloseOutput%2A>是`true`在任何提供<xref:System.Xaml.XamlXmlWriterSettings>.</xref:System.Xaml.XamlXmlWriterSettings> </xref:System.Xaml.XamlXmlWriterSettings.CloseOutput%2A> </xref:System.IO.TextWriter> </xref:System.Xml.XmlWriter> 否则，它会调用<xref:System.Xaml.XamlXmlWriter.Flush%2A>.</xref:System.Xaml.XamlXmlWriter.Flush%2A>"
   syntax:
     content: protected override void Dispose (bool disposing);
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to release the unmanaged resources; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>若要释放的非托管的资源;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Xaml.XamlXmlWriter.Dispose*
   exceptions: []
   platform:
@@ -263,8 +263,8 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Calls the <xref uid=&quot;langword_csharp_Flush&quot; name=&quot;Flush&quot; href=&quot;&quot;></xref> method of the underlying <xref:System.Xml.XmlWriter> or <xref:System.IO.TextWriter>, which writes anything that is currently in the buffer, and then closes the writer."
-  remarks: "The `Dispose` behavior for a <xref:System.Xaml.XamlXmlWriter> can be influenced by its writer settings, especially by <xref:System.Xaml.XamlXmlWriterSettings.CloseOutput%2A?displayProperty=fullName>."
+  summary: "调用<xref uid=&quot;langword_csharp_Flush&quot; name=&quot;Flush&quot; href=&quot;&quot;></xref>方法对基础<xref:System.Xml.XmlWriter>或<xref:System.IO.TextWriter>，其中写入任何内容当前在缓冲区中，然后关闭编写器。</xref:System.IO.TextWriter> </xref:System.Xml.XmlWriter>"
+  remarks: "`Dispose` <xref:System.Xaml.XamlXmlWriter>可以受其编写器设置，尤其是通过<xref:System.Xaml.XamlXmlWriterSettings.CloseOutput%2A?displayProperty=fullName>.</xref:System.Xaml.XamlXmlWriterSettings.CloseOutput%2A?displayProperty=fullName></xref:System.Xaml.XamlXmlWriter>的行为"
   syntax:
     content: public void Flush ();
     parameters: []
@@ -284,13 +284,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Gets the XAML schema context that this <xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref> uses for processing."
-  remarks: "A XAML writer typically gets its XAML schema context from the associated XAML reader that is supplying the XAML node stream."
+  summary: "获取 XAML 架构上下文，这<xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref>使用进行处理。"
+  remarks: "XAML 编写器通常从关联的 XAML 读取器提供 XAML 节点流中获取其 XAML 架构上下文。"
   syntax:
     content: public override System.Xaml.XamlSchemaContext SchemaContext { get; }
     return:
       type: System.Xaml.XamlSchemaContext
-      description: "The XAML schema context that this <xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref> uses for XAML processing."
+      description: "XAML 架构上下文此<xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref>用于 XAML 处理。"
   overload: System.Xaml.XamlXmlWriter.SchemaContext*
   exceptions: []
   platform:
@@ -307,13 +307,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Gets the writer settings that this <xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref> uses for XAML processing."
-  remarks: "The value that you get from this property is a copy and not a reference. Changing property values on the settings does not affect the active <xref:System.Xaml.XamlXmlWriter>."
+  summary: "获取编写器设置这<xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref>用于 XAML 处理。"
+  remarks: "获取此属性的值是副本而不是引用。 更改设置的属性值不会影响 active <xref:System.Xaml.XamlXmlWriter>.</xref:System.Xaml.XamlXmlWriter>"
   syntax:
     content: public System.Xaml.XamlXmlWriterSettings Settings { get; }
     return:
       type: System.Xaml.XamlXmlWriterSettings
-      description: "The writer settings that this <xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref> uses for XAML processing."
+      description: "编写器设置此<xref href=&quot;System.Xaml.XamlXmlWriter&quot;></xref>用于 XAML 处理。"
   overload: System.Xaml.XamlXmlWriter.Settings*
   exceptions: []
   platform:
@@ -330,7 +330,7 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Writes a XAML end member node to the underlying <xref:System.Xml.XmlWriter> or <xref:System.IO.TextWriter>. Throws an exception if the current position of the XAML node stream is not within a member, or if the internal writer state does not support writing to an end member."
+  summary: "写入的 XAML 最终成员节点基础<xref:System.Xml.XmlWriter>或<xref:System.IO.TextWriter>。</xref:System.IO.TextWriter> </xref:System.Xml.XmlWriter> 如果 XAML 节点流的当前位置不在成员中，或者如果内部编写器状态不支持写入 end 成员，则引发异常。"
   syntax:
     content: public override void WriteEndMember ();
     parameters: []
@@ -338,10 +338,10 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The current position of the XAML node stream is not within a member."
+    description: "XAML 节点流的当前位置不是成员中。"
   - type: System.Xaml.XamlXmlWriterException
     commentId: T:System.Xaml.XamlXmlWriterException
-    description: "The current writer state does not support writing an end member."
+    description: "当前的写入程序状态不支持编写 end 成员。"
   platform:
   - net462
 - uid: System.Xaml.XamlXmlWriter.WriteEndObject
@@ -356,8 +356,8 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Writes a XAML end object node to the underlying <xref:System.Xml.XmlWriter> or <xref:System.IO.TextWriter>. Throws an exception if the current position of the XAML node stream that is being processed is incompatible with writing an end object."
-  remarks: "In markup and text representations of XAML, an end object is a closing tag.       The most common case where <xref:System.InvalidOperationException> is thrown by WriteEndObject is when the current XAML node stream position is still within a member, and WriteEndObject is called."
+  summary: "写入的基础<xref:System.Xml.XmlWriter>或<xref:System.IO.TextWriter>。</xref:System.IO.TextWriter> </xref:System.Xml.XmlWriter> XAML 结束对象节点 如果当前正在处理的 XAML 节点流位置与写入结束对象不兼容，则引发异常。"
+  remarks: "在 XAML 标记和文本形式，结束对象是结束标记。       最常见情况<xref:System.InvalidOperationException>由引发 WriteEndObject 时会当前的 XAML 节点流位置是否仍在一个成员，并且调用 WriteEndObject。</xref:System.InvalidOperationException>"
   syntax:
     content: public override void WriteEndObject ();
     parameters: []
@@ -365,10 +365,10 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The current position of the XAML node stream is not in a scope where an end member can be written."
+    description: "XAML 节点流的当前位置不在作用域，可以在其中写入结束成员中。"
   - type: System.Xaml.XamlXmlWriterException
     commentId: T:System.Xaml.XamlXmlWriterException
-    description: "The current writer state does not support writing an end object."
+    description: "当前的写入程序状态不支持写入结束对象。"
   platform:
   - net462
 - uid: System.Xaml.XamlXmlWriter.WriteGetObject
@@ -383,7 +383,7 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Writes an object for cases where the specified object is a default or implicit value of the property that is being written, instead of being specified as an object value in the input XAML node set."
+  summary: "写入的情况下，指定的对象的默认或隐式正在编写的而不是指定为输入 XAML 节点集的对象值的属性值的对象。"
   syntax:
     content: public override void WriteGetObject ();
     parameters: []
@@ -403,24 +403,24 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Writes namespace information to the underlying <xref:System.Xml.XmlWriter> or <xref:System.IO.TextWriter>. May throw an exception for certain states; however, may instead defer writing the namespace information until the writer and the XAML node stream that is being processed reaches a position where a XAML namespace declaration can be inserted."
+  summary: "命名空间的信息写入基础<xref:System.Xml.XmlWriter>或<xref:System.IO.TextWriter>。</xref:System.IO.TextWriter> </xref:System.Xml.XmlWriter> 可能引发异常对于某些状态;但是，可以改为推迟的写入之前编写器和正在处理的 XAML 节点流的命名空间信息到达插入 XAML 命名空间声明的位置的位置。"
   syntax:
     content: public override void WriteNamespace (System.Xaml.NamespaceDeclaration namespaceDeclaration);
     parameters:
     - id: namespaceDeclaration
       type: System.Xaml.NamespaceDeclaration
-      description: "The XAML namespace declaration to write."
+      description: "若要编写在 XAML 命名空间声明。"
   overload: System.Xaml.XamlXmlWriter.WriteNamespace*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>namespaceDeclaration</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>namespaceDeclaration</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>namespaceDeclaration</code> is not a valid XAML namespace declaration (has a null prefix or null identifier component)."
+    description: "<code>namespaceDeclaration</code>不是有效的 XAML 命名空间声明 （具有空前缀或 null 标识符组件）。"
   - type: System.Xaml.XamlXmlWriterException
     commentId: T:System.Xaml.XamlXmlWriterException
-    description: "The current writer state does not support writing a XAML namespace declaration."
+    description: "当前的写入程序状态不支持编写 XAML 命名空间声明。"
   platform:
   - net462
 - uid: System.Xaml.XamlXmlWriter.WriteStartMember(System.Xaml.XamlMember)
@@ -435,28 +435,28 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Writes a XAML start member node to the underlying <xref:System.Xml.XmlWriter> or <xref:System.IO.TextWriter>. Throws an exception if the current position of the XAML node stream is within another member, or if it is not in a scope or writer state where a start member can be written."
-  remarks: "Internal default logic in the <xref:System.Xaml.XamlXmlWriter> first attempts to write the member in attribute form. If no attribute form is supported because the property or its value does not support text syntax, a property element is written instead. If the property is a XAML content property, a `GetObject` case, or an implicit property, other XAML forms might be written, such as inner text or an object child that has no intervening member.       The duplicate member exception is never thrown if <xref:System.Xaml.XamlXmlWriterSettings.AssumeValidInput%2A> is `true` in the <xref:System.Xaml.XamlXmlWriterSettings> object that was used for settings for this <xref:System.Xaml.XamlXmlWriter>."
+  summary: "写入 XAML 开始成员节点基础<xref:System.Xml.XmlWriter>或<xref:System.IO.TextWriter>。</xref:System.IO.TextWriter> </xref:System.Xml.XmlWriter> 如果 XAML 节点流的当前位置位于另一个成员，或如果它不处于作用域或编写器的状态，可以在其中写入的启动成员，则引发异常。"
+  remarks: "中的内部默认逻辑<xref:System.Xaml.XamlXmlWriter>第一次尝试属性形式编写成员。</xref:System.Xaml.XamlXmlWriter> 如果因为属性或其值不支持文本语法不支持任何特性形式，则转而写入的属性元素。 如果属性是 XAML 内容属性、`GetObject`用例或隐式属性，可能写入其他 XAML 形式，如内部文本或无干扰的成员的对象子级。       如果从不引发重复成员异常<xref:System.Xaml.XamlXmlWriterSettings.AssumeValidInput%2A>是`true`<xref:System.Xaml.XamlXmlWriterSettings>对象，用于设置此<xref:System.Xaml.XamlXmlWriter>。</xref:System.Xaml.XamlXmlWriter></xref:System.Xaml.XamlXmlWriterSettings>中</xref:System.Xaml.XamlXmlWriterSettings.AssumeValidInput%2A>"
   syntax:
     content: public override void WriteStartMember (System.Xaml.XamlMember property);
     parameters:
     - id: property
       type: System.Xaml.XamlMember
-      description: "The XAML member identifier for the member to write."
+      description: "要写入的成员 XAML 成员标识符。"
   overload: System.Xaml.XamlXmlWriter.WriteStartMember*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>property</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>property</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>property</code> is not a valid <xref href=&quot;System.Xaml.XamlMember&quot;></xref>."
+    description: "<code>property</code>不是有效<xref href=&quot;System.Xaml.XamlMember&quot;> </xref>。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The current position of the XAML node stream is invalid for writing a start member."
+    description: "XAML 节点流的当前位置对于编写的启动成员无效。"
   - type: System.Xaml.XamlXmlWriterException
     commentId: T:System.Xaml.XamlXmlWriterException
-    description: "The writer state is not valid for writing a start member.       -or-       The XAML writer attempted to write a duplicate member. This exception may have a more precise inner exception."
+    description: "写入程序状态用于写入开始成员无效。       -或者-XAML 编写器尝试写入一个重复的成员。 此异常可能包含更精确的内部异常。"
   platform:
   - net462
 - uid: System.Xaml.XamlXmlWriter.WriteStartObject(System.Xaml.XamlType)
@@ -471,27 +471,27 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Writes a XAML start object node to the underlying <xref:System.Xml.XmlWriter> or <xref:System.IO.TextWriter>. Throws an exception if the current position of the XAML node stream is not in a scope where a start object can be written, or if the writer is not in a state that can write a start object."
+  summary: "写入的基础<xref:System.Xml.XmlWriter>或<xref:System.IO.TextWriter>。</xref:System.IO.TextWriter> </xref:System.Xml.XmlWriter> XAML 开始对象节点 如果 XAML 节点流的当前位置不在范围内的起始对象可以在其中写入，或者编写器未处于可写入的起始对象的状态，则引发异常。"
   syntax:
     content: public override void WriteStartObject (System.Xaml.XamlType type);
     parameters:
     - id: type
       type: System.Xaml.XamlType
-      description: "The <xref href=&quot;System.Xaml.XamlType&quot;></xref> (XAML type identifier) for the object to write."
+      description: "<xref href=&quot;System.Xaml.XamlType&quot;> </xref> （XAML 类型标识符） 的要写入的对象。"
   overload: System.Xaml.XamlXmlWriter.WriteStartObject*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>type</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>type</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>type</code> is not a valid <xref href=&quot;System.Xaml.XamlType&quot;></xref>."
+    description: "<code>type</code>不是有效<xref href=&quot;System.Xaml.XamlType&quot;> </xref>。"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The current position of the XAML node stream is not valid for writing a new start object."
+    description: "XAML 节点流的当前位置，无法写入新的启动对象无效。"
   - type: System.Xaml.XamlXmlWriterException
     commentId: T:System.Xaml.XamlXmlWriterException
-    description: "The state of the XAML writer is not valid for writing a new start object."
+    description: "XAML 编写器的状态，无法写入新的启动对象无效。"
   platform:
   - net462
 - uid: System.Xaml.XamlXmlWriter.WriteValue(System.Object)
@@ -506,25 +506,25 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Writes a XAML value node to the underlying <xref:System.Xml.XmlWriter> or <xref:System.IO.TextWriter>. Throws an exception if the current position of the XAML node stream is invalid for writing a value, or the writer is in a state where a value cannot be written."
-  remarks: "The input `value` may be `null`, which supports explicitly writing out null as a serialized value. This behavior uses the <xref:System.Xaml.XamlLanguage.Null%2A?displayProperty=fullName> definition as <xref:System.Xaml.XamlXmlWriter.WriteStartObject%2A> input and then immediately calls <xref:System.Xaml.XamlXmlWriter.WriteEndObject%2A>."
+  summary: "XAML 值节点写入基础<xref:System.Xml.XmlWriter>或<xref:System.IO.TextWriter>。</xref:System.IO.TextWriter> </xref:System.Xml.XmlWriter> 如果 XAML 节点流的当前位置无效，无法写入值，或编写器处于的状态不能在其中写入一个值，则引发异常。"
+  remarks: "输入`value`可能`null`，它支持显式写出为 null 的序列化值。 此行为使用<xref:System.Xaml.XamlLanguage.Null%2A?displayProperty=fullName>作为<xref:System.Xaml.XamlXmlWriter.WriteStartObject%2A>输入，然后立即调用<xref:System.Xaml.XamlXmlWriter.WriteEndObject%2A>.</xref:System.Xaml.XamlXmlWriter.WriteEndObject%2A></xref:System.Xaml.XamlXmlWriter.WriteStartObject%2A>的定义</xref:System.Xaml.XamlLanguage.Null%2A?displayProperty=fullName>"
   syntax:
     content: public override void WriteValue (object value);
     parameters:
     - id: value
       type: System.Object
-      description: "The value information to write."
+      description: "要写入的值信息。"
   overload: System.Xaml.XamlXmlWriter.WriteValue*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The current position of the XAML node stream is not valid for writing a value."
+    description: "XAML 节点流的当前位置，无法写入值无效。"
   - type: System.Xaml.XamlXmlWriterException
     commentId: T:System.Xaml.XamlXmlWriterException
-    description: "The XAML writer state does not support the writing of a value node."
+    description: "XAML 编写器状态不支持值节点的写入。"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>value</code> specifies a value that is not null or a string."
+    description: "<code>value</code>指定一个值，不为 null 或字符串。"
   platform:
   - net462
 references:
