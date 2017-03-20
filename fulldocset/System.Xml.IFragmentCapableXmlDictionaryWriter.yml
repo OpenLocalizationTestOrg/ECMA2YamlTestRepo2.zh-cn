@@ -13,8 +13,8 @@ items:
   nameWithType: IFragmentCapableXmlDictionaryWriter
   fullName: System.Xml.IFragmentCapableXmlDictionaryWriter
   type: Interface
-  summary: "Contains properties and methods that when implemented by a <xref:System.Xml.XmlDictionaryWriter>, allows processing of XML fragments."
-  remarks: "This class defines the properties and methods related to the capability of an <xref:System.Xml.XmlDictionaryWriter> to redirect part of its output (a &quot;fragment&quot;) to a different stream than the stream it was created with and to directly insert such a fragment captured by redirection back into the main stream of the same writer at a later point."
+  summary: "包含属性和方法，当由实现<xref:System.Xml.XmlDictionaryWriter>，允许处理 XML 片段。</xref:System.Xml.XmlDictionaryWriter>"
+  remarks: "此类定义的属性和方法的功能相关<xref:System.Xml.XmlDictionaryWriter>以将其输出部分 （片段） 重定向到不同于用于创建该类的流，并直接插入由重定向回稍后同一个编写器的主流捕获的片段。</xref:System.Xml.XmlDictionaryWriter>"
   syntax:
     content: public interface IFragmentCapableXmlDictionaryWriter
   implements: []
@@ -32,13 +32,13 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Xml
-  summary: "Gets a value that indicates whether this <xref:System.Xml.XmlDictionaryWriter> can process XML fragments."
-  remarks: "Returns t`r`ue if the writer that implements this interface can generate and accept XML fragments."
+  summary: "获取一个值，该值指示是否这<xref:System.Xml.XmlDictionaryWriter>能够处理 XML 片段。</xref:System.Xml.XmlDictionaryWriter>"
+  remarks: "返回 t`r`ue 如果实现此接口的编写器可以生成并接受 XML 片段。"
   syntax:
     content: public bool CanFragment { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this <xref:System.Xml.XmlDictionaryWriter> can process XML fragments; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果此<xref:System.Xml.XmlDictionaryWriter>能够处理 XML 片段; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。</xref:System.Xml.XmlDictionaryWriter>"
   overload: System.Xml.IFragmentCapableXmlDictionaryWriter.CanFragment*
   exceptions: []
   platform:
@@ -55,8 +55,8 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Xml
-  summary: "Ends the processing of an XML fragment."
-  remarks: "Stops redirecting output to the stream supplied by the matching `StartFragment` call. After this call, the XML writing output goes to the stream originally used by the writer before the `StartFragment` call."
+  summary: "结束 XML 片段的处理。"
+  remarks: "停止将输出重定向到由匹配提供的流`StartFragment`调用。 此调用后，写入输出的 XML 将转到之前编写器原来使用的流`StartFragment`调用。"
   syntax:
     content: public void EndFragment ();
     parameters: []
@@ -76,17 +76,17 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Xml
-  summary: "Starts the processing of an XML fragment."
-  remarks: "Temporarily starts redirecting the writing of the XML output to the supplied stream until `EndFragment` is called. If `generateSelfContainedTextFragment` is `true`, then the redirected XML output is always text XML and is self-contained in terms of its namespace context. `StartFragment`() calls cannot be nested."
+  summary: "开始 XML 片段的处理。"
+  remarks: "临时启动将 XML 输出的写入的重定向到之前提供的流`EndFragment`调用。 如果`generateSelfContainedTextFragment`是`true`，然后重定向的 XML 输出始终是文本 XML 并且是自包含在其命名空间上下文方面。 `StartFragment`不能嵌套 （） 调用。"
   syntax:
     content: public void StartFragment (System.IO.Stream stream, bool generateSelfContainedTextFragment);
     parameters:
     - id: stream
       type: System.IO.Stream
-      description: "The stream to write to."
+      description: "要写入的流。"
     - id: generateSelfContainedTextFragment
       type: System.Boolean
-      description: "If <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, any namespaces declared outside the fragment is declared again if used inside of it; if <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> the namespaces are not declared again."
+      description: "如果<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>，任何声明的片段外部重新声明命名空间如果使用内部; 如果<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>不重新声明命名空间。"
   overload: System.Xml.IFragmentCapableXmlDictionaryWriter.StartFragment*
   exceptions: []
   platform:
@@ -103,8 +103,8 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Xml
-  summary: "Writes an XML fragment to the underlying stream of the writer."
-  remarks: "Writes a fragment captured between `StartFragment` and `EndFragment` and calls back into the XmlDictionaryWriter&quot;s main stream. The fragment written is `count` bytes starting at the index `offset` from the supplied `buffer`. The behavior is undefined if the supplied fragment was not captured using this writer instance."
+  summary: "将 XML 片段写入编写器的基础流。"
+  remarks: "写入之间捕获的片段`StartFragment`和`EndFragment`和回 XmlDictionaryWriter 的主流的调用。 写入的片段是`count`字节的索引处开始`offset`从提供`buffer`。 如果没有使用此编写器实例捕获提供的片段，该行为不确定。"
   example:
   - "```  \nMemoryStream stream = new MemoryStream();  \nMemoryStream fragmentStream = new MemoryStream();  \nXmlDictionaryWriter writer = XmlDictionaryWriter.CreateTextWriter(stream);  \nIXmlFragmentCapableXmlDictionaryWriter fragmentWriter = writer as IXmlFragmentCapableXmlDictionaryWriter;  \nif (fragmentWriter == null || !fragmentWriter.CanFragment)  \n{  \nConsole.WriteLine(\"This writer doesn't support fragments\");  \nreturn;  \n}  \nwriter.WriteStartElement(\"Root\");  \nfragmentWriter.StartFragment(fragmentStream, false);  \nwriter.WriteStartElement(\"Body\");  \nwriter.WriteString(\"This is my body\");  \nwriter.WriteEndElement();  \nfragmentWriter.EndFragment();  \nwriter.WriteStartElement(\"CharsInTheBody\");  \nwriter.WriteValue(fragmentStream.Length);  \nwriter.WriteEndElement();  \nfragmentWriter.WriteFragment(fragmentStream.GetBuffer(), 0, (int)fragmentStream.Length);  \nwriter.WriteEndElement(); // Root  \n```"
   syntax:
@@ -112,13 +112,13 @@ items:
     parameters:
     - id: buffer
       type: System.Byte[]
-      description: "The buffer to write to."
+      description: "要写入的缓冲区。"
     - id: offset
       type: System.Int32
-      description: "The starting position from which to write in `buffer`."
+      description: "从中写入的起始位置`buffer`。"
     - id: count
       type: System.Int32
-      description: "The number of bytes to be written to the `buffer`."
+      description: "要写入的字节数`buffer`。"
   overload: System.Xml.IFragmentCapableXmlDictionaryWriter.WriteFragment*
   exceptions: []
   platform:
