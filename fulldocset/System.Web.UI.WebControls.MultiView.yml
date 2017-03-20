@@ -29,8 +29,8 @@ items:
   nameWithType: MultiView
   fullName: System.Web.UI.WebControls.MultiView
   type: Class
-  summary: "Represents a control that acts as a container for a group of <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> controls."
-  remarks: "In this topic:      -   [Introduction](#introduction)      -   [Declarative Syntax](#declarative_syntax)      <a name=&quot;introduction&quot;></a>    ## Introduction    The MultiView control is a container for a group of <xref:System.Web.UI.WebControls.View> controls. It allows you to define a group of <xref:System.Web.UI.WebControls.View> controls, where each <xref:System.Web.UI.WebControls.View> control contains child controls. Your application can then render a specific <xref:System.Web.UI.WebControls.View> control to the client based on criteria such as user identity, user preferences, and information passed in a query-string parameter. You can also use the MultiView control to create wizards. In this scenario, each <xref:System.Web.UI.WebControls.View> control contained in a MultiView control represents a different step or page in the wizard. You should also use this control to develop multiple-screen applications for mobile devices. This control provides the same functionality as the ASP.NET mobile <xref:System.Web.UI.MobileControls.Form> control in .NET Framework version 1.1.       Only one <xref:System.Web.UI.WebControls.View> control at a time can be defined as the active view within a MultiView control. When a <xref:System.Web.UI.WebControls.View> control is defined as the active view, the child controls that it contains are rendered to the client. You can use either the <xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> property or the <xref:System.Web.UI.WebControls.MultiView.SetActiveView%2A> method to define the active view. If the <xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> property is empty, the MultiView control does not render any content to the client. If the active view is set to a <xref:System.Web.UI.WebControls.View> that does not exist within the MultiView control, an <xref:System.ArgumentOutOfRangeException> is raised at run time.       You can define the active view declaratively or programmatically. Setting the <xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> property declaratively when you define the MultiView control causes the <xref:System.Web.UI.WebControls.View> control that is set as the active view to render to the client the first time the MultiView control is called. The following code example demonstrates how to set the <xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> property declaratively.      ```   <asp:MultiView id=&quot;MultiView1&quot; ActiveViewIndex=0 runat=&quot;Server&quot;>    ```       Setting the <xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> property programmatically, or calling the <xref:System.Web.UI.WebControls.MultiView.SetActiveView%2A> method, allows the application to determine which <xref:System.Web.UI.WebControls.View> control to render to the client at run time based on criteria such as a user&quot;s identity or preferences.       To allow users to navigate between <xref:System.Web.UI.WebControls.View> controls within a MultiView control, you can add a <xref:System.Web.UI.WebControls.LinkButton> or <xref:System.Web.UI.WebControls.Button> control to each <xref:System.Web.UI.WebControls.View> control. To take advantage of the MultiView control&quot;s automatic updating of the currently active <xref:System.Web.UI.WebControls.View>, set the `CommandName` property on the button or link button to the value of one of the following command-name fields that corresponds to the desired navigation behavior: <xref:System.Web.UI.WebControls.MultiView.PreviousViewCommandName>, <xref:System.Web.UI.WebControls.MultiView.NextViewCommandName>, <xref:System.Web.UI.WebControls.MultiView.SwitchViewByIDCommandName>, or <xref:System.Web.UI.WebControls.MultiView.SwitchViewByIndexCommandName>.      <a name=&quot;declarative_syntax&quot;></a>    ## Declarative Syntax      ```   <asp:MultiView       ActiveViewIndex=&quot;integer&quot;       EnableTheming=&quot;True|False&quot;       EnableViewState=&quot;True|False&quot;       ID=&quot;string&quot;       OnActiveViewChanged=&quot;ActiveViewChanged event handler&quot;       OnDataBinding=&quot;DataBinding event handler&quot;       OnDisposed=&quot;Disposed event handler&quot;       OnInit=&quot;Init event handler&quot;       OnLoad=&quot;Load event handler&quot;       OnPreRender=&quot;PreRender event handler&quot;       OnUnload=&quot;Unload event handler&quot;       runat=&quot;server&quot;       SkinID=&quot;string&quot;       Visible=&quot;True|False&quot;   >               <asp:TemplatedWizardStep                   AllowReturn=&quot;True|False&quot;                   ContentTemplateContainer=&quot;string&quot;                   EnableTheming=&quot;True|False&quot;                   EnableViewState=&quot;True|False&quot;                   ID=&quot;string&quot;                   OnActivate=&quot;Activate event handler&quot;                   OnDataBinding=&quot;DataBinding event handler&quot;                   OnDeactivate=&quot;Deactivate event handler&quot;                   OnDisposed=&quot;Disposed event handler&quot;                   OnInit=&quot;Init event handler&quot;                   OnLoad=&quot;Load event handler&quot;                   OnPreRender=&quot;PreRender event handler&quot;                   OnUnload=&quot;Unload event handler&quot;                   runat=&quot;server&quot;                   SkinID=&quot;string&quot;                   StepType=&quot;Auto|Complete|Finish|Start|Step&quot;                   Title=&quot;string&quot;                   Visible=&quot;True|False&quot;   >                           <ContentTemplate>                               <!-- child controls -->                           </ContentTemplate>                           <CustomNavigationTemplate>                               <!-- child controls -->                           </CustomNavigationTemplate>               </asp:TemplatedWizardStep>               <asp:View                   EnableTheming=&quot;True|False&quot;                   EnableViewState=&quot;True|False&quot;                   ID=&quot;string&quot;                   OnActivate=&quot;Activate event handler&quot;                   OnDataBinding=&quot;DataBinding event handler&quot;                   OnDeactivate=&quot;Deactivate event handler&quot;                   OnDisposed=&quot;Disposed event handler&quot;                   OnInit=&quot;Init event handler&quot;                   OnLoad=&quot;Load event handler&quot;                   OnPreRender=&quot;PreRender event handler&quot;                   OnUnload=&quot;Unload event handler&quot;                   runat=&quot;server&quot;                   SkinID=&quot;string&quot;                   Visible=&quot;True|False&quot;               />               <asp:WizardStep                   AllowReturn=&quot;True|False&quot;                   EnableTheming=&quot;True|False&quot;                   EnableViewState=&quot;True|False&quot;                   ID=&quot;string&quot;                   OnActivate=&quot;Activate event handler&quot;                   OnDataBinding=&quot;DataBinding event handler&quot;                   OnDeactivate=&quot;Deactivate event handler&quot;                   OnDisposed=&quot;Disposed event handler&quot;                   OnInit=&quot;Init event handler&quot;                   OnLoad=&quot;Load event handler&quot;                   OnPreRender=&quot;PreRender event handler&quot;                   OnUnload=&quot;Unload event handler&quot;                   runat=&quot;server&quot;                   SkinID=&quot;string&quot;                   StepType=&quot;Auto|Complete|Finish|Start|Step&quot;                   Title=&quot;string&quot;                   Visible=&quot;True|False&quot;               />   </asp:MultiView>   ```"
+  summary: "表示充当一组的容器的控件<xref href=&quot;System.Web.UI.WebControls.View&quot;></xref>控件。"
+  remarks: "本主题中:-[简介](#introduction)      -   [声明性语法](#declarative_syntax)<a name=&quot;introduction&quot;> </a> # # 简介多视图控件是一组容器<xref:System.Web.UI.WebControls.View>控件。</xref:System.Web.UI.WebControls.View>       它允许您定义的一组<xref:System.Web.UI.WebControls.View>控件，其中每个<xref:System.Web.UI.WebControls.View>控件包含子控件。</xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.View> 你的应用程序随后可以呈现特定<xref:System.Web.UI.WebControls.View>控件添加到客户端基于条件，例如查询字符串参数中传递的用户标识、 用户首选项和信息。</xref:System.Web.UI.WebControls.View> 多视图控件还可用于创建向导。 在此方案中，每个<xref:System.Web.UI.WebControls.View>多视图控件中包含的控件表示不同的单步或在向导中的页。</xref:System.Web.UI.WebControls.View> 你还应使用此控件开发多个屏幕应用程序的移动设备。 此控件可提供与 ASP.NET 移动相同的功能<xref:System.Web.UI.MobileControls.Form>.NET Framework 1.1 版中的控件。</xref:System.Web.UI.MobileControls.Form>       只有一个<xref:System.Web.UI.WebControls.View>一次的控件可以定义为多视图控件中的活动视图。</xref:System.Web.UI.WebControls.View> 当<xref:System.Web.UI.WebControls.View>控件定义为活动视图，它包含的子控件呈现给客户端。</xref:System.Web.UI.WebControls.View> 你可以使用<xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A>属性或<xref:System.Web.UI.WebControls.MultiView.SetActiveView%2A>方法用来定义活动的视图。</xref:System.Web.UI.WebControls.MultiView.SetActiveView%2A> </xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> 如果<xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A>属性为空，则多视图控件不向客户端呈现任何内容。</xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> 如果活动的视图设置为<xref:System.Web.UI.WebControls.View>在多视图控件中，不存在<xref:System.ArgumentOutOfRangeException>在运行时引发。</xref:System.ArgumentOutOfRangeException> </xref:System.Web.UI.WebControls.View>       你可以以声明方式或以编程方式定义活动的视图。 设置<xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A>属性以声明方式定义多视图控件时，也会导致<xref:System.Web.UI.WebControls.View>中被设置为调用活动的视图，以呈现到客户端第一个时间多视图控件的控件。</xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> 下面的代码示例演示如何设置<xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A>属性以声明方式。</xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A>      ```   <asp:MultiView id=&quot;MultiView1&quot; ActiveViewIndex=0 runat=&quot;Server&quot;>    ```设置<xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A>属性以编程方式，或调用<xref:System.Web.UI.WebControls.MultiView.SetActiveView%2A>方法，允许应用程序来确定哪些<xref:System.Web.UI.WebControls.View>控件呈现给客户端在运行时基于条件，例如用户的标识或首选项。</xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.MultiView.SetActiveView%2A> </xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A>       若要允许用户之间导航<xref:System.Web.UI.WebControls.View>多视图控件内的控件，则你可以添加<xref:System.Web.UI.WebControls.LinkButton>或<xref:System.Web.UI.WebControls.Button>控制对每个<xref:System.Web.UI.WebControls.View>控件。</xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.Button> </xref:System.Web.UI.WebControls.LinkButton> </xref:System.Web.UI.WebControls.View> 若要利用多视图控件的自动更新的当前处于活动状态<xref:System.Web.UI.WebControls.View>，将其设置`CommandName`上的按钮或链接按钮之一的以下对应于所需的导航行为的命令名称字段的值的属性︰ <xref:System.Web.UI.WebControls.MultiView.PreviousViewCommandName>， <xref:System.Web.UI.WebControls.MultiView.NextViewCommandName>， <xref:System.Web.UI.WebControls.MultiView.SwitchViewByIDCommandName>，或<xref:System.Web.UI.WebControls.MultiView.SwitchViewByIndexCommandName>。</xref:System.Web.UI.WebControls.MultiView.SwitchViewByIndexCommandName> </xref:System.Web.UI.WebControls.MultiView.SwitchViewByIDCommandName> </xref:System.Web.UI.WebControls.MultiView.NextViewCommandName> </xref:System.Web.UI.WebControls.MultiView.PreviousViewCommandName> </xref:System.Web.UI.WebControls.View>      <a name=&quot;declarative_syntax&quot;></a># # 声明性语法```   <asp:MultiView       ActiveViewIndex=&quot;integer&quot;       EnableTheming=&quot;True|False&quot;       EnableViewState=&quot;True|False&quot;       ID=&quot;string&quot;       OnActiveViewChanged=&quot;ActiveViewChanged event handler&quot;       OnDataBinding=&quot;DataBinding event handler&quot;       OnDisposed=&quot;Disposed event handler&quot;       OnInit=&quot;Init event handler&quot;       OnLoad=&quot;Load event handler&quot;       OnPreRender=&quot;PreRender event handler&quot;       OnUnload=&quot;Unload event handler&quot;       runat=&quot;server&quot;       SkinID=&quot;string&quot;       Visible=&quot;True|False&quot;   >               <asp:TemplatedWizardStep                   AllowReturn=&quot;True|False&quot;                   ContentTemplateContainer=&quot;string&quot;                   EnableTheming=&quot;True|False&quot;                   EnableViewState=&quot;True|False&quot;                   ID=&quot;string&quot;                   OnActivate=&quot;Activate event handler&quot;                   OnDataBinding=&quot;DataBinding event handler&quot;                   OnDeactivate=&quot;Deactivate event handler&quot;                   OnDisposed=&quot;Disposed event handler&quot;                   OnInit=&quot;Init event handler&quot;                   OnLoad=&quot;Load event handler&quot;                   OnPreRender=&quot;PreRender event handler&quot;                   OnUnload=&quot;Unload event handler&quot;                   runat=&quot;server&quot;                   SkinID=&quot;string&quot;                   StepType=&quot;Auto|Complete|Finish|Start|Step&quot;                   Title=&quot;string&quot;                   Visible=&quot;True|False&quot;   >                           <ContentTemplate>                               <!-- child controls -->                           </ContentTemplate>                           <CustomNavigationTemplate>                               <!-- child controls -->                           </CustomNavigationTemplate>               </asp:TemplatedWizardStep>               <asp:View                   EnableTheming=&quot;True|False&quot;                   EnableViewState=&quot;True|False&quot;                   ID=&quot;string&quot;                   OnActivate=&quot;Activate event handler&quot;                   OnDataBinding=&quot;DataBinding event handler&quot;                   OnDeactivate=&quot;Deactivate event handler&quot;                   OnDisposed=&quot;Disposed event handler&quot;                   OnInit=&quot;Init event handler&quot;                   OnLoad=&quot;Load event handler&quot;                   OnPreRender=&quot;PreRender event handler&quot;                   OnUnload=&quot;Unload event handler&quot;                   runat=&quot;server&quot;                   SkinID=&quot;string&quot;                   Visible=&quot;True|False&quot;               />               <asp:WizardStep                   AllowReturn=&quot;True|False&quot;                   EnableTheming=&quot;True|False&quot;                   EnableViewState=&quot;True|False&quot;                   ID=&quot;string&quot;                   OnActivate=&quot;Activate event handler&quot;                   OnDataBinding=&quot;DataBinding event handler&quot;                   OnDeactivate=&quot;Deactivate event handler&quot;                   OnDisposed=&quot;Disposed event handler&quot;                   OnInit=&quot;Init event handler&quot;                   OnLoad=&quot;Load event handler&quot;                   OnPreRender=&quot;PreRender event handler&quot;                   OnUnload=&quot;Unload event handler&quot;                   runat=&quot;server&quot;                   SkinID=&quot;string&quot;                   StepType=&quot;Auto|Complete|Finish|Start|Step&quot;                   Title=&quot;string&quot;                   Visible=&quot;True|False&quot;               />   </asp:MultiView>   ```"
   example:
   - "The following code example demonstrates how to use a MultiView control to create a basic survey. Each <xref:System.Web.UI.WebControls.View> control is a separate survey question. When the user clicks the **Previous** button on any page, the <xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> property is decremented to navigate to the previous <xref:System.Web.UI.WebControls.View> control. When the user clicks the **Next** button on any page, the <xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> property is incremented to navigate to the next <xref:System.Web.UI.WebControls.View> control.  \n  \n> [!NOTE]\n>  The following code samples use the single-file code model and may not work correctly if copied directly into a code-behind file. This code sample must be copied into an empty text file that has an .aspx extension. For more information on the Web Forms code model, see [ASP.NET Web Forms Page Code Model](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[MultiView.ActiveViewIndex Example#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_405_1.aspx)]\n [!code-cs[MultiView.ActiveViewIndex Example#1](~/add/codesnippet/csharp/t-system.web.ui.webcontr_405_1.aspx)]  \n  \n The following code example demonstrates how to create a basic MultiView control that contains three <xref:System.Web.UI.WebControls.View> controls. The view that the user selects from the list box is set to the active view and displayed to the user. For a more detailed example of the MultiView control, see the other code examples provided in this topic.  \n  \n [!code-vb[MultiView Class Example 2#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_405_2.aspx)]  \n  \n The following code example demonstrates how to create a MultiView control that contains three <xref:System.Web.UI.WebControls.View> controls. A <xref:System.Web.UI.WebControls.View> control does not have any style properties. Therefore, each <xref:System.Web.UI.WebControls.View> control contains a <xref:System.Web.UI.WebControls.Panel> control to allow styles to be set on the <xref:System.Web.UI.WebControls.View> control. The first time the page is loaded, the `DefaultView` is set as the active view using the <xref:System.Web.UI.WebControls.MultiView.SetActiveView%2A> method. Each <xref:System.Web.UI.WebControls.View> control contains link buttons to allow the user to navigate to different views.  \n  \n [!code-vb[MultiView Class Example#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_405_3.aspx)]"
   syntax:
@@ -165,8 +165,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> class."
-  remarks: "Use this constructor to create and initialize a new instance of the <xref:System.Web.UI.WebControls.MultiView> class."
+  summary: "初始化的新实例<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>类。"
+  remarks: "使用此构造函数来创建和初始化<xref:System.Web.UI.WebControls.MultiView>类</xref:System.Web.UI.WebControls.MultiView>的新实例"
   syntax:
     content: public MultiView ();
     parameters: []
@@ -186,15 +186,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Occurs when the active <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> control of a <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control changes between posts to the server."
-  remarks: "The ActiveViewChanged event is raised when the active <xref:System.Web.UI.WebControls.View> control within a <xref:System.Web.UI.WebControls.MultiView> control changes between posts to the server.       For more information about handling events, see [How to: Consume Events in a Web Forms Application](~/add/includes/ajax-current-ext-md.md)."
+  summary: "发生时活动<xref href=&quot;System.Web.UI.WebControls.View&quot;></xref>控制<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控制发往服务器之间的更改。"
+  remarks: "将引发 ActiveViewChanged 事件时活动<xref:System.Web.UI.WebControls.View>控件中<xref:System.Web.UI.WebControls.MultiView>控制发往服务器之间的更改。</xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.View>       有关处理事件的详细信息，请参阅[如何︰ 在 Web 窗体应用程序中使用事件](~/add/includes/ajax-current-ext-md.md)。"
   example:
   - "The following example demonstrates how to specify and code an event handler for the ActiveViewChanged event of a <xref:System.Web.UI.WebControls.MultiView> control. When the active view changes, a message is displayed in a <xref:System.Web.UI.WebControls.Label> control on the page.  \n  \n> [!NOTE]\n>  The following code sample uses the single-file code model and may not work correctly if copied directly into a code-behind file. This code sample must be copied into an empty text file that has an .aspx extension. For more information on the Web Forms code model, see [ASP.NET Web Forms Page Code Model](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[MultiView.ActiveViewChanged Event Example#1](~/add/codesnippet/csharp/e-system.web.ui.webcontr_42_1.aspx)]\n [!code-vb[MultiView.ActiveViewChanged Event Example#1](~/add/codesnippet/visualbasic/e-system.web.ui.webcontr_42_1.aspx)]"
   syntax:
     content: public event EventHandler ActiveViewChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -210,20 +210,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the index of the active <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> control within a <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control."
-  remarks: "Use the ActiveViewIndex property to set a <xref:System.Web.UI.WebControls.View> control within a <xref:System.Web.UI.WebControls.MultiView> control as the active view. You can also use this property to return the index of the <xref:System.Web.UI.WebControls.View> control that is currently set as the active view. The index of a <xref:System.Web.UI.WebControls.View> control is determined by the order in which it is declared within a <xref:System.Web.UI.WebControls.MultiView> control. For example, the first <xref:System.Web.UI.WebControls.View> control declared within a <xref:System.Web.UI.WebControls.MultiView> control has an index of 0.       Only one <xref:System.Web.UI.WebControls.View> control at a time can be defined as active within a <xref:System.Web.UI.WebControls.MultiView> control. The <xref:System.Web.UI.WebControls.View> control that is set to the ActiveViewIndex property will be rendered to the client. If the ActiveViewIndex property is set to a <xref:System.Web.UI.WebControls.View> that does not exist within the <xref:System.Web.UI.WebControls.MultiView> control, a <xref:System.ArgumentOutOfRangeException> is raised at run time. If the property is empty, the <xref:System.Web.UI.WebControls.MultiView> control does not render any content to the client.       You can set the ActiveViewIndex property either declaratively at development time or programmatically at run time. Setting the ActiveViewIndex property declaratively when you define the <xref:System.Web.UI.WebControls.MultiView> control causes the <xref:System.Web.UI.WebControls.View> control that is set as the active view to render to the client the first time the <xref:System.Web.UI.WebControls.MultiView> control is called. Setting the ActiveViewIndex property programmatically allows the application to determine which <xref:System.Web.UI.WebControls.View> control to render to the client at run time based on criteria such as a user&quot;s identity or their preferences.       Alternately, you can use the <xref:System.Web.UI.WebControls.MultiView.SetActiveView%2A> and <xref:System.Web.UI.WebControls.MultiView.GetActiveView%2A> methods to set or get the active view within the <xref:System.Web.UI.WebControls.MultiView> control."
+  summary: "获取或设置活动的索引<xref href=&quot;System.Web.UI.WebControls.View&quot;></xref>控件中<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。"
+  remarks: "使用 ActiveViewIndex 属性设置<xref:System.Web.UI.WebControls.View>控件中<xref:System.Web.UI.WebControls.MultiView>控件作为活动视图。</xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.View> 你还可以使用此属性返回的索引<xref:System.Web.UI.WebControls.View>当前被设置为活动的视图的控件。</xref:System.Web.UI.WebControls.View> 索引<xref:System.Web.UI.WebControls.View>控件由顺序确定它在声明中<xref:System.Web.UI.WebControls.MultiView>控件。</xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.View> 例如，第一个<xref:System.Web.UI.WebControls.View>控件中声明<xref:System.Web.UI.WebControls.MultiView>控件具有索引为 0。</xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.View>       只有一个<xref:System.Web.UI.WebControls.View>一次的控件可以定义为活动内<xref:System.Web.UI.WebControls.MultiView>控件。</xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.View> <xref:System.Web.UI.WebControls.View>设置为 ActiveViewIndex 属性的控件将呈现给客户端。</xref:System.Web.UI.WebControls.View> 如果 ActiveViewIndex 属性设置为<xref:System.Web.UI.WebControls.View>中不存在<xref:System.Web.UI.WebControls.MultiView>控件，<xref:System.ArgumentOutOfRangeException>在运行时引发。</xref:System.ArgumentOutOfRangeException> </xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.View> 如果该属性为空，<xref:System.Web.UI.WebControls.MultiView>控件不向客户端呈现任何内容。</xref:System.Web.UI.WebControls.MultiView>       以声明方式在开发时或在运行时以编程方式，你可以设置 ActiveViewIndex 属性。 设置 ActiveViewIndex 属性以声明方式定义时<xref:System.Web.UI.WebControls.MultiView>控制原因<xref:System.Web.UI.WebControls.View>控件设置为活动视图呈现到客户端第一个时间<xref:System.Web.UI.WebControls.MultiView>控件称为。</xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.MultiView> 以编程方式设置 ActiveViewIndex 属性允许应用程序确定哪些<xref:System.Web.UI.WebControls.View>控件呈现给客户端在运行时基于条件，例如用户的标识或他们的首选项。</xref:System.Web.UI.WebControls.View>       或者，可以使用<xref:System.Web.UI.WebControls.MultiView.SetActiveView%2A>和<xref:System.Web.UI.WebControls.MultiView.GetActiveView%2A>方法来设置或获取的活动视图<xref:System.Web.UI.WebControls.MultiView>控件。</xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.MultiView.GetActiveView%2A> </xref:System.Web.UI.WebControls.MultiView.SetActiveView%2A>"
   example:
   - "The following code example demonstrates how to use a <xref:System.Web.UI.WebControls.MultiView> control to create a basic survey. Each <xref:System.Web.UI.WebControls.View> control is a separate survey question. When the user clicks the **Previous** button on any page, the ActiveViewIndex property is decremented to navigate to the previous <xref:System.Web.UI.WebControls.View> control. When the user clicks the **Next** button on any page, the ActiveViewIndex property is incremented to navigate to the next <xref:System.Web.UI.WebControls.View> control.  \n  \n> [!NOTE]\n>  The following code sample uses the single-file code model and may not work correctly if copied directly into a code-behind file. This code sample must be copied into an empty text file that has an .aspx extension. For more information on the Web Forms code model, see [ASP.NET Web Forms Page Code Model](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[MultiView.ActiveViewIndex Example#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_972_1.aspx)]\n [!code-cs[MultiView.ActiveViewIndex Example#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_972_1.aspx)]"
   syntax:
     content: public virtual int ActiveViewIndex { get; set; }
     return:
       type: System.Int32
-      description: "The zero-based index of the active <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> control within a <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control. The default is -1, indicating that no view is set as active."
+      description: "活动的从零开始索引<xref href=&quot;System.Web.UI.WebControls.View&quot;></xref>控件中<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。 默认值为-1，指示无视图是否设置为活动状态。"
   overload: System.Web.UI.WebControls.MultiView.ActiveViewIndex*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The specified index was set to less than -1, or greater than or equal to the number of items on the list."
+    description: "指定的索引已设置为小于-1 或大于或等于项的数目列表上。"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.MultiView.AddParsedSubObject(System.Object)
@@ -238,19 +238,19 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Notifies the <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control that an XML or HTML element was parsed, and adds the element to the <xref href=&quot;System.Web.UI.WebControls.ViewCollection&quot;></xref> collection of the <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control."
-  remarks: "This method overrides the base class implementation to allow only <xref:System.Web.UI.WebControls.View> controls to be added to the <xref:System.Web.UI.WebControls.ViewCollection>."
+  summary: "通知<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件以 XML 或 HTML 元素已经过分析，并将添加到元素<xref href=&quot;System.Web.UI.WebControls.ViewCollection&quot;></xref>集合<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。"
+  remarks: "此方法重写基类实现，以便只允许<xref:System.Web.UI.WebControls.View>控件添加到<xref:System.Web.UI.WebControls.ViewCollection>。</xref:System.Web.UI.WebControls.ViewCollection> </xref:System.Web.UI.WebControls.View>"
   syntax:
     content: protected override void AddParsedSubObject (object obj);
     parameters:
     - id: obj
       type: System.Object
-      description: "An <xref:System.Object> that represents the parsed element."
+      description: "<xref:System.Object>，它表示已分析的元素。</xref:System.Object>"
   overload: System.Web.UI.WebControls.MultiView.AddParsedSubObject*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "The specified <xref:System.Object> is not a <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> control."
+    description: "指定<xref:System.Object>不<xref href=&quot;System.Web.UI.WebControls.View&quot;></xref>控件。</xref:System.Object>"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.MultiView.CreateControlCollection
@@ -265,14 +265,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Creates a <xref href=&quot;System.Web.UI.ControlCollection&quot;></xref> to hold the child controls of the <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control."
-  remarks: "This method overrides the base implementation to always return a <xref:System.Web.UI.WebControls.ViewCollection> to contain the <xref:System.Web.UI.WebControls.View> controls of the current <xref:System.Web.UI.WebControls.MultiView> control."
+  summary: "创建<xref href=&quot;System.Web.UI.ControlCollection&quot;></xref>来保存的控件的子<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。"
+  remarks: "此方法重写基实现来始终返回<xref:System.Web.UI.WebControls.ViewCollection>以包含<xref:System.Web.UI.WebControls.View>控件的当前<xref:System.Web.UI.WebControls.MultiView>控件。</xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.ViewCollection>"
   syntax:
     content: protected override System.Web.UI.ControlCollection CreateControlCollection ();
     parameters: []
     return:
       type: System.Web.UI.ControlCollection
-      description: "A <xref href=&quot;System.Web.UI.WebControls.ViewCollection&quot;></xref> to contain the <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> controls of the current <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.ViewCollection&quot;> </xref>以包含<xref href=&quot;System.Web.UI.WebControls.View&quot;></xref>控件的当前<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。"
   overload: System.Web.UI.WebControls.MultiView.CreateControlCollection*
   exceptions: []
   platform:
@@ -289,13 +289,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets a value indicating whether themes apply to the <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control."
-  remarks: "The EnableTheming property indicates whether themes are enabled for the <xref:System.Web.UI.WebControls.MultiView> control. The EnableTheming property also affects whether themes are enabled for the controls contained in its <xref:System.Web.UI.Control.Controls%2A> collection. When the EnableTheming property is `true`, the application&quot;s theme directory is searched for control skins to apply. If no skin for the particular control exists in the theme directory, a skin is not applied. When the EnableTheming property is `false`, the theme directory is not searched and the contents of the <xref:System.Web.UI.Control.SkinID%2A> property are not used.       A control can override the EnableTheming value set by its parent control or the containing page. For example, if a <xref:System.Web.UI.WebControls.MultiView> control has EnableTheming set to `false`, you can selectively apply themes to individual <xref:System.Web.UI.WebControls.View> controls contained within the <xref:System.Web.UI.WebControls.MultiView> control by setting the <xref:System.Web.UI.Control.EnableTheming%2A> property to `true` on the individual child controls."
+  summary: "获取或设置一个值，该值指示是否将主题应用到<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。"
+  remarks: "EnableTheming 属性指示是否为启用主题<xref:System.Web.UI.WebControls.MultiView>控件。</xref:System.Web.UI.WebControls.MultiView> 是否为中包含的控件启用主题 EnableTheming 属性还会影响其<xref:System.Web.UI.Control.Controls%2A>集合。</xref:System.Web.UI.Control.Controls%2A> 当 EnableTheming 属性是`true`，应用程序的主题目录中搜索要应用的控件外观。 如果用于特定的控件中的主题目录存在，则不会应用的外观。 当 EnableTheming 属性是`false`，则不搜索主题目录和内容<xref:System.Web.UI.Control.SkinID%2A>不使用属性。</xref:System.Web.UI.Control.SkinID%2A>       控件可以重写由其父控件或包含的页设置的 EnableTheming 值。 例如，如果<xref:System.Web.UI.WebControls.MultiView>控件具有设置为 EnableTheming `false`，可以有选择地将主题应用于单个<xref:System.Web.UI.WebControls.View>中包含的控件<xref:System.Web.UI.WebControls.MultiView>通过设置<xref:System.Web.UI.Control.EnableTheming%2A>属性`true`各个子控件上。</xref:System.Web.UI.Control.EnableTheming%2A> </xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.MultiView>"
   syntax:
     content: public override bool EnableTheming { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if themes are to be used; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果主题用于;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.MultiView.EnableTheming*
   exceptions: []
   platform:
@@ -312,8 +312,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Returns the current active <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> control within a <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control."
-  remarks: "Use this method to return the <xref:System.Web.UI.WebControls.View> control within a <xref:System.Web.UI.WebControls.MultiView> control that is currently set as the active view. This method returns a <xref:System.Web.UI.WebControls.View> control and therefore can be used to access the properties of the active view. For example, `MultiView1.GetActiveView.ID` returns the value of the <xref:System.Web.UI.Control.ID%2A> property of the current active view in MultiView1.       Alternately, you can use the <xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> property to get or set the zero-based index of the current active view in a <xref:System.Web.UI.WebControls.MultiView> control. This property can be accessed either declaratively or programmatically."
+  summary: "返回当前的活动<xref href=&quot;System.Web.UI.WebControls.View&quot;></xref>控件中<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。"
+  remarks: "使用此方法返回<xref:System.Web.UI.WebControls.View>控件中<xref:System.Web.UI.WebControls.MultiView>当前被设置为活动的视图的控件。</xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.View> 此方法返回<xref:System.Web.UI.WebControls.View>控制，因此可以用于访问活动的视图的属性。</xref:System.Web.UI.WebControls.View> 例如，`MultiView1.GetActiveView.ID`返回的值<xref:System.Web.UI.Control.ID%2A>MultiView1 中的当前活动视图的属性。</xref:System.Web.UI.Control.ID%2A>       或者，可以使用<xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A>属性来获取或设置当前活动视图中的从零开始索引<xref:System.Web.UI.WebControls.MultiView>控件。</xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> 以声明方式或以编程方式，可以访问此属性。"
   example:
   - "The following example demonstrates how to create a <xref:System.Web.UI.WebControls.MultiView> control that contains three <xref:System.Web.UI.WebControls.View> controls. When the <xref:System.Web.UI.WebControls.MultiView.ActiveViewChanged> event is raised, the GetActiveView method is used to return the current active view and display it in a <xref:System.Web.UI.WebControls.Label> control on the page.  \n  \n> [!NOTE]\n>  The following code sample uses the single-file code model and may not work correctly if copied directly into a code-behind file. This code sample must be copied into an empty text file that has an .aspx extension. For more information on the Web Forms code model, see [ASP.NET Web Forms Page Code Model](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[MultiView.ActiveViewChanged Event Example#1](~/add/codesnippet/csharp/m-system.web.ui.webcontr_87_1.aspx)]\n [!code-vb[MultiView.ActiveViewChanged Event Example#1](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_87_1.aspx)]"
   syntax:
@@ -321,12 +321,12 @@ items:
     parameters: []
     return:
       type: System.Web.UI.WebControls.View
-      description: "A <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> control that represents the active view within a <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.View&quot;> </xref>表示的活动视图的控件<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。"
   overload: System.Web.UI.WebControls.MultiView.GetActiveView*
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
-    description: "The <xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex*> property is not set to a valid <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> control within the <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control."
+    description: "<xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex*>属性未设置为有效<xref href=&quot;System.Web.UI.WebControls.View&quot;></xref>控件中<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。</xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex*>"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.MultiView.LoadControlState(System.Object)
@@ -341,13 +341,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Loads the current state of the <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control."
+  summary: "加载的当前状态<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。"
   syntax:
     content: protected override void LoadControlState (object state);
     parameters:
     - id: state
       type: System.Object
-      description: "An <xref:System.Object> that represents the state of the <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control."
+      description: "<xref:System.Object>表示状态的<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。</xref:System.Object>"
   overload: System.Web.UI.WebControls.MultiView.LoadControlState*
   exceptions: []
   platform:
@@ -364,15 +364,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Represents the command name associated with the next <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> control to display in a <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control. This field is read-only."
-  remarks: "Use the NextViewCommandName field to represent the &quot;NextView&quot; command name.       You can use the value of this field to take advantage of the <xref:System.Web.UI.WebControls.MultiView> control&quot;s automatic updating of the active <xref:System.Web.UI.WebControls.View> control. For example, if a <xref:System.Web.UI.WebControls.View> control contains a <xref:System.Web.UI.WebControls.Button> control that navigates to the previous <xref:System.Web.UI.WebControls.View>, you can set the <xref:System.Web.UI.WebControls.Button.CommandName%2A> property to the value of the NextViewCommandName field, which is &quot;NextView&quot;. This causes the <xref:System.Web.UI.WebControls.MultiView> control to automatically decrement the value of the <xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> property when the button is clicked."
+  summary: "表示与下一个关联的命令名称<xref href=&quot;System.Web.UI.WebControls.View&quot;></xref>控件来显示在<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。 此字段为只读的。"
+  remarks: "使用 NextViewCommandName 字段来表示&quot;NextView&quot;命令名称。       你可以使用此字段的值以利用<xref:System.Web.UI.WebControls.MultiView>控件的自动更新的活动<xref:System.Web.UI.WebControls.View>控件。</xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.MultiView> 例如，如果<xref:System.Web.UI.WebControls.View>控件包含<xref:System.Web.UI.WebControls.Button>控件导航到上一个<xref:System.Web.UI.WebControls.View>，你可以设置<xref:System.Web.UI.WebControls.Button.CommandName%2A>NextViewCommandName 字段，它是&quot;NextView&quot;的值的属性。</xref:System.Web.UI.WebControls.Button.CommandName%2A> </xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.Button> </xref:System.Web.UI.WebControls.View> 这将导致<xref:System.Web.UI.WebControls.MultiView>控件自动递减的值<xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A>属性时单击该按钮。</xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> </xref:System.Web.UI.WebControls.MultiView>"
   example:
   - "The following code example demonstrates how to use a <xref:System.Web.UI.WebControls.MultiView> control to create a basic survey. Each <xref:System.Web.UI.WebControls.View> control is a separate survey question. The <xref:System.Web.UI.WebControls.MultiView.PreviousViewCommandName> and NextViewCommandName fields are used to provide automatic navigation between the previous and next <xref:System.Web.UI.WebControls.View> controls in the survey.  \n  \n [!code-vb[MultiView.NextViewCommandName#1](~/add/codesnippet/visualbasic/f-system.web.ui.webcontr_0_1.aspx)]\n [!code-cs[MultiView.NextViewCommandName#1](~/add/codesnippet/csharp/f-system.web.ui.webcontr_0_1.aspx)]"
   syntax:
     content: public static readonly string NextViewCommandName;
     return:
       type: System.String
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -388,8 +388,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Raises the <xref href=&quot;System.Web.UI.WebControls.MultiView.ActiveViewChanged&quot;></xref> event of a <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control."
-  remarks: "The <xref:System.Web.UI.WebControls.MultiView.ActiveViewChanged> event is raised when the active <xref:System.Web.UI.WebControls.View> control within a <xref:System.Web.UI.WebControls.MultiView> control changes between posts to the server, and you can provide a custom handler for this event.       Raising an event invokes the event handler through a delegate. For more information, see [How to: Consume Events in a Web Forms Application](~/add/includes/ajax-current-ext-md.md).       The OnActiveViewChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "引发<xref href=&quot;System.Web.UI.WebControls.MultiView.ActiveViewChanged&quot;></xref>事件<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。"
+  remarks: "<xref:System.Web.UI.WebControls.MultiView.ActiveViewChanged>引发事件时活动<xref:System.Web.UI.WebControls.View>控件中<xref:System.Web.UI.WebControls.MultiView>控制发送到服务器，操作之间的更改，你可以为此事件提供自定义处理程序。</xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.MultiView.ActiveViewChanged>       引发事件时，将调用事件处理程序，通过委托。 有关详细信息，请参阅[如何︰ 在 Web 窗体应用程序中使用事件](~/add/includes/ajax-current-ext-md.md)。       OnActiveViewChanged 方法还允许派生的类对事件进行处理而不必附加委托。 这是处理派生类中的事件的首选的技术。"
   example:
   - "The following example demonstrates how to specify and code an event handler for the <xref:System.Web.UI.WebControls.MultiView.ActiveViewChanged> event of a <xref:System.Web.UI.WebControls.MultiView> control. When the active view changes, a message is displayed in a <xref:System.Web.UI.WebControls.Label> control on the page.  \n  \n> [!NOTE]\n>  The following code sample uses the single-file code model and may not work correctly if copied directly into a code-behind file. This code sample must be copied into an empty text file that has an .aspx extension. For more information on the Web Forms code model, see [ASP.NET Web Forms Page Code Model](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[MultiView.ActiveViewChanged Event Example#1](~/add/codesnippet/csharp/m-system.web.ui.webcontr_82_1.aspx)]\n [!code-vb[MultiView.ActiveViewChanged Event Example#1](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_82_1.aspx)]"
   syntax:
@@ -397,7 +397,7 @@ items:
     parameters:
     - id: e
       type: System.EventArgs
-      description: "A &lt;xref:System.EventArgs?displayProperty=fullName&gt; that contains the event data."
+      description: "A &lt;xref:System.EventArgs?displayProperty=fullName&gt;包含事件数据。"
   overload: System.Web.UI.WebControls.MultiView.OnActiveViewChanged*
   exceptions: []
   platform:
@@ -414,28 +414,28 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Determines whether the event for the <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control is passed to the page&quot;s UI server control hierarchy."
-  remarks: "A <xref:System.Web.UI.WebControls.MultiView> control contains <xref:System.Web.UI.WebControls.View> controls that raise events. This method overrides the base implementation to handle navigation between <xref:System.Web.UI.WebControls.View> controls."
+  summary: "确定是否为事件<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控制权传递给该页面的 UI 服务器控件层次结构。"
+  remarks: "A<xref:System.Web.UI.WebControls.MultiView>控件包含<xref:System.Web.UI.WebControls.View>引发事件的控件。</xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.MultiView> 此方法重写基实现来处理之间的导航<xref:System.Web.UI.WebControls.View>控件。</xref:System.Web.UI.WebControls.View>"
   syntax:
     content: protected override bool OnBubbleEvent (object source, EventArgs e);
     parameters:
     - id: source
       type: System.Object
-      description: "The source of the event."
+      description: "事件源。"
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> object that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据的对象。</xref:System.EventArgs>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the event has been canceled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果事件已被取消;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.MultiView.OnBubbleEvent*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "The <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control cannot find the <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> specified in the <xref:System.Web.UI.WebControls.CommandEventArgs.CommandArgument*> property of <code>e</code>."
+    description: "<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;> </xref>控件找不到<xref href=&quot;System.Web.UI.WebControls.View&quot;></xref>中指定<xref:System.Web.UI.WebControls.CommandEventArgs.CommandArgument*>属性<code> e </code>。</xref:System.Web.UI.WebControls.CommandEventArgs.CommandArgument*>"
   - type: System.FormatException
     commentId: T:System.FormatException
-    description: "The <xref:System.Web.UI.WebControls.CommandEventArgs.CommandArgument*> property of <code>e</code> cannot be parsed as an integer."
+    description: "<xref:System.Web.UI.WebControls.CommandEventArgs.CommandArgument*>属性<code> e </code>无法分析为整数。</xref:System.Web.UI.WebControls.CommandEventArgs.CommandArgument*>"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.MultiView.OnInit(System.EventArgs)
@@ -450,14 +450,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Raises the <xref href=&quot;System.Web.UI.Control.Init&quot;></xref> event."
-  remarks: "When notified by this method, a <xref:System.Web.UI.WebControls.MultiView> control must perform any initialization steps that are required to create and set up an instance. In this stage of the server control&quot;s lifecycle, the control&quot;s view state has yet to be populated. You cannot access another server control when this method is called, even if it is a child or parent of this control. Other server controls are not certain to be created and ready for access."
+  summary: "引发<xref href=&quot;System.Web.UI.Control.Init&quot;></xref>事件。"
+  remarks: "当此方法通知<xref:System.Web.UI.WebControls.MultiView>控件必须执行任何所需创建并设置实例的初始化步骤。</xref:System.Web.UI.WebControls.MultiView> 在此阶段的服务器控件的生命周期中，控件的视图状态尚未填充。 你无法访问另一个服务器控件时调用此方法时，即使它是子还是此控件的父级。 其他服务器控件也不一定能够将创建并可供访问。"
   syntax:
     content: protected override void OnInit (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> object that contains the event data."
+      description: "<xref:System.EventArgs>包含事件数据的对象。</xref:System.EventArgs>"
   overload: System.Web.UI.WebControls.MultiView.OnInit*
   exceptions: []
   platform:
@@ -474,15 +474,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Represents the command name associated with the previous <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> control to display in a <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control. This field is read-only."
-  remarks: "Use the PreviousViewCommandName field to represent the &quot;PrevView&quot; command name.       You can use the value of this field to take advantage of the <xref:System.Web.UI.WebControls.MultiView> control&quot;s automatic updating of the active <xref:System.Web.UI.WebControls.View> control. For example, if a <xref:System.Web.UI.WebControls.View> control contains a <xref:System.Web.UI.WebControls.Button> control that navigates to the next <xref:System.Web.UI.WebControls.View>, you can set the <xref:System.Web.UI.WebControls.Button.CommandName%2A> property to the value of the PreviousViewCommandName field, which is &quot;PrevView&quot;. This causes the <xref:System.Web.UI.WebControls.MultiView> control to automatically increment the value of the <xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> property when the button is clicked."
+  summary: "表示与上一个相关联的命令名称<xref href=&quot;System.Web.UI.WebControls.View&quot;></xref>控件来显示在<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。 此字段为只读的。"
+  remarks: "使用 PreviousViewCommandName 字段来表示&quot;PrevView&quot;命令名称。       你可以使用此字段的值以利用<xref:System.Web.UI.WebControls.MultiView>控件的自动更新的活动<xref:System.Web.UI.WebControls.View>控件。</xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.MultiView> 例如，如果<xref:System.Web.UI.WebControls.View>控件包含<xref:System.Web.UI.WebControls.Button>导航到下一个控件<xref:System.Web.UI.WebControls.View>，你可以设置<xref:System.Web.UI.WebControls.Button.CommandName%2A>PreviousViewCommandName 字段，它是&quot;PrevView&quot;的值的属性。</xref:System.Web.UI.WebControls.Button.CommandName%2A> </xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.Button> </xref:System.Web.UI.WebControls.View> 这将导致<xref:System.Web.UI.WebControls.MultiView>控制时自动递增的值<xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A>属性时单击该按钮。</xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> </xref:System.Web.UI.WebControls.MultiView>"
   example:
   - "The following code example demonstrates how to use a <xref:System.Web.UI.WebControls.MultiView> control to create a basic survey. Each <xref:System.Web.UI.WebControls.View> control is a separate survey question. The PreviousViewCommandName and <xref:System.Web.UI.WebControls.MultiView.NextViewCommandName> fields are used to provide automatic navigation between the previous and next <xref:System.Web.UI.WebControls.View> controls in the survey.  \n  \n> [!NOTE]\n>  The following code sample uses the single-file code model and may not work correctly if copied directly into a code-behind file. This code sample must be copied into an empty text file that has an .aspx extension. For more information on the Web Forms code model, see [ASP.NET Web Forms Page Code Model](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[MultiView.NextViewCommandName#1](~/add/codesnippet/visualbasic/f-system.web.ui.webcontr_4_1.aspx)]\n [!code-cs[MultiView.NextViewCommandName#1](~/add/codesnippet/csharp/f-system.web.ui.webcontr_4_1.aspx)]"
   syntax:
     content: public static readonly string PreviousViewCommandName;
     return:
       type: System.String
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -498,14 +498,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Called after a <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> control is removed from the <xref:System.Web.UI.Control.Controls*> collection of a <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control."
-  remarks: "The <xref:System.Web.UI.Control.RemovedControl%2A> method is called immediately after a <xref:System.Web.UI.WebControls.View> control is removed from the <xref:System.Web.UI.Control.Controls%2A> collection of a <xref:System.Web.UI.WebControls.MultiView> control."
+  summary: "之后调用<xref href=&quot;System.Web.UI.WebControls.View&quot;></xref>控件移除从<xref:System.Web.UI.Control.Controls*>集合<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。</xref:System.Web.UI.Control.Controls*>"
+  remarks: "<xref:System.Web.UI.Control.RemovedControl%2A>方法之后，立即调用<xref:System.Web.UI.WebControls.View>控件移除从<xref:System.Web.UI.Control.Controls%2A>集合<xref:System.Web.UI.WebControls.MultiView>控件。</xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.Control.Controls%2A> </xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.Control.RemovedControl%2A>"
   syntax:
     content: protected override void RemovedControl (System.Web.UI.Control ctl);
     parameters:
     - id: ctl
       type: System.Web.UI.Control
-      description: "The <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> control that has been removed."
+      description: "<xref href=&quot;System.Web.UI.WebControls.View&quot;> </xref>已删除的控件。"
   overload: System.Web.UI.WebControls.MultiView.RemovedControl*
   exceptions: []
   platform:
@@ -522,14 +522,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Writes the <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control content to the specified <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> object, for display on the client."
-  remarks: "The Render method is used primarily by control developers when deriving a custom class from the <xref:System.Web.UI.WebControls.MultiView> control.       The Render method writes the rendered content of the active view to the client using the supplied <xref:System.Web.UI.HtmlTextWriter>. You can set the active view in a <xref:System.Web.UI.WebControls.MultiView> control using the <xref:System.Web.UI.WebControls.MultiView.SetActiveView%2A> method or the <xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> property. You can determine which one of the <xref:System.Web.UI.WebControls.View> controls in the <xref:System.Web.UI.WebControls.MultiView.Views%2A> collection is the active view, if any, by using the <xref:System.Web.UI.WebControls.MultiView.GetActiveView%2A> method or the <xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> property.       If an active view is set for the <xref:System.Web.UI.WebControls.MultiView> control, the active <xref:System.Web.UI.WebControls.View> control is used to render content for that view and its child controls. If an active view is not set for the <xref:System.Web.UI.WebControls.MultiView> control, no content is rendered to the <xref:System.Web.UI.HtmlTextWriter>."
+  summary: "写入<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件内容写入指定<xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref>对象，以便在客户端上显示。"
+  remarks: "派生自定义类时，主要由控件开发人员使用 Render 方法<xref:System.Web.UI.WebControls.MultiView>控件。</xref:System.Web.UI.WebControls.MultiView>       Render 方法将写入客户端使用提供的<xref:System.Web.UI.HtmlTextWriter>.</xref:System.Web.UI.HtmlTextWriter>所呈现的内容的活动视图 你可以在设置活动视图<xref:System.Web.UI.WebControls.MultiView>控制使用<xref:System.Web.UI.WebControls.MultiView.SetActiveView%2A>方法或<xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A>属性。</xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> </xref:System.Web.UI.WebControls.MultiView.SetActiveView%2A> </xref:System.Web.UI.WebControls.MultiView> 你可以确定哪种<xref:System.Web.UI.WebControls.View>中控制<xref:System.Web.UI.WebControls.MultiView.Views%2A>集合是活动的视图中，如果有的话，通过使用<xref:System.Web.UI.WebControls.MultiView.GetActiveView%2A>方法或<xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A>属性。</xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> </xref:System.Web.UI.WebControls.MultiView.GetActiveView%2A> </xref:System.Web.UI.WebControls.MultiView.Views%2A> </xref:System.Web.UI.WebControls.View>       如果活动视图设置为<xref:System.Web.UI.WebControls.MultiView>控制，活动<xref:System.Web.UI.WebControls.View>控件用于呈现该视图及其子控件的内容。</xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.MultiView> 如果没有<xref:System.Web.UI.WebControls.MultiView>任何内容呈现到<xref:System.Web.UI.HtmlTextWriter>。</xref:System.Web.UI.HtmlTextWriter>控件，</xref:System.Web.UI.WebControls.MultiView>为设置活动视图"
   syntax:
     content: protected override void Render (System.Web.UI.HtmlTextWriter writer);
     parameters:
     - id: writer
       type: System.Web.UI.HtmlTextWriter
-      description: "An <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> that represents the output stream to render HTML content on the client."
+      description: "<xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> ，它表示要在客户端呈现 HTML 内容的输出流。"
   overload: System.Web.UI.WebControls.MultiView.Render*
   exceptions: []
   platform:
@@ -546,13 +546,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Saves the current state of the <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control."
+  summary: "将保存的当前状态<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。"
   syntax:
     content: protected override object SaveControlState ();
     parameters: []
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the state of the <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control. If there is no state associated with the <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control, this method returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "<xref:System.Object>表示状态的<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。</xref:System.Object> 如果没有与状态<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控制，此方法返回<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.MultiView.SaveControlState*
   exceptions: []
   platform:
@@ -569,8 +569,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Sets the specified <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> control to the active view within a <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control."
-  remarks: "Use this method to set a <xref:System.Web.UI.WebControls.View> control within a <xref:System.Web.UI.WebControls.MultiView> control as the active view. Only one <xref:System.Web.UI.WebControls.View> control at a time can be defined as active within a <xref:System.Web.UI.WebControls.MultiView> control. The <xref:System.Web.UI.WebControls.View> control that is set as the active view is rendered to the client. If a <xref:System.Web.UI.WebControls.View> control that does not exist within the <xref:System.Web.UI.WebControls.MultiView> control is set as active, an exception is raised at run time. If no <xref:System.Web.UI.WebControls.View> control is set as the active view, the <xref:System.Web.UI.WebControls.MultiView> control does not render any content to the client.       Using the SetActiveView method to programmatically set the active view allows the application to determine which <xref:System.Web.UI.WebControls.View> control to render to the client at run time based on criteria such as a user&quot;s identity and preferences.       Alternately, you can use the <xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> property to get or set the zero-based index of the current active view in a <xref:System.Web.UI.WebControls.MultiView> control. This property can be accessed either declaratively or programmatically."
+  summary: "设置指定<xref href=&quot;System.Web.UI.WebControls.View&quot;></xref>控件中的活动视图与<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。"
+  remarks: "使用此方法设置<xref:System.Web.UI.WebControls.View>控件中<xref:System.Web.UI.WebControls.MultiView>控件作为活动视图。</xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.View> 只有一个<xref:System.Web.UI.WebControls.View>一次的控件可以定义为活动内<xref:System.Web.UI.WebControls.MultiView>控件。</xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.View> <xref:System.Web.UI.WebControls.View>中被设置为活动视图呈现给客户端的控件。</xref:System.Web.UI.WebControls.View> 如果<xref:System.Web.UI.WebControls.View>中不存在的控件<xref:System.Web.UI.WebControls.MultiView>控件设置为活动状态，则在运行时引发异常。</xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.View> 如果没有<xref:System.Web.UI.WebControls.View>控件设置为活动的视图，<xref:System.Web.UI.WebControls.MultiView>控件不向客户端呈现任何内容。</xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.View>       使用 SetActiveView 方法以编程方式设置活动视图允许应用程序确定哪些<xref:System.Web.UI.WebControls.View>控件呈现给客户端在运行时基于用户的标识和首选项等条件。</xref:System.Web.UI.WebControls.View>       或者，可以使用<xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A>属性来获取或设置当前活动视图中的从零开始索引<xref:System.Web.UI.WebControls.MultiView>控件。</xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> 以声明方式或以编程方式，可以访问此属性。"
   example:
   - "The following example demonstrates how to create a <xref:System.Web.UI.WebControls.MultiView> control that contains three <xref:System.Web.UI.WebControls.View> controls. The first time the page is loaded, the `DefaultView` is set as the active view using the SetActiveView method. Each <xref:System.Web.UI.WebControls.View> control contains link buttons to allow the user to navigate to different views.  \n  \n> [!NOTE]\n>  The following code sample uses the single-file code model and may not work correctly if copied directly into a code-behind file. This code sample must be copied into an empty text file that has an .aspx extension. For more information on the Web Forms code model, see [ASP.NET Web Forms Page Code Model](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[MultiView Class Example#1](~/add/codesnippet/visualbasic/76c9fa12-8df1-431a-a4f3-_1.aspx)]"
   syntax:
@@ -578,12 +578,12 @@ items:
     parameters:
     - id: view
       type: System.Web.UI.WebControls.View
-      description: "A <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> control to set as the active view within a <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.View&quot;> </xref>控件设置为活动视图内<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。"
   overload: System.Web.UI.WebControls.MultiView.SetActiveView*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "The specified <code>view</code> parameter value was not contained in the <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control."
+    description: "指定<code> view </code>中未包含参数值<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.MultiView.SwitchViewByIDCommandName
@@ -598,15 +598,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Represents the command name associated with changing the active <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> control in a <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control, based on a specified <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> id. This field is read-only."
-  remarks: "Use the SwitchViewByIDCommandName field to represent the &quot;SwitchViewByID&quot; command name.       You can use the value of this field to take advantage of the <xref:System.Web.UI.WebControls.MultiView> control&quot;s automatic updating of the active <xref:System.Web.UI.WebControls.View> control. For example, if a <xref:System.Web.UI.WebControls.View> control contains a <xref:System.Web.UI.WebControls.Button> control that navigates to the first <xref:System.Web.UI.WebControls.View> when clicked, you can set the <xref:System.Web.UI.WebControls.Button.CommandName%2A> property to the value of the SwitchViewByIDCommandName field, which is &quot;SwitchViewByID&quot;. Set the <xref:System.Web.UI.WebControls.Button.CommandArgument%2A> property to the ID of the first <xref:System.Web.UI.WebControls.View> in the <xref:System.Web.UI.WebControls.MultiView> control, such as &quot;Page1&quot;. This causes the <xref:System.Web.UI.WebControls.MultiView> control to automatically set &quot;Page1&quot; as the active <xref:System.Web.UI.WebControls.View> when the button is clicked."
+  summary: "表示与更改活动关联的命令名称<xref href=&quot;System.Web.UI.WebControls.View&quot;></xref>中控制<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件，根据指定<xref href=&quot;System.Web.UI.WebControls.View&quot;> </xref> id。 此字段为只读的。"
+  remarks: "使用 SwitchViewByIDCommandName 字段来表示&quot;SwitchViewByID&quot;命令名称。       你可以使用此字段的值以利用<xref:System.Web.UI.WebControls.MultiView>控件的自动更新的活动<xref:System.Web.UI.WebControls.View>控件。</xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.MultiView> 例如，如果<xref:System.Web.UI.WebControls.View>控件包含<xref:System.Web.UI.WebControls.Button>控件导航到第一个<xref:System.Web.UI.WebControls.View>单击时，你可以设置<xref:System.Web.UI.WebControls.Button.CommandName%2A>SwitchViewByIDCommandName 字段，它是&quot;SwitchViewByID&quot;的值的属性。</xref:System.Web.UI.WebControls.Button.CommandName%2A> </xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.Button> </xref:System.Web.UI.WebControls.View> 设置<xref:System.Web.UI.WebControls.Button.CommandArgument%2A>属性设置为第一个 ID<xref:System.Web.UI.WebControls.View>中<xref:System.Web.UI.WebControls.MultiView>的控制权，例如&quot;页&1;&quot;。</xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.Button.CommandArgument%2A> 这将导致<xref:System.Web.UI.WebControls.MultiView>控件自动将&quot;页&1;&quot;设置为活动<xref:System.Web.UI.WebControls.View>时单击该按钮。</xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.MultiView>"
   example:
   - "The following code example demonstrates how to use a <xref:System.Web.UI.WebControls.MultiView> control to create a basic survey. Each <xref:System.Web.UI.WebControls.View> control is a separate survey question. The <xref:System.Web.UI.WebControls.MultiView.PreviousViewCommandName> and <xref:System.Web.UI.WebControls.MultiView.NextViewCommandName> fields are used to provide automatic navigation between the previous and next <xref:System.Web.UI.WebControls.View> controls in the survey. If the user clicks the **Retake Survey** button in the last <xref:System.Web.UI.WebControls.View> of the survey, the SwitchViewByIDCommandName field is used along with a command argument of \"Page1\" to redirect the user back to the first <xref:System.Web.UI.WebControls.View> of the survey.  \n  \n> [!NOTE]\n>  The following code sample uses the single-file code model and may not work correctly if copied directly into a code-behind file. This code sample must be copied into an empty text file that has an .aspx extension. For more information on the Web Forms code model, see [ASP.NET Web Forms Page Code Model](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[MultiView.NextViewCommandName#1](~/add/codesnippet/visualbasic/f-system.web.ui.webcontr_8_1.aspx)]\n [!code-cs[MultiView.NextViewCommandName#1](~/add/codesnippet/csharp/f-system.web.ui.webcontr_8_1.aspx)]"
   syntax:
     content: public static readonly string SwitchViewByIDCommandName;
     return:
       type: System.String
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -622,15 +622,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Represents the command name associated with changing the active <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> control in a <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control based on a specified <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> index. This field is read-only."
-  remarks: "Use the SwitchViewByIndexCommandName field to represent the &quot;SwitchViewByIndex&quot; command name.       You can use the value of this field to take advantage of the <xref:System.Web.UI.WebControls.MultiView> control&quot;s automatic updating of the active <xref:System.Web.UI.WebControls.View> control. For example, if a <xref:System.Web.UI.WebControls.View> control contains a <xref:System.Web.UI.WebControls.Button> control that navigates to the first <xref:System.Web.UI.WebControls.View> when clicked, you can set the <xref:System.Web.UI.WebControls.Button.CommandName%2A> property to the value of the SwitchViewByIndexCommandName field, which is &quot;SwitchViewByIndex&quot;. Set the <xref:System.Web.UI.WebControls.Button.CommandArgument%2A> property to the index of the first <xref:System.Web.UI.WebControls.View> in the <xref:System.Web.UI.WebControls.MultiView> control, which is 0. This causes the <xref:System.Web.UI.WebControls.MultiView> control to automatically set the <xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> property to 0 when the button is clicked."
+  summary: "表示与更改活动关联的命令名称<xref href=&quot;System.Web.UI.WebControls.View&quot;></xref>中控制<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件基于指定<xref href=&quot;System.Web.UI.WebControls.View&quot;></xref>索引。 此字段为只读的。"
+  remarks: "使用 SwitchViewByIndexCommandName 字段来表示&quot;SwitchViewByIndex&quot;命令名称。       你可以使用此字段的值以利用<xref:System.Web.UI.WebControls.MultiView>控件的自动更新的活动<xref:System.Web.UI.WebControls.View>控件。</xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.MultiView> 例如，如果<xref:System.Web.UI.WebControls.View>控件包含<xref:System.Web.UI.WebControls.Button>控件导航到第一个<xref:System.Web.UI.WebControls.View>单击时，你可以设置<xref:System.Web.UI.WebControls.Button.CommandName%2A>SwitchViewByIndexCommandName 字段，它是&quot;SwitchViewByIndex&quot;的值的属性。</xref:System.Web.UI.WebControls.Button.CommandName%2A> </xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.Button> </xref:System.Web.UI.WebControls.View> 设置<xref:System.Web.UI.WebControls.Button.CommandArgument%2A>属性的第一个索引<xref:System.Web.UI.WebControls.View>中<xref:System.Web.UI.WebControls.MultiView>控件，则为 0。</xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.View> </xref:System.Web.UI.WebControls.Button.CommandArgument%2A> 这将导致<xref:System.Web.UI.WebControls.MultiView>控件自动设置<xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A>属性设为 0 时单击该按钮。</xref:System.Web.UI.WebControls.MultiView.ActiveViewIndex%2A> </xref:System.Web.UI.WebControls.MultiView>"
   example:
   - "The following code example demonstrates how to use a <xref:System.Web.UI.WebControls.MultiView> control to create a basic survey. Each <xref:System.Web.UI.WebControls.View> control is a separate survey question. The <xref:System.Web.UI.WebControls.MultiView.PreviousViewCommandName> and <xref:System.Web.UI.WebControls.MultiView.NextViewCommandName> fields are used to provide automatic navigation between the previous and next <xref:System.Web.UI.WebControls.View> controls in the survey. If the user clicks the **Retake Survey** button in the last <xref:System.Web.UI.WebControls.View> of the survey, the SwitchViewByIndexCommandName field is used along with a command argument of 0 to redirect the user back to the first <xref:System.Web.UI.WebControls.View> of the survey.  \n  \n> [!NOTE]\n>  The following code sample uses the single-file code model and may not work correctly if copied directly into a code-behind file. This code sample must be copied into an empty text file that has an .aspx extension. For more information on the Web Forms code model, see [ASP.NET Web Forms Page Code Model](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[MultiView.SwitchViewByIndexCommandName#1](~/add/codesnippet/csharp/f-system.web.ui.webcontr_2_1.aspx)]\n [!code-vb[MultiView.SwitchViewByIndexCommandName#1](~/add/codesnippet/visualbasic/f-system.web.ui.webcontr_2_1.aspx)]"
   syntax:
     content: public static readonly string SwitchViewByIndexCommandName;
     return:
       type: System.String
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -646,15 +646,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets the collection of <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> controls in the <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control."
-  remarks: "Use this property to programmatically manage the <xref:System.Web.UI.WebControls.View> controls in a <xref:System.Web.UI.WebControls.MultiView> control."
+  summary: "获取的集合<xref href=&quot;System.Web.UI.WebControls.View&quot;></xref>中控制<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。"
+  remarks: "使用此属性以编程方式管理<xref:System.Web.UI.WebControls.View>中控制<xref:System.Web.UI.WebControls.MultiView>控件。</xref:System.Web.UI.WebControls.MultiView> </xref:System.Web.UI.WebControls.View>"
   example:
   - "The following example demonstrates how to programmatically add <xref:System.Web.UI.WebControls.View> controls to a <xref:System.Web.UI.WebControls.MultiView> control. After each <xref:System.Web.UI.WebControls.View> control is created, the `MultiView.Views.Add()` syntax is used to add the <xref:System.Web.UI.WebControls.View> control to the <xref:System.Web.UI.WebControls.ViewCollection> collection of the <xref:System.Web.UI.WebControls.MultiView> control.  \n  \n> [!NOTE]\n>  The following code sample uses the single-file code model and may not work correctly if copied directly into a code-behind file. This code sample must be copied into an empty text file that has an .aspx extension. For more information on the Web Forms code model, see [ASP.NET Web Forms Page Code Model](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[MultiView.Views Example#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1214_1.aspx)]"
   syntax:
     content: public virtual System.Web.UI.WebControls.ViewCollection Views { get; }
     return:
       type: System.Web.UI.WebControls.ViewCollection
-      description: "A <xref href=&quot;System.Web.UI.WebControls.ViewCollection&quot;></xref> that represents a collection of <xref href=&quot;System.Web.UI.WebControls.View&quot;></xref> controls within a <xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref> control. The default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.ViewCollection&quot;> </xref>表示的集合<xref href=&quot;System.Web.UI.WebControls.View&quot;></xref>内控制<xref href=&quot;System.Web.UI.WebControls.MultiView&quot;></xref>控件。 默认值是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.UI.WebControls.MultiView.Views*
   exceptions: []
   platform:
