@@ -13,8 +13,8 @@ items:
   nameWithType: MergeOption
   fullName: System.Data.Objects.MergeOption
   type: Enum
-  summary: "Specifies how objects being loaded into the object context are merged with objects already in the object context."
-  remarks: "The [!INCLUDE[adonet_ef](~/add/includes/adonet-ef-md.md)] only maintains a single instance of an object with a specific entity key in the cache. The <xref:System.Data.EntityKey> objects are immutable objects that that represent object&quot;s identity. Entity keys are used to perform identity resolution in the object context. For more information, see [Working with Entity Keys](http://msdn.microsoft.com/en-us/fe3f4206-d277-43a1-a72f-4e86fdf12b9f). If an entity with the same identity is already being tracked, the data coming from the data source and the data already in the state manager are merged according to the MergeOption of the query."
+  summary: "指定要加载到对象上下文的对象与对象上下文中已经存在对象的合并方式。"
+  remarks: "[!INCLUDE[adonet_ef](~/add/includes/adonet-ef-md.md)]仅维护与缓存中的特定实体键的对象的单个实例。 <xref:System.Data.EntityKey>对象是不可变对象，表示的对象的标识。</xref:System.Data.EntityKey> 实体键用于在对象上下文中执行标识解析。 有关详细信息，请参阅[使用实体键](http://msdn.microsoft.com/en-us/fe3f4206-d277-43a1-a72f-4e86fdf12b9f)。 如果已跟踪具有相同的标识的实体时，根据查询的 MergeOption 进行合并来自数据源和状态管理器中已有数据的数据。"
   syntax:
     content: public enum MergeOption
   inheritance:
@@ -33,12 +33,12 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Objects that do not exist in the object context are attached to the context. If an object is already in the context, the current and original values of object&quot;s properties in the entry are not overwritten with data source values. The state of the object&quot;s entry and state of properties of the object in the entry do not change. AppendOnly is the default merge option."
+  summary: "对象上下文中不存在的对象附加到上下文中。 如果上下文中已存在的对象，则该项中的对象的属性的当前和原始值不会使用数据源值覆盖。 对象的项的状态和状态的条目中对象的属性不会更改。 仅附加是默认合并选项。"
   syntax:
     content: AppendOnly
     return:
       type: System.Data.Objects.MergeOption
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -54,12 +54,12 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Objects are maintained in a <xref:System.Data.EntityState.Detached> state and are not tracked in the <xref href=&quot;System.Data.Objects.ObjectStateManager&quot;></xref>. However, [!INCLUDE[adonet_ef](~/add/includes/adonet-ef-md.md)]-generated entities and POCO entities with proxies maintain a reference to the object context to facilitate loading of related objects."
+  summary: "对象保持<xref:System.Data.EntityState.Detached>状态，不会在跟踪<xref href=&quot;System.Data.Objects.ObjectStateManager&quot;> </xref>。</xref:System.Data.EntityState.Detached> 但是， [!INCLUDE[adonet_ef](~/add/includes/adonet-ef-md.md)]-生成的实体和与代理的 POCO 实体维护到对象上下文，以促进加载相关对象的引用。"
   syntax:
     content: NoTracking
     return:
       type: System.Data.Objects.MergeOption
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -75,12 +75,12 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Objects that do not exist in the object context are attached to the context. If an object is already in the context, the current and original values of object&quot;s properties in the entry are overwritten with data source values. The state of the object&quot;s entry is set to <xref:System.Data.EntityState.Unchanged>, no properties are marked as modified."
+  summary: "对象上下文中不存在的对象附加到上下文中。 如果在上下文中已存在的对象，则该项中的对象的属性的当前和原始值将使用数据源值覆盖。 对象的项的状态设置为<xref:System.Data.EntityState.Unchanged>，任何属性标记为已修改。</xref:System.Data.EntityState.Unchanged>"
   syntax:
     content: OverwriteChanges
     return:
       type: System.Data.Objects.MergeOption
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -96,13 +96,13 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Objects that do not exist in the object context are attached to the context."
-  remarks: "If the state of the entity is <xref:System.Data.EntityState.Unchanged>, the current and original values in the entry are overwritten with data source values. The state of the entity remains <xref:System.Data.EntityState.Unchanged> and no properties are marked as modified.       If the state of the entity is <xref:System.Data.EntityState.Modified>, the current values of modified properties are not overwritten with data source values. The original values of unmodified properties are overwritten with the values from the data source.       In the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] version 4, the [!INCLUDE[adonet_ef](~/add/includes/adonet-ef-md.md)] compares the current values of unmodified properties with the values that were returned from the data source. If the values are not the same, the property is marked as modified.       In the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] version 3.5 SP1, the [!INCLUDE[adonet_ef](~/add/includes/adonet-ef-md.md)] does not mark the property as modified, even if the value in the data source is different.       Only modified properties are persisted to the data source when you call <xref:System.Data.Objects.ObjectContext.SaveChanges%2A>.       To preserve the 3.5 SP1 behavior, set <xref:System.Data.Objects.ObjectContextOptions.UseLegacyPreserveChangesBehavior%2A> to `true`. The PreserveChanges option can be used to resolve optimistic concurrency exceptions while preserving changes in the local context. For more information, see [Saving Changes and Managing Concurrency](http://msdn.microsoft.com/en-us/b8378601-4f26-4a05-a24a-f50aeb68610e)."
+  summary: "对象上下文中不存在的对象附加到上下文中。"
+  remarks: "如果该实体的状态是<xref:System.Data.EntityState.Unchanged>，条目中的当前和原始值则会使用数据源值覆盖。</xref:System.Data.EntityState.Unchanged> 该实体将保持的状态<xref:System.Data.EntityState.Unchanged>和任何属性标记为已修改。</xref:System.Data.EntityState.Unchanged>       如果该实体的状态是<xref:System.Data.EntityState.Modified>，已修改的属性的当前值不会使用数据源值覆盖。</xref:System.Data.EntityState.Modified> 数据源中的值将被覆盖未修改的属性的原始值。       在[!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)]版本 4，[!INCLUDE[adonet_ef](~/add/includes/adonet-ef-md.md)]将未修改的属性的当前值与从数据源返回的值进行比较。 如果值不相同，则会将该属性标记为已修改。       在[!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)]版本 3.5 SP1，[!INCLUDE[adonet_ef](~/add/includes/adonet-ef-md.md)]不未将该属性标记为已修改，即使数据源中的值不相同。       已修改的属性保存到数据源将调用<xref:System.Data.Objects.ObjectContext.SaveChanges%2A>.</xref:System.Data.Objects.ObjectContext.SaveChanges%2A>       若要保留 3.5 SP1 行为，请设置<xref:System.Data.Objects.ObjectContextOptions.UseLegacyPreserveChangesBehavior%2A>到`true`。</xref:System.Data.Objects.ObjectContextOptions.UseLegacyPreserveChangesBehavior%2A> PreserveChanges 选项可用来保留在本地上下文中的更改时解决开放式并发异常。 有关详细信息，请参阅[保存更改和管理并发](http://msdn.microsoft.com/en-us/b8378601-4f26-4a05-a24a-f50aeb68610e)。"
   syntax:
     content: PreserveChanges
     return:
       type: System.Data.Objects.MergeOption
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462

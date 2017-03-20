@@ -13,8 +13,8 @@ items:
   nameWithType: BaseAddressPrefixFilterElement
   fullName: System.ServiceModel.Configuration.BaseAddressPrefixFilterElement
   type: Class
-  summary: "Represents a configuration element that specifies a pass through filter, which provides a mechanism to pick the appropriate IIS bindings when hosting a [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] application in IIS. This class cannot be inherited."
-  remarks: "A prefix filter provider a mechanism for a service to bind to a specific URI .It enables you to host multiple applications with different base addresses for the same scheme on the same site.       IIS websites are containers for virtual applications which contain virtual directories. The application in a site can be accessed through one or more IIS binding. IIS bindings provide two pieces of information: binding protocol and binding information. Binding protocol (e.g., HTTP) defines the scheme over which communication occurs, and binding information (e.g., IPAddress, Port, Hostheader) contains data used to access the site.       IIS supports specifying multiple IIS bindings per site, which results in multiple base addresses per scheme. Since a [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] service hosted under a site allows binding to only one base address per scheme, you can use the prefix filter feature to pick the required base address of the hosted service.  The incoming base addresses, supplied by IIS, are filtered based on the optional prefix list filter.       For example, your site can contain the following base addresses      ```   http://testl.fabrikam.com/Service.svc   http://test2.fabrikam.com/Service.svc   ```       You can use the following configuration file to specify a prefix filter at the appdomain level.      ```   <system.serviceModel>     <serviceHostingEnvironment>        <baseAddressPrefixFilters>           <add prefix=”net.tcp://test1.fabrikam.com:8000”/>           <add prefix=”http://test2.fabrikam.com:9000”/>       </baseAddressPrefixFilters>     </serviceHostingEnvironment>   </system.serviceModel>   ```       In this example, `net.tcp://test1.fabrikam.com:8000` and `http://test2.fabrikam.com:9000` are the only base addresses for their respective schemes which are allowed to be passed through.       By default, when prefix is not specified, all addresses are passed through. Specifying the prefix will result in only the matching base address for that scheme to be passed through.      > [!NOTE] >  The filter does not support any wildcards. In addition, the baseAddresses supplied by IIS may have addresses bound to other schemes not present in the `baseAddressPrefixFilters` list. These addresses are not filtered out."
+  summary: "表示一个配置元素，指定传递筛选器提供一种机制时可选取适当的 IIS 绑定承载传递[!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)]在 IIS 中应用程序。 此类不能被继承。"
+  remarks: "前缀筛选器提供程序服务的机制将绑定到特定 URI。它使您可以承载多个应用程序在同一站点上的同一方案的不同基址。       IIS 网站是包含虚拟目录的虚拟应用程序的容器。 可以通过一个或多个 IIS 绑定访问站点中的应用程序。 IIS 绑定提供两条信息︰ 绑定协议和绑定信息。 绑定协议 (例如 HTTP) 定义了通信发生的方案，而绑定信息 （例如，ip 地址、 端口、 主机头） 包含用于访问站点的数据。       IIS 支持指定每个站点，这会导致每个方案的多个基址的多个 IIS 绑定。 由于[!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)]一个站点承载的服务允许到每个方案只能有一个基址的绑定，你可以使用前缀筛选器功能选取所需的基址的托管服务。  基于可选前缀列表筛选器筛选 IIS 提供的传入基址。       例如，您的站点可以包含以下基址```   http://testl.fabrikam.com/Service.svc   http://test2.fabrikam.com/Service.svc   ```可以使用下面的配置文件指定前缀筛选器在 appdomain 级。      ```   <system.serviceModel>     <serviceHostingEnvironment>        <baseAddressPrefixFilters>           <add prefix=”net.tcp://test1.fabrikam.com:8000”/>           <add prefix=”http://test2.fabrikam.com:9000”/>       </baseAddressPrefixFilters>     </serviceHostingEnvironment>   </system.serviceModel>   ```在此示例中，`net.tcp://test1.fabrikam.com:8000`和`http://test2.fabrikam.com:9000`是允许传递的各自方案的唯一基址。       默认情况下，如果未指定前缀，通过传递所有地址。 指定前缀将导致仅传递该方案的匹配基址。      1> [!NOTE]&1;> 筛选器不支持任何通配符。 此外，IIS 提供的基址可能有绑定到中不存在其他方案的地址`baseAddressPrefixFilters`列表。 不筛选出这些地址。"
   syntax:
     content: 'public sealed class BaseAddressPrefixFilterElement : System.Configuration.ConfigurationElement'
   inheritance:
@@ -70,7 +70,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Configuration
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Configuration.BaseAddressPrefixFilterElement&quot;></xref> class."
+  summary: "初始化的新实例<xref href=&quot;System.ServiceModel.Configuration.BaseAddressPrefixFilterElement&quot;></xref>类。"
   syntax:
     content: public BaseAddressPrefixFilterElement ();
     parameters: []
@@ -90,13 +90,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Configuration
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Configuration.BaseAddressPrefixFilterElement&quot;></xref> class with a specific URI."
+  summary: "初始化的新实例<xref href=&quot;System.ServiceModel.Configuration.BaseAddressPrefixFilterElement&quot;></xref>与特定 URI 的类。"
   syntax:
     content: public BaseAddressPrefixFilterElement (Uri prefix);
     parameters:
     - id: prefix
       type: System.Uri
-      description: "A filter that causes the service to listen on all URIs that start with this specific prefix."
+      description: "筛选器，则会导致服务侦听以此特定前缀开头的所有 Uri。"
   overload: System.ServiceModel.Configuration.BaseAddressPrefixFilterElement.#ctor*
   exceptions: []
   platform:
@@ -113,12 +113,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Configuration
-  summary: "Gets or sets a prefix that is used to match a part of a base address."
+  summary: "获取或设置用于与部分基址进行匹配的前缀。"
   syntax:
     content: public Uri Prefix { get; set; }
     return:
       type: System.Uri
-      description: "A URI that is used to match a part of a base address."
+      description: "一个 URI，用于匹配的基址的一部分。"
   overload: System.ServiceModel.Configuration.BaseAddressPrefixFilterElement.Prefix*
   exceptions: []
   platform:
@@ -139,7 +139,7 @@ items:
     content: protected override System.Configuration.ConfigurationPropertyCollection Properties { get; }
     return:
       type: System.Configuration.ConfigurationPropertyCollection
-      description: "To be added."
+      description: "要添加。"
   overload: System.ServiceModel.Configuration.BaseAddressPrefixFilterElement.Properties*
   exceptions: []
   platform:

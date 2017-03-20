@@ -52,8 +52,8 @@ items:
   nameWithType: DbConnectionStringBuilder
   fullName: System.Data.Common.DbConnectionStringBuilder
   type: Class
-  summary: "Provides a base class for strongly typed connection string builders."
-  remarks: "The DbConnectionStringBuilder class provides the base class from which the strongly typed connection string builders (<xref:System.Data.SqlClient.SqlConnectionStringBuilder>, <xref:System.Data.OleDb.OleDbConnectionStringBuilder>, and so on) derive. The connection string builders let developers programmatically create syntactically correct connection strings, and parse and rebuild existing connection strings.       The DbConnectionStringBuilder has been defined in a database-agnostic manner. Because of the addition of the <xref:System.Data.Common> namespace, developers require a base class against which they can program in order to build connection strings that can work against an arbitrary database. Therefore, the DbConnectionStringBuilder class lets users assign arbitrary key/value pairs and pass the resulting connection string to a strongly typed provider. All the data providers that are included as part of the .NET Framework provide a strongly typed class that inherits from DbConnectionStringBuilder: <xref:System.Data.SqlClient.SqlConnectionStringBuilder>, <xref:System.Data.OracleClient.OracleConnectionStringBuilder>, <xref:System.Data.Odbc.OdbcConnectionStringBuilder>, and <xref:System.Data.OleDb.OleDbConnectionStringBuilder>.       The developer can build, assign, and edit connection strings for any arbitrary provider. For providers that support specific key/value pairs, the connection string builder provides strongly typed properties corresponding to the known pairs. In order to support providers that require the ability to support unknown values, developers can also supply arbitrary key/value pairs.       The DbConnectionStringBuilder class implements the <xref:System.ComponentModel.ICustomTypeDescriptor> interface. This means that the class works with Visual Studio designers at design time. When developers use the designer to build strongly typed DataSets and strongly typed connections within Visual Studio, the strongly typed connection string builder class will display the properties associated with its type and will also have converters that can map common values for known keys.       Developers needing to create connection strings as part of applications can use the DbConnectionStringBuilder class or one of its strongly typed derivatives to build and modify connection strings. The DbConnectionStringBuilder class also makes it easy to manage connection strings stored in an application configuration file.       Developers can create connection strings using either a strongly typed connection string builder class, or they can use the DbConnectionStringBuilder class. The DbConnectionStringBuilder performs no checks for valid key/value pairs. Therefore, it is possible using this class to create invalid connection strings. The <xref:System.Data.SqlClient.SqlConnectionStringBuilder> supports only key/value pairs that are supported by SQL Server; trying to add invalid pairs will throw an exception.       Both the <xref:System.Data.Common.DbConnectionStringBuilder.Add%2A> method and <xref:System.Data.Common.DbConnectionStringBuilder.Item%2A> property handle tries to insert malicious entries. For example, the following code correctly escapes the nested key/value pair:       [Visual Basic]      ```   Dim builder As New System.Data.Common.DbConnectionStringBuilder   builder(&quot;Data Source&quot;) = &quot;(local)&quot;   builder(&quot;integrated sSecurity&quot;) = True   builder(&quot;Initial Catalog&quot;) = &quot;AdventureWorks;NewValue=Bad&quot;   ```       [C#]      ```   System.Data.Common.DbConnectionStringBuilder builder =        new System.Data.Common.DbConnectionStringBuilder();   builder[&quot;Data Source&quot;] = &quot;(local)&quot;;   builder[&quot;integrated Security&quot;] = true;   builder[&quot;Initial Catalog&quot;] = &quot;AdventureWorks;NewValue=Bad&quot;;   ```       The result is the following connection string that handles the invalid value in a safe manner:      ```   data source=(local);integrated security=True;   initial catalog=&quot;AdventureWorks;NewValue=Bad&quot;   ```"
+  summary: "提供强类型化连接字符串生成器的基类。"
+  remarks: "DbConnectionStringBuilder 类提供从中强类型化的连接字符串生成器的基类 (<xref:System.Data.SqlClient.SqlConnectionStringBuilder>， <xref:System.Data.OleDb.OleDbConnectionStringBuilder>，依次类推) 派生。</xref:System.Data.OleDb.OleDbConnectionStringBuilder> </xref:System.Data.SqlClient.SqlConnectionStringBuilder> 连接字符串生成器使开发人员可以以编程方式创建语法正确的连接字符串和分析并重新生成现有的连接字符串。       已在数据库不可知的方式定义 DbConnectionStringBuilder。 由于添加<xref:System.Data.Common>命名空间，开发人员需要依据他们能够编程以生成可对任意数据库的连接字符串的基类。</xref:System.Data.Common> 因此，DbConnectionStringBuilder 类允许用户将分配任意键/值对，并将生成的连接字符串传递给强类型的提供程序。 所有数据提供程序的.NET Framework 的一部分都提供一个强类型的类继承自 DbConnectionStringBuilder: <xref:System.Data.SqlClient.SqlConnectionStringBuilder>， <xref:System.Data.OracleClient.OracleConnectionStringBuilder>， <xref:System.Data.Odbc.OdbcConnectionStringBuilder>，和<xref:System.Data.OleDb.OleDbConnectionStringBuilder>。</xref:System.Data.OleDb.OleDbConnectionStringBuilder> </xref:System.Data.Odbc.OdbcConnectionStringBuilder> </xref:System.Data.OracleClient.OracleConnectionStringBuilder> </xref:System.Data.SqlClient.SqlConnectionStringBuilder>       开发人员可以生成、 分配和编辑连接字符串的任意提供程序。 对于支持特定的键/值对的提供程序，连接字符串生成器提供了与已知对相对应的强类型的属性。 为了支持需要能够支持未知的值提供程序，开发人员还可以提供任意键/值对。       DbConnectionStringBuilder 类实现<xref:System.ComponentModel.ICustomTypeDescriptor>接口。</xref:System.ComponentModel.ICustomTypeDescriptor> 这意味着在设计时类适用于 Visual Studio 设计器。 当开发人员使用设计器生成强类型化数据集和 Visual Studio 中的强类型的连接时，强类型化的连接字符串生成器类将显示其类型与关联的属性，也将具有可映射为已知键的常用值的转换器。       无需应用程序的一部分创建的连接字符串的开发人员可以使用 DbConnectionStringBuilder 类或其强类型的派生类之一生成和修改连接字符串。 DbConnectionStringBuilder 该类还可以轻松管理存储在应用程序配置文件中的连接字符串。       开发人员可以创建连接字符串使用的强类型化的连接字符串生成器类，或者它们可以使用 DbConnectionStringBuilder 类。 DbConnectionStringBuilder 执行有效的键/值对的任何检查。 因此，很可能使用此类创建无效的连接字符串。 <xref:System.Data.SqlClient.SqlConnectionStringBuilder>支持仅键/值对的 SQL Server 支持; 尝试添加无效对将引发异常。</xref:System.Data.SqlClient.SqlConnectionStringBuilder>       同时<xref:System.Data.Common.DbConnectionStringBuilder.Add%2A>方法和<xref:System.Data.Common.DbConnectionStringBuilder.Item%2A>属性句柄尝试插入恶意项。</xref:System.Data.Common.DbConnectionStringBuilder.Item%2A> </xref:System.Data.Common.DbConnectionStringBuilder.Add%2A> 例如，下面的代码正确转义嵌套的键/值对: [Visual Basic] ```   Dim builder As New System.Data.Common.DbConnectionStringBuilder   builder(&quot;Data Source&quot;) = &quot;(local)&quot;   builder(&quot;integrated sSecurity&quot;) = True   builder(&quot;Initial Catalog&quot;) = &quot;AdventureWorks;NewValue=Bad&quot;   ``` [C#]```   System.Data.Common.DbConnectionStringBuilder builder =        new System.Data.Common.DbConnectionStringBuilder();   builder[&quot;Data Source&quot;] = &quot;(local)&quot;;   builder[&quot;integrated Security&quot;] = true;   builder[&quot;Initial Catalog&quot;] = &quot;AdventureWorks;NewValue=Bad&quot;;   ```结果是以安全方式处理无效值以下连接字符串︰```   data source=(local);integrated security=True;   initial catalog=&quot;AdventureWorks;NewValue=Bad&quot;   ```"
   example:
   - "The following console application builds two connection strings, one for a Microsoft Jet database, and one for a [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] database. In each case, the code uses a generic DbConnectionStringBuilder class to create the connection string, and then passes the <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString%2A> property of the DbConnectionStringBuilder instance to the constructor of the strongly type connection class. This is not required; the code could also have created individual strongly typed connection string builder instances. The example also parses an existing connection string, and demonstrates various ways of manipulating the connection string's contents.  \n  \n [!code-vb[DataWorks DbConnectionStringBuilder#1](~/add/codesnippet/visualbasic/t-system.data.common.dbc_1.vb)]\n [!code-cs[DataWorks DbConnectionStringBuilder#1](~/add/codesnippet/csharp/t-system.data.common.dbc_1.cs)]"
   syntax:
@@ -78,7 +78,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Initializes a new instance of the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> class."
+  summary: "初始化的新实例<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>类。"
   syntax:
     content: public DbConnectionStringBuilder ();
     parameters: []
@@ -98,14 +98,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Initializes a new instance of the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> class, optionally using ODBC rules for quoting values."
-  remarks: "If `useOdbcRules` is `true`, this <xref:System.Data.Common.DbConnectionStringBuilder> uses ODBC rules for quoting values (surrounding values with curly braces ({})). If `useOdbcRules` is `false`, this <xref:System.Data.Common.DbConnectionStringBuilder> uses quotation mark character (&quot;&quot;) to delimit values."
+  summary: "初始化的新实例<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>类，可以选择使用 ODBC 规则来引用值。"
+  remarks: "如果`useOdbcRules`是`true`，则此<xref:System.Data.Common.DbConnectionStringBuilder>使用 ODBC 规则来用引号括起来 （括起用大括号 （{}） 的值） 的值。</xref:System.Data.Common.DbConnectionStringBuilder> 如果`useOdbcRules`是`false`，则此<xref:System.Data.Common.DbConnectionStringBuilder>使用引号字符 (&quot;&quot;) 来分隔值。</xref:System.Data.Common.DbConnectionStringBuilder>"
   syntax:
     content: public DbConnectionStringBuilder (bool useOdbcRules);
     parameters:
     - id: useOdbcRules
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to use {} to delimit fields; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to use quotation marks."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>若要使用 {} 分隔字段;<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>使用引号引起来。"
   overload: System.Data.Common.DbConnectionStringBuilder.#ctor*
   exceptions: []
   platform:
@@ -122,8 +122,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Adds an entry with the specified key and value into the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
-  remarks: "The <xref:System.Data.Common.DbConnectionStringBuilder.Item%2A> property can also be used to add new elements by setting the value of a key that does not exist in the dictionary. For example: `myCollection[&quot;myNonexistentKey&quot;] = myValue`.       Calling the Add method by passing a null (`Nothing` in Visual Basic) key throws an <xref:System.ArgumentNullException>. However, calling the Add method by passing a null value removes the key/value pair."
+  summary: "将添加一个具有指定的键和值转换为项<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>。"
+  remarks: "<xref:System.Data.Common.DbConnectionStringBuilder.Item%2A>属性还可以用于通过设置不存在的键的值在字典中添加新元素。</xref:System.Data.Common.DbConnectionStringBuilder.Item%2A> 例如：`myCollection[&quot;myNonexistentKey&quot;] = myValue`。       通过将传递 null 值调用的 Add 方法 (`Nothing`在 Visual Basic 中) 密钥引发<xref:System.ArgumentNullException>.</xref:System.ArgumentNullException> 但是，通过传递 null 值调用的 Add 方法将键/值对中移除。"
   example:
   - "The following example creates a new <xref:System.Data.Common.DbConnectionStringBuilder> and adds items. The code also demonstrates overwriting an existing item using the Add method, and includes a commented block that would throw an <xref:System.ArgumentNullException>.  \n  \n> [!NOTE]\n>  This example includes a password to demonstrate how <xref:System.Data.Common.DbConnectionStringBuilder> works with connection strings. In your applications, we recommend that you use Windows Authentication. If you must use a password, do not include a hard-coded password in your application.  \n  \n [!code-cs[DataWorks DbConnectionStringBuilder.Add#1](~/add/codesnippet/csharp/m-system.data.common.dbc_2_1.cs)]\n [!code-vb[DataWorks DbConnectionStringBuilder.Add#1](~/add/codesnippet/visualbasic/m-system.data.common.dbc_2_1.vb)]"
   syntax:
@@ -131,18 +131,18 @@ items:
     parameters:
     - id: keyword
       type: System.String
-      description: "The key to add to the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
+      description: "要添加的键<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>。"
     - id: value
       type: System.Object
-      description: "The value for the specified key."
+      description: "指定的键的值。"
   overload: System.Data.Common.DbConnectionStringBuilder.Add*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyword</code> is a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic)."
+    description: "<code>keyword</code>为空引用 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref>在 Visual Basic 中)。"
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> is read-only.       -or-       The <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> has a fixed size."
+    description: "<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>是只读的。       -或- <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>具有固定的大小。"
   platform:
   - net462
 - uid: System.Data.Common.DbConnectionStringBuilder.AppendKeyValuePair(System.Text.StringBuilder,System.String,System.String)
@@ -157,8 +157,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Provides an efficient and safe way to append a key and value to an existing <xref:System.Text.StringBuilder> object."
-  remarks: "This method allows developers using a <xref:System.Text.StringBuilder> to create a collection of key/value pairs to be able to take advantage of the features included in the <xref:System.Data.Common.DbConnectionStringBuilder> class when you add key/value pairs, without having to incur the overhead of creating and maintaining a <xref:System.Data.Common.DbConnectionStringBuilder> instance. The `AppendKeyValuePair` method formats the key and value correctly and adds the new string to the supplied <xref:System.Text.StringBuilder>."
+  summary: "提供了一种有效而安全的方法，以将一个键和值附加到现有<xref:System.Text.StringBuilder>对象。</xref:System.Text.StringBuilder>"
+  remarks: "此方法允许开发人员使用<xref:System.Text.StringBuilder>创建能够充分利用中包括的功能的键/值对的集合<xref:System.Data.Common.DbConnectionStringBuilder>类添加键/值对，而无需会产生的创建和维护开销时<xref:System.Data.Common.DbConnectionStringBuilder>实例。</xref:System.Data.Common.DbConnectionStringBuilder> </xref:System.Data.Common.DbConnectionStringBuilder> </xref:System.Text.StringBuilder> `AppendKeyValuePair`方法正确设置的键和值的格式并将新的字符串添加到提供<xref:System.Text.StringBuilder>。</xref:System.Text.StringBuilder>"
   example:
   - "If some process has created a connection string, but now an application must perform a simple modification to that connection string, it may be more efficient to just add the key/value pair using a <xref:System.Text.StringBuilder> object. Instead of creating a new <xref:System.Data.Common.DbConnectionStringBuilder>, developers can call the `AppendKeyValuePair` method, passing in a <xref:System.Text.StringBuilder> that contains the supplied connection string. The following procedure shows a simple example of this technique.  \n  \n [!code-vb[DataWorks DbConnectionStringBuilder.AppendKeyValuePair#1](~/add/codesnippet/visualbasic/e421ac0e-e4f4-4507-b485-_1.vb)]\n [!code-cs[DataWorks DbConnectionStringBuilder.AppendKeyValuePair#1](~/add/codesnippet/csharp/e421ac0e-e4f4-4507-b485-_1.cs)]"
   syntax:
@@ -166,13 +166,13 @@ items:
     parameters:
     - id: builder
       type: System.Text.StringBuilder
-      description: "The <xref:System.Text.StringBuilder> to which to add the key/value pair."
+      description: "<xref:System.Text.StringBuilder>要向其中添加键/值对。</xref:System.Text.StringBuilder>"
     - id: keyword
       type: System.String
-      description: "The key to be added."
+      description: "要添加的键。"
     - id: value
       type: System.String
-      description: "The value for the supplied key."
+      description: "提供的键的值。"
   overload: System.Data.Common.DbConnectionStringBuilder.AppendKeyValuePair*
   exceptions: []
   platform:
@@ -189,8 +189,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Provides an efficient and safe way to append a key and value to an existing <xref:System.Text.StringBuilder> object."
-  remarks: "This method allows developers using a <xref:System.Text.StringBuilder> to create a collection of key/value pairs to be able to take advantage of the features included in the <xref:System.Data.Common.DbConnectionStringBuilder> class when adding key/value pairs, without having to incur the overhead of creating and maintaining a <xref:System.Data.Common.DbConnectionStringBuilder> instance. The `AppendKeyValuePair` method formats the key and value correctly and adds the new string to the supplied <xref:System.Text.StringBuilder>.       Although most data sources let you delimit fields by using quotation marks, ODBC does not--for ODBC connection strings, you must use curly braces ({}). In order to have the <xref:System.Data.Common.DbConnectionStringBuilder> use ODBC rules for delimiting fields, set the `useOdbcRules` parameter to `true`."
+  summary: "提供了一种有效而安全的方法，以将一个键和值附加到现有<xref:System.Text.StringBuilder>对象。</xref:System.Text.StringBuilder>"
+  remarks: "此方法允许开发人员使用<xref:System.Text.StringBuilder>创建能够充分利用中包括的功能的键/值对的集合<xref:System.Data.Common.DbConnectionStringBuilder>类添加键/值对，而无需会产生的创建和维护开销时<xref:System.Data.Common.DbConnectionStringBuilder>实例。</xref:System.Data.Common.DbConnectionStringBuilder> </xref:System.Data.Common.DbConnectionStringBuilder> </xref:System.Text.StringBuilder> `AppendKeyValuePair`方法正确设置的键和值的格式并将新的字符串添加到提供<xref:System.Text.StringBuilder>。</xref:System.Text.StringBuilder>       虽然大多数数据源，可以通过使用引号分隔字段，ODBC 不支持-对于 ODBC 连接字符串，你必须使用大括号 （{}）。 为了具有<xref:System.Data.Common.DbConnectionStringBuilder>使用 ODBC 规则来分隔字段，请将设置`useOdbcRules`参数`true`。</xref:System.Data.Common.DbConnectionStringBuilder>"
   example:
   - "If some process has created a connection string, but now an application must perform a simple modification to that connection string, it might be more efficient to just add the key/value pair using a <xref:System.Text.StringBuilder> object. Instead of creating a new <xref:System.Data.Common.DbConnectionStringBuilder>, developers can call the `AppendKeyValuePair` method, passing in a <xref:System.Text.StringBuilder> that contains the supplied connection string. The following procedure shows a simple example of this technique, using ODBC rules for quoting values.  \n  \n [!code-vb[DataWorks DbConnectionStringBuilder.AppendKeyValuePair#1](~/add/codesnippet/visualbasic/31ca61c1-3423-442a-ba0e-_1.vb)]\n [!code-cs[DataWorks DbConnectionStringBuilder.AppendKeyValuePair#1](~/add/codesnippet/csharp/31ca61c1-3423-442a-ba0e-_1.cs)]"
   syntax:
@@ -198,16 +198,16 @@ items:
     parameters:
     - id: builder
       type: System.Text.StringBuilder
-      description: "The <xref:System.Text.StringBuilder> to which to add the key/value pair."
+      description: "<xref:System.Text.StringBuilder>要向其中添加键/值对。</xref:System.Text.StringBuilder>"
     - id: keyword
       type: System.String
-      description: "The key to be added."
+      description: "要添加的键。"
     - id: value
       type: System.String
-      description: "The value for the supplied key."
+      description: "提供的键的值。"
     - id: useOdbcRules
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to use {} to delimit fields, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to use quotation marks."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>若要使用 {} 分隔字段， <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>使用引号引起来。"
   overload: System.Data.Common.DbConnectionStringBuilder.AppendKeyValuePair*
   exceptions: []
   platform:
@@ -224,13 +224,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets or sets a value that indicates whether the <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString*> property is visible in Visual Studio designers."
-  remarks: "Developers creating designers that take advantage of the <xref:System.Data.Common.DbConnectionStringBuilder> class must be able to make the connection string visible or invisible within the designer&quot;s property grid. The BrowsableConnectionString property lets developers indicate that the property should be invisible by setting the property to `false`."
+  summary: "获取或设置一个值，该值指示是否<xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString*>属性是在 Visual Studio 设计器中可见。</xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString*>"
+  remarks: "开发人员创建利用设计器<xref:System.Data.Common.DbConnectionStringBuilder>类必须能够进行的连接字符串，可见或设计器的属性网格中不可见。</xref:System.Data.Common.DbConnectionStringBuilder> BrowsableConnectionString 属性，指示该属性，应通过将属性设置为不可见的开发人员可以`false`。"
   syntax:
     content: public bool BrowsableConnectionString { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the connection string is visible within designers; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> otherwise. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果连接字符串设计器中可见;<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>否则为。 默认值是<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>。"
   overload: System.Data.Common.DbConnectionStringBuilder.BrowsableConnectionString*
   exceptions: []
   platform:
@@ -247,8 +247,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Clears the contents of the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> instance."
-  remarks: "The Clear method removes all key/value pairs from the <xref:System.Data.Common.DbConnectionStringBuilder> and resets all corresponding properties. This includes setting the <xref:System.Data.Common.DbConnectionStringBuilder.Count%2A> property to 0 and the <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString%2A> property to an empty string."
+  summary: "清除的内容<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>实例。"
+  remarks: "Clear 方法中移除所有键/值对，从<xref:System.Data.Common.DbConnectionStringBuilder>并重置所有对应的属性。</xref:System.Data.Common.DbConnectionStringBuilder> 这包括设置<xref:System.Data.Common.DbConnectionStringBuilder.Count%2A>属性设为 0 和<xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString%2A>属性为空字符串。</xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString%2A> </xref:System.Data.Common.DbConnectionStringBuilder.Count%2A>"
   syntax:
     content: public virtual void Clear ();
     parameters: []
@@ -256,7 +256,7 @@ items:
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> is read-only."
+    description: "<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>是只读的。"
   platform:
   - net462
 - uid: System.Data.Common.DbConnectionStringBuilder.ClearPropertyDescriptors
@@ -271,8 +271,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Clears the collection of <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;></xref> objects on the associated <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
-  remarks: "This method is used by designers to clear all associated property descriptors on the <xref:System.Data.Common.DbConnectionStringBuilder>."
+  summary: "清除集合中的<xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;></xref>上关联的对象<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>。"
+  remarks: "设计器使用此方法以清除<xref:System.Data.Common.DbConnectionStringBuilder>.</xref:System.Data.Common.DbConnectionStringBuilder>上的所有关联的属性说明符"
   syntax:
     content: protected void ClearPropertyDescriptors ();
     parameters: []
@@ -292,20 +292,20 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets or sets the connection string associated with the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
-  remarks: "This property returns a semicolon-delimited list of key/value pairs stored within the collection maintained by the <xref:System.Data.Common.DbConnectionStringBuilder>. Each pair contains the key and value, separated by an equal sign. The following example illustrates a typical connection string.      ```   &quot;Persist Security Info=False;Integrated Security=SSPI;Initial Catalog=AdventureWorks;Data Source=(local)&quot;   ```       Data providers may expect specific keys and values for each connection string property. , These values are documented individually. The <xref:System.Data.Common.DbConnectionStringBuilder> class does not validate the key/value pairs associated with its connection string, although classes that inherit from it can.       The ConnectionString property of the <xref:System.Data.Common.DbConnectionStringBuilder> class acts generally as a mechanism for creating and parsing semicolon-delimited lists of key/value pairs separated with equal signs. It provides no validation or other support specific to connection strings. If you add items to the <xref:System.Data.Common.DbConnectionStringBuilder> collection, the ConnectionString property will reflect the changes. If you assign a value to the ConnectionString property, the <xref:System.Data.Common.DbConnectionStringBuilder> will try to parse the value, using the semicolon and equal-sign delimiters."
+  summary: "获取或设置与关联的连接字符串<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>。"
+  remarks: "此属性返回键/值对存储在受支持<xref:System.Data.Common.DbConnectionStringBuilder>。</xref:System.Data.Common.DbConnectionStringBuilder>保留的集合以分号分隔的列表 每个对包含的键和值，用一个等号分隔。 下面的示例演示一个典型的连接字符串。      ```   &quot;Persist Security Info=False;Integrated Security=SSPI;Initial Catalog=AdventureWorks;Data Source=(local)&quot;   ```数据访问接口可能会遇到特定键和每个连接字符串属性的值。 分别记录这些值。 <xref:System.Data.Common.DbConnectionStringBuilder>虽然，从它继承的类，类将不会验证其连接字符串，与关联的键/值对地</xref:System.Data.Common.DbConnectionStringBuilder>       ConnectionString 属性<xref:System.Data.Common.DbConnectionStringBuilder>类通常用作用于创建一种机制，并分析以分号分隔的键/值对的列表以等号分隔。</xref:System.Data.Common.DbConnectionStringBuilder> 它提供了任何验证或其他特定于连接字符串的支持。 如果你将项添加到<xref:System.Data.Common.DbConnectionStringBuilder>集合，ConnectionString 属性将反映所做的更改。</xref:System.Data.Common.DbConnectionStringBuilder> 如果将值分配给 ConnectionString 属性<xref:System.Data.Common.DbConnectionStringBuilder>将尝试分析使用分号和等号分隔符的值。</xref:System.Data.Common.DbConnectionStringBuilder>"
   example:
   - "The following example demonstrates possible behaviors of the ConnectionString property. The example:  \n  \n-   Creates a connection string by adding key/value pairs, one at a time, to an empty <xref:System.Data.Common.DbConnectionStringBuilder>.  \n  \n-   Assigns a complete connection string to the ConnectionString property of the <xref:System.Data.Common.DbConnectionStringBuilder> instance, and modifies a single key/value pair within the string.  \n  \n-   Assigns an arbitrary set of key/value pairs to the ConnectionString property (that is, a string that is not anything remotely like a connection string), and modifies one of the values.  \n  \n-   Assigns an invalid connection string to the ConnectionString property, demonstrating the exception that is thrown.  \n  \n> [!NOTE]\n>  This example includes a password to demonstrate how <xref:System.Data.Common.DbConnectionStringBuilder> works with connection strings. In your applications, we recommend that you use Windows Authentication. If you must use a password, do not include a hard-coded password in your application.  \n  \n [!code-cs[DataWorks DbConnectionStringBuilder.ConnectionString#1](~/add/codesnippet/csharp/p-system.data.common.dbc_4_1.cs)]\n [!code-vb[DataWorks DbConnectionStringBuilder.ConnectionString#1](~/add/codesnippet/visualbasic/p-system.data.common.dbc_4_1.vb)]"
   syntax:
     content: public string ConnectionString { get; set; }
     return:
       type: System.String
-      description: "The current connection string, created from the key/value pairs that are contained within the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>. The default value is an empty string."
+      description: "当前的连接字符串中，从中包含的键/值对创建<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>。 默认值为空字符串。"
   overload: System.Data.Common.DbConnectionStringBuilder.ConnectionString*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "An invalid connection string argument has been supplied."
+    description: "已提供无效的连接字符串自变量。"
   platform:
   - net462
 - uid: System.Data.Common.DbConnectionStringBuilder.ContainsKey(System.String)
@@ -320,7 +320,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Determines whether the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> contains a specific key."
+  summary: "确定是否<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>包含特定键。"
   remarks: ''
   example:
   - "[!code-vb[DataWorks DbConnectionStringBuilder.ContainsKey#1](~/add/codesnippet/visualbasic/m-system.data.common.dbc_1_1.vb)]\n [!code-cs[DataWorks DbConnectionStringBuilder.ContainsKey#1](~/add/codesnippet/csharp/m-system.data.common.dbc_1_1.cs)]  \n  \n This code produces the following output:  \n  \n```  \nContents of the DbConnectionStringBuilder:  \nprovider=\"Provider=Microsoft.Jet.OLEDB.4.0\";data   \nsource=C:\\MyExcel.xls;extended  \nproperties=\"Excel 8.0;HDR=Yes;IMEX=1\"  \nThe collection contains the key \"Data Source\".  \n```"
@@ -329,15 +329,15 @@ items:
     parameters:
     - id: keyword
       type: System.String
-      description: "The key to locate in the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
+      description: "要查找中的键<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> contains an entry with the specified key; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>包含一个具有指定的项键; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Data.Common.DbConnectionStringBuilder.ContainsKey*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyword</code> is a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic)."
+    description: "<code>keyword</code>为空引用 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref>在 Visual Basic 中)。"
   platform:
   - net462
 - uid: System.Data.Common.DbConnectionStringBuilder.Count
@@ -352,7 +352,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets the current number of keys that are contained within the <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString*> property."
+  summary: "获取的中包含的键的当前数目<xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString*>属性。</xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString*>"
   remarks: ''
   example:
   - "The following example demonstrates the Count property both before and after you modify the contents of the <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString%2A> property.  \n  \n [!code-cs[DataWorks DbConnectionStringBuilder.Count#1](~/add/codesnippet/csharp/p-system.data.common.dbc_3_1.cs)]\n [!code-vb[DataWorks DbConnectionStringBuilder.Count#1](~/add/codesnippet/visualbasic/p-system.data.common.dbc_3_1.vb)]"
@@ -360,7 +360,7 @@ items:
     content: public virtual int Count { get; }
     return:
       type: System.Int32
-      description: "The number of keys that are contained within the connection string maintained by the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> instance."
+      description: "维护的连接字符串中包含的键数<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>实例。"
   overload: System.Data.Common.DbConnectionStringBuilder.Count*
   exceptions: []
   platform:
@@ -377,8 +377,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Compares the connection information in this <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> object with the connection information in the supplied object."
-  remarks: "Comparisons on key names are case insensitive; value comparisons are case sensitive.       The EquivalentTo method returns `true` if the key/value pairs are equal, regardless of their order. The connection behavior of the two connection strings are equivalent, because order is never significant within connection strings. However, different order may affect connection pooling behavior of connections based on these connection strings."
+  summary: "将在此连接信息进行比较<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>中提供的对象的连接信息的对象。"
+  remarks: "密钥名称的比较不区分大小写;值的比较是区分大小写。       EquivalentTo 方法返回`true`的键/值对是否相等，而不考虑其顺序。 因为顺序并不重要连接字符串中，两个连接字符串的连接行为是等效的。 但是，不同的顺序可能会影响连接池行为的基于这些连接字符串的连接。"
   example:
   - "[!code-cs[DataWorks DbConnectionStringBuilder.EquivalentTo#1](~/add/codesnippet/csharp/ba55717a-b396-4bcd-8bca-_1.cs)]\n [!code-vb[DataWorks DbConnectionStringBuilder.EquivalentTo#1](~/add/codesnippet/visualbasic/ba55717a-b396-4bcd-8bca-_1.vb)]  \n  \n This sample displays the following output:  \n  \n```  \nbuilder1 = value1=SomeValue;value2=20;value3=30;value4=40  \nbuilder2 = value2=20;value3=30;value4=40;value1=SomeValue  \nbuilder3 = value2=20;value3=30;value4=40;value1=SOMEVALUE  \nbuilder1.EquivalentTo(builder2) = True  \nbuilder2.EquivalentTo(builder3) = False  \n```"
   syntax:
@@ -386,10 +386,10 @@ items:
     parameters:
     - id: connectionStringBuilder
       type: System.Data.Common.DbConnectionStringBuilder
-      description: "The <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> to be compared with this <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> object."
+      description: "<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>与此比较<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>对象。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the connection information in both of the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> objects causes an equivalent connection string; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果这两个中的连接信息<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>对象会导致等效的连接字符串; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Data.Common.DbConnectionStringBuilder.EquivalentTo*
   exceptions: []
   platform:
@@ -406,13 +406,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Fills a supplied <xref href=&quot;System.Collections.Hashtable&quot;></xref> with information about all the properties of this <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
+  summary: "填充提供<xref href=&quot;System.Collections.Hashtable&quot;></xref>有关此的所有属性的信息与<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>。"
   syntax:
     content: protected virtual void GetProperties (System.Collections.Hashtable propertyDescriptors);
     parameters:
     - id: propertyDescriptors
       type: System.Collections.Hashtable
-      description: "The <xref href=&quot;System.Collections.Hashtable&quot;></xref> to be filled with information about this <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
+      description: "<xref href=&quot;System.Collections.Hashtable&quot;> </xref>要填充此类信息的<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>。"
   overload: System.Data.Common.DbConnectionStringBuilder.GetProperties*
   exceptions: []
   platform:
@@ -429,13 +429,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets a value that indicates whether the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> has a fixed size."
-  remarks: "A fixed-size collection does not allow adding or removing elements after the collection is created, but it does allow modifying existing elements.       A fixed-size collection is just a collection with a wrapper that prevents adding and removing elements; therefore, if changes are made to the underlying collection, including adding or removing elements, the fixed-size collection reflects those changes."
+  summary: "获取一个值，该值指示是否<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>具有固定的大小。"
+  remarks: "固定大小的集合不允许添加或删除元素后的集合在创建，但它允许修改现有元素。       固定大小的集合只是一个集合使用的包装器防止添加和移除元素;因此，如果对基础集合，包括添加或移除元素，进行更改的固定大小的集合将反映这些更改。"
   syntax:
     content: public virtual bool IsFixedSize { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> has a fixed size; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>具有固定大小; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Data.Common.DbConnectionStringBuilder.IsFixedSize*
   exceptions: []
   platform:
@@ -452,13 +452,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets a value that indicates whether the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> is read-only."
-  remarks: "A read-only collection does not allow adding, removing, or modifying elements after the collection is created.       A read-only collection is just a collection with a wrapper that prevents modifying the collection; therefore, if changes are made to the underlying collection, the read-only collection reflects those changes."
+  summary: "获取一个值，该值指示是否<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>是只读的。"
+  remarks: "只读集合不允许添加、 移除或修改元素的集合在创建后。       只读集合只是一个集合与防止集合; 进行修改的包装因此，如果对基础集合进行更改，只读集合将反映这些更改。"
   syntax:
     content: public bool IsReadOnly { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> is read-only; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>是只读的; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。 默认值是<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Data.Common.DbConnectionStringBuilder.IsReadOnly*
   exceptions: []
   platform:
@@ -475,8 +475,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets or sets the value associated with the specified key."
-  remarks: "When you set this property, if the specified key already exists in the dictionary, the value is replaced; otherwise, a new element is created."
+  summary: "获取或设置与指定键关联的值。"
+  remarks: "当设置此属性，如果在字典中已存在指定的键时，值将替换为;否则，创建一个新的元素。"
   example:
   - "The following console application creates a new <xref:System.Data.Common.DbConnectionStringBuilder> and adds key/value pairs to its connection string, using the Item property.  \n  \n [!code-cs[DataWorks DbConnectionStringBuilder.Item#1](~/add/codesnippet/csharp/p-system.data.common.dbc_0_1.cs)]\n [!code-vb[DataWorks DbConnectionStringBuilder.Item#1](~/add/codesnippet/visualbasic/p-system.data.common.dbc_0_1.vb)]"
   syntax:
@@ -484,18 +484,18 @@ items:
     parameters:
     - id: keyword
       type: System.String
-      description: "The key of the item to get or set."
+      description: "要获取或设置项的键。"
     return:
       type: System.Object
-      description: "The value associated with the specified key. If the specified key is not found, trying to get it returns a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic), and trying to set it creates a new element using the specified key.       Passing a null (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic) key throws an <xref:System.ArgumentNullException>. Assigning a null value removes the key/value pair."
+      description: "与指定键关联的值。 如果未找到指定的键，尝试让其返回空引用 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref>在 Visual Basic 中)，并尝试将其设置创建一个使用指定的键的新元素。       传递 null (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref>在 Visual Basic 中) 密钥引发<xref:System.ArgumentNullException>.</xref:System.ArgumentNullException> 将 null 值赋中移除的键/值对。"
   overload: System.Data.Common.DbConnectionStringBuilder.Item*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyword</code> is a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic)."
+    description: "<code>keyword</code>为空引用 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref>在 Visual Basic 中)。"
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The property is set, and the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> is read-only.       -or-       The property is set, <code>keyword</code> does not exist in the collection, and the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> has a fixed size."
+    description: "设置该属性，与<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>是只读的。       -或-设置该属性， <code> keyword </code>不存在于集合中，与<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>具有固定的大小。"
   platform:
   - net462
 - uid: System.Data.Common.DbConnectionStringBuilder.Keys
@@ -510,15 +510,15 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets an <xref:System.Collections.ICollection> that contains the keys in the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
-  remarks: "The order of the values in the <xref:System.Collections.ICollection> is unspecified, but it is the same order as the associated values in the <xref:System.Collections.ICollection> returned by the <xref:System.Data.Common.DbConnectionStringBuilder.Values%2A> property.       The returned <xref:System.Collections.ICollection> is not a static copy; instead, the <xref:System.Collections.ICollection> refers back to the keys in the original <xref:System.Data.Common.DbConnectionStringBuilder>. Therefore, changes to the <xref:System.Data.Common.DbConnectionStringBuilder> are reflected in the <xref:System.Collections.ICollection>."
+  summary: "获取<xref:System.Collections.ICollection>包含中的键<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>。</xref:System.Collections.ICollection>"
+  remarks: "中的值的顺序<xref:System.Collections.ICollection>未指定，但它是中的关联值顺序相同<xref:System.Collections.ICollection>返回<xref:System.Data.Common.DbConnectionStringBuilder.Values%2A>属性。</xref:System.Data.Common.DbConnectionStringBuilder.Values%2A> </xref:System.Collections.ICollection> </xref:System.Collections.ICollection>       返回<xref:System.Collections.ICollection>不是静态的副本; 相反，<xref:System.Collections.ICollection>引用回原始<xref:System.Data.Common.DbConnectionStringBuilder>.</xref:System.Data.Common.DbConnectionStringBuilder>中的键</xref:System.Collections.ICollection></xref:System.Collections.ICollection> 因此，更改为<xref:System.Data.Common.DbConnectionStringBuilder>反映在<xref:System.Collections.ICollection>.</xref:System.Collections.ICollection> </xref:System.Data.Common.DbConnectionStringBuilder>"
   example:
   - "The following console application example creates a new <xref:System.Data.Common.DbConnectionStringBuilder>, and adds some keys. The code loops through the <xref:System.Collections.ICollection> returned by the Keys property displaying the key/value pairs, and then adds a new key. Because the Keys property returns a dynamic <xref:System.Collections.ICollection>, the second loop displays all the key/value pairs, including the newest item.  \n  \n [!code-cs[DataWorks DbConnectionStringBuilder.Keys#1](~/add/codesnippet/csharp/p-system.data.common.dbc_2_1.cs)]\n [!code-vb[DataWorks DbConnectionStringBuilder.Keys#1](~/add/codesnippet/visualbasic/p-system.data.common.dbc_2_1.vb)]"
   syntax:
     content: public virtual System.Collections.ICollection Keys { get; }
     return:
       type: System.Collections.ICollection
-      description: "An <xref:System.Collections.ICollection> that contains the keys in the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
+      description: "<xref:System.Collections.ICollection>包含中的键<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>。</xref:System.Collections.ICollection>"
   overload: System.Data.Common.DbConnectionStringBuilder.Keys*
   exceptions: []
   platform:
@@ -535,8 +535,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Removes the entry with the specified key from the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> instance."
-  remarks: "Because the Remove method returns a value that indicates its success, it is not required to look for the key before trying to remove the key/value pair from the <xref:System.Data.Common.DbConnectionStringBuilder> instance."
+  summary: "具有指定键中移除的项<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>实例。"
+  remarks: "删除方法返回一个值，指示其是否成功，因为它不需要在尝试删除的键/值对从之前查找密钥<xref:System.Data.Common.DbConnectionStringBuilder>实例。</xref:System.Data.Common.DbConnectionStringBuilder>"
   example:
   - "[!code-cs[DataWorks DbConnectionStringBuilder.Remove#1](~/add/codesnippet/csharp/m-system.data.common.dbc_0_1.cs)]\n [!code-vb[DataWorks DbConnectionStringBuilder.Remove#1](~/add/codesnippet/visualbasic/m-system.data.common.dbc_0_1.vb)]  \n  \n This sample displays the following output:  \n  \n```  \nRemoved 'Provider'  \ndata source=C:\\Demo.mdb;jet oledb:system database=system.mdw  \nUnable to remove 'User ID'  \ndata source=C:\\Demo.mdb;jet oledb:system database=system.mdw  \nRemoved 'DATA SOURCE'  \njet oledb:system database=system.mdw  \n```"
   syntax:
@@ -544,18 +544,18 @@ items:
     parameters:
     - id: keyword
       type: System.String
-      description: "The key of the key/value pair to be removed from the connection string in this <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
+      description: "在此连接字符串移除的键/值对的键<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the key existed within the connection string and was removed; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the key did not exist."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果该密钥的连接字符串中存在并被移除，则<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>如果该键不存在。"
   overload: System.Data.Common.DbConnectionStringBuilder.Remove*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyword</code> is null (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic)"
+    description: "<code>keyword</code>为 null (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref>在 Visual Basic 中)"
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> is read-only, or the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> has a fixed size."
+    description: "<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>是只读的或<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>具有固定的大小。"
   platform:
   - net462
 - uid: System.Data.Common.DbConnectionStringBuilder.ShouldSerialize(System.String)
@@ -570,17 +570,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Indicates whether the specified key exists in this <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> instance."
-  remarks: "This method behaves identically to the <xref:System.Data.Common.DbConnectionStringBuilder.ContainsKey%2A> method."
+  summary: "该值指示指定的键是否存在于此<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>实例。"
+  remarks: "此方法的行为相同与<xref:System.Data.Common.DbConnectionStringBuilder.ContainsKey%2A>方法。</xref:System.Data.Common.DbConnectionStringBuilder.ContainsKey%2A>"
   syntax:
     content: public virtual bool ShouldSerialize (string keyword);
     parameters:
     - id: keyword
       type: System.String
-      description: "The key to locate in the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
+      description: "要查找中的键<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> contains an entry with the specified key; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>包含一个具有指定的项键; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Data.Common.DbConnectionStringBuilder.ShouldSerialize*
   exceptions: []
   platform:
@@ -598,17 +598,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Copies the elements of the <xref:System.Collections.ICollection> to an <xref:System.Array>, starting at a particular <xref:System.Array> index."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.Collections.ICollection> interface.       For a description of this member, see <xref:System.Collections.ICollection.CopyTo%2A>."
+  summary: "元素复制<xref:System.Collections.ICollection>到<xref:System.Array>特定处开始，<xref:System.Array>索引。</xref:System.Array> </xref:System.Array> </xref:System.Collections.ICollection>"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.Collections.ICollection>接口。</xref:System.Collections.ICollection> </xref:System.Data.Common.DbConnectionStringBuilder>       有关此成员的说明，请参阅<xref:System.Collections.ICollection.CopyTo%2A>。</xref:System.Collections.ICollection.CopyTo%2A>"
   syntax:
     content: void ICollection.CopyTo (Array array, int index);
     parameters:
     - id: array
       type: System.Array
-      description: "The one-dimensional <xref:System.Array> that is the destination of the elements copied from <xref:System.Collections.ICollection>. The <xref:System.Array> must have zero-based indexing."
+      description: "<xref:System.Array>这是从<xref:System.Collections.ICollection>.</xref:System.Collections.ICollection>复制的元素的目标</xref:System.Array>的一维 <xref:System.Array>必须具有从零开始的索引。</xref:System.Array>"
     - id: index
       type: System.Int32
-      description: "The zero-based index in `array` at which copying begins."
+      description: "中的从零开始索引`array`复制开始处。"
   overload: System.Data.Common.DbConnectionStringBuilder.System#Collections#ICollection#CopyTo*
   exceptions: []
   platform:
@@ -626,13 +626,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets a value indicating whether access to the <xref:System.Collections.ICollection> is synchronized (thread safe)."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.Collections.ICollection> interface.       For more information, see <xref:System.Collections.ICollection.IsSynchronized%2A>."
+  summary: "获取一个值，该值指示是否访问<xref:System.Collections.ICollection>是同步的 （线程安全）。</xref:System.Collections.ICollection>"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.Collections.ICollection>接口。</xref:System.Collections.ICollection> </xref:System.Data.Common.DbConnectionStringBuilder>       有关详细信息，请参阅<xref:System.Collections.ICollection.IsSynchronized%2A>。</xref:System.Collections.ICollection.IsSynchronized%2A>"
   syntax:
     content: bool System.Collections.ICollection.IsSynchronized { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if access to the <xref:System.Collections.ICollection> is synchronized (thread safe); otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果访问<xref:System.Collections.ICollection>是同步的 （线程安全）; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。</xref:System.Collections.ICollection>"
   overload: System.Data.Common.DbConnectionStringBuilder.System#Collections#ICollection#IsSynchronized*
   exceptions: []
   platform:
@@ -650,13 +650,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets an object that can be used to synchronize access to the <xref:System.Collections.ICollection>."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.Collections.ICollection> interface.       For more information, see <xref:System.Collections.ICollection.SyncRoot%2A>."
+  summary: "获取可用于同步对<xref:System.Collections.ICollection>.</xref:System.Collections.ICollection>访问的对象"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.Collections.ICollection>接口。</xref:System.Collections.ICollection> </xref:System.Data.Common.DbConnectionStringBuilder>       有关详细信息，请参阅<xref:System.Collections.ICollection.SyncRoot%2A>。</xref:System.Collections.ICollection.SyncRoot%2A>"
   syntax:
     content: object System.Collections.ICollection.SyncRoot { get; }
     return:
       type: System.Object
-      description: "An object that can be used to synchronize access to the <xref:System.Collections.ICollection>."
+      description: "可以用于<xref:System.Collections.ICollection>.</xref:System.Collections.ICollection>对访问进行同步的对象"
   overload: System.Data.Common.DbConnectionStringBuilder.System#Collections#ICollection#SyncRoot*
   exceptions: []
   platform:
@@ -674,17 +674,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Adds an element with the provided key and value to the <xref:System.Collections.IDictionary> object."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.Collections.IDictionary> interface.       For a description of this member, see <xref:System.Collections.IDictionary.Add%2A>."
+  summary: "添加一个带有所提供的键和值的元素<xref:System.Collections.IDictionary>对象。</xref:System.Collections.IDictionary>"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.Collections.IDictionary>接口。</xref:System.Collections.IDictionary> </xref:System.Data.Common.DbConnectionStringBuilder>       有关此成员的说明，请参阅<xref:System.Collections.IDictionary.Add%2A>。</xref:System.Collections.IDictionary.Add%2A>"
   syntax:
     content: void IDictionary.Add (object keyword, object value);
     parameters:
     - id: keyword
       type: System.Object
-      description: "The <xref:System.Object> to use as the key of the element to add."
+      description: "<xref:System.Object>要用作添加元素的键</xref:System.Object>"
     - id: value
       type: System.Object
-      description: "The <xref:System.Object> to use as the value of the element to add."
+      description: "<xref:System.Object>要用作添加元素的值</xref:System.Object>"
   overload: System.Data.Common.DbConnectionStringBuilder.System#Collections#IDictionary#Add*
   exceptions: []
   platform:
@@ -702,17 +702,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Determines whether the <xref:System.Collections.IDictionary> object contains an element with the specified key."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.Collections.IDictionary> interface.       For more information, see <xref:System.Collections.IDictionary.Contains%2A>."
+  summary: "确定是否<xref:System.Collections.IDictionary>对象包含具有指定键的元素。</xref:System.Collections.IDictionary>"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.Collections.IDictionary>接口。</xref:System.Collections.IDictionary> </xref:System.Data.Common.DbConnectionStringBuilder>       有关详细信息，请参阅<xref:System.Collections.IDictionary.Contains%2A>。</xref:System.Collections.IDictionary.Contains%2A>"
   syntax:
     content: bool IDictionary.Contains (object keyword);
     parameters:
     - id: keyword
       type: System.Object
-      description: "The key to locate in the <xref:System.Collections.IDictionary> object."
+      description: "要查找中的键<xref:System.Collections.IDictionary>对象。</xref:System.Collections.IDictionary>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref:System.Collections.IDictionary> contains an element with the key; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果<xref:System.Collections.IDictionary>包含的元素具有键; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。</xref:System.Collections.IDictionary>"
   overload: System.Data.Common.DbConnectionStringBuilder.System#Collections#IDictionary#Contains*
   exceptions: []
   platform:
@@ -730,14 +730,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns an <xref:System.Collections.IDictionaryEnumerator> object for the <xref:System.Collections.IDictionary> object."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.Collections.IDictionary> interface.       For a description of this member, see <xref:System.Collections.IDictionary.GetEnumerator%2A>."
+  summary: "返回<xref:System.Collections.IDictionaryEnumerator>对象<xref:System.Collections.IDictionary>对象。</xref:System.Collections.IDictionary> </xref:System.Collections.IDictionaryEnumerator>"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.Collections.IDictionary>接口。</xref:System.Collections.IDictionary> </xref:System.Data.Common.DbConnectionStringBuilder>       有关此成员的说明，请参阅<xref:System.Collections.IDictionary.GetEnumerator%2A>。</xref:System.Collections.IDictionary.GetEnumerator%2A>"
   syntax:
     content: System.Collections.IDictionaryEnumerator IDictionary.GetEnumerator ();
     parameters: []
     return:
       type: System.Collections.IDictionaryEnumerator
-      description: "An <xref:System.Collections.IDictionaryEnumerator> object for the <xref:System.Collections.IDictionary> object."
+      description: "<xref:System.Collections.IDictionaryEnumerator>对象<xref:System.Collections.IDictionary>对象。</xref:System.Collections.IDictionary> </xref:System.Collections.IDictionaryEnumerator>"
   overload: System.Data.Common.DbConnectionStringBuilder.System#Collections#IDictionary#GetEnumerator*
   exceptions: []
   platform:
@@ -755,17 +755,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets or sets the element with the specified key."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.Collections.IDictionary> interface.       For more information, see <xref:System.Collections.IDictionary.Item%2A>."
+  summary: "获取或设置具有指定键的元素。"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.Collections.IDictionary>接口。</xref:System.Collections.IDictionary> </xref:System.Data.Common.DbConnectionStringBuilder>       有关详细信息，请参阅<xref:System.Collections.IDictionary.Item%2A>。</xref:System.Collections.IDictionary.Item%2A>"
   syntax:
     content: object System.Collections.IDictionary.Item[object keyword] { get; set; }
     parameters:
     - id: keyword
       type: System.Object
-      description: "The key of the element to get or set."
+      description: "要获取或设置元素的键。"
     return:
       type: System.Object
-      description: "The element with the specified key."
+      description: "带有指定键的元素。"
   overload: System.Data.Common.DbConnectionStringBuilder.System#Collections#IDictionary#Item*
   exceptions: []
   platform:
@@ -783,14 +783,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Removes the element with the specified key from the <xref:System.Collections.IDictionary> object."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.Collections.IDictionary> interface.       For a description of this member, see <xref:System.Collections.IDictionary.Remove%2A>."
+  summary: "移除带有指定键的元素<xref:System.Collections.IDictionary>对象。</xref:System.Collections.IDictionary>"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.Collections.IDictionary>接口。</xref:System.Collections.IDictionary> </xref:System.Data.Common.DbConnectionStringBuilder>       有关此成员的说明，请参阅<xref:System.Collections.IDictionary.Remove%2A>。</xref:System.Collections.IDictionary.Remove%2A>"
   syntax:
     content: void IDictionary.Remove (object keyword);
     parameters:
     - id: keyword
       type: System.Object
-      description: "The key of the element to remove."
+      description: "要移除的元素的键。"
   overload: System.Data.Common.DbConnectionStringBuilder.System#Collections#IDictionary#Remove*
   exceptions: []
   platform:
@@ -808,14 +808,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns an enumerator that iterates through a collection."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.Collections.IEnumerable> interface.       For a description of this member, see <xref:System.Collections.IEnumerable.GetEnumerator%2A>."
+  summary: "返回循环访问集合的枚举。"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.Collections.IEnumerable>接口。</xref:System.Collections.IEnumerable> </xref:System.Data.Common.DbConnectionStringBuilder>       有关此成员的说明，请参阅<xref:System.Collections.IEnumerable.GetEnumerator%2A>。</xref:System.Collections.IEnumerable.GetEnumerator%2A>"
   syntax:
     content: System.Collections.IEnumerator IEnumerable.GetEnumerator ();
     parameters: []
     return:
       type: System.Collections.IEnumerator
-      description: "An <xref:System.Collections.IEnumerator> object that can be used to iterate through the collection."
+      description: "<xref:System.Collections.IEnumerator>可用于循环访问集合的对象。</xref:System.Collections.IEnumerator>"
   overload: System.Data.Common.DbConnectionStringBuilder.System#Collections#IEnumerable#GetEnumerator*
   exceptions: []
   platform:
@@ -833,14 +833,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns a collection of custom attributes for this instance of a component."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For a description of this member, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetAttributes%2A>."
+  summary: "返回组件的此实例的自定义属性的集合。"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.ComponentModel.ICustomTypeDescriptor>接口。</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       有关此成员的说明，请参阅<xref:System.ComponentModel.ICustomTypeDescriptor.GetAttributes%2A>。</xref:System.ComponentModel.ICustomTypeDescriptor.GetAttributes%2A>"
   syntax:
     content: System.ComponentModel.AttributeCollection ICustomTypeDescriptor.GetAttributes ();
     parameters: []
     return:
       type: System.ComponentModel.AttributeCollection
-      description: "An <xref href=&quot;System.ComponentModel.AttributeCollection&quot;></xref> containing the attributes for this object."
+      description: "<xref href=&quot;System.ComponentModel.AttributeCollection&quot;> </xref>包含此对象的属性。"
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetAttributes*
   exceptions: []
   platform:
@@ -858,14 +858,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns the class name of this instance of a component."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For a description of this member, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetClassName%2A>."
+  summary: "返回组件的此实例的类名称。"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.ComponentModel.ICustomTypeDescriptor>接口。</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       有关此成员的说明，请参阅<xref:System.ComponentModel.ICustomTypeDescriptor.GetClassName%2A>。</xref:System.ComponentModel.ICustomTypeDescriptor.GetClassName%2A>"
   syntax:
     content: string ICustomTypeDescriptor.GetClassName ();
     parameters: []
     return:
       type: System.String
-      description: "The class name of the object, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the class does not have a name."
+      description: "该对象的类名或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果类没有名称。"
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetClassName*
   exceptions: []
   platform:
@@ -883,14 +883,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns the name of this instance of a component."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For more information, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetComponentName%2A>."
+  summary: "返回组件的此实例的名称。"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.ComponentModel.ICustomTypeDescriptor>接口。</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       有关详细信息，请参阅<xref:System.ComponentModel.ICustomTypeDescriptor.GetComponentName%2A>。</xref:System.ComponentModel.ICustomTypeDescriptor.GetComponentName%2A>"
   syntax:
     content: string ICustomTypeDescriptor.GetComponentName ();
     parameters: []
     return:
       type: System.String
-      description: "The name of the object, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the object does not have a name."
+      description: "对象的名称，或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果对象不具有名称。"
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetComponentName*
   exceptions: []
   platform:
@@ -908,14 +908,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns a type converter for this instance of a component."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For a description of this member, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetConverter%2A>."
+  summary: "返回组件的此实例的类型转换器。"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.ComponentModel.ICustomTypeDescriptor>接口。</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       有关此成员的说明，请参阅<xref:System.ComponentModel.ICustomTypeDescriptor.GetConverter%2A>。</xref:System.ComponentModel.ICustomTypeDescriptor.GetConverter%2A>"
   syntax:
     content: System.ComponentModel.TypeConverter ICustomTypeDescriptor.GetConverter ();
     parameters: []
     return:
       type: System.ComponentModel.TypeConverter
-      description: "A <xref href=&quot;System.ComponentModel.TypeConverter&quot;></xref> that is the converter for this object, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there is no <xref href=&quot;System.ComponentModel.TypeConverter&quot;></xref> for this object."
+      description: "A <xref href=&quot;System.ComponentModel.TypeConverter&quot;> </xref> ，它是此对象转换器或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果没有任何<xref href=&quot;System.ComponentModel.TypeConverter&quot;></xref>此对象。"
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetConverter*
   exceptions: []
   platform:
@@ -933,14 +933,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns the default event for this instance of a component."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For a description of this member, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetDefaultEvent%2A>."
+  summary: "返回组件的此实例的默认事件。"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.ComponentModel.ICustomTypeDescriptor>接口。</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       有关此成员的说明，请参阅<xref:System.ComponentModel.ICustomTypeDescriptor.GetDefaultEvent%2A>。</xref:System.ComponentModel.ICustomTypeDescriptor.GetDefaultEvent%2A>"
   syntax:
     content: System.ComponentModel.EventDescriptor ICustomTypeDescriptor.GetDefaultEvent ();
     parameters: []
     return:
       type: System.ComponentModel.EventDescriptor
-      description: "An <xref href=&quot;System.ComponentModel.EventDescriptor&quot;></xref> that represents the default event for this object, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if this object does not have events."
+      description: "<xref href=&quot;System.ComponentModel.EventDescriptor&quot;> </xref> ，表示此对象的默认事件或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果此对象没有事件。"
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetDefaultEvent*
   exceptions: []
   platform:
@@ -958,14 +958,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns the default property for this instance of a component."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For a description of this member, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetDefaultProperty%2A>."
+  summary: "返回组件的此实例的默认属性。"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.ComponentModel.ICustomTypeDescriptor>接口。</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       有关此成员的说明，请参阅<xref:System.ComponentModel.ICustomTypeDescriptor.GetDefaultProperty%2A>。</xref:System.ComponentModel.ICustomTypeDescriptor.GetDefaultProperty%2A>"
   syntax:
     content: System.ComponentModel.PropertyDescriptor ICustomTypeDescriptor.GetDefaultProperty ();
     parameters: []
     return:
       type: System.ComponentModel.PropertyDescriptor
-      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;></xref> that represents the default property for this object, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if this object does not have properties."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;> </xref> ，表示此对象的默认属性或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果此对象没有属性。"
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetDefaultProperty*
   exceptions: []
   platform:
@@ -983,17 +983,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns an editor of the specified type for this instance of a component."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For more information, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetEditor%2A>."
+  summary: "返回组件的此实例的指定类型的编辑器。"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.ComponentModel.ICustomTypeDescriptor>接口。</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       有关详细信息，请参阅<xref:System.ComponentModel.ICustomTypeDescriptor.GetEditor%2A>。</xref:System.ComponentModel.ICustomTypeDescriptor.GetEditor%2A>"
   syntax:
     content: object ICustomTypeDescriptor.GetEditor (Type editorBaseType);
     parameters:
     - id: editorBaseType
       type: System.Type
-      description: "A <xref:System.Type> that represents the editor for this object."
+      description: "A <xref:System.Type>，表示此对象的编辑器。</xref:System.Type>"
     return:
       type: System.Object
-      description: "An <xref:System.Object> of the specified type that is the editor for this object, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the editor cannot be found."
+      description: "<xref:System.Object>指定的类型属于此对象的编辑器或<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>如果找不到编辑器。</xref:System.Object>"
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetEditor*
   exceptions: []
   platform:
@@ -1011,14 +1011,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns the events for this instance of a component."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For more information, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetEvents%2A>."
+  summary: "返回组件的此实例的事件。"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.ComponentModel.ICustomTypeDescriptor>接口。</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       有关详细信息，请参阅<xref:System.ComponentModel.ICustomTypeDescriptor.GetEvents%2A>。</xref:System.ComponentModel.ICustomTypeDescriptor.GetEvents%2A>"
   syntax:
     content: System.ComponentModel.EventDescriptorCollection ICustomTypeDescriptor.GetEvents ();
     parameters: []
     return:
       type: System.ComponentModel.EventDescriptorCollection
-      description: "An <xref href=&quot;System.ComponentModel.EventDescriptorCollection&quot;></xref> that represents the events for this component instance."
+      description: "<xref href=&quot;System.ComponentModel.EventDescriptorCollection&quot;> </xref>表示此组件实例的事件。"
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetEvents*
   exceptions: []
   platform:
@@ -1036,17 +1036,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns the events for this instance of a component using the specified attribute array as a filter."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For more information, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetEvents%2A>."
+  summary: "返回使用指定的属性数组作为筛选器组件的此实例的事件。"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.ComponentModel.ICustomTypeDescriptor>接口。</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       有关详细信息，请参阅<xref:System.ComponentModel.ICustomTypeDescriptor.GetEvents%2A>。</xref:System.ComponentModel.ICustomTypeDescriptor.GetEvents%2A>"
   syntax:
     content: System.ComponentModel.EventDescriptorCollection ICustomTypeDescriptor.GetEvents (Attribute[] attributes);
     parameters:
     - id: attributes
       type: System.Attribute[]
-      description: "An array of type <xref:System.Attribute> that is used as a filter."
+      description: "类型的数组<xref:System.Attribute>用作筛选器。</xref:System.Attribute>"
     return:
       type: System.ComponentModel.EventDescriptorCollection
-      description: "An <xref href=&quot;System.ComponentModel.EventDescriptorCollection&quot;></xref> that represents the filtered events for this component instance."
+      description: "<xref href=&quot;System.ComponentModel.EventDescriptorCollection&quot;> </xref> ，表示此组件实例的已筛选的事件。"
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetEvents*
   exceptions: []
   platform:
@@ -1064,14 +1064,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns the properties for this instance of a component."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For more information, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetProperties%2A>."
+  summary: "返回组件的此实例的属性。"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.ComponentModel.ICustomTypeDescriptor>接口。</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       有关详细信息，请参阅<xref:System.ComponentModel.ICustomTypeDescriptor.GetProperties%2A>。</xref:System.ComponentModel.ICustomTypeDescriptor.GetProperties%2A>"
   syntax:
     content: System.ComponentModel.PropertyDescriptorCollection ICustomTypeDescriptor.GetProperties ();
     parameters: []
     return:
       type: System.ComponentModel.PropertyDescriptorCollection
-      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;></xref> that represents the properties for this component instance."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;> </xref> ，表示此组件实例的属性。"
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetProperties*
   exceptions: []
   platform:
@@ -1089,17 +1089,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns the properties for this instance of a component using the attribute array as a filter."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For more information, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetProperties%2A>."
+  summary: "返回使用特性数组作为筛选器组件的此实例的属性。"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.ComponentModel.ICustomTypeDescriptor>接口。</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       有关详细信息，请参阅<xref:System.ComponentModel.ICustomTypeDescriptor.GetProperties%2A>。</xref:System.ComponentModel.ICustomTypeDescriptor.GetProperties%2A>"
   syntax:
     content: System.ComponentModel.PropertyDescriptorCollection ICustomTypeDescriptor.GetProperties (Attribute[] attributes);
     parameters:
     - id: attributes
       type: System.Attribute[]
-      description: "An array of type <xref:System.Attribute> that is used as a filter."
+      description: "类型的数组<xref:System.Attribute>用作筛选器。</xref:System.Attribute>"
     return:
       type: System.ComponentModel.PropertyDescriptorCollection
-      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;></xref> that represents the filtered properties for this component instance."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;> </xref> ，表示此组件实例的已筛选的属性。"
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetProperties*
   exceptions: []
   platform:
@@ -1117,17 +1117,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns an object that contains the property described by the specified property descriptor."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For more information, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetPropertyOwner%2A>."
+  summary: "返回包含指定的属性描述符所描述的属性的对象。"
+  remarks: "此成员是显式接口成员的实现。 可以使用它时，才<xref:System.Data.Common.DbConnectionStringBuilder>实例被强制转换为<xref:System.ComponentModel.ICustomTypeDescriptor>接口。</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       有关详细信息，请参阅<xref:System.ComponentModel.ICustomTypeDescriptor.GetPropertyOwner%2A>。</xref:System.ComponentModel.ICustomTypeDescriptor.GetPropertyOwner%2A>"
   syntax:
     content: object ICustomTypeDescriptor.GetPropertyOwner (System.ComponentModel.PropertyDescriptor pd);
     parameters:
     - id: pd
       type: System.ComponentModel.PropertyDescriptor
-      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;></xref> that represents the property whose owner is to be found."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;> </xref> ，它表示要查找其所有者的属性。"
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the owner of the specified property."
+      description: "<xref:System.Object>，它表示指定属性的所有者。</xref:System.Object>"
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetPropertyOwner*
   exceptions: []
   platform:
@@ -1144,13 +1144,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns the connection string associated with this <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
+  summary: "返回与此关联的连接字符串<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>。"
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "The current <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString*> property."
+      description: "当前<xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString*>属性。</xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString*>"
   overload: System.Data.Common.DbConnectionStringBuilder.ToString*
   exceptions: []
   platform:
@@ -1167,8 +1167,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Retrieves a value corresponding to the supplied key from this <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
-  remarks: "The TryGetValue method lets developers safely retrieve a value from a <xref:System.Data.Common.DbConnectionStringBuilder> without needing to first call the <xref:System.Data.Common.DbConnectionStringBuilder.ContainsKey%2A> method. Because TryGetValue does not raise an exception when you call it, passing in a nonexistent key, you do not have to look for a key before retrieving its value. Calling TryGetValue with a nonexistent key will place the null value (`Nothing` in Visual Basic) in the `value` parameter."
+  summary: "检索与提供的键从此相对应的值<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>。"
+  remarks: "TryGetValue 方法允许开发人员安全地检索的值从<xref:System.Data.Common.DbConnectionStringBuilder>而无需首先调用<xref:System.Data.Common.DbConnectionStringBuilder.ContainsKey%2A>方法。</xref:System.Data.Common.DbConnectionStringBuilder.ContainsKey%2A> </xref:System.Data.Common.DbConnectionStringBuilder> TryGetValue 不会引发异常时调用它，传递中不存在的键，因为你不必在检索其值之前查找键。 调用具有不存在的键 TryGetValue 将 null 值 (`Nothing`在 Visual Basic 中) 中`value`参数。"
   example:
   - "The following example calls the TryGetValue method, demonstrating several possible outcomes.  \n  \n [!code-vb[DataWorks DbConnectionStringBuilder.TryGetValue#1](~/add/codesnippet/visualbasic/04255a8f-6280-4043-a487-_1.vb)]\n [!code-cs[DataWorks DbConnectionStringBuilder.TryGetValue#1](~/add/codesnippet/csharp/04255a8f-6280-4043-a487-_1.cs)]  \n  \n The sample displays the following results:  \n  \n```  \nProvider=sqloledb  \nDATA SOURCE=192.168.168.1,1433  \nUnable to retrieve value for //InvalidKey//  \nUnable to retrieve value for null key.  \n```"
   syntax:
@@ -1176,18 +1176,18 @@ items:
     parameters:
     - id: keyword
       type: System.String
-      description: "The key of the item to retrieve."
+      description: "要检索的项的键。"
     - id: value
       type: System.Object
-      description: "The value corresponding to the `key`."
+      description: "值对应于`key`。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>keyword</code> was found within the connection string, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> otherwise."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果<code> keyword </code>在连接字符串中，找到<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>否则为。"
   overload: System.Data.Common.DbConnectionStringBuilder.TryGetValue*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyword</code> contains a null value (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic)."
+    description: "<code>keyword</code>包含一个 null 值 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref>在 Visual Basic 中)。"
   platform:
   - net462
 - uid: System.Data.Common.DbConnectionStringBuilder.Values
@@ -1202,15 +1202,15 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets an <xref:System.Collections.ICollection> that contains the values in the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
-  remarks: "The order of the values in the <xref:System.Collections.ICollection> is unspecified, but it is the same order as the associated keys in the <xref:System.Collections.ICollection> returned by the <xref:System.Data.Common.DbConnectionStringBuilder.Keys%2A> method.       The returned <xref:System.Collections.ICollection> is not a static copy; instead, the <xref:System.Collections.ICollection> refers back to the values in the original <xref:System.Data.Common.DbConnectionStringBuilder>. Therefore, changes to the <xref:System.Data.Common.DbConnectionStringBuilder> are reflected in the <xref:System.Collections.ICollection>."
+  summary: "获取<xref:System.Collections.ICollection>包含中的值<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>。</xref:System.Collections.ICollection>"
+  remarks: "中的值的顺序<xref:System.Collections.ICollection>未指定，但它是中的关联键顺序相同<xref:System.Collections.ICollection>返回<xref:System.Data.Common.DbConnectionStringBuilder.Keys%2A>方法。</xref:System.Data.Common.DbConnectionStringBuilder.Keys%2A> </xref:System.Collections.ICollection> </xref:System.Collections.ICollection>       返回<xref:System.Collections.ICollection>不是静态的副本; 相反，<xref:System.Collections.ICollection>引用回原始<xref:System.Data.Common.DbConnectionStringBuilder>.</xref:System.Data.Common.DbConnectionStringBuilder>中的值</xref:System.Collections.ICollection></xref:System.Collections.ICollection> 因此，更改为<xref:System.Data.Common.DbConnectionStringBuilder>反映在<xref:System.Collections.ICollection>.</xref:System.Collections.ICollection> </xref:System.Data.Common.DbConnectionStringBuilder>"
   example:
   - "> [!NOTE]\n>  This example includes a password to demonstrate how <xref:System.Data.Common.DbConnectionStringBuilder> works with connection strings. In your applications, we recommend that you use Windows Authentication. If you must use a password, do not include a hard-coded password in your application.  \n  \n [!code-vb[DataWorks DbConnectionStringBuilder.Values#1](~/add/codesnippet/visualbasic/p-system.data.common.dbc_1_1.vb)]\n [!code-cs[DataWorks DbConnectionStringBuilder.Values#1](~/add/codesnippet/csharp/p-system.data.common.dbc_1_1.cs)]  \n  \n Displays the following output:  \n  \n```  \nMSDataShape.1  \nfalse  \nMSDAORA  \norac  \nusername  \n*******  \n```"
   syntax:
     content: public virtual System.Collections.ICollection Values { get; }
     return:
       type: System.Collections.ICollection
-      description: "An <xref:System.Collections.ICollection> that contains the values in the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
+      description: "<xref:System.Collections.ICollection>包含中的值<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>。</xref:System.Collections.ICollection>"
   overload: System.Data.Common.DbConnectionStringBuilder.Values*
   exceptions: []
   platform:
