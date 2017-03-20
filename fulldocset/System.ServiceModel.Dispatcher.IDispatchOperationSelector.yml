@@ -10,8 +10,8 @@ items:
   nameWithType: IDispatchOperationSelector
   fullName: System.ServiceModel.Dispatcher.IDispatchOperationSelector
   type: Interface
-  summary: "Defines the contract that associates incoming messages with a local operation to customize service execution behavior."
-  remarks: "Implement and insert a custom operation selector to customize the selection of the operation to which an incoming message is dispatched in a service application. Assign the IDispatchOperationSelector object to the <xref:System.ServiceModel.Dispatcher.DispatchRuntime.OperationSelector%2A> property to insert the custom selector."
+  summary: "定义将传入消息与本地操作来自定义服务执行行为相关联的协定。"
+  remarks: "实现并插入自定义操作选择器，自定义服务应用程序中，传入消息调度到操作的所选内容。 IDispatchOperationSelector 将对象分配给<xref:System.ServiceModel.Dispatcher.DispatchRuntime.OperationSelector%2A>属性插入自定义选择器。</xref:System.ServiceModel.Dispatcher.DispatchRuntime.OperationSelector%2A>"
   example:
   - "```c#  \n  \npublic class QueryStringDispatcherBehavior : IDispatchOperationSelector  \n{  \n//Define the mapping from the Actions of the message to the operations.  \nNameValueCollection actionMap; { … }  \n  \n//Implement the SelectOperation method.  \npublic string SelectOperation( ref Message message )  \n        {  \n            Uri uri = new Uri(message.Headers.Action);  \n            string query = uri.Query;  \n  \n            string methodName = actionMap[message.Headers.Action.ToString()];  \n  \n            return methodName;  \n        }  \n}  \n```"
   syntax:
@@ -31,16 +31,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Associates a local operation with the incoming method."
+  summary: "将本地操作与传入的方法相关联。"
   syntax:
     content: public string SelectOperation (ref System.ServiceModel.Channels.Message message);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The incoming <xref:System.ServiceModel.Channels.Message> to be associated with an operation."
+      description: "传入<xref:System.ServiceModel.Channels.Message>要与操作相关联。</xref:System.ServiceModel.Channels.Message>"
     return:
       type: System.String
-      description: "The name of the operation to be associated with the <code>message</code>."
+      description: "要与之关联的操作的名称<code> message </code>。"
   overload: System.ServiceModel.Dispatcher.IDispatchOperationSelector.SelectOperation*
   exceptions: []
   platform:

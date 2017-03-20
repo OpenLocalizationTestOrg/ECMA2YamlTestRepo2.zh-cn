@@ -61,8 +61,8 @@ items:
   nameWithType: ExpressionTextBox
   fullName: System.Activities.Presentation.View.ExpressionTextBox
   type: Class
-  summary: "Describes a control that enables the user to edit an expression in an activity designer."
-  remarks: "In [!INCLUDE[vsprvs](~/add/includes/vsprvs-md.md)], the ExpressionTextBox provides features such as IntelliSense when editing an expression. Such features are provided by a component called the hostable editor. The expression editing interface is extensible and the editor used for editing expressions can be replaced.      > [!NOTE] >  This component is not available for use in applications that are being re-hosted outside [!INCLUDE[vsprvs](~/add/includes/vsprvs-md.md)].       **ExpressionTextBlock** works in the following manner when you edit an expression.      1.  When you click on an **ExpressionTextBox**, an <xref:System.Activities.Presentation.View.IExpressionEditorInstance> object is created and a hostable editor session is instantiated in [!INCLUDE[vsprvs](~/add/includes/vsprvs-md.md)].      2.  When you type inside a hostable editor, note that the features have two sorts of availability.          1.  IntelliSense, completion and colorization support is available immediately.          2.  Validation is called in the background and is available only after a short interval of time elapses. Then, if your expression is invalid, the hosted compiler reports the error and the red error icon displays to the right of your expression.      3.  Press the **Enter** key when the **ExpressionTextBox** has the focus to insert new lines in the <xref:System.Activities.Presentation.View.IExpressionEditorInstance> object. This causes a line commit to occur inside the hostable editor, which triggers a pretty listing and the display of squiggles.      4.  The editor instance is destroyed when the **ExpressionTextBox** loses the focus, and the display reverts to a **TextBlock**. If you are on the designer surface or in the property grid, the change to the model item is committed and all ExpressionTextBox controls displaying that same expression are synchronized. However, if you are in a dialog box, the change to the model item is not committed until you click OK. When the model item is committed, <xref:System.Activities.Validation.ActivityValidationServices.Validate%2A> is invoked and the entire workflow is validated.      5.  When you click on the **ExpressionTextBox** again, a new editor instance is created. In the hostable editor, pretty listing, colorization, and squiggling occurs before you begin editing.       To bind the expression text box to **OwnerActivity**, use <xref:System.Activities.Presentation.Converters.ModelPropertyEntryToModelItemConverter> to set the data context correctly. The following code sample demonstrates setting the data context correctly for binding to **OwnerActivity**.      ```   <sapc:ModelPropertyEntryToModelItemConverter x:Key=&quot;ModelPropertyEntryToContainerConverter&quot;/>          <DataTemplate x:Key=&quot;StringInArgumentPropertyValueEditorTemplate&quot; >           <Grid Margin=&quot;5&quot; Background=&quot;LightGreen&quot; DataContext=&quot;{Binding Converter={StaticResource ModelPropertyEntryToContainerConverter}}&quot;>               <sapv:ExpressionTextBox                Expression=&quot;{Binding Path=ModelItem.MyVal, Mode=TwoWay,   Converter={StaticResource ArgumentToExpressionConverter},  ConverterParameter=In }&quot;               ExpressionType=&quot;sys:String&quot;               OwnerActivity=&quot;{Binding Path=ModelItem}&quot;                     />           </Grid>       </DataTemplate>   ```       For more information, see <xref:System.Activities.Presentation.View.IExpressionEditorInstance> and <xref:System.Activities.Presentation.View.IExpressionEditorService>. Also see the [Using the ExpressionTextBox in a Custom Activity Designer](~/add/includes/ajax-current-ext-md.md) sample topic."
+  summary: "描述使用户能够编辑自定义活动设计器中的表达式的控件。"
+  remarks: "在[!INCLUDE[vsprvs](~/add/includes/vsprvs-md.md)]，ExpressionTextBox 编辑表达式时提供功能，例如 IntelliSense。 此类功能由一个称作可承载编辑器的组件提供。 表达式编辑接口可扩展，可替换编辑器用于编辑表达式。      1> [!NOTE]&1;> 此组件不可用于正在外部重新承载的应用程序中使用[!INCLUDE[vsprvs](~/add/includes/vsprvs-md.md)]。       **ExpressionTextBlock**时您编辑表达式时，按以下方式工作原理。      1.  当你单击**ExpressionTextBox**、<xref:System.Activities.Presentation.View.IExpressionEditorInstance>创建对象以及中实例化一个可承载编辑器会话[!INCLUDE[vsprvs](~/add/includes/vsprvs-md.md)]。</xref:System.Activities.Presentation.View.IExpressionEditorInstance>      2.  在可承载编辑器中键入内容，请注意这些功能有两类可用性。          1.  IntelliSense、 完成和着色支持将立即变为可用。          2.  验证在后台调用，并仅在短经历的时间间隔之后才可用。 然后，如果你的表达式无效，托管的编译器会报告错误并为你的表达式的右侧显示红色错误图标。      3.  按**Enter**密钥时**ExpressionTextBox**具有焦点插入新行中的<xref:System.Activities.Presentation.View.IExpressionEditorInstance>对象。</xref:System.Activities.Presentation.View.IExpressionEditorInstance> 这将导致可承载编辑器，随即将会触发整齐排列和波形曲线的显示中进行行提交的。      4.  编辑器实例被销毁时**ExpressionTextBox**失去焦点时，显示将恢复到**TextBlock**。 如果您是在设计器图面上或在属性网格中，会提交对模型项更改并且同步显示同一表达式的所有 ExpressionTextBox 控件。 但是，如果你是在对话框中，对模型项的更改直到才会提交你单击确定。 当提交模型项后时，<xref:System.Activities.Validation.ActivityValidationServices.Validate%2A>调用和验证整个工作流。</xref:System.Activities.Validation.ActivityValidationServices.Validate%2A>      5.  当你单击**ExpressionTextBox**再次，创建一个新的编辑器实例。 在可承载编辑器中，错落有致的行排列和着色效果之前发生开始编辑。       若要将绑定到表达式文本框**OwnerActivity**，使用<xref:System.Activities.Presentation.Converters.ModelPropertyEntryToModelItemConverter>正确设置数据上下文。</xref:System.Activities.Presentation.Converters.ModelPropertyEntryToModelItemConverter> 下面的代码示例演示如何设置绑定到正确的数据上下文**OwnerActivity**。      ```   <sapc:ModelPropertyEntryToModelItemConverter x:Key=&quot;ModelPropertyEntryToContainerConverter&quot;/>          <DataTemplate x:Key=&quot;StringInArgumentPropertyValueEditorTemplate&quot; >           <Grid Margin=&quot;5&quot; Background=&quot;LightGreen&quot; DataContext=&quot;{Binding Converter={StaticResource ModelPropertyEntryToContainerConverter}}&quot;>               <sapv:ExpressionTextBox                Expression=&quot;{Binding Path=ModelItem.MyVal, Mode=TwoWay,   Converter={StaticResource ArgumentToExpressionConverter},  ConverterParameter=In }&quot;               ExpressionType=&quot;sys:String&quot;               OwnerActivity=&quot;{Binding Path=ModelItem}&quot;                     />           </Grid>       </DataTemplate>   ```有关详细信息，请参阅<xref:System.Activities.Presentation.View.IExpressionEditorInstance>和<xref:System.Activities.Presentation.View.IExpressionEditorService>。</xref:System.Activities.Presentation.View.IExpressionEditorService> </xref:System.Activities.Presentation.View.IExpressionEditorInstance> 另请参阅[自定义活动设计器中使用 ExpressionTextBox](~/add/includes/ajax-current-ext-md.md)示例主题。"
   example:
   - "The ExpressionTextBox is usually used declaratively when creating custom activity designers. For sample code, see the [ExpressionTextBox101](http://go.microsoft.com/fwlink/?LinkId=193145) blog.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
@@ -718,7 +718,7 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Creates a new instance of the <xref href=&quot;System.Activities.Presentation.View.ExpressionTextBox&quot;></xref> class."
+  summary: "创建的新实例<xref href=&quot;System.Activities.Presentation.View.ExpressionTextBox&quot;></xref>类。"
   syntax:
     content: public ExpressionTextBox ();
     parameters: []
@@ -738,12 +738,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Gets or sets a value that indicates whether the expression text box accepts returns."
+  summary: "获取或设置一个值，指示表达式文本框是否接受 return 键。"
   syntax:
     content: public bool AcceptsReturn { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if returns are accepted; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果接受返回;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Activities.Presentation.View.ExpressionTextBox.AcceptsReturn*
   exceptions: []
   platform:
@@ -760,12 +760,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Registers the <xref:System.Activities.Presentation.View.ExpressionTextBox.AcceptsReturn*> dependency property."
+  summary: "注册<xref:System.Activities.Presentation.View.ExpressionTextBox.AcceptsReturn*>依赖项属性。</xref:System.Activities.Presentation.View.ExpressionTextBox.AcceptsReturn*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty AcceptsReturnProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -781,12 +781,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Gets or sets a value that indicates whether the expression text box accepts tabs."
+  summary: "获取或设置一个值，指示表达式文本框是否接受 tab 键。"
   syntax:
     content: public bool AcceptsTab { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if tabs are accepted; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果接受选项卡;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Activities.Presentation.View.ExpressionTextBox.AcceptsTab*
   exceptions: []
   platform:
@@ -803,12 +803,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Registers the <xref:System.Activities.Presentation.View.ExpressionTextBox.AcceptsTab*> dependency property."
+  summary: "注册<xref:System.Activities.Presentation.View.ExpressionTextBox.AcceptsTab*>依赖项属性。</xref:System.Activities.Presentation.View.ExpressionTextBox.AcceptsTab*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty AcceptsTabProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -824,7 +824,7 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Begins an edit."
+  summary: "开始编辑。"
   syntax:
     content: public void BeginEdit ();
     parameters: []
@@ -844,12 +844,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "The command used to complete words in the expression text box."
+  summary: "用于完成表达式文本框中的单词的命令。"
   syntax:
     content: public static readonly System.Windows.Input.ICommand CompleteWordCommand;
     return:
       type: System.Windows.Input.ICommand
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -865,12 +865,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "The command used to change the filter level from the **Common** tab to the **All** tab when you are using IntelliSense filtering. This is available only when you edit an expression."
+  summary: "用于更改筛选级别从该命令**常见**tab 键移动到**所有**选项卡上使用 IntelliSense 筛选时。 这是提供仅当您编辑表达式。"
   syntax:
     content: public static readonly System.Windows.Input.ICommand DecreaseFilterLevelCommand;
     return:
       type: System.Windows.Input.ICommand
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -886,12 +886,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Gets or sets the default value."
+  summary: "获取或设置默认值。"
   syntax:
     content: public string DefaultValue { get; set; }
     return:
       type: System.String
-      description: "The default value."
+      description: "默认值。"
   overload: System.Activities.Presentation.View.ExpressionTextBox.DefaultValue*
   exceptions: []
   platform:
@@ -908,12 +908,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Registers the <xref:System.Activities.Presentation.View.ExpressionTextBox.DefaultValue*> dependency property."
+  summary: "注册<xref:System.Activities.Presentation.View.ExpressionTextBox.DefaultValue*>依赖项属性。</xref:System.Activities.Presentation.View.ExpressionTextBox.DefaultValue*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty DefaultValueProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -929,13 +929,13 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Occurs when the expression editor loses logical focus."
-  remarks: "Logical focus differs from keyboard focus if focus is deliberately forced away by using a method call but the previous keyboard focus exists in a different scope."
+  summary: "表达式编辑器失去逻辑焦点时发生。"
+  remarks: "如果有意通过某个方法调用时强制焦点，而前一个键盘焦点位于不同的范围内，则逻辑焦点将与键盘焦点不同。"
   syntax:
     content: public event System.Windows.RoutedEventHandler EditorLostLogicalFocus;
     return:
       type: System.Windows.RoutedEventHandler
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -951,12 +951,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Identifies the <xref href=&quot;System.Activities.Presentation.View.ExpressionTextBox.EditorLostLogicalFocus&quot;></xref> routed event."
+  summary: "标识<xref href=&quot;System.Activities.Presentation.View.ExpressionTextBox.EditorLostLogicalFocus&quot;></xref>路由的事件。"
   syntax:
     content: public static readonly System.Windows.RoutedEvent EditorLostLogicalFocusEvent;
     return:
       type: System.Windows.RoutedEvent
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -972,12 +972,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Gets or sets a value that determines whether a commit is explicit."
+  summary: "获取或设置一个值，确定提交是否是显式。"
   syntax:
     content: public bool ExplicitCommit { get; set; }
     return:
       type: System.Boolean
-      description: "Returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the commit is explicit; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "返回<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> ，提交是显式; 否则为如果<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Activities.Presentation.View.ExpressionTextBox.ExplicitCommit*
   exceptions: []
   platform:
@@ -994,12 +994,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Registers the <xref:System.Activities.Presentation.View.ExpressionTextBox.ExplicitCommit*> dependency property."
+  summary: "注册<xref:System.Activities.Presentation.View.ExpressionTextBox.ExplicitCommit*>依赖项属性。</xref:System.Activities.Presentation.View.ExpressionTextBox.ExplicitCommit*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty ExplicitCommitProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1015,15 +1015,15 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Gets or sets the expression."
-  remarks: "Expression is always required. When using the [ExpressionTextBox](~/add/includes/ajax-current-ext-md.md) declaratively to bind to arguments, you must always use the <xref:System.Activities.Presentation.Converters.ArgumentToExpressionConverter> to bind the expression to the argument, setting the `ConverterParameter` to `In` or `Out` depending on the direction of the argument."
+  summary: "获取或设置的表达式。"
+  remarks: "表达式始终是必需的。 使用时[ExpressionTextBox](~/add/includes/ajax-current-ext-md.md)以声明方式若要将绑定到自变量，你必须始终使用<xref:System.Activities.Presentation.Converters.ArgumentToExpressionConverter>将表达式绑定到自变量，设置`ConverterParameter`到`In`或`Out`具体取决于自变量方向。</xref:System.Activities.Presentation.Converters.ArgumentToExpressionConverter>"
   example:
   - '[!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]'
   syntax:
     content: public System.Activities.Presentation.Model.ModelItem Expression { get; set; }
     return:
       type: System.Activities.Presentation.Model.ModelItem
-      description: "Returns a <xref href=&quot;System.Activities.Presentation.Model.ModelItem&quot;></xref> that contains the expression."
+      description: "返回<xref href=&quot;System.Activities.Presentation.Model.ModelItem&quot;></xref>包含表达式。"
   overload: System.Activities.Presentation.View.ExpressionTextBox.Expression*
   exceptions: []
   platform:
@@ -1040,12 +1040,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Gets or sets the expression activity editor."
+  summary: "获取或设置表达式活动编辑器。"
   syntax:
     content: public string ExpressionActivityEditor { get; set; }
     return:
       type: System.String
-      description: "The expression activity editor."
+      description: "表达式的活动编辑器。"
   overload: System.Activities.Presentation.View.ExpressionTextBox.ExpressionActivityEditor*
   exceptions: []
   platform:
@@ -1062,12 +1062,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Specifies a name of the expression activity editor option."
+  summary: "指定的表达式活动编辑器选项的名称。"
   syntax:
     content: public const string ExpressionActivityEditorOptionName;
     return:
       type: System.String
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1083,12 +1083,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Registers the <xref:System.Activities.Presentation.View.ExpressionTextBox.ExpressionActivityEditor*> dependency property."
+  summary: "注册<xref:System.Activities.Presentation.View.ExpressionTextBox.ExpressionActivityEditor*>依赖项属性。</xref:System.Activities.Presentation.View.ExpressionTextBox.ExpressionActivityEditor*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty ExpressionActivityEditorProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1104,12 +1104,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Gets the expression editor service."
+  summary: "获取表达式编辑器服务。"
   syntax:
     content: public System.Activities.Presentation.View.IExpressionEditorService ExpressionEditorService { get; }
     return:
       type: System.Activities.Presentation.View.IExpressionEditorService
-      description: "Returns a <xref href=&quot;System.Activities.Presentation.View.IExpressionEditorService&quot;></xref> that contains the expression editor service."
+      description: "返回<xref href=&quot;System.Activities.Presentation.View.IExpressionEditorService&quot;></xref>包含表达式编辑器服务。"
   overload: System.Activities.Presentation.View.ExpressionTextBox.ExpressionEditorService*
   exceptions: []
   platform:
@@ -1126,12 +1126,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Registers the <xref:System.Activities.Presentation.View.ExpressionTextBox.Expression*> dependency property."
+  summary: "注册<xref:System.Activities.Presentation.View.ExpressionTextBox.Expression*>依赖项属性。</xref:System.Activities.Presentation.View.ExpressionTextBox.Expression*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty ExpressionProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1147,15 +1147,15 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Gets or sets the expression type."
-  remarks: "Setting the type is strongly recommended. If you do not set ExpressionType, you can’t use the <xref:System.Activities.Presentation.View.ExpressionTextBox> to bind to delegate types and you do not get validation from the hosted compiler. This compiler validation checks to see if the type of the entered expression matches the expected type, and displays a red box around the **ExpressionTextBox** when invalid data is entered into it on an activity designer."
+  summary: "获取或设置表达式类型。"
+  remarks: "强烈建议设置的类型。 如果未设置键入，则无法使用<xref:System.Activities.Presentation.View.ExpressionTextBox>绑定到委托类型，并且未得到验证从承载的编译器。</xref:System.Activities.Presentation.View.ExpressionTextBox> 此编译器验证检查以查看所输入表达式的类型匹配预期的类型，并且周围显示一个红色框**ExpressionTextBox**活动设计器上向其中输入无效数据时。"
   example:
   - '[!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]'
   syntax:
     content: public Type ExpressionType { get; set; }
     return:
       type: System.Type
-      description: "Returns a <xref:System.Type> that contains the expression type."
+      description: "返回<xref:System.Type>包含表达式类型。</xref:System.Type>"
   overload: System.Activities.Presentation.View.ExpressionTextBox.ExpressionType*
   exceptions: []
   platform:
@@ -1172,12 +1172,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Registers the <xref:System.Activities.Presentation.View.ExpressionTextBox.ExpressionType*> dependency property."
+  summary: "注册<xref:System.Activities.Presentation.View.ExpressionTextBox.ExpressionType*>依赖项属性。</xref:System.Activities.Presentation.View.ExpressionTextBox.ExpressionType*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty ExpressionTypeProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1193,12 +1193,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "The command used for global IntelliSense in the expression text box."
+  summary: "该命令，用于表达式文本框中的全局 IntelliSense。"
   syntax:
     content: public static readonly System.Windows.Input.ICommand GlobalIntellisenseCommand;
     return:
       type: System.Windows.Input.ICommand
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1214,12 +1214,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Gets or sets the hint text."
+  summary: "获取或设置提示文本。"
   syntax:
     content: public string HintText { get; set; }
     return:
       type: System.String
-      description: "Returns a <xref:System.String> that contains the hint text."
+      description: "返回<xref:System.String>包含提示文本。</xref:System.String>"
   overload: System.Activities.Presentation.View.ExpressionTextBox.HintText*
   exceptions: []
   platform:
@@ -1236,12 +1236,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Registers the <xref:System.Activities.Presentation.View.ExpressionTextBox.HintText*> dependency property."
+  summary: "注册<xref:System.Activities.Presentation.View.ExpressionTextBox.HintText*>依赖项属性。</xref:System.Activities.Presentation.View.ExpressionTextBox.HintText*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty HintTextProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1257,12 +1257,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Gets or sets the horizontal scroll bar visibility."
+  summary: "获取或设置水平滚动条可见性。"
   syntax:
     content: public System.Windows.Controls.ScrollBarVisibility HorizontalScrollBarVisibility { get; set; }
     return:
       type: System.Windows.Controls.ScrollBarVisibility
-      description: "Returns a <xref href=&quot;System.Windows.Controls.ScrollBarVisibility&quot;></xref> that contains the horizontal scroll bar visibility."
+      description: "返回<xref href=&quot;System.Windows.Controls.ScrollBarVisibility&quot;></xref>包含水平滚动条可见性。"
   overload: System.Activities.Presentation.View.ExpressionTextBox.HorizontalScrollBarVisibility*
   exceptions: []
   platform:
@@ -1279,12 +1279,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Registers the <xref:System.Activities.Presentation.View.ExpressionTextBox.HorizontalScrollBarVisibility*> dependency property."
+  summary: "注册<xref:System.Activities.Presentation.View.ExpressionTextBox.HorizontalScrollBarVisibility*>依赖项属性。</xref:System.Activities.Presentation.View.ExpressionTextBox.HorizontalScrollBarVisibility*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty HorizontalScrollBarVisibilityProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1300,12 +1300,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "The command used to change the filter level from the **All** tab to the **Common** tab when you are using IntelliSense filtering. This is available only when you edit an expression."
+  summary: "用于更改筛选级别从该命令**所有**tab 键移动到**常见**选项卡上使用 IntelliSense 筛选时。 这是提供仅当您编辑表达式。"
   syntax:
     content: public static readonly System.Windows.Input.ICommand IncreaseFilterLevelCommand;
     return:
       type: System.Windows.Input.ICommand
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1321,8 +1321,8 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Initializes this form."
-  remarks: "This method is intended for use only by the markup compiler."
+  summary: "初始化此窗体。"
+  remarks: "此方法适合仅由标记编译器使用。"
   syntax:
     content: public void InitializeComponent ();
     parameters: []
@@ -1342,12 +1342,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Gets or sets a value that indicates whether the expression textbox is read-only."
+  summary: "获取或设置一个值，指示表达式文本框是否是只读的。"
   syntax:
     content: public bool IsReadOnly { get; set; }
     return:
       type: System.Boolean
-      description: "A value that indicates whether the expression textbox is read-only."
+      description: "一个值，指示表达式文本框是否是只读的。"
   overload: System.Activities.Presentation.View.ExpressionTextBox.IsReadOnly*
   exceptions: []
   platform:
@@ -1364,12 +1364,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Registers the <xref:System.Activities.Presentation.View.ExpressionTextBox.IsReadOnly*> property."
+  summary: "注册<xref:System.Activities.Presentation.View.ExpressionTextBox.IsReadOnly*>属性。</xref:System.Activities.Presentation.View.ExpressionTextBox.IsReadOnly*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty IsReadOnlyProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1385,12 +1385,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Gets or sets a value that determines whether the expression is supported."
+  summary: "获取或设置一个值，确定是否支持表达式。"
   syntax:
     content: public bool IsSupportedExpression { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the expression is supported; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果支持表达式;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Activities.Presentation.View.ExpressionTextBox.IsSupportedExpression*
   exceptions: []
   platform:
@@ -1407,12 +1407,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Registers the <xref:System.Activities.Presentation.View.ExpressionTextBox.IsSupportedExpression*> dependency property."
+  summary: "注册<xref:System.Activities.Presentation.View.ExpressionTextBox.IsSupportedExpression*>依赖项属性。</xref:System.Activities.Presentation.View.ExpressionTextBox.IsSupportedExpression*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty IsSupportedExpressionProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1428,12 +1428,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Gets or sets the maximum number of lines."
+  summary: "获取或设置最大行数。"
   syntax:
     content: public int MaxLines { get; set; }
     return:
       type: System.Int32
-      description: "Returns an <xref:System.Int32> that contains the maximum number of lines."
+      description: "返回<xref:System.Int32>，其中包含的最大行数。</xref:System.Int32>"
   overload: System.Activities.Presentation.View.ExpressionTextBox.MaxLines*
   exceptions: []
   platform:
@@ -1450,12 +1450,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Registers the <xref:System.Activities.Presentation.View.ExpressionTextBox.MaxLines*> dependency property."
+  summary: "注册<xref:System.Activities.Presentation.View.ExpressionTextBox.MaxLines*>依赖项属性。</xref:System.Activities.Presentation.View.ExpressionTextBox.MaxLines*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty MaxLinesProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1471,12 +1471,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Gets or sets the minimum number of lines."
+  summary: "获取或设置最小行数。"
   syntax:
     content: public int MinLines { get; set; }
     return:
       type: System.Int32
-      description: "Returns an <xref:System.Int32> that contains the minimum number of lines."
+      description: "返回<xref:System.Int32>，其中包含的最小行数。</xref:System.Int32>"
   overload: System.Activities.Presentation.View.ExpressionTextBox.MinLines*
   exceptions: []
   platform:
@@ -1493,12 +1493,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Registers the <xref:System.Activities.Presentation.View.ExpressionTextBox.MinLines*> dependency property."
+  summary: "注册<xref:System.Activities.Presentation.View.ExpressionTextBox.MinLines*>依赖项属性。</xref:System.Activities.Presentation.View.ExpressionTextBox.MinLines*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty MinLinesProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1519,7 +1519,7 @@ items:
     parameters: []
     return:
       type: System.Windows.Automation.Peers.AutomationPeer
-      description: "To be added."
+      description: "要添加。"
   overload: System.Activities.Presentation.View.ExpressionTextBox.OnCreateAutomationPeer*
   exceptions: []
   platform:
@@ -1541,7 +1541,7 @@ items:
     parameters:
     - id: e
       type: System.EventArgs
-      description: "To be added."
+      description: "要添加。"
   overload: System.Activities.Presentation.View.ExpressionTextBox.OnInitialized*
   exceptions: []
   platform:
@@ -1563,7 +1563,7 @@ items:
     parameters:
     - id: e
       type: System.Windows.DependencyPropertyChangedEventArgs
-      description: "To be added."
+      description: "要添加。"
   overload: System.Activities.Presentation.View.ExpressionTextBox.OnPropertyChanged*
   exceptions: []
   platform:
@@ -1580,7 +1580,7 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Gets or sets the owner activity."
+  summary: "获取或设置所有者活动。"
   remarks: ''
   example:
   - '[!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]'
@@ -1588,7 +1588,7 @@ items:
     content: public System.Activities.Presentation.Model.ModelItem OwnerActivity { get; set; }
     return:
       type: System.Activities.Presentation.Model.ModelItem
-      description: "Returns a <xref href=&quot;System.Activities.Presentation.Model.ModelItem&quot;></xref> that contains the owner activity."
+      description: "返回<xref href=&quot;System.Activities.Presentation.Model.ModelItem&quot;></xref>包含所有者活动。"
   overload: System.Activities.Presentation.View.ExpressionTextBox.OwnerActivity*
   exceptions: []
   platform:
@@ -1605,12 +1605,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Registers the <xref:System.Activities.Presentation.View.ExpressionTextBox.OwnerActivity*> dependency property."
+  summary: "注册<xref:System.Activities.Presentation.View.ExpressionTextBox.OwnerActivity*>依赖项属性。</xref:System.Activities.Presentation.View.ExpressionTextBox.OwnerActivity*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty OwnerActivityProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1626,12 +1626,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "The command used for parameter information in the expression text box."
+  summary: "用于表达式文本框中的参数信息的命令。"
   syntax:
     content: public static readonly System.Windows.Input.ICommand ParameterInfoCommand;
     return:
       type: System.Windows.Input.ICommand
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1647,12 +1647,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Gets or sets the path to the argument."
+  summary: "获取或设置自变量的路径。"
   syntax:
     content: public string PathToArgument { get; set; }
     return:
       type: System.String
-      description: "Returns a <xref:System.String> that contains the path to the argument."
+      description: "返回<xref:System.String>，其中包含自变量的路径。</xref:System.String>"
   overload: System.Activities.Presentation.View.ExpressionTextBox.PathToArgument*
   exceptions: []
   platform:
@@ -1669,12 +1669,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Registers the <xref:System.Activities.Presentation.View.ExpressionTextBox.PathToArgument*> dependency property."
+  summary: "注册<xref:System.Activities.Presentation.View.ExpressionTextBox.PathToArgument*>依赖项属性。</xref:System.Activities.Presentation.View.ExpressionTextBox.PathToArgument*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty PathToArgumentProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1690,12 +1690,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "The command used for quick information in the expression text box."
+  summary: "用于表达式文本框中的快速信息的命令。"
   syntax:
     content: public static readonly System.Windows.Input.ICommand QuickInfoCommand;
     return:
       type: System.Windows.Input.ICommand
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1711,19 +1711,19 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Registers an expression activity editor."
+  summary: "注册一个表达式活动编辑器。"
   syntax:
     content: public static void RegisterExpressionActivityEditor (string name, Type expressionActivityEditorType, System.Activities.Presentation.Expressions.CreateExpressionFromStringCallback convertFromString);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the epression editor."
+      description: "Epression 编辑器的名称。"
     - id: expressionActivityEditorType
       type: System.Type
-      description: "The type of the expression activity editor."
+      description: "编辑器的类型的表达式活动。"
     - id: convertFromString
       type: System.Activities.Presentation.Expressions.CreateExpressionFromStringCallback
-      description: "The string format of the expression."
+      description: "表达式的字符串格式。"
   overload: System.Activities.Presentation.View.ExpressionTextBox.RegisterExpressionActivityEditor*
   exceptions: []
   platform:
@@ -1741,17 +1741,17 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Attaches events and names to compiled content."
-  remarks: "This class is intended for use only by the markup compiler."
+  summary: "将事件和名称附加到已编译的内容。"
+  remarks: "此类是使用只适合由标记编译器。"
   syntax:
     content: void IComponentConnector.Connect (int connectionId, object target);
     parameters:
     - id: connectionId
       type: System.Int32
-      description: "The connection ID."
+      description: "连接 id。"
     - id: target
       type: System.Object
-      description: "The target."
+      description: "目标。"
   overload: System.Activities.Presentation.View.ExpressionTextBox.System#Windows#Markup#IComponentConnector#Connect*
   exceptions: []
   platform:
@@ -1768,13 +1768,13 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Gets or sets a value that determines whether this instance uses the location expression."
-  remarks: "A *location expression* (or L-value expression) is a type of expression that evaluates to an identifier and can be placed on the left hand side of an assignment statement. When you are binding the <xref:System.Activities.Presentation.View.ExpressionTextBox> to an `Out` argument, you would set this property to `True`."
+  summary: "获取或设置一个值，确定此实例是否使用位置表达式。"
+  remarks: "A*位置表达式*（或左值表达式） 是一种计算结果为标识符，并将其置于赋值语句的左侧的表达式。 当你正在绑定<xref:System.Activities.Presentation.View.ExpressionTextBox>到`Out`自变量，会将此属性设置为`True`。</xref:System.Activities.Presentation.View.ExpressionTextBox>"
   syntax:
     content: public bool UseLocationExpression { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this instance uses the location expression; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果此实例使用位置表达式;否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Activities.Presentation.View.ExpressionTextBox.UseLocationExpression*
   exceptions: []
   platform:
@@ -1791,12 +1791,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Registers the <xref:System.Activities.Presentation.View.ExpressionTextBox.UseLocationExpression*> dependency property."
+  summary: "注册<xref:System.Activities.Presentation.View.ExpressionTextBox.UseLocationExpression*>依赖项属性。</xref:System.Activities.Presentation.View.ExpressionTextBox.UseLocationExpression*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty UseLocationExpressionProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -1812,12 +1812,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Gets or sets the vertical scrollbar visibility."
+  summary: "获取或设置垂直滚动条的可见性。"
   syntax:
     content: public System.Windows.Controls.ScrollBarVisibility VerticalScrollBarVisibility { get; set; }
     return:
       type: System.Windows.Controls.ScrollBarVisibility
-      description: "Returns a <xref href=&quot;System.Windows.Controls.ScrollBarVisibility&quot;></xref> that contains the scrollbar visibility."
+      description: "返回<xref href=&quot;System.Windows.Controls.ScrollBarVisibility&quot;></xref>包含滚动条可见性。"
   overload: System.Activities.Presentation.View.ExpressionTextBox.VerticalScrollBarVisibility*
   exceptions: []
   platform:
@@ -1834,12 +1834,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Registers the <xref:System.Activities.Presentation.View.ExpressionTextBox.VerticalScrollBarVisibility*> dependency property."
+  summary: "注册<xref:System.Activities.Presentation.View.ExpressionTextBox.VerticalScrollBarVisibility*>依赖项属性。</xref:System.Activities.Presentation.View.ExpressionTextBox.VerticalScrollBarVisibility*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty VerticalScrollBarVisibilityProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
