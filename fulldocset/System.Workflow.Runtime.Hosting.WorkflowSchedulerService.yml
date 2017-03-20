@@ -13,8 +13,8 @@ items:
   nameWithType: WorkflowSchedulerService
   fullName: System.Workflow.Runtime.Hosting.WorkflowSchedulerService
   type: Class
-  summary: "Provides a mechanism to implement your own thread pool to execute the workflow and manage in-memory timer registration and events."
-  remarks: "> [!NOTE] >  [!INCLUDE[DeprecatedContent](~/add/includes/ajax-current-ext-md.md)]       WorkflowSchedulerService is that base class for all classes that create threads that run workflow instances on the workflow runtime engine host. These include <xref:System.Workflow.Runtime.Hosting.DefaultWorkflowSchedulerService> and <xref:System.Workflow.Runtime.Hosting.ManualWorkflowSchedulerService>."
+  summary: "提供一种机制来实现你自己的线程池来执行工作流和管理内存中计时器注册和事件。"
+  remarks: "> [!NOTE] >  [!INCLUDE[DeprecatedContent](~/add/includes/ajax-current-ext-md.md)]WorkflowSchedulerService 是该基类创建的线程都在工作流运行时引擎宿主上运行工作流实例的所有类。 其中包括<xref:System.Workflow.Runtime.Hosting.DefaultWorkflowSchedulerService>和<xref:System.Workflow.Runtime.Hosting.ManualWorkflowSchedulerService>。</xref:System.Workflow.Runtime.Hosting.ManualWorkflowSchedulerService> </xref:System.Workflow.Runtime.Hosting.DefaultWorkflowSchedulerService>"
   syntax:
     content: >-
       [System.Obsolete("The System.Workflow.* types are deprecated.  Instead, please use the new types from System.Activities.*")]
@@ -46,7 +46,7 @@ items:
   assemblies:
   - System.Workflow.Runtime
   namespace: System.Workflow.Runtime.Hosting
-  summary: "When implemented in a derived class, initializes a new instance of the <xref href=&quot;System.Workflow.Runtime.Hosting.WorkflowSchedulerService&quot;></xref> class."
+  summary: "派生类中实现时，初始化的新实例<xref href=&quot;System.Workflow.Runtime.Hosting.WorkflowSchedulerService&quot;></xref>类。"
   remarks: ''
   example:
   - "The following example demonstrates creating an instance of a <xref:System.Workflow.Runtime.Hosting.SqlWorkflowPersistenceService> object (that inherits from <xref:System.Workflow.Runtime.Hosting.WorkflowPersistenceService>) and adding it to the runtime. This example is from the Nested Exception Handlers SDK sample, from the Program.cs file. For more information, see [Nested Exception Handlers Sample](http://msdn.microsoft.com/en-us/d1da0209-842b-41c8-9b7c-0cbaa1034265).  \n  \n [!code-cs[WF_Samples#161](~/add/codesnippet/csharp/wf_snippets/snippets11.cs#161)]\n [!code-vb[WF_Samples#161](~/add/codesnippet/visualbasic/wf_snippets/snippets11.vb#161)]"
@@ -69,14 +69,14 @@ items:
   assemblies:
   - System.Workflow.Runtime
   namespace: System.Workflow.Runtime.Hosting
-  summary: "When overridden in a derived class, cancels the scheduled work item with the given <code>timerId</code>."
-  remarks: "Cancel removes from the pending work items queue a previous request to schedule a workflow instance."
+  summary: "当在派生类中重写时取消该计划的工作项与给定<code> timerId </code>。"
+  remarks: "取消按钮从挂起工作项队列中移除先前用于计划工作流实例的请求。"
   syntax:
     content: protected abstract void Cancel (Guid timerId);
     parameters:
     - id: timerId
       type: System.Guid
-      description: "The <xref:System.Guid> associated with the existing scheduled thread to cancel."
+      description: "<xref:System.Guid>与要取消的现有计划线程关联。</xref:System.Guid>"
   overload: System.Workflow.Runtime.Hosting.WorkflowSchedulerService.Cancel*
   exceptions: []
   platform:
@@ -93,17 +93,17 @@ items:
   assemblies:
   - System.Workflow.Runtime
   namespace: System.Workflow.Runtime.Hosting
-  summary: "When overridden in a derived class, this method is called by the runtime to schedule a work item (callback) for a particular instance ID."
-  remarks: "Use the <xref:System.Threading.WaitCallback> constructor to create your delegate method to run in the new thread."
+  summary: "当在派生类中重写此方法称为由运行时用于计划的工作项 （回调） 特定实例 ID。"
+  remarks: "使用<xref:System.Threading.WaitCallback>构造函数来创建在新线程中运行的委托方法。</xref:System.Threading.WaitCallback>"
   syntax:
     content: protected abstract void Schedule (System.Threading.WaitCallback callback, Guid workflowInstanceId);
     parameters:
     - id: callback
       type: System.Threading.WaitCallback
-      description: "A <xref href=&quot;System.Threading.WaitCallback&quot;></xref> multicast delegate that represents the method to run."
+      description: "A <xref href=&quot;System.Threading.WaitCallback&quot;> </xref>表示要运行的方法的多路广播的委托。"
     - id: workflowInstanceId
       type: System.Guid
-      description: "A <xref:System.Guid> that represents the workflow instance."
+      description: "A <xref:System.Guid>，表示工作流实例。</xref:System.Guid>"
   overload: System.Workflow.Runtime.Hosting.WorkflowSchedulerService.Schedule*
   exceptions: []
   platform:
@@ -120,22 +120,22 @@ items:
   assemblies:
   - System.Workflow.Runtime
   namespace: System.Workflow.Runtime.Hosting
-  summary: "When overridden in a derived class, this method is called by the runtime to schedule a work item (callback) for a particular workflow instance to be done at the given time (<xref:System.DateTime>)."
+  summary: "当在派生类中重写，由运行时用于计划的特定工作流实例在给定时间完成的工作项 （回调） 调用此方法 (<xref:System.DateTime>)。</xref:System.DateTime>"
   syntax:
     content: protected abstract void Schedule (System.Threading.WaitCallback callback, Guid workflowInstanceId, DateTime whenUtc, Guid timerId);
     parameters:
     - id: callback
       type: System.Threading.WaitCallback
-      description: "A <xref href=&quot;System.Threading.WaitCallback&quot;></xref> multicast delegate that represents the method to run."
+      description: "A <xref href=&quot;System.Threading.WaitCallback&quot;> </xref>表示要运行的方法的多路广播的委托。"
     - id: workflowInstanceId
       type: System.Guid
-      description: "A <xref:System.Guid> that represents the workflow instance to add."
+      description: "<xref:System.Guid>表示添加的工作流实例</xref:System.Guid>"
     - id: whenUtc
       type: System.DateTime
-      description: "The <xref:System.DateTime> to begin running the workflow item."
+      description: "<xref:System.DateTime>若要开始运行工作流项目。</xref:System.DateTime>"
     - id: timerId
       type: System.Guid
-      description: "A <xref:System.Guid> that represents the scheduled timer."
+      description: "A<xref:System.Guid>表示计划的计时器。</xref:System.Guid>"
   overload: System.Workflow.Runtime.Hosting.WorkflowSchedulerService.Schedule*
   exceptions: []
   platform:

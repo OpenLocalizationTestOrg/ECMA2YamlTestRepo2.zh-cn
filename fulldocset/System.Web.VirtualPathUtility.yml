@@ -22,7 +22,7 @@ items:
   nameWithType: VirtualPathUtility
   fullName: System.Web.VirtualPathUtility
   type: Class
-  summary: "Provides utility methods for common virtual path operations."
+  summary: "提供实用工具方法，用于通用虚拟路径操作。"
   remarks: "The VirtualPathUtility class provides utility methods for common operations involving virtual paths. For ASP.NET server controls and server code, virtual paths using the Web application root operator, the tilde (~), commonly are used instead of relative and absolute paths. For more information, see [ASP.NET Web Project Paths](~/add/includes/ajax-current-ext-md.md).  \n  \n Use the VirtualPathUtility class when you need to convert application-relative paths to absolute virtual paths, as might be the case in developing a custom Web service handler.  \n  \n An absolute virtual path starts with the literal slash mark (/). A relative virtual path is relative to the application root directory, if it is just a tilde (~) or starts with the tilde and a double backslash (~\\\\\\\\) or the tilde and a slash mark (~/). Making a virtual path relative makes the path independent of the application.  \n  \n The virtual directory for the application can be obtained from the <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A> and <xref:System.Web.HttpRequest.ApplicationPath%2A> properties.  \n  \n> [!NOTE]\n>  The VirtualPathUtility class is not intended for security or canonicalization purposes. For more information about Web application security, see [Overview of Web Application Security Threats](~/add/includes/ajax-current-ext-md.md). For generic URL processing functionality, see <xref:System.Uri>."
   example:
   - "The following code example demonstrates how to use the VirtualPathUtility class and some of its methods. First, the <xref:System.Web.HttpRequest.FilePath%2A> property generates the virtual path to the Web page. The <xref:System.Web.VirtualPathUtility.GetFileName%2A>, <xref:System.Web.VirtualPathUtility.GetExtension%2A>, and <xref:System.Web.VirtualPathUtility.GetDirectory%2A> methods return information about the virtual path. Next, the <xref:System.Web.HttpRequest.CurrentExecutionFilePath%2A> property generates a virtual path of the current request, which might be different from the <xref:System.Web.HttpRequest.FilePath%2A> property, if a <xref:System.Web.HttpResponse.Redirect%2A> method was called. The <xref:System.Web.VirtualPathUtility.IsAbsolute%2A>, <xref:System.Web.VirtualPathUtility.IsAppRelative%2A>, and <xref:System.Web.VirtualPathUtility.ToAppRelative%2A> methods return information about the virtual path.  \n  \n [!code-vb[System.Web.VirtualPathUtility#1](~/add/codesnippet/visualbasic/t-system.web.virtualpath_1.aspx)]\n [!code-cs[System.Web.VirtualPathUtility#1](~/add/codesnippet/csharp/t-system.web.virtualpath_1.aspx)]"
@@ -46,17 +46,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Appends the literal slash mark (/) to the end of the virtual path, if one does not already exist."
-  remarks: "If the literal slash mark (/) exists at the end of the virtual path, the virtual path is not modified."
+  summary: "如果尚不存在，请将文本斜杠标记 （/） 追加到的虚拟路径的末尾。"
+  remarks: "如果文本斜杠标记 （/） 存在的虚拟路径的末尾，则不会修改的虚拟路径。"
   syntax:
     content: public static string AppendTrailingSlash (string virtualPath);
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path to append the slash mark to."
+      description: "要追加到的斜杠标记的虚拟路径。"
     return:
       type: System.String
-      description: "The modified virtual path."
+      description: "修改后的虚拟路径。"
   overload: System.Web.VirtualPathUtility.AppendTrailingSlash*
   exceptions: []
   platform:
@@ -73,17 +73,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Combines a base path and a relative path."
-  remarks: "TheCombine method returns the value of the <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A> property if the relative path is exactly a tilde (~).       The Combine method uses the <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A> property value rather than the base path, if the relative path starts with a tilde and a slash mark (~/); otherwise, the Combine method uses the base path."
+  summary: "将组合的基路径和相对路径。"
+  remarks: "TheCombine 方法返回的值<xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A>如果相对路径是完全波形符 （~） 的属性。</xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A>       合并方法使用<xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A>属性值而不是基路径中，如果以波形符和斜杠标记开头的相对路径 (~ /); 否则为该组合方法使用基路径。</xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A>"
   syntax:
     content: public static string Combine (string basePath, string relativePath);
     parameters:
     - id: basePath
       type: System.String
-      description: "The base path."
+      description: "基路径。"
     - id: relativePath
       type: System.String
-      description: "The relative path."
+      description: "相对路径。"
     return:
       type: System.String
       description: "The combined <code>basePath</code> and <code>relativePath</code>."
@@ -91,10 +91,10 @@ items:
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "<code>relativePath</code> is a physical path.       -or-       <code>relativePath</code> includes one or more colons."
+    description: "<code>relativePath</code>是的物理路径。       -或-<code>relativePath</code>包括一个或多个冒号。"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>relativePath</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty string.       -or-       <code>basePath</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty string."
+    description: "<code>relativePath</code>是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>或空字符串。       -<code>basePath</code>是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>或空字符串。"
   platform:
   - net462
 - uid: System.Web.VirtualPathUtility.GetDirectory(System.String)
@@ -109,8 +109,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Returns the directory portion of a virtual path."
-  remarks: "If `virtualPath` is not rooted; that is, it does not equal the root operator (the tilde [~]), does not start with a tilde (~), such as a tilde and a slash mark (~/) or a tilde and a double backslash (~//), or does not start with a slash mark (/), an <xref:System.ArgumentException> exception is thrown.       If the virtual path that is passed into the GetDirectory method is `&quot;/images/image1.gif&quot;`, the returned directory is `&quot;/images&quot;`."
+  summary: "返回虚拟路径的目录的部分。"
+  remarks: "如果`virtualPath`不根路径; 也就是说，它不等于根目录运算符 （波形符 [~]），不以开头波形符 （~），例如波形符和斜杠标记 (~ /) 或波形符和使用双反斜杠 (~ / /)，或不以斜杠标记 （/） 开头<xref:System.ArgumentException>引发异常。</xref:System.ArgumentException>       如果传递给 GetDirectory 方法的虚拟路径是`&quot;/images/image1.gif&quot;`，则返回的目录是`&quot;/images&quot;`。"
   example:
   - "The following code example demonstrates how to use the <xref:System.Web.VirtualPathUtility.GetFileName%2A>, <xref:System.Web.VirtualPathUtility.GetExtension%2A>, and GetDirectory methods.  \n  \n [!code-vb[System.Web.VirtualPathUtility#2](~/add/codesnippet/visualbasic/m-system.web.virtualpath_3_1.aspx)]\n [!code-cs[System.Web.VirtualPathUtility#2](~/add/codesnippet/csharp/m-system.web.virtualpath_3_1.aspx)]"
   syntax:
@@ -118,10 +118,10 @@ items:
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path."
+      description: "虚拟路径。"
     return:
       type: System.String
-      description: "The directory referenced in the virtual path."
+      description: "中的虚拟路径引用的目录。"
   overload: System.Web.VirtualPathUtility.GetDirectory*
   exceptions:
   - type: System.ArgumentException
@@ -141,8 +141,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Retrieves the extension of the file that is referenced in the virtual path."
-  remarks: "If the virtual path that is passed into the GetExtension method is `&quot;/images/image1.gif&quot;`, the returned extension is `&quot;.gif&quot;`."
+  summary: "检索的虚拟路径中引用的文件的扩展。"
+  remarks: "如果传递给 GetExtension 方法的虚拟路径是`&quot;/images/image1.gif&quot;`，返回的扩展名是`&quot;.gif&quot;`。"
   example:
   - "The following code example demonstrates how to use the <xref:System.Web.VirtualPathUtility.GetFileName%2A>, GetExtension, and <xref:System.Web.VirtualPathUtility.GetDirectory%2A> methods.  \n  \n [!code-vb[System.Web.VirtualPathUtility#2](~/add/codesnippet/visualbasic/m-system.web.virtualpath_0_1.aspx)]\n [!code-cs[System.Web.VirtualPathUtility#2](~/add/codesnippet/csharp/m-system.web.virtualpath_0_1.aspx)]"
   syntax:
@@ -150,15 +150,15 @@ items:
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path."
+      description: "虚拟路径。"
     return:
       type: System.String
-      description: "The file name extension string literal, including the period (.), <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, or an empty string (&quot;&quot;)."
+      description: "文件名称扩展字符串文本，包括句点 （.）、 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>，或空字符串 (&quot;&quot;)。"
   overload: System.Web.VirtualPathUtility.GetExtension*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>virtualPath</code> contains one or more characters that are not valid, as defined in <xref:System.IO.Path.InvalidPathChars>."
+    description: "<code>virtualPath</code>包含不有效，因为在中定义的一个或多个字符<xref:System.IO.Path.InvalidPathChars>。"
   platform:
   - net462
 - uid: System.Web.VirtualPathUtility.GetFileName(System.String)
@@ -173,8 +173,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Retrieves the file name of the file that is referenced in the virtual path."
-  remarks: "If the virtual path that is passed into the GetFileName method is `&quot;/images/image1.gif&quot;`, the returned file name is `&quot;image1.gif&quot;`."
+  summary: "检索的虚拟路径中引用的文件的文件名称。"
+  remarks: "如果传递给 GetFileName 方法的虚拟路径是`&quot;/images/image1.gif&quot;`，返回的文件名是`&quot;image1.gif&quot;`。"
   example:
   - "The following code example demonstrates how to use the GetFileName, <xref:System.Web.VirtualPathUtility.GetExtension%2A>, and <xref:System.Web.VirtualPathUtility.GetDirectory%2A> methods.  \n  \n [!code-vb[System.Web.VirtualPathUtility#2](~/add/codesnippet/visualbasic/m-system.web.virtualpath_5_1.aspx)]\n [!code-cs[System.Web.VirtualPathUtility#2](~/add/codesnippet/csharp/m-system.web.virtualpath_5_1.aspx)]"
   syntax:
@@ -182,15 +182,15 @@ items:
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path."
+      description: "虚拟路径。"
     return:
       type: System.String
-      description: "The file name literal after the last directory character in <code>virtualPath</code>; otherwise, the last directory name if the last character of <code>virtualPath</code> is a directory or volume separator character."
+      description: "文本中的最后一个目录字符后的文件名称<code> virtualPath </code>; 否则为如果最后一个目录名称的最后一个字符<code> virtualPath </code>是目录或卷分隔符字符。"
   overload: System.Web.VirtualPathUtility.GetFileName*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>virtualPath</code> contains one or more characters that are not valid, as defined in <xref:System.IO.Path.InvalidPathChars>."
+    description: "<code>virtualPath</code>包含不有效，因为在中定义的一个或多个字符<xref:System.IO.Path.InvalidPathChars>。"
   platform:
   - net462
 - uid: System.Web.VirtualPathUtility.IsAbsolute(System.String)
@@ -205,8 +205,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Returns a Boolean value indicating whether the specified virtual path is absolute; that is, it starts with a literal slash mark (/)."
-  remarks: "A virtual path is absolute if it begins with a literal slash mark (/). For example, the <xref:System.Web.HttpRequest.Path%2A> property returns an absolute virtual path."
+  summary: "返回一个布尔值，该值指示指定的虚拟路径为绝对;也就是说，它将启动与文本的斜杠标记 （/）。"
+  remarks: "虚拟路径是绝对地址，如果以斜杠 （/）。 例如，<xref:System.Web.HttpRequest.Path%2A>属性返回绝对虚拟路径。</xref:System.Web.HttpRequest.Path%2A>"
   example:
   - "The following code example demonstrates how to use the IsAbsolute, <xref:System.Web.VirtualPathUtility.IsAppRelative%2A>, and <xref:System.Web.VirtualPathUtility.ToAppRelative%2A> methods.  \n  \n [!code-vb[System.Web.VirtualPathUtility#3](~/add/codesnippet/visualbasic/m-system.web.virtualpath_2_1.aspx)]\n [!code-cs[System.Web.VirtualPathUtility#3](~/add/codesnippet/csharp/m-system.web.virtualpath_2_1.aspx)]"
   syntax:
@@ -214,15 +214,15 @@ items:
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path to check."
+      description: "要检查的虚拟路径。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>virtualPath</code> is an absolute path and is not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty string (&quot;&quot;); otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果<code> virtualPath </code>是绝对路径而不是<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>或空字符串 (&quot;&quot;);otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
   overload: System.Web.VirtualPathUtility.IsAbsolute*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>virtualPath</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>virtualPath</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.VirtualPathUtility.IsAppRelative(System.String)
@@ -237,8 +237,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Returns a Boolean value indicating whether the specified virtual path is relative to the application."
-  remarks: "The virtual path can be just the root operator (the tilde [~]), or it can begin with the root operator. If `virtualPath` is `null`, an <xref:System.ArgumentNullException> exception is raised. If `virtualPath` is an empty string (&quot;&quot;), the IsAppRelative method returns `false`.      > [!NOTE] >  `&quot;~` `filename` `&quot;` is not a valid virtual path and returns `false` for the IsAppRelative method."
+  summary: "返回一个布尔值，该值指示相对于应用程序是否为指定的虚拟路径。"
+  remarks: "虚拟路径可以是只需根目录运算符 （波形符 [~]），也可以开头根目录运算符。 如果`virtualPath`是`null`、<xref:System.ArgumentNullException>引发异常。</xref:System.ArgumentNullException> 如果`virtualPath`为空字符串 (&quot;&quot;)，IsAppRelative 方法返回`false`。      1> [!NOTE]  >   `&quot;~` `filename` `&quot;`不是有效的虚拟路径，并返回`false`IsAppRelative 方法。"
   example:
   - "The following code example demonstrates how to use the <xref:System.Web.VirtualPathUtility.IsAbsolute%2A>, IsAppRelative, and <xref:System.Web.VirtualPathUtility.ToAppRelative%2A> methods.  \n  \n [!code-vb[System.Web.VirtualPathUtility#3](~/add/codesnippet/visualbasic/m-system.web.virtualpath_4_1.aspx)]\n [!code-cs[System.Web.VirtualPathUtility#3](~/add/codesnippet/csharp/m-system.web.virtualpath_4_1.aspx)]"
   syntax:
@@ -246,15 +246,15 @@ items:
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path to check."
+      description: "要检查的虚拟路径。"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>virtualPath</code> is relative to the application; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>如果<code> virtualPath </code>相对于应用程序; 否则为<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.VirtualPathUtility.IsAppRelative*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>virtualPath</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>virtualPath</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.VirtualPathUtility.MakeRelative(System.String,System.String)
@@ -269,20 +269,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Returns the relative virtual path from one virtual path containing the root operator (the tilde [~]) to another."
-  remarks: "If the `fromPath` and `toPath` parameters are not rooted; that is, they do not equal the root operator (the tilde [~]), do not start with a tilde (~), such as a tilde and a slash mark (~/) or a tilde and a double backslash (~//), or do not start with a slash mark (/), an <xref:System.ArgumentException> exception is thrown.       Query string parameters and HTML anchors that are used in the URI are not used in determining the relative path.       If `fromPath` is `&quot;/directory1/file1.aspx&quot;` and `toPath` is `&quot;/directory2/file2.aspx&quot;`, the MakeRelative method returns `&quot;../directory2/file2.aspx&quot;`."
+  summary: "从包含根目录运算符 （波形符 [~]） 到另一个虚拟路径返回了相对虚拟路径。"
+  remarks: "如果`fromPath`和`toPath`参数不取得 root 权限; 也就是说，它们不相等根目录运算符 （波形符 [~]），不会启动与波形符 （~），例如波形符和斜杠标记 (~ /) 或波形符和使用双反斜杠 (~ / /)，或不是以斜杠标记 （/） 开头<xref:System.ArgumentException>引发异常。</xref:System.ArgumentException>       确定的相对路径不使用查询字符串参数和 URI 中使用的 HTML 定位点。       如果`fromPath`是`&quot;/directory1/file1.aspx&quot;`和`toPath`是`&quot;/directory2/file2.aspx&quot;`，MakeRelative 方法返回`&quot;../directory2/file2.aspx&quot;`。"
   syntax:
     content: public static string MakeRelative (string fromPath, string toPath);
     parameters:
     - id: fromPath
       type: System.String
-      description: "The starting virtual path to return the relative virtual path from."
+      description: "要返回的相对虚拟路径的起始虚拟路径。"
     - id: toPath
       type: System.String
-      description: "The ending virtual path to return the relative virtual path to."
+      description: "要返回的相对虚拟路径的结束虚拟路径。"
     return:
       type: System.String
-      description: "The relative virtual path from <code>fromPath</code> to <code>toPath</code>."
+      description: "从的相对虚拟路径<code> fromPath </code>到<code> toPath </code>。"
   overload: System.Web.VirtualPathUtility.MakeRelative*
   exceptions:
   - type: System.ArgumentException
@@ -302,17 +302,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Removes a trailing slash mark (/) from a virtual path."
-  remarks: "The RemoveTrailingSlash method removes a slash mark (/) from the end of the virtual path. If the virtual path is already the root directory (`&quot;/&quot;`), no action is taken. If the virtual path is `null` or an empty string (&quot;&quot;), the RemoveTrailingSlash method returns `null`."
+  summary: "从虚拟路径中删除尾随斜杠标记 （/）。"
+  remarks: "从虚拟路径的末尾，RemoveTrailingSlash 方法中删除斜杠标记 （/）。 如果已指定的虚拟路径的根目录 (`&quot;/&quot;`)，不执行任何操作。 如果虚拟路径`null`或空字符串 (&quot;&quot;)，RemoveTrailingSlash 方法返回`null`。"
   syntax:
     content: public static string RemoveTrailingSlash (string virtualPath);
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path to remove any trailing slash mark from."
+      description: "要删除从任何尾随斜杠标记的虚拟路径。"
     return:
       type: System.String
-      description: "A virtual path without a trailing slash mark, if the virtual path is not already the root directory (&quot;/&quot;); otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "不尾随斜杠标记，如果的虚拟路径尚不是根目录 （&quot;/&quot;）; 包含的虚拟路径否则为<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>。"
   overload: System.Web.VirtualPathUtility.RemoveTrailingSlash*
   exceptions: []
   platform:
@@ -329,25 +329,25 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Converts a virtual path to an application absolute path."
-  remarks: "An application absolute path is one where the application path is used instead of the root operator (the tilde [~]).       If `virtualPath` is:      -   Absolute, the ToAbsolute method returns the virtual path unchanged.      -   Application relative, the ToAbsolute method appends the current application virtual directory path to the beginning of the `virtualPath`. For example, the current application virtual directory path can be accessed from the <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A> property.      -   Not rooted, the ToAbsolute method raises an <xref:System.ArgumentOutOfRangeException> exception."
+  summary: "将虚拟路径转换为应用程序绝对路径。"
+  remarks: "应用程序绝对路径是应用程序路径使用而不是根目录运算符 （波形符 [~]） 的位置。       如果`virtualPath`是:-绝对，ToAbsolute 方法返回未更改的虚拟路径。      -相对于应用程序，则该 ToAbsolute 方法会将当前的应用程序虚拟目录路径追加到的开头`virtualPath`。 例如，可以从访问当前的应用程序虚拟目录路径<xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A>属性。</xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A>      -不取得 root 权限，则该 ToAbsolute 方法将引发<xref:System.ArgumentOutOfRangeException>异常。</xref:System.ArgumentOutOfRangeException>"
   syntax:
     content: public static string ToAbsolute (string virtualPath);
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path to convert to an application-relative path."
+      description: "要将转换为相对于应用程序路径的虚拟路径。"
     return:
       type: System.String
-      description: "The absolute path representation of the specified virtual path."
+      description: "指定虚拟路径的绝对路径表示形式。"
   overload: System.Web.VirtualPathUtility.ToAbsolute*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>virtualPath</code> is not rooted."
+    description: "<code>virtualPath</code>不是根路径。"
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "A leading double period (..) is used to exit above the top directory."
+    description: "前导双句点 （.） 用于退出顶级目录。"
   platform:
   - net462
 - uid: System.Web.VirtualPathUtility.ToAbsolute(System.String,System.String)
@@ -362,28 +362,28 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Converts a virtual path to an application absolute path using the specified application path."
-  remarks: "The ToAbsolute overload of the <xref:System.Web.VirtualPathUtility.ToAbsolute%2A> method uses the supplied application path rather than the current application path.       If `virtualPath` is:      -   Absolute, the ToAbsolute method returns the virtual path with no changes.      -   Application relative, the ToAbsolute method adds `applicationPath` to the beginning of the virtual path.      -   Not rooted, the ToAbsolute method raises an <xref:System.ArgumentOutOfRangeException> exception."
+  summary: "将虚拟路径转换为使用指定的应用程序路径的应用程序绝对路径。"
+  remarks: "该 ToAbsolute 重载的<xref:System.Web.VirtualPathUtility.ToAbsolute%2A>方法使用提供的应用程序路径而不是当前的应用程序路径。</xref:System.Web.VirtualPathUtility.ToAbsolute%2A>       如果`virtualPath`是:-绝对，ToAbsolute 方法返回未更改的虚拟路径。      -相对于应用程序，则 ToAbsolute 方法将添加`applicationPath`到的虚拟路径的开头。      -不取得 root 权限，则该 ToAbsolute 方法将引发<xref:System.ArgumentOutOfRangeException>异常。</xref:System.ArgumentOutOfRangeException>"
   syntax:
     content: public static string ToAbsolute (string virtualPath, string applicationPath);
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path to convert to an application-relative path."
+      description: "要将转换为相对于应用程序路径的虚拟路径。"
     - id: applicationPath
       type: System.String
-      description: "The application path to use to convert `virtualPath` to a relative path."
+      description: "要使用要转换的应用程序路径`virtualPath`为相对路径。"
     return:
       type: System.String
-      description: "The absolute virtual path representation of <code>virtualPath</code>."
+      description: "虚拟绝对路径表示形式<code> virtualPath </code>。"
   overload: System.Web.VirtualPathUtility.ToAbsolute*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>applicationPath</code> is not rooted."
+    description: "<code>applicationPath</code>不是根路径。"
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "A leading double period (..) is used in the application path to exit above the top directory."
+    description: "前导双句点 （.） 的应用程序路径中使用，以退出顶级目录。"
   platform:
   - net462
 - uid: System.Web.VirtualPathUtility.ToAppRelative(System.String)
@@ -398,8 +398,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Converts a virtual path to an application-relative path using the application virtual path that is in the <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath*> property."
-  remarks: "If the virtual path for the application is `&quot;myapp&quot;` and the virtual path `&quot;/myApp/sub/default.asp&quot;` is passed into the ToAppRelative method, the resulting application-relative path is `&quot;~/sub/default.aspx&quot;`.       If `virtualPath` does not start with the current application path, the ToAppRelative method returns the virtual path unchanged.       If `virtualPath` is the same as the application path, the root operator (the tilde [~]), is returned. For example, the current application virtual directory path can be accessed from the <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A> property."
+  summary: "将虚拟路径转换为使用中的应用程序虚拟路径相对于应用程序路径<xref:System.Web.HttpRuntime.AppDomainAppVirtualPath*>属性。</xref:System.Web.HttpRuntime.AppDomainAppVirtualPath*>"
+  remarks: "如果应用程序的虚拟路径是`&quot;myapp&quot;`和虚拟路径`&quot;/myApp/sub/default.asp&quot;`传递到 ToAppRelative 方法中，生成的应用程序相对路径是`&quot;~/sub/default.aspx&quot;`。       如果`virtualPath`才会使用当前的应用程序路径、 ToAppRelative 方法返回未更改的虚拟路径。       如果`virtualPath`是应用程序路径中，相同根目录运算符 （波形符 [~]），将返回。 例如，可以从访问当前的应用程序虚拟目录路径<xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A>属性。</xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A>"
   example:
   - "The following code example demonstrates how to use the <xref:System.Web.VirtualPathUtility.IsAbsolute%2A>, <xref:System.Web.VirtualPathUtility.IsAppRelative%2A>, and <xref:System.Web.VirtualPathUtility.ToAppRelative%2A> methods.  \n  \n [!code-vb[System.Web.VirtualPathUtility#3](~/add/codesnippet/visualbasic/m-system.web.virtualpath_1_1.aspx)]\n [!code-cs[System.Web.VirtualPathUtility#3](~/add/codesnippet/csharp/m-system.web.virtualpath_1_1.aspx)]"
   syntax:
@@ -407,15 +407,15 @@ items:
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path to convert to an application-relative path."
+      description: "要将转换为相对于应用程序路径的虚拟路径。"
     return:
       type: System.String
-      description: "The application-relative path representation of <code>virtualPath</code>."
+      description: "相对于应用程序路径表示形式<code> virtualPath </code>。"
   overload: System.Web.VirtualPathUtility.ToAppRelative*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>virtualPath</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>virtualPath</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.VirtualPathUtility.ToAppRelative(System.String,System.String)
@@ -430,20 +430,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Converts a virtual path to an application-relative path using a specified application path."
-  remarks: "The ToAppRelative overload of the <xref:System.Web.VirtualPathUtility.ToAppRelative%2A> method uses `applicationPath` rather than the current application path. If `virtualPath` does not start with `applicationPath`, the ToAppRelative method returns the virtual path unchanged."
+  summary: "将虚拟路径转换为使用指定的应用程序路径的相对于应用程序路径。"
+  remarks: "ToAppRelative 重载<xref:System.Web.VirtualPathUtility.ToAppRelative%2A>方法使用`applicationPath`而不是当前的应用程序路径。</xref:System.Web.VirtualPathUtility.ToAppRelative%2A> 如果`virtualPath`开头不`applicationPath`，ToAppRelative 方法返回未更改的虚拟路径。"
   syntax:
     content: public static string ToAppRelative (string virtualPath, string applicationPath);
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path to convert to an application-relative path."
+      description: "要将转换为相对于应用程序路径的虚拟路径。"
     - id: applicationPath
       type: System.String
-      description: "The application path to use to convert `virtualPath` to a relative path."
+      description: "要使用要转换的应用程序路径`virtualPath`为相对路径。"
     return:
       type: System.String
-      description: "The application-relative path representation of <code>virtualPath</code>."
+      description: "相对于应用程序路径表示形式<code> virtualPath </code>。"
   overload: System.Web.VirtualPathUtility.ToAppRelative*
   exceptions: []
   platform:
