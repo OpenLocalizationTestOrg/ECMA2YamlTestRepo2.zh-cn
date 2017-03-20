@@ -37,8 +37,8 @@ items:
   nameWithType: PerformanceCounterType
   fullName: System.Diagnostics.PerformanceCounterType
   type: Enum
-  summary: "Specifies the formula used to calculate the <xref:System.Diagnostics.PerformanceCounter.NextValue*> method for a <xref href=&quot;System.Diagnostics.PerformanceCounter&quot;></xref> instance."
-  remarks: "Some counter types represent raw data, while others represent calculated values that are based on one or more counter samples. The following categories classify the types of counters available.      -   Average: measure a value over time and display the average of the last two measurements. Associated with each average counter is a base counter that tracks the number of samples involved.      -   Difference: subtract the last measurement from the previous one and display the difference, if it is positive; if negative, they display a zero.      -   Instantaneous: display the most recent measurement.      -   Percentage: display calculated values as a percentage.      -   Rate: sample an increasing count of events over time and divide the change in count values by the change in time to display a rate of activity.       When sampling performance counter data, using a counter type that represents an average can make raw data values meaningful for your use. For example, the raw data counter `NumberOfItems64` can expose data that is fairly random from sample to sample. The formula for an average calculation of the values that the counter returns would be (X 0 +X 1 +…+X n)/n, where each X i is a raw counter sample.       Rate counters are similar to average counters, but more useful for situations in which the rate increases as a resource is used. A formula that quickly calculates the average is ((X n -X 0)/(T n -T 0)) / frequency, where each X i is a counter sample and each T i is the time that the corresponding sample was taken. The result is the average usage per second.      > [!NOTE] >  Unless otherwise indicated, the time base is seconds.       When instrumenting applications (creating and writing custom performance counters), you might be working with performance counter types that rely on an accompanying base counter that is used in the calculations. The base counter must be immediately after its associated counter in the <xref:System.Diagnostics.CounterCreationDataCollection> collection your application uses. The following table lists the base counter types with their corresponding performance counter types.      |Base counter type|Performance counter types|   |-----------------------|-------------------------------|   |`AverageBase`|`AverageTimer32`<br /><br /> `AverageCount64`|   |`CounterMultiBase`|`CounterMultiTimer`<br /><br /> `CounterMultiTimerInverse`<br /><br /> `CounterMultiTimer100Ns`<br /><br /> `CounterMultiTimer100NsInverse`|   |`RawBase`|`RawFraction`|   |`SampleBase`|`SampleFraction`|"
+  summary: "指定用于计算的公式<xref:System.Diagnostics.PerformanceCounter.NextValue*>方法<xref href=&quot;System.Diagnostics.PerformanceCounter&quot;></xref>实例。</xref:System.Diagnostics.PerformanceCounter.NextValue*>"
+  remarks: "某些计数器类型表示原始数据，而另一些则表示基于一个或多个计数器样本的计算的值。 以下几个类别分类可用计数器的类型。      -平均︰ 测量一段时间值并显示最后两个度量值的平均值。 与每个平均计数器是跟踪所涉及的样本数的基本计数器。      差异︰ 减去从上一个的最后一个测量，并显示不同，如果为正;如果为负数，它们将显示零。      瞬时︰ 显示最新的度量。      -百分比︰ 显示为百分比计算的值。      速率︰ 示例随着时间的推移增加的事件计数，并将计数值更改的时间，以显示活动的速率变化。       采样的性能计数器数据时在使用表示平均值的计数器类型，可以使原始数据值供你使用有意义。 例如，原始数据计数器`NumberOfItems64`可以公开是相当随机示例示例的数据。 用于计数器返回的值的平均值计算公式为 (X 0 + X 1 +...+ X n) / n，其中每个 X i 都是原始计数器样本。       速率计数器是类似于平均计数器，但更适用于使用资源随着速率增加的情况。 快速计算平均值的公式为 ((X n X 0) / (T n-T 0)) / 频率，其中每个 X i 是一个计数器样本，每个 T i 是相应的样本所采用的时间。 结果是每秒的平均使用情况。      1> [!NOTE]&1;> 时间基数除非另行说明，否则为秒。       当检测应用程序 （创建和写入自定义性能计数器），你可能正在处理依赖于计算中使用的伴随的基本计数器的性能计数器类型。 基本计数器必须紧跟在其关联计数器<xref:System.Diagnostics.CounterCreationDataCollection>应用程序使用的集合。</xref:System.Diagnostics.CounterCreationDataCollection> 下表列出了使用其相应的性能计数器类型的基本计数器类型。      |基计数器类型 |性能计数器类型 |  |-----------------------|-------------------------------|  |`AverageBase`|`AverageTimer32`<br /><br /> `AverageCount64`|   |`CounterMultiBase`|`CounterMultiTimer`<br /><br /> `CounterMultiTimerInverse`<br /><br /> `CounterMultiTimer100Ns`<br /><br /> `CounterMultiTimer100NsInverse`|   |`RawBase`|`RawFraction`|   |`SampleBase`|`SampleFraction`|"
   example:
   - "The following examples demonstrate several of the counter types in the PerformanceCounterType enumeration.  \n  \n `AverageCount64`  \n  \n [!code-cpp[PerformanceCounterType.AverageCounter64#1](~/add/codesnippet/cpp/t-system.diagnostics.per_1_1.cpp)]\n [!code-cs[PerformanceCounterType.AverageCounter64#1](~/add/codesnippet/csharp/t-system.diagnostics.per_1_1.cs)]\n [!code-vb[PerformanceCounterType.AverageCounter64#1](~/add/codesnippet/visualbasic/t-system.diagnostics.per_1_1.vb)]  \n  \n `AverageTimer32`  \n  \n [!code-vb[PerformanceCounterType.AverageTimer32#2](~/add/codesnippet/visualbasic/t-system.diagnostics.per_1_2.vb)]\n [!code-cpp[PerformanceCounterType.AverageTimer32#2](~/add/codesnippet/cpp/t-system.diagnostics.per_1_2.cpp)]\n [!code-cs[PerformanceCounterType.AverageTimer32#2](~/add/codesnippet/csharp/t-system.diagnostics.per_1_2.cs)]  \n  \n `ElapsedTime`  \n  \n [!code-cs[PerformanceCounterType.ElapsedTime#2](~/add/codesnippet/csharp/t-system.diagnostics.per_1_3.cs)]\n [!code-cpp[PerformanceCounterType.ElapsedTime#2](~/add/codesnippet/cpp/t-system.diagnostics.per_1_3.cpp)]\n [!code-vb[PerformanceCounterType.ElapsedTime#2](~/add/codesnippet/visualbasic/t-system.diagnostics.per_1_3.vb)]  \n  \n `NumberOfItems32`  \n  \n [!code-cs[PerformanceCounterType.NumberOfItems32#1](~/add/codesnippet/csharp/t-system.diagnostics.per_1_4.cs)]\n [!code-cpp[PerformanceCounterType.NumberOfItems32#1](~/add/codesnippet/cpp/t-system.diagnostics.per_1_4.cpp)]\n [!code-vb[PerformanceCounterType.NumberOfItems32#1](~/add/codesnippet/visualbasic/t-system.diagnostics.per_1_4.vb)]  \n  \n `NumberOfItems64`  \n  \n [!code-cpp[PerformanceCounterType.NumberOfItems64#1](~/add/codesnippet/cpp/t-system.diagnostics.per_1_5.cpp)]\n [!code-cs[PerformanceCounterType.NumberOfItems64#1](~/add/codesnippet/csharp/t-system.diagnostics.per_1_5.cs)]\n [!code-vb[PerformanceCounterType.NumberOfItems64#1](~/add/codesnippet/visualbasic/t-system.diagnostics.per_1_5.vb)]  \n  \n `SampleFraction`  \n  \n [!code-vb[PerformanceCounterType.SampleFraction#1](~/add/codesnippet/visualbasic/t-system.diagnostics.per_1_6.vb)]\n [!code-cs[PerformanceCounterType.SampleFraction#1](~/add/codesnippet/csharp/t-system.diagnostics.per_1_6.cs)]  \n  \n `RateOfCountsPerSecond32`  \n  \n [!code-cs[PerformanceCounterType.RateOfCountsPerSecond#1](~/add/codesnippet/csharp/t-system.diagnostics.per_1_7.cs)]\n [!code-vb[PerformanceCounterType.RateOfCountsPerSecond#1](~/add/codesnippet/visualbasic/t-system.diagnostics.per_1_7.vb)]\n [!code-cpp[PerformanceCounterType.RateOfCountsPerSecond#1](~/add/codesnippet/cpp/t-system.diagnostics.per_1_7.cpp)]  \n  \n `RateOfCountsPerSecond64`  \n  \n [!code-vb[PerformanceCounterType.RateOfCountsPerSecond64#1](~/add/codesnippet/visualbasic/t-system.diagnostics.per_1_8.vb)]\n [!code-cs[PerformanceCounterType.RateOfCountsPerSecond64#1](~/add/codesnippet/csharp/t-system.diagnostics.per_1_8.cs)]\n [!code-cpp[PerformanceCounterType.RateOfCountsPerSecond64#1](~/add/codesnippet/cpp/t-system.diagnostics.per_1_8.cpp)]  \n  \n `RawFraction`  \n  \n [!code-cs[PerformanceCounterType.RawFraction#1](~/add/codesnippet/csharp/t-system.diagnostics.per_1_9.cs)]\n [!code-cpp[PerformanceCounterType.RawFraction#1](~/add/codesnippet/cpp/t-system.diagnostics.per_1_9.cpp)]\n [!code-vb[PerformanceCounterType.RawFraction#1](~/add/codesnippet/visualbasic/t-system.diagnostics.per_1_9.vb)]"
   syntax:
@@ -62,12 +62,12 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "A base counter that is used in the calculation of time or count averages, such as <xref uid=&quot;langword_csharp_AverageTimer32&quot; name=&quot;AverageTimer32&quot; href=&quot;&quot;></xref> and <xref uid=&quot;langword_csharp_AverageCount64&quot; name=&quot;AverageCount64&quot; href=&quot;&quot;></xref>. Stores the denominator for calculating a counter to present &quot;time per operation&quot; or &quot;count per operation&quot;."
+  summary: "在计算中使用的时间或计数平均值，如使用的基本计数器<xref uid=&quot;langword_csharp_AverageTimer32&quot; name=&quot;AverageTimer32&quot; href=&quot;&quot;></xref>和<xref uid=&quot;langword_csharp_AverageCount64&quot; name=&quot;AverageCount64&quot; href=&quot;&quot;> </xref>。 存储用于计算到存在&quot;时间每个操作&quot;计数器分母或&quot;每个操作的计数&quot;。"
   syntax:
     content: AverageBase
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -83,13 +83,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "An average counter that shows how many items are processed, on average, during an operation. Counters of this type display a ratio of the items processed to the number of operations completed. The ratio is calculated by comparing the number of items processed during the last interval to the number of operations completed during the last interval."
+  summary: "显示多少项处理，平均而言，在操作期间对平均计数器。 此类型的计数器显示比率为处理的项与已完成的操作的数目。 比率是通过比较到最后一个时间间隔内完成的操作的数目最后一个时间间隔内处理的项的数目计算的。"
   remarks: "Formula: (N 1 -N 0)/(B 1 -B 0), where N 1 and N 0 are performance counter readings, and the B 1 and B 0 are their corresponding `AverageBase` values. Thus, the numerator represents the numbers of items processed during the sample interval, and the denominator represents the number of operations completed during the sample interval.  \n  \n Counters of this type include PhysicalDisk\\ Avg. Disk Bytes/Transfer."
   syntax:
     content: AverageCount64
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -105,13 +105,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "An average counter that measures the time it takes, on average, to complete a process or operation. Counters of this type display a ratio of the total elapsed time of the sample interval to the number of processes or operations completed during that time. This counter type measures time in ticks of the system clock."
+  summary: "平均计数器，用于测量，一般情况下，完成所需进程或操作的时间。 此种类型的计数器数量的进程或该时间内完成的操作显示在采样间隔的总运行时间比率。 此类型的计数器测量中的系统时钟计时周期的时间。"
   remarks: "Formula: ((N 1 -N 0)/F)/(B 1 -B 0), where N 1 and N 0 are performance counter readings, B 1 and B 0 are their corresponding `AverageBase` values, and F is the number of ticks per second. The value of F is factored into the equation so that the result can be displayed in seconds. Thus, the numerator represents the numbers of ticks counted during the last sample interval, F represents the frequency of the ticks, and the denominator represents the number of operations completed during the last sample interval.  \n  \n Counters of this type include PhysicalDisk\\ Avg. Disk sec/Transfer."
   syntax:
     content: AverageTimer32
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -127,13 +127,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "A difference counter that shows the change in the measured attribute between the two most recent sample intervals."
-  remarks: 'Formula: N 1 -N 0, where N 1 and N 0 are performance counter readings.'
+  summary: "差异计数器，它会显示两个最新的采样间隔之间的测量属性的变化。"
+  remarks: '公式︰ N 1-N 0，其中 N 1 和 N 0 是性能计数器读数。'
   syntax:
     content: CounterDelta32
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -149,13 +149,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "A difference counter that shows the change in the measured attribute between the two most recent sample intervals. It is the same as the <xref uid=&quot;langword_csharp_CounterDelta32&quot; name=&quot;CounterDelta32&quot; href=&quot;&quot;></xref> counter type except that is uses larger fields to accomodate larger values."
-  remarks: 'Formula: N 1 -N 0, where N 1 and N 0 are performance counter readings.'
+  summary: "差异计数器，它会显示两个最新的采样间隔之间的测量属性的变化。 它等同于<xref uid=&quot;langword_csharp_CounterDelta32&quot; name=&quot;CounterDelta32&quot; href=&quot;&quot;></xref>计数器类型，但它使用更大的字段来容纳更大的值。"
+  remarks: '公式︰ N 1-N 0，其中 N 1 和 N 0 是性能计数器读数。'
   syntax:
     content: CounterDelta64
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -171,12 +171,12 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "A base counter that indicates the number of items sampled. It is used as the denominator in the calculations to get an average among the items sampled when taking timings of multiple, but similar items. Used with <xref uid=&quot;langword_csharp_CounterMultiTimer&quot; name=&quot;CounterMultiTimer&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_CounterMultiTimerInverse&quot; name=&quot;CounterMultiTimerInverse&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_CounterMultiTimer100Ns&quot; name=&quot;CounterMultiTimer100Ns&quot; href=&quot;&quot;></xref>, and <xref uid=&quot;langword_csharp_CounterMultiTimer100NsInverse&quot; name=&quot;CounterMultiTimer100NsInverse&quot; href=&quot;&quot;></xref>."
+  summary: "基本的计数器，指示采样的项的数目。 它可作为计算中分母以得出平均值取样的多个计时时间时各项但相似的项目。 Used with <xref uid=&quot;langword_csharp_CounterMultiTimer&quot; name=&quot;CounterMultiTimer&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_CounterMultiTimerInverse&quot; name=&quot;CounterMultiTimerInverse&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_CounterMultiTimer100Ns&quot; name=&quot;CounterMultiTimer100Ns&quot; href=&quot;&quot;></xref>, and <xref uid=&quot;langword_csharp_CounterMultiTimer100NsInverse&quot; name=&quot;CounterMultiTimer100NsInverse&quot; href=&quot;&quot;></xref>."
   syntax:
     content: CounterMultiBase
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -192,13 +192,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "A percentage counter that displays the active time of one or more components as a percentage of the total time of the sample interval. Because the numerator records the active time of components operating simultaneously, the resulting percentage can exceed 100 percent."
-  remarks: "This counter is a multitimer. Multitimers collect data from more than one instance of a component, such as a processor or disk. This counter type differs from `CounterMultiTimer100Ns` in that it measures time in units of ticks of the system performance timer, rather than in 100 nanosecond units.       Formula: ((N 1 - N 0) / (D 1 - D 0)) x 100 / B, where N 1 and N 0 are performance counter readings, D 1 and D 0 are their corresponding time readings in ticks of the system performance timer, and the variable B denotes the base count for the monitored components (using a base counter of type `CounterMultiBase`). Thus, the numerator represents the portions of the sample interval during which the monitored components were active, and the denominator represents the total elapsed time of the sample interval."
+  summary: "显示在采样间隔的总时间的百分比的一个或多个组件的活动时间百分比计数器。 由于分子记录同时运行的组件的活动时间，因此最终的百分比可以超过 100%。"
+  remarks: "此计数器是多项计时器。 计时器从多个组件，例如处理器或磁盘的实例中收集数据。 此计数器类型不同于`CounterMultiTimer100Ns`在于它来测量单位的计时周期的系统性能计时器，而不是以 100 纳秒为单位的时间。       公式: ((N 1-N 0) / (D 1-D 0)) x 100 / B，其中 N 1 和 N 0 是性能计数器读数，D 1 和 D 0 是以刻度为单位的系统性能计时器，相应的时间读数和变量 B 表示受监视的组件的基本计数 (使用类型的基本计数器`CounterMultiBase`)。 因此，分子表示样本的间隔时间在此期间监视的组件处于活动状态，和分母表示样本的间隔时间的总运行时间的部分。"
   syntax:
     content: CounterMultiTimer
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -214,13 +214,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "A percentage counter that shows the active time of one or more components as a percentage of the total time of the sample interval. It measures time in 100 nanosecond (ns) units."
-  remarks: "This counter type is a multitimer. Multitimers are designed to monitor more than one instance of a component, such as a processor or disk.       Formula: ((N 1 - N 0) / (D 1 - D 0)) x 100 / B, where N 1 and N 0 are performance counter readings, D 1 and D 0 are their corresponding time readings in 100-nanosecond units, and the variable B denotes the base count for the monitored components (using a base counter of type `CounterMultiBase`). Thus, the numerator represents the portions of the sample interval during which the monitored components were active, and the denominator represents the total elapsed time of the sample interval."
+  summary: "在采样间隔的总时间的百分比形式显示的一个或多个组件的活动时间百分比计数器。 它测量以 100 纳秒 (ns) 为单位的时间。"
+  remarks: "此计数器类型是多项计时器。 计时器旨在监视的组件，例如处理器或磁盘的多个实例。       公式: ((N 1-N 0) / (D 1-D 0)) x 100 / B，其中 N 1 和 N 0 是性能计数器读数，D 1 和 D 0 是以 100 毫微秒为单位，相应的时间读数和变量 B 表示受监视的组件的基本计数 (使用类型的基本计数器`CounterMultiBase`)。 因此，分子表示样本的间隔时间在此期间监视的组件处于活动状态，和分母表示样本的间隔时间的总运行时间的部分。"
   syntax:
     content: CounterMultiTimer100Ns
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -236,13 +236,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "A percentage counter that shows the active time of one or more components as a percentage of the total time of the sample interval. Counters of this type measure time in 100 nanosecond (ns) units. They derive the active time by measuring the time that the components were not active and subtracting the result from multiplying 100 percent by the number of objects monitored."
-  remarks: "This counter type is an inverse multitimer. Multitimers are designed to monitor more than one instance of a component, such as a processor or disk. Inverse counters measure the time that a component is not active and derive its active time from the measurement of inactive time       Formula: (B - ((N 1 - N 0) / (D 1 - D 0))) x 100, where the denominator represents the total elapsed time of the sample interval, the numerator represents the time during the interval when monitored components were inactive, and B represents the number of components being monitored, using a base counter of type `CounterMultiBase`."
+  summary: "在采样间隔的总时间的百分比形式显示的一个或多个组件的活动时间百分比计数器。 此类型的计数器测量以 100 纳秒 (ns) 为单位的时间。 它们派生的活动时间通过测量组件处于非活动状态的时间然后减去 100%乘以监视的对象数的结果。"
+  remarks: "此计数器类型是反向多项计时器。 计时器旨在监视的组件，例如处理器或磁盘的多个实例。 反向计数器测量组件处于非活动状态的时间，并从非活动时间公式的度量单位推导其活动的时间: (B-((N 1-N 0) / (D 1-D 0))) x 100，其中分母表示采样间隔期间的总运行时间分子表示在此时间间隔的时间在受监视的组件处于非活动状态，而 B 表示正在监视的组件数使用类型的基本计数器`CounterMultiBase`。"
   syntax:
     content: CounterMultiTimer100NsInverse
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -258,13 +258,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "A percentage counter that shows the active time of one or more components as a percentage of the total time of the sample interval. It derives the active time by measuring the time that the components were not active and subtracting the result from 100 percent by the number of objects monitored."
-  remarks: "This counter type is an inverse multitimer. Multitimers monitor more than one instance of a component, such as a processor or disk. Inverse counters measure the time that a component is not active and derive its active time from that measurement.       This counter differs from `CounterMultiTimer100NsInverse` in that it measures time in units of ticks of the system performance timer, rather than in 100 nanosecond units.       Formula: (B- ((N 1 - N 0) / (D 1 - D 0))) x 100, where the denominator represents the total elapsed time of the sample interval, the numerator represents the time during the interval when monitored components were inactive, and B represents the number of components being monitored, using a base counter of type `CounterMultiBase`."
+  summary: "在采样间隔的总时间的百分比形式显示的一个或多个组件的活动时间百分比计数器。 通过度量组件处于非活动状态的时间，并通过监视的对象数减去从 100%的结果，它派生的活动时间。"
+  remarks: "此计数器类型是反向多项计时器。 计时器监视组件，例如处理器或磁盘的多个的实例。 反向计数器测量组件处于非活动状态的时间，并从该测量值推导其活动的时间。       此计数器区别`CounterMultiTimer100NsInverse`在于它来测量单位的计时周期的系统性能计时器，而不是以 100 纳秒为单位的时间。       公式: (B-((N 1-N 0) / (D 1-D 0))) x 100，其中分母表示采样间隔期间的总运行时间分子表示的时间间隔时监视的组件处于非活动状态，和 B 表示的组件数期间被监视，使用类型的基本计数器`CounterMultiBase`。"
   syntax:
     content: CounterMultiTimerInverse
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -280,13 +280,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "A percentage counter that shows the average time that a component is active as a percentage of the total sample time."
-  remarks: 'Formula: (N 1 - N 0) / (D 1 - D 0), where N 1 and N 0 are performance counter readings, and D 1 and D 0 are their corresponding time readings. Thus, the numerator represents the portions of the sample interval during which the monitored components were active, and the denominator represents the total elapsed time of the sample interval.'
+  summary: "显示组件处于活动状态的总的采样时间百分比的平均时间百分比计数器。"
+  remarks: '公式: (N 1-N 0) / (D 1-D 0)，其中 N 1 和 N 0 是性能计数器读数，D 1 和 D 0 是相应的时间读数。 因此，分子表示样本的间隔时间在此期间监视的组件处于活动状态，和分母表示样本的间隔时间的总运行时间的部分。'
   syntax:
     content: CounterTimer
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -302,13 +302,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "A percentage counter that displays the average percentage of active time observed during sample interval. The value of these counters is calculated by monitoring the percentage of time that the service was inactive and then subtracting that value from 100 percent."
-  remarks: "This is an inverse counter type. Inverse counters measure the time that a component is note active and derive the active time from that measurement. This counter type is the same as `CounterTimer100NsInv` except that it measures time in units of ticks of the system performance timer rather than in 100 nanosecond units.       Formula: (1- ((N 1 - N 0) / (D 1 - D 0))) x 100, where the numerator represents the time during the interval when the monitored components were inactive, and the denominator represents the total elapsed time of the sample interval."
+  summary: "百分比计数器显示采样间隔期间观察到的活动时间的平均百分比。 这些计数器的值被计算监视的服务处于非活动状态的时间的百分比，然后中减去该值从 100%。"
+  remarks: "这是反计数器类型。 反向计数器度量值的时间组件处于非活动，并从该测量值派生的活动时间。 此计数器类型是相同`CounterTimer100NsInv`之处在于它来测量系统性能计时器时钟周期为单位，而不是以 100 纳秒为单位的时间。       公式: (1-((N 1-N 0) / (D 1-D 0))) x 100，其中分子表示的时间间隔期间，当监视的组件处于非活动状态，并且分母表示样本的间隔时间的总运行时间。"
   syntax:
     content: CounterTimerInverse
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -324,13 +324,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "An average counter designed to monitor the average length of a queue to a resource over time. It shows the difference between the queue lengths observed during the last two sample intervals divided by the duration of the interval. This type of counter is typically used to track the number of items that are queued or waiting."
-  remarks: 'Formula: (N 1 - N 0) / (D 1 - D 0), where the numerator represents the number of items in the queue and the denominator represents the time elapsed during the last sample interval.'
+  summary: "平均计数器，专用于随着时间的推移监视队列对资源的平均长度。 它显示最近两个除以间隔的采样间隔期间观察到的队列长度之间的差异。 这种类型的计数器通常用于跟踪的项进行排队或正在等待数。"
+  remarks: '公式: (N 1-N 0) / (D 1-D 0)，其中分子表示队列中的项的数目，分母表示的时间运行上一个采样间隔时间。'
   syntax:
     content: CountPerTimeInterval32
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -346,13 +346,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "An average counter that monitors the average length of a queue to a resource over time. Counters of this type display the difference between the queue lengths observed during the last two sample intervals, divided by the duration of the interval. This counter type is the same as <xref uid=&quot;langword_csharp_CountPerTimeInterval32&quot; name=&quot;CountPerTimeInterval32&quot; href=&quot;&quot;></xref> except that it uses larger fields to accommodate larger values. This type of counter is typically used to track a high-volume or very large number of items that are queued or waiting."
-  remarks: 'Formula: (N 1 - N 0) / (D 1 - D 0), where the numerator represents the number of items in a queue and the denominator represents the time elapsed during the sample interval.'
+  summary: "随着时间的推移监视的队列对资源的平均长度平均计数器。 此类型的计数器显示最近两个采样间隔，除以间隔期间观察到的队列长度之间的差异。 此计数器类型是相同<xref uid=&quot;langword_csharp_CountPerTimeInterval32&quot; name=&quot;CountPerTimeInterval32&quot; href=&quot;&quot;> </xref> ，只不过它使用更大的字段来容纳更大的值。 这种类型的计数器通常用于跟踪大量或非常大大量的项进行排队或正在等待。"
+  remarks: '公式: (N 1-N 0) / (D 1-D 0)，其中分子表示队列中的项的数目，分母表示的时间间隔的运行时间示例。'
   syntax:
     content: CountPerTimeInterval64
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -368,13 +368,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "A difference timer that shows the total time between when the component or process started and the time when this value is calculated."
+  summary: "显示组件或进程启动时和计算此值时的时间之间的总时间差异计时器。"
   remarks: "Formula: (D 0 - N 0) / F, where D 0 represents the current time, N 0 represents the time the object was started, and F represents the number of time units that elapse in one second. The value of F is factored into the equation so that the result can be displayed in seconds.  \n  \n Counters of this type include System\\ System Up Time."
   syntax:
     content: ElapsedTime
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -390,13 +390,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "An instantaneous counter that shows the most recently observed value. Used, for example, to maintain a simple count of items or operations."
+  summary: "即时计数器，它显示最近一次观测的值。 例如，用于维护的项或操作的简单计数。"
   remarks: "Formula: None. Does not display an average, but shows the raw data as it is collected.  \n  \n Counters of this type include Memory\\Available Bytes."
   syntax:
     content: NumberOfItems32
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -412,13 +412,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "An instantaneous counter that shows the most recently observed value. Used, for example, to maintain a simple count of a very large number of items or operations. It is the same as <xref uid=&quot;langword_csharp_NumberOfItems32&quot; name=&quot;NumberOfItems32&quot; href=&quot;&quot;></xref> except that it uses larger fields to accommodate larger values."
-  remarks: 'Formula: None. Does not display an average, but shows the raw data as it is collected.'
+  summary: "即时计数器，它显示最近一次观测的值。 例如，用于维护非常大量的项或操作的简单计数。 它等同于<xref uid=&quot;langword_csharp_NumberOfItems32&quot; name=&quot;NumberOfItems32&quot; href=&quot;&quot;> </xref> ，只不过它使用更大的字段来容纳更大的值。"
+  remarks: '公式︰ 无。 不会显示一般情况下，但显示原始数据收集。'
   syntax:
     content: NumberOfItems64
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -434,13 +434,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "An instantaneous counter that shows the most recently observed value in hexadecimal format. Used, for example, to maintain a simple count of items or operations."
-  remarks: 'Formula: None. Does not display an average, but shows the raw data as it is collected.'
+  summary: "即时计数器以十六进制格式显示的最近一次观测的值。 例如，用于维护的项或操作的简单计数。"
+  remarks: '公式︰ 无。 不会显示一般情况下，但显示原始数据收集。'
   syntax:
     content: NumberOfItemsHEX32
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -456,13 +456,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "An instantaneous counter that shows the most recently observed value. Used, for example, to maintain a simple count of a very large number of items or operations. It is the same as <xref uid=&quot;langword_csharp_NumberOfItemsHEX32&quot; name=&quot;NumberOfItemsHEX32&quot; href=&quot;&quot;></xref> except that it uses larger fields to accommodate larger values."
-  remarks: 'Formula: None. Does not display an average, but shows the raw data as it is collected'
+  summary: "即时计数器，它显示最近一次观测的值。 例如，用于维护非常大量的项或操作的简单计数。 它等同于<xref uid=&quot;langword_csharp_NumberOfItemsHEX32&quot; name=&quot;NumberOfItemsHEX32&quot; href=&quot;&quot;> </xref> ，只不过它使用更大的字段来容纳更大的值。"
+  remarks: '公式︰ 无。 不会显示一般情况下，但显示原始数据收集'
   syntax:
     content: NumberOfItemsHEX64
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -478,13 +478,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "A difference counter that shows the average number of operations completed during each second of the sample interval. Counters of this type measure time in ticks of the system clock."
+  summary: "差异计数器，它显示在采样间隔的每一秒内完成的操作的平均数目。 此类型的计数器测量中的系统时钟计时周期的时间。"
   remarks: "Formula: (N 1 - N 0) / ((D 1 -D 0) / F), where N 1 and N 0 are performance counter readings, D 1 and D 0 are their corresponding time readings, and F represents the number of ticks per second. Thus, the numerator represents the number of operations performed during the last sample interval, the denominator represents the number of ticks elapsed during the last sample interval, and F is the frequency of the ticks. The value of F is factored into the equation so that the result can be displayed in seconds.  \n  \n Counters of this type include System\\ File Read Operations/sec."
   syntax:
     content: RateOfCountsPerSecond32
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -500,13 +500,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "A difference counter that shows the average number of operations completed during each second of the sample interval. Counters of this type measure time in ticks of the system clock. This counter type is the same as the <xref uid=&quot;langword_csharp_RateOfCountsPerSecond32&quot; name=&quot;RateOfCountsPerSecond32&quot; href=&quot;&quot;></xref> type, but it uses larger fields to accommodate larger values to track a high-volume number of items or operations per second, such as a byte-transmission rate."
+  summary: "差异计数器，它显示在采样间隔的每一秒内完成的操作的平均数目。 此类型的计数器测量中的系统时钟计时周期的时间。 此计数器类型是相同<xref uid=&quot;langword_csharp_RateOfCountsPerSecond32&quot; name=&quot;RateOfCountsPerSecond32&quot; href=&quot;&quot;></xref>类型，但它使用更大的字段来容纳更大的值来跟踪大量大量的项或操作每秒，如字节传输速率。"
   remarks: "Formula: (N 1 - N 0) / ((D 1 -D 0) / F), where N 1 and N 0 are performance counter readings, D 1 and D 0 are their corresponding time readings, and F represents the number of ticks per second. Thus, the numerator represents the number of operations performed during the last sample interval, the denominator represents the number of ticks elapsed during the last sample interval, and F is the frequency of the ticks. The value of F is factored into the equation so that the result can be displayed in seconds.  \n  \n Counters of this type include System\\ File Read Bytes/sec."
   syntax:
     content: RateOfCountsPerSecond64
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -522,12 +522,12 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "A base counter that stores the denominator of a counter that presents a general arithmetic fraction. Check that this value is greater than zero before using it as the denominator in a <xref uid=&quot;langword_csharp_RawFraction&quot; name=&quot;RawFraction&quot; href=&quot;&quot;></xref> value calculation."
+  summary: "将存储的计数器的表示常规算术分数分母的基本计数器。 检查此值是否大于零，然后再将其作为在分母<xref uid=&quot;langword_csharp_RawFraction&quot; name=&quot;RawFraction&quot; href=&quot;&quot;></xref>值计算。"
   syntax:
     content: RawBase
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -543,13 +543,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "An instantaneous percentage counter that shows the ratio of a subset to its set as a percentage. For example, it compares the number of bytes in use on a disk to the total number of bytes on the disk. Counters of this type display the current percentage only, not an average over time."
+  summary: "即时百分比计数器它显示为其设置为百分比子集的比率。 例如，它将比较中使用的磁盘上的字节总数到磁盘上的字节数。 此种类型的计数器显示当前百分比仅，不是随时间推移的平均值。"
   remarks: "Formula: (N 0 / D 0) x 100, where D 0 represents a measured attribute (using a base counter of type `RawBase`) and N 0 represents one component of that attribute.  \n  \n Counters of this type include Paging File\\\\% Usage Peak."
   syntax:
     content: RawFraction
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -565,12 +565,12 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "A base counter that stores the number of sampling interrupts taken and is used as a denominator in the sampling fraction. The sampling fraction is the number of samples that were 1 (or <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>) for a sample interrupt. Check that this value is greater than zero before using it as the denominator in a calculation of <xref uid=&quot;langword_csharp_SampleFraction&quot; name=&quot;SampleFraction&quot; href=&quot;&quot;></xref>."
+  summary: "将存储的采样数的基本计数器获取中断，并用作中样本分数分母。 样本分数是为 1 的样本数 (或<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>) 示例中断。 检查此值是否大于零，然后再将其作为在计算中使用的分母<xref uid=&quot;langword_csharp_SampleFraction&quot; name=&quot;SampleFraction&quot; href=&quot;&quot;> </xref>。"
   syntax:
     content: SampleBase
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -586,13 +586,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "An average counter that shows the average number of operations completed in one second. When a counter of this type samples the data, each sampling interrupt returns one or zero. The counter data is the number of ones that were sampled. It measures time in units of ticks of the system performance timer."
-  remarks: 'Formula: (N 1 – N 0) / ((D 1 – D 0) / F), where the numerator (N) represents the number of operations completed, the denominator (D) represents elapsed time in units of ticks of the system performance timer, and F represents the number of ticks that elapse in one second. F is factored into the equation so that the result can be displayed in seconds.'
+  summary: "平均计数器，来显示一秒内完成的操作的平均数目。 当此类型的计数器的示例数据时，每个采样中断返回一个或零。 计数器数据是一种是期间采样数。 它测量系统性能计时器时钟周期为单位的时间。"
+  remarks: '公式: (N 1-N 0) / ((D 1 – D 0) / F)，其中分子 (N) 表示的操作已完成数、 分母 (D) 表示经过的时间单位的计时周期的系统性能计时器，以，F 表示一秒内经过的计时周期数。 F 考虑到公式中，以便可以以秒为单位显示结果。'
   syntax:
     content: SampleCounter
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -608,13 +608,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "A percentage counter that shows the average ratio of hits to all operations during the last two sample intervals."
+  summary: "最后两个采样间隔期间显示的命中与所有操作的平均比率百分比计数器。"
   remarks: "Formula: ((N 1 - N 0) / (D 1 - D 0)) x 100, where the numerator represents the number of successful operations during the last sample interval, and the denominator represents the change in the number of all operations (of the type measured) completed during the sample interval, using counters of type `SampleBase`.  \n  \n Counters of this type include Cache\\Pin Read Hits %."
   syntax:
     content: SampleFraction
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -630,13 +630,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "A percentage counter that shows the active time of a component as a percentage of the total elapsed time of the sample interval. It measures time in units of 100 nanoseconds (ns). Counters of this type are designed to measure the activity of one component at a time."
+  summary: "在采样间隔的总已用时间的百分比形式显示组件的活动时间百分比计数器。 它测量以 100 纳秒 (ns) 为单位的时间。 此种类型的计数器用于测量一次的一个组件的活动。"
   remarks: "Formula: (N 1 - N 0) / (D 1 - D 0) x 100, where the numerator represents the portions of the sample interval during which the monitored components were active, and the denominator represents the total elapsed time of the sample interval.  \n  \n Counters of this type include Processor\\ % User Time."
   syntax:
     content: Timer100Ns
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
@@ -652,13 +652,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "A percentage counter that shows the average percentage of active time observed during the sample interval."
+  summary: "百分比计数器，它显示在采样间隔期间观察到的活动时间的平均百分比。"
   remarks: "This is an inverse counter. Counters of this type calculate active time by measuring the time that the service was inactive and then subtracting the percentage of active time from 100 percent.  \n  \n Formula: (1- ((N 1 - N 0) / (D 1 - D 0))) x 100, where the numerator represents the time during the interval when the monitored components were inactive, and the denominator represents the total elapsed time of the sample interval.  \n  \n Counters of this type include Processor\\ % Processor Time."
   syntax:
     content: Timer100NsInverse
     return:
       type: System.Diagnostics.PerformanceCounterType
-      description: "To be added."
+      description: "要添加。"
   exceptions: []
   platform:
   - net462
